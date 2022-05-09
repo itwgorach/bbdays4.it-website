@@ -3,12 +3,12 @@ import * as React from "react"
 // styles
 const pageStyles = {
   color: "#232129",
-  padding: 96,
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
+  padding: 96,
 }
 const headingStyles = {
-  marginTop: 0,
   marginBottom: 64,
+  marginTop: 0,
   maxWidth: 320,
 }
 const headingAccentStyles = {
@@ -18,27 +18,27 @@ const paragraphStyles = {
   marginBottom: 48,
 }
 const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
   backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
   borderRadius: 4,
+  color: "#8A6534",
+  fontSize: "1.25rem",
+  padding: 4,
 }
 const listStyles = {
   marginBottom: 96,
   paddingLeft: 0,
 }
 const listItemStyles = {
-  fontWeight: 300,
   fontSize: 24,
-  maxWidth: 560,
+  fontWeight: 300,
   marginBottom: 30,
+  maxWidth: 560,
 }
 
 const linkStyle = {
   color: "#8954A8",
-  fontWeight: "bold",
   fontSize: 16,
+  fontWeight: "bold",
   verticalAlign: "5%",
 }
 
@@ -51,77 +51,77 @@ const docLinkStyle = {
 const descriptionStyle = {
   color: "#232129",
   fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
   lineHeight: 1.25,
+  marginBottom: 0,
+  marginTop: 10,
 }
 
 const docLink = {
+  color: "#8954A8",
   text: "TypeScript Documentation",
   url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-  color: "#8954A8",
 }
 
 const badgeStyle = {
-  color: "#fff",
   backgroundColor: "#088413",
   border: "1px solid #088413",
+  borderRadius: 4,
+  color: "#fff",
+  display: "inline-block",
   fontSize: 11,
   fontWeight: "bold",
   letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
   lineHeight: 1,
+  marginLeft: 10,
+  padding: "4px 6px",
+  position: "relative" as const,
+  top: -2,
 }
 
 // data
 const links = [
   {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
+    color: "#E95800",
     description:
       "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
+    text: "Tutorial",
+    url: "https://www.gatsbyjs.com/docs/tutorial/",
   },
   {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
+    color: "#1099A8",
     description:
       "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
+    text: "How to Guides",
+    url: "https://www.gatsbyjs.com/docs/how-to/",
   },
   {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
+    color: "#BC027F",
     description:
       "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
+    text: "Reference Guides",
+    url: "https://www.gatsbyjs.com/docs/reference/",
   },
   {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
+    color: "#0D96F2",
     description:
       "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
+    text: "Conceptual Guides",
+    url: "https://www.gatsbyjs.com/docs/conceptual/",
   },
   {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
+    color: "#8EB814",
     description:
       "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
+    text: "Plugin Library",
+    url: "https://www.gatsbyjs.com/plugins",
   },
   {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
     badge: true,
+    color: "#663399",
     description:
       "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
+    text: "Build and Host",
+    url: "https://www.gatsbyjs.com/cloud",
   },
 ]
 
@@ -143,8 +143,8 @@ const IndexPage = () => {
       <ul style={listStyles}>
         <li style={docLinkStyle}>
           <a
-            style={linkStyle}
             href={`${docLink.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
+            style={linkStyle}
           >
             {docLink.text}
           </a>
@@ -153,13 +153,13 @@ const IndexPage = () => {
           <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
             <span>
               <a
-                style={linkStyle}
                 href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
+                style={linkStyle}
               >
                 {link.text}
               </a>
               {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
+                <span aria-label="New Badge" style={badgeStyle}>
                   NEW!
                 </span>
               )}
