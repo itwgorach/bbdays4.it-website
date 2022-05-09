@@ -1,30 +1,33 @@
 require('dotenv').config()
-
-import type { GatsbyConfig } from "gatsby";
+import type { GatsbyConfig } from 'gatsby'
 
 const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: ['post'],
+  collectionTypes: ['post', 'speaker', 'partner'],
   singleTypes: [],
-};
+}
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `bbdays-website`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: ["gatsby-plugin-sass", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
-    }
-  },
+  plugins: [
+    'gatsby-plugin-sass',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/images/icon.png',
+      },
+    },
     {
       resolve: 'gatsby-source-strapi',
-      options: strapiConfig
-    }
-  ]
-};
+      options: strapiConfig,
+    },
+  ],
+}
 
-export default config;
+export default config
