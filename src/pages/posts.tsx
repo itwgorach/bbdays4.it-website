@@ -2,7 +2,27 @@ import React from 'react'
 
 import { graphql, Link } from 'gatsby'
 
-const PostsPage = ({data: {allStrapiPost: { edges }}}: any) => {
+type Query = {
+  data: AllStrapiPost
+}
+
+type AllStrapiPost = {
+  allStrapiPost: Edges
+}
+
+type Edges = {
+  edges: [Node]
+}
+
+type Node = {
+  node: {
+    Slug: String
+    Title: String
+    ShortDescription: String
+  }
+}
+
+const PostsPage = ({data: {allStrapiPost: { edges }}}: Query) => {
   return (
     <div>
       <h1>Posts</h1>
