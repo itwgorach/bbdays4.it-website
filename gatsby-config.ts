@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+require('dotenv').config()
+
 const strapiConfig = {
   accessToken: process.env.STRAPI_TOKEN,
   apiURL: process.env.STRAPI_API_URL,

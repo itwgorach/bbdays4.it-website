@@ -1,8 +1,33 @@
 import React from 'react'
 
 import { graphql, Link } from 'gatsby'
+import { type } from 'os'
 
-const PartnersPage = ({data: {allStrapiPartner: { edges }}}: any) => {
+type Query = {
+  data: AllStrapiPartner
+}
+
+type AllStrapiPartner = {
+  allStrapiPartner: Edges
+}
+
+type Edges = {
+  edges: [Node]
+}
+
+type Node = {
+  node: {
+    Name: String
+    WebsiteURL: String
+    Logo: Logo
+  }
+}
+
+type Logo = {
+  url: String
+}
+
+const PartnersPage = ({data: {allStrapiPartner: { edges }}}: Query) => {
   return (
     <div>
       <h1>Partners</h1>

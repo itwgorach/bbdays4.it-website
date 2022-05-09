@@ -2,7 +2,31 @@ import React from 'react'
 
 import { graphql, Link } from 'gatsby'
 
-const SpeakersPage = ({data: {allStrapiSpeaker: { edges }}}: any) => {
+type Query = {
+  data: AllStrapiSpeaker
+}
+
+type AllStrapiSpeaker = {
+  allStrapiSpeaker: Edges
+}
+
+type Edges = {
+  edges: [Node]
+}
+
+type Node = {
+  node: {
+    FirstName: String
+    LastName: String
+    Logo: Logo
+  }
+}
+
+type Logo = {
+  url: String
+}
+
+const SpeakersPage = ({data: {allStrapiSpeaker: { edges }}}: Query) => {
   return (
     <div>
       <h1>Speakerzy</h1>
