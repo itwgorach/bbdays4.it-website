@@ -1,6 +1,7 @@
 import type { GatsbyConfig } from 'gatsby'
+import dotenv from 'dotenv'
 
-require('dotenv').config()
+dotenv.config()
 
 const strapiConfig = {
   accessToken: process.env.STRAPI_TOKEN,
@@ -24,6 +25,7 @@ const config: GatsbyConfig = {
       options: strapiConfig,
       resolve: 'gatsby-source-strapi',
     },
+    'gatsby-plugin-root-import',
   ],
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
