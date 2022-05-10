@@ -35,7 +35,7 @@ const SpeakersPage = ({data: {allStrapiSpeaker: { edges }}}: Query) => {
         return (
           <div key={index}>
             <h3>{FirstName} {LastName}</h3>
-            <img src={Photo.url} alt="speaker's photo" />
+            <img alt="speaker's photo" src={Photo.url} />
           </div>
         )
       })}
