@@ -31,7 +31,7 @@ const SpeakersPage = ({data: {allStrapiSpeaker: { edges }}}: Query) => {
     <div>
       <h1>Speakerzy</h1>
       <Link to="/">Home</Link>
-      {edges.map(({ node: { FirstName, LastName, Photo } }: any, index: number) => {
+      {edges.map(({ node: { FirstName, LastName, Photo } }: Edges, index: number) => {
         return (
           <div key={index}>
             <h3>{FirstName} {LastName}</h3>
