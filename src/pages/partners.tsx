@@ -17,14 +17,14 @@ type Edges = {
 
 type Node = {
   node: {
-    Name: String
-    WebsiteURL: String
+    Name: string
+    WebsiteURL: string
     Logo: Logo
   }
 }
 
 type Logo = {
-  url: String
+  url: string
 }
 
 const PartnersPage = ({data: {allStrapiPartner: { edges }}}: Query) => {
@@ -32,7 +32,7 @@ const PartnersPage = ({data: {allStrapiPartner: { edges }}}: Query) => {
     <div>
       <h1>Partners</h1>
       <Link to="/">Home</Link>
-      {edges.map(({ node: { Name, WebsiteURL, Logo } }: any, index: number) => {
+      {edges.map(({ node: { Name, WebsiteURL, Logo } }: Node, index: number) => {
         return (
           <div key={index}>
             <a href={WebsiteURL}>{Name}</a>
