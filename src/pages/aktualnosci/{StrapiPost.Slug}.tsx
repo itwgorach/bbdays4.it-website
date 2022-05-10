@@ -11,7 +11,7 @@ type StrapiPost = {
 }
 
 type Post = {
-  Title: String
+  Title: string
   Content: Content
 }
 
