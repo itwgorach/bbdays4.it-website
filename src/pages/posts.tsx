@@ -16,9 +16,9 @@ type Edges = {
 
 type Node = {
   node: {
-    Slug: String
-    Title: String
-    ShortDescription: String
+    Slug: string
+    Title: string
+    ShortDescription: string
   }
 }
 
@@ -27,7 +27,7 @@ const PostsPage = ({data: {allStrapiPost: { edges }}}: Query) => {
     <div>
       <h1>Posts</h1>
       <Link to="/">Home</Link>
-      {edges.map(({ node: { Title, ShortDescription, Slug } }: any, index: number) => {
+      {edges.map(({ node: { Title, ShortDescription, Slug } }: Node, index: number) => {
         return (
           <div key={index}>
             <Link to={`/aktualnosci/${Slug}`}>{Title}</Link>

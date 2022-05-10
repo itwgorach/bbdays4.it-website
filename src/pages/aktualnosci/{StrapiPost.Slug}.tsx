@@ -20,7 +20,7 @@ type Content = {
 }
 
 type Text = {
-  Content: String
+  Content: string
 }
 
 const PostTemplate = ({ data: {strapiPost:{Title, Content}}}: Query) => {
