@@ -1,7 +1,7 @@
+import { type } from 'os'
 import React from 'react'
 
 import { graphql, Link } from 'gatsby'
-import { type } from 'os'
 
 type Query = {
   data: AllStrapiPartner
@@ -36,7 +36,7 @@ const PartnersPage = ({data: {allStrapiPartner: { edges }}}: Query) => {
         return (
           <div key={index}>
             <a href={WebsiteURL}>{Name}</a>
-            <img src={Logo.url} alt={Name} />
+            <img alt={Name} src={Logo.url} />
           </div>
         )
       })}
