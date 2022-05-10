@@ -16,14 +16,14 @@ type Edges = {
 
 type Node = {
   node: {
-    FirstName: String
-    LastName: String
-    Logo: Logo
+    FirstName: string
+    LastName: string
+    Photo: Photo
   }
 }
 
-type Logo = {
-  url: String
+type Photo = {
+  url: string
 }
 
 const SpeakersPage = ({data: {allStrapiSpeaker: { edges }}}: Query) => {
@@ -31,7 +31,7 @@ const SpeakersPage = ({data: {allStrapiSpeaker: { edges }}}: Query) => {
     <div>
       <h1>Speakerzy</h1>
       <Link to="/">Home</Link>
-      {edges.map(({ node: { FirstName, LastName, Photo } }: Edges, index: number) => {
+      {edges.map(({ node: { FirstName, LastName, Photo } }: Node, index: number) => {
         return (
           <div key={index}>
             <h3>{FirstName} {LastName}</h3>
