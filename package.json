@@ -13,7 +13,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint:style": "stylelint --fix \"src/**/*.scss\""
   },
   "dependencies": {
     "classnames": "^2.3.1",
@@ -53,6 +54,10 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "gatsby-plugin-root-import": "^2.0.8",
     "prettier": "^2.6.2",
+    "stylelint": "^14.8.2",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-order": "^5.0.0",
     "typescript": "^4.6.4"
   }
 }
