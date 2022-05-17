@@ -1,34 +1,18 @@
-import React from 'react'
-
+import React, { FC } from 'react'
 import { graphql, Link } from 'gatsby'
 
-type Query = {
-  data: StrapiPost
-}
+import { PostTemplateType } from 'types'
 
-type StrapiPost = {
-  strapiPost: Post
-}
-
-type Post = {
-  Title: String
-  Content: Content
-}
-
-type Content = {
-  data: Text
-}
-
-type Text = {
-  Content: string
-}
-
-const PostTemplate = ({ data: {strapiPost:{Title, Content}}}: Query) => {
+const PostTemplate: FC<PostTemplateType> = ({
+  data: {
+    strapiPost: { Title, Content },
+  },
+}) => {
   return (
     <div>
       <Link to="/posts">Posty</Link>
       <h1>{Title}</h1>
-      <p>{Content.data.Content}</p>
+      <p>{Content?.data?.Content}</p>
     </div>
   )
 }

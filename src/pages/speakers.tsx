@@ -1,41 +1,24 @@
-import React from 'react'
-
+import React, { FC } from 'react'
 import { graphql, Link } from 'gatsby'
 
-type Query = {
-  data: AllStrapiSpeaker
-}
+import { SpeakerEdgeType, SpeakersPageType } from 'types'
 
-type AllStrapiSpeaker = {
-  allStrapiSpeaker: Edges
-}
-
-type Edges = {
-  edges: [Node]
-}
-
-type Node = {
-  node: {
-    FirstName: string
-    LastName: string
-    Photo: Photo
-  }
-}
-
-type Photo = {
-  url: string
-}
-
-const SpeakersPage = ({data: {allStrapiSpeaker: { edges }}}: Query) => {
+const SpeakersPage: FC<SpeakersPageType> = ({
+  data: {
+    allStrapiSpeaker: { edges },
+  },
+}) => {
   return (
     <div>
       <h1>Speakerzy</h1>
       <Link to="/">Home</Link>
-      {edges.map(({ node: { FirstName, LastName, Photo } }: Node, index: number) => {
+      {edges.map(({ node: { FirstName, LastName, Photo } }: SpeakerEdgeType, index: number) => {
         return (
           <div key={index}>
-            <h3>{FirstName} {LastName}</h3>
-            <img src={Photo.url} alt="speaker's photo" />
+            <h3>
+              {FirstName} {LastName}
+            </h3>
+            <img alt="speaker's photo" src={Photo?.url} />
           </div>
         )
       })}
