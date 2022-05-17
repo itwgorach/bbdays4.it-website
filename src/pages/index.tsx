@@ -1,17 +1,42 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { graphql } from 'gatsby'
 
-import { Link } from 'gatsby'
+import HomePageType from 'types/HomePageType'
+import Hero from 'components/Hero'
+import { BaseHeroType } from 'types'
 
-const IndexPage = () => {
+const HomePage: FC<HomePageType> = ({
+  data: {
+    strapiHomepage: { hero: heros },
+  },
+}) => {
   return (
-    <div>
-      <Link to="/partners">Partnerzy</Link>
-      <br />
-      <Link to="/posts">Posty</Link>
-      <br />
-      <Link to="/speakers">Speakerzy</Link>
-    </div>
+    <>
+      {heros?.map((hero: BaseHeroType) => (
+        <Hero key={hero.id} {...hero} />
+      ))}
+    </>
   )
 }
 
-export default IndexPage
+export const query = graphql`
+  {
+    strapiHomepage {
+      hero {
+        buttonText
+        buttonUrl
+        id
+        subtitle
+        title
+        strapi_id
+        backgroundImage {
+          id
+          url
+        }
+        backgroundColor
+      }
+    }
+  }
+`
+
+export default HomePage
