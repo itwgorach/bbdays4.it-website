@@ -1,49 +1,47 @@
-.hero{
- display:flex;
-  justify-content: center;
+.hero {
   align-items: center;
-  flex-direction: column;
-  text-align: center;
-  padding: $m-2xl $m-base;
+  background-position: center;
+  background-size: cover;
   color: $color-white;
- background-position: center;
- background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $m-2xl $m-base;
+  text-align: center;
 
- &.-full-height{
-  min-height:60vh;
- }
-
-  &__title{
-   margin: $m-base ;
-   font-size: $font-size-2xl;
-   font-family:$font-family-header;
-   font-weight: $font-weight-semi-bold;
-   line-height:$line-height-2xl;
-
-   &.-small{
-    font-weight: $font-weight-regular;
-    font-size: $font-size-xl;
-   }
-
+  &.-full-height {
+    min-height: 60vh;
   }
 
-  &__subtitle{
-   margin: 0;
-   font-size: $font-size-sm;
-   text-transform: uppercase;
-   font-family: $font-family-header;
-   font-weight: $font-weight-bold;
+  &__title {
+    font-family: $font-family-header;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semi-bold;
+    line-height: $line-height-2xl;
+    margin: $m-base;
+
+    &.-small {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-regular;
+    }
   }
 
- &__button{
-   font-weight: $font-weight-bold;
-   font-family: $font-family-header;
-  background-color: $color-secondary;
-  padding: $m-sm;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: $font-size-sm;
-  color: $color-text;
+  &__subtitle {
+    font-family: $font-family-header;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    margin: 0;
+    text-transform: uppercase;
+  }
 
- }
+  &__button {
+    background-color: $color-secondary;
+    color: $color-text;
+    cursor: pointer;
+    font-family: $font-family-header;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    padding: $m-sm;
+    text-decoration: none;
+  }
 }
