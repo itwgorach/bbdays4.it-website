@@ -26,6 +26,12 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-strapi',
     },
     'gatsby-plugin-root-import',
+    {
+      options: {
+        outputPath: 'src/types/graphql-types.ts',
+      },
+      resolve: 'gatsby-plugin-typegen',
+    },
   ],
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
