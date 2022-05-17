@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Montserrat:wght@400;600&display=swap');
 @import "vendor/normalize";
 
 @import "base/variables";
+@import "base/breakpoints";
 
 @import "components/layout";
+@import "components/header";
+@import "components/hero";
