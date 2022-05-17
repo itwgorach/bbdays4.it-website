@@ -7,7 +7,20 @@ const strapiConfig = {
   accessToken: process.env.STRAPI_TOKEN,
   apiURL: process.env.STRAPI_API_URL,
   collectionTypes: ['post', 'partner', 'speaker'],
-  singleTypes: [],
+  singleTypes: [
+    {
+      queryParams: {
+        populate: {
+          hero: {
+            populate: {
+              backgroundImage: '*',
+            },
+          },
+        },
+      },
+      singularName: 'homepage',
+    },
+  ],
 }
 
 const config: GatsbyConfig = {

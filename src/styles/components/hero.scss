@@ -1,0 +1,49 @@
+.hero{
+ display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: $m-2xl $m-base;
+  color: $color-white;
+ background-position: center;
+ background-size: cover;
+
+ &.-full-height{
+  min-height:60vh;
+ }
+
+  &__title{
+   margin: $m-base ;
+   font-size: $font-size-2xl;
+   font-family:$font-family-header;
+   font-weight: $font-weight-semi-bold;
+   line-height:$line-height-2xl;
+
+   &.-small{
+    font-weight: $font-weight-regular;
+    font-size: $font-size-xl;
+   }
+
+  }
+
+  &__subtitle{
+   margin: 0;
+   font-size: $font-size-sm;
+   text-transform: uppercase;
+   font-family: $font-family-header;
+   font-weight: $font-weight-bold;
+  }
+
+ &__button{
+   font-weight: $font-weight-bold;
+   font-family: $font-family-header;
+  background-color: $color-secondary;
+  padding: $m-sm;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: $font-size-sm;
+  color: $color-text;
+
+ }
+}

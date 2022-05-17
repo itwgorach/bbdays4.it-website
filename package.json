@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "classnames": "^2.3.1",
     "dotenv": "^16.0.0",
     "gatsby": "^4.13.1",
     "gatsby-plugin-image": "^2.13.0",
