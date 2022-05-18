@@ -1,0 +1,47 @@
+.hero {
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $m-2xl $m-base;
+  text-align: center;
+
+  &.-full-height {
+    min-height: 60vh;
+  }
+
+  &__title {
+    font-family: $font-family-header;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semi-bold;
+    line-height: $line-height-2xl;
+    margin: $m-base;
+
+    &.-small {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-regular;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-family-header;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  &__button {
+    background-color: $color-secondary;
+    color: $color-text;
+    cursor: pointer;
+    font-family: $font-family-header;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    padding: $m-sm;
+    text-decoration: none;
+  }
+}

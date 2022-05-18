@@ -7,7 +7,20 @@ const strapiConfig = {
   accessToken: process.env.STRAPI_TOKEN,
   apiURL: process.env.STRAPI_API_URL,
   collectionTypes: ['post', 'partner', 'speaker'],
-  singleTypes: [],
+  singleTypes: [
+    {
+      queryParams: {
+        populate: {
+          hero: {
+            populate: {
+              backgroundImage: '*',
+            },
+          },
+        },
+      },
+      singularName: 'homepage',
+    },
+  ],
 }
 
 const config: GatsbyConfig = {
@@ -26,17 +39,25 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-strapi',
     },
     'gatsby-plugin-root-import',
-    {
-      options: {
-        outputPath: 'src/types/graphql-types.ts',
-      },
-      resolve: 'gatsby-plugin-typegen',
-    },
+    // {
+    //   options: {
+    //     outputPath: 'src/types/graphql-types.ts',
+    //   },
+    //   resolve: 'gatsby-plugin-typegen',
+    // },
   ],
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
     title: `BB Days 4 IT`,
   },
+}
+if (process.env.NODE_ENV === 'development') {
+  config.plugins?.push({
+    options: {
+      outputPath: 'src/types/graphql-types.ts',
+    },
+    resolve: 'gatsby-plugin-typegen',
+  })
 }
 
 export default config
