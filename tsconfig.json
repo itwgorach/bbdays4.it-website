@@ -36,9 +36,6 @@
     "./gatsby-config.ts",
     "./plugins/**/*",
     "./src/types/custom.d.ts",
-<<<<<<< HEAD
-    "./src/components/icons/index.ts",
-=======
->>>>>>> cdaf29a (configure gatsby-plugin-react-svg)
+    "./src/components/icons/index.ts"
   ]
 }
