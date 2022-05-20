@@ -11,7 +11,7 @@ import {
   FacebookIcon,
   InstagramIcon,
   TwitterIcon,
-} from 'components/icons/index'
+} from 'components/icons/'
 
 const linksData = [
   {
@@ -40,23 +40,20 @@ const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className={classnames('header', {'-hamburger-open': isMenuOpen})}>
+    <header className={classnames('header', { '-hamburger-open': isMenuOpen })}>
       <div className="header__inner">
-        <div className='header__logo-container'>
-          <BBDaysLogoDark className='header__logo -mobile' />
-          <BBDaysLogoLight className='header__logo -desktop' />
-        </div>
+        <BBDaysLogoDark className="header__logo -mobile" />
+        <BBDaysLogoLight className="header__logo -desktop" />
         <div className="header__menu">
           <ul className="header__nav">
-            {linksData.map((link) => {
-              return (
+            {linksData.map((link) =>  (
                 <li key={link.name}>
                   <Link to={link.path} className="header__nav-link" onClick={() => setIsMenuOpen(false)}>
                     {link.name}
                   </Link>
                 </li>
               )
-            })}
+            )}
           </ul>
           <button className="header__contact-button">Skontaktuj się z nami</button>
           <div className="header__socials">
