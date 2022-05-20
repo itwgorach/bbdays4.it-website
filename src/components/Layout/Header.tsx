@@ -4,9 +4,23 @@ import { useMediaQuery } from 'react-responsive'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
 
+<<<<<<< HEAD
 import { LinkType } from 'types'
 
 const linksData: LinkType[] = [
+=======
+import {
+  BBDaysLogoLight,
+  BBDaysLogoDark,
+  CloseHamburgerIcon,
+  HamburgerIcon,
+  FacebookIcon,
+  InstagramIcon,
+  TwitterIcon,
+} from 'components/icons/index'
+
+const linksData = [
+>>>>>>> e31ef7e (rebuild header component)
   {
     name: 'Organizatorzy',
     path: '/',
