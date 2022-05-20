@@ -18,12 +18,8 @@
   }
 
   &__logo {
-<<<<<<< HEAD
     height: $icon-size-lg;
   }
-=======
-    height: 6vh;
->>>>>>> caf1578 (add background photo)
 
   &__nav {
     display: flex;
@@ -66,13 +62,8 @@
     }
   }
 
-<<<<<<< HEAD
   &__social-icon {
     height: $icon-size-lg;
-=======
-  &__hamburger-icon {
-    height: 6vh;
->>>>>>> caf1578 (add background photo)
   }
 
   &__top-bar {
@@ -96,20 +87,6 @@
     margin: 0;
     padding: $m-base;
     width: 100vw;
-<<<<<<< HEAD
-=======
-    z-index: $z-higher;
-    overflow-y: hidden;
-    
-    background: $color-primary url(/images/header-background.png) no-repeat center;
-    background-size: cover;
-
-    .header{  
-      &__inner {
-        padding: 0;
-        margin: $m-base;
-      }
->>>>>>> caf1578 (add background photo)
 
     .header-mobile {
       &__logo {
@@ -159,37 +136,6 @@
       &__socials {
         display: flex;
         gap: $m-base;
-<<<<<<< HEAD
-=======
-        margin: 0 auto;
-
-        * {
-          height: 7vh;
-        }
-      }
-    }
-  }
-
-  &__nav {
-    display: none;
-  }
-
-  &__contact-button {
-    display: none;
-  }
-
-  &__socials {
-    display: none;
-  }
-
-  @media only screen and (max-height: map-get($grid-breakpoints, md)){
-    &.-hamburger-open {
-      .header {
-        &__menu {
-          top: 10vh;
-          height: 75vh;
-        }
->>>>>>> caf1578 (add background photo)
       }
     }
   }
