@@ -1,189 +1,222 @@
-@forward '../base/breakpoints';
-
 .header {
+  box-sizing: border-box;
   position: sticky;
+  height: fit-content;
   top: 0;
-  display: flex;
-  flex-direction: column;
-  font-family: $font-face-body;
+  
   background: $color-white;
+  font-family: $font-face-body;
+  color: $color-white;
   
   &__inner {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: $m-base $m-lg $m-base $m-base;
+    padding: $m-base;
+    height: 6vh;
   }
 
-  &__inner-element {
-    display: flex;
-    align-items: center;
-    height: 60px;
-  }
-
-  &__hamburger-menu{
-    height: 60px;
-  }
-  
-  &__hamburger-icon-s {
-    height: 50px !important;
-  }
-  
-  &__hamburger-icon {
-    height: 60px;
-  }
-  
   &__logo {
-    &-desktop{
-      height: 42px;
-      width: auto;
+    height: 5vh;
+    width: auto;
+
+    &.-desktop {
       display: none;
-
-      &.-hamburger {
-        display: block;
-        height: 42px;
-        width: auto;
-      }
-    }
-
-    &-mobile{
-      height: 42px;
-      width: auto;
-      display: block;
-
-      &.-disabled {
-        display: none;
-      }
     }
   }
-  
+
+  &__hamburger-icon {
+    height: 5vh;
+  }
+
   &__nav {
     display: none;
-    padding: 0;
-  }
-  
-  &__nav-mobile {
-    flex-grow: 3;
-    width: 100%;
     list-style-type: none;
-    font-size: 2rem;
-    font-weight: $font-weight-bold;
+    padding: 0;
 
-    li:not(li:last-of-type) {
-      margin-bottom: $m-base;
+    .header__nav-link {
+      text-decoration: none;
+      font-weight: bolder;
     }
-    
-    li {
-      text-align: center;
+
+    .header__nav-link:visited {
+      color: $color-white;
     }
   }
-  
-  a, a:visited {
-    color: $color-white;
-    text-decoration: none;
-  }
 
-  &__nav-mobile-shown {
-    display: inline-block;
-  }
+  &.-hamburger-open {
+    box-sizing: border-box;
 
-  &__button-wrapper {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 0;
-  }
-
-  &__button-wrapper-show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__button-mobile {
-    display: none;
-    background: transparent;
-    width: max-content;
-    margin: 0 auto;
-    padding: $m-sm;
-    outline: 2px solid $color-white;
-    border: none;
-    border-radius: $border-radius-sm;
-    font-weight: $font-weight-bold;
-    font-size: 1rem;
-    color: $color-white;
-  }
-  
-  &__button-show {
-    display: block;
-  }
-
-  &__socials-show {
-    display: flex !important;
-    align-items: center;
-    gap: $m-sm;
-    margin: 0 auto;
-    flex-grow: 7;
-  }
-  
-  &__socials {
-    // display: flex;
-    display: none;
-  }
-
-  &__icon {
-    height: 64px;
-  }
-
-  &__hamburger-open {
+    align-items: flex-start;
     position: fixed;
     height: 100vh;
     width: 100vw;
     z-index: $z-higher;
-    background: $color-primary;
     overflow-y: hidden;
+    
+    background: $color-primary;
+    
+    .header{
+      &__inner {
+        padding: 0;
+        margin: $m-base;
+      }
 
-    .header__inner {
-      margin-bottom: $m-lg;
-    }
-  }
+      &__logo{
+        &.-desktop {
+          display: block;
+        }
+  
+        &.-mobile {
+          display: none;
+        }
+      }
 
-  @media (min-width: '768px') {
-    &__hamburger-open {
-      .header__nav-mobile {
-        li:not(li:last-of-type) {
-          margin-bottom: $m-lg;
+      &__menu {
+        position: absolute;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+
+        width: 100%;
+        height: 70vh;
+        top: 17vh;
+      }
+
+      &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: $m-base;
+
+        text-align: center;
+        font-size: $font-size-xl;
+        letter-spacing: 2px;
+      }
+
+      &__contact-button {
+        display: block;
+        width: max-content;
+
+        margin: auto;
+        padding: $m-sm;
+        
+        background: transparent;
+        border: 2px solid $color-white;
+        border-radius: $border-radius-sm;
+
+        font-weight: $font-weight-bold;
+        color: $color-white;
+      }
+
+      &__socials {
+        display: flex;
+        gap: $m-base;
+        margin: 0 auto;
+
+        * {
+          height: 8vh;
         }
       }
     }
-  } 
+  }
 
-  @media (min-width: '992px') {
-    & {
-      position: fixed;
-      width: 100vw;
-      background: transparent;
+  &__nav {
+    display: none;
+  }
+
+  &__contact-button {
+    display: none;
+  }
+
+  &__socials {
+    display: none;
+  }
+
+  @media only screen and (max-height: map-get($grid-breakpoints, md)){
+    &.-hamburger-open {
+      .header {
+        &__menu {
+          top: 10vh;
+          height: 75vh;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: map-get($grid-breakpoints, md)){
+    &.-hamburger-open {
+      .header {
+        &__menu {
+          top: 12vh;
+          height: 75vh;
+        }
+
+        &__nav {
+          gap: $m-lg;
+        }
+
+        &__nav-link {
+          font-size: $font-size-2xl;
+        }
+    
+        &__contact-button {
+          font-size: $font-size-xl;
+        }
+      }
+    }
+
+  }
+
+  @media only screen and (min-width: map-get($grid-breakpoints, lg)){
+    position: fixed;
+    width: 100%;
+    background: transparent;
+
+    &__logo {
+      &.-mobile {
+        display: none;
+      }
+
+      &.-desktop {
+        display: block;
+      }
+    }
+
+    &__menu {
+      width: 65%;
+    }
+
+    &__nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      
+      font-size: $font-size-base;
+      
+      li {
+        position: relative;
+      }
+
+      &-link::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        left: -5%;
+        bottom: -4px;
+        background: $color-white;
+        border-radius: $border-radius-sm;
+        transition: all $transition-duration $transition-function;
+      }
+
+      &-link:hover::after {
+        width: 110%;
+      }
     }
 
     &__hamburger-menu {
       display: none;
-    }
-
-    &__nav-desktop {
-      font-size: 1.35rem;
-      display: flex;
-      gap: $m-lg;
-    }
-
-    &__logo {
-      &-desktop{
-        height: 42px;
-        display: block;
-      }
-  
-      &-mobile{
-        display: none;
-      }
     }
   }
 }
