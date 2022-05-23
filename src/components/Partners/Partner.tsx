@@ -2,7 +2,6 @@ import classnames from 'classnames'
 import React, { FC } from 'react'
 
 import { PartnerType } from 'types'
-import { getPartnerWhiteLogo } from 'utils/getPartnerWhiteLogo'
 
 const Partner: FC<PartnerType> = ({ Name, WebsiteURL, Logo, whiteLogo }: PartnerType) => {
   return (
