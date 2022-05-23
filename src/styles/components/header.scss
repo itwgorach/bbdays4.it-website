@@ -73,10 +73,10 @@
       &__menu {
         display: flex;
         flex-direction: column;
-        height: 70vh;
+        height: 75vh;
         justify-content: space-around;
         position: absolute;
-        top: 17vh;
+        top: 14vh;
         width: 100%;
       }
 
@@ -107,7 +107,7 @@
         margin: 0 auto;
 
         svg {
-          height: 7vh;
+          height: 8vh;
         }
       }
     }
@@ -125,25 +125,9 @@
     display: none;
   }
 
-  @media only screen and (max-height: map-get($grid-breakpoints, md)){
-    &.-hamburger-open {
-      .header {
-        &__menu {
-          height: 75vh;
-          top: 10vh;
-        }
-      }
-    }
-  }
-
   @media only screen and (min-width: map-get($grid-breakpoints, md)){
     &.-hamburger-open {
       .header {
-        &__menu {
-          height: 75vh;
-          top: 12vh;
-        }
-
         &__nav {
           gap: $m-lg;
         }
@@ -195,14 +179,15 @@
         bottom: -4px;
         content: '';
         height: 2px;
-        left: -5%;
+        left: 0;
         position: absolute;
-        transition: all $transition-duration $transition-function;
-        width: 0%;
+        transform: scaleX(0);
+        transition: transform $transition-duration $transition-function;
+        width: 100%;
       }
 
       &-link:hover::after {
-        width: 110%;
+        transform: scaleX(1.1);
       }
     }
 
