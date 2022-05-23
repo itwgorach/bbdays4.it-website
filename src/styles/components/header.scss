@@ -33,12 +33,12 @@
     list-style-type: none;
     padding: 0;
 
-    .header__nav-link {
+    &-link {
       font-weight: bolder;
       text-decoration: none;
     }
 
-    .header__nav-link:visited {
+    &-link:visited {
       color: $color-white;
     }
   }
