@@ -77,6 +77,20 @@
   
   &__menu {
     display: none;
+<<<<<<< HEAD
+=======
+    list-style-type: none;
+    padding: 0;
+
+    &-link {
+      font-weight: bolder;
+      text-decoration: none;
+    }
+
+    &-link:visited {
+      color: $color-white;
+    }
+>>>>>>> 303a1b9 (prettify header.scss)
   }
 
   
