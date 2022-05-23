@@ -35,6 +35,6 @@
     "./gatsby-node.ts",
     "./gatsby-config.ts",
     "./plugins/**/*",
-    "./src/components/icons/index.ts",
+    "./src/types/custom.d.ts",
   ]
 }
