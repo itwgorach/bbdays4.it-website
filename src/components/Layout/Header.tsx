@@ -57,9 +57,9 @@ const Header: FC = () => {
           </ul>
           <button className="header__contact-button">Skontaktuj się z nami</button>
           <div className="header__socials">
-            <TwitterIcon />
-            <FacebookIcon />
-            <InstagramIcon />
+            <TwitterIcon className="header__social-icon" />
+            <FacebookIcon className="header__social-icon" />
+            <InstagramIcon className="header__social-icon"/>
           </div>
         </div>
         <div className="header__hamburger-menu">

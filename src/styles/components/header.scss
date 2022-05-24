@@ -10,14 +10,14 @@
   &__inner {
     align-items: center;
     display: flex;
-    height: 6vh;
+    height: $icon-size-base;
     justify-content: space-between;
     padding: $m-base;
     position: relative;
   }
 
   &__logo {
-    height: 6vh;
+    height: $icon-size-base;
 
     &.-desktop {
       display: none;
@@ -25,7 +25,7 @@
   }
 
   &__hamburger-icon {
-    height: 6vh;
+    height: $icon-size-base;
   }
 
   &__nav {
@@ -73,10 +73,10 @@
       &__menu {
         display: flex;
         flex-direction: column;
-        height: 75vh;
+        height: 70vh;
         justify-content: space-around;
         position: absolute;
-        top: 14vh;
+        top: calc($icon-size-base + $m-xl);
         width: 100%;
       }
 
@@ -105,10 +105,10 @@
         display: flex;
         gap: $m-base;
         margin: 0 auto;
+      } 
 
-        svg {
-          height: 8vh;
-        }
+      &__social-icon {
+        width: $icon-size-lg;
       }
     }
   }
@@ -125,9 +125,40 @@
     display: none;
   }
 
+  @media only screen and (max-height: map-get($grid-breakpoints, md)){
+    &.-hamburger-open {
+      .header__menu {
+        height: 80vh;
+        top: calc($icon-size-base + $m-sm);
+      }
+    }
+  }
+
   @media only screen and (min-width: map-get($grid-breakpoints, md)){
+    &__inner {
+      height: $icon-size-lg;
+      padding: $m-base $m-lg;
+    }
+
+    &__logo {
+      height: $icon-size-lg;
+    }
+
+    &__hamburger-icon {
+      height: $icon-size-lg;
+    }
+
     &.-hamburger-open {
       .header {
+        &__inner {
+          margin: $m-base $m-lg;
+          padding: 0;
+        }
+
+        &__menu {
+          height: 80vh;
+        }
+
         &__nav {
           gap: $m-lg;
         }
@@ -135,10 +166,14 @@
         &__nav-link {
           font-size: $font-size-2xl;
         }
-    
+
         &__contact-button {
           font-size: $font-size-xl;
         }
+
+        &__social-icon {
+          width: $icon-size-xl;
+        }    
       }
     }
 
@@ -149,7 +184,14 @@
     position: fixed;
     width: 100%;
     
+    &__inner {
+      height: $icon-size-base;
+      padding: $m-base $m-lg;
+    }
+
     &__logo {
+      height: $icon-size-base;
+
       &.-mobile {
         display: none;
       }
