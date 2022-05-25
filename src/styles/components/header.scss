@@ -8,10 +8,7 @@
   top: 0;
   
   &__inner {
-    align-items: center;
-    display: flex;
     height: $icon-size-base;
-    justify-content: space-between;
     padding: $m-base;
     position: relative;
   }
@@ -43,6 +40,18 @@
     }
   }
 
+  &__menu {
+    &.-mobile{
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &.-desktop {
+      display: none;
+    }
+  }
+
   &.-hamburger-open {
     align-items: flex-start;
     background: $color-primary url(/images/header-background.png) no-repeat center;
@@ -71,13 +80,14 @@
       }
 
       &__menu {
-        display: flex;
-        flex-direction: column;
-        height: 70vh;
-        justify-content: space-around;
-        position: absolute;
-        top: calc($icon-size-base + $m-xl);
-        width: 100%;
+        &.-desktop {
+          display: flex;
+          flex-direction: column;
+          height: 70vh;
+          justify-content: space-around;
+          margin-top: $m-xl;
+          width: 100%;
+        }
       }
 
       &__nav {
@@ -127,9 +137,9 @@
 
   @media only screen and (max-height: map-get($grid-breakpoints, md)){
     &.-hamburger-open {
-      .header__menu {
+      .header__menu.-desktop {
         height: 80vh;
-        top: calc($icon-size-base + $m-sm);
+        margin-top: $m-sm;
       }
     }
   }
@@ -155,7 +165,7 @@
           padding: 0;
         }
 
-        &__menu {
+        &__menu.-desktop {
           height: 80vh;
         }
 
@@ -182,10 +192,18 @@
   @media only screen and (min-width: map-get($grid-breakpoints, lg)){
     background: transparent;
     position: fixed;
+    transition: background-color $transition-duration $transition-function;
     width: 100%;
     
+    &.-background-colored {
+      background: $color-primary;
+      transition: background-color $transition-duration $transition-function;
+    }
+
     &__inner {
+      display: flex;
       height: $icon-size-base;
+      justify-content: space-between;
       padding: $m-base $m-lg;
     }
 
@@ -201,7 +219,8 @@
       }
     }
 
-    &__menu {
+    &__menu.-desktop {
+      display: block;
       width: 65%;
     }
 
