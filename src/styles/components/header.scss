@@ -220,7 +220,7 @@
     }
 
     &__menu.-desktop {
-      display: block;
+      display: flex;
       width: 65%;
     }
 
@@ -229,7 +229,8 @@
       display: flex;
       font-size: $font-size-base;
       justify-content: space-around;
-      
+      width: 100%;
+
       li {
         position: relative;
       }
@@ -254,6 +255,12 @@
 
     &__hamburger-menu {
       display: none;
+    }
+  }
+
+  @media only screen and (min-width: map-get($grid-breakpoints, 2xl)){
+    &__menu.-desktop {
+      width: 50%;
     }
   }
 }
