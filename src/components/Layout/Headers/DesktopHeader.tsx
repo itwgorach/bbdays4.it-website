@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 
 import { BBDaysLogoLight } from 'components/icons'
@@ -6,13 +6,15 @@ import { BBDaysLogoLight } from 'components/icons'
 const Header: FC = (props) => {
   const [backgroundColor, setBackgroundColor] = useState('-transparent')
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 1) {
-      setBackgroundColor('-colored')
-    } else {
-      setBackgroundColor('-transparent')
-    }
-  })
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 1) {
+            setBackgroundColor('-colored')
+          } else {
+            setBackgroundColor('-transparent')
+          }
+        })
+    })
 
   return (
     <header className={`header-desktop ${backgroundColor}`}>
