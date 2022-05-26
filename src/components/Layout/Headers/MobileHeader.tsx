@@ -46,7 +46,7 @@ const Header: FC = (props) => {
             </Link>
           ))}
         </div>
-        <button className="header-mobile__contact-button">Skontaktuj się z nami</button>
+        <button className="header-mobile__contact-button">Spotkaj się z nami</button>
         <div className="header-mobile__socials">
           <TwitterIcon className='header-mobile__social-icon' />
           <FacebookIcon className='header-mobile__social-icon' />
