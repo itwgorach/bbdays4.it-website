@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import { isMobile } from 'react-device-detect'
+import React, { FC, useState, useEffect } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
@@ -30,9 +30,12 @@ const linksData: LinkType[] = [
 ]
 
 const Header: FC = () => {
-  if (isMobile) {
-  }
+  const isMobile = useMediaQuery({ maxWidth: 992 })
 
+  if(isMobile) {
+    return <MobileHeader links={linksData} />
+  }
+  
   return <DesktopHeader links={linksData} />
 }
 
