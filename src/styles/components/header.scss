@@ -13,10 +13,6 @@
   transition: background-color $transition-duration $transition-function;
   width: 100%;
 
-  &.-transparent {
-    background: transparent;
-  }
-
   &.-colored {
     background-color: $color-primary;
   }

@@ -4,7 +4,9 @@ import { isMobile } from 'react-device-detect'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
 
-const linksData = [
+import { LinkType } from 'types'
+
+const linksData: LinkType[] = [
   {
     name: 'Organizatorzy',
     path: '/',
@@ -28,13 +30,7 @@ const linksData = [
 ]
 
 const Header: FC = () => {
-  const [mobile, setMobile] = useState()
-
-  useEffect(() => {
-    setMobile(isMobile)
-  }, [setMobile])
-
-  if(mobile) {
+  if(isMobile) {
     return <MobileHeader links={linksData} />
   }
 

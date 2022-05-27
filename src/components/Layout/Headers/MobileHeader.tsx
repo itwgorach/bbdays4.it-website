@@ -12,11 +12,13 @@ import {
   CloseHamburgerIcon,
 } from 'components/icons'
 
-const Header: FC = (props) => {
+import { LinkType, HeaderType } from 'types'
+
+const MobileHeader: FC<HeaderType> = ({links}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className={classnames('header-mobile', { '-hamburger-open': isMenuOpen })}>
+    <header key='mobile-header' className={classnames('header-mobile', { '-hamburger-open': isMenuOpen })}>
       <div className="header-mobile__top-bar">
         <Link
           to="/"
@@ -34,7 +36,7 @@ const Header: FC = (props) => {
       </div>
       <div className="header-mobile__menu">
         <div className="header-mobile__nav">
-          {props.links.map((link, index) => (
+          {links.map((link: LinkType, index: number) => (
             <Link
               key={index}
               to={link.path}
@@ -57,4 +59,4 @@ const Header: FC = (props) => {
   )
 }
 
-export default Header
+export default MobileHeader

@@ -1,28 +1,36 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, useCallback } from 'react'
 import { Link } from 'gatsby'
 
 import { BBDaysLogoLight } from 'components/icons'
+import classnames from 'classnames'
+import { LinkType, HeaderType } from 'types'
 
-const Header: FC = (props) => {
-  const [backgroundColor, setBackgroundColor] = useState('-transparent')
+const DesktopHeader: FC<HeaderType> = ({links}) => {
+  const [hasNavbarBackground, setHasNavbarBackground] = useState(false)
 
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 1) {
-            setBackgroundColor('-colored')
-          } else {
-            setBackgroundColor('-transparent')
-          }
-        })
-    })
+  const onScroll = useCallback(() =>{
+    if (window.scrollY > 1) {
+      setHasNavbarBackground(true)
+    } else {
+      setHasNavbarBackground(false)
+    }
+  },[])
+  
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll)
+    
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
 
   return (
-    <header className={`header-desktop ${backgroundColor}`}>
+    <header key='desktop-header' className={classnames('header-desktop', {'-colored': hasNavbarBackground})}>
       <Link to='/'>
           <BBDaysLogoLight className="header-desktop__logo" />
       </Link>
       <div className="header-desktop__nav">
-        {props.links.map((link, index) => (
+        {links.map((link: LinkType, index: number) => (
           <Link key={index} to={link.path} className="header-desktop__link">
             {link.name}
           </Link>
@@ -32,4 +40,4 @@ const Header: FC = (props) => {
   )
 }
 
-export default Header
+export default DesktopHeader
