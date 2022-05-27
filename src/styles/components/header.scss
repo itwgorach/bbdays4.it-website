@@ -105,14 +105,6 @@
         flex-direction: column;
         flex-grow: 1;
         justify-content: space-evenly;
-        height: 75vh;
-        justify-content: space-around;
-        position: absolute;
-        top: 14vh;
-        height: 70vh;
-        justify-content: space-around;
-        position: absolute;
-        top: calc($icon-size-base + $m-xl);
         width: 100%;
       }
 
@@ -144,71 +136,14 @@
       &__socials {
         display: flex;
         gap: $m-base;
-        margin: 0 auto;
-      } 
-
-        svg {
-          height: 8vh;
-        }
-      &__social-icon {
-        width: $icon-size-lg;
       }
     }
-  }
-
-  &__nav {
-    display: none;
-  }
-
-  &__contact-button {
-    display: none;
-  }
-
-  &__socials {
-    display: none;
   }
 
   @media only screen and (min-width: map-get($grid-breakpoints, md)){
     &__logo, &__hamburger-icon {
       height: $icon-size-lg;
     }
-  @media only screen and (max-height: map-get($grid-breakpoints, md)){
-    &.-hamburger-open {
-      .header__menu {
-        height: 80vh;
-        top: calc($icon-size-base + $m-sm);
-      }
-    }
-  }
-
-  @media only screen and (min-width: map-get($grid-breakpoints, md)){
-    &__inner {
-      height: $icon-size-lg;
-      padding: $m-base $m-lg;
-    }
-
-    &__logo {
-      height: $icon-size-lg;
-    }
-
-    &__hamburger-icon {
-      height: $icon-size-lg;
-    }
-
-    &.-hamburger-open {
-      .header {
-        &__inner {
-          margin: $m-base $m-lg;
-          padding: 0;
-        }
-
-        &__menu {
-          height: 80vh;
-        }
-
-        &__nav {
-          gap: $m-lg;
-        }
 
     &__social-icon {
       height: $icon-size-xl;
