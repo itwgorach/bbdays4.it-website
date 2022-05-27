@@ -8,5 +8,5 @@ export type { default as PartnersPageType } from 'types/PartnersPageType'
 export type { default as PostTemplateType } from './PostTemplateType'
 export type { default as PostsPageType } from 'types/PostsPageType'
 export type { default as SpeakersPageType } from 'types/SpeakersPageType'
-
-
+export type { default as LinkType } from 'types/LinkType'
+export type { default as HeaderType } from 'types/HeaderType'
