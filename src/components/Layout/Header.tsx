@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC } from 'react'
 import { isMobile } from 'react-device-detect'
 
 import MobileHeader from './Headers/MobileHeader'
@@ -30,8 +30,7 @@ const linksData: LinkType[] = [
 ]
 
 const Header: FC = () => {
-  if(isMobile) {
-    return <MobileHeader links={linksData} />
+  if (isMobile) {
   }
 
   return <DesktopHeader links={linksData} />
