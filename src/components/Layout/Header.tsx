@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react'
-import { isDesktop } from 'react-device-detect'
+import React, { FC, useState, useEffect } from 'react'
+import { isMobile } from 'react-device-detect'
 
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
@@ -28,11 +28,17 @@ const linksData = [
 ]
 
 const Header: FC = () => {
-  if (isDesktop) {
-    return <DesktopHeader links={linksData} />
+  const [mobile, setMobile] = useState()
+
+  useEffect(() => {
+    setMobile(isMobile)
+  }, [setMobile])
+
+  if(mobile) {
+    return <MobileHeader links={linksData} />
   }
 
-  return <MobileHeader links={linksData} />  
+  return <DesktopHeader links={linksData} />
 }
 
 export default Header
