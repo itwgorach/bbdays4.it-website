@@ -45,6 +45,14 @@ const config: GatsbyConfig = {
     //   },
     //   resolve: 'gatsby-plugin-typegen',
     // },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /src/
+        }
+      }
+    }
   ],
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,

@@ -1,17 +1,42 @@
-import React, { FC } from 'react'
-import { Link } from 'gatsby'
+import React, { FC, useState, useEffect } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
-const Header: FC = () => (
-  <header className="header">
-    Logo
-    <nav>
-      <Link to="/partners">Partnerzy</Link>
-      <br />
-      <Link to="/posts">Posty</Link>
-      <br />
-      <Link to="/speakers">Speakerzy</Link>
-    </nav>
-  </header>
-)
+import MobileHeader from './Headers/MobileHeader'
+import DesktopHeader from './Headers/DesktopHeader'
+
+import { LinkType } from 'types'
+
+const linksData: LinkType[] = [
+  {
+    name: 'Organizatorzy',
+    path: '/',
+  },
+  {
+    name: 'Galeria',
+    path: '/',
+  },
+  {
+    name: 'Edycja 2021',
+    path: '/',
+  },
+  {
+    name: 'Edycja 2020',
+    path: '/',
+  },
+  {
+    name: 'Edycja 2019',
+    path: '/',
+  },
+]
+
+const Header: FC = () => {
+  const isMobile = useMediaQuery({ maxWidth: 992 })
+
+  if(isMobile) {
+    return <MobileHeader links={linksData} />
+  }
+  
+  return <DesktopHeader links={linksData} />
+}
 
 export default Header
