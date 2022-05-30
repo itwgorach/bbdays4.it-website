@@ -5409,12 +5409,4 @@ type postDataQuery = { readonly strapiPost: Maybe<(
     & { readonly Content: Maybe<{ readonly data: Maybe<Pick<STRAPI_POST_CONTENT_TEXTNODE, 'Content'>> }> }
   )> };
 
-type staticCUsersadminDesktopbbdays2022BbdaysFrontendsrccomponentsPartnersPartnersTsx3471243698QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type staticCUsersadminDesktopbbdays2022BbdaysFrontendsrccomponentsPartnersPartnersTsx3471243698Query = { readonly allStrapiPartner: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<STRAPI_PARTNER, 'id' | 'Name' | 'WebsiteURL'>
-        & { readonly Logo: Maybe<Pick<STRAPI__MEDIA, 'url'>>, readonly whiteLogo: Maybe<Pick<STRAPI__MEDIA, 'url'>> }
-      ) }> } };
-
 }

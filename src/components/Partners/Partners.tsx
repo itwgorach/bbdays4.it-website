@@ -5,14 +5,12 @@ import { Autoplay } from 'swiper'
 
 import 'swiper/scss'
 
-import { PartnerType } from 'types'
+import { PartnerEdgeType } from 'types'
 import Partner from './Partner'
 import { graphql, useStaticQuery } from 'gatsby'
-import { getPartnerWhiteLogo } from 'utils/getPartnerWhiteLogo'
 
 const swiperOptions = {
   modules: [Autoplay],
-  slidesPerView: 'auto',
   loop: true,
   speed: 5000,
   autoplay: {
@@ -32,10 +30,13 @@ const swiperOptions = {
       slidesPerView: 4.2,
       spaceBetween: 125,
     },
+    1200: {
+      slidesPerView: 4.6,
+      spaceBetween: 150,
+    }
   },
   centeredSlides: true,
   centeredSlidesBounds: true,
-  draggable: true,
 }
 
 const Partners: FC = () => {
@@ -64,11 +65,10 @@ const Partners: FC = () => {
       <div className="partners__inner">
         <h1 className="partners__header">Organizatorzy</h1>
         <Swiper className="partners__swiper" {...swiperOptions}>
-          {data.allStrapiPartner.edges.map(({ node }: PartnerType) => {
-            const whiteLogo = getPartnerWhiteLogo(node)
+          {data.allStrapiPartner.edges.map(({node}: PartnerEdgeType) => {
             return (
               <SwiperSlide key={node.id}>
-                <Partner Name={node.Name} Logo={node.Logo} WebsiteURL={node.WebsiteURL}  whiteLogo={whiteLogo} />
+                <Partner partner={{ ...node }} />
               </SwiperSlide>
             )
           })}

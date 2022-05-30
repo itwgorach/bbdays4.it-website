@@ -87,6 +87,7 @@
     margin: 0;
     padding: $m-base;
     width: 100vw;
+    z-index: $z-higher;
 
     .header-mobile {
       &__logo {
