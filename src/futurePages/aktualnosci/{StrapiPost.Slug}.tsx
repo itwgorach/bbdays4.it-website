@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
 
 import { PostTemplateType } from 'types'
 
@@ -17,17 +17,17 @@ const PostTemplate: FC<PostTemplateType> = ({
   )
 }
 
-export const data = graphql`
-  query postData($Slug: String) {
-    strapiPost(Slug: { eq: $Slug }) {
-      Title
-      Content {
-        data {
-          Content
-        }
-      }
-    }
-  }
-`
+// export const data = graphql`
+//   query postData($Slug: String) {
+//     strapiPost(Slug: { eq: $Slug }) {
+//       Title
+//       Content {
+//         data {
+//           Content
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default PostTemplate

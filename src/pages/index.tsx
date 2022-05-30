@@ -11,7 +11,7 @@ const HomePage: FC<HomePageType> = ({
     strapiHomepage: { homepage },
   },
 }) => {
-  
+
   const content = useMemo(
     () =>
       homepage?.map((component) => {
@@ -44,37 +44,38 @@ const HomePage: FC<HomePageType> = ({
 
 export const query = graphql`
   {
-    strapiHomepage {
-      homepage {
-        ... on STRAPI__COMPONENT_BASE_HERO {
-          id
-          backgroundColor
-          backgroundImage {
-            url
+      strapiHomepage {
+          homepage {
+              ... on STRAPI__COMPONENT_BASE_HERO {
+                  id
+                  backgroundColor
+                  buttonUrl
+                  buttonText
+                  subtitle
+                  title
+                  strapi_component
+                  backgroundImage {
+                      url
+                  }
+              }
+              ... on STRAPI__COMPONENT_BASE_PARTNERS_SLIDER {
+                  id
+                  sectionTittle
+                  strapi_component
+                  partners {
+                      id
+                      Name
+                      WebsiteURL
+                      Logo {
+                          url
+                      }
+                      whiteLogo {
+                          url
+                      }
+                  }
+              }
           }
-          subtitle
-          title
-          strapi_component
-        }
-        ... on STRAPI__COMPONENT_BASE_PARTNERS_SLIDER {
-          id
-          sectionTittle
-          partners {
-            Name
-            id
-            whiteLogo {
-              url
-            }
-            Logo {
-              url
-            }
-            WebsiteURL
-          }
-          strapi_component
-        }
-      }
-    }
-  }
+      }  }
 `
 
 export default HomePage
