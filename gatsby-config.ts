@@ -11,10 +11,8 @@ const strapiConfig = {
     {
       queryParams: {
         populate: {
-          hero: {
-            populate: {
-              backgroundImage: '*',
-            },
+          homepage: {
+            populate: '*',
           },
         },
       },
@@ -39,20 +37,14 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-strapi',
     },
     'gatsby-plugin-root-import',
-    // {
-    //   options: {
-    //     outputPath: 'src/types/graphql-types.ts',
-    //   },
-    //   resolve: 'gatsby-plugin-typegen',
-    // },
     {
-      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /src/
-        }
-      }
-    }
+          include: /src/,
+        },
+      },
+      resolve: 'gatsby-plugin-react-svg',
+    },
   ],
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
