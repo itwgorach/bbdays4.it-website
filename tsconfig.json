@@ -36,6 +36,5 @@
     "./gatsby-config.ts",
     "./plugins/**/*",
     "./src/types/custom.d.ts",
-    "./src/components/icons/index.ts"
   ]
 }
