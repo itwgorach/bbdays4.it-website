@@ -44,7 +44,7 @@ type PartnersType = {
 }
 
 const Partners: FC<PartnersType> = ({ partners, sectionTitle }) => (
-  <div className="partners">
+  <div className="partners" id={sectionTitle.toLowerCase()}>
     <div className="partners__inner">
       <h1 className="partners__header">{sectionTitle}</h1>
       <Swiper className="partners__swiper" {...swiperOptions}>

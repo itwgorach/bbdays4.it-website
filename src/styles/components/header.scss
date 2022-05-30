@@ -28,6 +28,7 @@
   }
 
   &__link {
+    color: $color-white;
     text-decoration: none;
   }
 
@@ -74,12 +75,12 @@
 
     overscroll-behavior: contain;
   }
-  
+
   &__menu {
     display: none;
   }
 
-  
+
   &.-hamburger-open {
     background: $color-primary url(/images/header-background.png) no-repeat center;
     background-size: cover;
@@ -94,7 +95,7 @@
         &.-light {
           display: block;
         }
-  
+
         &.-dark {
           display: none;
         }
@@ -119,8 +120,9 @@
 
       &__link {
         text-decoration: none;
+        color: $color-white;
       }
-    
+
       &__link:visited {
         color: $color-white;
       }
@@ -149,7 +151,7 @@
     &__social-icon {
       height: $icon-size-xl;
     }
-    
+
     &.-hamburger-open {
       .header-mobile{
         &__nav {

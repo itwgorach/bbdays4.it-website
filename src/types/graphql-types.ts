@@ -4201,17 +4201,17 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type pageUsersdadiiWebstormProjectsbbdaysbbdaysWebsitesrcpagesindexTsx3649699126QueryVariables = Exact<{ [key: string]: never; }>;
+type pageUsersdadiiWebstormProjectsbbdaysbbdaysWebsitesrcpagesindexTsx3983203476QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageUsersdadiiWebstormProjectsbbdaysbbdaysWebsitesrcpagesindexTsx3649699126Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
-      Pick<STRAPI__COMPONENT_BASE_HERO, 'id' | 'backgroundColor' | 'subtitle' | 'title' | 'strapi_component' | 'buttonUrl' | 'buttonText'>
+type pageUsersdadiiWebstormProjectsbbdaysbbdaysWebsitesrcpagesindexTsx3983203476Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
+      Pick<STRAPI__COMPONENT_BASE_HERO, 'id' | 'backgroundColor' | 'buttonUrl' | 'buttonText' | 'subtitle' | 'title' | 'strapi_component'>
       & { readonly backgroundImage: Maybe<Pick<STRAPI__MEDIA, 'url'>> }
     ) | (
       Pick<STRAPI__COMPONENT_BASE_PARTNERS_SLIDER, 'id' | 'sectionTittle' | 'strapi_component'>
       & { readonly partners: Maybe<ReadonlyArray<Maybe<(
-        Pick<STRAPI_PARTNER, 'Name' | 'id' | 'WebsiteURL'>
-        & { readonly whiteLogo: Maybe<Pick<STRAPI_PARTNERWhiteLogo, 'url'>>, readonly Logo: Maybe<Pick<STRAPI_PARTNERLogo, 'url'>> }
+        Pick<STRAPI_PARTNER, 'id' | 'Name' | 'WebsiteURL'>
+        & { readonly Logo: Maybe<Pick<STRAPI_PARTNERLogo, 'url'>>, readonly whiteLogo: Maybe<Pick<STRAPI_PARTNERWhiteLogo, 'url'>> }
       )>>> }
     )>>> }> };
 

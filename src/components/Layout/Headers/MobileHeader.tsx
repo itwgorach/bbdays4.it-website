@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import { Link } from 'gatsby'
 import classnames from 'classnames'
 
@@ -12,10 +12,36 @@ import {
   TwitterIcon,
 } from 'components/icons'
 
-import { HeaderType, LinkType } from 'types'
+import { HeaderType } from 'types'
 
 const MobileHeader: FC<HeaderType> = ({ links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const getLinkComponent = useCallback((link) => {
+    if (link.path.startsWith('http'))
+      return (
+        <a
+          className="header-mobile__link"
+          href={link.path}
+          rel="noopener noreferrer"
+          target="_blank"
+          onClick={() => {
+            setIsMenuOpen(false)
+          }}>
+          {link.name}
+        </a>
+      )
+    return (
+      <Link
+        className="header-mobile__link"
+        to={link.path}
+        onClick={() => {
+          setIsMenuOpen(false)
+        }}>
+        {link.name}
+      </Link>
+    )
+  }, [])
 
   return (
     <header key="mobile-header" className={classnames('header-mobile', { '-hamburger-open': isMenuOpen })}>
@@ -35,19 +61,7 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
         )}
       </div>
       <div className="header-mobile__menu">
-        <div className="header-mobile__nav">
-          {links.map((link: LinkType, index: number) => (
-            <Link
-              key={index}
-              className="header-mobile__link"
-              to={link.path}
-              onClick={() => {
-                setIsMenuOpen(false)
-              }}>
-              {link.name}
-            </Link>
-          ))}
-        </div>
+        <div className="header-mobile__nav">{links.map(getLinkComponent)}</div>
         <button className="header-mobile__contact-button">Spotkaj się z nami</button>
         <div className="header-mobile__socials">
           <a href="https://twitter.com/bbdays4" rel="noopener noreferrer" target="_blank">
