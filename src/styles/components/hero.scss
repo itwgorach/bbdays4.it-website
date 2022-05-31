@@ -13,12 +13,41 @@
     min-height: 60vh;
   }
 
+  &.-simple {
+    position: relative;
+
+    &:before,
+    &:after {
+      background-color: $color-white;
+      content: "";
+      height: 32px;
+      left: 50%;
+      position: absolute;
+      width: 2px;
+
+      @media (min-width: map-get($grid-breakpoints, md)) {
+        height: 80px;
+      }
+    }
+
+    &:before {
+      top: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    &:after {
+      bottom: 0;
+      transform: translate(-50%, 50%);
+    }
+  }
+
   &__title {
     font-family: $font-family-header;
     font-size: $font-size-2xl;
     font-weight: $font-weight-semi-bold;
     line-height: $line-height-2xl;
     margin: $m-base;
+    white-space: pre-line;
 
     &.-small {
       font-size: $font-size-xl;

@@ -1,53 +1,37 @@
 .partners {
-    color: $color-text;
-    font-family: $font-face-body;
+  background-color: $color-text;
+  color: $color-white;
+  font-family: $font-face-body;
 
+  &__inner {
+    padding: $m-xl 0;
+  }
+
+  &__header {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semi-bold;
+    margin-bottom: $m-xl;
+    text-align: center;
+  }
+
+  &__link {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    &-image {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
     &__inner {
-        padding: $m-xl 0;
+      padding-bottom: $m-2xl;
     }
 
     &__header {
-        font-size: $font-size-xl;
-        font-weight: $font-weight-semi-bold;
-        margin-bottom: $m-xl;
-        text-align: center;
+      font-size: $font-size-2xl;
+      margin-bottom: $m-2xl;
     }
-    
-    &__link {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-
-        &-image {
-            width: 100%;
-
-            &.-desktop {
-                display: none;
-            }
-        }
-    }
-
-    @media only screen and (min-width: map-get($grid-breakpoints, lg)){
-        background-color: $color-text;
-        color: $color-white;
-
-        &__inner {
-            padding-bottom: $m-2xl;
-        }
-
-        &__header {
-            font-size: $font-size-2xl;
-            margin-bottom: $m-2xl;
-        }
-
-        &__link-image {
-            &.-desktop {
-                display: block;
-            }
-
-            &.-mobile {
-                display: none;
-            }
-        }
-    }
+  }
 }
