@@ -12,6 +12,7 @@
   position: fixed;
   transition: background-color $transition-duration $transition-function;
   width: 100%;
+  z-index: $z-higher;
 
   &.-colored {
     background-color: $color-primary;
@@ -54,6 +55,7 @@
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: $z-higher;
 
   &__logo,
   &__hamburger-icon {
