@@ -12,6 +12,7 @@
   position: fixed;
   transition: background-color $transition-duration $transition-function;
   width: 100%;
+  z-index: $z-higher;
 
   &.-colored {
     background-color: $color-primary;
@@ -28,6 +29,7 @@
   }
 
   &__link {
+    color: $color-white;
     text-decoration: none;
   }
 
@@ -53,8 +55,10 @@
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: $z-higher;
 
-  &__logo, &__hamburger-icon{
+  &__logo,
+  &__hamburger-icon {
     height: $icon-size-base;
 
     &.-light {
@@ -67,19 +71,18 @@
   }
 
   &__top-bar {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
 
     overscroll-behavior: contain;
+    width: 100%;
   }
-  
+
   &__menu {
     display: none;
   }
 
-  
   &.-hamburger-open {
     background: $color-primary url(/images/header-background.png) no-repeat center;
     background-size: cover;
@@ -94,7 +97,7 @@
         &.-light {
           display: block;
         }
-  
+
         &.-dark {
           display: none;
         }
@@ -118,9 +121,10 @@
       }
 
       &__link {
+        color: $color-white;
         text-decoration: none;
       }
-    
+
       &__link:visited {
         color: $color-white;
       }
@@ -141,17 +145,18 @@
     }
   }
 
-  @media only screen and (min-width: map-get($grid-breakpoints, md)){
-    &__logo, &__hamburger-icon {
+  @media only screen and (min-width: map-get($grid-breakpoints, md)) {
+    &__logo,
+    &__hamburger-icon {
       height: $icon-size-lg;
     }
 
     &__social-icon {
       height: $icon-size-xl;
     }
-    
+
     &.-hamburger-open {
-      .header-mobile{
+      .header-mobile {
         &__nav {
           font-size: $font-size-2xl;
         }
@@ -159,7 +164,6 @@
         &__contact-button {
           font-size: $font-size-xl;
         }
-
       }
     }
   }

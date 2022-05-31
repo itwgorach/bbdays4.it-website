@@ -1,41 +1,40 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
+import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
-
-import { LinkType } from 'types'
 
 const linksData: LinkType[] = [
   {
     name: 'Organizatorzy',
-    path: '/',
+    path: '#organizatorzy',
   },
-  {
-    name: 'Galeria',
-    path: '/',
-  },
+  // {
+  //   name: 'Galeria',
+  //   path: '/',
+  // },
   {
     name: 'Edycja 2021',
-    path: '/',
+    path: 'https://bbdays4it-2021.netlify.app/',
   },
   {
     name: 'Edycja 2020',
-    path: '/',
+    path: 'https://bbdays4it-2020.netlify.app/',
   },
   {
     name: 'Edycja 2019',
-    path: '/',
+    path: 'https://2019.bbdays4.it/',
   },
 ]
 
 const Header: FC = () => {
   const isMobile = useMediaQuery({ maxWidth: 992 })
 
-  if(isMobile) {
+  if (isMobile) {
     return <MobileHeader links={linksData} />
   }
-  
+
   return <DesktopHeader links={linksData} />
 }
 

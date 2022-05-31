@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
 
 import { PostEdgeType, PostsPageType } from 'types'
 
@@ -22,18 +22,18 @@ const PostsPage: FC<PostsPageType> = ({
   )
 }
 
-export const query = graphql`
-  {
-    allStrapiPost {
-      edges {
-        node {
-          Slug
-          Title
-          ShortDescription
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   {
+//     allStrapiPost {
+//       edges {
+//         node {
+//           Slug
+//           Title
+//           ShortDescription
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default PostsPage

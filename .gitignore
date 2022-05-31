@@ -4,3 +4,6 @@ public
 .idea/
 
 .env
+
+# Local Netlify folder
+.netlify
