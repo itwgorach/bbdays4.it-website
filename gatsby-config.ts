@@ -33,7 +33,13 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sitemap',
     {
       options: {
-        icon: 'src/images/icon.png',
+        background_color: '#663399',
+        display: 'minimal-ui',
+        icon: 'src/images/icon.svg',
+        name: 'BBDAYS4IT',
+        short_name: 'BBDAYS4IT',
+        start_url: '/',
+        theme_color: '#663399',
       },
       resolve: 'gatsby-plugin-manifest',
     },
@@ -41,6 +47,7 @@ const config: GatsbyConfig = {
       options: strapiConfig,
       resolve: 'gatsby-source-strapi',
     },
+    'gatsby-plugin-offline',
     'gatsby-plugin-root-import',
     {
       options: {
@@ -50,10 +57,16 @@ const config: GatsbyConfig = {
       },
       resolve: 'gatsby-plugin-react-svg',
     },
+    {
+      options: {
+        useMozJpeg: true,
+      },
+      resolve: `gatsby-plugin-sharp`,
+    },
   ],
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`,
-    title: `BB Days 4 IT`,
+    siteUrl: `https://bbdays4.it/`,
+    title: `BB Days 4 IT :: 9-18 września 2022`,
   },
 }
 if (process.env.NODE_ENV === 'development') {
