@@ -24,8 +24,10 @@ $line-height-sm: $m-sm;
 $line-height-base: $m-base;
 $line-height-lg: $m-lg;
 $line-height-2xl: $font-size-2xl;
+$line-height-3xl: $m-xl;
 
 //----- border radiuses ------------------------------------------------------------------------------------------------
+$border-radius-xs: rem(4px);
 $border-radius-base: $m-base;
 $border-radius-sm: $m-xs;
 $border-radius-lg: $m-lg;
@@ -37,7 +39,7 @@ $grid-gutter-width: $m-base;
 $container: map-get($grid-breakpoints, xl);
 
 //----- colors ---------------------------------------------------------------------------------------------------------
-$color-primary: #389381;
+$color-primary: #45997B;
 $color-secondary: #FECE3E;
 $color-text: #194550;
 $color-success: #48BD66;
@@ -74,3 +76,8 @@ $z-low: 40;
 $z-base: 50;
 $z-high: 60;
 $z-higher: 70;
+
+//----- icon sizes ------------------------------------------------------------------------------------------------------
+$icon-size-base: rem(50px);
+$icon-size-lg: rem(60px);
+$icon-size-xl: rem(80px);

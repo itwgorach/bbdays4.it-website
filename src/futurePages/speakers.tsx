@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
 
 import { SpeakerEdgeType, SpeakersPageType } from 'types'
 
@@ -26,20 +26,20 @@ const SpeakersPage: FC<SpeakersPageType> = ({
   )
 }
 
-export const query = graphql`
-  {
-    allStrapiSpeaker {
-      edges {
-        node {
-          FirstName
-          LastName
-          Photo {
-            url
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   {
+//     allStrapiSpeaker {
+//       edges {
+//         node {
+//           FirstName
+//           LastName
+//           Photo {
+//             url
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default SpeakersPage
