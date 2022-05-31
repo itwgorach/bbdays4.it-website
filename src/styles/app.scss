@@ -5,4 +5,17 @@
 @import "components/layout";
 @import "components/header";
 @import "components/hero";
-@import "components/partners"
+@import "components/partners";
+
+* {
+  font-family: $font-family-body;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-header;
+}

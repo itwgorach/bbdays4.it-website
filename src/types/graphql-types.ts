@@ -472,8 +472,8 @@ type STRAPI__COMPONENT_BASE_HERO = Node & {
   readonly buttonText: Maybe<Scalars['String']>;
   readonly buttonUrl: Maybe<Scalars['String']>;
   readonly backgroundColor: Maybe<Scalars['String']>;
-  readonly strapi_id: Maybe<Scalars['Int']>;
   readonly backgroundImage: Maybe<STRAPI__MEDIA>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
 type STRAPI_PARTNER = Node & {
@@ -996,8 +996,8 @@ type Query_strapiComponentBaseHeroArgs = {
   buttonText: Maybe<StringQueryOperatorInput>;
   buttonUrl: Maybe<StringQueryOperatorInput>;
   backgroundColor: Maybe<StringQueryOperatorInput>;
-  strapi_id: Maybe<IntQueryOperatorInput>;
   backgroundImage: Maybe<STRAPI__MEDIAFilterInput>;
+  strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
 
@@ -3644,7 +3644,6 @@ type STRAPI__COMPONENT_BASE_HEROFieldsEnum =
   | 'buttonText'
   | 'buttonUrl'
   | 'backgroundColor'
-  | 'strapi_id'
   | 'backgroundImage.id'
   | 'backgroundImage.parent.id'
   | 'backgroundImage.parent.parent.id'
@@ -3775,7 +3774,8 @@ type STRAPI__COMPONENT_BASE_HEROFieldsEnum =
   | 'backgroundImage.localFile.internal.mediaType'
   | 'backgroundImage.localFile.internal.owner'
   | 'backgroundImage.localFile.internal.type'
-  | 'backgroundImage.strapi_id';
+  | 'backgroundImage.strapi_id'
+  | 'strapi_id';
 
 type STRAPI__COMPONENT_BASE_HEROGroupConnection = {
   readonly totalCount: Scalars['Int'];
@@ -3829,8 +3829,8 @@ type STRAPI__COMPONENT_BASE_HEROFilterInput = {
   readonly buttonText: Maybe<StringQueryOperatorInput>;
   readonly buttonUrl: Maybe<StringQueryOperatorInput>;
   readonly backgroundColor: Maybe<StringQueryOperatorInput>;
-  readonly strapi_id: Maybe<IntQueryOperatorInput>;
   readonly backgroundImage: Maybe<STRAPI__MEDIAFilterInput>;
+  readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
 type STRAPI__COMPONENT_BASE_HEROSortInput = {
