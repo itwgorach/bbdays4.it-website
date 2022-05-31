@@ -55,7 +55,8 @@
   top: 0;
   width: 100%;
 
-  &__logo, &__hamburger-icon{
+  &__logo,
+  &__hamburger-icon {
     height: $icon-size-base;
 
     &.-light {
@@ -68,18 +69,17 @@
   }
 
   &__top-bar {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
 
     overscroll-behavior: contain;
+    width: 100%;
   }
 
   &__menu {
     display: none;
   }
-
 
   &.-hamburger-open {
     background: $color-primary url(/images/header-background.png) no-repeat center;
@@ -119,8 +119,8 @@
       }
 
       &__link {
-        text-decoration: none;
         color: $color-white;
+        text-decoration: none;
       }
 
       &__link:visited {
@@ -143,8 +143,9 @@
     }
   }
 
-  @media only screen and (min-width: map-get($grid-breakpoints, md)){
-    &__logo, &__hamburger-icon {
+  @media only screen and (min-width: map-get($grid-breakpoints, md)) {
+    &__logo,
+    &__hamburger-icon {
       height: $icon-size-lg;
     }
 
@@ -153,7 +154,7 @@
     }
 
     &.-hamburger-open {
-      .header-mobile{
+      .header-mobile {
         &__nav {
           font-size: $font-size-2xl;
         }
@@ -161,7 +162,6 @@
         &__contact-button {
           font-size: $font-size-xl;
         }
-
       }
     }
   }
