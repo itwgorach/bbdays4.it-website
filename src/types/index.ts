@@ -4,6 +4,7 @@ export import PostEdgeType = GatsbyTypes.STRAPI_POSTEdge
 export import BaseHeroType = GatsbyTypes.STRAPI__COMPONENT_BASE_HERO
 export import PartnerType = GatsbyTypes.STRAPI_PARTNER
 export import PartnersType = GatsbyTypes.STRAPI__COMPONENT_BASE_PARTNERS_SLIDER
+export import BaseGalleryType = GatsbyTypes.STRAPI__COMPONENT_BASE_GALERY_SLIDER
 
 export type { default as PartnersPageType } from 'types/PartnersPageType'
 export type { default as PostTemplateType } from './PostTemplateType'
