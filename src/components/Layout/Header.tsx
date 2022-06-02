@@ -29,13 +29,13 @@ const linksData: LinkType[] = [
 ]
 
 const Header: FC = () => {
-  const isMobile = useMediaQuery({ maxWidth: 992 })
+  const isDesktop = useMediaQuery({ minWidth: 1224 })
 
-  if (isMobile) {
+  if (isDesktop) {
+    return <DesktopHeader links={linksData} />
+  } else {
     return <MobileHeader links={linksData} />
   }
-
-  return <DesktopHeader links={linksData} />
 }
 
 export default Header
