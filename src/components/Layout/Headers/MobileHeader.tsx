@@ -13,9 +13,11 @@ import {
 } from 'components/icons'
 
 import { HeaderType } from 'types'
+import { useMediaQuery } from 'react-responsive'
 
 const MobileHeader: FC<HeaderType> = ({ links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const isDesktop = useMediaQuery({ minWidth: 1224 })
 
   const getLinkComponent = useCallback((link) => {
     if (link.path.startsWith('http'))
@@ -45,7 +47,7 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
 
   return (
     <header key="mobile-header" className={classnames('header-mobile', { '-hamburger-open': isMenuOpen })}>
-      <div className="header-mobile__top-bar">
+      <div className={classnames({ 'header-desktop__nav': isDesktop, 'header-mobile__top-bar': !isDesktop })}>
         <Link
           to="/"
           onClick={() => {
