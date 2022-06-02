@@ -16,6 +16,7 @@ const swiperOptions = {
   },
   centeredSlides: true,
   centeredSlidesBounds: true,
+  loop: true,
   modules: [Navigation],
   navigation: {
     nextEl: '#gallery-next-slide',
