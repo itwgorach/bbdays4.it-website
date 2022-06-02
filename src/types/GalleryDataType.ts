@@ -1,6 +1,6 @@
 type GalleryDataType = {
-    id: number;
-    url: string;
+  id: string,
+  url: string,
 }
 
-export default GalleryDataType;
+export default GalleryDataType
