@@ -1,9 +1,12 @@
 import React, { FC } from 'react'
-import { useMediaQuery } from 'react-responsive'
 
 import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
+
+interface IHeader {
+  isDesktop: boolean;
+}
 
 const linksData: LinkType[] = [
   {
@@ -28,9 +31,7 @@ const linksData: LinkType[] = [
   },
 ]
 
-const Header: FC = () => {
-  const isDesktop = useMediaQuery({ minWidth: 1224 })
-
+const Header: FC<IHeader> = ({ isDesktop }) => {
   if (isDesktop) {
     return <DesktopHeader links={linksData} />
   } else {
