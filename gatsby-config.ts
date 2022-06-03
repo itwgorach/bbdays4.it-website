@@ -14,6 +14,7 @@ const strapiConfig = {
           homepage: {
             populate: {
               backgroundImage: '*',
+              images: '*',
               partners: {
                 populate: '*',
               },

@@ -3,8 +3,9 @@ import { graphql } from 'gatsby'
 
 import HomePageType from 'types/HomePageType'
 import Hero from 'components/Hero'
-import { BaseHeroType, PartnersType } from 'types'
+import { BaseGalleryType, BaseHeroType, PartnersType } from "types";
 import Partners from 'components/Partners'
+import Gallery from 'components/Gallery'
 
 const HomePage: FC<HomePageType> = ({
   data: {
@@ -28,6 +29,12 @@ const HomePage: FC<HomePageType> = ({
             const hero = component as BaseHeroType
             return <Hero key={hero.id} {...hero} />
           }
+          case 'base.galery-slider':
+          {
+            // eslint-disable-next-line prettier/prettier
+            const gallery = component as BaseGalleryType
+            return <Gallery key={gallery.id} images={gallery.images}/>
+          }
           default:
             return null
         }
@@ -46,6 +53,15 @@ export const query = graphql`
   {
       strapiHomepage {
           homepage {
+              ... on STRAPI__COMPONENT_BASE_GALERY_SLIDER {
+                id
+                title
+                images {
+                  id
+                  url
+                }
+                strapi_component
+              }
               ... on STRAPI__COMPONENT_BASE_HERO {
                   id
                   backgroundColor
