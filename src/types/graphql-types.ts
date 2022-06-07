@@ -256,6 +256,7 @@ type Site = Node & {
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly jsxRuntime: Maybe<Scalars['String']>;
   readonly trailingSlash: Maybe<Scalars['String']>;
+  readonly graphqlTypegen: Maybe<Scalars['Boolean']>;
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
@@ -551,8 +552,27 @@ type STRAPI_PARTNERLogo_updatedAtArgs = {
 };
 
 type STRAPI_PARTNERLogoFormats = {
+  readonly large: Maybe<STRAPI_PARTNERLogoFormatsLarge>;
   readonly small: Maybe<STRAPI_PARTNERLogoFormatsSmall>;
+  readonly medium: Maybe<STRAPI_PARTNERLogoFormatsMedium>;
   readonly thumbnail: Maybe<STRAPI_PARTNERLogoFormatsThumbnail>;
+};
+
+type STRAPI_PARTNERLogoFormatsLarge = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsLargeProvider_metadata>;
+};
+
+type STRAPI_PARTNERLogoFormatsLargeProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_PARTNERLogoFormatsSmall = {
@@ -568,6 +588,23 @@ type STRAPI_PARTNERLogoFormatsSmall = {
 };
 
 type STRAPI_PARTNERLogoFormatsSmallProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PARTNERLogoFormatsMedium = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsMediumProvider_metadata>;
+};
+
+type STRAPI_PARTNERLogoFormatsMediumProvider_metadata = {
   readonly public_id: Maybe<Scalars['String']>;
   readonly resource_type: Maybe<Scalars['String']>;
 };
@@ -623,8 +660,27 @@ type STRAPI_PARTNERWhiteLogo_updatedAtArgs = {
 };
 
 type STRAPI_PARTNERWhiteLogoFormats = {
+  readonly large: Maybe<STRAPI_PARTNERWhiteLogoFormatsLarge>;
   readonly small: Maybe<STRAPI_PARTNERWhiteLogoFormatsSmall>;
+  readonly medium: Maybe<STRAPI_PARTNERWhiteLogoFormatsMedium>;
   readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnail>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsLarge = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadata>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsSmall = {
@@ -640,6 +696,23 @@ type STRAPI_PARTNERWhiteLogoFormatsSmall = {
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsSmallProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsMedium = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadata>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadata = {
   readonly public_id: Maybe<Scalars['String']>;
   readonly resource_type: Maybe<Scalars['String']>;
 };
@@ -826,6 +899,7 @@ type Query_siteArgs = {
   pathPrefix: Maybe<StringQueryOperatorInput>;
   jsxRuntime: Maybe<StringQueryOperatorInput>;
   trailingSlash: Maybe<StringQueryOperatorInput>;
+  graphqlTypegen: Maybe<BooleanQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
@@ -1714,6 +1788,7 @@ type SiteFieldsEnum =
   | 'pathPrefix'
   | 'jsxRuntime'
   | 'trailingSlash'
+  | 'graphqlTypegen'
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -1851,6 +1926,7 @@ type SiteFilterInput = {
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly jsxRuntime: Maybe<StringQueryOperatorInput>;
   readonly trailingSlash: Maybe<StringQueryOperatorInput>;
+  readonly graphqlTypegen: Maybe<BooleanQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
@@ -3146,8 +3222,27 @@ type STRAPI_PARTNERLogoFilterInput = {
 };
 
 type STRAPI_PARTNERLogoFormatsFilterInput = {
+  readonly large: Maybe<STRAPI_PARTNERLogoFormatsLargeFilterInput>;
   readonly small: Maybe<STRAPI_PARTNERLogoFormatsSmallFilterInput>;
+  readonly medium: Maybe<STRAPI_PARTNERLogoFormatsMediumFilterInput>;
   readonly thumbnail: Maybe<STRAPI_PARTNERLogoFormatsThumbnailFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsLargeFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsLargeProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsLargeProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_PARTNERLogoFormatsSmallFilterInput = {
@@ -3163,6 +3258,23 @@ type STRAPI_PARTNERLogoFormatsSmallFilterInput = {
 };
 
 type STRAPI_PARTNERLogoFormatsSmallProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsMediumFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsMediumProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsMediumProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
@@ -3202,8 +3314,27 @@ type STRAPI_PARTNERWhiteLogoFilterInput = {
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsFilterInput = {
+  readonly large: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput>;
   readonly small: Maybe<STRAPI_PARTNERWhiteLogoFormatsSmallFilterInput>;
+  readonly medium: Maybe<STRAPI_PARTNERWhiteLogoFormatsMediumFilterInput>;
   readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsSmallFilterInput = {
@@ -3219,6 +3350,23 @@ type STRAPI_PARTNERWhiteLogoFormatsSmallFilterInput = {
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsSmallProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsMediumFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
@@ -4306,6 +4454,14 @@ type STRAPI_PARTNERFieldsEnum =
   | 'Logo.caption'
   | 'Logo.width'
   | 'Logo.height'
+  | 'Logo.formats.large.ext'
+  | 'Logo.formats.large.url'
+  | 'Logo.formats.large.hash'
+  | 'Logo.formats.large.mime'
+  | 'Logo.formats.large.name'
+  | 'Logo.formats.large.size'
+  | 'Logo.formats.large.width'
+  | 'Logo.formats.large.height'
   | 'Logo.formats.small.ext'
   | 'Logo.formats.small.url'
   | 'Logo.formats.small.hash'
@@ -4314,6 +4470,14 @@ type STRAPI_PARTNERFieldsEnum =
   | 'Logo.formats.small.size'
   | 'Logo.formats.small.width'
   | 'Logo.formats.small.height'
+  | 'Logo.formats.medium.ext'
+  | 'Logo.formats.medium.url'
+  | 'Logo.formats.medium.hash'
+  | 'Logo.formats.medium.mime'
+  | 'Logo.formats.medium.name'
+  | 'Logo.formats.medium.size'
+  | 'Logo.formats.medium.width'
+  | 'Logo.formats.medium.height'
   | 'Logo.formats.thumbnail.ext'
   | 'Logo.formats.thumbnail.url'
   | 'Logo.formats.thumbnail.hash'
@@ -4335,6 +4499,14 @@ type STRAPI_PARTNERFieldsEnum =
   | 'whiteLogo.caption'
   | 'whiteLogo.width'
   | 'whiteLogo.height'
+  | 'whiteLogo.formats.large.ext'
+  | 'whiteLogo.formats.large.url'
+  | 'whiteLogo.formats.large.hash'
+  | 'whiteLogo.formats.large.mime'
+  | 'whiteLogo.formats.large.name'
+  | 'whiteLogo.formats.large.size'
+  | 'whiteLogo.formats.large.width'
+  | 'whiteLogo.formats.large.height'
   | 'whiteLogo.formats.small.ext'
   | 'whiteLogo.formats.small.url'
   | 'whiteLogo.formats.small.hash'
@@ -4343,6 +4515,14 @@ type STRAPI_PARTNERFieldsEnum =
   | 'whiteLogo.formats.small.size'
   | 'whiteLogo.formats.small.width'
   | 'whiteLogo.formats.small.height'
+  | 'whiteLogo.formats.medium.ext'
+  | 'whiteLogo.formats.medium.url'
+  | 'whiteLogo.formats.medium.hash'
+  | 'whiteLogo.formats.medium.mime'
+  | 'whiteLogo.formats.medium.name'
+  | 'whiteLogo.formats.medium.size'
+  | 'whiteLogo.formats.medium.width'
+  | 'whiteLogo.formats.medium.height'
   | 'whiteLogo.formats.thumbnail.ext'
   | 'whiteLogo.formats.thumbnail.url'
   | 'whiteLogo.formats.thumbnail.hash'
@@ -4597,5 +4777,27 @@ type STRAPI_HOMEPAGESortInput = {
   readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI_HOMEPAGEFieldsEnum>>>;
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
+
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
+type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2200717671QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2200717671Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
+      Pick<STRAPI__COMPONENT_BASE_GALERY_SLIDER, 'id' | 'title' | 'strapi_component'>
+      & { readonly images: Maybe<ReadonlyArray<Maybe<Pick<STRAPI__MEDIA, 'id' | 'url'>>>> }
+    ) | (
+      Pick<STRAPI__COMPONENT_BASE_HERO, 'id' | 'backgroundColor' | 'buttonUrl' | 'buttonText' | 'subtitle' | 'title' | 'strapi_component'>
+      & { readonly backgroundImage: Maybe<Pick<STRAPI__MEDIA, 'url'>> }
+    ) | (
+      Pick<STRAPI__COMPONENT_BASE_PARTNERS_SLIDER, 'id' | 'sectionTittle' | 'strapi_component'>
+      & { readonly partners: Maybe<ReadonlyArray<Maybe<(
+        Pick<STRAPI_PARTNER, 'id' | 'Name' | 'WebsiteURL'>
+        & { readonly Logo: Maybe<Pick<STRAPI_PARTNERLogo, 'url'>>, readonly whiteLogo: Maybe<Pick<STRAPI_PARTNERWhiteLogo, 'url'>> }
+      )>>> }
+    )>>> }> };
 
 }
