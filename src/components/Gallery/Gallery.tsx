@@ -9,9 +9,13 @@ import { BaseGalleryType } from 'types'
 
 const swiperOptions = {
   breakpoints: {
+    0: {
+      slideToClickedSlide: true,
+    },
     992: {
       slidesPerGroup: 3,
       slidesPerView: 3,
+      slideToClickedSlide: true,
     },
   },
   centeredSlides: true,
