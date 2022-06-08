@@ -4,6 +4,8 @@
   font-family: $font-face-body;
 
   &__inner {
+    display: flex;
+    flex-direction: column;
     padding: $m-xl 0;
   }
 
@@ -14,13 +16,30 @@
     text-align: center;
   }
 
+  &__logos {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: $m-xl;
+    
+    @media only screen and (min-width: map-get($grid-breakpoints, xl)) {
+      margin: auto;
+      width: 1200px;
+    }
+  }
+
   &__link {
     align-items: center;
     display: flex;
     justify-content: center;
+    width: 100%;
 
     &-image {
-      width: 70%;
+      width: 200px;
+    }
+
+    @media only screen and (min-width: map-get($grid-breakpoints, sm))  and (max-width: map-get($grid-breakpoints, lg)) {
+      width: 50%;
     }
   }
 
@@ -32,6 +51,10 @@
     &__header {
       font-size: $font-size-2xl;
       margin-bottom: $m-2xl;
+    }
+
+    &__link {
+      width: 25%;
     }
   }
 }
