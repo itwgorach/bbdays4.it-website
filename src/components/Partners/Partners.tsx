@@ -1,7 +1,5 @@
 import React, { FC } from 'react'
 
-import 'swiper/scss'
-
 import { PartnerType } from 'types'
 import Partner from './Partner'
 
