@@ -23,7 +23,7 @@
     row-gap: $m-xl;
     
     @media only screen and (min-width: map-get($grid-breakpoints, xl)) {
-      margin: auto;
+      margin-inline: auto;
       width: 1200px;
     }
   }
