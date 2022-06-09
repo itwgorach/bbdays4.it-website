@@ -10,12 +10,13 @@ import { BaseGalleryType } from 'types'
 const swiperOptions = {
   breakpoints: {
     992: {
+      centeredSlides: false,
       slidesPerGroup: 3,
       slidesPerView: 3,
+      slideToClickedSlide: false,
     },
   },
   centeredSlides: true,
-  centeredSlidesBounds: true,
   loop: true,
   modules: [Navigation],
   navigation: {
@@ -23,6 +24,7 @@ const swiperOptions = {
     prevEl: '#gallery-prev-slide',
   },
   slidesPerView: 1.4,
+  slideToClickedSlide: true,
   spaceBetween: 30,
 }
 
