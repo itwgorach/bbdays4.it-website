@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useState } from 'react'
 import { Link } from 'gatsby'
-import classnames from 'classnames'
+import cx from 'classnames'
 
 import {
   BBDaysLogoDark,
@@ -18,6 +18,13 @@ import { useMediaQuery } from 'react-responsive'
 const MobileHeader: FC<HeaderType> = ({ links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const isDesktop = useMediaQuery({ minWidth: 1224 })
+
+  const headerMobileClasses = cx('header-mobile', { '-hamburger-open': isMenuOpen })
+
+  const headerTypeClasses = cx({
+    'header-desctop__nav': isDesktop,
+    'header-mobile__top-bar': !isDesktop,
+  })
 
   const getLinkComponent = useCallback((link) => {
     if (link.path.startsWith('http'))
@@ -46,8 +53,8 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
   }, [])
 
   return (
-    <header key="mobile-header" className={classnames('header-mobile', { '-hamburger-open': isMenuOpen })}>
-      <div className={classnames({ 'header-desktop__nav': isDesktop, 'header-mobile__top-bar': !isDesktop })}>
+    <header key="mobile-header" className={headerMobileClasses}>
+      <div className={headerTypeClasses}>
         <Link
           to="/"
           onClick={() => {
