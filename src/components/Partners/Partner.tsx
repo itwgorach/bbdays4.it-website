@@ -9,7 +9,9 @@ const Partner: FC<PartnerSlideType> = ({ partner }: PartnerSlideType) => {
 
   return (
     <a className="partners__link" href={WebsiteURL} rel="noopener noreferrer" target="_blank">
-      <img alt={Name} className="partners__link-image" loading="lazy" src={logoUrl} />
+      <div className="partners__link-image-wrapper">
+        <img alt={Name} className="partners__link-image" loading="lazy" src={logoUrl} />
+      </div>
     </a>
   )
 }
