@@ -22,7 +22,7 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
   const headerMobileClasses = cx('header-mobile', { '-hamburger-open': isMenuOpen })
 
   const headerTypeClasses = cx({
-    'header-desctop__nav': isDesktop,
+    'header-desktop__nav': isDesktop,
     'header-mobile__top-bar': !isDesktop,
   })
 
