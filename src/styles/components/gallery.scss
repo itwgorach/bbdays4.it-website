@@ -1,7 +1,7 @@
 .gallery {
     &__heading {
         font-family: $font-face-body;
-        font-weight: $font-weight-semi-bold;
+        font-weight: $font-weight-regular;
         margin: $m-2xl 0 $m-lg 0;
         text-align: center;
     }
@@ -41,9 +41,9 @@
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
-                padding: $m-xs;
+                padding: $m-xs*1.2 $m-sm;
                 text-align: center;
-                width: $icon-size-sm;
+                width: $icon-size-xs;
             }
             
             #gallery-prev-slide {
