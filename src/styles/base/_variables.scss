@@ -8,8 +8,9 @@ $font-size-sm: rem(14px);
 $font-size-base: rem(18px);
 $font-size-lg: rem(22px);
 $font-size-xl: rem(28px);
-$font-size-2xl: rem(48px);
-$font-size-3xl: rem(72px);
+$font-size-2xl: rem(40px);
+$font-size-3xl: rem(48px);
+$font-size-4xl: rem(72px);
 
 //----- spacings (margins/paddings) ------------------------------------------------------------------------------------
 $m-xs: rem(8px);
@@ -39,9 +40,10 @@ $grid-gutter-width: $m-base;
 $container: map-get($grid-breakpoints, xl);
 
 //----- colors ---------------------------------------------------------------------------------------------------------
-$color-primary: #45997B;
+$color-primary: #359960;
 $color-secondary: #FECE3E;
-$color-text: #194550;
+$color-text: #212C04;
+$color-dark: #194550;
 $color-success: #48BD66;
 $color-warning: #FFD200;
 $color-danger: #E62A2A;
@@ -53,6 +55,7 @@ $color-neutral-500: hsl(36deg 5% 62%);
 $color-neutral-600: hsl(36deg 5% 38%);
 $color-neutral-700: hsl(36deg 5% 28%);
 $color-black: #04080C;
+$color-backgound: #E5E5E5;
 
 //----- fonts ----------------------------------------------------------------------------------------------------------
 $font-face-header: "Montserrat";
@@ -78,6 +81,7 @@ $z-high: 60;
 $z-higher: 70;
 
 //----- icon sizes ------------------------------------------------------------------------------------------------------
+$icon-size-xs: rem(20px);
 $icon-size-sm: rem(30px);
 $icon-size-base: rem(50px);
 $icon-size-lg: rem(60px);

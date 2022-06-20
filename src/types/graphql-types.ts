@@ -473,6 +473,7 @@ type STRAPI__COMPONENT_BASE_HERO = Node & {
   readonly buttonText: Maybe<Scalars['String']>;
   readonly buttonUrl: Maybe<Scalars['String']>;
   readonly backgroundColor: Maybe<Scalars['String']>;
+  readonly subtitlePos: Maybe<Scalars['String']>;
   readonly backgroundImage: Maybe<STRAPI__MEDIA>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -1011,6 +1012,7 @@ type Query_strapiComponentBaseHeroArgs = {
   buttonText: Maybe<StringQueryOperatorInput>;
   buttonUrl: Maybe<StringQueryOperatorInput>;
   backgroundColor: Maybe<StringQueryOperatorInput>;
+  subtitlePos: Maybe<StringQueryOperatorInput>;
   backgroundImage: Maybe<STRAPI__MEDIAFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -3681,6 +3683,7 @@ type STRAPI__COMPONENT_BASE_HEROFieldsEnum =
   | 'buttonText'
   | 'buttonUrl'
   | 'backgroundColor'
+  | 'subtitlePos'
   | 'backgroundImage.id'
   | 'backgroundImage.parent.id'
   | 'backgroundImage.parent.parent.id'
@@ -3866,6 +3869,7 @@ type STRAPI__COMPONENT_BASE_HEROFilterInput = {
   readonly buttonText: Maybe<StringQueryOperatorInput>;
   readonly buttonUrl: Maybe<StringQueryOperatorInput>;
   readonly backgroundColor: Maybe<StringQueryOperatorInput>;
+  readonly subtitlePos: Maybe<StringQueryOperatorInput>;
   readonly backgroundImage: Maybe<STRAPI__MEDIAFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -4651,14 +4655,14 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2200717671QueryVariables = Exact<{ [key: string]: never; }>;
+type pageHomejawordevbbdaysWebsitesrcpagesindexTsx462995519QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2200717671Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
+type pageHomejawordevbbdaysWebsitesrcpagesindexTsx462995519Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
       Pick<STRAPI__COMPONENT_BASE_GALERY_SLIDER, 'id' | 'title' | 'strapi_component'>
       & { readonly images: Maybe<ReadonlyArray<Maybe<Pick<STRAPI__MEDIA, 'id' | 'url'>>>> }
     ) | (
-      Pick<STRAPI__COMPONENT_BASE_HERO, 'id' | 'backgroundColor' | 'buttonUrl' | 'buttonText' | 'subtitle' | 'title' | 'strapi_component'>
+      Pick<STRAPI__COMPONENT_BASE_HERO, 'id' | 'backgroundColor' | 'buttonUrl' | 'buttonText' | 'subtitle' | 'subtitlePos' | 'title' | 'strapi_component'>
       & { readonly backgroundImage: Maybe<Pick<STRAPI__MEDIA, 'url'>> }
     ) | (
       Pick<STRAPI__COMPONENT_BASE_PARTNERS_SLIDER, 'id' | 'sectionTittle' | 'strapi_component'>

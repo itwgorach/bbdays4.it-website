@@ -68,6 +68,7 @@ export const query = graphql`
                   buttonUrl
                   buttonText
                   subtitle
+                  subtitlePos
                   title
                   strapi_component
                   backgroundImage {
