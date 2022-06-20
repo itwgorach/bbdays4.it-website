@@ -45,22 +45,31 @@
     font-family: $font-family-header;
     font-size: $font-size-2xl;
     font-weight: $font-weight-semi-bold;
-    line-height: $line-height-3xl;
-    margin: $m-base;
+    line-height: $m-lg;
+    margin: $m-base $m-base $m-lg $m-base;
     white-space: pre-line;
+
+    @media only screen and (min-width: map-get($grid-breakpoints, md)) {
+      font-size: $font-size-3xl;
+      line-height: $line-height-3xl;
+      margin: $m-base;
+    }
 
     &.-small {
       font-size: $font-size-xl;
       font-weight: $font-weight-regular;
     }
   }
-
+  
   &__subtitle {
     font-family: $font-family-header;
     font-size: $font-size-sm;
     font-weight: $font-weight-bold;
     margin: 0;
-    text-transform: uppercase;
+    
+    &.-bottom {
+      margin-bottom: $m-xl;
+    }
   }
 
   &__button {
