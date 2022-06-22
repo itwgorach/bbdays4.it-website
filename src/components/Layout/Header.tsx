@@ -1,5 +1,4 @@
 import React from 'react'
-import { useMediaQuery } from 'react-responsive'
 
 import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
@@ -29,10 +28,12 @@ const linksData: LinkType[] = [
 ]
 
 const Header = () => {
-  if (useMediaQuery({ minWidth: 1224 })) {
-    return <DesktopHeader links={linksData} />
-  }
-  return <MobileHeader links={linksData} />
+  return (
+    <>
+      <DesktopHeader links={linksData} />
+      <MobileHeader links={linksData} />
+    </>
+  )
 }
 
 export default Header
