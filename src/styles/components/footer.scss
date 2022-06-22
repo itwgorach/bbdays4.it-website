@@ -1,7 +1,9 @@
 .footer {
   background-color: $color-primary;
-  display: block;
-  padding: $m-xs;
+  display: flex;
+  justify-content: center; 
+  padding: $m-sm 0;
+  column-gap: $m-sm;
   text-align: center;
 
   &__social-icon {
