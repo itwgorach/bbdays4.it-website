@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 
 import Header from './Header'
 import Seo from './Seo'
+import Footer from './Footer'
 
 const Layout: FC<JSX.IntrinsicAttributes> = ({ children, ...props }) => {
   return (
@@ -9,6 +10,7 @@ const Layout: FC<JSX.IntrinsicAttributes> = ({ children, ...props }) => {
       <Seo />
       <Header />
       <main className="layout">{React.cloneElement(children, props)}</main>
+      <Footer />
     </>
   )
 }
