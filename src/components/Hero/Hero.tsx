@@ -1,24 +1,41 @@
-import classnames from 'classnames'
+import cx from 'classnames'
 import React, { FC } from 'react'
 
 import { BaseHeroType } from 'types'
 
-const Hero: FC<BaseHeroType> = ({ title, subtitle, subtitlePos, backgroundImage, buttonText, buttonUrl, backgroundColor }) => (
-  <div
-    className={classnames('hero', {
-      '-full-height': subtitle !== null,
-      '-simple': subtitle === null && buttonText === null && buttonUrl === null,
-    })}
-    style={{ backgroundColor: backgroundColor, backgroundImage: `url(${backgroundImage?.url}` }}>
-    {subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
-    <h1 className={classnames('hero__title', { '-small': subtitle == null })}>{title}</h1>
-    {subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
-    {buttonText !== null && buttonUrl !== null && (
-      <a className="hero__button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
-        {buttonText}
-      </a>
-    )}
-  </div>
-)
+const Hero: FC<BaseHeroType> = ({
+  title,
+  subtitle,
+  subtitlePos,
+  backgroundImage,
+  buttonText,
+  buttonUrl,
+  backgroundColor,
+}) => {
+  const hasButton = buttonText !== null && buttonUrl !== null
+  const hasSubtitle = subtitle !== null
+
+  const heroClasses = cx('hero', {
+    '-full-height': hasSubtitle,
+    '-simple': !hasButton && !hasSubtitle,
+  })
+
+  const titleClasses = cx('hero__title', { '-small': !hasSubtitle })
+
+  return (
+    <div
+      className={heroClasses}
+      style={{ backgroundColor: backgroundColor, backgroundImage: `url(${backgroundImage?.url}` }}>
+      {hasSubtitle && subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
+      <h1 className={titleClasses}>{title}</h1>
+      {hasSubtitle && subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
+      {hasButton && (
+        <a className="hero__button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
+          {buttonText}
+        </a>
+      )}
+    </div>
+  )
+}
 
 export default Hero
