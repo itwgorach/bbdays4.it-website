@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper'
+import { Autoplay, Navigation } from 'swiper'
 import 'swiper/scss'
 
 import React, { FC } from 'react'
@@ -8,6 +8,10 @@ import { GalleryNextButton, GalleryPrevButton } from 'components/icons'
 import { BaseGalleryType } from 'types'
 
 const swiperOptions = {
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
   breakpoints: {
     992: {
       centeredSlides: false,
@@ -18,7 +22,7 @@ const swiperOptions = {
   },
   centeredSlides: true,
   loop: true,
-  modules: [Navigation],
+  modules: [Navigation, Autoplay],
   navigation: {
     nextEl: '#gallery-next-slide',
     prevEl: '#gallery-prev-slide',

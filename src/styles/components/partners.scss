@@ -36,6 +36,12 @@
 
     &-image {
       width: 200px;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &-image-wrapper {
+      aspect-ratio: 16 / 9;
     }
 
     @media only screen and (min-width: map-get($grid-breakpoints, sm))  and (max-width: map-get($grid-breakpoints, lg)) {
