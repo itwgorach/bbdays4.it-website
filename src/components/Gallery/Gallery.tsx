@@ -4,7 +4,12 @@ import 'swiper/scss'
 
 import React, { FC } from 'react'
 
-import { GalleryNextButton, GalleryPrevButton } from 'components/icons'
+import {
+  GalleryNextButton,
+  GalleryPrevButton,
+  GalleryNextButtonMobile,
+  GalleryPrevButtonMobile,
+} from 'components/icons'
 import { BaseGalleryType } from 'types'
 
 const swiperOptions: SwiperProps = {
@@ -29,7 +34,7 @@ const swiperOptions: SwiperProps = {
   },
   slidesPerView: 1.4,
   slideToClickedSlide: true,
-  spaceBetween: 30,
+  spaceBetween: 8,
 }
 
 const Gallery: FC<BaseGalleryType> = ({ images }) => (
@@ -46,6 +51,10 @@ const Gallery: FC<BaseGalleryType> = ({ images }) => (
     <div className="gallery__navigation-buttons">
       <GalleryPrevButton id="gallery-prev-slide" />
       <GalleryNextButton id="gallery-next-slide" />
+    </div>
+    <div className="gallery__navigation-buttons-mobile">
+      <GalleryPrevButtonMobile id="gallery-prev-slide" />
+      <GalleryNextButtonMobile id="gallery-next-slide" />
     </div>
   </div>
 )

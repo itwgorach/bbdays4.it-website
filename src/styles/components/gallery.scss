@@ -1,8 +1,11 @@
 .gallery {
+    margin: $m-2xl 0;
+    position: relative;
+
     &__heading {
         font-family: $font-face-body;
-        font-weight: $font-weight-regular;
-        margin: $m-2xl 0 $m-lg 0;
+        font-weight: $font-weight-semi-bold;
+        margin-bottom: $m-base;
         text-align: center;
     }
 
@@ -23,6 +26,28 @@
 
     &__navigation-buttons {
         display: none;
+
+        &-mobile {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            z-index: 1;
+            width: 100%;
+        }
+    }
+
+    #gallery-next-slide, #gallery-prev-slide {
+        background-color: blue;
+        width: 13.5%;
+        height: $icon-size-xl * 1.5;
+
+        @media only screen and (max-width: map-get($grid-breakpoints, md)) {
+            height: $icon-size-xl;
+        }
+        @media only screen and (max-width: map-get($grid-breakpoints, sm)) {
+            height: $icon-size-lg;
+        }
     }
     
     @media only screen and (min-width: map-get($grid-breakpoints, lg)){
@@ -33,6 +58,10 @@
             justify-content: flex-end;
             margin: $m-base $m-2xl $m-2xl 0;
             text-align: right;
+
+            &-mobile {
+                display: none;
+            }
     
             #gallery-next-slide, #gallery-prev-slide {
                 align-items: center;
@@ -43,7 +72,8 @@
                 justify-content: center;
                 padding: $m-xs*1.2 $m-sm;
                 text-align: center;
-                width: $icon-size-xs;
+                width: $icon-size-sm;
+                height: unset;
             }
             
             #gallery-prev-slide {
