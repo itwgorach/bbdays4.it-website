@@ -42,20 +42,20 @@ $container: map-get($grid-breakpoints, xl);
 //----- colors ---------------------------------------------------------------------------------------------------------
 $color-primary: #359960;
 $color-secondary: #FECE3E;
-$color-text: #212C04;
 $color-dark: #194550;
+$color-text: #194550;
+$color-active: #CFA832;
 $color-success: #48BD66;
 $color-warning: #FFD200;
 $color-danger: #E62A2A;
 $color-info: #5BC0DE;
 $color-white: #FFFFFF;
+$color-black: #04080C;
 $color-neutral-300: hsl(36deg 5% 85%);
 $color-neutral-400: hsl(36deg 5% 75%);
 $color-neutral-500: hsl(36deg 5% 62%);
 $color-neutral-600: hsl(36deg 5% 38%);
 $color-neutral-700: hsl(36deg 5% 28%);
-$color-black: #04080C;
-$color-backgound: #E5E5E5;
 
 //----- fonts ----------------------------------------------------------------------------------------------------------
 $font-face-header: "Montserrat";
@@ -64,6 +64,7 @@ $font-family-header: $font-face-header, sans-serif;
 $font-family-body: $font-face-body, sans-serif;
 $font-weight-light: 300;
 $font-weight-regular: 400;
+$font-weight-medium: 500;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 $icon-size: $m-base;

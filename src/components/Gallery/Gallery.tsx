@@ -40,21 +40,23 @@ const swiperOptions: SwiperProps = {
 const Gallery: FC<BaseGalleryType> = ({ images }) => (
   <div className="gallery">
     <h3 className="gallery__heading">#BBDays4IT</h3>
-    <Swiper {...swiperOptions} className="gallery__swiper">
-      {images &&
-        images.map((image) => (
-          <SwiperSlide key={image?.id} className="gallery__slide">
-            <img alt="gallery" className="gallery__slide-image" src={image?.url} />
-          </SwiperSlide>
-        ))}
-    </Swiper>
+    <div className="gallery_wrapper">
+      <Swiper {...swiperOptions} className="gallery__swiper">
+        {images &&
+          images.map((image) => (
+            <SwiperSlide key={image?.id} className="gallery__slide">
+              <img alt="gallery" className="gallery__slide-image" src={image?.url} />
+            </SwiperSlide>
+          ))}
+      </Swiper>
+      <div className="gallery__navigation-buttons-mobile">
+        <GalleryPrevButtonMobile id="gallery-prev-slide" />
+        <GalleryNextButtonMobile id="gallery-next-slide" />
+      </div>
+    </div>
     <div className="gallery__navigation-buttons">
       <GalleryPrevButton id="gallery-prev-slide" />
       <GalleryNextButton id="gallery-next-slide" />
-    </div>
-    <div className="gallery__navigation-buttons-mobile">
-      <GalleryPrevButtonMobile id="gallery-prev-slide" />
-      <GalleryNextButtonMobile id="gallery-next-slide" />
     </div>
   </div>
 )
