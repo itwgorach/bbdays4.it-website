@@ -1,16 +1,35 @@
 .footer {
-  display: none;
+  align-items: center;
+  background-color: $color-text;
+  display: flex;
+  flex-direction: column;
+  padding: $m-sm 0;
+  row-gap: $m-sm;
+
+  &__copyright {
+    color: $color-white;
+    font-family: $font-face-header;
+    order: 1;
+  }
+
+  &__social {
+    column-gap: $m-sm;
+    display: flex;
+
+    &-icon {
+      height: $icon-size-lg;
+    }
+  }
   
   @media only screen and(min-width: map-get($grid-breakpoints, xl)) {
-    background-color: $color-primary;
-    display: flex;
-    justify-content: center; 
-    padding: $m-sm 0;
-    column-gap: $m-sm;
-    text-align: center;
+    padding: $m-sm 0 $m-base;
+    position: relative;
 
-    &__social-icon {
-      height: $icon-size-lg;
+    &__social {
+      margin-left: auto;
+      position: absolute;
+      right: 5%;
+      top: -35%;
     }
   }
 }
