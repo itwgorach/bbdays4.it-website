@@ -1,12 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 
 import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
-
-interface IHeader {
-  isDesktop: boolean;
-}
 
 const linksData: LinkType[] = [
   {
@@ -31,12 +27,13 @@ const linksData: LinkType[] = [
   },
 ]
 
-const Header: FC<IHeader> = ({ isDesktop }) => {
-  if (isDesktop) {
-    return <DesktopHeader links={linksData} />
-  } else {
-    return <MobileHeader links={linksData} />
-  }
+const Header = () => {
+  return (
+    <>
+      <DesktopHeader links={linksData} />
+      <MobileHeader links={linksData} />
+    </>
+  )
 }
 
 export default Header

@@ -1,23 +1,15 @@
-import React, { FC, useCallback, useState } from 'react'
-import { Link } from 'gatsby'
-import classnames from 'classnames'
-
-import {
-  BBDaysLogoDark,
-  BBDaysLogoLight,
-  CloseHamburgerIcon,
-  FacebookIcon,
-  HamburgerIcon,
-  InstagramIcon,
-  TwitterIcon,
-} from 'components/icons'
-
+import { links as socialLinks } from 'constants/constants'
+import cx from 'classnames'
 import { HeaderType } from 'types'
-import { useMediaQuery } from 'react-responsive'
+import { Link } from 'gatsby'
+import React, { FC, useCallback, useState } from 'react'
+
+import { BBDaysLogoDark, BBDaysLogoLight, CloseHamburgerIcon, HamburgerIcon } from 'components/icons'
 
 const MobileHeader: FC<HeaderType> = ({ links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const isDesktop = useMediaQuery({ minWidth: 1224 })
+
+  const headerMobileClasses = cx('header-mobile', { '-hamburger-open': isMenuOpen })
 
   const getLinkComponent = useCallback((link) => {
     if (link.path.startsWith('http'))
@@ -46,8 +38,8 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
   }, [])
 
   return (
-    <header key="mobile-header" className={classnames('header-mobile', { '-hamburger-open': isMenuOpen })}>
-      <div className={classnames({ 'header-desktop__nav': isDesktop, 'header-mobile__top-bar': !isDesktop })}>
+    <header key="mobile-header" className={headerMobileClasses}>
+      <div className="header-mobile__top-bar">
         <Link
           to="/"
           onClick={() => {
@@ -66,15 +58,13 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
         <div className="header-mobile__nav">{links.map(getLinkComponent)}</div>
         <button className="header-mobile__contact-button">Spotkaj się z nami</button>
         <div className="header-mobile__socials">
-          <a href="https://twitter.com/bbdays4" rel="noopener noreferrer" target="_blank">
-            <TwitterIcon className="header-mobile__social-icon" />
-          </a>
-          <a href="https://www.facebook.com/bbdays4.it/" rel="noopener noreferrer" target="_blank">
-            <FacebookIcon className="header-mobile__social-icon" />
-          </a>
-          <a href="https://www.instagram.com/bbdays4.it/" rel="noopener noreferrer" target="_blank">
-            <InstagramIcon className="header-mobile__social-icon" />
-          </a>
+          {socialLinks.map(({ href, Icon }) => {
+            return (
+              <a key={href} href={href} rel="noopener noreferrer" target="_blank">
+                <Icon className="header-mobile__social-icon" />
+              </a>
+            )
+          })}
         </div>
       </div>
     </header>
