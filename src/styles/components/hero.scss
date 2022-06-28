@@ -44,9 +44,9 @@
   &__title {
     font-family: $font-family-header;
     font-size: $font-size-2xl;
-    font-weight: $font-weight-semi-bold;
-    line-height: $m-lg;
-    margin: $m-base $m-base $m-lg $m-base;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-3xl;
+    margin: $m-base;
     white-space: pre-line;
 
     @media only screen and (min-width: map-get($grid-breakpoints, md)) {
@@ -57,14 +57,15 @@
 
     &.-small {
       font-size: $font-size-xl;
-      font-weight: $font-weight-regular;
+      font-weight: $font-weight-semi-bold;
+      line-height: $line-height-2xl;
     }
   }
   
   &__subtitle {
     font-family: $font-family-header;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-bold;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
     margin: 0;
     
     &.-bottom {
@@ -82,5 +83,14 @@
     font-weight: $font-weight-bold;
     padding: $m-sm;
     text-decoration: none;
+    transition: box-shadow $transition-function .2s;
+
+    &:hover {
+      box-shadow: 0 0 8px $color-secondary;
+    }
+
+    &:active {
+      background-color: $color-active;
+    }
   }
 }
