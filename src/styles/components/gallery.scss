@@ -39,8 +39,7 @@
             }
 
             #gallery-next-slide {
-                margin-right: $m-base;
-                right: 0;
+                right: 5%;
                 transform: translateY(-50%) scale(2.5);
 
                 @media only screen and (max-width: map-get($grid-breakpoints, md)) {
@@ -48,14 +47,13 @@
                 }
 
                 @media only screen and (max-width: map-get($grid-breakpoints, sm)) {
-                    margin-right: $m-sm;
+                    right: 3%;
                     transform: translateY(-50%) scale(1.5);
                 }
             }
             
             #gallery-prev-slide {
-                left: 0;
-                margin-left: $m-base;
+                left: 5%;
                 transform: translateY(-50%) scale(2.5);
                 
                 @media only screen and (max-width: map-get($grid-breakpoints, md)) {
@@ -63,7 +61,7 @@
                 }
                 
                 @media only screen and (max-width: map-get($grid-breakpoints, sm)) {
-                    margin-left: $m-sm;
+                    left: 3%;
                     transform: translateY(-50%) scale(1.5);
                 }
             }

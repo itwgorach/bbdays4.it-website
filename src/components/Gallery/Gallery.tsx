@@ -26,12 +26,12 @@ const swiperOptions: SwiperProps = {
     },
   },
   centeredSlides: true,
-  loop: false,
   modules: [Navigation, Autoplay],
   navigation: {
     nextEl: '#gallery-next-slide',
     prevEl: '#gallery-prev-slide',
   },
+  rewind: true,
   slidesPerView: 1.4,
   slideToClickedSlide: true,
   spaceBetween: 8,
@@ -40,7 +40,7 @@ const swiperOptions: SwiperProps = {
 const Gallery: FC<BaseGalleryType> = ({ images }) => (
   <div className="gallery">
     <h3 className="gallery__heading">#BBDays4IT</h3>
-    <div className="gallery_wrapper">
+    <div className="gallery__wrapper">
       <Swiper {...swiperOptions} className="gallery__swiper">
         {images &&
           images.map((image) => (
