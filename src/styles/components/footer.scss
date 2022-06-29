@@ -9,7 +9,9 @@
   &__copyright {
     color: $color-white;
     font-family: $font-face-header;
+    font-size: $font-size-xs;
     order: 1;
+    text-align: center;
   }
 
   &__social {

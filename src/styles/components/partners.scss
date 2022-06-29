@@ -2,17 +2,16 @@
   background-color: $color-dark;
   color: $color-white;
   font-family: $font-face-body;
-
+  
   &__inner {
     display: flex;
     flex-direction: column;
-    padding: $m-xl 0;
+    padding: $m-base 0 $m-xl;
   }
 
   &__header {
     font-size: $font-size-xl;
     font-weight: $font-weight-semi-bold;
-    margin-bottom: $m-xl;
     text-align: center;
   }
 
@@ -20,7 +19,7 @@
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
-    row-gap: $m-xl;
+    margin-top: $m-lg;
     
     @media only screen and (min-width: map-get($grid-breakpoints, xl)) {
       margin-inline: auto;
@@ -51,12 +50,17 @@
 
   @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
     &__inner {
-      padding-bottom: $m-2xl;
+      padding: $m-base 0 $m-2xl;
     }
 
     &__header {
       font-size: $font-size-3xl;
-      margin-bottom: $m-2xl;
+      font-weight: $font-weight-medium;
+    }
+
+    &__logos {
+      margin-top: $m-base;
+      row-gap: $m-lg;
     }
 
     &__link {

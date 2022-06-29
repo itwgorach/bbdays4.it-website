@@ -22,9 +22,9 @@ $m-2xl: $m-base * 4;
 
 //----- line heights ---------------------------------------------------------------------------------------------------
 $line-height-sm: $m-sm;
-$line-height-base: $m-base;
+$line-height-base: $m-xs * 5;
 $line-height-lg: $m-lg;
-$line-height-2xl: $font-size-2xl;
+$line-height-2xl: $m-xs * 7;
 $line-height-3xl: $m-xl;
 
 //----- border radiuses ------------------------------------------------------------------------------------------------

@@ -12,8 +12,8 @@ const Hero: FC<BaseHeroType> = ({
   buttonUrl,
   backgroundColor,
 }) => {
-  const hasButton = buttonText !== null && buttonUrl !== null
-  const hasSubtitle = subtitle !== null
+  const hasButton = buttonText && buttonUrl
+  const hasSubtitle = subtitle
 
   const heroClasses = cx('hero', {
     '-full-height': hasSubtitle,
