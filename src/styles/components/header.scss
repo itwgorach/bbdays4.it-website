@@ -112,7 +112,8 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        justify-content: space-evenly;
+        justify-content: space-around;
+        margin-top: $m-xl;
         width: 100%;
       }
 
@@ -120,6 +121,7 @@
         display: flex;
         flex-direction: column;
         font-size: $font-size-xl;
+        font-weight: 800;
         gap: $m-base;
         text-align: center;
       }
@@ -139,12 +141,23 @@
         border-radius: $border-radius-xs;
         color: $color-primary;
         font-weight: $font-weight-bold;
+        text-decoration: none;
+        transition: box-shadow $transition-function .2s;
         padding: $m-sm;
+
+        &:hover {
+          box-shadow: 0 0 8px $color-white;
+        }
+    
+        &:active {
+          background-color: $color-neutral-300;
+          border-color: $color-neutral-300;
+        }
       }
 
       &__socials {
         display: flex;
-        gap: $m-base;
+        gap: $m-sm;
       }
     }
   }

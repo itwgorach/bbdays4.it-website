@@ -44,21 +44,26 @@
   &__title {
     font-family: $font-family-header;
     font-size: $font-size-2xl;
-    font-weight: $font-weight-bold;
-    line-height: $line-height-3xl;
+    font-weight: $font-weight-semi-bold;
+    line-height: $line-height-lg;
     margin: $m-base;
     white-space: pre-line;
+ 
+    &.-small {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-medium;
+      line-height: $line-height-base;
+    }
 
     @media only screen and (min-width: map-get($grid-breakpoints, md)) {
       font-size: $font-size-3xl;
-      line-height: $line-height-3xl;
-      margin: $m-base;
-    }
-
-    &.-small {
-      font-size: $font-size-xl;
-      font-weight: $font-weight-semi-bold;
       line-height: $line-height-2xl;
+      margin: $m-base;
+
+      &.-small {
+        font-weight: $font-weight-semi-bold;
+        line-height: $line-height-lg;
+      }
     }
   }
   
