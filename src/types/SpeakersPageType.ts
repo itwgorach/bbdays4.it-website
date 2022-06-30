@@ -1,9 +1,7 @@
-import STRAPI_SPEAKERConnection = GatsbyTypes.STRAPI_SPEAKERConnection
+import { SpeakerType } from 'types'
 
 type SpeakersPageType = {
-  data:{
-    allStrapiSpeaker:STRAPI_SPEAKERConnection
-  }
+  speaker: SpeakerType,
 }
 
 export default SpeakersPageType
