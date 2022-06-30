@@ -6,18 +6,17 @@ import Hero from 'components/Hero'
 import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType } from 'types'
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
+import Speakers from 'components/Speakers'
 
 const HomePage: FC<HomePageType> = ({
   data: {
     strapiHomepage: { homepage },
   },
 }) => {
-  console.log(homepage)
-
   const content = useMemo(
     () =>
       homepage?.map((component) => {
-        switch (component.strapi_component) {
+        switch (component?.strapi_component) {
           case 'base.partners-slider':
           {
             // eslint-disable-next-line prettier/prettier
@@ -38,10 +37,18 @@ const HomePage: FC<HomePageType> = ({
           }
           case 'base.speakers-grid':
             {
-            const speakersSection = component as SpeakersType
             // eslint-disable-next-line prettier/prettier
-            console.log(speakersSection)
-            return <div>{JSON.stringify(speakersSection)}</div>
+            const {
+              sectionTittle,
+              speakers,
+            } = component as SpeakersType
+
+            return (
+              <Speakers 
+                sectionTittle={sectionTittle}
+                speakers={speakers}
+              />
+            )
             }
           default:
             return null
@@ -107,11 +114,13 @@ export const query = graphql`
                       FirstName
                       LastName
                       Title
-                      # Description
                       Photo {
                         url
                       }
-                  #     Position
+                      # Description {
+                      #   data
+                      # }
+                      # Position
                   }
               }
           }
