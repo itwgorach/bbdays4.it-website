@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import HomePageType from 'types/HomePageType'
 import Hero from 'components/Hero'
-import { BaseGalleryType, BaseHeroType, PartnersType } from "types";
+import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType } from 'types'
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
 
@@ -12,6 +12,7 @@ const HomePage: FC<HomePageType> = ({
     strapiHomepage: { homepage },
   },
 }) => {
+  console.log(homepage)
 
   const content = useMemo(
     () =>
@@ -35,6 +36,13 @@ const HomePage: FC<HomePageType> = ({
             const gallery = component as BaseGalleryType
             return <Gallery key={gallery.id} images={gallery.images}/>
           }
+          case 'base.speakers-grid':
+            {
+            const speakersSection = component as SpeakersType
+            // eslint-disable-next-line prettier/prettier
+            console.log(speakersSection)
+            return <div>{JSON.stringify(speakersSection)}</div>
+            }
           default:
             return null
         }
@@ -91,8 +99,24 @@ export const query = graphql`
                       }
                   }
               }
+              ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
+                  id
+                  sectionTittle
+                  strapi_component
+                  speakers {
+                      FirstName
+                      LastName
+                      Title
+                      # Description
+                      Photo {
+                        url
+                      }
+                  #     Position
+                  }
+              }
           }
-      }  }
+      } 
+    }
 `
 
 export default HomePage
