@@ -1,0 +1,88 @@
+$card-width: 18em;
+$card-height: $card-width * 1.6;
+$card-margin: 0.6em;
+$how-many-cards: 4;
+
+.speakers {
+    &__inner {
+        @extend .partners__inner;
+        padding: 0px $m-lg $m-lg;
+    }
+
+    &__header {
+        @extend .partners__header;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        width: 100%;
+        max-width: $card-margin + ($card-width * $how-many-cards) + (($card-margin * 2) * $how-many-cards);
+        margin: auto;
+
+        .speaker-card {
+            width: $card-width;
+            height: $card-height;
+
+            margin: ($card-margin * 2) $card-margin ($card-margin * 3);
+
+            display: flex;
+            flex-direction: column;
+
+            &__image {
+                width: 100%;
+                min-height: $card-height / 1.35;
+                max-height: $card-height / 1.35;
+
+                object-fit: cover;
+                object-position: center;
+
+                border-radius: $border-radius-base;
+
+                position: relative;
+
+                &::before {
+                    content: " ";
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0.6;
+
+                    background-color: red;
+                }
+
+                &--empty {
+                    border-radius: $border-radius-base;
+                    min-height: $card-height / 1.35;
+                    background-color: rgba($color-primary, 0.75);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $color-white;
+                }
+            }
+
+            &__desc {
+                padding: 0px $m-lg;
+                .title {
+                    color: $color-primary;
+                    font-size: $font-size-lg;
+                    text-transform: uppercase;
+                    font-weight: 800;
+                    margin-bottom: $m-xs;
+                }
+                .subtitle {
+                    color: $color-primary;
+                    font-size: $font-size-sm;
+                    text-transform: uppercase;
+                    margin-bottom: $m-xs;
+                }
+            }
+        }
+    }
+}
