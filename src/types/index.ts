@@ -1,9 +1,13 @@
-export import SpeakerEdgeType = GatsbyTypes.STRAPI_SPEAKEREdge
-export import STRAPI_PARTNER = GatsbyTypes.STRAPI_PARTNEREdge
-export import PostEdgeType = GatsbyTypes.STRAPI_POSTEdge
 export import BaseHeroType = GatsbyTypes.STRAPI__COMPONENT_BASE_HERO
+
+export import STRAPI_PARTNER = GatsbyTypes.STRAPI_PARTNEREdge
 export import PartnerType = GatsbyTypes.STRAPI_PARTNER
 export import PartnersType = GatsbyTypes.STRAPI__COMPONENT_BASE_PARTNERS_SLIDER
+
+export import STRAPI_SPEAKER = GatsbyTypes.STRAPI_SPEAKEREdge
+export import SpeakerType = GatsbyTypes.STRAPI_SPEAKER
+export import SpeakersType = GatsbyTypes.STRAPI__COMPONENT_BASE_SPEAKERS_GRID
+
 export import BaseGalleryType = GatsbyTypes.STRAPI__COMPONENT_BASE_GALERY_SLIDER
 
 export type { default as PartnersPageType } from 'types/PartnersPageType'

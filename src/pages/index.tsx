@@ -3,20 +3,20 @@ import { graphql } from 'gatsby'
 
 import HomePageType from 'types/HomePageType'
 import Hero from 'components/Hero'
-import { BaseGalleryType, BaseHeroType, PartnersType } from "types";
+import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType } from 'types'
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
+import Speakers from 'components/Speakers'
 
 const HomePage: FC<HomePageType> = ({
   data: {
     strapiHomepage: { homepage },
   },
 }) => {
-
   const content = useMemo(
     () =>
       homepage?.map((component) => {
-        switch (component.strapi_component) {
+        switch (component?.strapi_component) {
           case 'base.partners-slider':
           {
             // eslint-disable-next-line prettier/prettier
@@ -35,6 +35,21 @@ const HomePage: FC<HomePageType> = ({
             const gallery = component as BaseGalleryType
             return <Gallery key={gallery.id} images={gallery.images}/>
           }
+          case 'base.speakers-grid':
+            {
+            // eslint-disable-next-line prettier/prettier
+            const {
+              sectionTittle,
+              speakers,
+            } = component as SpeakersType
+
+            return (
+              <Speakers 
+                sectionTittle={sectionTittle}
+                speakers={speakers}
+              />
+            )
+            }
           default:
             return null
         }
@@ -91,8 +106,26 @@ export const query = graphql`
                       }
                   }
               }
+              ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
+                  id
+                  sectionTittle
+                  strapi_component
+                  speakers {
+                      FirstName
+                      LastName
+                      Title
+                      Photo {
+                        url
+                      }
+                      # Description {
+                      #   data
+                      # }
+                      # Position
+                  }
+              }
           }
-      }  }
+      } 
+    }
 `
 
 export default HomePage

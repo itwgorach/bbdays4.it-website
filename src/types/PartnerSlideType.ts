@@ -1,7 +1,7 @@
 import { PartnerType } from 'types'
 
 type PartnerSlideType = {
-  partner: PartnerType
+  partner: PartnerType,
 }
 
 export default PartnerSlideType
