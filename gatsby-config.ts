@@ -21,6 +21,9 @@ const strapiConfig = {
               speakers: {
                 populate: '*',
               },
+              events: {
+                populate: '*',
+              },
             },
           },
         },

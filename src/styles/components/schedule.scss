@@ -1,0 +1,141 @@
+@mixin dashedBorder($left: true) {
+    @if $left {
+        background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%), linear-gradient(black 33%, rgba(255,255,255,0) 0%);
+        background-position: top, left;
+        background-repeat: repeat-x, repeat-y;
+        background-size: 13px 1px, 1px 13px;
+    } @else {
+        background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+        background-position: top;
+        background-repeat: repeat-x;
+        background-size: 13px 1px;
+    }
+}
+
+.schedule {
+    
+    &-desktop {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    
+        &__header {
+            text-align: center;
+        }
+        
+        &__grid {
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 150px repeat(13, 90px);
+            grid-template-rows: 100px repeat(10, 80px);
+            
+            &-hours {
+                display: flex;
+                grid-column: 2/15;
+                grid-row: 1;
+            }
+
+            &-hour {
+                align-items: end;
+                display: flex;
+                flex: 1 1;
+                font-family: $font-family-header;
+                font-weight: $font-weight-bold;
+                font-size: $font-size-lg;
+                justify-content: center;
+                margin-bottom: $m-sm;
+            }
+            
+            &-days {
+                background: #FCCC3E;
+                display: flex;
+                flex-direction: column;
+                grid-column: 1;
+                grid-row: 2/12;
+                position: relative;
+                
+                &::before {
+                    content: '';
+                    background: #FCCC3E;
+                    width: 100%;
+                    position: absolute;
+                    height: 1%;
+                    top: -1%;
+                }
+
+            }
+            
+            &-date {
+                flex: 1 1;
+                font-family: $font-family-header;
+                font-weight: $font-weight-bold;
+                font-size: $font-size-lg;
+                padding: $m-xs 0 0 $m-sm;
+                position: relative;
+                
+                &-day {
+                    font-family: $font-family-header;
+                    font-weight: $font-weight-medium;
+                    font-size: $font-size-base; // tu ma być 16px a base to 18px
+                }
+                
+                &::before {
+                    @include dashedBorder(false);
+                    
+                    content: '';
+                    height: 1px;
+                    position: absolute;
+                    top: 0;
+                    width: 90%;
+                }
+                
+                &::after {
+                    background-color: $color-white;
+                    bottom: 0;
+                    content: '';
+                    height: 5%;
+                    position: absolute;
+                    width: 90%;
+                }
+                
+                &:last-of-type {
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+            
+            &-event {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                flex-wrap: wrap;
+                gap: 10%;
+                margin: 0 0 $m-xs $m-xs;
+                z-index: 1;
+                
+                &-title {
+                    color: $color-white;
+                    font-weight: $font-weight-bold;
+                    font-size: $font-size-sm;
+                }
+                
+                &-logo {
+                    max-width: 80%;
+                }
+            }
+            
+            &-placeholder {
+                @include dashedBorder(true);
+                
+                &.-no-left-line {
+                    @include dashedBorder(false);
+                }
+            }
+        }
+    }
+    
+    
+}
