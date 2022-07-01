@@ -3,9 +3,10 @@ import { graphql } from 'gatsby'
 
 import HomePageType from 'types/HomePageType'
 import Hero from 'components/Hero'
-import { BaseGalleryType, BaseHeroType, PartnersType } from "types";
+import { BaseGalleryType, BaseHeroType, PartnersType, ScheduleType } from "types";
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
+import ScheduleDesktop from 'components/Schedule/ScheduleDesktop/ScheduleDesktop';
 
 const HomePage: FC<HomePageType> = ({
   data: {
@@ -34,6 +35,12 @@ const HomePage: FC<HomePageType> = ({
             // eslint-disable-next-line prettier/prettier
             const gallery = component as BaseGalleryType
             return <Gallery key={gallery.id} images={gallery.images}/>
+          }
+          case 'base.schedule':
+          {
+            //eslint-disable-nexi-line prettier/prettier
+            const schedule = component as ScheduleType
+            return <ScheduleDesktop key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
           }
           default:
             return null
@@ -87,6 +94,22 @@ export const query = graphql`
                           url
                       }
                       whiteLogo {
+                          url
+                      }
+                  }
+              }
+              ... on STRAPI__COMPONENT_BASE_SCHEDULE {
+                  id
+                  scheduleTitle
+                  strapi_component
+                  events {
+                      title
+                      startHour
+                      endHour
+                      date
+                      backgroundColor
+                      displayTitleOnDesktop
+                      logo {
                           url
                       }
                   }

@@ -18,6 +18,9 @@ const strapiConfig = {
               partners: {
                 populate: '*',
               },
+              events: {
+                populate: '*',
+              },
             },
           },
         },
