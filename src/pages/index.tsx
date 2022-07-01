@@ -8,6 +8,7 @@ import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
 import Speakers from 'components/Speakers'
 import ScheduleDesktop from 'components/Schedule/ScheduleDesktop/ScheduleDesktop';
+import ScheduleMobile from 'components/Schedule/ScheduleMobile/ScheduleMobile';
 
 const HomePage: FC<HomePageType> = ({
   data: {
@@ -35,8 +36,13 @@ const HomePage: FC<HomePageType> = ({
             return  <Speakers key={speakers.id} {...speakers} />
           }
           case 'base.schedule': {
-              const schedule = component as ScheduleType
-              return <ScheduleDesktop key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
+            const schedule = component as ScheduleType
+            return (
+              <>
+                <ScheduleMobile key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
+                <ScheduleDesktop key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
+              </>
+            )
           }
           default:
             return null
