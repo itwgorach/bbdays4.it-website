@@ -509,7 +509,7 @@ type STRAPI_SPEAKER = Node & {
   readonly FirstName: Maybe<Scalars['String']>;
   readonly LastName: Maybe<Scalars['String']>;
   readonly Title: Maybe<Scalars['String']>;
-  readonly Description: Maybe<STRAPI_SPEAKERDescription>;
+  readonly Description: Maybe<Scalars['String']>;
   readonly Position: Maybe<Scalars['String']>;
   readonly Photo: Maybe<STRAPI_SPEAKERPhoto>;
   readonly strapi_id: Maybe<Scalars['Int']>;
@@ -529,10 +529,6 @@ type STRAPI_SPEAKER_updatedAtArgs = {
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
   locale: Maybe<Scalars['String']>;
-};
-
-type STRAPI_SPEAKERDescription = {
-  readonly data: Maybe<Scalars['String']>;
 };
 
 type STRAPI_SPEAKERPhoto = {
@@ -1233,7 +1229,7 @@ type Query_strapiSpeakerArgs = {
   FirstName: Maybe<StringQueryOperatorInput>;
   LastName: Maybe<StringQueryOperatorInput>;
   Title: Maybe<StringQueryOperatorInput>;
-  Description: Maybe<STRAPI_SPEAKERDescriptionFilterInput>;
+  Description: Maybe<StringQueryOperatorInput>;
   Position: Maybe<StringQueryOperatorInput>;
   Photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
@@ -3348,14 +3344,10 @@ type STRAPI_SPEAKERFilterInput = {
   readonly FirstName: Maybe<StringQueryOperatorInput>;
   readonly LastName: Maybe<StringQueryOperatorInput>;
   readonly Title: Maybe<StringQueryOperatorInput>;
-  readonly Description: Maybe<STRAPI_SPEAKERDescriptionFilterInput>;
+  readonly Description: Maybe<StringQueryOperatorInput>;
   readonly Position: Maybe<StringQueryOperatorInput>;
   readonly Photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_SPEAKERDescriptionFilterInput = {
-  readonly data: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_SPEAKERPhotoFilterInput = {
@@ -3628,7 +3620,7 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFieldsEnum =
   | 'speakers.FirstName'
   | 'speakers.LastName'
   | 'speakers.Title'
-  | 'speakers.Description.data'
+  | 'speakers.Description'
   | 'speakers.Position'
   | 'speakers.Photo.id'
   | 'speakers.Photo.name'
@@ -4914,7 +4906,7 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'FirstName'
   | 'LastName'
   | 'Title'
-  | 'Description.data'
+  | 'Description'
   | 'Position'
   | 'Photo.id'
   | 'Photo.name'
@@ -5456,10 +5448,10 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx2339631399QueryVariables = Exact<{ [key: string]: never; }>;
+type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx1432891223QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx2339631399Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
+type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx1432891223Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
       Pick<STRAPI__COMPONENT_BASE_GALERY_SLIDER, 'id' | 'title' | 'strapi_component'>
       & { readonly images: Maybe<ReadonlyArray<Maybe<Pick<STRAPI__MEDIA, 'id' | 'url'>>>> }
     ) | (
@@ -5474,7 +5466,7 @@ type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx2339631399Query = {
     ) | (
       Pick<STRAPI__COMPONENT_BASE_SPEAKERS_GRID, 'id' | 'sectionTittle' | 'strapi_component'>
       & { readonly speakers: Maybe<ReadonlyArray<Maybe<(
-        Pick<STRAPI_SPEAKER, 'FirstName' | 'LastName' | 'Title'>
+        Pick<STRAPI_SPEAKER, 'FirstName' | 'LastName' | 'Title' | 'Description' | 'Position'>
         & { readonly Photo: Maybe<Pick<STRAPI_SPEAKERPhoto, 'url'>> }
       )>>> }
     )>>> }> };

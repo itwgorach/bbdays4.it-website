@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { SpeakerType } from 'types'
-import Speaker from './Speaker'
+import SpeakerCard from './SpeakerCard'
 
 type SpeakersType = {
   speakers: SpeakerType[],
@@ -15,7 +15,7 @@ const Speakers: FC<SpeakersType> = ({ speakers, sectionTittle }) => {
         <h1 className="speakers__header">{sectionTittle}</h1>
         <div className="speakers__list">
           {speakers.length ? (
-            speakers.map((speaker: SpeakerType) => <Speaker key={speaker.id} speaker={speaker} />)
+            speakers.map((speaker: SpeakerType) => <SpeakerCard key={speaker.id} speaker={speaker} />)
           ) : (
             <div>Brak prelegentów</div>
           )}

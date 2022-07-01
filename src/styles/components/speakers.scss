@@ -31,34 +31,29 @@ $how-many-cards: 4;
             display: flex;
             flex-direction: column;
 
+            border-radius: $border-radius-base;
+
+            cursor: pointer;
+            transition: all $transition-duration $transition-function;
+
+            &:hover {
+                transform: translateY(-$m-xs);
+                background-color: rgba($color-black, 0.05);
+            }
+
             &__image {
                 width: 100%;
-                min-height: $card-height / 1.35;
-                max-height: $card-height / 1.35;
+                min-height: calc(#{$card-height / 1.35} / 1.35);
+                max-height: calc(#{$card-height / 1.35} / 1.35);
 
                 object-fit: cover;
                 object-position: center;
 
                 border-radius: $border-radius-base;
 
-                position: relative;
-
-                &::before {
-                    content: " ";
-                    display: block;
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    opacity: 0.6;
-
-                    background-color: red;
-                }
-
                 &--empty {
                     border-radius: $border-radius-base;
-                    min-height: $card-height / 1.35;
+                    min-height: calc(#{$card-height / 1.35} / 1.35);
                     background-color: rgba($color-primary, 0.75);
                     display: flex;
                     align-items: center;
@@ -73,7 +68,7 @@ $how-many-cards: 4;
                     color: $color-primary;
                     font-size: $font-size-lg;
                     text-transform: uppercase;
-                    font-weight: 800;
+                    font-weight: $font-weight-bold;
                     margin-bottom: $m-xs;
                 }
                 .subtitle {

@@ -117,10 +117,8 @@ export const query = graphql`
                       Photo {
                         url
                       }
-                      # Description {
-                      #   data
-                      # }
-                      # Position
+                      Description
+                      Position
                   }
               }
           }
