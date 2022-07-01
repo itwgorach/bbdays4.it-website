@@ -12,8 +12,12 @@
 
 @import "components/gallery";
 @import "components/footer";
+<<<<<<< HEAD
 @import "components/reach-modal";
 @import "components/image";
+=======
+@import "components/schedule";
+>>>>>>> 0df19ae (feat: desktop schedule component, styles and types)
 
 * {
   font-family: $font-family-body;
