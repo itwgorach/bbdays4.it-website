@@ -17,39 +17,23 @@ const HomePage: FC<HomePageType> = ({
     () =>
       homepage?.map((component) => {
         switch (component?.strapi_component) {
-          case 'base.partners-slider':
-          {
+          case 'base.partners-slider': {
             // eslint-disable-next-line prettier/prettier
             const partnersSection = component as PartnersType
-            return <Partners key={partnersSection.id} partners={partnersSection.partners} sectionTitle={partnersSection.sectionTittle}  />
+            return <Partners key={partnersSection.id} partners={partnersSection.partners} sectionTitle={partnersSection.sectionTitle}  />
           }
-          case 'base.hero':
-          {
-            // eslint-disable-next-line prettier/prettier
+          case 'base.hero': {
             const hero = component as BaseHeroType
             return <Hero key={hero.id} {...hero} />
           }
-          case 'base.galery-slider':
-          {
-            // eslint-disable-next-line prettier/prettier
+          case 'base.galery-slider': {
             const gallery = component as BaseGalleryType
             return <Gallery key={gallery.id} images={gallery.images}/>
           }
-          case 'base.speakers-grid':
-            {
-            // eslint-disable-next-line prettier/prettier
-            const {
-              sectionTittle,
-              speakers,
-            } = component as SpeakersType
-
-            return (
-              <Speakers 
-                sectionTittle={sectionTittle}
-                speakers={speakers}
-              />
-            )
-            }
+          case 'base.speakers-grid': {
+            const speakers = component as SpeakersType
+            return  <Speakers key={speakers.id} {...speakers} />
+          }
           default:
             return null
         }
@@ -92,7 +76,7 @@ export const query = graphql`
               }
               ... on STRAPI__COMPONENT_BASE_PARTNERS_SLIDER {
                   id
-                  sectionTittle
+                  sectionTitle
                   strapi_component
                   partners {
                       id
@@ -108,19 +92,17 @@ export const query = graphql`
               }
               ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
                   id
-                  sectionTittle
+                  sectionTitle
                   strapi_component
                   speakers {
-                      FirstName
-                      LastName
-                      Title
-                      Photo {
+                      firstName
+                      lastName
+                      title
+                      photo {
                         url
                       }
-                      # Description {
-                      #   data
-                      # }
-                      # Position
+                      description
+                      position
                   }
               }
           }
