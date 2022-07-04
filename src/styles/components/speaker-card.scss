@@ -1,0 +1,34 @@
+.speaker-card {
+    width: $card-width;
+    height: $card-height;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: $border-radius-base;
+
+    cursor: pointer;
+    transition: all $transition-duration $transition-function;
+
+    &:hover {
+        transform: translateY(-$m-xs);
+        background-color: rgba($color-black, 0.05);
+    }
+
+    &__content {
+        padding: 0px $m-lg;
+    }
+    &__title {
+        color: $color-primary;
+        font-size: $font-size-lg;
+        text-transform: uppercase;
+        font-weight: $font-weight-bold;
+        margin-bottom: $m-xs;
+    }
+    &__subtitle {
+        color: $color-primary;
+        font-size: $font-size-sm;
+        text-transform: uppercase;
+        margin-bottom: $m-xs;
+    }
+}
