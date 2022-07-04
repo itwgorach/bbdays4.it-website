@@ -2,17 +2,14 @@ import { ScheduleWeek } from 'constants/constants'
 import React, { FC } from 'react'
 import { ScheduleType } from 'types'
 
-// type ScheduleMobileProps = {
-//   scheduleTitle: ScheduleType['scheduleTitle'],
-//   events: ScheduleType['events'],
-// }
-
+import ScheduleCalendar from '../ScheduleCalendar/ScheduleCalendar'
 import ScheduleEventMobile from './ScheduleEventMobile'
 
 const ScheduleMobile: FC<ScheduleType> = ({ scheduleTitle, events }) => {
   return (
     <div className="schedule-mobile">
       <h1 className="schedule-mobile__header">{scheduleTitle}</h1>
+      <ScheduleCalendar />
       <div className="schedule-mobile__grid">
         {ScheduleWeek.map(({ dayMobile, dateMobile }, i) => {
           return (
