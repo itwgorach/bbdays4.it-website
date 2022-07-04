@@ -18,66 +18,10 @@ $how-many-cards: 4;
         flex-wrap: wrap;
         justify-content: center;
 
+        gap: $card-margin * 2;
+
         width: 100%;
         max-width: $card-margin + ($card-width * $how-many-cards) + (($card-margin * 2) * $how-many-cards);
         margin: auto;
-
-        .speaker-card {
-            width: $card-width;
-            height: $card-height;
-
-            margin: ($card-margin * 2) $card-margin ($card-margin * 3);
-
-            display: flex;
-            flex-direction: column;
-
-            border-radius: $border-radius-base;
-
-            cursor: pointer;
-            transition: all $transition-duration $transition-function;
-
-            &:hover {
-                transform: translateY(-$m-xs);
-                background-color: rgba($color-black, 0.05);
-            }
-
-            &__image {
-                width: 100%;
-                min-height: calc(#{$card-height / 1.35} / 1.35);
-                max-height: calc(#{$card-height / 1.35} / 1.35);
-
-                object-fit: cover;
-                object-position: center;
-
-                border-radius: $border-radius-base;
-
-                &--empty {
-                    border-radius: $border-radius-base;
-                    min-height: calc(#{$card-height / 1.35} / 1.35);
-                    background-color: rgba($color-primary, 0.75);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: $color-white;
-                }
-            }
-
-            &__desc {
-                padding: 0px $m-lg;
-                .title {
-                    color: $color-primary;
-                    font-size: $font-size-lg;
-                    text-transform: uppercase;
-                    font-weight: $font-weight-bold;
-                    margin-bottom: $m-xs;
-                }
-                .subtitle {
-                    color: $color-primary;
-                    font-size: $font-size-sm;
-                    text-transform: uppercase;
-                    margin-bottom: $m-xs;
-                }
-            }
-        }
     }
 }

@@ -1,33 +1,29 @@
-import Modal from 'components/Modal'
 import React, { FC } from 'react'
 
 import { SpeakersPageType } from 'types'
 
-const SpeakerDetails: FC<SpeakersPageType> = ({ speaker, handleToggleModal }) => {
-  const { Photo, FirstName, LastName, Title, Description, Position } = speaker
+import Modal from 'components/Modal'
+import Image from 'components/Image'
 
-  const FullName = `${FirstName} ${LastName}`
-  const image = !!Photo && Photo?.url
+const SpeakerDetails: FC<SpeakersPageType> = ({ handleToggleModal, isOpen, speaker, imageUrl, fullName }) => {
+  const { firstName, lastName, title, description, position } = speaker
 
   return (
-    <Modal handleToggle={handleToggleModal} title={FullName}>
+    <Modal handleToggle={handleToggleModal} isOpen={isOpen} title={fullName}>
       <div className="speaker-details">
         <div className="speaker-details__header">
-          {image ? (
-            <img alt={FullName} className="image" loading="lazy" src={image} />
-          ) : (
-            <div className="image--empty">Brak zdjęcia</div>
-          )}
-          <div className="header-text">
-            <div className="first-name">{FirstName}</div>
-            <div className="second-name">{LastName}</div>
-            <div className="title">
-              {Title} - {Position}
+          <Image alt={fullName} url={imageUrl} />
+
+          <div className="speaker-details__header-text">
+            <div className="speaker-details__first-name">{firstName}</div>
+            <div className="speaker-details__second-name">{lastName}</div>
+            <div className="speaker-details__title">
+              {title} - {position}
             </div>
           </div>
         </div>
-        <div className="body-text">
-          <p>{Description}</p>
+        <div className="speaker-details__body-text">
+          <p>{description}</p>
         </div>
       </div>
     </Modal>

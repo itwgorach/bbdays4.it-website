@@ -1,34 +1,39 @@
 import React, { FC, useState } from 'react'
 
 import { SpeakersPageType } from 'types'
+import { getSpeakerFullName } from 'utils/getSpeakerFullName'
+
+import Image from 'components/Image'
 import SpeakerDetails from './SpeakerDetails'
 
 const SpeakerCard: FC<SpeakersPageType> = ({ speaker }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { Photo, FirstName, LastName, Title } = speaker
+  const { photo, title, firstName, lastName } = speaker
 
-  const FullName = `${FirstName} ${LastName}`
-  const image = !!Photo && Photo?.url
+  const fullName = getSpeakerFullName(speaker)
+  const imageUrl = photo?.url
 
   const handleToggleModal = () => setIsOpen((prev) => !prev)
 
   return (
     <>
       <div className="speaker-card" onClick={handleToggleModal}>
-        {image ? (
-          <img alt={FullName} className="speaker-card__image" loading="lazy" src={image} />
-        ) : (
-          <div className="speaker-card__image--empty">Brak zdjęcia</div>
-        )}
-        <div className="speaker-card__desc">
-          <h3 className="title">
-            <div>{speaker.FirstName}</div>
-            <div>{speaker.LastName}</div>
+        <Image alt={fullName} url={imageUrl} />
+        <div className="speaker-card__content">
+          <h3 className="speaker-card__title">
+            <div>{firstName}</div>
+            <div>{lastName}</div>
           </h3>
-          <div className="subtitle">- {Title} -</div>
+          <div className="speaker-card__subtitle">- {title} -</div>
         </div>
       </div>
-      {isOpen && <SpeakerDetails handleToggleModal={handleToggleModal} speaker={speaker} />}
+      <SpeakerDetails
+        fullName={fullName}
+        handleToggleModal={handleToggleModal}
+        imageUrl={imageUrl}
+        isOpen={isOpen}
+        speaker={speaker}
+      />
     </>
   )
 }

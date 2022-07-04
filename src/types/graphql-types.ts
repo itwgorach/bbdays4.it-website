@@ -456,7 +456,7 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRID = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
   readonly strapi_component: Maybe<Scalars['String']>;
-  readonly sectionTittle: Maybe<Scalars['String']>;
+  readonly sectionTitle: Maybe<Scalars['String']>;
   readonly speakers: Maybe<ReadonlyArray<Maybe<STRAPI_SPEAKER>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -467,7 +467,7 @@ type STRAPI__COMPONENT_BASE_PARTNERS_SLIDER = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
   readonly strapi_component: Maybe<Scalars['String']>;
-  readonly sectionTittle: Maybe<Scalars['String']>;
+  readonly sectionTitle: Maybe<Scalars['String']>;
   readonly partners: Maybe<ReadonlyArray<Maybe<STRAPI_PARTNER>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -506,12 +506,12 @@ type STRAPI_SPEAKER = Node & {
   readonly internal: Internal;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
-  readonly FirstName: Maybe<Scalars['String']>;
-  readonly LastName: Maybe<Scalars['String']>;
-  readonly Title: Maybe<Scalars['String']>;
-  readonly Description: Maybe<Scalars['String']>;
-  readonly Position: Maybe<Scalars['String']>;
-  readonly Photo: Maybe<STRAPI_SPEAKERPhoto>;
+  readonly firstName: Maybe<Scalars['String']>;
+  readonly lastName: Maybe<Scalars['String']>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly description: Maybe<Scalars['String']>;
+  readonly position: Maybe<Scalars['String']>;
+  readonly photo: Maybe<STRAPI_SPEAKERPhoto>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -565,27 +565,10 @@ type STRAPI_SPEAKERPhoto_updatedAtArgs = {
 };
 
 type STRAPI_SPEAKERPhotoFormats = {
-  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLarge>;
   readonly small: Maybe<STRAPI_SPEAKERPhotoFormatsSmall>;
-  readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMedium>;
   readonly thumbnail: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnail>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLarge = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata = {
-  readonly public_id: Maybe<Scalars['String']>;
-  readonly resource_type: Maybe<Scalars['String']>;
+  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLarge>;
+  readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMedium>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsSmall = {
@@ -598,6 +581,7 @@ type STRAPI_SPEAKERPhotoFormatsSmall = {
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
   readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsSmallProvider_metadata>;
+  readonly stream: Maybe<STRAPI_SPEAKERPhotoFormatsSmallStream>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadata = {
@@ -605,21 +589,45 @@ type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadata = {
   readonly resource_type: Maybe<Scalars['String']>;
 };
 
-type STRAPI_SPEAKERPhotoFormatsMedium = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata>;
+type STRAPI_SPEAKERPhotoFormatsSmallStream = {
+  readonly mode: Maybe<Scalars['Int']>;
+  readonly path: Maybe<Scalars['String']>;
+  readonly flags: Maybe<Scalars['String']>;
+  readonly closed: Maybe<Scalars['Boolean']>;
+  readonly bytesRead: Maybe<Scalars['Int']>;
+  readonly _eventsCount: Maybe<Scalars['Int']>;
+  readonly _readableState: Maybe<STRAPI_SPEAKERPhotoFormatsSmallStream_readableState>;
 };
 
-type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata = {
-  readonly public_id: Maybe<Scalars['String']>;
-  readonly resource_type: Maybe<Scalars['String']>;
+type STRAPI_SPEAKERPhotoFormatsSmallStream_readableState = {
+  readonly sync: Maybe<Scalars['Boolean']>;
+  readonly ended: Maybe<Scalars['Boolean']>;
+  readonly buffer: Maybe<STRAPI_SPEAKERPhotoFormatsSmallStream_readableStateBuffer>;
+  readonly closed: Maybe<Scalars['Boolean']>;
+  readonly length: Maybe<Scalars['Int']>;
+  readonly flowing: Maybe<Scalars['Boolean']>;
+  readonly reading: Maybe<Scalars['Boolean']>;
+  readonly destroyed: Maybe<Scalars['Boolean']>;
+  readonly emitClose: Maybe<Scalars['Boolean']>;
+  readonly endEmitted: Maybe<Scalars['Boolean']>;
+  readonly objectMode: Maybe<Scalars['Boolean']>;
+  readonly autoDestroy: Maybe<Scalars['Boolean']>;
+  readonly constructed: Maybe<Scalars['Boolean']>;
+  readonly dataEmitted: Maybe<Scalars['Boolean']>;
+  readonly readingMore: Maybe<Scalars['Boolean']>;
+  readonly closeEmitted: Maybe<Scalars['Boolean']>;
+  readonly errorEmitted: Maybe<Scalars['Boolean']>;
+  readonly needReadable: Maybe<Scalars['Boolean']>;
+  readonly highWaterMark: Maybe<Scalars['Int']>;
+  readonly defaultEncoding: Maybe<Scalars['String']>;
+  readonly emittedReadable: Maybe<Scalars['Boolean']>;
+  readonly multiAwaitDrain: Maybe<Scalars['Boolean']>;
+  readonly resumeScheduled: Maybe<Scalars['Boolean']>;
+  readonly readableListening: Maybe<Scalars['Boolean']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsSmallStream_readableStateBuffer = {
+  readonly length: Maybe<Scalars['Int']>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnail = {
@@ -632,11 +640,171 @@ type STRAPI_SPEAKERPhotoFormatsThumbnail = {
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
   readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadata>;
+  readonly stream: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailStream>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadata = {
   readonly public_id: Maybe<Scalars['String']>;
   readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsThumbnailStream = {
+  readonly mode: Maybe<Scalars['Int']>;
+  readonly path: Maybe<Scalars['String']>;
+  readonly flags: Maybe<Scalars['String']>;
+  readonly closed: Maybe<Scalars['Boolean']>;
+  readonly bytesRead: Maybe<Scalars['Int']>;
+  readonly _eventsCount: Maybe<Scalars['Int']>;
+  readonly _readableState: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailStream_readableState>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsThumbnailStream_readableState = {
+  readonly sync: Maybe<Scalars['Boolean']>;
+  readonly ended: Maybe<Scalars['Boolean']>;
+  readonly buffer: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailStream_readableStateBuffer>;
+  readonly closed: Maybe<Scalars['Boolean']>;
+  readonly length: Maybe<Scalars['Int']>;
+  readonly flowing: Maybe<Scalars['Boolean']>;
+  readonly reading: Maybe<Scalars['Boolean']>;
+  readonly destroyed: Maybe<Scalars['Boolean']>;
+  readonly emitClose: Maybe<Scalars['Boolean']>;
+  readonly endEmitted: Maybe<Scalars['Boolean']>;
+  readonly objectMode: Maybe<Scalars['Boolean']>;
+  readonly autoDestroy: Maybe<Scalars['Boolean']>;
+  readonly constructed: Maybe<Scalars['Boolean']>;
+  readonly dataEmitted: Maybe<Scalars['Boolean']>;
+  readonly readingMore: Maybe<Scalars['Boolean']>;
+  readonly closeEmitted: Maybe<Scalars['Boolean']>;
+  readonly errorEmitted: Maybe<Scalars['Boolean']>;
+  readonly needReadable: Maybe<Scalars['Boolean']>;
+  readonly highWaterMark: Maybe<Scalars['Int']>;
+  readonly defaultEncoding: Maybe<Scalars['String']>;
+  readonly emittedReadable: Maybe<Scalars['Boolean']>;
+  readonly multiAwaitDrain: Maybe<Scalars['Boolean']>;
+  readonly resumeScheduled: Maybe<Scalars['Boolean']>;
+  readonly readableListening: Maybe<Scalars['Boolean']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsThumbnailStream_readableStateBuffer = {
+  readonly length: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLarge = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata>;
+  readonly stream: Maybe<STRAPI_SPEAKERPhotoFormatsLargeStream>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeStream = {
+  readonly mode: Maybe<Scalars['Int']>;
+  readonly path: Maybe<Scalars['String']>;
+  readonly flags: Maybe<Scalars['String']>;
+  readonly closed: Maybe<Scalars['Boolean']>;
+  readonly bytesRead: Maybe<Scalars['Int']>;
+  readonly _eventsCount: Maybe<Scalars['Int']>;
+  readonly _readableState: Maybe<STRAPI_SPEAKERPhotoFormatsLargeStream_readableState>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeStream_readableState = {
+  readonly sync: Maybe<Scalars['Boolean']>;
+  readonly ended: Maybe<Scalars['Boolean']>;
+  readonly buffer: Maybe<STRAPI_SPEAKERPhotoFormatsLargeStream_readableStateBuffer>;
+  readonly closed: Maybe<Scalars['Boolean']>;
+  readonly length: Maybe<Scalars['Int']>;
+  readonly flowing: Maybe<Scalars['Boolean']>;
+  readonly reading: Maybe<Scalars['Boolean']>;
+  readonly destroyed: Maybe<Scalars['Boolean']>;
+  readonly emitClose: Maybe<Scalars['Boolean']>;
+  readonly endEmitted: Maybe<Scalars['Boolean']>;
+  readonly objectMode: Maybe<Scalars['Boolean']>;
+  readonly autoDestroy: Maybe<Scalars['Boolean']>;
+  readonly constructed: Maybe<Scalars['Boolean']>;
+  readonly dataEmitted: Maybe<Scalars['Boolean']>;
+  readonly readingMore: Maybe<Scalars['Boolean']>;
+  readonly closeEmitted: Maybe<Scalars['Boolean']>;
+  readonly errorEmitted: Maybe<Scalars['Boolean']>;
+  readonly needReadable: Maybe<Scalars['Boolean']>;
+  readonly highWaterMark: Maybe<Scalars['Int']>;
+  readonly defaultEncoding: Maybe<Scalars['String']>;
+  readonly emittedReadable: Maybe<Scalars['Boolean']>;
+  readonly multiAwaitDrain: Maybe<Scalars['Boolean']>;
+  readonly resumeScheduled: Maybe<Scalars['Boolean']>;
+  readonly readableListening: Maybe<Scalars['Boolean']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeStream_readableStateBuffer = {
+  readonly length: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMedium = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata>;
+  readonly stream: Maybe<STRAPI_SPEAKERPhotoFormatsMediumStream>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumStream = {
+  readonly mode: Maybe<Scalars['Int']>;
+  readonly path: Maybe<Scalars['String']>;
+  readonly flags: Maybe<Scalars['String']>;
+  readonly closed: Maybe<Scalars['Boolean']>;
+  readonly bytesRead: Maybe<Scalars['Int']>;
+  readonly _eventsCount: Maybe<Scalars['Int']>;
+  readonly _readableState: Maybe<STRAPI_SPEAKERPhotoFormatsMediumStream_readableState>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumStream_readableState = {
+  readonly sync: Maybe<Scalars['Boolean']>;
+  readonly ended: Maybe<Scalars['Boolean']>;
+  readonly buffer: Maybe<STRAPI_SPEAKERPhotoFormatsMediumStream_readableStateBuffer>;
+  readonly closed: Maybe<Scalars['Boolean']>;
+  readonly length: Maybe<Scalars['Int']>;
+  readonly flowing: Maybe<Scalars['Boolean']>;
+  readonly reading: Maybe<Scalars['Boolean']>;
+  readonly destroyed: Maybe<Scalars['Boolean']>;
+  readonly emitClose: Maybe<Scalars['Boolean']>;
+  readonly endEmitted: Maybe<Scalars['Boolean']>;
+  readonly objectMode: Maybe<Scalars['Boolean']>;
+  readonly autoDestroy: Maybe<Scalars['Boolean']>;
+  readonly constructed: Maybe<Scalars['Boolean']>;
+  readonly dataEmitted: Maybe<Scalars['Boolean']>;
+  readonly readingMore: Maybe<Scalars['Boolean']>;
+  readonly closeEmitted: Maybe<Scalars['Boolean']>;
+  readonly errorEmitted: Maybe<Scalars['Boolean']>;
+  readonly needReadable: Maybe<Scalars['Boolean']>;
+  readonly highWaterMark: Maybe<Scalars['Int']>;
+  readonly defaultEncoding: Maybe<Scalars['String']>;
+  readonly emittedReadable: Maybe<Scalars['Boolean']>;
+  readonly multiAwaitDrain: Maybe<Scalars['Boolean']>;
+  readonly resumeScheduled: Maybe<Scalars['Boolean']>;
+  readonly readableListening: Maybe<Scalars['Boolean']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumStream_readableStateBuffer = {
+  readonly length: Maybe<Scalars['Int']>;
 };
 
 type STRAPI_PARTNER = Node & {
@@ -1140,7 +1308,7 @@ type Query_strapiComponentBaseSpeakersGridArgs = {
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
   strapi_component: Maybe<StringQueryOperatorInput>;
-  sectionTittle: Maybe<StringQueryOperatorInput>;
+  sectionTitle: Maybe<StringQueryOperatorInput>;
   speakers: Maybe<STRAPI_SPEAKERFilterListInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -1160,7 +1328,7 @@ type Query_strapiComponentBasePartnersSliderArgs = {
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
   strapi_component: Maybe<StringQueryOperatorInput>;
-  sectionTittle: Maybe<StringQueryOperatorInput>;
+  sectionTitle: Maybe<StringQueryOperatorInput>;
   partners: Maybe<STRAPI_PARTNERFilterListInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -1226,12 +1394,12 @@ type Query_strapiSpeakerArgs = {
   internal: Maybe<InternalFilterInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
-  FirstName: Maybe<StringQueryOperatorInput>;
-  LastName: Maybe<StringQueryOperatorInput>;
-  Title: Maybe<StringQueryOperatorInput>;
-  Description: Maybe<StringQueryOperatorInput>;
-  Position: Maybe<StringQueryOperatorInput>;
-  Photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
+  firstName: Maybe<StringQueryOperatorInput>;
+  lastName: Maybe<StringQueryOperatorInput>;
+  title: Maybe<StringQueryOperatorInput>;
+  description: Maybe<StringQueryOperatorInput>;
+  position: Maybe<StringQueryOperatorInput>;
+  photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -3341,12 +3509,12 @@ type STRAPI_SPEAKERFilterInput = {
   readonly internal: Maybe<InternalFilterInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
-  readonly FirstName: Maybe<StringQueryOperatorInput>;
-  readonly LastName: Maybe<StringQueryOperatorInput>;
-  readonly Title: Maybe<StringQueryOperatorInput>;
-  readonly Description: Maybe<StringQueryOperatorInput>;
-  readonly Position: Maybe<StringQueryOperatorInput>;
-  readonly Photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
+  readonly firstName: Maybe<StringQueryOperatorInput>;
+  readonly lastName: Maybe<StringQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly description: Maybe<StringQueryOperatorInput>;
+  readonly position: Maybe<StringQueryOperatorInput>;
+  readonly photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -3368,27 +3536,10 @@ type STRAPI_SPEAKERPhotoFilterInput = {
 };
 
 type STRAPI_SPEAKERPhotoFormatsFilterInput = {
-  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLargeFilterInput>;
   readonly small: Maybe<STRAPI_SPEAKERPhotoFormatsSmallFilterInput>;
-  readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMediumFilterInput>;
   readonly thumbnail: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLargeFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput = {
-  readonly public_id: Maybe<StringQueryOperatorInput>;
-  readonly resource_type: Maybe<StringQueryOperatorInput>;
+  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLargeFilterInput>;
+  readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMediumFilterInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsSmallFilterInput = {
@@ -3401,6 +3552,7 @@ type STRAPI_SPEAKERPhotoFormatsSmallFilterInput = {
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
   readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput>;
+  readonly stream: Maybe<STRAPI_SPEAKERPhotoFormatsSmallStreamFilterInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput = {
@@ -3408,21 +3560,45 @@ type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput = {
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
-type STRAPI_SPEAKERPhotoFormatsMediumFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput>;
+type STRAPI_SPEAKERPhotoFormatsSmallStreamFilterInput = {
+  readonly mode: Maybe<IntQueryOperatorInput>;
+  readonly path: Maybe<StringQueryOperatorInput>;
+  readonly flags: Maybe<StringQueryOperatorInput>;
+  readonly closed: Maybe<BooleanQueryOperatorInput>;
+  readonly bytesRead: Maybe<IntQueryOperatorInput>;
+  readonly _eventsCount: Maybe<IntQueryOperatorInput>;
+  readonly _readableState: Maybe<STRAPI_SPEAKERPhotoFormatsSmallStream_readableStateFilterInput>;
 };
 
-type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput = {
-  readonly public_id: Maybe<StringQueryOperatorInput>;
-  readonly resource_type: Maybe<StringQueryOperatorInput>;
+type STRAPI_SPEAKERPhotoFormatsSmallStream_readableStateFilterInput = {
+  readonly sync: Maybe<BooleanQueryOperatorInput>;
+  readonly ended: Maybe<BooleanQueryOperatorInput>;
+  readonly buffer: Maybe<STRAPI_SPEAKERPhotoFormatsSmallStream_readableStateBufferFilterInput>;
+  readonly closed: Maybe<BooleanQueryOperatorInput>;
+  readonly length: Maybe<IntQueryOperatorInput>;
+  readonly flowing: Maybe<BooleanQueryOperatorInput>;
+  readonly reading: Maybe<BooleanQueryOperatorInput>;
+  readonly destroyed: Maybe<BooleanQueryOperatorInput>;
+  readonly emitClose: Maybe<BooleanQueryOperatorInput>;
+  readonly endEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly objectMode: Maybe<BooleanQueryOperatorInput>;
+  readonly autoDestroy: Maybe<BooleanQueryOperatorInput>;
+  readonly constructed: Maybe<BooleanQueryOperatorInput>;
+  readonly dataEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly readingMore: Maybe<BooleanQueryOperatorInput>;
+  readonly closeEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly errorEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly needReadable: Maybe<BooleanQueryOperatorInput>;
+  readonly highWaterMark: Maybe<IntQueryOperatorInput>;
+  readonly defaultEncoding: Maybe<StringQueryOperatorInput>;
+  readonly emittedReadable: Maybe<BooleanQueryOperatorInput>;
+  readonly multiAwaitDrain: Maybe<BooleanQueryOperatorInput>;
+  readonly resumeScheduled: Maybe<BooleanQueryOperatorInput>;
+  readonly readableListening: Maybe<BooleanQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsSmallStream_readableStateBufferFilterInput = {
+  readonly length: Maybe<IntQueryOperatorInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput = {
@@ -3435,11 +3611,171 @@ type STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput = {
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
   readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadataFilterInput>;
+  readonly stream: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailStreamFilterInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsThumbnailStreamFilterInput = {
+  readonly mode: Maybe<IntQueryOperatorInput>;
+  readonly path: Maybe<StringQueryOperatorInput>;
+  readonly flags: Maybe<StringQueryOperatorInput>;
+  readonly closed: Maybe<BooleanQueryOperatorInput>;
+  readonly bytesRead: Maybe<IntQueryOperatorInput>;
+  readonly _eventsCount: Maybe<IntQueryOperatorInput>;
+  readonly _readableState: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailStream_readableStateFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsThumbnailStream_readableStateFilterInput = {
+  readonly sync: Maybe<BooleanQueryOperatorInput>;
+  readonly ended: Maybe<BooleanQueryOperatorInput>;
+  readonly buffer: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailStream_readableStateBufferFilterInput>;
+  readonly closed: Maybe<BooleanQueryOperatorInput>;
+  readonly length: Maybe<IntQueryOperatorInput>;
+  readonly flowing: Maybe<BooleanQueryOperatorInput>;
+  readonly reading: Maybe<BooleanQueryOperatorInput>;
+  readonly destroyed: Maybe<BooleanQueryOperatorInput>;
+  readonly emitClose: Maybe<BooleanQueryOperatorInput>;
+  readonly endEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly objectMode: Maybe<BooleanQueryOperatorInput>;
+  readonly autoDestroy: Maybe<BooleanQueryOperatorInput>;
+  readonly constructed: Maybe<BooleanQueryOperatorInput>;
+  readonly dataEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly readingMore: Maybe<BooleanQueryOperatorInput>;
+  readonly closeEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly errorEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly needReadable: Maybe<BooleanQueryOperatorInput>;
+  readonly highWaterMark: Maybe<IntQueryOperatorInput>;
+  readonly defaultEncoding: Maybe<StringQueryOperatorInput>;
+  readonly emittedReadable: Maybe<BooleanQueryOperatorInput>;
+  readonly multiAwaitDrain: Maybe<BooleanQueryOperatorInput>;
+  readonly resumeScheduled: Maybe<BooleanQueryOperatorInput>;
+  readonly readableListening: Maybe<BooleanQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsThumbnailStream_readableStateBufferFilterInput = {
+  readonly length: Maybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput>;
+  readonly stream: Maybe<STRAPI_SPEAKERPhotoFormatsLargeStreamFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeStreamFilterInput = {
+  readonly mode: Maybe<IntQueryOperatorInput>;
+  readonly path: Maybe<StringQueryOperatorInput>;
+  readonly flags: Maybe<StringQueryOperatorInput>;
+  readonly closed: Maybe<BooleanQueryOperatorInput>;
+  readonly bytesRead: Maybe<IntQueryOperatorInput>;
+  readonly _eventsCount: Maybe<IntQueryOperatorInput>;
+  readonly _readableState: Maybe<STRAPI_SPEAKERPhotoFormatsLargeStream_readableStateFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeStream_readableStateFilterInput = {
+  readonly sync: Maybe<BooleanQueryOperatorInput>;
+  readonly ended: Maybe<BooleanQueryOperatorInput>;
+  readonly buffer: Maybe<STRAPI_SPEAKERPhotoFormatsLargeStream_readableStateBufferFilterInput>;
+  readonly closed: Maybe<BooleanQueryOperatorInput>;
+  readonly length: Maybe<IntQueryOperatorInput>;
+  readonly flowing: Maybe<BooleanQueryOperatorInput>;
+  readonly reading: Maybe<BooleanQueryOperatorInput>;
+  readonly destroyed: Maybe<BooleanQueryOperatorInput>;
+  readonly emitClose: Maybe<BooleanQueryOperatorInput>;
+  readonly endEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly objectMode: Maybe<BooleanQueryOperatorInput>;
+  readonly autoDestroy: Maybe<BooleanQueryOperatorInput>;
+  readonly constructed: Maybe<BooleanQueryOperatorInput>;
+  readonly dataEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly readingMore: Maybe<BooleanQueryOperatorInput>;
+  readonly closeEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly errorEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly needReadable: Maybe<BooleanQueryOperatorInput>;
+  readonly highWaterMark: Maybe<IntQueryOperatorInput>;
+  readonly defaultEncoding: Maybe<StringQueryOperatorInput>;
+  readonly emittedReadable: Maybe<BooleanQueryOperatorInput>;
+  readonly multiAwaitDrain: Maybe<BooleanQueryOperatorInput>;
+  readonly resumeScheduled: Maybe<BooleanQueryOperatorInput>;
+  readonly readableListening: Maybe<BooleanQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeStream_readableStateBufferFilterInput = {
+  readonly length: Maybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput>;
+  readonly stream: Maybe<STRAPI_SPEAKERPhotoFormatsMediumStreamFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumStreamFilterInput = {
+  readonly mode: Maybe<IntQueryOperatorInput>;
+  readonly path: Maybe<StringQueryOperatorInput>;
+  readonly flags: Maybe<StringQueryOperatorInput>;
+  readonly closed: Maybe<BooleanQueryOperatorInput>;
+  readonly bytesRead: Maybe<IntQueryOperatorInput>;
+  readonly _eventsCount: Maybe<IntQueryOperatorInput>;
+  readonly _readableState: Maybe<STRAPI_SPEAKERPhotoFormatsMediumStream_readableStateFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumStream_readableStateFilterInput = {
+  readonly sync: Maybe<BooleanQueryOperatorInput>;
+  readonly ended: Maybe<BooleanQueryOperatorInput>;
+  readonly buffer: Maybe<STRAPI_SPEAKERPhotoFormatsMediumStream_readableStateBufferFilterInput>;
+  readonly closed: Maybe<BooleanQueryOperatorInput>;
+  readonly length: Maybe<IntQueryOperatorInput>;
+  readonly flowing: Maybe<BooleanQueryOperatorInput>;
+  readonly reading: Maybe<BooleanQueryOperatorInput>;
+  readonly destroyed: Maybe<BooleanQueryOperatorInput>;
+  readonly emitClose: Maybe<BooleanQueryOperatorInput>;
+  readonly endEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly objectMode: Maybe<BooleanQueryOperatorInput>;
+  readonly autoDestroy: Maybe<BooleanQueryOperatorInput>;
+  readonly constructed: Maybe<BooleanQueryOperatorInput>;
+  readonly dataEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly readingMore: Maybe<BooleanQueryOperatorInput>;
+  readonly closeEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly errorEmitted: Maybe<BooleanQueryOperatorInput>;
+  readonly needReadable: Maybe<BooleanQueryOperatorInput>;
+  readonly highWaterMark: Maybe<IntQueryOperatorInput>;
+  readonly defaultEncoding: Maybe<StringQueryOperatorInput>;
+  readonly emittedReadable: Maybe<BooleanQueryOperatorInput>;
+  readonly multiAwaitDrain: Maybe<BooleanQueryOperatorInput>;
+  readonly resumeScheduled: Maybe<BooleanQueryOperatorInput>;
+  readonly readableListening: Maybe<BooleanQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumStream_readableStateBufferFilterInput = {
+  readonly length: Maybe<IntQueryOperatorInput>;
 };
 
 type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDConnection = {
@@ -3575,7 +3911,7 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFieldsEnum =
   | 'internal.owner'
   | 'internal.type'
   | 'strapi_component'
-  | 'sectionTittle'
+  | 'sectionTitle'
   | 'speakers'
   | 'speakers.id'
   | 'speakers.parent.id'
@@ -3617,24 +3953,24 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFieldsEnum =
   | 'speakers.internal.type'
   | 'speakers.createdAt'
   | 'speakers.updatedAt'
-  | 'speakers.FirstName'
-  | 'speakers.LastName'
-  | 'speakers.Title'
-  | 'speakers.Description'
-  | 'speakers.Position'
-  | 'speakers.Photo.id'
-  | 'speakers.Photo.name'
-  | 'speakers.Photo.alternativeText'
-  | 'speakers.Photo.caption'
-  | 'speakers.Photo.width'
-  | 'speakers.Photo.height'
-  | 'speakers.Photo.hash'
-  | 'speakers.Photo.ext'
-  | 'speakers.Photo.mime'
-  | 'speakers.Photo.size'
-  | 'speakers.Photo.url'
-  | 'speakers.Photo.createdAt'
-  | 'speakers.Photo.updatedAt'
+  | 'speakers.firstName'
+  | 'speakers.lastName'
+  | 'speakers.title'
+  | 'speakers.description'
+  | 'speakers.position'
+  | 'speakers.photo.id'
+  | 'speakers.photo.name'
+  | 'speakers.photo.alternativeText'
+  | 'speakers.photo.caption'
+  | 'speakers.photo.width'
+  | 'speakers.photo.height'
+  | 'speakers.photo.hash'
+  | 'speakers.photo.ext'
+  | 'speakers.photo.mime'
+  | 'speakers.photo.size'
+  | 'speakers.photo.url'
+  | 'speakers.photo.createdAt'
+  | 'speakers.photo.updatedAt'
   | 'speakers.strapi_id'
   | 'strapi_id';
 
@@ -3685,7 +4021,7 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFilterInput = {
   readonly children: Maybe<NodeFilterListInput>;
   readonly internal: Maybe<InternalFilterInput>;
   readonly strapi_component: Maybe<StringQueryOperatorInput>;
-  readonly sectionTittle: Maybe<StringQueryOperatorInput>;
+  readonly sectionTitle: Maybe<StringQueryOperatorInput>;
   readonly speakers: Maybe<STRAPI_SPEAKERFilterListInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -3976,7 +4312,7 @@ type STRAPI__COMPONENT_BASE_PARTNERS_SLIDERFieldsEnum =
   | 'internal.owner'
   | 'internal.type'
   | 'strapi_component'
-  | 'sectionTittle'
+  | 'sectionTitle'
   | 'partners'
   | 'partners.id'
   | 'partners.parent.id'
@@ -4096,7 +4432,7 @@ type STRAPI__COMPONENT_BASE_PARTNERS_SLIDERFilterInput = {
   readonly children: Maybe<NodeFilterListInput>;
   readonly internal: Maybe<InternalFilterInput>;
   readonly strapi_component: Maybe<StringQueryOperatorInput>;
-  readonly sectionTittle: Maybe<StringQueryOperatorInput>;
+  readonly sectionTitle: Maybe<StringQueryOperatorInput>;
   readonly partners: Maybe<STRAPI_PARTNERFilterListInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -4903,56 +5239,56 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'internal.type'
   | 'createdAt'
   | 'updatedAt'
-  | 'FirstName'
-  | 'LastName'
-  | 'Title'
-  | 'Description'
-  | 'Position'
-  | 'Photo.id'
-  | 'Photo.name'
-  | 'Photo.alternativeText'
-  | 'Photo.caption'
-  | 'Photo.width'
-  | 'Photo.height'
-  | 'Photo.formats.large.ext'
-  | 'Photo.formats.large.url'
-  | 'Photo.formats.large.hash'
-  | 'Photo.formats.large.mime'
-  | 'Photo.formats.large.name'
-  | 'Photo.formats.large.size'
-  | 'Photo.formats.large.width'
-  | 'Photo.formats.large.height'
-  | 'Photo.formats.small.ext'
-  | 'Photo.formats.small.url'
-  | 'Photo.formats.small.hash'
-  | 'Photo.formats.small.mime'
-  | 'Photo.formats.small.name'
-  | 'Photo.formats.small.size'
-  | 'Photo.formats.small.width'
-  | 'Photo.formats.small.height'
-  | 'Photo.formats.medium.ext'
-  | 'Photo.formats.medium.url'
-  | 'Photo.formats.medium.hash'
-  | 'Photo.formats.medium.mime'
-  | 'Photo.formats.medium.name'
-  | 'Photo.formats.medium.size'
-  | 'Photo.formats.medium.width'
-  | 'Photo.formats.medium.height'
-  | 'Photo.formats.thumbnail.ext'
-  | 'Photo.formats.thumbnail.url'
-  | 'Photo.formats.thumbnail.hash'
-  | 'Photo.formats.thumbnail.mime'
-  | 'Photo.formats.thumbnail.name'
-  | 'Photo.formats.thumbnail.size'
-  | 'Photo.formats.thumbnail.width'
-  | 'Photo.formats.thumbnail.height'
-  | 'Photo.hash'
-  | 'Photo.ext'
-  | 'Photo.mime'
-  | 'Photo.size'
-  | 'Photo.url'
-  | 'Photo.createdAt'
-  | 'Photo.updatedAt'
+  | 'firstName'
+  | 'lastName'
+  | 'title'
+  | 'description'
+  | 'position'
+  | 'photo.id'
+  | 'photo.name'
+  | 'photo.alternativeText'
+  | 'photo.caption'
+  | 'photo.width'
+  | 'photo.height'
+  | 'photo.formats.small.ext'
+  | 'photo.formats.small.url'
+  | 'photo.formats.small.hash'
+  | 'photo.formats.small.mime'
+  | 'photo.formats.small.name'
+  | 'photo.formats.small.size'
+  | 'photo.formats.small.width'
+  | 'photo.formats.small.height'
+  | 'photo.formats.thumbnail.ext'
+  | 'photo.formats.thumbnail.url'
+  | 'photo.formats.thumbnail.hash'
+  | 'photo.formats.thumbnail.mime'
+  | 'photo.formats.thumbnail.name'
+  | 'photo.formats.thumbnail.size'
+  | 'photo.formats.thumbnail.width'
+  | 'photo.formats.thumbnail.height'
+  | 'photo.formats.large.ext'
+  | 'photo.formats.large.url'
+  | 'photo.formats.large.hash'
+  | 'photo.formats.large.mime'
+  | 'photo.formats.large.name'
+  | 'photo.formats.large.size'
+  | 'photo.formats.large.width'
+  | 'photo.formats.large.height'
+  | 'photo.formats.medium.ext'
+  | 'photo.formats.medium.url'
+  | 'photo.formats.medium.hash'
+  | 'photo.formats.medium.mime'
+  | 'photo.formats.medium.name'
+  | 'photo.formats.medium.size'
+  | 'photo.formats.medium.width'
+  | 'photo.formats.medium.height'
+  | 'photo.hash'
+  | 'photo.ext'
+  | 'photo.mime'
+  | 'photo.size'
+  | 'photo.url'
+  | 'photo.createdAt'
+  | 'photo.updatedAt'
   | 'strapi_id';
 
 type STRAPI_SPEAKERGroupConnection = {
@@ -5448,26 +5784,26 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx1432891223QueryVariables = Exact<{ [key: string]: never; }>;
+type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx361628385QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx1432891223Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
+type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx361628385Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
       Pick<STRAPI__COMPONENT_BASE_GALERY_SLIDER, 'id' | 'title' | 'strapi_component'>
       & { readonly images: Maybe<ReadonlyArray<Maybe<Pick<STRAPI__MEDIA, 'id' | 'url'>>>> }
     ) | (
       Pick<STRAPI__COMPONENT_BASE_HERO, 'id' | 'backgroundColor' | 'buttonUrl' | 'buttonText' | 'subtitle' | 'subtitlePos' | 'title' | 'strapi_component'>
       & { readonly backgroundImage: Maybe<Pick<STRAPI__MEDIA, 'url'>> }
     ) | (
-      Pick<STRAPI__COMPONENT_BASE_PARTNERS_SLIDER, 'id' | 'sectionTittle' | 'strapi_component'>
+      Pick<STRAPI__COMPONENT_BASE_PARTNERS_SLIDER, 'id' | 'sectionTitle' | 'strapi_component'>
       & { readonly partners: Maybe<ReadonlyArray<Maybe<(
         Pick<STRAPI_PARTNER, 'id' | 'Name' | 'WebsiteURL'>
         & { readonly Logo: Maybe<Pick<STRAPI_PARTNERLogo, 'url'>>, readonly whiteLogo: Maybe<Pick<STRAPI_PARTNERWhiteLogo, 'url'>> }
       )>>> }
     ) | (
-      Pick<STRAPI__COMPONENT_BASE_SPEAKERS_GRID, 'id' | 'sectionTittle' | 'strapi_component'>
+      Pick<STRAPI__COMPONENT_BASE_SPEAKERS_GRID, 'id' | 'sectionTitle' | 'strapi_component'>
       & { readonly speakers: Maybe<ReadonlyArray<Maybe<(
-        Pick<STRAPI_SPEAKER, 'FirstName' | 'LastName' | 'Title' | 'Description' | 'Position'>
-        & { readonly Photo: Maybe<Pick<STRAPI_SPEAKERPhoto, 'url'>> }
+        Pick<STRAPI_SPEAKER, 'firstName' | 'lastName' | 'title' | 'description' | 'position'>
+        & { readonly photo: Maybe<Pick<STRAPI_SPEAKERPhoto, 'url'>> }
       )>>> }
     )>>> }> };
 

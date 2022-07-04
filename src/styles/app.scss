@@ -6,10 +6,14 @@
 @import "components/header";
 @import "components/hero";
 @import "components/partners";
+
 @import "components/speakers";
+@import "components/speaker-card";
+
 @import "components/gallery";
 @import "components/footer";
 @import "components/reach-modal";
+@import "components/image";
 
 * {
   font-family: $font-family-body;

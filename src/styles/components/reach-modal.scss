@@ -7,9 +7,10 @@
 
 [data-reach-dialog-content] {
     margin: 0 !important;
-    width: 600px !important;
+    width: 700px !important;
     padding: 0px 0px $m-lg !important;
 
+    max-height: 75vh;
     max-width: 90%;
     border-radius: $border-radius-base;
     box-sizing: border-box;
@@ -22,10 +23,11 @@
             margin-bottom: $m-base;
 
             .image {
-                width: $card-width;
+                width: 100%;
                 max-width: 100%;
-                min-height: calc(#{$card-height / 1.35} / 1.35);
-                max-height: calc(#{$card-height / 1.35} / 1.35);
+                min-height: calc($card-height / 1.35);
+                max-height: calc($card-height / 1.35);
+                margin: 0px auto $m-base;
 
                 border-radius: $border-radius-base 0px 0px 0px;
 
@@ -33,11 +35,11 @@
                 object-position: center;
 
                 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: $border-radius-base $border-radius-base 0px 0px;
 
-                &--empty {
-                    width: $card-width;
-                    border-radius: $border-radius-base 0px 0px 0px;
-                    min-height: calc(#{$card-height / 1.35} / 1.35);
+                card__content &-empty {
+                    width: 100%;
+                    border-radius: $border-radius-base $border-radius-base 0px 0px;
                     background-color: rgba($color-primary, 0.75);
                     display: flex;
                     align-items: center;
@@ -45,38 +47,37 @@
                     color: $color-white;
                 }
             }
-
-            .header-text {
-                flex: auto;
-                padding: $m-lg 0px 0px $m-base;
-
-                .first-name,
-                .second-name {
-                    font-size: $font-size-2xl;
-                    font-weight: $font-weight-bold;
-                }
-                .first-name {
-                    color: $color-primary;
-                }
-                .second-name {
-                    color: $color-secondary;
-                    margin-bottom: $m-xs;
-                }
-
-                .title {
-                    color: $color-primary;
-                    font-weight: $font-weight-light;
-                    font-size: $font-size-base;
-                }
-            }
         }
 
-        .body-text {
+        &__header-text {
+            padding: 0px $m-base;
+        }
+
+        &__first-name,
+        &__second-name {
+            font-size: $font-size-2xl;
+            font-weight: $font-weight-bold;
+        }
+        &__first-name {
+            color: $color-primary;
+        }
+        &__second-name {
+            color: $color-secondary;
+            margin-bottom: $m-xs;
+        }
+
+        &__title {
+            color: $color-primary;
+            font-weight: $font-weight-light;
+            font-size: $font-size-base;
+        }
+
+        &__body-text {
             padding: 0px $m-base;
 
             border-radius: $border-radius-xs;
             overflow: auto;
-            max-height: 35vh;
+            max-height: 30vh;
             background: linear-gradient(white 30%, rgba(255, 255, 255, 0)),
                 linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
                 radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
@@ -99,23 +100,19 @@
             }
         }
 
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-up(md) {
             &__header {
                 .image,
-                .image--empty {
-                    width: 100%;
-                    margin: 0px auto $m-base;
+                .image-empty {
+                    width: $card-width * 1.25;
+                    margin: 0px;
 
-                    border-radius: $border-radius-base $border-radius-base 0px 0px;
+                    border-radius: $border-radius-base 0px 0px 0px;
                 }
-
-                .header-text {
-                    padding: 0px $m-base;
-                }
-
-                .header-text {
-                    flex-basis: 100%;
-                }
+            }
+            &__header-text {
+                padding: $m-base 0px 0px $m-base;
+                flex-basis: auto;
             }
         }
     }

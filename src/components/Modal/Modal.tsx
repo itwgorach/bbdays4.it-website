@@ -4,13 +4,14 @@ import '@reach/dialog/styles.css'
 
 type ModalProps = {
   children: ReactNode,
-  handleToggle: () => void,
+  handleToggle?: () => void,
   title: string,
+  isOpen: boolean,
 }
 
-const Modal = ({ children, handleToggle, title }: ModalProps) => {
+const Modal = ({ children, handleToggle, title, isOpen }: ModalProps) => {
   return (
-    <Dialog aria-label={title} isOpen={true} onDismiss={handleToggle} allowPinchZoom>
+    <Dialog allowPinchZoom aria-label={title} isOpen={isOpen} onClick={handleToggle} onDismiss={handleToggle}>
       {children}
     </Dialog>
   )
