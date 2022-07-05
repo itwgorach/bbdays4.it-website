@@ -6,9 +6,8 @@ import Hero from 'components/Hero'
 import { BaseGalleryType, BaseHeroType, PartnersType, ScheduleType, SpeakersType } from 'types'
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
+import Schedule from 'components/Schedule';
 import Speakers from 'components/Speakers'
-import ScheduleDesktop from 'components/Schedule/ScheduleDesktop/ScheduleDesktop';
-import ScheduleMobile from 'components/Schedule/ScheduleMobile/ScheduleMobile';
 
 const HomePage: FC<HomePageType> = ({
   data: {
@@ -40,12 +39,7 @@ const HomePage: FC<HomePageType> = ({
           {
             //eslint-disable-nexi-line prettier/prettier
             const schedule = component as ScheduleType
-            return (
-              <>
-                <ScheduleMobile key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
-                <ScheduleDesktop key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
-              </>
-            )
+            return <Schedule key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
           }
           default:
             return null
