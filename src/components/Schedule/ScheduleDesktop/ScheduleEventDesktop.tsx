@@ -9,7 +9,7 @@ const ScheduleEventDesktop = ({ bgColor, startHour, endHour, date, logo, title, 
   return (
     <div
       className="schedule-desktop__grid-event"
-      style={{ backgroundColor: bgColor, gridColumn: `${startY}/${endY}`, gridRow: x }}>
+      style={{ backgroundColor: bgColor, gridColumn: `${startY} / ${endY}`, gridRow: x }}>
       {displayTitleOnDesktop && <div className="schedule-desktop__grid-event-title">{title}</div>}
       {logo && <img alt="Logo" className="schedule-desktop__grid-event-logo" src={logo?.url} />}
     </div>
