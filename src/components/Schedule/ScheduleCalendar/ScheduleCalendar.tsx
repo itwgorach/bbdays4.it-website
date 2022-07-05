@@ -25,12 +25,10 @@ const ScheduleCalendar = () => {
 
   return (
     <div className="calendar">
-      <div className="calendar__header">
-        Wrzesień 2022
-        <button className="calendar__header-button" type="button" onClick={toggleCalendar}>
-          {isOpen ? <CalendarIcon /> : <CalendarIcon className="calendar__icon-rotated" />}
-        </button>
-      </div>
+      <button className="calendar__button" type="button" onClick={toggleCalendar}>
+        <span className="calendar__button-text">Wrzesień 2022</span>
+        {isOpen ? <CalendarIcon /> : <CalendarIcon className="calendar__icon-rotated" />}
+      </button>
       <div className={calendarToggleClass}>
         {ScheduleWeek.map(({ dayMobile }, index) => {
           return index >= 3 ? (
