@@ -22,7 +22,7 @@ const HomePage: FC<HomePageType> = ({
           {
             // eslint-disable-next-line prettier/prettier
             const partnersSection = component as PartnersType
-            return <Partners key={partnersSection.id} partners={partnersSection.partners} sectionTitle={partnersSection.sectionTittle}  />
+            return <Partners key={partnersSection.id} partners={partnersSection.partners} sectionTitle={partnersSection.sectionTitle}  />
           }
           case 'base.hero':
           {
@@ -84,7 +84,7 @@ export const query = graphql`
               }
               ... on STRAPI__COMPONENT_BASE_PARTNERS_SLIDER {
                   id
-                  sectionTittle
+                  sectionTitle
                   strapi_component
                   partners {
                       id
