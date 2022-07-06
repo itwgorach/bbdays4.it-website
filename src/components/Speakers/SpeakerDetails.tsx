@@ -23,9 +23,8 @@ const SpeakerDetails: FC<SpeakerDetailsType> = ({ handleToggleModal, isOpen, spe
           <div className="speaker-details__header-text">
             <div className="speaker-details__first-name">{firstName}</div>
             <div className="speaker-details__second-name">{lastName}</div>
-            <div className="speaker-details__title">
-              {title} - {position}
-            </div>
+            <div className="speaker-details__position">{position}</div>
+            <div className="speaker-details__title">&quot;{title}&quot;</div>
           </div>
         </div>
         <div className="speaker-details__body-text">

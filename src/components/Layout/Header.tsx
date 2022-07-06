@@ -6,6 +6,10 @@ import DesktopHeader from './Headers/DesktopHeader'
 
 const linksData: LinkType[] = [
   {
+    name: 'Harmonogram',
+    path: '#harmonogram',
+  },
+  {
     name: 'Prelegenci',
     path: '#prelegenci',
   },
