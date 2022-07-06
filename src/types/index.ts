@@ -9,6 +9,7 @@ export import SpeakerType = GatsbyTypes.STRAPI_SPEAKER
 export import SpeakersType = GatsbyTypes.STRAPI__COMPONENT_BASE_SPEAKERS_GRID
 
 export import BaseGalleryType = GatsbyTypes.STRAPI__COMPONENT_BASE_GALERY_SLIDER
+
 export import STRAPI_EVENT = GatsbyTypes.STRAPI_EVENTEdge
 export import EventType = GatsbyTypes.STRAPI_EVENT
 export import ScheduleType = GatsbyTypes.STRAPI__COMPONENT_BASE_SCHEDULE
