@@ -8,13 +8,26 @@
 [data-reach-dialog-content] {
     margin: 0 !important;
     width: 700px !important;
-    padding: 0px 0px $m-lg !important;
+    padding: 0px 0px $m-xs !important;
 
     max-height: 75vh;
     max-width: 90%;
-    border-radius: $border-radius-base;
+    border-radius: $border-radius-xs;
     box-sizing: border-box;
     box-shadow: rgba(255, 255, 255, 0.5) 0px 8px 24px;
+
+    position: relative;
+
+    &::before{
+        content: '✖';
+        position: absolute;
+
+        right: $m-xs;
+        top: $m-xs;
+
+        font-size: 2em;
+        color: $color-text;
+    }
 
     .speaker-details {
         &__header {
@@ -29,17 +42,17 @@
                 max-height: calc($card-height / 1.35);
                 margin: 0px auto $m-base;
 
-                border-radius: $border-radius-base 0px 0px 0px;
+                border-radius: $border-radius-xs 0px 0px 0px;
 
                 object-fit: cover;
                 object-position: center;
 
                 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-                border-radius: $border-radius-base $border-radius-base 0px 0px;
+                border-radius: $border-radius-xs $border-radius-xs 0px 0px;
 
                 card__content &-empty {
                     width: 100%;
-                    border-radius: $border-radius-base $border-radius-base 0px 0px;
+                    border-radius: $border-radius-xs $border-radius-xs 0px 0px;
                     background-color: rgba($color-primary, 0.75);
                     display: flex;
                     align-items: center;
@@ -66,10 +79,15 @@
             margin-bottom: $m-xs;
         }
 
+        &__position,
         &__title {
             color: $color-primary;
             font-weight: $font-weight-light;
             font-size: $font-size-base;
+        }
+
+        &__position {
+            margin-bottom: $m-xs;
         }
 
         &__body-text {
@@ -95,7 +113,7 @@
                 color: $color-primary;
                 font-weight: $font-weight-light;
                 letter-spacing: 0.75px;
-                line-height: $line-height-base;
+                line-height: $line-height-md;
                 margin: 0px;
             }
         }
@@ -107,12 +125,19 @@
                     width: $card-width * 1.25;
                     margin: 0px;
 
-                    border-radius: $border-radius-base 0px 0px 0px;
+                    border-radius: $border-radius-xs 0px 0px 0px;
                 }
             }
             &__header-text {
                 padding: $m-base 0px 0px $m-base;
                 flex-basis: 40%;
+
+                display: flex;
+                flex-direction: column;
+            }
+
+            &__title {
+                margin: auto 0px $m-xs;
             }
         }
     }
