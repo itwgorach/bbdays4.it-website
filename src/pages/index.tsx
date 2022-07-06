@@ -113,6 +113,8 @@ export const query = graphql`
                       }
                       description
                       position
+                  }
+              }
               ... on STRAPI__COMPONENT_BASE_SCHEDULE {
                   id
                   scheduleTitle
@@ -130,10 +132,8 @@ export const query = graphql`
                   }
               }
           }
-        }
       } 
     }
-  }
 `
 
 export default HomePage
