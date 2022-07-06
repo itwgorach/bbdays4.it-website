@@ -11,7 +11,7 @@ type SpeakerCardProps = {
 }
 
 const SpeakerCard: FC<SpeakerCardProps> = ({ speaker, handleClick }) => {
-  const { photo, title, firstName, lastName } = speaker
+  const { photo, firstName, lastName, position } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
 
@@ -23,7 +23,7 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker, handleClick }) => {
           <div>{firstName}</div>
           <div>{lastName}</div>
         </h3>
-        <div className="speaker-card__subtitle">- {title} -</div>
+        {!!position && <div className="speaker-card__subtitle">- {position}</div>}
       </div>
     </div>
   )

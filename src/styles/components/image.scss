@@ -6,10 +6,10 @@
     object-fit: cover;
     object-position: center;
 
-    border-radius: $border-radius-base;
+    border-radius: $border-radius-xs;
 
     &-empty {
-        border-radius: $border-radius-base;
+        border-radius: $border-radius-xs;
         min-height: calc($card-height / 1.35);
         background-color: rgba($color-primary, 0.75);
         display: flex;

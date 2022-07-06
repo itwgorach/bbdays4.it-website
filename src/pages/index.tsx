@@ -3,12 +3,11 @@ import { graphql } from 'gatsby'
 
 import HomePageType from 'types/HomePageType'
 import Hero from 'components/Hero'
-import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType,ScheduleType } from 'types'
+import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType, ScheduleType } from 'types'
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
 import Speakers from 'components/Speakers'
-import ScheduleDesktop from 'components/Schedule/ScheduleDesktop/ScheduleDesktop';
-import ScheduleMobile from 'components/Schedule/ScheduleMobile/ScheduleMobile';
+import Schedule from 'components/Schedule'
 
 const HomePage: FC<HomePageType> = ({
   data: {
@@ -21,7 +20,7 @@ const HomePage: FC<HomePageType> = ({
         switch (component?.strapi_component) {
           case 'base.partners-slider': {
             const partnersSection = component as PartnersType
-            return <Partners key={partnersSection.id} partners={partnersSection.partners} sectionTitle={partnersSection.sectionTitle}  />
+            return <Partners key={partnersSection.id} partners={partnersSection.partners} sectionTitle={partnersSection.sectionTitle} />
           }
           case 'base.hero': {
             const hero = component as BaseHeroType
@@ -33,16 +32,11 @@ const HomePage: FC<HomePageType> = ({
           }
           case 'base.speakers-grid': {
             const speakers = component as SpeakersType
-            return  <Speakers key={speakers.id} {...speakers} />
+            return <Speakers key={speakers.id} {...speakers} />
           }
           case 'base.schedule': {
             const schedule = component as ScheduleType
-            return (
-              <>
-                <ScheduleMobile key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
-                <ScheduleDesktop key={schedule.id} events={schedule.events} scheduleTitle={schedule.scheduleTitle} /> 
-              </>
-            )
+            return <Schedule key={schedule.id} {...schedule} />
           }
           default:
             return null
