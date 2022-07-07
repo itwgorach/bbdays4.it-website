@@ -5,14 +5,14 @@ import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
 
 const linksData: LinkType[] = [
-  {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
-  {
-    name: 'Prelegenci',
-    path: '#prelegenci',
-  },
+  // {
+  //   name: 'Harmonogram',
+  //   path: '#harmonogram',
+  // },
+  // {
+  //   name: 'Prelegenci',
+  //   path: '#prelegenci',
+  // },
   {
     name: 'Organizatorzy',
     path: '#organizatorzy',
