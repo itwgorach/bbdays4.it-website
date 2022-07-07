@@ -6,6 +6,43 @@ import cx from 'classnames'
 import ScheduleEventDesktop from './ScheduleEventDesktop'
 
 const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
+  const eventsContent = events?.length
+    ? events.map((event) => {
+        return events.filter((e) => {
+          return (
+            parseInt(event.startHour.substring(0, 2)) <= parseInt(e.startHour.substring(0, 2)) &&
+            parseInt(event.endHour.substring(0, 2)) >= parseInt(e.endHour.substring(0, 2)) &&
+            event.date === e.date
+          )
+        })
+      })
+    : []
+
+  eventsContent.forEach((event, index) => {
+    const multipleEvents = eventsContent.filter((x) => x.length > 1).flat()
+    if (!(event.length > 1)) {
+      if (multipleEvents.includes(event[0])) return eventsContent.splice(index, 1)
+    }
+  })
+
+  const getEarlierHour = (event) => {
+    return event.reduce((a, b) => {
+      return parseInt(a.startHour.substring(0, 2)) ===
+        Math.min(parseInt(a.startHour.substring(0, 2)), parseInt(b.startHour.substring(0, 2)))
+        ? a
+        : b
+    })
+  }
+
+  const getLaterHour = (event) => {
+    return event.reduce((a, b) => {
+      return parseInt(a.endHour.substring(0, 2)) ===
+        Math.max(parseInt(a.endHour.substring(0, 2)), parseInt(b.endHour.substring(0, 2)))
+        ? a
+        : b
+    })
+  }
+
   const getGridPlaceholders = (x: number) => {
     return Array.from({ length: 10 }, (_, y) => {
       const noLeftLine = x === 0
@@ -37,19 +74,44 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
             </div>
           ))}
         </div>
-        {events?.length > 0 &&
-          events.map((event) => {
+        {eventsContent?.length > 0 &&
+          eventsContent.map((eventDay) => {
+            const earlierStartHour = getEarlierHour(eventDay)
+            const laterEndHour = getLaterHour(eventDay)
+            const startGridColumn = Hours.findIndex((hour) => hour === earlierStartHour.startHour) + 2
+            const endGridColumn = laterEndHour.endHour !== '23:00' ? Hours.findIndex((h) => h === laterEndHour.endHour) + 2 : 15
+            const gridRow = ScheduleWeek.findIndex((day) => day.dateDesktop === eventDay[0].date) + 2
+            const gridColumnNumber = endGridColumn - startGridColumn
+
+            const eventDaySorted = eventDay.sort(
+              (a, b) => parseInt(a.startHour.substring(0, 2)) - parseInt(b.startHour.substring(0, 2))
+            )
+
             return (
-              <ScheduleEventDesktop
-                key={event.id}
-                bgColor={event.backgroundColor}
-                date={event.date}
-                displayTitleOnDesktop={event.displayTitleOnDesktop}
-                endHour={event.endHour}
-                logo={event.logo}
-                startHour={event.startHour}
-                title={event.title}
-              />
+              <div
+                key={eventsContent.indexOf(eventDaySorted)}
+                className="schedule-desktop__grid-events"
+                style={{
+                  gridColumn: `${startGridColumn} / ${endGridColumn}`,
+                  gridRow: gridRow,
+                  gridTemplateColumns: `repeat(${gridColumnNumber}, 1fr)`,
+                }}>
+                {eventDaySorted.map((event) => {
+                  return (
+                    <ScheduleEventDesktop
+                      key={event.id}
+                      bgColor={event.backgroundColor}
+                      displayTitleOnDesktop={event.displayTitleOnDesktop}
+                      endHour={event.endHour}
+                      gridColumnNumber={gridColumnNumber}
+                      logo={event.logo}
+                      startHour={event.startHour}
+                      startParentGridColumn={startGridColumn}
+                      title={event.title}
+                    />
+                  )
+                })}
+              </div>
             )
           })}
         {Array.from({ length: 13 }, (_, x) => getGridPlaceholders(x))}
