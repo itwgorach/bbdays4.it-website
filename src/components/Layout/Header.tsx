@@ -6,13 +6,17 @@ import DesktopHeader from './Headers/DesktopHeader'
 
 const linksData: LinkType[] = [
   {
+    name: 'Harmonogram',
+    path: '#harmonogram',
+  },
+  {
+    name: 'Prelegenci',
+    path: '#prelegenci',
+  },
+  {
     name: 'Organizatorzy',
     path: '#organizatorzy',
   },
-  // {
-  //   name: 'Galeria',
-  //   path: '/',
-  // },
   {
     name: 'Edycja 2021',
     path: 'https://bbdays4it-2021.netlify.app/',

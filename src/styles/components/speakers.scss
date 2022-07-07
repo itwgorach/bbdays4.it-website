@@ -1,0 +1,28 @@
+$card-width: 18em;
+$card-height: $card-width * 1.6;
+$card-margin: 0.6em;
+$how-many-cards: 4;
+
+.speakers {
+    &__inner {
+        @extend .partners__inner;
+        margin: $m-2xl 0px $m-2xl;
+        padding: 0px $m-lg $m-lg;
+    }
+
+    &__header {
+        @extend .partners__header;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        gap: $card-margin * 2;
+
+        width: 100%;
+        max-width: $card-margin + ($card-width * $how-many-cards) + (($card-margin * 2) * $how-many-cards);
+        margin: auto;
+    }
+}
