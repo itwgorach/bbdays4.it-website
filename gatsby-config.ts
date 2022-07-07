@@ -14,16 +14,16 @@ const strapiConfig = {
           homepage: {
             populate: {
               backgroundImage: '*',
-              events: {
-                populate: '*',
-              },
+              // events: {
+              //   populate: '*',
+              // },
               images: '*',
               partners: {
                 populate: '*',
               },
-              speakers: {
-                populate: '*',
-              },
+              // speakers: {
+              //   populate: '*',
+              // },
             },
           },
         },
