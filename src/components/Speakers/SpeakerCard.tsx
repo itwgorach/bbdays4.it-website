@@ -8,16 +8,15 @@ import { LinkedinIcon, TwitterIcon } from 'components/icons'
 
 type SpeakerCardProps = {
   speaker: SpeakerType,
-  handleClick: () => void,
 }
 
-const SpeakerCard: FC<SpeakerCardProps> = ({ speaker, handleClick }) => {
+const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
   const { photo, firstName, lastName, title, linkedinUrl, twitterUrl } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
 
   return (
-    <div className="speaker-card" onClick={handleClick}>
+    <div className="speaker-card">
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">
           <div>{firstName}</div>

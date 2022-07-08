@@ -1,14 +1,10 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 
-import { SpeakersType, SpeakerType } from 'types'
+import { SpeakersType } from 'types'
 import SpeakerCard from './SpeakerCard'
-import SpeakerDetails from './SpeakerDetails'
 
 const Speakers: FC<SpeakersType> = ({ speakers, sectionTitle, sectionSubtitle }) => {
   const titleId = sectionTitle ? sectionTitle.toLocaleLowerCase() : ''
-  const [speaker, setSpeaker] = useState<SpeakerType | null>(null)
-
-  const handleSetSpeaker = (speaker: SpeakerType) => setSpeaker(speaker)
 
   return (
     <>
@@ -21,12 +17,7 @@ const Speakers: FC<SpeakersType> = ({ speakers, sectionTitle, sectionSubtitle })
           <div className="speakers__spacer" />
           <div className="speakers__list">
             {speakers ? (
-              speakers.map(
-                (speaker) =>
-                  speaker && (
-                    <SpeakerCard key={speaker.id} handleClick={() => handleSetSpeaker(speaker)} speaker={speaker} />
-                  ),
-              )
+              speakers.map((speaker) => speaker && <SpeakerCard key={speaker.id} speaker={speaker} />)
             ) : (
               <div>Brak prelegentów</div>
             )}
@@ -34,7 +25,6 @@ const Speakers: FC<SpeakersType> = ({ speakers, sectionTitle, sectionSubtitle })
           <div className="speakers__spacer -down" />
         </div>
       </div>
-      <SpeakerDetails handleToggleModal={() => setSpeaker(null)} isOpen={!!speaker} speaker={speaker} />
     </>
   )
 }
