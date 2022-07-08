@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { ImagePlaceholderUrl } from '../../constants'
+import { ImagePlaceholder } from 'components/icons'
 
 type ImageProps = {
   url: string | undefined,
@@ -7,9 +7,13 @@ type ImageProps = {
 }
 
 const Image: FC<ImageProps> = ({ url, alt }) => {
-  const imageUrl = url ? url : ImagePlaceholderUrl
+  const className = 'image'
 
-  return <img alt={alt} className="image" loading="lazy" src={imageUrl} />
+  return url ? (
+    <img alt={alt} className={className} loading="lazy" src={url} />
+  ) : (
+    <ImagePlaceholder className={className} />
+  )
 }
 
 export default Image

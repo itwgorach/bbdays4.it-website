@@ -97,6 +97,7 @@ export const query = graphql`
               ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
                   id
                   sectionTitle
+                  sectionSubtitle
                   strapi_component
                   speakers {
                       firstName
@@ -107,6 +108,8 @@ export const query = graphql`
                       }
                       description
                       position
+                      linkedinUrl
+                      twitterUrl
                   }
               }
               ... on STRAPI__COMPONENT_BASE_SCHEDULE {

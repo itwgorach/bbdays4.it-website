@@ -22,7 +22,7 @@ $m-2xl: $m-base * 4;
 
 //----- line heights ---------------------------------------------------------------------------------------------------
 $line-height-sm: $m-sm;
-$line-height-md: $m-xs * 3;
+$line-height-md: $m-xs * 3.5;
 $line-height-base: $m-xs * 5;
 $line-height-lg: $m-lg;
 $line-height-2xl: $m-xs * 7;
@@ -69,6 +69,7 @@ $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
+$font-weight-black: 800;
 $icon-size: $m-base;
 
 //----- transitions ----------------------------------------------------------------------------------------------------

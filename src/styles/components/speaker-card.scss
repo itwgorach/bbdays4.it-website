@@ -1,33 +1,120 @@
 .speaker-card {
     width: $card-width;
+    background-color: $color-white;
 
     display: flex;
     flex-direction: column;
 
-    border-radius: $border-radius-xs;
+    border-radius: 2px;
 
     cursor: pointer;
-    transition: all $transition-duration $transition-function;
+    overflow: hidden;
 
-    &:hover {
-        transform: translateY(-$m-xs);
-        background-color: rgba($color-black, 0.05);
+    &:nth-child(3n - 2) {
+        .speaker-card {
+            &__image-placeholder {
+                background-color: $color-primary;
+            }
+        }
     }
-
+    &:nth-child(3n - 3) {
+        .speaker-card {
+            &__image-placeholder {
+                background-color: #f9ca3e;
+            }
+        }
+    }
+    &:nth-child(3n - 4) {
+        .speaker-card {
+            &__image-placeholder {
+                background-color: #F2933B;
+            }
+        }
+    }
     &__content {
-        padding: 0px $m-lg;
+        padding: $m-base;
+        height: 250px;
     }
-    &__title {
-        color: $color-primary;
-        font-size: $font-size-lg;
-        text-transform: uppercase;
-        font-weight: $font-weight-bold;
-        margin-bottom: $m-xs;
-    }
+
+    &__title,
     &__subtitle {
-        color: $color-primary;
-        font-size: $font-size-sm;
-        text-transform: uppercase;
-        margin-bottom: $m-xs;
+        color: $color-dark;
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: $font-weight-black;
+        line-height: $line-height-md;
+
+        margin: $m-xs 0px calc($m-xs * 2);
+    }
+
+    &__subtitle {
+        @include maxTextLines(4);
+        font-size: 16px;
+        font-weight: $font-weight-medium;
+        line-height: 22px;
+        letter-spacing: 0.5px;
+        margin-bottom: $m-base;
+    }
+
+    &__image-placeholder {
+        height: 180px;
+        width: 100%;
+
+        position: relative;
+
+        .image {
+            position: absolute;
+            max-height: 325px;
+            min-height: 325px;
+            right: -65px;
+            bottom: 0px;
+        }
+    }
+
+    &__social {
+        height: 125px;
+        z-index: 1;
+        position: absolute;
+        top: -60px;
+        left: $m-base;
+
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    &__linkedin {
+        path {
+            stroke: $color-dark;
+
+            &:nth-last-of-type(2) {
+                fill: $color-dark;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        &__social {
+            height: unset;
+            flex-direction: row;
+
+            width: 55px;
+        }
+        &__linkedin,
+        &__twitter {
+            width: $icon-size;
+        }
+
+        &__twitter {
+            path {
+                stroke: $color-dark;
+
+                &:nth-last-of-type(1) {
+                    fill: $color-dark;
+                }
+            }
+        }
     }
 }
