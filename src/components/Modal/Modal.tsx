@@ -7,15 +7,15 @@ type ModalProps = {
   handleToggle?: () => void,
   title: string,
   isOpen: boolean,
-  withModifier: string,
+  modalVariantClassName: string,
 }
 
-const Modal = ({ children, handleToggle, title, isOpen, withModifier }: ModalProps) => {
+const Modal = ({ children, handleToggle, title, isOpen, modalVariantClassName }: ModalProps) => {
   return (
     <Dialog
       allowPinchZoom
       aria-label={title}
-      className={withModifier}
+      className={modalVariantClassName}
       isOpen={isOpen}
       onClick={handleToggle}
       onDismiss={handleToggle}>

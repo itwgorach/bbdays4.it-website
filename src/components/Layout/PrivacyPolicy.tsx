@@ -23,7 +23,7 @@ const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title
   `
 
   return (
-    <Modal handleToggle={handleModalToggle} isOpen={isOpen} title={title} withModifier="-big">
+    <Modal handleToggle={handleModalToggle} isOpen={isOpen} modalVariantClassName="-big" title={title}>
       <StaticQuery
         query={query}
         render={(data) => (

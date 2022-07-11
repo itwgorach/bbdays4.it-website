@@ -22,10 +22,10 @@ const Footer: FC = () => {
         <div className="footer__text-modal" onClick={handleClick}>
           Polityka prywatności
         </div>
-        {links.map((link) => {
+        {links.map(({ name, path }) => {
           return (
-            <a key={link.name} className="footer__text-link" href={link.path} rel="noopener noreferrer" target="_blank">
-              {link.name}
+            <a key={name} className="footer__text-link" href={path} rel="noopener noreferrer" target="_blank">
+              {name}
             </a>
           )
         })}

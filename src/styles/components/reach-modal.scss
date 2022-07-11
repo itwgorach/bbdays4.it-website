@@ -146,12 +146,11 @@
     }
     
     &.-big {
-        width: 90% !important;
-        position: absolute;
         bottom: 5%;
-        align-self: bottom !important;
         padding: $m-base !important;
+        position: absolute;
         overflow: auto;
+        width: 90% !important;
     }
 
     .footer__modal {
