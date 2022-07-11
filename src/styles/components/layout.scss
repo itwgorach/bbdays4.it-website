@@ -3,6 +3,9 @@
 }
 
 .cookies {
+    align-items: center !important;
+    opacity: 0.9;
+
     &__text {
     color: $color-white;
       font-family: $font-face-header;

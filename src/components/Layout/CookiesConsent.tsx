@@ -5,15 +5,15 @@ import PrivacyPolicy from './PrivacyPolicy'
 
 const CookiesConsent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const handleClick = () => setIsModalOpen(true)
+  const handleClick = () => setIsModalOpen((isModalOpen) => !isModalOpen)
 
   return (
     <>
       <CookieConsent
         buttonClasses="cookies__button"
         buttonText="Akceptuję"
-        location="bottom"
-        style={{ alignItems: 'center', opacity: 0.9 }}>
+        containerClasses="cookies"
+        location="bottom">
         <span className="cookies__text">
           Strona{' '}
           <Link className="cookies__text-link" to="/">
@@ -27,7 +27,7 @@ const CookiesConsent = () => {
         </div>
       </CookieConsent>
       <PrivacyPolicy
-        handleModalToggle={() => setIsModalOpen(false)}
+        handleModalToggle={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
         isOpen={isModalOpen}
         title="Polityka prywatności"
       />
