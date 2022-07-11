@@ -12,13 +12,7 @@ type ModalProps = {
 
 const Modal = ({ children, handleToggle, title, isOpen, className }: ModalProps) => {
   return (
-    <Dialog
-      allowPinchZoom
-      aria-label={title}
-      className={className}
-      isOpen={isOpen}
-      onClick={handleToggle}
-      onDismiss={handleToggle}>
+    <Dialog allowPinchZoom aria-label={title} className={className} isOpen={isOpen} onDismiss={handleToggle}>
       {children}
     </Dialog>
   )
