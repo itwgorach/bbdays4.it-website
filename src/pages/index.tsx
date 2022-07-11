@@ -30,14 +30,14 @@ const HomePage: FC<HomePageType> = ({
             const gallery = component as BaseGalleryType
             return <Gallery key={gallery.id} images={gallery.images} />
           }
-          case 'base.speakers-grid': {
-            const speakers = component as SpeakersType
-            return <Speakers key={speakers.id} {...speakers} />
-          }
-          case 'base.schedule': {
-            const schedule = component as ScheduleType
-            return <Schedule key={schedule.id} {...schedule} />
-          }
+          // case 'base.speakers-grid': {
+          //   const speakers = component as SpeakersType
+          //   return <Speakers key={speakers.id} {...speakers} />
+          // }
+          // case 'base.schedule': {
+          //   const schedule = component as ScheduleType
+          //   return <Schedule key={schedule.id} {...schedule} />
+          // }
           default:
             return null
         }
@@ -94,41 +94,41 @@ export const query = graphql`
                       }
                   }
               }
+            ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
+                id
+                sectionTitle
+                strapi_component
+                speakers {
+                    firstName
+                    lastName
+                    title
+                    photo {
+                      url
+                    }
+                    description
+                    position
+                }
+              }
+              ... on STRAPI__COMPONENT_BASE_SCHEDULE {
+                id
+                scheduleTitle
+                strapi_component
+                events {
+                    title
+                    startHour
+                    endHour
+                    date
+                    backgroundColor
+                    displayTitleOnDesktop
+                    logo {
+                        url
+                    }
+                }
+              }
           }
       } 
     }
 `
 
-// ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
-//   id
-//   sectionTitle
-//   strapi_component
-//   speakers {
-//       firstName
-//       lastName
-//       title
-//       photo {
-//         url
-//       }
-//       description
-//       position
-//   }
-// }
-// ... on STRAPI__COMPONENT_BASE_SCHEDULE {
-//   id
-//   scheduleTitle
-//   strapi_component
-//   events {
-//       title
-//       startHour
-//       endHour
-//       date
-//       backgroundColor
-//       displayTitleOnDesktop
-//       logo {
-//           url
-//       }
-//   }
-// }
 
 export default HomePage
