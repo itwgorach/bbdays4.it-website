@@ -10,20 +10,10 @@ type PrivacyPolicyType = {
 }
 
 const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title }) => {
-  const data = useStaticQuery(graphql`
-    {
-      strapiPrivacypolicy {
-        text {
-          data {
-            text
-          }
-        }
-      }
-    }
-  `)
+  const data = useStaticQuery(query)
 
   return (
-    <Modal handleToggle={handleModalToggle} isOpen={isOpen} className="-large" title={title}>
+    <Modal className="-large" handleToggle={handleModalToggle} isOpen={isOpen} title={title}>
       <div className="footer__modal">
         <h2 className="footer__modal-header">Polityka prywatności</h2>
         <ReactMarkdown>{data.strapiPrivacypolicy.text.data.text}</ReactMarkdown>
@@ -31,5 +21,17 @@ const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title
     </Modal>
   )
 }
+
+const query = graphql`
+  {
+    strapiPrivacypolicy {
+      text {
+        data {
+          text
+        }
+      }
+    }
+  }
+`
 
 export default PrivacyPolicy

@@ -19,6 +19,7 @@
 
     &::before{
         content: '✖';
+        cursor: pointer;
         position: absolute;
 
         right: $m-xs;
