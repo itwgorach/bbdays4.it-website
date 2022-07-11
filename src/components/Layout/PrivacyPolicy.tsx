@@ -1,5 +1,5 @@
 import Modal from 'components/Modal'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import React, { FC } from 'react'
 import ReactMarkdown from 'react-markdown'
 
@@ -10,7 +10,7 @@ type PrivacyPolicyType = {
 }
 
 const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title }) => {
-  const query = graphql`
+  const data = useStaticQuery(graphql`
     {
       strapiPrivacypolicy {
         text {
@@ -20,19 +20,14 @@ const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title
         }
       }
     }
-  `
+  `)
 
   return (
-    <Modal handleToggle={handleModalToggle} isOpen={isOpen} modalVariantClassName="-big" title={title}>
-      <StaticQuery
-        query={query}
-        render={(data) => (
-          <div className="footer__modal">
-            <h2 className="footer__modal-header">Polityka prywatności</h2>
-            <ReactMarkdown>{data.strapiPrivacypolicy.text.data.text}</ReactMarkdown>
-          </div>
-        )}
-      />
+    <Modal handleToggle={handleModalToggle} isOpen={isOpen} className="-large" title={title}>
+      <div className="footer__modal">
+        <h2 className="footer__modal-header">Polityka prywatności</h2>
+        <ReactMarkdown>{data.strapiPrivacypolicy.text.data.text}</ReactMarkdown>
+      </div>
     </Modal>
   )
 }

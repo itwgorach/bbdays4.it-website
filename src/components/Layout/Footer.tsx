@@ -13,13 +13,13 @@ const links: LinkType[] = [
 const Footer: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleClick = () => setIsModalOpen(true)
+  const toggleModal = () => setIsModalOpen((isModalOpen) => !isModalOpen)
 
   return (
     <footer className="footer">
       <div className="footer__text">
         <span className="footer__text-copyright">2019-2022 wszelkie prawa zastrzeżone © BBdays4IT </span>
-        <div className="footer__text-modal" onClick={handleClick}>
+        <div className="footer__text-modal" onClick={toggleModal}>
           Polityka prywatności
         </div>
         {links.map(({ name, path }) => {
@@ -40,7 +40,7 @@ const Footer: FC = () => {
         })}
       </div>
       <PrivacyPolicy
-        handleModalToggle={() => setIsModalOpen(false)}
+        handleModalToggle={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
         isOpen={isModalOpen}
         title="Polityka prywatności"
       />
