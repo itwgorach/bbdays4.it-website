@@ -6,8 +6,12 @@ import ScheduleCalendar from '../ScheduleCalendar/ScheduleCalendar'
 import ScheduleEventMobile from './ScheduleEventMobile'
 
 const ScheduleMobile: FC<ScheduleType> = ({ scheduleTitle, events }) => {
+  const getHourFromString = (hour: string) => {
+    return hour.substring(0, 2)
+  }
+
   const eventsSorted = events.sort(
-    (a, b) => parseInt(a.startHour.substring(0, 2)) - parseInt(b.startHour.substring(0, 2)),
+    (a, b) => parseInt(getHourFromString(a.startHour)) - parseInt(getHourFromString(b.startHour)),
   )
 
   return (

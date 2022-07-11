@@ -6,12 +6,16 @@ import cx from 'classnames'
 import ScheduleEventDesktop from './ScheduleEventDesktop'
 
 const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
+  const getHourFromString = (hour: string) => {
+    return hour.substring(0, 2)
+  }
+
   const eventsContent = events?.length
     ? events.map((event) => {
         return events.filter((e) => {
           return (
-            parseInt(event.startHour.substring(0, 2)) <= parseInt(e.startHour.substring(0, 2)) &&
-            parseInt(event.endHour.substring(0, 2)) >= parseInt(e.endHour.substring(0, 2)) &&
+            parseInt(getHourFromString(event.startHour)) <= parseInt(getHourFromString(e.startHour)) &&
+            parseInt(getHourFromString(event.endHour)) >= parseInt(getHourFromString(e.endHour)) &&
             event.date === e.date
           )
         })
@@ -28,7 +32,7 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
   const getEarlierHour = (event) => {
     return event.reduce((a, b) => {
       return parseInt(a.startHour.substring(0, 2)) ===
-        Math.min(parseInt(a.startHour.substring(0, 2)), parseInt(b.startHour.substring(0, 2)))
+        Math.min(parseInt(getHourFromString(a.startHour)), parseInt(getHourFromString(b.startHour)))
         ? a
         : b
     })
@@ -37,7 +41,7 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
   const getLaterHour = (event) => {
     return event.reduce((a, b) => {
       return parseInt(a.endHour.substring(0, 2)) ===
-        Math.max(parseInt(a.endHour.substring(0, 2)), parseInt(b.endHour.substring(0, 2)))
+        Math.max(parseInt(getHourFromString(a.endHour)), parseInt(getHourFromString(b.endHour)))
         ? a
         : b
     })
@@ -84,7 +88,7 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
             const gridColumnNumber = endGridColumn - startGridColumn
 
             const eventDaySorted = eventDay.sort(
-              (a, b) => parseInt(a.startHour.substring(0, 2)) - parseInt(b.startHour.substring(0, 2))
+              (a, b) => parseInt(getHourFromString(a.startHour)) - parseInt(getHourFromString(b.startHour))
             )
 
             return (
@@ -100,14 +104,9 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
                   return (
                     <ScheduleEventDesktop
                       key={event.id}
-                      bgColor={event.backgroundColor}
-                      displayTitleOnDesktop={event.displayTitleOnDesktop}
-                      endHour={event.endHour}
+                      event={event}
                       gridColumnNumber={gridColumnNumber}
-                      logo={event.logo}
-                      startHour={event.startHour}
                       startParentGridColumn={startGridColumn}
-                      title={event.title}
                     />
                   )
                 })}
