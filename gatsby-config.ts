@@ -30,6 +30,16 @@ const strapiConfig = {
       },
       singularName: 'homepage',
     },
+    {
+      queryParams: {
+        populate: {
+          privacypolicy: {
+            populate: '*',
+          },
+        },
+      },
+      singularName: 'privacypolicy',
+    },
   ],
 }
 
