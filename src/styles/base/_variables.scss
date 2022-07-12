@@ -6,6 +6,7 @@
 $font-size-xs: rem(12px);
 $font-size-sm: rem(14px);
 $font-size-base: rem(18px);
+$font-size-base-xs: rem(16px);
 $font-size-lg: rem(22px);
 $font-size-xl: rem(28px);
 $font-size-2xl: rem(40px);
@@ -29,7 +30,8 @@ $line-height-2xl: $m-xs * 7;
 $line-height-3xl: $m-xl;
 
 //----- border radiuses ------------------------------------------------------------------------------------------------
-$border-radius-xs: rem(4px);
+$border-radius-xxs: rem(2px); 
+$border-radius-xs: $border-radius-xxs * 2;
 $border-radius-base: $m-base;
 $border-radius-sm: $m-xs;
 $border-radius-lg: $m-lg;
@@ -69,7 +71,7 @@ $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
-$font-weight-black: 800;
+$font-weight-extra-bold: 800;
 $icon-size: $m-base;
 
 //----- transitions ----------------------------------------------------------------------------------------------------

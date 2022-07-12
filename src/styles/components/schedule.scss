@@ -71,7 +71,7 @@
                 &-day {
                     font-family: $font-family-header;
                     font-weight: $font-weight-medium;
-                    font-size: $font-size-base; // tu ma być 16px a base to 18px
+                    font-size: $font-size-base-xs;
                 }
                 
                 &::before {
@@ -176,7 +176,7 @@
                 &-day {
                     font-family: $font-family-header;
                     font-weight: $font-weight-medium;
-                    font-size: $font-size-base; // tu ma być 16px a base to 18px
+                    font-size: $font-size-base-xs;
                 }
 
                 &:nth-child(1) {

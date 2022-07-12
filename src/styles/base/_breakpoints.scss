@@ -14,7 +14,7 @@
 //    md
 //    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
 //    md
-@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($grid-breakpoints)) {
   $n: index($breakpoint-names, $name);
 
   @return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);

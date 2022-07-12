@@ -1,17 +1,18 @@
 $card-width: 18em;
 $card-height: $card-width * 1.6;
-$card-margin: 0.6em;
+$card-margin: 2em;
 $how-many-cards: 4;
+$max-speakers-width: 1450px;
 
 .speakers {
     &__inner {
-        padding: 0px $m-base $m-lg;
+        padding: 0 $m-base $m-lg;
     }
 
     &__header {
-        margin: $m-2xl 0px $m-xl;
+        margin: $m-2xl 0 $m-xl;
         text-align: center;
-        text-shadow: 0px 0px 95.0668px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 0 96px rgba(0, 0, 0, 0.5);
     }
 
     &__title {
@@ -23,7 +24,7 @@ $how-many-cards: 4;
     }
 
     &__subtitle {
-        margin: 0px;
+        margin: 0;
         font-size: 22px;
         color: $color-dark;
         font-weight: $font-weight-regular;
@@ -31,21 +32,25 @@ $how-many-cards: 4;
 
     &__spacer {
         position: relative;
-        margin-bottom: $m-xl;
+
         height: 2px;
+        max-width: $max-speakers-width;
+
+        margin: 0 auto $m-lg;
+
+        display: none;
 
         &::before {
             @include dashedBorder(false, top, $color-black);
 
             content: "";
             position: absolute;
-            width: 100%;
-            height: 100%;
+            inset: 0;
         }
 
         &.-down {
             margin-top: $m-xl;
-            margin-bottom: 0px;
+            margin-bottom: 0;
         }
     }
 
@@ -54,10 +59,16 @@ $how-many-cards: 4;
         flex-wrap: wrap;
         justify-content: center;
 
-        gap: $card-margin * 2;
+        gap: $card-margin * 3.1;
 
         width: 100%;
-        max-width: $card-margin + ($card-width * $how-many-cards) + (($card-margin * 2) * $how-many-cards);
+        max-width: $max-speakers-width;
         margin: auto;
+    }
+
+    @include media-breakpoint-up(lg) {
+        &__spacer {
+            display: block;
+        }
     }
 }

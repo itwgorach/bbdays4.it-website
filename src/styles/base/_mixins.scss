@@ -13,11 +13,13 @@
     }
 }
 
-@mixin maxTextLines($howManyLines) {
+@mixin maxTextLines($how-many-lines) {
     overflow: hidden;
     text-overflow: ellipsis;
+
     display: -webkit-box;
-    -webkit-line-clamp: $howManyLines; 
-    line-clamp: $howManyLines;
     -webkit-box-orient: vertical;
+
+    line-clamp: $how-many-lines;
+    -webkit-line-clamp: $how-many-lines; 
 }

@@ -11,7 +11,7 @@ type SpeakerCardProps = {
 }
 
 const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
-  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl } = speaker
+  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, position } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
 
@@ -34,6 +34,7 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
           </a>
         </div>
         <Image alt={fullName} url={imageUrl} />
+        <div className="speaker-card__position">{position}</div>
       </div>
     </div>
   )

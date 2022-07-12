@@ -7,13 +7,11 @@ type ImageProps = {
 }
 
 const Image: FC<ImageProps> = ({ url, alt }) => {
-  const className = 'image'
+  if (!url) {
+    return <ImagePlaceholder className="image -placeholder" />
+  }
 
-  return url ? (
-    <img alt={alt} className={className} loading="lazy" src={url} />
-  ) : (
-    <ImagePlaceholder className={className} />
-  )
+  return <img alt={alt} className="image" loading="lazy" src={url} />
 }
 
 export default Image

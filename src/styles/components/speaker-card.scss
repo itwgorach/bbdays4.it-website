@@ -5,9 +5,9 @@
     display: flex;
     flex-direction: column;
 
-    border-radius: 2px;
+    border-radius: $border-radius-xxs;
 
-    cursor: pointer;
+    // cursor: pointer;
     overflow: hidden;
 
     &:nth-child(3n - 2) {
@@ -27,10 +27,11 @@
     &:nth-child(3n - 4) {
         .speaker-card {
             &__image-placeholder {
-                background-color: #F2933B;
+                background-color: #f2933b;
             }
         }
     }
+
     &__content {
         padding: $m-base;
         height: 250px;
@@ -43,15 +44,15 @@
 
     &__title {
         font-size: 24px;
-        font-weight: $font-weight-black;
+        font-weight: $font-weight-extra-bold;
         line-height: $line-height-md;
 
-        margin: $m-xs 0px calc($m-xs * 2);
+        margin: $m-xs 0 calc($m-xs * 2);
     }
 
     &__subtitle {
         @include maxTextLines(4);
-        font-size: 16px;
+        font-size: $font-size-base-xs;
         font-weight: $font-weight-medium;
         line-height: 22px;
         letter-spacing: 0.5px;
@@ -59,17 +60,24 @@
     }
 
     &__image-placeholder {
-        height: 180px;
+        height: 175px;
         width: 100%;
 
         position: relative;
-
         .image {
             position: absolute;
-            max-height: 325px;
-            min-height: 325px;
-            right: -65px;
-            bottom: 0px;
+
+            height: auto;
+            max-height: 290px;
+            width: auto;
+
+            right: 0;
+            bottom: -50px;
+
+            &.-placeholder {
+                right: -65px;
+                bottom: -5px;
+            }
         }
     }
 
@@ -95,7 +103,31 @@
         }
     }
 
+    &__position {
+        position: absolute;
+
+        inset: auto 0 0;
+
+        background: linear-gradient(360deg, rgba(25, 69, 80, 0.5) 0%, rgba(25, 69, 80, 0) 100%);
+
+        padding: $m-base;
+
+        color: $color-white;
+        font-weight: $font-weight-extra-bold;
+        font-size: $font-size-base-xs;
+        letter-spacing: 0.75px;
+        font-family: $font-family-header;
+    }
+
     @include media-breakpoint-up(lg) {
+        &__image-placeholder {
+            height: 200px;
+
+            .image {
+                bottom: 0;
+            }
+        }
+
         &__social {
             height: unset;
             flex-direction: row;
@@ -113,6 +145,43 @@
 
                 &:nth-last-of-type(1) {
                     fill: $color-dark;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-between(xs, lg) {
+        &::before {
+            @include dashedBorder(false, top, $color-black);
+            content: "";
+            height: 2px;
+        }
+    }
+
+    @include media-breakpoint-up(2xl) {
+        position: relative;
+        overflow: inherit;
+
+        + .speaker-card {
+            &::before {
+                @include dashedBorder(false, bottom, $color-black);
+
+                position: absolute;
+                content: "";
+
+                width: 498px;
+                height: 1px;
+
+                transform: rotate(90deg);
+
+                right: 85px;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+            &:nth-child(5n + 5) {
+                &::before {
+                    display: none;
                 }
             }
         }
