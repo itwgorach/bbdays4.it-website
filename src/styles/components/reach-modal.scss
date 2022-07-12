@@ -1,8 +1,9 @@
 [data-reach-dialog-overlay] {
-    z-index: 2;
-    display: flex;
     align-items: center;
+    backdrop-filter: blur(3px);
+    display: flex;
     justify-content: center;
+    z-index: $z-high;
 }
 
 [data-reach-dialog-content] {
@@ -16,18 +17,6 @@
     box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 24px;
 
     position: relative;
-
-    &::before{
-        content: '✖';
-        cursor: pointer;
-        position: absolute;
-
-        right: $m-xs;
-        top: $m-xs;
-
-        font-size: 2em;
-        color: $color-text;
-    }
 
     .speaker-details {
         &__header {
@@ -147,9 +136,7 @@
     }
     
     &.-large {
-        bottom: 5%;
         padding: $m-base !important;
-        position: absolute;
         overflow: auto;
         width: 90% !important;
     }
@@ -157,6 +144,21 @@
     .footer__modal {
         &-header {
             text-align: center;
+        }
+
+        &-button {
+            background: none;
+            border: none;
+            position: absolute;
+            right: $m-sm;
+            top: $m-sm;
+            
+            &::before{
+                color: $color-text;
+                content: '✖';
+                cursor: pointer;
+                font-size: 2em;
+            }
         }
     }
 }

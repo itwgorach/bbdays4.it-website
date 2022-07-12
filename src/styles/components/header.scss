@@ -12,7 +12,7 @@
   position: fixed;
   transition: background-color $transition-duration $transition-function;
   width: 100%;
-  z-index: $z-higher;
+  z-index: $z-base;
 
   &.-colored {
     background-color: $color-primary;
@@ -60,7 +60,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: $z-higher;
+  z-index: $z-base;
 
   &__logo,
   &__hamburger-icon {
@@ -95,7 +95,7 @@
     margin: 0;
     padding: $m-base;
     width: 100vw;
-    z-index: $z-higher;
+    z-index: $z-base;
 
     .header-mobile {
       &__logo {

@@ -16,6 +16,7 @@ const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title
     <Modal className="-large" handleToggle={handleModalToggle} isOpen={isOpen} title={title}>
       <div className="footer__modal">
         <h2 className="footer__modal-header">Polityka prywatności</h2>
+        <button className="footer__modal-button" onClick={handleModalToggle} />
         <ReactMarkdown>{data.strapiPrivacypolicy.text.data.text}</ReactMarkdown>
       </div>
     </Modal>
