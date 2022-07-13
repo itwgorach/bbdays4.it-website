@@ -6564,9 +6564,4 @@ type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx2307994348Query = {
       )>>> }
     )>>> }> };
 
-type staticUserspatrykSelleobbdaysbbdaysWebsitesrccomponentsLayoutPrivacyPolicyTsx429278234QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type staticUserspatrykSelleobbdaysbbdaysWebsitesrccomponentsLayoutPrivacyPolicyTsx429278234Query = { readonly strapiPrivacypolicy: Maybe<{ readonly text: Maybe<{ readonly data: Maybe<Pick<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE, 'text'>> }> }> };
-
 }

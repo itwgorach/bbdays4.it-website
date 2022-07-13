@@ -150,7 +150,7 @@
         }
     }
 
-    @include media-breakpoint-between(xs, lg) {
+    @include media-breakpoint-between(xs, xl) {
         &::before {
             @include dashedBorder(false, top, $color-black);
             content: "";
@@ -179,7 +179,10 @@
                 bottom: 0;
                 margin: auto;
             }
-            &:nth-child(5n + 5) {
+            // 5 i 9
+            &:nth-child(5),
+            &:nth-child(9),
+            &:nth-child(13) {
                 &::before {
                     display: none;
                 }
