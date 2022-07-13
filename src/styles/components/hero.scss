@@ -55,7 +55,7 @@
       line-height: $line-height-base;
     }
 
-    @media only screen and (min-width: map-get($grid-breakpoints, md)) {
+    @include media-breakpoint-up(md) {
       font-size: $font-size-3xl;
       line-height: $line-height-2xl;
       margin: $m-base;

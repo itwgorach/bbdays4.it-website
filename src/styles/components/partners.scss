@@ -21,7 +21,7 @@
     justify-content: center;
     margin-top: $m-lg;
     
-    @media only screen and (min-width: map-get($grid-breakpoints, xl)) {
+    @include media-breakpoint-up(xl) {
       margin-inline: auto;
       width: 1200px;
     }
@@ -43,12 +43,12 @@
       aspect-ratio: 16 / 9;
     }
 
-    @media only screen and (min-width: map-get($grid-breakpoints, sm))  and (max-width: map-get($grid-breakpoints, lg)) {
+    @include media-breakpoint-between(sm, lg) {
       width: 50%;
     }
   }
 
-  @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+  @include media-breakpoint-up(lg) {
     &__inner {
       padding: $m-base 0 $m-2xl;
     }

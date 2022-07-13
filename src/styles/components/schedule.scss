@@ -50,7 +50,7 @@
                 justify-content: center;
                 margin-bottom: $m-sm;
 
-                @media only screen and (max-width: map-get($grid-breakpoints, xl)) {
+                @include media-breakpoint-down(xl) {
                     font-size: $font-size-base;
                 }
             }
@@ -268,7 +268,7 @@
         }
     }
 
-    @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+    @include media-breakpoint-up(lg) {
         &-mobile {
             display: none;
         }

@@ -163,11 +163,11 @@
     }
   }
 
-  @media only screen and (min-width: map-get($grid-breakpoints, xl)) {
+  @include media-breakpoint-up(xl) {
     display: none;
   }
 
-  @media only screen and (min-width: map-get($grid-breakpoints, md)) {
+  @include media-breakpoint-up(md) {
     &__logo,
     &__hamburger-icon {
       height: $icon-size-lg;
