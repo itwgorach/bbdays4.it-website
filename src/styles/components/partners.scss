@@ -2,7 +2,7 @@
   background-color: $color-dark;
   color: $color-white;
   font-family: $font-face-body;
-  
+
   &__inner {
     display: flex;
     flex-direction: column;
@@ -20,7 +20,8 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: $m-lg;
-    
+    row-gap: $m-base;
+
     @media only screen and (min-width: map-get($grid-breakpoints, xl)) {
       margin-inline: auto;
       width: 1200px;
@@ -43,7 +44,7 @@
       aspect-ratio: 16 / 9;
     }
 
-    @media only screen and (min-width: map-get($grid-breakpoints, sm))  and (max-width: map-get($grid-breakpoints, lg)) {
+    @media only screen and (min-width: map-get($grid-breakpoints, sm)) and (max-width: map-get($grid-breakpoints, lg)) {
       width: 50%;
     }
   }
