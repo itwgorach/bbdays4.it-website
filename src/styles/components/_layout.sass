@@ -1,0 +1,45 @@
+.layout
+    background-color: $color-background
+
+.cookies
+    align-items: center !important
+    opacity: 0.9
+
+    &__text
+        color: $color-white
+        font-family: $font-family-header
+        font-size: $font-size-sm
+        padding-right: $m-xs
+
+        &-link
+            color: $color-white
+            cursor: pointer
+            font-family: $font-family-header
+            font-size: $font-size-sm
+
+        &-modal
+            border-left: 1px solid $color-white
+            color: $color-white
+            cursor: pointer
+            display: inline
+            font-family: $font-family-header
+            font-size: $font-size-sm
+            padding-inline: $m-xs
+            text-decoration: underline
+
+    &__button
+        background-color: $color-secondary !important
+        border-radius: $border-radius-xs !important
+        color: $color-text !important
+        font-family: $font-family-header
+        font-size: $font-size-sm
+        font-weight: $font-weight-bold
+        padding: $m-sm !important
+        text-decoration: none
+        transition: box-shadow $transition-function .2s
+
+        &:hover
+            box-shadow: 0 0 8px $color-secondary !important
+
+        &:active
+            background-color: $color-active !important

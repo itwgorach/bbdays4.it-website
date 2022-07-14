@@ -1,0 +1,162 @@
+// Desktop header styling
+
+.header-desktop
+    align-items: center
+    box-sizing: border-box
+    color: $color-white
+    display: none
+    font-family: $font-face-body
+    font-size: $font-size-base
+    justify-content: space-between
+    padding: $m-base $m-lg
+    position: fixed
+    transition: background-color $transition-duration $transition-function
+    width: 100%
+    z-index: $z-base
+
+    &.-colored
+        background-color: $color-primary
+
+    &__logo
+        height: $icon-size-lg
+
+    &__nav
+        display: flex
+        justify-content: space-around
+        width: 75%
+        max-width: 800px
+
+    &__link
+        color: $color-white
+        text-decoration: none
+
+    &__link:visited
+        color: $color-white
+
+    +media-breakpoint-up(lg)
+        display: flex
+
+// Mobile header styling
+
+.header-mobile
+    align-items: center
+    background-color: $color-white
+    box-sizing: border-box
+    color: $color-white
+    display: flex
+    flex-direction: column
+    font-family: $font-family-body
+    font-size: calc(18px / 16px) rem
+    font-weight: $font-weight-bold
+    justify-content: space-between
+    padding: $m-base
+    position: sticky
+    top: 0
+    width: 100%
+    z-index: $z-base
+
+    &__logo,
+    &__hamburger-icon
+        height: $icon-size-base
+
+        &.-light
+            display: none
+
+    &__social-icon
+        height: $icon-size-lg
+
+    &__top-bar
+        align-items: center
+        display: flex
+        justify-content: space-between
+
+        overscroll-behavior: contain
+        width: 100%
+
+    &__menu
+        display: none
+
+    &.-hamburger-open
+        background: $color-primary url(/images/header-background.png) no-repeat center
+        background-size: cover
+        height: 100vh
+        margin: 0
+        padding: $m-base
+        width: 100vw
+        z-index: $z-base
+
+        .header-mobile
+            &__logo
+                &.-light
+                    display: block
+
+                &.-dark
+                    display: none
+
+            &__menu
+                align-items: center
+                display: flex
+                flex-direction: column
+                flex-grow: 1
+                justify-content: space-around
+                margin-top: $m-xl
+                width: 100%
+
+            &__nav
+                display: flex
+                flex-direction: column
+                font-size: $font-size-xl
+                font-weight: 800
+                gap: $m-base
+                text-align: center
+
+            &__link
+                color: $color-white
+                text-decoration: none
+
+            &__link:visited
+                color: $color-white
+
+            &__contact-button
+                background-color: $color-white
+                border: 2px solid $color-white
+                border-radius: $border-radius-xs
+                color: $color-primary
+                font-weight: $font-weight-bold
+                text-decoration: none
+                transition: box-shadow $transition-function 0.2s
+                padding: $m-sm
+
+                &:hover
+                    box-shadow: 0 0 8px $color-white
+
+                &:active
+                    background-color: $color-neutral-300
+                    border-color: $color-neutral-300
+
+            &__socials
+                display: flex
+                gap: $m-sm
+
+    +media-breakpoint-up(xl)
+        display: none
+
+    +media-breakpoint-up(md)
+        &__logo,
+        &__hamburger-icon
+            height: $icon-size-lg
+
+        &__menu 
+            justify-content: space-between
+
+        &__social-icon
+            height: $icon-size-xl
+
+        &.-hamburger-open
+            .header-mobile
+
+                &__nav
+                    font-size: $font-size-2xl
+
+                &__contact-button
+                    font-size: $font-size-lg
