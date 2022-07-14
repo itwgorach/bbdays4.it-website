@@ -1,17 +1,57 @@
 $card-width: 18em;
 $card-height: $card-width * 1.6;
-$card-margin: 0.6em;
+$card-margin: 2em;
 $how-many-cards: 4;
+$max-speakers-width: 1450px;
 
 .speakers {
     &__inner {
-        @extend .partners__inner;
-        margin: $m-2xl 0px $m-2xl;
-        padding: 0px $m-lg $m-lg;
+        padding: 0 $m-base $m-lg;
     }
 
     &__header {
-        @extend .partners__header;
+        margin: $m-2xl 0 $m-xl;
+        text-align: center;
+        text-shadow: 0 0 96px rgba(0, 0, 0, 0.5);
+    }
+
+    &__title {
+        margin-bottom: $m-xs;
+        font-weight: $font-weight-bold;
+        line-height: $line-height-base;
+        font-size: 30px;
+        color: $color-dark;
+    }
+
+    &__subtitle {
+        margin: 0;
+        font-size: 22px;
+        color: $color-dark;
+        font-weight: $font-weight-regular;
+    }
+
+    &__spacer {
+        position: relative;
+
+        height: 2px;
+        max-width: $max-speakers-width;
+
+        margin: 0 auto $m-lg;
+
+        display: none;
+
+        &::before {
+            @include dashedBorder(false, top, $color-black);
+
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+
+        &.-down {
+            margin-top: $m-xl;
+            margin-bottom: 0;
+        }
     }
 
     &__list {
@@ -19,10 +59,16 @@ $how-many-cards: 4;
         flex-wrap: wrap;
         justify-content: center;
 
-        gap: $card-margin * 2;
+        gap: $card-margin * 3.1;
 
         width: 100%;
-        max-width: $card-margin + ($card-width * $how-many-cards) + (($card-margin * 2) * $how-many-cards);
+        max-width: $max-speakers-width;
         margin: auto;
+    }
+
+    @include media-breakpoint-up(lg) {
+        &__spacer {
+            display: block;
+        }
     }
 }
