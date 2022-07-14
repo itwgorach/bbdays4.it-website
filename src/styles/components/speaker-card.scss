@@ -1,33 +1,191 @@
 .speaker-card {
     width: $card-width;
+    background-color: $color-white;
 
     display: flex;
     flex-direction: column;
 
-    border-radius: $border-radius-xs;
+    border-radius: $border-radius-xxs;
 
-    cursor: pointer;
-    transition: all $transition-duration $transition-function;
+    // cursor: pointer;
+    overflow: hidden;
 
-    &:hover {
-        transform: translateY(-$m-xs);
-        background-color: rgba($color-black, 0.05);
+    &:nth-child(3n - 2) {
+        .speaker-card {
+            &__image-placeholder {
+                background-color: $color-primary;
+            }
+        }
+    }
+    &:nth-child(3n - 3) {
+        .speaker-card {
+            &__image-placeholder {
+                background-color: #f9ca3e;
+            }
+        }
+    }
+    &:nth-child(3n - 4) {
+        .speaker-card {
+            &__image-placeholder {
+                background-color: #f2933b;
+            }
+        }
     }
 
     &__content {
-        padding: 0px $m-lg;
+        padding: $m-base;
+        height: 250px;
     }
-    &__title {
-        color: $color-primary;
-        font-size: $font-size-lg;
-        text-transform: uppercase;
-        font-weight: $font-weight-bold;
-        margin-bottom: $m-xs;
-    }
+
+    &__title,
     &__subtitle {
-        color: $color-primary;
-        font-size: $font-size-sm;
-        text-transform: uppercase;
-        margin-bottom: $m-xs;
+        color: $color-dark;
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: $font-weight-extra-bold;
+        line-height: $line-height-md;
+
+        margin: $m-xs 0 calc($m-xs * 2);
+    }
+
+    &__subtitle {
+        @include maxTextLines(4);
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-medium;
+        line-height: 22px;
+        letter-spacing: 0.5px;
+        margin-bottom: $m-base;
+    }
+
+    &__image-placeholder {
+        height: 175px;
+        width: 100%;
+
+        position: relative;
+        .image {
+            position: absolute;
+
+            height: auto;
+            max-height: 290px;
+            width: auto;
+
+            right: 0;
+            bottom: -50px;
+
+            &.-placeholder {
+                right: -65px;
+                bottom: -5px;
+            }
+        }
+    }
+
+    &__social {
+        height: 125px;
+        z-index: 1;
+        position: absolute;
+        top: -60px;
+        left: $m-base;
+
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    &__linkedin {
+        path {
+            stroke: $color-dark;
+
+            &:nth-last-of-type(2) {
+                fill: $color-dark;
+            }
+        }
+    }
+
+    &__position {
+        position: absolute;
+
+        inset: auto 0 0;
+
+        background: linear-gradient(360deg, rgba(25, 69, 80, 0.5) 0%, rgba(25, 69, 80, 0) 100%);
+
+        padding: $m-base;
+
+        color: $color-white;
+        font-weight: $font-weight-extra-bold;
+        font-size: $font-size-base-xs;
+        letter-spacing: 0.75px;
+        font-family: $font-family-header;
+    }
+
+    @include media-breakpoint-up(lg) {
+        &__image-placeholder {
+            height: 200px;
+
+            .image {
+                bottom: 0;
+            }
+        }
+
+        &__social {
+            height: unset;
+            flex-direction: row;
+
+            width: 55px;
+        }
+        &__linkedin,
+        &__twitter {
+            width: $icon-size;
+        }
+
+        &__twitter {
+            path {
+                stroke: $color-dark;
+
+                &:nth-last-of-type(1) {
+                    fill: $color-dark;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-between(xs, xl) {
+        &::before {
+            @include dashedBorder(false, top, $color-black);
+            content: "";
+            height: 2px;
+        }
+    }
+
+    @include media-breakpoint-up(2xl) {
+        position: relative;
+        overflow: inherit;
+
+        + .speaker-card {
+            &::before {
+                @include dashedBorder(false, bottom, $color-black);
+
+                position: absolute;
+                content: "";
+
+                width: 498px;
+                height: 1px;
+
+                transform: rotate(90deg);
+
+                right: 85px;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+            &:nth-child(5),
+            &:nth-child(9),
+            &:nth-child(13) {
+                &::before {
+                    display: none;
+                }
+            }
+        }
     }
 }
