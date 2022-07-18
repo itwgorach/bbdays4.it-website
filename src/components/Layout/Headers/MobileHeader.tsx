@@ -2,14 +2,21 @@ import { socialLinks } from 'constants/constants'
 import cx from 'classnames'
 import { HeaderType } from 'types'
 import { Link } from 'gatsby'
-import React, { FC, useCallback, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 import { BBDaysLogoDark, BBDaysLogoLight, CloseHamburgerIcon, HamburgerIcon } from 'components/icons'
 
 const MobileHeader: FC<HeaderType> = ({ links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const isMobile = useMediaQuery({ maxWidth: 1200 })
 
   const headerMobileClasses = cx('header-mobile', { '-hamburger-open': isMenuOpen })
+
+  useEffect(() => {
+    !isMobile && setIsMenuOpen(false)
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto'
+  }, [isMenuOpen, isMobile])
 
   const getLinkComponent = useCallback((link) => {
     if (link.path.startsWith('http'))
