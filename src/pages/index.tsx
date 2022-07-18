@@ -17,6 +17,9 @@ const HomePage: FC<HomePageType> = ({
   const content = useMemo(
     () =>
       homepage?.map((component) => {
+        if(!component?.isSectionVisible) {
+          return null
+        }
         switch (component?.strapi_component) {
           case 'base.partners-slider': {
             const partnersSection = component as PartnersType
@@ -64,6 +67,7 @@ export const query = graphql`
                   url
                 }
                 strapi_component
+                isSectionVisible
               }
               ... on STRAPI__COMPONENT_BASE_HERO {
                   id
@@ -74,6 +78,7 @@ export const query = graphql`
                   subtitlePos
                   title
                   strapi_component
+                  isSectionVisible
                   backgroundImage {
                       url
                   }
@@ -82,6 +87,7 @@ export const query = graphql`
                   id
                   sectionTitle
                   strapi_component
+                  isSectionVisible
                   partners {
                       id
                       Name
@@ -99,6 +105,7 @@ export const query = graphql`
                   sectionTitle
                   sectionSubtitle
                   strapi_component
+                  isSectionVisible
                   speakers {
                       firstName
                       lastName
@@ -116,6 +123,7 @@ export const query = graphql`
                   id
                   scheduleTitle
                   strapi_component
+                  isSectionVisible
                   events {
                       title
                       startHour
