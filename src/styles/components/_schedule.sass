@@ -1,309 +1,309 @@
 @mixin dashedBorder($left: true, $position: top, $color: $color-black)
-    @if $left
-        background-image: linear-gradient(to right, $color 33%, rgba(255,255,255,0) 0%), linear-gradient($color 33%, rgba(255,255,255,0) 0%)
-        background-position: top, left
-        background-repeat: repeat-x, repeat-y
-        background-size: 13px 1px, 1px 13px
-    @else
-        background-image: linear-gradient(to right, $color 33%, rgba(255,255,255,0) 0%)
-        background-position: $position
-        background-repeat: repeat-x
-        background-size: 13px 1px
+  @if $left
+    background-image: linear-gradient(to right, $color 33%, rgba(255,255,255,0) 0%), linear-gradient($color 33%, rgba(255,255,255,0) 0%)
+    background-position: top, left
+    background-repeat: repeat-x, repeat-y
+    background-size: 13px 1px, 1px 13px
+  @else
+    background-image: linear-gradient(to right, $color 33%, rgba(255,255,255,0) 0%)
+    background-position: $position
+    background-repeat: repeat-x
+    background-size: 13px 1px
 
 .schedule
 
-    // Desktop styling
+  // Desktop styling
 
-    &-desktop
-        align-items: center
-        display: none
-        flex-direction: column
+  &-desktop
+    align-items: center
+    display: none
+    flex-direction: column
+    justify-content: center
+    margin-top: $m-xl
+
+    &__header
+      text-align: center
+
+    &__grid
+      box-sizing: border-box
+      display: grid
+      grid-template-columns: 150px repeat(13, 1fr)
+      grid-template-rows: 100px repeat(10, 80px)
+      max-width: 95%
+
+      &-hours
+        display: flex
+        grid-column: 2/15
+        grid-row: 1
+
+      &-hour
+        align-items: end
+        display: flex
+        flex: 1 1
+        font-family: $font-family-header
+        font-weight: $font-weight-bold
+        font-size: $font-size-lg
         justify-content: center
-        margin-top: $m-xl
+        margin-bottom: $m-sm
 
-        &__header
-            text-align: center
+        +media-breakpoint-down(xl)
+          font-size: $font-size-base
 
-        &__grid
-            box-sizing: border-box
-            display: grid
-            grid-template-columns: 150px repeat(13, 1fr)
-            grid-template-rows: 100px repeat(10, 80px)
-            max-width: 95%
-
-            &-hours
-                display: flex
-                grid-column: 2/15
-                grid-row: 1
-
-            &-hour
-                align-items: end
-                display: flex
-                flex: 1 1
-                font-family: $font-family-header
-                font-weight: $font-weight-bold
-                font-size: $font-size-lg
-                justify-content: center
-                margin-bottom: $m-sm
-
-                +media-breakpoint-down(xl)
-                    font-size: $font-size-base
-
-            &-days
-                background: #FCCC3E
-                display: flex
-                flex-direction: column
-                grid-column: 1
-                grid-row: 2/12
-                position: relative
-
-                &::before
-                    content: ''
-                    background: #FCCC3E
-                    width: 100%
-                    position: absolute
-                    height: 1%
-                    top: -1%
-
-            &-date
-                flex: 1 1
-                font-family: $font-family-header
-                font-weight: $font-weight-bold
-                font-size: $font-size-lg
-                padding: $m-xs 0 0 $m-sm
-                position: relative
-
-                &-day
-                    font-family: $font-family-header
-                    font-weight: $font-weight-medium
-                    font-size: $font-size-base
-
-                &::before
-                    +dashedBorder(false, top, $color-black)
-
-                    content: ''
-                    height: 1px
-                    position: absolute
-                    top: 0
-                    width: 90%
-
-                &::after
-                    background-color: $color-background
-                    bottom: 0
-                    content: ''
-                    height: $m-xs
-                    position: absolute
-                    width: 90%
-
-                &:last-of-type
-                    &::after
-                        display: none
-
-            &-events
-                display: grid
-                grid-template-rows: repeat(auto-fit, minmax(0, 1fr))
-                margin-bottom: $m-xs
-
-                &-event
-                    align-content: center
-                    align-items: center
-                    display: flex
-                    flex-wrap: wrap
-                    gap: 10%
-                    height: 100%
-                    justify-content: center
-                    margin-left: $m-xs
-                    z-index: 1
-
-                    &-title
-                        color: $color-white
-                        font-weight: $font-weight-bold
-                        font-size: $font-size-sm
-                        text-align: center
-
-                    &-logo
-                        max-height: 70%
-                        max-width: 80%
-
-            &-placeholder
-                +dashedBorder(true, top, $color-black)
-
-                &.-no-left-line
-                    +dashedBorder(false, top, $color-black)
-
-    // Mobile styling
-
-    &-mobile
-        align-items: center
+      &-days
+        background: #FCCC3E
         display: flex
         flex-direction: column
-        justify-content: center
-        margin-top: $m-lg
+        grid-column: 1
+        grid-row: 2/12
+        position: relative
 
-        &__header
-            text-align: center
-            font-weight: $font-weight-bold
-            font-size: $font-size-lg
+        &::before
+          content: ''
+          background: #FCCC3E
+          width: 100%
+          position: absolute
+          height: 1%
+          top: -1%
 
-        &__grid
-            box-sizing: border-box
-            display: grid
-            grid-template-columns: 72px 1fr
-            grid-template-rows: auto
-            margin-top: $m-lg
-            width: 100%
+      &-date
+        flex: 1 1
+        font-family: $font-family-header
+        font-weight: $font-weight-bold
+        font-size: $font-size-lg
+        padding: $m-xs 0 0 $m-sm
+        position: relative
 
-            &-date
-                background: #FCCC3E
-                flex: 1 1
-                font-family: $font-family-header
-                font-weight: $font-weight-bold
-                font-size: $font-size-lg
-                grid-column: 1
-                padding: $m-xs 0 0 $m-sm
-                position: relative
+        &-day
+          font-family: $font-family-header
+          font-weight: $font-weight-medium
+          font-size: $font-size-base
 
-                &-day
-                    font-family: $font-family-header
-                    font-weight: $font-weight-medium
-                    font-size: $font-size-base
+        &::before
+          +dashedBorder(false, top, $color-black)
 
-                &:nth-child(1)
-                    ::before
-                        background-color: #FCCC3E
-                        content: ''
-                        height: $m-xs
-                        left: 0
-                        position: absolute
-                        top: -$m-xs
-                        width: 100%
+          content: ''
+          height: 1px
+          position: absolute
+          top: 0
+          width: 90%
 
-                &::before
-                    +dashedBorder(false, bottom, $color-black)
+        &::after
+          background-color: $color-background
+          bottom: 0
+          content: ''
+          height: $m-xs
+          position: absolute
+          width: 90%
 
-                    content: ''
-                    height: 1px
-                    position: absolute
-                    top: 0
-                    width: 90%
-
-                &::after
-                    background-color: $color-background
-                    bottom: 0
-                    content: ''
-                    height: $m-xs
-                    position: absolute
-                    width: 90%
-
-                &:nth-child(10)
-                    &::after
-                        display: none
-
-            &-events
-                margin: 0 0 $m-base $m-xs
-                grid-column: 2
-
-            &-event
-                +dashedBorder(false, bottom, $color-background)
-
-                align-items: center
-                display: flex
-                justify-content: space-between
-                height: 48px
-                padding: 0 $m-sm
-
-                &-title
-                    color: $color-white
-                    font-weight: $font-weight-bold
-                    font-size: $font-size-sm
-
-                &-hours
-                    color: $color-white
-                    font-weight: $font-weight-semi-bold
-                    font-size: $font-size-sm
-
-                &:last-of-type
-                    background-image: none
-
-            &-placeholder
-                +dashedBorder(false, top, $color-black)
-
-    +media-breakpoint-up(lg)
-        &-mobile
+        &:last-of-type
+          &::after
             display: none
 
-        &-desktop
-            display: flex
+      &-events
+        display: grid
+        grid-template-rows: repeat(auto-fit, minmax(0, 1fr))
+        margin-bottom: $m-xs
+
+        &-event
+          align-content: center
+          align-items: center
+          display: flex
+          flex-wrap: wrap
+          gap: 10%
+          height: 100%
+          justify-content: center
+          margin-left: $m-xs
+          z-index: 1
+
+          &-title
+            color: $color-white
+            font-weight: $font-weight-bold
+            font-size: $font-size-sm
+            text-align: center
+
+          &-logo
+            max-height: 70%
+            max-width: 80%
+
+      &-placeholder
+        +dashedBorder(true, top, $color-black)
+
+        &.-no-left-line
+          +dashedBorder(false, top, $color-black)
+
+  // Mobile styling
+
+  &-mobile
+    align-items: center
+    display: flex
+    flex-direction: column
+    justify-content: center
+    margin-top: $m-lg
+
+    &__header
+      text-align: center
+      font-weight: $font-weight-bold
+      font-size: $font-size-lg
+
+    &__grid
+      box-sizing: border-box
+      display: grid
+      grid-template-columns: 72px 1fr
+      grid-template-rows: auto
+      margin-top: $m-lg
+      width: 100%
+
+      &-date
+        background: #FCCC3E
+        flex: 1 1
+        font-family: $font-family-header
+        font-weight: $font-weight-bold
+        font-size: $font-size-lg
+        grid-column: 1
+        padding: $m-xs 0 0 $m-sm
+        position: relative
+
+        &-day
+          font-family: $font-family-header
+          font-weight: $font-weight-medium
+          font-size: $font-size-base
+
+        &:nth-child(1)
+          ::before
+            background-color: #FCCC3E
+            content: ''
+            height: $m-xs
+            left: 0
+            position: absolute
+            top: -$m-xs
+            width: 100%
+
+        &::before
+          +dashedBorder(false, bottom, $color-black)
+
+          content: ''
+          height: 1px
+          position: absolute
+          top: 0
+          width: 90%
+
+        &::after
+          background-color: $color-background
+          bottom: 0
+          content: ''
+          height: $m-xs
+          position: absolute
+          width: 90%
+
+        &:nth-child(10)
+          &::after
+            display: none
+
+      &-events
+        margin: 0 0 $m-base $m-xs
+        grid-column: 2
+
+      &-event
+        +dashedBorder(false, bottom, $color-background)
+
+        align-items: center
+        display: flex
+        justify-content: space-between
+        height: 48px
+        padding: 0 $m-sm
+
+        &-title
+          color: $color-white
+          font-weight: $font-weight-bold
+          font-size: $font-size-sm
+
+        &-hours
+          color: $color-white
+          font-weight: $font-weight-semi-bold
+          font-size: $font-size-sm
+
+        &:last-of-type
+          background-image: none
+
+      &-placeholder
+        +dashedBorder(false, top, $color-black)
+
+  +media-breakpoint-up(lg)
+    &-mobile
+      display: none
+
+    &-desktop
+      display: flex
 
 // Calendar styling
 
 .calendar
+  align-items: center
+  display: flex
+  flex-direction: column
+  margin-top: $m-lg
+
+  &__button
     align-items: center
+    background: none
+    border: none
+    cursor: pointer
     display: flex
-    flex-direction: column
-    margin-top: $m-lg
+    gap: $m-sm
+    justify-content: center
+    outline: none
+    position: relative
+    width: 100%
 
-    &__button
-        align-items: center
-        background: none
-        border: none
-        cursor: pointer
-        display: flex
-        gap: $m-sm
-        justify-content: center
-        outline: none
-        position: relative
-        width: 100%
+    &-text
+      color: $color-black
+      font-weight: $font-weight-bold
+      font-size: $font-size-base
 
-        &-text
-            color: $color-black
-            font-weight: $font-weight-bold
-            font-size: $font-size-base
+    &:after
+      +dashedBorder(false, bottom, $color-black)
 
-        &:after
-            +dashedBorder(false, bottom, $color-black)
+      bottom: -$m-xs
+      content: ""
+      height: 1px
+      left: 0
+      position: absolute
+      width: 100%
 
-            bottom: -$m-xs
-            content: ""
-            height: 1px
-            left: 0
-            position: absolute
-            width: 100%
+  &__icon-rotated
+    transform: rotateZ(180deg)
 
-    &__icon-rotated
-        transform: rotateZ(180deg)
+  &__grid
+    display: grid
+    grid-template-columns: repeat(7, 1fr)
+    grid-template-rows: repeat(6, 40px)
+    margin-top: $m-sm
+    max-height: 0
+    overflow: hidden
+    transition: max-height 0.4s $transition-function
 
-    &__grid
-        display: grid
-        grid-template-columns: repeat(7, 1fr)
-        grid-template-rows: repeat(6, 40px)
-        margin-top: $m-sm
-        max-height: 0
-        overflow: hidden
-        transition: max-height 0.4s $transition-function
+    &-day
+      align-items: center
+      display: flex
+      font-weight: $font-weight-bold
+      font-size: $font-size-base
+      justify-content: center
 
-        &-day
-            align-items: center
-            display: flex
-            font-weight: $font-weight-bold
-            font-size: $font-size-base
-            justify-content: center
+    &-date
+      align-items: center
+      display: flex
+      font-weight: $font-weight-semi-bold
+      font-size: $font-size-base
+      justify-content: center
+      margin: 4px 0
+      opacity: 0.4
 
-        &-date
-            align-items: center
-            display: flex
-            font-weight: $font-weight-semi-bold
-            font-size: $font-size-base
-            justify-content: center
-            margin: 4px 0
-            opacity: 0.4
+      &.-first
+        grid-column: 4
 
-            &.-first
-                grid-column: 4
+      &.-coloured
+        background-color: #fece3e
+        opacity: 1
 
-            &.-coloured
-                background-color: #fece3e
-                opacity: 1
-
-        &.-open
-            max-height: 300px
+    &.-open
+      max-height: 300px
