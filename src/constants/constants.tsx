@@ -11,7 +11,7 @@ export const socialLinks = [
     Icon: InstagramIcon,
   },
   {
-    href: '#', // linkedin href
+    href: 'https://www.linkedin.com/company/bbdays4it/', // linkedin href
     Icon: LinkedinIcon,
   },
   {
@@ -19,7 +19,7 @@ export const socialLinks = [
     Icon: TwitterIcon,
   },
   {
-    href: '#', // youtube href
+    href: 'https://www.youtube.com/channel/UCVPN7WOmLWtwHm1lFzN8Q9A', // youtube href
     Icon: YoutubeIcon,
   },
 ]
