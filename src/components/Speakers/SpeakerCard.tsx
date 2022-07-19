@@ -4,26 +4,37 @@ import { SpeakerType } from 'types'
 import { getSpeakerFullName } from 'utils/getSpeakerFullName'
 
 import Image from 'components/Image'
+import { LinkedinIcon, TwitterIcon } from 'components/icons'
 
 type SpeakerCardProps = {
   speaker: SpeakerType,
-  handleClick: () => void,
 }
 
-const SpeakerCard: FC<SpeakerCardProps> = ({ speaker, handleClick }) => {
-  const { photo, firstName, lastName, position } = speaker
+const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
+  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, position } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
 
   return (
-    <div className="speaker-card" onClick={handleClick}>
-      <Image alt={fullName} url={imageUrl} />
+    <div className="speaker-card">
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">
           <div>{firstName}</div>
           <div>{lastName}</div>
         </h3>
-        {!!position && <div className="speaker-card__subtitle">- {position}</div>}
+        <div className="speaker-card__subtitle">{title}</div>
+      </div>
+      <div className="speaker-card__image-placeholder">
+        <div className="speaker-card__social">
+          <a href={linkedinUrl} rel="noopener noreferrer" target="_blank">
+            <LinkedinIcon className="speaker-card__linkedin" />
+          </a>
+          <a href={twitterUrl} rel="noopener noreferrer" target="_blank">
+            <TwitterIcon className="speaker-card__twitter" />
+          </a>
+        </div>
+        <Image alt={fullName} url={imageUrl} />
+        <div className="speaker-card__position">{position}</div>
       </div>
     </div>
   )

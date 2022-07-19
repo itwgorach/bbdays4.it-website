@@ -1,4 +1,4 @@
-import { links as socialLinks } from 'constants/constants'
+import { socialLinks } from 'constants/constants'
 import cx from 'classnames'
 import { HeaderType } from 'types'
 import { Link } from 'gatsby'

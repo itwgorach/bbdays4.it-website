@@ -1,33 +1,22 @@
 [data-reach-dialog-overlay] {
-    z-index: 2;
-    display: flex;
     align-items: center;
+    backdrop-filter: blur(3px);
+    display: flex;
     justify-content: center;
+    z-index: $z-high;
 }
 
 [data-reach-dialog-content] {
     margin: 0 !important;
-    width: 700px !important;
     padding: 0px 0px $m-xs !important;
 
     max-height: 75vh;
     max-width: 90%;
     border-radius: $border-radius-xs;
     box-sizing: border-box;
-    box-shadow: rgba(255, 255, 255, 0.5) 0px 8px 24px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 24px;
 
     position: relative;
-
-    &::before{
-        content: '✖';
-        position: absolute;
-
-        right: $m-xs;
-        top: $m-xs;
-
-        font-size: 2em;
-        color: $color-text;
-    }
 
     .speaker-details {
         &__header {
@@ -40,19 +29,19 @@
                 max-width: 100%;
                 min-height: calc($card-height / 1.35);
                 max-height: calc($card-height / 1.35);
-                margin: 0px auto $m-base;
+                margin: 0 auto $m-base;
 
-                border-radius: $border-radius-xs 0px 0px 0px;
+                border-radius: $border-radius-xs 0 0 0;
 
                 object-fit: cover;
                 object-position: center;
 
-                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-                border-radius: $border-radius-xs $border-radius-xs 0px 0px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+                border-radius: $border-radius-xs $border-radius-xs 0 0;
 
                 card__content &-empty {
                     width: 100%;
-                    border-radius: $border-radius-xs $border-radius-xs 0px 0px;
+                    border-radius: $border-radius-xs $border-radius-xs 0 0;
                     background-color: rgba($color-primary, 0.75);
                     display: flex;
                     align-items: center;
@@ -63,7 +52,7 @@
         }
 
         &__header-text {
-            padding: 0px $m-base;
+            padding: 0 $m-base;
         }
 
         &__first-name,
@@ -91,7 +80,7 @@
         }
 
         &__body-text {
-            padding: 0px $m-base;
+            padding: 0 $m-base;
 
             border-radius: $border-radius-xs;
             overflow: auto;
@@ -114,7 +103,7 @@
                 font-weight: $font-weight-light;
                 letter-spacing: 0.75px;
                 line-height: $line-height-md;
-                margin: 0px;
+                margin: 0;
             }
         }
 
@@ -123,21 +112,53 @@
                 .image,
                 .image-empty {
                     width: $card-width * 1.25;
-                    margin: 0px;
+                    margin: 0;
 
-                    border-radius: $border-radius-xs 0px 0px 0px;
+                    border-radius: $border-radius-xs 0 0 0;
                 }
             }
             &__header-text {
-                padding: $m-base 0px 0px $m-base;
-                flex-basis: 40%;
+                box-sizing: border-box;
+                padding: $m-base 0 0 $m-base;
+                width: 40%;
 
                 display: flex;
                 flex-direction: column;
             }
 
             &__title {
-                margin: auto 0px $m-xs;
+                margin: auto 0 $m-xs;
+            }
+        }
+    }
+
+    &.-medium {
+        width: 700px !important;
+    }
+    
+    &.-large {
+        padding: $m-base !important;
+        overflow: auto;
+        width: 90% !important;
+    }
+
+    .footer__modal {
+        &-header {
+            text-align: center;
+        }
+
+        &-button {
+            background: none;
+            border: none;
+            position: absolute;
+            right: $m-sm;
+            top: $m-sm;
+            
+            &::before{
+                color: $color-text;
+                content: '✖';
+                cursor: pointer;
+                font-size: 2em;
             }
         }
     }

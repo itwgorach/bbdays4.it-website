@@ -6,6 +6,14 @@ import ScheduleCalendar from '../ScheduleCalendar/ScheduleCalendar'
 import ScheduleEventMobile from './ScheduleEventMobile'
 
 const ScheduleMobile: FC<ScheduleType> = ({ scheduleTitle, events }) => {
+  const getHourFromString = (hour: string) => {
+    return hour.substring(0, 2)
+  }
+
+  const eventsSorted = events.sort(
+    (a, b) => parseInt(getHourFromString(a.startHour)) - parseInt(getHourFromString(b.startHour)),
+  )
+
   return (
     <div className="schedule-mobile">
       <h1 className="schedule-mobile__header">{scheduleTitle}</h1>
@@ -19,8 +27,8 @@ const ScheduleMobile: FC<ScheduleType> = ({ scheduleTitle, events }) => {
         ))}
         {ScheduleWeek.map(({ dateMobile }, i) => (
           <div key={i} className="schedule-mobile__grid-events" style={{ gridRow: i + 1 }}>
-            {events?.length > 0 &&
-              events.map((event) => {
+            {eventsSorted?.length > 0 &&
+              eventsSorted.map((event) => {
                 if (dateMobile === (event.date && event.date.substring(0, 2))) {
                   return (
                     <ScheduleEventMobile

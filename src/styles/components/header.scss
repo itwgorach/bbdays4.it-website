@@ -5,14 +5,14 @@
   box-sizing: border-box;
   color: $color-white;
   display: none;
-  font-family: $font-face-body;
+  font-family: $font-family-body;
   font-size: $font-size-base;
   justify-content: space-between;
   padding: $m-base $m-lg;
   position: fixed;
   transition: background-color $transition-duration $transition-function;
   width: 100%;
-  z-index: $z-higher;
+  z-index: $z-base;
 
   &.-colored {
     background-color: $color-primary;
@@ -52,7 +52,7 @@
   color: $color-white;
   display: flex;
   flex-direction: column;
-  font-family: $font-face-body;
+  font-family: $font-family-body;
   font-size: $font-size-base;
   font-weight: $font-weight-bold;
   justify-content: space-between;
@@ -60,7 +60,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: $z-higher;
+  z-index: $z-base;
 
   &__logo,
   &__hamburger-icon {
@@ -95,7 +95,7 @@
     margin: 0;
     padding: $m-base;
     width: 100vw;
-    z-index: $z-higher;
+    z-index: $z-base;
 
     .header-mobile {
       &__logo {

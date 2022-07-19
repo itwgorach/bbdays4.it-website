@@ -1,17 +1,3 @@
-@mixin dashedBorder($left: true, $position: top, $color: $color-black) {
-    @if $left {
-        background-image: linear-gradient(to right, $color 33%, rgba(255,255,255,0) 0%), linear-gradient($color 33%, rgba(255,255,255,0) 0%);
-        background-position: top, left;
-        background-repeat: repeat-x, repeat-y;
-        background-size: 13px 1px, 1px 13px;
-    } @else {
-        background-image: linear-gradient(to right, $color 33%, rgba(255,255,255,0) 0%);
-        background-position: $position;
-        background-repeat: repeat-x;
-        background-size: 13px 1px;
-    }
-}
-
 .schedule {
 
     // Desktop styling
@@ -85,7 +71,7 @@
                 &-day {
                     font-family: $font-family-header;
                     font-weight: $font-weight-medium;
-                    font-size: $font-size-base; // tu ma być 16px a base to 18px
+                    font-size: $font-size-base-xs;
                 }
                 
                 &::before {
@@ -113,26 +99,34 @@
                     }
                 }
             }
-            
-            &-event {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                align-content: center;
-                flex-wrap: wrap;
-                gap: 10%;
-                margin: 0 0 $m-xs $m-xs;
-                z-index: 1;
+
+            &-events {
+                display: grid;
+                grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+                margin-bottom: $m-xs;
                 
-                &-title {
-                    color: $color-white;
-                    font-weight: $font-weight-bold;
-                    font-size: $font-size-sm;
-                    text-align: center;
-                }
-                
-                &-logo {
-                    max-width: 80%;
+                &-event {
+                    align-content: center;
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10%;
+                    height: 100%;
+                    justify-content: center;
+                    margin-left: $m-xs;
+                    z-index: 1;
+
+                    &-title {
+                        color: $color-white;
+                        font-weight: $font-weight-bold;
+                        font-size: $font-size-sm;
+                        text-align: center;
+                    }
+                    
+                    &-logo {
+                        max-height: 70%;
+                        max-width: 80%;
+                    }
                 }
             }
             
@@ -182,7 +176,7 @@
                 &-day {
                     font-family: $font-family-header;
                     font-weight: $font-weight-medium;
-                    font-size: $font-size-base; // tu ma być 16px a base to 18px
+                    font-size: $font-size-base-xs;
                 }
 
                 &:nth-child(1) {
@@ -293,6 +287,7 @@
         width: 100%;
         
         &-text {
+            color: $color-black;
             font-weight: $font-weight-bold;
             font-size: $font-size-base;
         }

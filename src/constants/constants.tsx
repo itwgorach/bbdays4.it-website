@@ -1,6 +1,7 @@
 import { InstagramIcon, FacebookIcon, TwitterIcon, LinkedinIcon, YoutubeIcon } from 'components/icons'
+import { LinkType } from 'types'
 
-export const links = [
+export const socialLinks = [
   {
     href: 'https://www.facebook.com/bbdays4.it/',
     Icon: FacebookIcon,
@@ -20,6 +21,13 @@ export const links = [
   {
     href: '#', // youtube href
     Icon: YoutubeIcon,
+  },
+]
+
+export const footerLinks: LinkType[] = [
+  {
+    name: 'Konferencyjny kodeks postępowania',
+    path: 'https://confcodeofconduct.com/index-pl.html',
   },
 ]
 

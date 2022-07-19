@@ -14,21 +14,31 @@ const strapiConfig = {
           homepage: {
             populate: {
               backgroundImage: '*',
-              // events: {
-              //   populate: '*',
-              // },
+              events: {
+                populate: '*',
+              },
               images: '*',
               partners: {
                 populate: '*',
               },
-              // speakers: {
-              //   populate: '*',
-              // },
+              speakers: {
+                populate: '*',
+              },
             },
           },
         },
       },
       singularName: 'homepage',
+    },
+    {
+      queryParams: {
+        populate: {
+          privacypolicy: {
+            populate: '*',
+          },
+        },
+      },
+      singularName: 'privacypolicy',
     },
   ],
 }
@@ -40,13 +50,13 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sitemap',
     {
       options: {
-        background_color: '#663399',
+        background_color: '#359960',
         display: 'minimal-ui',
         icon: 'src/images/icon.svg',
         name: 'BBDAYS4IT',
         short_name: 'BBDAYS4IT',
         start_url: '/',
-        theme_color: '#663399',
+        theme_color: '#359960',
       },
       resolve: 'gatsby-plugin-manifest',
     },
