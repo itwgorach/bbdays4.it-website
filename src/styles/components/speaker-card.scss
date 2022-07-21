@@ -1,4 +1,5 @@
 .speaker-card {
+    height: $card-height-mobile;
     width: $card-width;
     background-color: $color-white;
 
@@ -48,12 +49,16 @@
         line-height: $line-height-md;
 
         margin: $m-xs 0 calc($m-xs * 2);
+
+        &-text {
+            font-family: $font-family-header;
+        }
     }
 
     &__subtitle {
         @include maxTextLines(4);
         font-size: $font-size-base-xs;
-        font-weight: $font-weight-medium;
+        font-weight: $font-weight-semi-bold;
         line-height: 22px;
         letter-spacing: 0.5px;
         margin-bottom: $m-base;
@@ -116,10 +121,12 @@
         font-weight: $font-weight-extra-bold;
         font-size: $font-size-base-xs;
         letter-spacing: 0.75px;
-        font-family: $font-family-header;
+        font-family: $font-family-body;
     }
 
     @include media-breakpoint-up(lg) {
+        height: $card-height-desktop;
+
         &__image-placeholder {
             height: 200px;
 
