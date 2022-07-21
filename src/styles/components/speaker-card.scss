@@ -60,14 +60,14 @@
     }
 
     &__image-placeholder {
-        height: 175px;
+        height: 290px;
         width: 100%;
 
         position: relative;
         .image {
             position: absolute;
 
-            height: auto;
+            height: 100%;
             max-height: 290px;
             width: auto;
 
@@ -125,6 +125,7 @@
 
             .image {
                 bottom: 0;
+                height: auto;
             }
         }
 
