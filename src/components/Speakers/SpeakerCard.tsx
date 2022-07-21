@@ -19,8 +19,8 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
     <div className="speaker-card">
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">
-          <div>{firstName}</div>
-          <div>{lastName}</div>
+          <div className="speaker-card__title-text">{firstName}</div>
+          <div className="speaker-card__title-text">{lastName}</div>
         </h3>
         <div className="speaker-card__subtitle">{title}</div>
       </div>
