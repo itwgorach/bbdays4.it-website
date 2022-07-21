@@ -12,7 +12,7 @@ const ScheduleCalendar = () => {
 
   const getDateClasses = (index: number) => {
     const isEventDate = ScheduleWeek.some((obj) => {
-      return index + 1 === 9 ? true : obj.dateMobile === (index + 1).toString()
+      return index + 1 === 8 || index + 1 === 9 ? true : obj.dateMobile === (index + 1).toString()
     })
 
     const dateClasses = cx('calendar__grid-date', {
@@ -31,7 +31,7 @@ const ScheduleCalendar = () => {
       </button>
       <div className={calendarToggleClass}>
         {ScheduleWeek.map(({ dayMobile }, index) => {
-          return index >= 3 ? (
+          return index >= 4 ? (
             <div key={index} className="calendar__grid-day">
               {dayMobile}
             </div>
