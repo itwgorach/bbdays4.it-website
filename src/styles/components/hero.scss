@@ -57,6 +57,7 @@
 
     @media only screen and (min-width: map-get($grid-breakpoints, md)) {
       font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
       line-height: $line-height-2xl;
       margin: $m-base;
 
@@ -68,9 +69,9 @@
   }
   
   &__subtitle {
-    font-family: $font-family-header;
+    font-family: $font-family-body;
     font-size: $font-size-lg;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-semi-bold;
     margin: 0;
     
     &.-bottom {

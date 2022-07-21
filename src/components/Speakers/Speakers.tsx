@@ -13,7 +13,6 @@ const Speakers: FC<SpeakersType> = ({ speakers, sectionTitle, sectionSubtitle })
           <h1 className="speakers__title">{sectionTitle}</h1>
           <h4 className="speakers__subtitle">{sectionSubtitle}</h4>
         </div>
-        <div className="speakers__spacer" />
         <div className="speakers__list">
           {speakers ? (
             speakers.map((speaker) => speaker && <SpeakerCard key={speaker.id} speaker={speaker} />)

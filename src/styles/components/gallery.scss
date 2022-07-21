@@ -3,8 +3,9 @@
     position: relative;
 
     &__heading {
+        color: $color-dark;
         font-family: $font-family-body;
-        font-weight: $font-weight-semi-bold;
+        font-weight: $font-weight-medium;
         margin-bottom: $m-base;
         text-align: center;
     }
