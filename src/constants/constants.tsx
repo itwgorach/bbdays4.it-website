@@ -35,6 +35,7 @@ export const ImagePlaceholderUrl =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 342' width='280' height='342'%3E%3Crect width='280' height='342' fill='%23359960'%3E%3C/rect%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='26px' fill='%23ffffff'%3EBrak zdjęcia%3C/text%3E%3C/svg%3E"
 
 export const Hours = [
+  '9:00',
   '10:00',
   '11:00',
   '12:00',
@@ -47,10 +48,15 @@ export const Hours = [
   '19:00',
   '20:00',
   '21:00',
-  '22:00',
 ]
 
 export const ScheduleWeek = [
+  {
+    dateDesktop: '08.09',
+    dateMobile: '08',
+    dayDesktop: 'Czwartek',
+    dayMobile: 'Czw.',
+  },
   {
     dateDesktop: '09.09',
     dateMobile: '09',

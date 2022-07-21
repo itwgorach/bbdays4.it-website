@@ -48,7 +48,7 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
   }
 
   const getGridPlaceholders = (x: number) => {
-    return Array.from({ length: 10 }, (_, y) => {
+    return Array.from({ length: 11 }, (_, y) => {
       const noLeftLine = x === 0
 
       const placeholderClasses = cx('schedule-desktop__grid-placeholder', {
@@ -83,7 +83,7 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
             const earlierStartHour = getEarlierHour(eventDay)
             const laterEndHour = getLaterHour(eventDay)
             const startGridColumn = Hours.findIndex((hour) => hour === earlierStartHour.startHour) + 2
-            const endGridColumn = laterEndHour.endHour !== '23:00' ? Hours.findIndex((h) => h === laterEndHour.endHour) + 2 : 15
+            const endGridColumn = laterEndHour.endHour !== '22:00' ? Hours.findIndex((h) => h === laterEndHour.endHour) + 2 : 15
             const gridRow = ScheduleWeek.findIndex((day) => day.dateDesktop === eventDay[0].date) + 2
             const gridColumnNumber = endGridColumn - startGridColumn
 
