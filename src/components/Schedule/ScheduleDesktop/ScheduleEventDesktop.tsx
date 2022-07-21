@@ -15,7 +15,7 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
 }) => {
   const eventHours = Hours.slice(startParentGridColumn - 1, startParentGridColumn + gridColumnNumber - 1)
   const startGridColumn = eventHours.findIndex((h) => h === startHour) + 2
-  const endGridColumn = endHour !== '23:00' ? eventHours.findIndex((h) => h === endHour) + 2 : 13
+  const endGridColumn = endHour !== '22:00' ? eventHours.findIndex((h) => h === endHour) + 2 : 13
 
   return (
     <div
