@@ -26,12 +26,16 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
       </div>
       <div className="speaker-card__image-placeholder">
         <div className="speaker-card__social">
-          <a href={linkedinUrl} rel="noopener noreferrer" target="_blank">
-            <LinkedinIcon className="speaker-card__linkedin" />
-          </a>
-          <a href={twitterUrl} rel="noopener noreferrer" target="_blank">
-            <TwitterIcon className="speaker-card__twitter" />
-          </a>
+          {linkedinUrl && (
+            <a href={linkedinUrl} rel="noopener noreferrer" target="_blank">
+              <LinkedinIcon className="speaker-card__linkedin" />
+            </a>
+          )}
+          {twitterUrl && (
+            <a href={twitterUrl} rel="noopener noreferrer" target="_blank">
+              <TwitterIcon className="speaker-card__twitter" />
+            </a>
+          )}
         </div>
         <Image alt={fullName} url={imageUrl} />
         <div className="speaker-card__position">{position}</div>
