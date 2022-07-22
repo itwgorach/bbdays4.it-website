@@ -3,6 +3,7 @@ import { Autoplay, Navigation } from 'swiper'
 import 'swiper/scss'
 
 import React, { FC } from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 import {
   GalleryNextButton,
@@ -45,7 +46,29 @@ const Gallery: FC<BaseGalleryType> = ({ images }) => (
         {images &&
           images.map((image) => (
             <SwiperSlide key={image?.id} className="gallery__slide">
-              <img alt="gallery" className="gallery__slide-image" src={image?.url} />
+              <LazyLoadImage
+                src={`${image?.url?.substring(
+                  0,
+                  image?.url?.lastIndexOf('/') - 11,
+                )}f_auto,q_auto/${image?.url?.substring(image?.url?.lastIndexOf('/') - 11)}`}
+                className="gallery__slide-image"
+              />
+              {/* {console.log({
+                xd: image?.url,
+                xdd: `${image?.url?.substring(
+                  0,
+                  image?.url?.lastIndexOf('/') - 11,
+                )}f_auto,q_auto/${image?.url?.substring(image?.url?.lastIndexOf('/') - 11)}`,
+              })}
+              <img
+                alt="gallery"
+                className="gallery__slide-image"
+                src={`${image?.url?.substring(
+                  0,
+                  image?.url?.lastIndexOf('/') - 11,
+                )}f_auto,q_auto/${image?.url?.substring(image?.url?.lastIndexOf('/') - 11)}`}
+              /> */}
+              {/* <img alt="gallery" className="gallery__slide-image" src={image?.url} /> */}
             </SwiperSlide>
           ))}
       </Swiper>

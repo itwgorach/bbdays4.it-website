@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { ImagePlaceholder } from 'components/icons'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 type ImageProps = {
   url: string | undefined,
@@ -11,7 +12,7 @@ const Image: FC<ImageProps> = ({ url, alt }) => {
     return <ImagePlaceholder className="image -placeholder" />
   }
 
-  return <img alt={alt} className="image" loading="lazy" src={url} />
+  return <LazyLoadImage alt={alt} className="image" loading="lazy" src={url} />
 }
 
 export default Image

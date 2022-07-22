@@ -25,7 +25,13 @@ const Hero: FC<BaseHeroType> = ({
   return (
     <div
       className={heroClasses}
-      style={{ backgroundColor: backgroundColor, backgroundImage: `url(${backgroundImage?.url}` }}>
+      style={{
+        backgroundColor: backgroundColor,
+        backgroundImage: `url(${backgroundImage?.url?.substring(
+          0,
+          backgroundImage?.url?.lastIndexOf('/') - 11,
+        )}f_auto,q_auto/${backgroundImage?.url?.substring(backgroundImage.url.lastIndexOf('/') - 11)})`,
+      }}>
       {hasSubtitle && subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
       <h1 className={titleClasses}>{title}</h1>
       {hasSubtitle && subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
