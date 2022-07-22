@@ -586,6 +586,9 @@ type STRAPI_SPEAKERPhoto_updatedAtArgs = {
 
 type STRAPI_SPEAKERPhotoFormats = {
   readonly thumbnail: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnail>;
+  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLarge>;
+  readonly small: Maybe<STRAPI_SPEAKERPhotoFormatsSmall>;
+  readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMedium>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnail = {
@@ -601,6 +604,57 @@ type STRAPI_SPEAKERPhotoFormatsThumbnail = {
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLarge = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsSmall = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsSmallProvider_metadata>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMedium = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata = {
   readonly public_id: Maybe<Scalars['String']>;
   readonly resource_type: Maybe<Scalars['String']>;
 };
@@ -3547,6 +3601,9 @@ type STRAPI_SPEAKERPhotoFilterInput = {
 
 type STRAPI_SPEAKERPhotoFormatsFilterInput = {
   readonly thumbnail: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput>;
+  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLargeFilterInput>;
+  readonly small: Maybe<STRAPI_SPEAKERPhotoFormatsSmallFilterInput>;
+  readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMediumFilterInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput = {
@@ -3562,6 +3619,57 @@ type STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput = {
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsSmallFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
@@ -5349,6 +5457,30 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'photo.formats.thumbnail.size'
   | 'photo.formats.thumbnail.width'
   | 'photo.formats.thumbnail.height'
+  | 'photo.formats.large.ext'
+  | 'photo.formats.large.url'
+  | 'photo.formats.large.hash'
+  | 'photo.formats.large.mime'
+  | 'photo.formats.large.name'
+  | 'photo.formats.large.size'
+  | 'photo.formats.large.width'
+  | 'photo.formats.large.height'
+  | 'photo.formats.small.ext'
+  | 'photo.formats.small.url'
+  | 'photo.formats.small.hash'
+  | 'photo.formats.small.mime'
+  | 'photo.formats.small.name'
+  | 'photo.formats.small.size'
+  | 'photo.formats.small.width'
+  | 'photo.formats.small.height'
+  | 'photo.formats.medium.ext'
+  | 'photo.formats.medium.url'
+  | 'photo.formats.medium.hash'
+  | 'photo.formats.medium.mime'
+  | 'photo.formats.medium.name'
+  | 'photo.formats.medium.size'
+  | 'photo.formats.medium.width'
+  | 'photo.formats.medium.height'
   | 'photo.hash'
   | 'photo.ext'
   | 'photo.mime'
