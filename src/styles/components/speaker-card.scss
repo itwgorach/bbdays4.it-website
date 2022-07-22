@@ -65,23 +65,23 @@
     }
 
     &__image-placeholder {
-        height: 290px;
+        height: 175px;
         width: 100%;
 
         position: relative;
         .image {
             position: absolute;
 
-            height: 100%;
-            max-height: 290px;
+            height: 250px;
+            max-height: 280px;
             width: auto;
 
             right: 0;
-            bottom: -50px;
+            bottom: 0;
 
             &.-placeholder {
-                right: -65px;
-                bottom: -5px;
+                right: -30px;
+                bottom: 15px;
             }
         }
     }
@@ -127,12 +127,20 @@
     @include media-breakpoint-up(lg) {
         height: $card-height-desktop;
 
+        &__content {
+            padding-bottom: $m-lg;
+        }
+
         &__image-placeholder {
-            height: 200px;
+            height: 190px;
 
             .image {
-                bottom: 0;
-                height: auto;
+                height: 280px;
+                max-height: 280px;
+
+                &.-placeholder {
+                    right: -50px;
+                }
             }
         }
 
