@@ -13,3 +13,4 @@ export { default as GalleryNextButtonMobile } from './gallery-next-button-mobile
 export { default as GalleryPrevButtonMobile } from './gallery-prev-button-mobile.svg'
 export { default as CalendarIcon } from './calendar-icon.svg'
 export { default as ImagePlaceholder } from './image-placeholder.svg'
+export { default as ComingSoonIcon } from './coming-soon-icon.svg'

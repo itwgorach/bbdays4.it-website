@@ -58,7 +58,7 @@ $max-speakers-width: 1450px;
     &__list {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: left;
 
         gap: $card-margin * 3.1;
 
