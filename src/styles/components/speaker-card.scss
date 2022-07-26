@@ -205,3 +205,41 @@
         }
     }
 }
+
+.speaker-soon {
+    align-items: center;
+    background: linear-gradient(0deg, rgba($color-primary, 0.9), rgba($color-primary, 0.9)), url('https://www.otouczelnie.pl/assets/uploads/zdjecia/ATH-studia.jpg');
+    background-position: top left 35%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    height: $card-height-mobile;
+    justify-content: space-evenly;
+    position: relative;
+    width: $card-width;
+
+    &::after {
+        background-image: linear-gradient(360deg, rgba(25, 69, 80, 0.8) 0%, rgba(25, 69, 80, 0) 100%);
+        bottom: 0;
+        content: '';
+        height: $font-size-4xl;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    @include media-breakpoint-up(lg) {
+        height: $card-height-desktop;
+    }
+
+    &__title {
+        color: $color-white;
+        font-family: $font-family-header;
+        font-size: $font-size-xl;
+        font-weight: $font-weight-extra-bold;
+        line-height: $line-height-base;
+        margin: 0;
+        max-width: 50%;
+        text-align: center;
+    }
+}
