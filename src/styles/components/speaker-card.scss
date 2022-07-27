@@ -236,9 +236,9 @@
         color: $color-white;
         font-family: $font-family-header;
         font-size: $font-size-xl;
-        font-weight: $font-weight-extra-bold;
+        font-weight: $font-weight-bold;
         line-height: $line-height-base;
-        margin: 0;
+        margin-top: -$m-sm;
         max-width: 50%;
         text-align: center;
     }
