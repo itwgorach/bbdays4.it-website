@@ -91,6 +91,8 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
               (a, b) => parseInt(getHourFromString(a.startHour)) - parseInt(getHourFromString(b.startHour))
             )
 
+            const isConcurrent = eventDaySorted.length > 1
+
             return (
               <div
                 key={eventsContent.indexOf(eventDaySorted)}
@@ -106,6 +108,7 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
                       key={event.id}
                       event={event}
                       gridColumnNumber={gridColumnNumber}
+                      isConcurrent={isConcurrent}
                       startParentGridColumn={startGridColumn}
                     />
                   )
