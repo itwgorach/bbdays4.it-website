@@ -1,5 +1,6 @@
 $card-width: 18em;
-$card-height: $card-width * 1.6;
+$card-height-desktop: 504px;
+$card-height-mobile: 472px;
 $card-margin: 2em;
 $how-many-cards: 4;
 $max-speakers-width: 1450px;
@@ -69,6 +70,10 @@ $max-speakers-width: 1450px;
     @include media-breakpoint-up(lg) {
         &__spacer {
             display: block;
+        }
+
+        &__list {
+            justify-content: left;
         }
     }
 }

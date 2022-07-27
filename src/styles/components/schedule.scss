@@ -10,6 +10,7 @@
         margin-top: $m-xl;
     
         &__header {
+            color: $color-dark;
             text-align: center;
         }
         
@@ -17,7 +18,7 @@
             box-sizing: border-box;
             display: grid;
             grid-template-columns: 150px repeat(13, 1fr);
-            grid-template-rows: 100px repeat(10, 80px);
+            grid-template-rows: 100px repeat(11, 80px);
             max-width: 95%;
             
             &-hours {
@@ -33,7 +34,7 @@
                 font-family: $font-family-header;
                 font-weight: $font-weight-bold;
                 font-size: $font-size-lg;
-                justify-content: center;
+                justify-content: flex-start;
                 margin-bottom: $m-sm;
 
                 @media only screen and (max-width: map-get($grid-breakpoints, xl)) {
@@ -46,7 +47,7 @@
                 display: flex;
                 flex-direction: column;
                 grid-column: 1;
-                grid-row: 2/12;
+                grid-row: 2/13;
                 position: relative;
                 
                 &::before {
@@ -56,6 +57,15 @@
                     position: absolute;
                     height: 1%;
                     top: -1%;
+                }
+                
+                &::after {
+                    content: '';
+                    background: #FCCC3E;
+                    width: 100%;
+                    position: absolute;
+                    height: 1%;
+                    bottom: -1%;
                 }
 
             }
@@ -90,12 +100,14 @@
                     content: '';
                     height: $m-xs;
                     position: absolute;
+                    right: 0;
                     width: 90%;
                 }
                 
                 &:last-of-type {
                     &::after {
-                        display: none;
+                        background-color: #FCCC3E;
+                        @include dashedBorder(false, bottom, $color-black);
                     }
                 }
             }
@@ -110,7 +122,8 @@
                     align-items: center;
                     display: flex;
                     flex-wrap: wrap;
-                    gap: 10%;
+                    column-gap: $m-sm;
+                    row-gap: $m-xs;
                     height: 100%;
                     justify-content: center;
                     margin-left: $m-xs;
@@ -127,14 +140,33 @@
                         max-height: 70%;
                         max-width: 80%;
                     }
+
+                    &.-vertical {
+                        flex-direction: column;
+                        padding-inline: $m-xs;
+                    }
                 }
             }
             
             &-placeholder {
                 @include dashedBorder(true, top, $color-black);
+
+                position: relative;
                 
                 &.-no-left-line {
                     @include dashedBorder(false, top, $color-black);
+                }
+
+                &:nth-last-child(11n+1) {
+                    &::after {
+                        @include dashedBorder(false, bottom, $color-black);
+
+                        bottom: 0;
+                        content: '';
+                        height: 1px;
+                        position: absolute;
+                        width: 100%;
+                    }
                 }
             }
         }
@@ -150,6 +182,7 @@
         margin-top: $m-lg;
 
         &__header {
+            color: $color-dark;
             text-align: center;
             font-weight: $font-weight-bold;
             font-size: $font-size-lg;
@@ -170,6 +203,7 @@
                 font-weight: $font-weight-bold;
                 font-size: $font-size-lg;
                 grid-column: 1;
+                min-height: $m-xl;
                 padding: $m-xs 0 0 $m-sm;
                 position: relative;
                 
@@ -210,7 +244,7 @@
                     width: 90%;
                 }
 
-                &:nth-child(10) {
+                &:nth-child(11) {
                     &::after {
                         display: none;
                     }

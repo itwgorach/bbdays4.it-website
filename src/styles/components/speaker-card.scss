@@ -1,4 +1,5 @@
 .speaker-card {
+    height: $card-height-mobile;
     width: $card-width;
     background-color: $color-white;
 
@@ -48,35 +49,39 @@
         line-height: $line-height-md;
 
         margin: $m-xs 0 calc($m-xs * 2);
+
+        &-text {
+            font-family: $font-family-header;
+        }
     }
 
     &__subtitle {
         @include maxTextLines(4);
         font-size: $font-size-base-xs;
-        font-weight: $font-weight-medium;
+        font-weight: $font-weight-semi-bold;
         line-height: 22px;
         letter-spacing: 0.5px;
         margin-bottom: $m-base;
     }
 
     &__image-placeholder {
-        height: 290px;
+        height: 175px;
         width: 100%;
 
         position: relative;
         .image {
             position: absolute;
 
-            height: 100%;
-            max-height: 290px;
+            height: 250px;
+            max-height: 280px;
             width: auto;
 
             right: 0;
-            bottom: -50px;
+            bottom: 0;
 
             &.-placeholder {
-                right: -65px;
-                bottom: -5px;
+                right: -30px;
+                bottom: 15px;
             }
         }
     }
@@ -108,24 +113,34 @@
 
         inset: auto 0 0;
 
-        background: linear-gradient(360deg, rgba(25, 69, 80, 0.5) 0%, rgba(25, 69, 80, 0) 100%);
+        background: linear-gradient(360deg, rgba(25, 69, 80, 0.8) 0%, rgba(25, 69, 80, 0) 100%);
 
         padding: $m-base;
 
         color: $color-white;
-        font-weight: $font-weight-extra-bold;
+        font-weight: $font-weight-medium;
         font-size: $font-size-base-xs;
         letter-spacing: 0.75px;
-        font-family: $font-family-header;
+        font-family: $font-family-body;
     }
 
     @include media-breakpoint-up(lg) {
+        height: $card-height-desktop;
+
+        &__content {
+            padding-bottom: $m-lg;
+        }
+
         &__image-placeholder {
-            height: 200px;
+            height: 190px;
 
             .image {
-                bottom: 0;
-                height: auto;
+                height: 280px;
+                max-height: 280px;
+
+                &.-placeholder {
+                    right: -50px;
+                }
             }
         }
 
@@ -188,5 +203,43 @@
                 }
             }
         }
+    }
+}
+
+.speaker-soon {
+    align-items: center;
+    background: linear-gradient(0deg, rgba($color-primary, 0.9), rgba($color-primary, 0.9)), url('https://www.otouczelnie.pl/assets/uploads/zdjecia/ATH-studia.jpg');
+    background-position: top left 35%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    height: $card-height-mobile;
+    justify-content: space-evenly;
+    position: relative;
+    width: $card-width;
+
+    &::after {
+        background-image: linear-gradient(360deg, rgba(25, 69, 80, 0.8) 0%, rgba(25, 69, 80, 0) 100%);
+        bottom: 0;
+        content: '';
+        height: $font-size-4xl;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    @include media-breakpoint-up(lg) {
+        height: $card-height-desktop;
+    }
+
+    &__title {
+        color: $color-white;
+        font-family: $font-family-header;
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        line-height: $line-height-base;
+        margin-top: -$m-sm;
+        max-width: 50%;
+        text-align: center;
     }
 }
