@@ -7,7 +7,13 @@ $max-speakers-width: 1450px;
 
 .speakers {
     &__inner {
-        padding: 0 $m-base $m-lg;
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-inline: $m-sm;
+        width: 100%;
     }
 
     &__header {
@@ -56,14 +62,13 @@ $max-speakers-width: 1450px;
     }
 
     &__list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, $card-width);
+        grid-template-rows: auto;
 
         gap: $card-margin * 3.1;
 
-        width: 100%;
-        max-width: $max-speakers-width;
+        max-width: 100%;
         margin: auto;
     }
 
@@ -71,9 +76,11 @@ $max-speakers-width: 1450px;
         &__spacer {
             display: block;
         }
+    }
 
+    @include media-breakpoint-up(2xl) {
         &__list {
-            justify-content: left;
+            max-width: $max-speakers-width;
         }
     }
 }
