@@ -31,6 +31,7 @@ const DesktopHeader: FC<HeaderType> = ({ links }) => {
   }, [])
 
   useEffect(() => {
+    onScroll()
     window.addEventListener('scroll', onScroll)
 
     return () => {
