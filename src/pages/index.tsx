@@ -16,7 +16,7 @@ const HomePage: FC<HomePageType> = ({
 }) => {
   const content = useMemo(
     () =>
-      homepage?.map((component) => {
+      homepage?.map((component, index) => {
         if(!component?.isSectionVisible) {
           return null
         }
@@ -27,7 +27,7 @@ const HomePage: FC<HomePageType> = ({
           }
           case 'base.hero': {
             const hero = component as BaseHeroType
-            return <Hero key={hero.id} {...hero} />
+            return <Hero key={hero.id} {...hero} isFirstHero={index === 0} />
           }
           case 'base.galery-slider': {
             const gallery = component as BaseGalleryType
