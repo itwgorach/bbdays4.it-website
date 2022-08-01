@@ -11,10 +11,10 @@ const Hero: FC<BaseHeroType> = ({
   buttonText,
   buttonUrl,
   backgroundColor,
+  isFirstHero,
 }) => {
   const hasButton = buttonText && buttonUrl
   const hasSubtitle = subtitle
-  const isFirstHero = title.includes('BBDays4IT')
 
   const heroClasses = cx('hero', {
     '-full-height': hasSubtitle,
