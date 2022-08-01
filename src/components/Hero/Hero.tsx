@@ -3,13 +3,33 @@ import React, { FC } from 'react'
 
 import { BaseHeroType } from 'types'
 
-type HeroProps = {
-  hero: BaseHeroType,
+type HeroProps = BaseHeroType & {
   isFirstHero: boolean,
 }
 
-const Hero: FC<HeroProps> = ({ hero, isFirstHero }) => {
-  const { title, subtitle, subtitlePos, backgroundImage, backgroundColor, buttonText, buttonUrl } = hero
+const RegistrationLinks = [
+  {
+    href: 'https://app.evenea.pl/event/bbdays4it-2022-konferencja-ATH',
+    id: 0,
+    text: 'Zapisy na Konferencję',
+  },
+  {
+    href: 'https://app.evenea.pl/event/bbq4it-2022',
+    id: 1,
+    text: 'Zapisy na BBQ4IT',
+  },
+]
+
+const Hero: FC<HeroProps> = ({
+  title,
+  subtitle,
+  subtitlePos,
+  backgroundImage,
+  backgroundColor,
+  buttonText,
+  buttonUrl,
+  isFirstHero,
+}) => {
   const hasButton = buttonText && buttonUrl
   const hasSubtitle = subtitle
 
@@ -34,20 +54,11 @@ const Hero: FC<HeroProps> = ({ hero, isFirstHero }) => {
       )}
       {isFirstHero && (
         <div className="hero__button-wrapper">
-          <a
-            className="hero__button"
-            href="https://app.evenea.pl/event/bbdays4it-2022-konferencja-ATH"
-            rel="noopener noreferrer"
-            target="_blank">
-            Zapisy na Konferencję
-          </a>
-          <a
-            className="hero__button"
-            href="https://app.evenea.pl/event/bbq4it-2022"
-            rel="noopener noreferrer"
-            target="_blank">
-            Zapisy na BBQ4IT
-          </a>
+          {RegistrationLinks.map(({ href, id, text }) => (
+            <a key={id} className="hero__button" href={href} rel="noopener noreferrer" target="_blank">
+              {text}
+            </a>
+          ))}
         </div>
       )}
     </div>

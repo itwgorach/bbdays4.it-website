@@ -27,7 +27,7 @@ const HomePage: FC<HomePageType> = ({
           }
           case 'base.hero': {
             const hero = component as BaseHeroType
-            return <Hero key={hero.id} hero={hero} isFirstHero={index === 0} />
+            return <Hero key={hero.id} {...hero} isFirstHero={index === 0} />
           }
           case 'base.galery-slider': {
             const gallery = component as BaseGalleryType
