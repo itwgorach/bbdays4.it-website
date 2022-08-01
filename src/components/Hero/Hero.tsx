@@ -3,16 +3,13 @@ import React, { FC } from 'react'
 
 import { BaseHeroType } from 'types'
 
-const Hero: FC<BaseHeroType> = ({
-  title,
-  subtitle,
-  subtitlePos,
-  backgroundImage,
-  buttonText,
-  buttonUrl,
-  backgroundColor,
-  isFirstHero,
-}) => {
+type HeroProps = {
+  hero: BaseHeroType,
+  isFirstHero: boolean,
+}
+
+const Hero: FC<HeroProps> = ({ hero, isFirstHero }) => {
+  const { title, subtitle, subtitlePos, backgroundImage, backgroundColor, buttonText, buttonUrl } = hero
   const hasButton = buttonText && buttonUrl
   const hasSubtitle = subtitle
 
