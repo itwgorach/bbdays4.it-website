@@ -14,6 +14,7 @@ const Hero: FC<BaseHeroType> = ({
 }) => {
   const hasButton = buttonText && buttonUrl
   const hasSubtitle = subtitle
+  const isFirstHero = title.includes('BBDays4IT')
 
   const heroClasses = cx('hero', {
     '-full-height': hasSubtitle,
@@ -29,10 +30,28 @@ const Hero: FC<BaseHeroType> = ({
       {hasSubtitle && subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
       <h1 className={titleClasses}>{title}</h1>
       {hasSubtitle && subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
-      {hasButton && (
+      {!isFirstHero && hasButton && (
         <a className="hero__button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
           {buttonText}
         </a>
+      )}
+      {isFirstHero && (
+        <div className="hero__button-wrapper">
+          <a
+            className="hero__button"
+            href="https://app.evenea.pl/event/bbdays4it-2022-konferencja-ATH"
+            rel="noopener noreferrer"
+            target="_blank">
+            Zapisy na Konferencję
+          </a>
+          <a
+            className="hero__button"
+            href="https://app.evenea.pl/event/bbq4it-2022"
+            rel="noopener noreferrer"
+            target="_blank">
+            Zapisy na BBQ4IT
+          </a>
+        </div>
       )}
     </div>
   )

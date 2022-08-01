@@ -79,6 +79,15 @@
     }
   }
 
+  &__button-wrapper {
+    align-items: center;
+    display: flex;
+    gap: $m-sm;
+    justify-content: space-between;
+    max-width: 500px;
+    width: 100%;
+  }
+
   &__button {
     background-color: $color-secondary;
     border-radius: $border-radius-xs;
@@ -87,6 +96,7 @@
     font-family: $font-family-header;
     font-size: $font-size-sm;
     font-weight: $font-weight-bold;
+    width: 165px;
     padding: $m-sm;
     text-decoration: none;
     transition: box-shadow $transition-function .2s;
