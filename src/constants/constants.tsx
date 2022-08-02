@@ -29,6 +29,14 @@ export const footerLinks: LinkType[] = [
     name: 'Konferencyjny kodeks postępowania',
     path: 'https://confcodeofconduct.com/index-pl.html',
   },
+  {
+    name: 'kontakt@bbdays4.it',
+    path: 'mailto:kontakt@bbdays4.it',
+  },
+  {
+    name: 'Regulamin Konferencji',
+    path: 'regulamin',
+  },
 ]
 
 export const ImagePlaceholderUrl =

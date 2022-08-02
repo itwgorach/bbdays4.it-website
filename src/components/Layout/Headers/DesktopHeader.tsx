@@ -1,12 +1,18 @@
 import React, { FC, useCallback, useEffect, useState } from 'react'
 import { Link } from 'gatsby'
+import { globalHistory } from '@reach/router'
 
 import { BBDaysLogoLight } from 'components/icons'
-import classnames from 'classnames'
+import cx from 'classnames'
 import { HeaderType } from 'types'
 
 const DesktopHeader: FC<HeaderType> = ({ links }) => {
   const [hasNavbarBackground, setHasNavbarBackground] = useState(false)
+  const path = globalHistory.location.pathname
+
+  const headerClasses = cx('header-desktop', {
+    '-colored': hasNavbarBackground || path === '/regulamin',
+  })
 
   const onScroll = useCallback(() => {
     if (window.scrollY > 1) {
@@ -24,7 +30,7 @@ const DesktopHeader: FC<HeaderType> = ({ links }) => {
         </a>
       )
     return (
-      <Link className="header-desktop__link" to={link.path}>
+      <Link className="header-desktop__link" to={`/${link.path}`}>
         {link.name}
       </Link>
     )
@@ -40,7 +46,7 @@ const DesktopHeader: FC<HeaderType> = ({ links }) => {
   }, [])
 
   return (
-    <header key="desktop-header" className={classnames('header-desktop', { '-colored': hasNavbarBackground })}>
+    <header key="desktop-header" className={headerClasses}>
       <Link to="/">
         <BBDaysLogoLight className="header-desktop__logo" />
       </Link>

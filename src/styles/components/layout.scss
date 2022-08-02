@@ -51,3 +51,8 @@
         }
     }
 }
+
+.rules {
+    padding: calc($m-2xl + $m-sm) $m-2xl $m-xs;
+    min-height: calc(100vh - 2 * ($m-2xl + $m-sm));
+}
