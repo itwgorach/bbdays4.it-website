@@ -20,12 +20,12 @@ const DesktopHeader: FC<HeaderType> = ({ links }) => {
     if (link.path.startsWith('http'))
       return (
         <a className="header-desktop__link" href={link.path} rel="noopener noreferrer" target="_blank">
-          {link.name}
+          {link.label}
         </a>
       )
     return (
       <Link className="header-desktop__link" to={link.path}>
-        {link.name}
+        {link.label}
       </Link>
     )
   }, [])

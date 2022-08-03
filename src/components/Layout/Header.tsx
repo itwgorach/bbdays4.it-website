@@ -1,37 +1,16 @@
 import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
 
-const linksData: LinkType[] = [
-  {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
-  {
-    name: 'Prelegenci',
-    path: '#prelegenci',
-  },
-  {
-    name: 'Organizatorzy',
-    path: '#organizatorzy',
-  },
-  {
-    name: 'Edycja 2021',
-    path: 'https://bbdays4it-2021.netlify.app/',
-  },
-  // {
-  //   name: 'Edycja 2020',
-  //   path: 'https://bbdays4it-2020.netlify.app/',
-  // },
-  // {
-  //   name: 'Edycja 2019',
-  //   path: 'https://2019.bbdays4.it/',
-  // },
-]
-
 const Header = () => {
+  const {
+    strapiHeader: { header: links }
+  } = useStaticQuery(query)
+  const linksData: LinkType[] = links[0].links
+
   return (
     <>
       <DesktopHeader links={linksData} />
@@ -39,5 +18,21 @@ const Header = () => {
     </>
   )
 }
+
+const query = graphql`
+  {
+      strapiHeader {
+          header {
+              ... on STRAPI__COMPONENT_BASE_HEADER_LINKS {
+                links {
+                  id
+                  label
+                  path
+                }
+             }
+          }
+      } 
+    }
+`
 
 export default Header

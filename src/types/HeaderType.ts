@@ -1,7 +1,7 @@
-import LinkType from './LinkType';
+import LinkType from './LinkType'
 
 type HeaderType = {
-    links: LinkType[];
+  links: LinkType[],
 }
 
-export default HeaderType;
+export default HeaderType

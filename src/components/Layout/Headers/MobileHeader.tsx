@@ -29,7 +29,7 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
           onClick={() => {
             setIsMenuOpen(false)
           }}>
-          {link.name}
+          {link.label}
         </a>
       )
     return (
@@ -39,7 +39,7 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
         onClick={() => {
           setIsMenuOpen(false)
         }}>
-        {link.name}
+        {link.label}
       </Link>
     )
   }, [])
