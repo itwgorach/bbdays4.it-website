@@ -18,6 +18,11 @@ const RegistrationLinks = [
     id: 1,
     text: 'Zapisy na BBQ4IT',
   },
+  {
+    href: 'https://app.evenea.pl/event/bbdays4it-2022-hackbb/',
+    id: 2,
+    text: 'Zapisy na Hackathon',
+  },
 ]
 
 const Hero: FC<HeroProps> = ({
