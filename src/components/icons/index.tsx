@@ -14,3 +14,5 @@ export { default as GalleryPrevButtonMobile } from './gallery-prev-button-mobile
 export { default as CalendarIcon } from './calendar-icon.svg'
 export { default as ImagePlaceholder } from './image-placeholder.svg'
 export { default as ComingSoonIcon } from './coming-soon-icon.svg'
+export { default as SignupArrowIcon } from './signup-arrow-icon.svg'
+export { default as SignupArrowIconLong } from './signup-arrow-icon-long.svg'

@@ -21,6 +21,9 @@ const strapiConfig = {
               partners: {
                 populate: '*',
               },
+              signup_sections: {
+                populate: '*',
+              },
               speakers: {
                 populate: '*',
               },
