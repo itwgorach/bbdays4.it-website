@@ -41,9 +41,9 @@ const Footer: FC = () => {
         {footerLinks.map(getLinkComponent)}
       </div>
       <div className="footer__social">
-        {socialLinks.map(({ href, Icon }) => (
+        {socialLinks.map(({ href, Icon, name }) => (
           <a key={href} href={href} rel="noopener noreferrer" target="_blank">
-            <Icon className="footer__social-icon" />
+            <Icon className={`footer__social-icon -${name}`} />
           </a>
         ))}
       </div>
