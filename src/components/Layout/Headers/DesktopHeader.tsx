@@ -10,8 +10,11 @@ const DesktopHeader: FC<HeaderType> = ({ links }) => {
   const [hasNavbarBackground, setHasNavbarBackground] = useState(false)
   const path = globalHistory.location.pathname
 
+  const isOnRulesPage = path === '/regulamin'
+  const shouldHeaderBeColoured = hasNavbarBackground || isOnRulesPage
+
   const headerClasses = cx('header-desktop', {
-    '-colored': hasNavbarBackground || path === '/regulamin',
+    '-colored': shouldHeaderBeColoured,
   })
 
   const onScroll = useCallback(() => {

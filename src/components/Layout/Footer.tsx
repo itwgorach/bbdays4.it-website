@@ -3,6 +3,7 @@ import React, { FC, useState, useCallback } from 'react'
 import { globalHistory } from '@reach/router'
 import cx from 'classnames'
 import { Link } from 'gatsby'
+import { LinkType } from 'types'
 import PrivacyPolicy from './PrivacyPolicy'
 
 const Footer: FC = () => {
@@ -13,10 +14,11 @@ const Footer: FC = () => {
     '-rules': path === '/regulamin',
   })
 
+  const isExternalLink = (link: LinkType) => link.path.startsWith('http') || link.path.startsWith('mailto')
   const toggleModal = () => setIsModalOpen((isModalOpen) => !isModalOpen)
 
-  const getLinkComponent = useCallback((link) => {
-    if (link.path.startsWith('http') || link.path.startsWith('mailto'))
+  const getLinkComponent = useCallback((link: LinkType) => {
+    if (isExternalLink(link))
       return (
         <a className="footer__text-link" href={link.path} rel="noopener noreferrer" target="_blank">
           {link.name}
