@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from 'react'
 import { Link } from 'gatsby'
-import { globalHistory } from '@reach/router'
 
 import { BBDaysLogoLight } from 'components/icons'
 import cx from 'classnames'
@@ -8,7 +7,7 @@ import { HeaderType } from 'types'
 
 const DesktopHeader: FC<HeaderType> = ({ links }) => {
   const [hasNavbarBackground, setHasNavbarBackground] = useState(false)
-  const path = globalHistory.location.pathname
+  const path = typeof window !== 'undefined' ? window.location.pathname : ''
 
   const isOnRulesPage = path === '/regulamin'
   const shouldHeaderBeColoured = hasNavbarBackground || isOnRulesPage

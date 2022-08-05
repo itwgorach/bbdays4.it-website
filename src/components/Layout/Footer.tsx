@@ -1,6 +1,5 @@
 import { socialLinks, footerLinks } from 'constants/constants'
 import React, { FC, useState, useCallback } from 'react'
-import { globalHistory } from '@reach/router'
 import cx from 'classnames'
 import { Link } from 'gatsby'
 import { LinkType } from 'types'
@@ -8,7 +7,7 @@ import PrivacyPolicy from './PrivacyPolicy'
 
 const Footer: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const path = globalHistory.location.pathname
+  const path = typeof window !== 'undefined' ? window.location.pathname : ''
 
   const footerClasses = cx('footer', {
     '-rules': path === '/regulamin',
