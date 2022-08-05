@@ -471,6 +471,8 @@ type STRAPI__COMPONENT_BASE_SIGNUP_GRID = Node & {
   readonly internal: Internal;
   readonly strapi_component: Maybe<Scalars['String']>;
   readonly isSectionVisible: Maybe<Scalars['Boolean']>;
+  readonly signupImage: Maybe<STRAPI__MEDIA>;
+  readonly bannerImage: Maybe<STRAPI__MEDIA>;
   readonly signup_sections: Maybe<ReadonlyArray<Maybe<STRAPI_SIGNUP_SECTION>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -681,7 +683,6 @@ type STRAPI_SIGNUP_SECTION = Node & {
   readonly subtitle: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
-  readonly backgroundImage: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImage>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -699,60 +700,6 @@ type STRAPI_SIGNUP_SECTION_updatedAtArgs = {
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
   locale: Maybe<Scalars['String']>;
-};
-
-type STRAPI_SIGNUP_SECTIONBackgroundImage = {
-  readonly id: Maybe<Scalars['Int']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly alternativeText: Maybe<Scalars['String']>;
-  readonly caption: Maybe<Scalars['String']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly formats: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImageFormats>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly ext: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly createdAt: Maybe<Scalars['Date']>;
-  readonly updatedAt: Maybe<Scalars['Date']>;
-};
-
-
-type STRAPI_SIGNUP_SECTIONBackgroundImage_createdAtArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
-};
-
-
-type STRAPI_SIGNUP_SECTIONBackgroundImage_updatedAtArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
-};
-
-type STRAPI_SIGNUP_SECTIONBackgroundImageFormats = {
-  readonly thumbnail: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImageFormatsThumbnail>;
-};
-
-type STRAPI_SIGNUP_SECTIONBackgroundImageFormatsThumbnail = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly provider_metadata: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImageFormatsThumbnailProvider_metadata>;
-};
-
-type STRAPI_SIGNUP_SECTIONBackgroundImageFormatsThumbnailProvider_metadata = {
-  readonly public_id: Maybe<Scalars['String']>;
-  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE = Node & {
@@ -1454,6 +1401,8 @@ type Query_strapiComponentBaseSignupGridArgs = {
   internal: Maybe<InternalFilterInput>;
   strapi_component: Maybe<StringQueryOperatorInput>;
   isSectionVisible: Maybe<BooleanQueryOperatorInput>;
+  signupImage: Maybe<STRAPI__MEDIAFilterInput>;
+  bannerImage: Maybe<STRAPI__MEDIAFilterInput>;
   signup_sections: Maybe<STRAPI_SIGNUP_SECTIONFilterListInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -1594,7 +1543,6 @@ type Query_strapiSignupSectionArgs = {
   subtitle: Maybe<StringQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
-  backgroundImage: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImageFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -4148,46 +4096,7 @@ type STRAPI_SIGNUP_SECTIONFilterInput = {
   readonly subtitle: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
-  readonly backgroundImage: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImageFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_SIGNUP_SECTIONBackgroundImageFilterInput = {
-  readonly id: Maybe<IntQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly alternativeText: Maybe<StringQueryOperatorInput>;
-  readonly caption: Maybe<StringQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly formats: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImageFormatsFilterInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly createdAt: Maybe<DateQueryOperatorInput>;
-  readonly updatedAt: Maybe<DateQueryOperatorInput>;
-};
-
-type STRAPI_SIGNUP_SECTIONBackgroundImageFormatsFilterInput = {
-  readonly thumbnail: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImageFormatsThumbnailFilterInput>;
-};
-
-type STRAPI_SIGNUP_SECTIONBackgroundImageFormatsThumbnailFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_SIGNUP_SECTIONBackgroundImageFormatsThumbnailProvider_metadataFilterInput>;
-};
-
-type STRAPI_SIGNUP_SECTIONBackgroundImageFormatsThumbnailProvider_metadataFilterInput = {
-  readonly public_id: Maybe<StringQueryOperatorInput>;
-  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI__COMPONENT_BASE_SIGNUP_GRIDConnection = {
@@ -4324,6 +4233,268 @@ type STRAPI__COMPONENT_BASE_SIGNUP_GRIDFieldsEnum =
   | 'internal.type'
   | 'strapi_component'
   | 'isSectionVisible'
+  | 'signupImage.id'
+  | 'signupImage.parent.id'
+  | 'signupImage.parent.parent.id'
+  | 'signupImage.parent.parent.children'
+  | 'signupImage.parent.children'
+  | 'signupImage.parent.children.id'
+  | 'signupImage.parent.children.children'
+  | 'signupImage.parent.internal.content'
+  | 'signupImage.parent.internal.contentDigest'
+  | 'signupImage.parent.internal.description'
+  | 'signupImage.parent.internal.fieldOwners'
+  | 'signupImage.parent.internal.ignoreType'
+  | 'signupImage.parent.internal.mediaType'
+  | 'signupImage.parent.internal.owner'
+  | 'signupImage.parent.internal.type'
+  | 'signupImage.children'
+  | 'signupImage.children.id'
+  | 'signupImage.children.parent.id'
+  | 'signupImage.children.parent.children'
+  | 'signupImage.children.children'
+  | 'signupImage.children.children.id'
+  | 'signupImage.children.children.children'
+  | 'signupImage.children.internal.content'
+  | 'signupImage.children.internal.contentDigest'
+  | 'signupImage.children.internal.description'
+  | 'signupImage.children.internal.fieldOwners'
+  | 'signupImage.children.internal.ignoreType'
+  | 'signupImage.children.internal.mediaType'
+  | 'signupImage.children.internal.owner'
+  | 'signupImage.children.internal.type'
+  | 'signupImage.internal.content'
+  | 'signupImage.internal.contentDigest'
+  | 'signupImage.internal.description'
+  | 'signupImage.internal.fieldOwners'
+  | 'signupImage.internal.ignoreType'
+  | 'signupImage.internal.mediaType'
+  | 'signupImage.internal.owner'
+  | 'signupImage.internal.type'
+  | 'signupImage.name'
+  | 'signupImage.alternativeText'
+  | 'signupImage.caption'
+  | 'signupImage.width'
+  | 'signupImage.height'
+  | 'signupImage.formats.small.ext'
+  | 'signupImage.formats.small.url'
+  | 'signupImage.formats.small.hash'
+  | 'signupImage.formats.small.mime'
+  | 'signupImage.formats.small.name'
+  | 'signupImage.formats.small.size'
+  | 'signupImage.formats.small.width'
+  | 'signupImage.formats.small.height'
+  | 'signupImage.formats.medium.ext'
+  | 'signupImage.formats.medium.url'
+  | 'signupImage.formats.medium.hash'
+  | 'signupImage.formats.medium.mime'
+  | 'signupImage.formats.medium.name'
+  | 'signupImage.formats.medium.size'
+  | 'signupImage.formats.medium.width'
+  | 'signupImage.formats.medium.height'
+  | 'signupImage.formats.thumbnail.ext'
+  | 'signupImage.formats.thumbnail.url'
+  | 'signupImage.formats.thumbnail.hash'
+  | 'signupImage.formats.thumbnail.mime'
+  | 'signupImage.formats.thumbnail.name'
+  | 'signupImage.formats.thumbnail.size'
+  | 'signupImage.formats.thumbnail.width'
+  | 'signupImage.formats.thumbnail.height'
+  | 'signupImage.formats.large.ext'
+  | 'signupImage.formats.large.url'
+  | 'signupImage.formats.large.hash'
+  | 'signupImage.formats.large.mime'
+  | 'signupImage.formats.large.name'
+  | 'signupImage.formats.large.size'
+  | 'signupImage.formats.large.width'
+  | 'signupImage.formats.large.height'
+  | 'signupImage.hash'
+  | 'signupImage.ext'
+  | 'signupImage.mime'
+  | 'signupImage.size'
+  | 'signupImage.url'
+  | 'signupImage.createdAt'
+  | 'signupImage.updatedAt'
+  | 'signupImage.localFile.sourceInstanceName'
+  | 'signupImage.localFile.absolutePath'
+  | 'signupImage.localFile.relativePath'
+  | 'signupImage.localFile.extension'
+  | 'signupImage.localFile.size'
+  | 'signupImage.localFile.prettySize'
+  | 'signupImage.localFile.modifiedTime'
+  | 'signupImage.localFile.accessTime'
+  | 'signupImage.localFile.changeTime'
+  | 'signupImage.localFile.birthTime'
+  | 'signupImage.localFile.root'
+  | 'signupImage.localFile.dir'
+  | 'signupImage.localFile.base'
+  | 'signupImage.localFile.ext'
+  | 'signupImage.localFile.name'
+  | 'signupImage.localFile.relativeDirectory'
+  | 'signupImage.localFile.dev'
+  | 'signupImage.localFile.mode'
+  | 'signupImage.localFile.nlink'
+  | 'signupImage.localFile.uid'
+  | 'signupImage.localFile.gid'
+  | 'signupImage.localFile.rdev'
+  | 'signupImage.localFile.ino'
+  | 'signupImage.localFile.atimeMs'
+  | 'signupImage.localFile.mtimeMs'
+  | 'signupImage.localFile.ctimeMs'
+  | 'signupImage.localFile.atime'
+  | 'signupImage.localFile.mtime'
+  | 'signupImage.localFile.ctime'
+  | 'signupImage.localFile.birthtime'
+  | 'signupImage.localFile.birthtimeMs'
+  | 'signupImage.localFile.blksize'
+  | 'signupImage.localFile.blocks'
+  | 'signupImage.localFile.url'
+  | 'signupImage.localFile.id'
+  | 'signupImage.localFile.parent.id'
+  | 'signupImage.localFile.parent.children'
+  | 'signupImage.localFile.children'
+  | 'signupImage.localFile.children.id'
+  | 'signupImage.localFile.children.children'
+  | 'signupImage.localFile.internal.content'
+  | 'signupImage.localFile.internal.contentDigest'
+  | 'signupImage.localFile.internal.description'
+  | 'signupImage.localFile.internal.fieldOwners'
+  | 'signupImage.localFile.internal.ignoreType'
+  | 'signupImage.localFile.internal.mediaType'
+  | 'signupImage.localFile.internal.owner'
+  | 'signupImage.localFile.internal.type'
+  | 'signupImage.strapi_id'
+  | 'bannerImage.id'
+  | 'bannerImage.parent.id'
+  | 'bannerImage.parent.parent.id'
+  | 'bannerImage.parent.parent.children'
+  | 'bannerImage.parent.children'
+  | 'bannerImage.parent.children.id'
+  | 'bannerImage.parent.children.children'
+  | 'bannerImage.parent.internal.content'
+  | 'bannerImage.parent.internal.contentDigest'
+  | 'bannerImage.parent.internal.description'
+  | 'bannerImage.parent.internal.fieldOwners'
+  | 'bannerImage.parent.internal.ignoreType'
+  | 'bannerImage.parent.internal.mediaType'
+  | 'bannerImage.parent.internal.owner'
+  | 'bannerImage.parent.internal.type'
+  | 'bannerImage.children'
+  | 'bannerImage.children.id'
+  | 'bannerImage.children.parent.id'
+  | 'bannerImage.children.parent.children'
+  | 'bannerImage.children.children'
+  | 'bannerImage.children.children.id'
+  | 'bannerImage.children.children.children'
+  | 'bannerImage.children.internal.content'
+  | 'bannerImage.children.internal.contentDigest'
+  | 'bannerImage.children.internal.description'
+  | 'bannerImage.children.internal.fieldOwners'
+  | 'bannerImage.children.internal.ignoreType'
+  | 'bannerImage.children.internal.mediaType'
+  | 'bannerImage.children.internal.owner'
+  | 'bannerImage.children.internal.type'
+  | 'bannerImage.internal.content'
+  | 'bannerImage.internal.contentDigest'
+  | 'bannerImage.internal.description'
+  | 'bannerImage.internal.fieldOwners'
+  | 'bannerImage.internal.ignoreType'
+  | 'bannerImage.internal.mediaType'
+  | 'bannerImage.internal.owner'
+  | 'bannerImage.internal.type'
+  | 'bannerImage.name'
+  | 'bannerImage.alternativeText'
+  | 'bannerImage.caption'
+  | 'bannerImage.width'
+  | 'bannerImage.height'
+  | 'bannerImage.formats.small.ext'
+  | 'bannerImage.formats.small.url'
+  | 'bannerImage.formats.small.hash'
+  | 'bannerImage.formats.small.mime'
+  | 'bannerImage.formats.small.name'
+  | 'bannerImage.formats.small.size'
+  | 'bannerImage.formats.small.width'
+  | 'bannerImage.formats.small.height'
+  | 'bannerImage.formats.medium.ext'
+  | 'bannerImage.formats.medium.url'
+  | 'bannerImage.formats.medium.hash'
+  | 'bannerImage.formats.medium.mime'
+  | 'bannerImage.formats.medium.name'
+  | 'bannerImage.formats.medium.size'
+  | 'bannerImage.formats.medium.width'
+  | 'bannerImage.formats.medium.height'
+  | 'bannerImage.formats.thumbnail.ext'
+  | 'bannerImage.formats.thumbnail.url'
+  | 'bannerImage.formats.thumbnail.hash'
+  | 'bannerImage.formats.thumbnail.mime'
+  | 'bannerImage.formats.thumbnail.name'
+  | 'bannerImage.formats.thumbnail.size'
+  | 'bannerImage.formats.thumbnail.width'
+  | 'bannerImage.formats.thumbnail.height'
+  | 'bannerImage.formats.large.ext'
+  | 'bannerImage.formats.large.url'
+  | 'bannerImage.formats.large.hash'
+  | 'bannerImage.formats.large.mime'
+  | 'bannerImage.formats.large.name'
+  | 'bannerImage.formats.large.size'
+  | 'bannerImage.formats.large.width'
+  | 'bannerImage.formats.large.height'
+  | 'bannerImage.hash'
+  | 'bannerImage.ext'
+  | 'bannerImage.mime'
+  | 'bannerImage.size'
+  | 'bannerImage.url'
+  | 'bannerImage.createdAt'
+  | 'bannerImage.updatedAt'
+  | 'bannerImage.localFile.sourceInstanceName'
+  | 'bannerImage.localFile.absolutePath'
+  | 'bannerImage.localFile.relativePath'
+  | 'bannerImage.localFile.extension'
+  | 'bannerImage.localFile.size'
+  | 'bannerImage.localFile.prettySize'
+  | 'bannerImage.localFile.modifiedTime'
+  | 'bannerImage.localFile.accessTime'
+  | 'bannerImage.localFile.changeTime'
+  | 'bannerImage.localFile.birthTime'
+  | 'bannerImage.localFile.root'
+  | 'bannerImage.localFile.dir'
+  | 'bannerImage.localFile.base'
+  | 'bannerImage.localFile.ext'
+  | 'bannerImage.localFile.name'
+  | 'bannerImage.localFile.relativeDirectory'
+  | 'bannerImage.localFile.dev'
+  | 'bannerImage.localFile.mode'
+  | 'bannerImage.localFile.nlink'
+  | 'bannerImage.localFile.uid'
+  | 'bannerImage.localFile.gid'
+  | 'bannerImage.localFile.rdev'
+  | 'bannerImage.localFile.ino'
+  | 'bannerImage.localFile.atimeMs'
+  | 'bannerImage.localFile.mtimeMs'
+  | 'bannerImage.localFile.ctimeMs'
+  | 'bannerImage.localFile.atime'
+  | 'bannerImage.localFile.mtime'
+  | 'bannerImage.localFile.ctime'
+  | 'bannerImage.localFile.birthtime'
+  | 'bannerImage.localFile.birthtimeMs'
+  | 'bannerImage.localFile.blksize'
+  | 'bannerImage.localFile.blocks'
+  | 'bannerImage.localFile.url'
+  | 'bannerImage.localFile.id'
+  | 'bannerImage.localFile.parent.id'
+  | 'bannerImage.localFile.parent.children'
+  | 'bannerImage.localFile.children'
+  | 'bannerImage.localFile.children.id'
+  | 'bannerImage.localFile.children.children'
+  | 'bannerImage.localFile.internal.content'
+  | 'bannerImage.localFile.internal.contentDigest'
+  | 'bannerImage.localFile.internal.description'
+  | 'bannerImage.localFile.internal.fieldOwners'
+  | 'bannerImage.localFile.internal.ignoreType'
+  | 'bannerImage.localFile.internal.mediaType'
+  | 'bannerImage.localFile.internal.owner'
+  | 'bannerImage.localFile.internal.type'
+  | 'bannerImage.strapi_id'
   | 'signup_sections'
   | 'signup_sections.id'
   | 'signup_sections.parent.id'
@@ -4369,19 +4540,6 @@ type STRAPI__COMPONENT_BASE_SIGNUP_GRIDFieldsEnum =
   | 'signup_sections.subtitle'
   | 'signup_sections.createdAt'
   | 'signup_sections.updatedAt'
-  | 'signup_sections.backgroundImage.id'
-  | 'signup_sections.backgroundImage.name'
-  | 'signup_sections.backgroundImage.alternativeText'
-  | 'signup_sections.backgroundImage.caption'
-  | 'signup_sections.backgroundImage.width'
-  | 'signup_sections.backgroundImage.height'
-  | 'signup_sections.backgroundImage.hash'
-  | 'signup_sections.backgroundImage.ext'
-  | 'signup_sections.backgroundImage.mime'
-  | 'signup_sections.backgroundImage.size'
-  | 'signup_sections.backgroundImage.url'
-  | 'signup_sections.backgroundImage.createdAt'
-  | 'signup_sections.backgroundImage.updatedAt'
   | 'signup_sections.strapi_id'
   | 'strapi_id';
 
@@ -4433,6 +4591,8 @@ type STRAPI__COMPONENT_BASE_SIGNUP_GRIDFilterInput = {
   readonly internal: Maybe<InternalFilterInput>;
   readonly strapi_component: Maybe<StringQueryOperatorInput>;
   readonly isSectionVisible: Maybe<BooleanQueryOperatorInput>;
+  readonly signupImage: Maybe<STRAPI__MEDIAFilterInput>;
+  readonly bannerImage: Maybe<STRAPI__MEDIAFilterInput>;
   readonly signup_sections: Maybe<STRAPI_SIGNUP_SECTIONFilterListInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -6241,27 +6401,6 @@ type STRAPI_SIGNUP_SECTIONFieldsEnum =
   | 'subtitle'
   | 'createdAt'
   | 'updatedAt'
-  | 'backgroundImage.id'
-  | 'backgroundImage.name'
-  | 'backgroundImage.alternativeText'
-  | 'backgroundImage.caption'
-  | 'backgroundImage.width'
-  | 'backgroundImage.height'
-  | 'backgroundImage.formats.thumbnail.ext'
-  | 'backgroundImage.formats.thumbnail.url'
-  | 'backgroundImage.formats.thumbnail.hash'
-  | 'backgroundImage.formats.thumbnail.mime'
-  | 'backgroundImage.formats.thumbnail.name'
-  | 'backgroundImage.formats.thumbnail.size'
-  | 'backgroundImage.formats.thumbnail.width'
-  | 'backgroundImage.formats.thumbnail.height'
-  | 'backgroundImage.hash'
-  | 'backgroundImage.ext'
-  | 'backgroundImage.mime'
-  | 'backgroundImage.size'
-  | 'backgroundImage.url'
-  | 'backgroundImage.createdAt'
-  | 'backgroundImage.updatedAt'
   | 'strapi_id';
 
 type STRAPI_SIGNUP_SECTIONGroupConnection = {
@@ -7467,10 +7606,10 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type pageHomejawordevbbdaysWebsitesrcpagesindexTsx632377989QueryVariables = Exact<{ [key: string]: never; }>;
+type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2799832788QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageHomejawordevbbdaysWebsitesrcpagesindexTsx632377989Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
+type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2799832788Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
       Pick<STRAPI__COMPONENT_BASE_GALERY_SLIDER, 'id' | 'title' | 'strapi_component' | 'isSectionVisible'>
       & { readonly images: Maybe<ReadonlyArray<Maybe<Pick<STRAPI__MEDIA, 'id' | 'url'>>>> }
     ) | (
@@ -7490,10 +7629,7 @@ type pageHomejawordevbbdaysWebsitesrcpagesindexTsx632377989Query = { readonly st
       )>>> }
     ) | (
       Pick<STRAPI__COMPONENT_BASE_SIGNUP_GRID, 'id' | 'strapi_component' | 'isSectionVisible'>
-      & { readonly signup_sections: Maybe<ReadonlyArray<Maybe<(
-        Pick<STRAPI_SIGNUP_SECTION, 'buttonText' | 'buttonUrl' | 'title' | 'subtitle'>
-        & { readonly backgroundImage: Maybe<Pick<STRAPI_SIGNUP_SECTIONBackgroundImage, 'url'>> }
-      )>>> }
+      & { readonly signupImage: Maybe<Pick<STRAPI__MEDIA, 'url'>>, readonly bannerImage: Maybe<Pick<STRAPI__MEDIA, 'url'>>, readonly signup_sections: Maybe<ReadonlyArray<Maybe<Pick<STRAPI_SIGNUP_SECTION, 'buttonText' | 'buttonUrl' | 'title' | 'subtitle'>>>> }
     ) | (
       Pick<STRAPI__COMPONENT_BASE_SPEAKERS_GRID, 'id' | 'sectionTitle' | 'sectionSubtitle' | 'strapi_component' | 'isSectionVisible'>
       & { readonly speakers: Maybe<ReadonlyArray<Maybe<(

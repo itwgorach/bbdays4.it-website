@@ -143,6 +143,12 @@ export const query = graphql`
               }
               ... on STRAPI__COMPONENT_BASE_SIGNUP_GRID {
                   id
+                  signupImage {
+                    url
+                  }
+                  bannerImage {
+                    url
+                  }
                   strapi_component
                   isSectionVisible
                   signup_sections {
@@ -150,9 +156,6 @@ export const query = graphql`
                       buttonUrl
                       title
                       subtitle
-                      backgroundImage {
-                        url
-                      }
                   }
               }
           }
