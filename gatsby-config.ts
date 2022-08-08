@@ -21,6 +21,11 @@ const strapiConfig = {
               partners: {
                 populate: '*',
               },
+              signupImage: '*',
+              bannerImage: '*',
+              signup_sections: {
+                populate: '*',
+              },
               speakers: {
                 populate: '*',
               },
