@@ -3,24 +3,7 @@ import React, { FC } from 'react'
 
 import { BaseHeroType } from 'types'
 
-type HeroProps = BaseHeroType & {
-  isFirstHero: boolean,
-}
-
-const RegistrationLinks = [
-  {
-    href: 'https://app.evenea.pl/event/bbdays4it-2022-konferencja-ATH',
-    id: 0,
-    text: 'Zapisy na Konferencję',
-  },
-  {
-    href: 'https://app.evenea.pl/event/bbq4it-2022',
-    id: 1,
-    text: 'Zapisy na BBQ4IT',
-  },
-]
-
-const Hero: FC<HeroProps> = ({
+const Hero: FC<BaseHeroType> = ({
   title,
   subtitle,
   subtitlePos,
@@ -28,7 +11,6 @@ const Hero: FC<HeroProps> = ({
   backgroundColor,
   buttonText,
   buttonUrl,
-  isFirstHero,
 }) => {
   const hasButton = buttonText && buttonUrl
   const hasSubtitle = subtitle
@@ -47,19 +29,10 @@ const Hero: FC<HeroProps> = ({
       {hasSubtitle && subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
       <h1 className={titleClasses}>{title}</h1>
       {hasSubtitle && subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
-      {!isFirstHero && hasButton && (
+      {hasButton && (
         <a className="hero__button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
           {buttonText}
         </a>
-      )}
-      {isFirstHero && (
-        <div className="hero__button-wrapper">
-          {RegistrationLinks.map(({ href, id, text }) => (
-            <a key={id} className="hero__button" href={href} rel="noopener noreferrer" target="_blank">
-              {text}
-            </a>
-          ))}
-        </div>
       )}
     </div>
   )

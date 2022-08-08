@@ -10,7 +10,7 @@ const SignupSection: FC<SignupSectionType> = ({ buttonText, buttonUrl, title, su
             <div className="signup__section-subtitle">{subtitle}</div>
             <div className="signup__section-title">{title}</div>
           </div>
-          <a className="hero__button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
+          <a className="signup__section-button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
             {buttonText}
           </a>
         </div>
