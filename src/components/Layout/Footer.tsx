@@ -1,16 +1,22 @@
 import { socialLinks, footerLinks } from 'constants/constants'
-import React, { FC, useState, useCallback } from 'react'
+import React, { FC, useState, useCallback, useEffect } from 'react'
 import cx from 'classnames'
 import { Link } from 'gatsby'
 import { LinkType } from 'types'
 import PrivacyPolicy from './PrivacyPolicy'
 
-const Footer: FC = () => {
+type FooterProps = {
+  location: string,
+}
+
+const Footer: FC<FooterProps> = ({ location }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const path = typeof window !== 'undefined' ? window.location.pathname : ''
+  const [path, setPath] = useState('')
+
+  const isOnRulesPage = path === '/regulamin' || path === '/regulamin/'
 
   const footerClasses = cx('footer', {
-    '-rules': path === '/regulamin',
+    '-rules': isOnRulesPage,
   })
 
   const isExternalLink = (link: LinkType) => link.path.startsWith('http') || link.path.startsWith('mailto')
@@ -29,6 +35,10 @@ const Footer: FC = () => {
       </Link>
     )
   }, [])
+
+  useEffect(() => {
+    setPath(location)
+  }, [location])
 
   return (
     <footer className={footerClasses}>
