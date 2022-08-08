@@ -1,25 +1,25 @@
 import { socialLinks, footerLinks } from 'constants/constants'
-import React, { FC, useState, useCallback, useEffect } from 'react'
+import React, { FC, useState, useCallback } from 'react'
 import cx from 'classnames'
 import { Link } from 'gatsby'
 import { LinkType } from 'types'
 import PrivacyPolicy from './PrivacyPolicy'
 
 type FooterProps = {
-  location: string,
+  pathname: string,
 }
 
-const Footer: FC<FooterProps> = ({ location }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [path, setPath] = useState('')
+const isExternalLink = (link: LinkType) => link.path.startsWith('http') || link.path.startsWith('mailto')
 
-  const isOnRulesPage = path === '/regulamin' || path === '/regulamin/'
+const Footer: FC<FooterProps> = ({ pathname }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const isOnRulesPage = pathname === '/regulamin' || pathname === '/regulamin/'
 
   const footerClasses = cx('footer', {
     '-rules': isOnRulesPage,
   })
 
-  const isExternalLink = (link: LinkType) => link.path.startsWith('http') || link.path.startsWith('mailto')
   const toggleModal = () => setIsModalOpen((isModalOpen) => !isModalOpen)
 
   const getLinkComponent = useCallback((link: LinkType) => {
@@ -35,10 +35,6 @@ const Footer: FC<FooterProps> = ({ location }) => {
       </Link>
     )
   }, [])
-
-  useEffect(() => {
-    setPath(location)
-  }, [location])
 
   return (
     <footer className={footerClasses}>

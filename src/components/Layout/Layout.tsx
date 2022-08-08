@@ -9,9 +9,9 @@ const Layout: FC<JSX.IntrinsicAttributes> = ({ children, ...props }) => {
   return (
     <>
       <Seo />
-      <Header location={props.location.pathname} />
+      <Header pathname={props.location.pathname} />
       <main className="layout">{React.cloneElement(children, props)}</main>
-      <Footer location={props.location.pathname} />
+      <Footer pathname={props.location.pathname} />
       <CookiesConsent />
     </>
   )

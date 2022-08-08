@@ -6,14 +6,13 @@ import cx from 'classnames'
 import { HeaderType } from 'types'
 
 type DesktopHeaderProps = HeaderType & {
-  location: string,
+  pathname: string,
 }
 
-const DesktopHeader: FC<DesktopHeaderProps> = ({ links, location }) => {
+const DesktopHeader: FC<DesktopHeaderProps> = ({ links, pathname }) => {
   const [hasNavbarBackground, setHasNavbarBackground] = useState(false)
-  const [path, setPath] = useState('')
 
-  const isOnRulesPage = path === '/regulamin' || path === '/regulamin/'
+  const isOnRulesPage = pathname === '/regulamin' || pathname === '/regulamin/'
   const shouldHeaderBeColoured = hasNavbarBackground || isOnRulesPage
 
   const headerClasses = cx('header-desktop', {
@@ -43,15 +42,13 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ links, location }) => {
   }, [])
 
   useEffect(() => {
-    setPath(location)
-
     onScroll()
     window.addEventListener('scroll', onScroll)
 
     return () => {
       window.removeEventListener('scroll', onScroll)
     }
-  }, [location])
+  }, [])
 
   return (
     <header key="desktop-header" className={headerClasses}>

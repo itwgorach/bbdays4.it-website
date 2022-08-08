@@ -32,13 +32,13 @@ const linksData: LinkType[] = [
 ]
 
 type HeaderProps = {
-  location: string,
+  pathname: string,
 }
 
-const Header: FC<HeaderProps> = ({ location }) => {
+const Header: FC<HeaderProps> = ({ pathname }) => {
   return (
     <>
-      <DesktopHeader links={linksData} location={location} />
+      <DesktopHeader links={linksData} pathname={pathname} />
       <MobileHeader links={linksData} />
     </>
   )
