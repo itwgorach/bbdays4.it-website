@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
@@ -31,10 +31,14 @@ const linksData: LinkType[] = [
   // },
 ]
 
-const Header = () => {
+type HeaderProps = {
+  pathname: string,
+}
+
+const Header: FC<HeaderProps> = ({ pathname }) => {
   return (
     <>
-      <DesktopHeader links={linksData} />
+      <DesktopHeader links={linksData} pathname={pathname} />
       <MobileHeader links={linksData} />
     </>
   )

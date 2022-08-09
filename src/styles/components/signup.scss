@@ -180,6 +180,10 @@
       flex-direction: column;
       height: 233px;
       justify-content: space-evenly;
+
+      @include media-breakpoint-up(md) {
+        justify-content: space-between;
+      }
     }
 
     &-text {
@@ -201,9 +205,10 @@
       font-family: $font-family-header;
       font-size: $font-size-base-xs;
       font-weight: $font-weight-semi-bold;
+      opacity: .8;
     }
 
-    &__button {
+    &-button {
       background-color: $color-secondary;
       border-radius: $border-radius-xs;
       color: $color-text;
