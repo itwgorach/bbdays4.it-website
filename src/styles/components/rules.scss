@@ -1,0 +1,25 @@
+$rules-padding-base: calc($m-xl + $m-xs);
+$rules-padding-lg: $rules-padding-base * 2;
+
+.rules {
+  padding: $rules-padding-base;
+  min-height: calc(100vh - 2 * ($m-2xl + $m-sm));
+
+  h1, h2, h3, h4, h5, h6, li, p, a {
+      font-family: Calibri, sans-serif;
+      color: $color-dark;
+  }
+
+  a {
+      color: $color-link;
+      word-break: break-all;
+  }
+
+  @include media-breakpoint-between(md, xl) {
+    padding: $rules-padding-base $rules-padding-lg $rules-padding-base;
+  }
+  
+  @include media-breakpoint-up(xl) {
+    padding: $rules-padding-lg $rules-padding-lg $rules-padding-base;
+  }
+}
