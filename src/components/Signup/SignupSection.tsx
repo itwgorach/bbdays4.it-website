@@ -1,14 +1,20 @@
 import React, { FC } from 'react'
 import { SignupSectionType } from 'types'
 
-const SignupSection: FC<SignupSectionType> = ({ buttonText, buttonUrl, title, subtitle }) => {
+const SignupSection: FC<SignupSectionType> = ({ buttonText, buttonUrl, title, subtitle, link }) => {
   return (
     <div className="signup__section">
       <div className="signup__section-inner">
         <div className="signup__section-wrapper">
           <div className="signup__section-text">
             <div className="signup__section-subtitle">{subtitle}</div>
-            <div className="signup__section-title">{title}</div>
+            {link ? (
+              <a className="signup__section-title -link" href={link} rel="noopener noreferrer" target="_blank">
+                {title}
+              </a>
+            ) : (
+              <div className="signup__section-title">{title}</div>
+            )}
           </div>
           <a className="signup__section-button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
             {buttonText}
