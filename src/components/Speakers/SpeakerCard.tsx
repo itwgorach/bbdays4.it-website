@@ -4,14 +4,14 @@ import { SpeakerType } from 'types'
 import { getSpeakerFullName } from 'utils/getSpeakerFullName'
 
 import Image from 'components/Image'
-import { LinkedinIcon, TwitterIcon } from 'components/icons'
+import { LinkedinIcon, TwitterIcon, LinktrIcon } from 'components/icons'
 
 type SpeakerCardProps = {
   speaker: SpeakerType,
 }
 
 const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
-  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, position } = speaker
+  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, linktrUrl, position } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
 
@@ -27,12 +27,17 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
       <div className="speaker-card__image-placeholder">
         <div className="speaker-card__social">
           {linkedinUrl && (
-            <a href={linkedinUrl} rel="noopener noreferrer" target="_blank">
+            <a className="speaker-card__link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">
               <LinkedinIcon className="speaker-card__linkedin" />
             </a>
           )}
+          {linktrUrl && (
+            <a className="speaker-card__link" href={linktrUrl} rel="noopener noreferrer" target="_blank">
+              <LinktrIcon className="speaker-card__linktr" />
+            </a>
+          )}
           {twitterUrl && (
-            <a href={twitterUrl} rel="noopener noreferrer" target="_blank">
+            <a className="speaker-card__link" href={twitterUrl} rel="noopener noreferrer" target="_blank">
               <TwitterIcon className="speaker-card__twitter" />
             </a>
           )}

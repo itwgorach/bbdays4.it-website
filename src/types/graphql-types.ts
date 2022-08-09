@@ -544,6 +544,7 @@ type STRAPI_SPEAKER = Node & {
   readonly position: Maybe<Scalars['String']>;
   readonly linkedinUrl: Maybe<Scalars['String']>;
   readonly twitterUrl: Maybe<Scalars['String']>;
+  readonly linktrUrl: Maybe<Scalars['String']>;
   readonly photo: Maybe<STRAPI_SPEAKERPhoto>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -1520,6 +1521,7 @@ type Query_strapiSpeakerArgs = {
   position: Maybe<StringQueryOperatorInput>;
   linkedinUrl: Maybe<StringQueryOperatorInput>;
   twitterUrl: Maybe<StringQueryOperatorInput>;
+  linktrUrl: Maybe<StringQueryOperatorInput>;
   photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -3704,6 +3706,7 @@ type STRAPI_SPEAKERFilterInput = {
   readonly position: Maybe<StringQueryOperatorInput>;
   readonly linkedinUrl: Maybe<StringQueryOperatorInput>;
   readonly twitterUrl: Maybe<StringQueryOperatorInput>;
+  readonly linktrUrl: Maybe<StringQueryOperatorInput>;
   readonly photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -3930,6 +3933,7 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFieldsEnum =
   | 'speakers.position'
   | 'speakers.linkedinUrl'
   | 'speakers.twitterUrl'
+  | 'speakers.linktrUrl'
   | 'speakers.photo.id'
   | 'speakers.photo.name'
   | 'speakers.photo.alternativeText'
@@ -5573,6 +5577,7 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'position'
   | 'linkedinUrl'
   | 'twitterUrl'
+  | 'linktrUrl'
   | 'photo.id'
   | 'photo.name'
   | 'photo.alternativeText'
@@ -6826,7 +6831,7 @@ type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx1264723702Query = {
     ) | (
       Pick<STRAPI__COMPONENT_BASE_SPEAKERS_GRID, 'id' | 'sectionTitle' | 'sectionSubtitle' | 'strapi_component' | 'isSectionVisible'>
       & { readonly speakers: Maybe<ReadonlyArray<Maybe<(
-        Pick<STRAPI_SPEAKER, 'firstName' | 'lastName' | 'title' | 'description' | 'position' | 'linkedinUrl' | 'twitterUrl'>
+        Pick<STRAPI_SPEAKER, 'firstName' | 'lastName' | 'title' | 'description' | 'position' | 'linkedinUrl' | 'twitterUrl' | 'linktrUrl'>
         & { readonly photo: Maybe<Pick<STRAPI_SPEAKERPhoto, 'url'>> }
       )>>> }
     )>>> }> };
