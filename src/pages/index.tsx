@@ -122,6 +122,7 @@ export const query = graphql`
                       position
                       linkedinUrl
                       twitterUrl
+                      linktrUrl
                   }
               }
               ... on STRAPI__COMPONENT_BASE_SCHEDULE {

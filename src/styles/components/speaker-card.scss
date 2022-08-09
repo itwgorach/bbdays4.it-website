@@ -98,12 +98,38 @@
         flex-direction: column;
     }
 
-    &__linkedin {
-        path {
-            stroke: $color-dark;
+    &__link {
+        &:first-of-type {
+            .speaker-card__twitter {
+                path {
+                    stroke: $color-dark;
+            
+                    &:nth-last-of-type(1) {
+                        fill: $color-dark;
+                    }
+                }
+            }
 
-            &:nth-last-of-type(2) {
-                fill: $color-dark;
+            .speaker-card__linkedin {
+                path {
+                    stroke: $color-dark;
+            
+                    &:nth-last-of-type(2) {
+                        fill: $color-dark;
+                    }
+                }
+            }
+
+            .speaker-card__linktr {
+                path {
+                    &:first-of-type {
+                        stroke: $color-dark;
+                    }
+                    
+                    &:last-of-type {
+                        fill: $color-dark;
+                    }
+                }
             }
         }
     }
@@ -151,8 +177,19 @@
             width: 55px;
         }
         &__linkedin,
-        &__twitter {
+        &__twitter,
+        &__linktr {
             width: $icon-size;
+        }
+
+        &__linkedin {
+            path {
+                stroke: $color-dark;
+    
+                &:nth-last-of-type(2) {
+                    fill: $color-dark;
+                }
+            }
         }
 
         &__twitter {
@@ -160,6 +197,18 @@
                 stroke: $color-dark;
 
                 &:nth-last-of-type(1) {
+                    fill: $color-dark;
+                }
+            }
+        }
+
+        &__linktr {
+            path {
+                &:first-of-type {
+                    stroke: $color-dark;
+                }
+
+                &:last-of-type {
                     fill: $color-dark;
                 }
             }
