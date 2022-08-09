@@ -377,27 +377,10 @@ type STRAPI__MEDIA_updatedAtArgs = {
 };
 
 type STRAPI__MEDIAFormats = {
-  readonly large: Maybe<STRAPI__MEDIAFormatsLarge>;
   readonly small: Maybe<STRAPI__MEDIAFormatsSmall>;
   readonly medium: Maybe<STRAPI__MEDIAFormatsMedium>;
   readonly thumbnail: Maybe<STRAPI__MEDIAFormatsThumbnail>;
-};
-
-type STRAPI__MEDIAFormatsLarge = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly provider_metadata: Maybe<STRAPI__MEDIAFormatsLargeProvider_metadata>;
-};
-
-type STRAPI__MEDIAFormatsLargeProvider_metadata = {
-  readonly public_id: Maybe<Scalars['String']>;
-  readonly resource_type: Maybe<Scalars['String']>;
+  readonly large: Maybe<STRAPI__MEDIAFormatsLarge>;
 };
 
 type STRAPI__MEDIAFormatsSmall = {
@@ -451,6 +434,23 @@ type STRAPI__MEDIAFormatsThumbnailProvider_metadata = {
   readonly resource_type: Maybe<Scalars['String']>;
 };
 
+type STRAPI__MEDIAFormatsLarge = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI__MEDIAFormatsLargeProvider_metadata>;
+};
+
+type STRAPI__MEDIAFormatsLargeProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
 type STRAPI__COMPONENT_BASE_SPEAKERS_GRID = Node & {
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
@@ -461,6 +461,19 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRID = Node & {
   readonly sectionSubtitle: Maybe<Scalars['String']>;
   readonly isSectionVisible: Maybe<Scalars['Boolean']>;
   readonly speakers: Maybe<ReadonlyArray<Maybe<STRAPI_SPEAKER>>>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI__COMPONENT_BASE_SIGNUP_GRID = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly strapi_component: Maybe<Scalars['String']>;
+  readonly isSectionVisible: Maybe<Scalars['Boolean']>;
+  readonly signupImage: Maybe<STRAPI__MEDIA>;
+  readonly bannerImage: Maybe<STRAPI__MEDIA>;
+  readonly signup_sections: Maybe<ReadonlyArray<Maybe<STRAPI_SIGNUP_SECTION>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -522,15 +535,16 @@ type STRAPI_SPEAKER = Node & {
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
-  readonly createdAt: Maybe<Scalars['Date']>;
-  readonly updatedAt: Maybe<Scalars['Date']>;
   readonly firstName: Maybe<Scalars['String']>;
   readonly lastName: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
   readonly position: Maybe<Scalars['String']>;
   readonly linkedinUrl: Maybe<Scalars['String']>;
   readonly twitterUrl: Maybe<Scalars['String']>;
+  readonly linktrUrl: Maybe<Scalars['String']>;
   readonly photo: Maybe<STRAPI_SPEAKERPhoto>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -586,9 +600,6 @@ type STRAPI_SPEAKERPhoto_updatedAtArgs = {
 
 type STRAPI_SPEAKERPhotoFormats = {
   readonly thumbnail: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnail>;
-  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLarge>;
-  readonly small: Maybe<STRAPI_SPEAKERPhotoFormatsSmall>;
-  readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMedium>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnail = {
@@ -608,21 +619,27 @@ type STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadata = {
   readonly resource_type: Maybe<Scalars['String']>;
 };
 
-type STRAPI_SPEAKERPhotoFormatsLarge = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata>;
+type STRAPI_RULES_TEXT_TEXTNODE = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly text: Maybe<Scalars['String']>;
 };
 
-type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata = {
-  readonly public_id: Maybe<Scalars['String']>;
-  readonly resource_type: Maybe<Scalars['String']>;
+type STRAPI_RULES = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly text: Maybe<STRAPI_RULESText>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+  /** Returns all children nodes filtered by type STRAPI_RULES_TEXT_TEXTNODE */
+  readonly childrenStrapiRulesTextTextnode: Maybe<ReadonlyArray<Maybe<STRAPI_RULES_TEXT_TEXTNODE>>>;
+  /** Returns the first child node of type STRAPI_RULES_TEXT_TEXTNODE or null if there are no children of given type on this node */
+  readonly childStrapiRulesTextTextnode: Maybe<STRAPI_RULES_TEXT_TEXTNODE>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsSmall = {
@@ -657,6 +674,36 @@ type STRAPI_SPEAKERPhotoFormatsMedium = {
 type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata = {
   readonly public_id: Maybe<Scalars['String']>;
   readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_SIGNUP_SECTION = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly buttonText: Maybe<Scalars['String']>;
+  readonly buttonUrl: Maybe<Scalars['String']>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly subtitle: Maybe<Scalars['String']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
+
+type STRAPI_SIGNUP_SECTION_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_SIGNUP_SECTION_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
 };
 
 type STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE = Node & {
@@ -767,6 +814,9 @@ type STRAPI_PARTNERLogo_updatedAtArgs = {
 
 type STRAPI_PARTNERLogoFormats = {
   readonly thumbnail: Maybe<STRAPI_PARTNERLogoFormatsThumbnail>;
+  readonly large: Maybe<STRAPI_PARTNERLogoFormatsLarge>;
+  readonly small: Maybe<STRAPI_PARTNERLogoFormatsSmall>;
+  readonly medium: Maybe<STRAPI_PARTNERLogoFormatsMedium>;
 };
 
 type STRAPI_PARTNERLogoFormatsThumbnail = {
@@ -782,6 +832,57 @@ type STRAPI_PARTNERLogoFormatsThumbnail = {
 };
 
 type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PARTNERLogoFormatsLarge = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsLargeProvider_metadata>;
+};
+
+type STRAPI_PARTNERLogoFormatsLargeProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PARTNERLogoFormatsSmall = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsSmallProvider_metadata>;
+};
+
+type STRAPI_PARTNERLogoFormatsSmallProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PARTNERLogoFormatsMedium = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsMediumProvider_metadata>;
+};
+
+type STRAPI_PARTNERLogoFormatsMediumProvider_metadata = {
   readonly public_id: Maybe<Scalars['String']>;
   readonly resource_type: Maybe<Scalars['String']>;
 };
@@ -820,13 +921,13 @@ type STRAPI_PARTNERWhiteLogo_updatedAtArgs = {
 };
 
 type STRAPI_PARTNERWhiteLogoFormats = {
-  readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnail>;
+  readonly large: Maybe<STRAPI_PARTNERWhiteLogoFormatsLarge>;
   readonly small: Maybe<STRAPI_PARTNERWhiteLogoFormatsSmall>;
   readonly medium: Maybe<STRAPI_PARTNERWhiteLogoFormatsMedium>;
-  readonly large: Maybe<STRAPI_PARTNERWhiteLogoFormatsLarge>;
+  readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnail>;
 };
 
-type STRAPI_PARTNERWhiteLogoFormatsThumbnail = {
+type STRAPI_PARTNERWhiteLogoFormatsLarge = {
   readonly ext: Maybe<Scalars['String']>;
   readonly url: Maybe<Scalars['String']>;
   readonly hash: Maybe<Scalars['String']>;
@@ -835,10 +936,10 @@ type STRAPI_PARTNERWhiteLogoFormatsThumbnail = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
-  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadata>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadata>;
 };
 
-type STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadata = {
+type STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadata = {
   readonly public_id: Maybe<Scalars['String']>;
   readonly resource_type: Maybe<Scalars['String']>;
 };
@@ -877,7 +978,7 @@ type STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadata = {
   readonly resource_type: Maybe<Scalars['String']>;
 };
 
-type STRAPI_PARTNERWhiteLogoFormatsLarge = {
+type STRAPI_PARTNERWhiteLogoFormatsThumbnail = {
   readonly ext: Maybe<Scalars['String']>;
   readonly url: Maybe<Scalars['String']>;
   readonly hash: Maybe<Scalars['String']>;
@@ -886,10 +987,10 @@ type STRAPI_PARTNERWhiteLogoFormatsLarge = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
-  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadata>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadata>;
 };
 
-type STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadata = {
+type STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadata = {
   readonly public_id: Maybe<Scalars['String']>;
   readonly resource_type: Maybe<Scalars['String']>;
 };
@@ -901,7 +1002,7 @@ type STRAPI_HOMEPAGE = Node & {
   readonly internal: Internal;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
-  readonly homepage: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SPEAKERS_GRIDUnion>>>;
+  readonly homepage: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SIGNUP_GRIDSTRAPI__COMPONENT_BASE_SPEAKERS_GRIDUnion>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -921,7 +1022,7 @@ type STRAPI_HOMEPAGE_updatedAtArgs = {
   locale: Maybe<Scalars['String']>;
 };
 
-type STRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SPEAKERS_GRIDUnion = STRAPI__COMPONENT_BASE_GALERY_SLIDER | STRAPI__COMPONENT_BASE_HERO | STRAPI__COMPONENT_BASE_PARTNERS_SLIDER | STRAPI__COMPONENT_BASE_SCHEDULE | STRAPI__COMPONENT_BASE_SPEAKERS_GRID;
+type STRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SIGNUP_GRIDSTRAPI__COMPONENT_BASE_SPEAKERS_GRIDUnion = STRAPI__COMPONENT_BASE_GALERY_SLIDER | STRAPI__COMPONENT_BASE_HERO | STRAPI__COMPONENT_BASE_PARTNERS_SLIDER | STRAPI__COMPONENT_BASE_SCHEDULE | STRAPI__COMPONENT_BASE_SIGNUP_GRID | STRAPI__COMPONENT_BASE_SPEAKERS_GRID;
 
 type STRAPI_EVENT = Node & {
   readonly id: Scalars['ID'];
@@ -932,10 +1033,10 @@ type STRAPI_EVENT = Node & {
   readonly endHour: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['String']>;
   readonly backgroundColor: Maybe<Scalars['String']>;
-  readonly title: Maybe<Scalars['String']>;
-  readonly displayTitleOnDesktop: Maybe<Scalars['Boolean']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly displayTitleOnDesktop: Maybe<Scalars['Boolean']>;
   readonly logo: Maybe<STRAPI_EVENTLogo>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -961,6 +1062,8 @@ type STRAPI_EVENTLogo = {
   readonly name: Maybe<Scalars['String']>;
   readonly alternativeText: Maybe<Scalars['String']>;
   readonly caption: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
   readonly hash: Maybe<Scalars['String']>;
   readonly ext: Maybe<Scalars['String']>;
   readonly mime: Maybe<Scalars['String']>;
@@ -1005,6 +1108,8 @@ type Query = {
   readonly allStrapiMedia: STRAPI__MEDIAConnection;
   readonly strapiComponentBaseSpeakersGrid: Maybe<STRAPI__COMPONENT_BASE_SPEAKERS_GRID>;
   readonly allStrapiComponentBaseSpeakersGrid: STRAPI__COMPONENT_BASE_SPEAKERS_GRIDConnection;
+  readonly strapiComponentBaseSignupGrid: Maybe<STRAPI__COMPONENT_BASE_SIGNUP_GRID>;
+  readonly allStrapiComponentBaseSignupGrid: STRAPI__COMPONENT_BASE_SIGNUP_GRIDConnection;
   readonly strapiComponentBaseSchedule: Maybe<STRAPI__COMPONENT_BASE_SCHEDULE>;
   readonly allStrapiComponentBaseSchedule: STRAPI__COMPONENT_BASE_SCHEDULEConnection;
   readonly strapiComponentBasePartnersSlider: Maybe<STRAPI__COMPONENT_BASE_PARTNERS_SLIDER>;
@@ -1291,6 +1396,28 @@ type Query_allStrapiComponentBaseSpeakersGridArgs = {
 };
 
 
+type Query_strapiComponentBaseSignupGridArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  strapi_component: Maybe<StringQueryOperatorInput>;
+  isSectionVisible: Maybe<BooleanQueryOperatorInput>;
+  signupImage: Maybe<STRAPI__MEDIAFilterInput>;
+  bannerImage: Maybe<STRAPI__MEDIAFilterInput>;
+  signup_sections: Maybe<STRAPI_SIGNUP_SECTIONFilterListInput>;
+  strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+
+type Query_allStrapiComponentBaseSignupGridArgs = {
+  filter: Maybe<STRAPI__COMPONENT_BASE_SIGNUP_GRIDFilterInput>;
+  sort: Maybe<STRAPI__COMPONENT_BASE_SIGNUP_GRIDSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
 type Query_strapiComponentBaseScheduleArgs = {
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
@@ -1385,15 +1512,16 @@ type Query_strapiSpeakerArgs = {
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
-  createdAt: Maybe<DateQueryOperatorInput>;
-  updatedAt: Maybe<DateQueryOperatorInput>;
   firstName: Maybe<StringQueryOperatorInput>;
   lastName: Maybe<StringQueryOperatorInput>;
   title: Maybe<StringQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
+  createdAt: Maybe<DateQueryOperatorInput>;
+  updatedAt: Maybe<DateQueryOperatorInput>;
   position: Maybe<StringQueryOperatorInput>;
   linkedinUrl: Maybe<StringQueryOperatorInput>;
   twitterUrl: Maybe<StringQueryOperatorInput>;
+  linktrUrl: Maybe<StringQueryOperatorInput>;
   photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -1497,10 +1625,10 @@ type Query_strapiEventArgs = {
   endHour: Maybe<StringQueryOperatorInput>;
   date: Maybe<StringQueryOperatorInput>;
   backgroundColor: Maybe<StringQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  displayTitleOnDesktop: Maybe<BooleanQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
+  title: Maybe<StringQueryOperatorInput>;
+  displayTitleOnDesktop: Maybe<BooleanQueryOperatorInput>;
   logo: Maybe<STRAPI_EVENTLogoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -3160,27 +3288,10 @@ type SiteBuildMetadataSortInput = {
 };
 
 type STRAPI__MEDIAFormatsFilterInput = {
-  readonly large: Maybe<STRAPI__MEDIAFormatsLargeFilterInput>;
   readonly small: Maybe<STRAPI__MEDIAFormatsSmallFilterInput>;
   readonly medium: Maybe<STRAPI__MEDIAFormatsMediumFilterInput>;
   readonly thumbnail: Maybe<STRAPI__MEDIAFormatsThumbnailFilterInput>;
-};
-
-type STRAPI__MEDIAFormatsLargeFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI__MEDIAFormatsLargeProvider_metadataFilterInput>;
-};
-
-type STRAPI__MEDIAFormatsLargeProvider_metadataFilterInput = {
-  readonly public_id: Maybe<StringQueryOperatorInput>;
-  readonly resource_type: Maybe<StringQueryOperatorInput>;
+  readonly large: Maybe<STRAPI__MEDIAFormatsLargeFilterInput>;
 };
 
 type STRAPI__MEDIAFormatsSmallFilterInput = {
@@ -3230,6 +3341,23 @@ type STRAPI__MEDIAFormatsThumbnailFilterInput = {
 };
 
 type STRAPI__MEDIAFormatsThumbnailProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI__MEDIAFormatsLargeFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI__MEDIAFormatsLargeProvider_metadataFilterInput>;
+};
+
+type STRAPI__MEDIAFormatsLargeProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
@@ -3371,16 +3499,6 @@ type STRAPI__MEDIAFieldsEnum =
   | 'caption'
   | 'width'
   | 'height'
-  | 'formats.large.ext'
-  | 'formats.large.url'
-  | 'formats.large.hash'
-  | 'formats.large.mime'
-  | 'formats.large.name'
-  | 'formats.large.size'
-  | 'formats.large.width'
-  | 'formats.large.height'
-  | 'formats.large.provider_metadata.public_id'
-  | 'formats.large.provider_metadata.resource_type'
   | 'formats.small.ext'
   | 'formats.small.url'
   | 'formats.small.hash'
@@ -3411,6 +3529,16 @@ type STRAPI__MEDIAFieldsEnum =
   | 'formats.thumbnail.height'
   | 'formats.thumbnail.provider_metadata.public_id'
   | 'formats.thumbnail.provider_metadata.resource_type'
+  | 'formats.large.ext'
+  | 'formats.large.url'
+  | 'formats.large.hash'
+  | 'formats.large.mime'
+  | 'formats.large.name'
+  | 'formats.large.size'
+  | 'formats.large.width'
+  | 'formats.large.height'
+  | 'formats.large.provider_metadata.public_id'
+  | 'formats.large.provider_metadata.resource_type'
   | 'hash'
   | 'ext'
   | 'mime'
@@ -3569,15 +3697,16 @@ type STRAPI_SPEAKERFilterInput = {
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
   readonly internal: Maybe<InternalFilterInput>;
-  readonly createdAt: Maybe<DateQueryOperatorInput>;
-  readonly updatedAt: Maybe<DateQueryOperatorInput>;
   readonly firstName: Maybe<StringQueryOperatorInput>;
   readonly lastName: Maybe<StringQueryOperatorInput>;
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
   readonly position: Maybe<StringQueryOperatorInput>;
   readonly linkedinUrl: Maybe<StringQueryOperatorInput>;
   readonly twitterUrl: Maybe<StringQueryOperatorInput>;
+  readonly linktrUrl: Maybe<StringQueryOperatorInput>;
   readonly photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -3601,9 +3730,6 @@ type STRAPI_SPEAKERPhotoFilterInput = {
 
 type STRAPI_SPEAKERPhotoFormatsFilterInput = {
   readonly thumbnail: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput>;
-  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLargeFilterInput>;
-  readonly small: Maybe<STRAPI_SPEAKERPhotoFormatsSmallFilterInput>;
-  readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMediumFilterInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput = {
@@ -3619,57 +3745,6 @@ type STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput = {
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadataFilterInput = {
-  readonly public_id: Maybe<StringQueryOperatorInput>;
-  readonly resource_type: Maybe<StringQueryOperatorInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLargeFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput = {
-  readonly public_id: Maybe<StringQueryOperatorInput>;
-  readonly resource_type: Maybe<StringQueryOperatorInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsSmallFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput = {
-  readonly public_id: Maybe<StringQueryOperatorInput>;
-  readonly resource_type: Maybe<StringQueryOperatorInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsMediumFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
@@ -3849,15 +3924,16 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFieldsEnum =
   | 'speakers.internal.mediaType'
   | 'speakers.internal.owner'
   | 'speakers.internal.type'
-  | 'speakers.createdAt'
-  | 'speakers.updatedAt'
   | 'speakers.firstName'
   | 'speakers.lastName'
   | 'speakers.title'
   | 'speakers.description'
+  | 'speakers.createdAt'
+  | 'speakers.updatedAt'
   | 'speakers.position'
   | 'speakers.linkedinUrl'
   | 'speakers.twitterUrl'
+  | 'speakers.linktrUrl'
   | 'speakers.photo.id'
   | 'speakers.photo.name'
   | 'speakers.photo.alternativeText'
@@ -3946,10 +4022,10 @@ type STRAPI_EVENTFilterInput = {
   readonly endHour: Maybe<StringQueryOperatorInput>;
   readonly date: Maybe<StringQueryOperatorInput>;
   readonly backgroundColor: Maybe<StringQueryOperatorInput>;
-  readonly title: Maybe<StringQueryOperatorInput>;
-  readonly displayTitleOnDesktop: Maybe<BooleanQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly displayTitleOnDesktop: Maybe<BooleanQueryOperatorInput>;
   readonly logo: Maybe<STRAPI_EVENTLogoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -3959,6 +4035,8 @@ type STRAPI_EVENTLogoFilterInput = {
   readonly name: Maybe<StringQueryOperatorInput>;
   readonly alternativeText: Maybe<StringQueryOperatorInput>;
   readonly caption: Maybe<StringQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
   readonly hash: Maybe<StringQueryOperatorInput>;
   readonly ext: Maybe<StringQueryOperatorInput>;
   readonly mime: Maybe<StringQueryOperatorInput>;
@@ -4146,14 +4224,16 @@ type STRAPI__COMPONENT_BASE_SCHEDULEFieldsEnum =
   | 'events.endHour'
   | 'events.date'
   | 'events.backgroundColor'
-  | 'events.title'
-  | 'events.displayTitleOnDesktop'
   | 'events.createdAt'
   | 'events.updatedAt'
+  | 'events.title'
+  | 'events.displayTitleOnDesktop'
   | 'events.logo.id'
   | 'events.logo.name'
   | 'events.logo.alternativeText'
   | 'events.logo.caption'
+  | 'events.logo.width'
+  | 'events.logo.height'
   | 'events.logo.hash'
   | 'events.logo.ext'
   | 'events.logo.mime'
@@ -4259,6 +4339,9 @@ type STRAPI_PARTNERLogoFilterInput = {
 
 type STRAPI_PARTNERLogoFormatsFilterInput = {
   readonly thumbnail: Maybe<STRAPI_PARTNERLogoFormatsThumbnailFilterInput>;
+  readonly large: Maybe<STRAPI_PARTNERLogoFormatsLargeFilterInput>;
+  readonly small: Maybe<STRAPI_PARTNERLogoFormatsSmallFilterInput>;
+  readonly medium: Maybe<STRAPI_PARTNERLogoFormatsMediumFilterInput>;
 };
 
 type STRAPI_PARTNERLogoFormatsThumbnailFilterInput = {
@@ -4274,6 +4357,57 @@ type STRAPI_PARTNERLogoFormatsThumbnailFilterInput = {
 };
 
 type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsLargeFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsLargeProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsLargeProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsSmallFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsSmallProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsSmallProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsMediumFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsMediumProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsMediumProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
@@ -4296,13 +4430,13 @@ type STRAPI_PARTNERWhiteLogoFilterInput = {
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsFilterInput = {
-  readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput>;
+  readonly large: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput>;
   readonly small: Maybe<STRAPI_PARTNERWhiteLogoFormatsSmallFilterInput>;
   readonly medium: Maybe<STRAPI_PARTNERWhiteLogoFormatsMediumFilterInput>;
-  readonly large: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput>;
+  readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput>;
 };
 
-type STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput = {
+type STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput = {
   readonly ext: Maybe<StringQueryOperatorInput>;
   readonly url: Maybe<StringQueryOperatorInput>;
   readonly hash: Maybe<StringQueryOperatorInput>;
@@ -4311,10 +4445,10 @@ type STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadataFilterInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadataFilterInput>;
 };
 
-type STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadataFilterInput = {
+type STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
@@ -4353,7 +4487,7 @@ type STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadataFilterInput = {
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
-type STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput = {
+type STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput = {
   readonly ext: Maybe<StringQueryOperatorInput>;
   readonly url: Maybe<StringQueryOperatorInput>;
   readonly hash: Maybe<StringQueryOperatorInput>;
@@ -4362,10 +4496,10 @@ type STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadataFilterInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadataFilterInput>;
 };
 
-type STRAPI_PARTNERWhiteLogoFormatsLargeProvider_metadataFilterInput = {
+type STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadataFilterInput = {
   readonly public_id: Maybe<StringQueryOperatorInput>;
   readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
@@ -4818,14 +4952,6 @@ type STRAPI__COMPONENT_BASE_HEROFieldsEnum =
   | 'backgroundImage.caption'
   | 'backgroundImage.width'
   | 'backgroundImage.height'
-  | 'backgroundImage.formats.large.ext'
-  | 'backgroundImage.formats.large.url'
-  | 'backgroundImage.formats.large.hash'
-  | 'backgroundImage.formats.large.mime'
-  | 'backgroundImage.formats.large.name'
-  | 'backgroundImage.formats.large.size'
-  | 'backgroundImage.formats.large.width'
-  | 'backgroundImage.formats.large.height'
   | 'backgroundImage.formats.small.ext'
   | 'backgroundImage.formats.small.url'
   | 'backgroundImage.formats.small.hash'
@@ -4850,6 +4976,14 @@ type STRAPI__COMPONENT_BASE_HEROFieldsEnum =
   | 'backgroundImage.formats.thumbnail.size'
   | 'backgroundImage.formats.thumbnail.width'
   | 'backgroundImage.formats.thumbnail.height'
+  | 'backgroundImage.formats.large.ext'
+  | 'backgroundImage.formats.large.url'
+  | 'backgroundImage.formats.large.hash'
+  | 'backgroundImage.formats.large.mime'
+  | 'backgroundImage.formats.large.name'
+  | 'backgroundImage.formats.large.size'
+  | 'backgroundImage.formats.large.width'
+  | 'backgroundImage.formats.large.height'
   | 'backgroundImage.hash'
   | 'backgroundImage.ext'
   | 'backgroundImage.mime'
@@ -5154,14 +5288,6 @@ type STRAPI__COMPONENT_BASE_GALERY_SLIDERFieldsEnum =
   | 'images.caption'
   | 'images.width'
   | 'images.height'
-  | 'images.formats.large.ext'
-  | 'images.formats.large.url'
-  | 'images.formats.large.hash'
-  | 'images.formats.large.mime'
-  | 'images.formats.large.name'
-  | 'images.formats.large.size'
-  | 'images.formats.large.width'
-  | 'images.formats.large.height'
   | 'images.formats.small.ext'
   | 'images.formats.small.url'
   | 'images.formats.small.hash'
@@ -5186,6 +5312,14 @@ type STRAPI__COMPONENT_BASE_GALERY_SLIDERFieldsEnum =
   | 'images.formats.thumbnail.size'
   | 'images.formats.thumbnail.width'
   | 'images.formats.thumbnail.height'
+  | 'images.formats.large.ext'
+  | 'images.formats.large.url'
+  | 'images.formats.large.hash'
+  | 'images.formats.large.mime'
+  | 'images.formats.large.name'
+  | 'images.formats.large.size'
+  | 'images.formats.large.width'
+  | 'images.formats.large.height'
   | 'images.hash'
   | 'images.ext'
   | 'images.mime'
@@ -5434,15 +5568,16 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
-  | 'createdAt'
-  | 'updatedAt'
   | 'firstName'
   | 'lastName'
   | 'title'
   | 'description'
+  | 'createdAt'
+  | 'updatedAt'
   | 'position'
   | 'linkedinUrl'
   | 'twitterUrl'
+  | 'linktrUrl'
   | 'photo.id'
   | 'photo.name'
   | 'photo.alternativeText'
@@ -5457,30 +5592,6 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'photo.formats.thumbnail.size'
   | 'photo.formats.thumbnail.width'
   | 'photo.formats.thumbnail.height'
-  | 'photo.formats.large.ext'
-  | 'photo.formats.large.url'
-  | 'photo.formats.large.hash'
-  | 'photo.formats.large.mime'
-  | 'photo.formats.large.name'
-  | 'photo.formats.large.size'
-  | 'photo.formats.large.width'
-  | 'photo.formats.large.height'
-  | 'photo.formats.small.ext'
-  | 'photo.formats.small.url'
-  | 'photo.formats.small.hash'
-  | 'photo.formats.small.mime'
-  | 'photo.formats.small.name'
-  | 'photo.formats.small.size'
-  | 'photo.formats.small.width'
-  | 'photo.formats.small.height'
-  | 'photo.formats.medium.ext'
-  | 'photo.formats.medium.url'
-  | 'photo.formats.medium.hash'
-  | 'photo.formats.medium.mime'
-  | 'photo.formats.medium.name'
-  | 'photo.formats.medium.size'
-  | 'photo.formats.medium.width'
-  | 'photo.formats.medium.height'
   | 'photo.hash'
   | 'photo.ext'
   | 'photo.mime'
@@ -6171,6 +6282,30 @@ type STRAPI_PARTNERFieldsEnum =
   | 'Logo.formats.thumbnail.size'
   | 'Logo.formats.thumbnail.width'
   | 'Logo.formats.thumbnail.height'
+  | 'Logo.formats.large.ext'
+  | 'Logo.formats.large.url'
+  | 'Logo.formats.large.hash'
+  | 'Logo.formats.large.mime'
+  | 'Logo.formats.large.name'
+  | 'Logo.formats.large.size'
+  | 'Logo.formats.large.width'
+  | 'Logo.formats.large.height'
+  | 'Logo.formats.small.ext'
+  | 'Logo.formats.small.url'
+  | 'Logo.formats.small.hash'
+  | 'Logo.formats.small.mime'
+  | 'Logo.formats.small.name'
+  | 'Logo.formats.small.size'
+  | 'Logo.formats.small.width'
+  | 'Logo.formats.small.height'
+  | 'Logo.formats.medium.ext'
+  | 'Logo.formats.medium.url'
+  | 'Logo.formats.medium.hash'
+  | 'Logo.formats.medium.mime'
+  | 'Logo.formats.medium.name'
+  | 'Logo.formats.medium.size'
+  | 'Logo.formats.medium.width'
+  | 'Logo.formats.medium.height'
   | 'Logo.hash'
   | 'Logo.ext'
   | 'Logo.mime'
@@ -6184,14 +6319,14 @@ type STRAPI_PARTNERFieldsEnum =
   | 'whiteLogo.caption'
   | 'whiteLogo.width'
   | 'whiteLogo.height'
-  | 'whiteLogo.formats.thumbnail.ext'
-  | 'whiteLogo.formats.thumbnail.url'
-  | 'whiteLogo.formats.thumbnail.hash'
-  | 'whiteLogo.formats.thumbnail.mime'
-  | 'whiteLogo.formats.thumbnail.name'
-  | 'whiteLogo.formats.thumbnail.size'
-  | 'whiteLogo.formats.thumbnail.width'
-  | 'whiteLogo.formats.thumbnail.height'
+  | 'whiteLogo.formats.large.ext'
+  | 'whiteLogo.formats.large.url'
+  | 'whiteLogo.formats.large.hash'
+  | 'whiteLogo.formats.large.mime'
+  | 'whiteLogo.formats.large.name'
+  | 'whiteLogo.formats.large.size'
+  | 'whiteLogo.formats.large.width'
+  | 'whiteLogo.formats.large.height'
   | 'whiteLogo.formats.small.ext'
   | 'whiteLogo.formats.small.url'
   | 'whiteLogo.formats.small.hash'
@@ -6208,14 +6343,14 @@ type STRAPI_PARTNERFieldsEnum =
   | 'whiteLogo.formats.medium.size'
   | 'whiteLogo.formats.medium.width'
   | 'whiteLogo.formats.medium.height'
-  | 'whiteLogo.formats.large.ext'
-  | 'whiteLogo.formats.large.url'
-  | 'whiteLogo.formats.large.hash'
-  | 'whiteLogo.formats.large.mime'
-  | 'whiteLogo.formats.large.name'
-  | 'whiteLogo.formats.large.size'
-  | 'whiteLogo.formats.large.width'
-  | 'whiteLogo.formats.large.height'
+  | 'whiteLogo.formats.thumbnail.ext'
+  | 'whiteLogo.formats.thumbnail.url'
+  | 'whiteLogo.formats.thumbnail.hash'
+  | 'whiteLogo.formats.thumbnail.mime'
+  | 'whiteLogo.formats.thumbnail.name'
+  | 'whiteLogo.formats.thumbnail.size'
+  | 'whiteLogo.formats.thumbnail.width'
+  | 'whiteLogo.formats.thumbnail.height'
   | 'whiteLogo.hash'
   | 'whiteLogo.ext'
   | 'whiteLogo.mime'
@@ -6599,14 +6734,16 @@ type STRAPI_EVENTFieldsEnum =
   | 'endHour'
   | 'date'
   | 'backgroundColor'
-  | 'title'
-  | 'displayTitleOnDesktop'
   | 'createdAt'
   | 'updatedAt'
+  | 'title'
+  | 'displayTitleOnDesktop'
   | 'logo.id'
   | 'logo.name'
   | 'logo.alternativeText'
   | 'logo.caption'
+  | 'logo.width'
+  | 'logo.height'
   | 'logo.hash'
   | 'logo.ext'
   | 'logo.mime'
@@ -6689,9 +6826,12 @@ type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx1264723702Query = {
         & { readonly logo: Maybe<Pick<STRAPI_EVENTLogo, 'url'>> }
       )>>> }
     ) | (
+      Pick<STRAPI__COMPONENT_BASE_SIGNUP_GRID, 'id' | 'strapi_component' | 'isSectionVisible'>
+      & { readonly signupImage: Maybe<Pick<STRAPI__MEDIA, 'url'>>, readonly bannerImage: Maybe<Pick<STRAPI__MEDIA, 'url'>>, readonly signup_sections: Maybe<ReadonlyArray<Maybe<Pick<STRAPI_SIGNUP_SECTION, 'buttonText' | 'buttonUrl' | 'title' | 'subtitle'>>>> }
+    ) | (
       Pick<STRAPI__COMPONENT_BASE_SPEAKERS_GRID, 'id' | 'sectionTitle' | 'sectionSubtitle' | 'strapi_component' | 'isSectionVisible'>
       & { readonly speakers: Maybe<ReadonlyArray<Maybe<(
-        Pick<STRAPI_SPEAKER, 'firstName' | 'lastName' | 'title' | 'description' | 'position' | 'linkedinUrl' | 'twitterUrl'>
+        Pick<STRAPI_SPEAKER, 'firstName' | 'lastName' | 'title' | 'description' | 'position' | 'linkedinUrl' | 'twitterUrl' | 'linktrUrl'>
         & { readonly photo: Maybe<Pick<STRAPI_SPEAKERPhoto, 'url'>> }
       )>>> }
     )>>> }> };
@@ -6699,6 +6839,6 @@ type pageUserspatrykSelleobbdaysbbdaysWebsitesrcpagesindexTsx1264723702Query = {
 type staticUserspatrykSelleobbdaysbbdaysWebsitesrccomponentsLayoutPrivacyPolicyTsx429278234QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type staticUserspatrykSelleobbdaysbbdaysWebsitesrccomponentsLayoutPrivacyPolicyTsx429278234Query = { readonly strapiPrivacypolicy: Maybe<{ readonly text: Maybe<{ readonly data: Maybe<Pick<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE, 'text'>> }> }> };
+type staticHomejawordevbbdaysWebsitesrccomponentsLayoutPrivacyPolicyTsx429278234Query = { readonly strapiPrivacypolicy: Maybe<{ readonly text: Maybe<{ readonly data: Maybe<Pick<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE, 'text'>> }> }> };
 
 }

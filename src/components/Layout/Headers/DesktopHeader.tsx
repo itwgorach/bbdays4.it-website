@@ -2,11 +2,22 @@ import React, { FC, useCallback, useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 
 import { BBDaysLogoLight } from 'components/icons'
-import classnames from 'classnames'
+import cx from 'classnames'
 import { HeaderType } from 'types'
 
-const DesktopHeader: FC<HeaderType> = ({ links }) => {
+type DesktopHeaderProps = HeaderType & {
+  pathname: string,
+}
+
+const DesktopHeader: FC<DesktopHeaderProps> = ({ links, pathname }) => {
   const [hasNavbarBackground, setHasNavbarBackground] = useState(false)
+
+  const isOnRulesPage = pathname === '/regulamin' || pathname === '/regulamin/'
+  const shouldHeaderBeColoured = hasNavbarBackground || isOnRulesPage
+
+  const headerClasses = cx('header-desktop', {
+    '-colored': shouldHeaderBeColoured,
+  })
 
   const onScroll = useCallback(() => {
     if (window.scrollY > 1) {
@@ -24,13 +35,14 @@ const DesktopHeader: FC<HeaderType> = ({ links }) => {
         </a>
       )
     return (
-      <Link className="header-desktop__link" to={link.path}>
+      <Link className="header-desktop__link" to={`/${link.path}`}>
         {link.name}
       </Link>
     )
   }, [])
 
   useEffect(() => {
+    onScroll()
     window.addEventListener('scroll', onScroll)
 
     return () => {
@@ -39,7 +51,7 @@ const DesktopHeader: FC<HeaderType> = ({ links }) => {
   }, [])
 
   return (
-    <header key="desktop-header" className={classnames('header-desktop', { '-colored': hasNavbarBackground })}>
+    <header key="desktop-header" className={headerClasses}>
       <Link to="/">
         <BBDaysLogoLight className="header-desktop__logo" />
       </Link>

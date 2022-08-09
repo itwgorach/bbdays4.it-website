@@ -5,22 +5,27 @@ export const socialLinks = [
   {
     href: 'https://www.facebook.com/bbdays4.it/',
     Icon: FacebookIcon,
+    name: 'facebook',
   },
   {
     href: 'https://www.instagram.com/bbdays4.it/',
     Icon: InstagramIcon,
+    name: 'instagram',
   },
   {
     href: 'https://www.linkedin.com/company/bbdays4it/', // linkedin href
     Icon: LinkedinIcon,
+    name: 'linkedin',
   },
   {
     href: 'https://twitter.com/bbdays4',
     Icon: TwitterIcon,
+    name: 'twitter',
   },
   {
     href: 'https://www.youtube.com/channel/UCVPN7WOmLWtwHm1lFzN8Q9A', // youtube href
     Icon: YoutubeIcon,
+    name: 'youtube',
   },
 ]
 
@@ -28,6 +33,14 @@ export const footerLinks: LinkType[] = [
   {
     name: 'Konferencyjny kodeks postępowania',
     path: 'https://confcodeofconduct.com/index-pl.html',
+  },
+  {
+    name: 'kontakt@bbdays4.it',
+    path: 'mailto:kontakt@bbdays4.it',
+  },
+  {
+    name: 'Regulamin Konferencji',
+    path: 'regulamin',
   },
 ]
 

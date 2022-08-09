@@ -14,6 +14,10 @@ export import STRAPI_EVENT = GatsbyTypes.STRAPI_EVENTEdge
 export import EventType = GatsbyTypes.STRAPI_EVENT
 export import ScheduleType = GatsbyTypes.STRAPI__COMPONENT_BASE_SCHEDULE
 
+export import STRAPI_SIGNUP_SECTION = GatsbyTypes.STRAPI_SIGNUP_SECTIONEdge
+export import SignupSectionType = GatsbyTypes.STRAPI_SIGNUP_SECTION
+export import SignupType = GatsbyTypes.STRAPI__COMPONENT_BASE_SIGNUP_GRID
+
 export type { default as PartnersPageType } from 'types/PartnersPageType'
 export type { default as PostTemplateType } from './PostTemplateType'
 export type { default as PostsPageType } from 'types/PostsPageType'

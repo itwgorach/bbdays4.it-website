@@ -3,11 +3,12 @@ import { graphql } from 'gatsby'
 
 import HomePageType from 'types/HomePageType'
 import Hero from 'components/Hero'
-import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType, ScheduleType } from 'types'
+import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType, ScheduleType, SignupType } from 'types'
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
 import Speakers from 'components/Speakers'
 import Schedule from 'components/Schedule'
+import Signup from 'components/Signup'
 
 const HomePage: FC<HomePageType> = ({
   data: {
@@ -16,7 +17,7 @@ const HomePage: FC<HomePageType> = ({
 }) => {
   const content = useMemo(
     () =>
-      homepage?.map((component, index) => {
+      homepage?.map((component) => {
         if(!component?.isSectionVisible) {
           return null
         }
@@ -27,7 +28,7 @@ const HomePage: FC<HomePageType> = ({
           }
           case 'base.hero': {
             const hero = component as BaseHeroType
-            return <Hero key={hero.id} {...hero} isFirstHero={index === 0} />
+            return <Hero key={hero.id} {...hero} />
           }
           case 'base.galery-slider': {
             const gallery = component as BaseGalleryType
@@ -40,6 +41,10 @@ const HomePage: FC<HomePageType> = ({
           case 'base.schedule': {
             const schedule = component as ScheduleType
             return <Schedule key={schedule.id} {...schedule} />
+          }
+          case 'base.signup-grid': {
+            const signup = component as SignupType
+            return <Signup key={signup.id} {...signup} />
           }
           default:
             return null
@@ -117,6 +122,7 @@ export const query = graphql`
                       position
                       linkedinUrl
                       twitterUrl
+                      linktrUrl
                   }
               }
               ... on STRAPI__COMPONENT_BASE_SCHEDULE {
@@ -134,6 +140,23 @@ export const query = graphql`
                       logo {
                           url
                       }
+                  }
+              }
+              ... on STRAPI__COMPONENT_BASE_SIGNUP_GRID {
+                  id
+                  signupImage {
+                    url
+                  }
+                  bannerImage {
+                    url
+                  }
+                  strapi_component
+                  isSectionVisible
+                  signup_sections {
+                      buttonText
+                      buttonUrl
+                      title
+                      subtitle
                   }
               }
           }

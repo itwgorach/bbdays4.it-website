@@ -45,4 +45,72 @@
       height: $icon-size-lg;
     }
   }
+
+  &.-rules {
+    background-color: $color-background;
+    padding-top: $m-sm;
+
+    .footer__text {
+      &-copyright, &-modal, &-link {
+        border-color: $color-dark;
+        color: $color-dark;
+      }
+    }
+
+    .footer__social-icon {
+      &.-facebook {
+        path {
+          &:first-of-type {
+            fill: $color-dark;
+          }
+
+          &:last-of-type {
+            stroke: $color-dark;
+          }
+        }
+      }
+
+      &.-instagram {
+        path {
+          &:first-of-type {
+            fill: $color-dark;
+          }
+
+          &:nth-last-of-type(-n+3) {
+            stroke: $color-dark;
+          }
+        }
+      }
+
+      &.-linkedin {
+        path {
+          stroke: $color-dark;
+
+          &:nth-last-of-type(2) {
+              fill: $color-dark;
+          }
+        }
+      }
+
+      &.-twitter {
+        path {
+          stroke: $color-dark;
+
+          &:last-of-type {
+              fill: $color-dark;
+          }
+        }
+      }
+
+      &.-youtube {
+        path {
+          stroke: $color-dark;
+
+          &:last-of-type {
+              fill: $color-dark;
+          }
+        }
+      }
+    }
+  }
 }

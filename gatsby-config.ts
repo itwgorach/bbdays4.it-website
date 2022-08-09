@@ -21,6 +21,11 @@ const strapiConfig = {
               partners: {
                 populate: '*',
               },
+              signupImage: '*',
+              bannerImage: '*',
+              signup_sections: {
+                populate: '*',
+              },
               speakers: {
                 populate: '*',
               },
@@ -39,6 +44,16 @@ const strapiConfig = {
         },
       },
       singularName: 'privacypolicy',
+    },
+    {
+      queryParams: {
+        populate: {
+          rules: {
+            populate: '*',
+          },
+        },
+      },
+      singularName: 'rules',
     },
   ],
 }
