@@ -6,6 +6,10 @@ import DesktopHeader from './Headers/DesktopHeader'
 
 const linksData: LinkType[] = [
   {
+    name: 'Dołącz do nas',
+    path: '#dolaczdonas',
+  },
+  {
     name: 'Harmonogram',
     path: '#harmonogram',
   },
@@ -31,6 +35,25 @@ const linksData: LinkType[] = [
   // },
 ]
 
+const linksDataMobile: LinkType[] = [
+  {
+    name: 'Harmonogram',
+    path: '#harmonogram',
+  },
+  {
+    name: 'Prelegenci',
+    path: '#prelegenci',
+  },
+  {
+    name: 'Organizatorzy',
+    path: '#organizatorzy',
+  },
+  {
+    name: 'Edycja 2021',
+    path: 'https://bbdays4it-2021.netlify.app/',
+  },
+]
+
 type HeaderProps = {
   pathname: string,
 }
@@ -39,7 +62,7 @@ const Header: FC<HeaderProps> = ({ pathname }) => {
   return (
     <>
       <DesktopHeader links={linksData} pathname={pathname} />
-      <MobileHeader links={linksData} />
+      <MobileHeader links={linksDataMobile} />
     </>
   )
 }

@@ -9,7 +9,7 @@ const Signup: FC<SignupType> = ({ signup_sections, signupImage, bannerImage }) =
     sections.map((section, index) => <SignupSection key={index} {...section} />)
 
   return (
-    <div className="signup">
+    <div className="signup" id="dolaczdonas">
       <SignupBanner bannerImageUrl={bannerImage?.url} />
       <div className="signup__wrapper" style={{ backgroundImage: `url(${signupImage?.url})` }}>
         {signup_sections && renderSignupSections(signup_sections)}
