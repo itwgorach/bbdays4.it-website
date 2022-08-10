@@ -2,6 +2,7 @@
   background-color: $color-dark;
   color: $color-white;
   font-family: $font-family-body;
+  scroll-margin-top: $scroll-margin-base;
 
   &__inner {
     display: flex;

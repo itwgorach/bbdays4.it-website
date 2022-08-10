@@ -157,6 +157,7 @@ export const query = graphql`
                       buttonUrl
                       title
                       subtitle
+                      link
                   }
               }
           }
