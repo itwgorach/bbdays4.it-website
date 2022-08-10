@@ -8,7 +8,7 @@ const Schedule: FC<ScheduleType> = ({ events, scheduleTitle }) => {
   const titleId = scheduleTitle ? scheduleTitle.toLocaleLowerCase() : ''
 
   return (
-    <div id={titleId}>
+    <div className="schedule" id={titleId}>
       <ScheduleMobile events={events} scheduleTitle={scheduleTitle} />
       <ScheduleDesktop events={events} scheduleTitle={scheduleTitle} />
     </div>

@@ -6,6 +6,8 @@ $how-many-cards: 4;
 $max-speakers-width: 1450px;
 
 .speakers {
+  scroll-margin-top: $scroll-margin-sm;
+
     &__inner {
         align-items: center;
         box-sizing: border-box;
