@@ -1,12 +1,21 @@
 import React from 'react'
 
-import { ComingSoonIcon } from 'components/icons'
+import { DownArrowIcon, OpenEyeOpen } from 'components/icons'
+import { Link } from 'gatsby'
 
 const SpeakerCommingSoon = () => (
-  <div className="speaker-soon">
-    <h3 className="speaker-soon__title">Więcej wkrótce</h3>
-    <ComingSoonIcon />
-  </div>
+  <Link className="speaker-soon" to="#agenda">
+    <div className="speaker-soon__mask"></div>
+    <div className="speaker-soon__title">
+      <span className="speaker-soon__text">Ag</span>
+      <span className="speaker-soon__text">en</span>
+      <span className="speaker-soon__text">da</span>
+    </div>
+    <div className="speaker-soon__icons">
+      <OpenEyeOpen className="speaker-soon__icons-eye" />
+      <DownArrowIcon className="speaker-soon__icons-arrow" />
+    </div>
+  </Link>
 )
 
 export default SpeakerCommingSoon
