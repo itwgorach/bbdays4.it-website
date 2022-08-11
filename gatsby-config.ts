@@ -18,6 +18,9 @@ const strapiConfig = {
                 populate: '*',
               },
               images: '*',
+              lectures: {
+                populate: '*',
+              },
               partners: {
                 populate: '*',
               },
