@@ -3,12 +3,13 @@ import { graphql } from 'gatsby'
 
 import HomePageType from 'types/HomePageType'
 import Hero from 'components/Hero'
-import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType, ScheduleType, SignupType } from 'types'
+import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType, ScheduleType, SignupType, AgendaType } from 'types'
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
 import Speakers from 'components/Speakers'
 import Schedule from 'components/Schedule'
 import Signup from 'components/Signup'
+import Agenda from 'components/Agenda'
 
 const HomePage: FC<HomePageType> = ({
   data: {
@@ -45,6 +46,10 @@ const HomePage: FC<HomePageType> = ({
           case 'base.signup-grid': {
             const signup = component as SignupType
             return <Signup key={signup.id} {...signup} />
+          }
+          case 'base.agenda': {
+            const agenda = component as AgendaType
+            return <Agenda key={agenda.id} {...agenda} />
           }
           default:
             return null
@@ -158,6 +163,23 @@ export const query = graphql`
                       title
                       subtitle
                       link
+                  }
+              }
+              ... on STRAPI__COMPONENT_BASE_AGENDA {
+                  id
+                  title
+                  subtitle
+                  strapi_component
+                  isSectionVisible
+                  lectures {
+                      title
+                      subtitle
+                      room
+                      startHour
+                      backgroundColor
+                      logo {
+                          url
+                      }
                   }
               }
           }
