@@ -8,7 +8,7 @@ import CookiesConsent from './CookiesConsent'
 const Layout: FC<JSX.IntrinsicAttributes> = ({ children, ...props }) => {
   return (
     <>
-      <Seo />
+      <Seo currentPath={props.location.href} />
       <Header pathname={props.location.pathname} />
       <main className="layout">{React.cloneElement(children, props)}</main>
       <Footer pathname={props.location.pathname} />

@@ -7,7 +7,7 @@ const defaultDescription =
   'Przyjedź do Bielska-Białej i zdecyduj czy spędzisz z nami tydzień, weekend a może najbliższe kilka lat. Zobacz w jakich warunkach pracują osoby z branży IT, nawiąż ciekawe kontakty, porozmawiaj o technologii, weź udział w prelekcjach i warsztatach.'
 const defaultTitle = 'BB Days 4 IT :: 9 - 18 września 2022'
 
-const Seo: FC<SeoType> = ({ keywords, meta, title }) => {
+const Seo: FC<SeoType> = ({ keywords, meta, title, currentPath }) => {
   const expectedTitle = title || defaultTitle
   return (
     <Helmet
@@ -20,7 +20,7 @@ const Seo: FC<SeoType> = ({ keywords, meta, title }) => {
           name: `description`,
         },
         {
-          content: 'https://www.bbdays4.it/images/facebook_cover.png?fbrefresh=true',
+          content: `${currentPath}/images/facebook_cover.png?fbrefresh=true`,
           property: `og:image`,
         },
         {
