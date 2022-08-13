@@ -20,7 +20,7 @@ const Seo: FC<SeoType> = ({ keywords, meta, title, currentPath }) => {
           name: `description`,
         },
         {
-          content: `${currentPath}images/facebook_cover.png?fbrefresh=true`,
+          content: `https://deploy-preview-72--bbdays4it.netlify.app/images/facebook_cover.png?fbrefresh=true`,
           property: `og:image`,
         },
         {
