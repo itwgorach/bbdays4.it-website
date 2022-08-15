@@ -10,12 +10,12 @@ const linksData: LinkType[] = [
     path: '#dolaczdonas',
   },
   {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
-  {
     name: 'Prelegenci',
     path: '#prelegenci',
+  },
+  {
+    name: 'Harmonogram',
+    path: '#harmonogram',
   },
   {
     name: 'Organizatorzy',
@@ -37,12 +37,12 @@ const linksData: LinkType[] = [
 
 const linksDataMobile: LinkType[] = [
   {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
-  {
     name: 'Prelegenci',
     path: '#prelegenci',
+  },
+  {
+    name: 'Harmonogram',
+    path: '#harmonogram',
   },
   {
     name: 'Organizatorzy',
