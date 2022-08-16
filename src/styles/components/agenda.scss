@@ -1,0 +1,367 @@
+.agenda {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: calc($m-2xl + $m-base) auto;
+  max-width: 1200px;
+  scroll-margin-top: 112px;
+
+  &__header {
+    margin-bottom: $m-lg;
+    text-align: center;
+    
+    &-title {
+      color: $color-dark;
+      font-family: $font-family-header;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      line-height: $line-height-base;
+    }
+    
+    &-subtitle {
+      color: $color-dark;
+      font-family: $font-family-header;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-regular;
+    }
+    
+    @include media-breakpoint-up(md) {
+      margin: 0 0 $m-lg 104px;
+    }
+  }
+
+  &__rooms {
+    @include dashedBorder(false, top, $color-black);
+
+    align-items: center;
+    color: $color-text;
+    display: flex;
+    font-family: $font-family-header;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    height: 72px;
+    text-align: center;
+    
+    &-main, &-second {
+      display: flex;
+      font-family: $font-family-header;
+      font-size: $font-size-base;
+      font-weight: $font-weight-bold;
+      position: relative;
+      
+      &::after {
+        content: "";
+        height: 30px;
+        position: absolute;
+        right: -$m-sm;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 7px;
+      }
+    }
+
+    &-main {
+      &::after {
+        background-color: $color-secondary;
+      }
+    }
+    
+    &-second {
+      &::after {
+        background-color: $color-dark;
+      }
+    }
+
+    &-inner {
+      display: flex;
+      gap: $m-base;
+      margin-left: $m-xs;
+      width: 100%;
+      
+      span {
+        color: $color-text;
+        font-family: $font-family-header;
+        font-size: $font-size-base;
+        font-weight: $font-weight-bold;
+        width: 100%;
+      }
+    }
+
+    &-hour {
+      align-self: flex-start;
+      background-color: $color-secondary;
+      box-sizing: border-box;
+      position: relative;
+      min-height: 80px;
+      min-width: 72px;
+      
+      &::before {
+        @include dashedBorder(false, top, $color-black);
+
+        content: "";
+        height: 1px;
+        position: absolute;
+        right: -$m-xs;
+        top: 0;
+        width: 90%;
+      }
+
+      @include media-breakpoint-up(md) {
+        min-height: 72px;
+        min-width: 96px;
+        padding: $m-xs 0 0 16px;
+      }
+    }
+
+    &.-first {
+      background: none;
+      gap: $m-lg;
+      justify-content: center;
+      margin-left: 104px;
+      width: calc(100% - 104px);
+    }
+
+    &.-desktop {
+      display: none;
+    }
+
+    &.-mobile {
+      margin-left: 0;
+    }
+    
+    @include media-breakpoint-up(md) {
+      &.-desktop {
+        display: flex;
+      }
+      &.-mobile {
+        display: none;
+      }
+    }
+  }
+
+  &__lectures {
+    @include dashedBorder(false, bottom, $color-black);
+
+    width: 100%;
+    position: relative;
+
+    &::before, &::after {
+      background-color: $color-secondary;
+      content: "";
+      height: $m-xs;
+      left: 0;
+      position: absolute;
+      width: 72px;
+    }
+    
+    &::before {
+      top: -$m-xs;
+    }
+
+    &::after {
+      bottom: -$m-xs;
+    }
+
+    .agenda__lecture-wrapper:last-child > .agenda__lecture-hour {
+      &::after {
+        @include dashedBorder(false, bottom, $color-black);
+
+        background-color: unset;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      &::before, &::after {
+        width: 96px;
+      }
+    }
+  }
+
+  &__lecture {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    transition: filter .1s ease-in-out;
+
+    &:not(:first-of-type) {
+      .agenda__lecture-content {
+        @include dashedBorder(false, top, $color-white);
+
+        @include media-breakpoint-up(md) {
+          background-image: none;
+        }
+      }
+    }
+
+    &.-main, &.-second {
+      &::after {
+        content: "";
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $m-xs;
+      }
+    }
+
+    &.-main {
+      &::after {
+        background-color: #F8C83E; 
+      }
+    }
+
+    &.-second {
+      &::after {
+        background-color: #1D4550; 
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      &:hover {
+        filter: brightness(90%);
+        
+        .agenda__lecture-title {
+          font-weight: $font-weight-extra-bold;
+        }
+        
+        .agenda__lecture-subtitle {
+          font-weight: $font-weight-semi-bold;
+        }
+      }
+
+      &.-main, &.-second {
+        &::after {
+          display: none;
+        }
+      }
+
+      &-subtitle {
+        &::after {
+          color: $color-white;
+          content: "-";
+          font-family: $font-family-body;
+          font-size: $font-size-base;
+          font-weight: $font-weight-medium;
+          position: absolute;
+          right: calc($m-xs * -1.5);
+          text-align: center;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      width: 100%;
+    }
+
+    &-hour {
+      background-color: $color-secondary;
+      box-sizing: border-box;
+      color: $color-text;
+      display: flex;
+      font-family: $font-family-header;
+      font-size: $font-size-base;
+      font-weight: $font-weight-bold;
+      min-height: 70px;
+      min-width: 72px;
+      padding: $m-xs 0 0 12px;
+      position: relative;
+      
+      &::before {
+        @include dashedBorder(false, top, $color-black);
+
+        content: "";
+        height: 1px;
+        position: absolute;
+        top: 0;
+        width: 90%;
+      }
+
+      &::after {
+        background-color: $color-background;
+        bottom: 0;
+        content: "";
+        height: $m-xs;
+        position: absolute;
+        width: 90%;
+      }
+
+      @include media-breakpoint-up(md) {
+        min-height: 80px;
+        min-width: 96px;
+        padding: $m-xs 0 0 16px;
+      }
+    }
+
+    &-inner {      
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 $m-xs $m-xs;
+      min-height: 72px;
+      position: relative;
+      width: 100%;
+      
+      &::before {
+        @include dashedBorder(false, top, $color-black);
+
+        content: "";
+        height: 1px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: calc(100% + $m-xs);
+        z-index: 1;
+      }
+
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+        gap: $m-base;
+      }
+    }
+    
+    &-content {
+      align-items: center;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: $m-xs;
+      height: 100%;
+      justify-content: center;
+      padding: $m-sm $m-xs;
+      width: 100%;
+
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+        gap: $m-xs $m-sm;
+      }
+    }
+    
+    &-title, &-subtitle {
+      color: $color-white;
+      font-family: $font-family-body;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semi-bold;
+      text-align: center;
+      transition: font-weight .1s ease-in-out;
+    }
+    
+    &-subtitle {
+      font-weight: $font-weight-regular;
+      position: relative;
+      transition: font-weight .1s ease-in-out;
+    }
+
+    &-logo {
+      display: none;
+      
+      @include media-breakpoint-up(md) {
+        display: block;
+      }
+    }
+  }
+}
