@@ -48,6 +48,17 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
     return lectureClasses
   }
 
+  const getLectureContentClasses = (backgroundColor: string | null, logoUrl: string | null) => {
+    const lectureContentClasses = cx('agenda__lecture-content', {
+      '-dark': backgroundColor === 'dark',
+      '-primary': backgroundColor === 'primary',
+      '-row': logoUrl,
+      '-secondary': backgroundColor === 'secondary',
+    })
+
+    return lectureContentClasses
+  }
+
   return (
     <div className="agenda" id="agenda">
       <div className="agenda__header">
@@ -68,7 +79,7 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
                 {firstSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
                   return (
                     <div key={idx} className={getLectureClasses(room)}>
-                      <div className="agenda__lecture-content" style={{ backgroundColor: backgroundColor }}>
+                      <div className={getLectureContentClasses(backgroundColor, logo && logo.url)}>
                         {subtitle && <span className="agenda__lecture-subtitle">{subtitle}</span>}
                         <span className="agenda__lecture-title">{title}</span>
                         {logo && (
@@ -99,7 +110,7 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
                 {secondSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
                   return (
                     <div key={idx} className={getLectureClasses(room)}>
-                      <div className="agenda__lecture-content" style={{ backgroundColor: backgroundColor }}>
+                      <div className={getLectureContentClasses(backgroundColor, logo && logo.url)}>
                         {subtitle && <span className="agenda__lecture-subtitle">{subtitle}</span>}
                         <span className="agenda__lecture-title">{title}</span>
                         {logo && (
@@ -129,7 +140,7 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
                 {thirdSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
                   return (
                     <div key={idx} className={getLectureClasses(room)}>
-                      <div className="agenda__lecture-content" style={{ backgroundColor: backgroundColor }}>
+                      <div className={getLectureContentClasses(backgroundColor, logo && logo.url)}>
                         {subtitle && <span className="agenda__lecture-subtitle">{subtitle}</span>}
                         <span className="agenda__lecture-title">{title}</span>
                         {logo && (
