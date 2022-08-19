@@ -1,8 +1,10 @@
-import React, { FC } from 'react'
+import Modal from 'components/Modal'
+import React, { FC, useState } from 'react'
 import cx from 'classnames'
-import { AgendaType, STRAPI_LECTURE } from 'types'
+import { AgendaType, LectureType, SpeakerType } from 'types'
+import LectureDetails from './LectureDetails'
 
-const groupArrayByKey = (arr: STRAPI_LECTURE[], key: string) => {
+const groupArrayByKey = (arr: LectureType[], key: string) => {
   return arr.reduce((storage, item) => {
     const group = item[key]
     storage[group] = storage[group] || []
@@ -20,7 +22,77 @@ const makeContent = (arr) => {
     }, {})
 }
 
-const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
+type AgendaProps = AgendaType & {
+  location: unknown,
+}
+
+const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location }) => {
+  const [modalData, setModalData] = useState<SpeakerType>({
+    description: '',
+    firstName: '',
+    lastName: '',
+    linkedinUrl: '',
+    linktrUrl: '',
+    photo: null,
+    position: '',
+    title: '',
+    twitterUrl: '',
+  })
+
+  const getSpeaker = (name: string) => {
+    const speaker =
+      speakers &&
+      speakers.filter((speaker) => {
+        return `${speaker.firstName} ${speaker.lastName}`.toLocaleLowerCase() === name.toLocaleLowerCase()
+      })
+
+    return speaker && speaker[0]
+  }
+
+  const [isModalOpen, setIsModalOpen] = useState(() => {
+    const params = new URLSearchParams(location.search)
+    const lecture = params && params.get('lecture')
+
+    if (lecture) {
+      const selectedSpeaker = lecture.split('-').join(' ')
+      const modalProps = getSpeaker(selectedSpeaker)
+
+      setModalData(modalProps)
+
+      return true
+    }
+
+    return false
+  })
+
+  const handleModalToggle = (event, { ...modalProps }) =>
+    setIsModalOpen((isModalOpen) => {
+      setModalData(modalProps)
+
+      // const parentId = event.target.parentNode.id
+      // const selectedLecture = parentId.substring(parentId.indexOf('/') + 1)
+      // const searchQuery = `?lecture=${selectedLecture}`
+      // console.log(event)
+
+      // console.log(location)
+      // if (!location.href.includes('?lecture=')) {
+      //   navigate(`${location.origin}/#agenda${searchQuery}`, { replace: true })
+      // } else {
+      //   navigate(`${location.origin}/#agenda`, { replace: true })
+      // }
+
+      // if (typeof window !== 'undefined') {
+      //   console.log(location)
+      //   if (!location.href.includes('?lecture=')) {
+      //     window.history.pushState({}, '', `${location.origin}/${searchQuery}#agenda`)
+      //   } else {
+      //     window.history.back()
+      //   }
+      // }
+
+      return !isModalOpen
+    })
+
   const lecturesSorted = lectures.sort(
     (a, b) => parseInt(a.startHour.substring(0, 2)) - parseInt(b.startHour.substring(0, 2)),
   )
@@ -59,6 +131,12 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
     return lectureContentClasses
   }
 
+  const getLectureId = (name: string) => {
+    const lectureId = name.split(' ').join('-').toLocaleLowerCase()
+
+    return lectureId
+  }
+
   return (
     <div className="agenda" id="agenda">
       <div className="agenda__header">
@@ -77,9 +155,16 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
               <div className="agenda__lecture-hour">{key}</div>
               <div className="agenda__lecture-inner">
                 {firstSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
+                  const modalProps = subtitle && getSpeaker(subtitle)
+
                   return (
-                    <div key={idx} className={getLectureClasses(room)}>
-                      <div className={getLectureContentClasses(backgroundColor, logo && logo.url)}>
+                    <div
+                      key={idx}
+                      className={getLectureClasses(room)}
+                      id={subtitle && `agenda/${getLectureId(subtitle)}`}>
+                      <div
+                        className={getLectureContentClasses(backgroundColor, logo && logo.url)}
+                        onClick={subtitle ? (event) => handleModalToggle(event, { ...modalProps }) : undefined}>
                         {subtitle && <span className="agenda__lecture-subtitle">{subtitle}</span>}
                         <span className="agenda__lecture-title">{title}</span>
                         {logo && (
@@ -108,9 +193,16 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
               <div className="agenda__lecture-hour">{key}</div>
               <div className="agenda__lecture-inner">
                 {secondSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
+                  const modalProps = subtitle && getSpeaker(subtitle)
+
                   return (
-                    <div key={idx} className={getLectureClasses(room)}>
-                      <div className={getLectureContentClasses(backgroundColor, logo && logo.url)}>
+                    <div
+                      key={idx}
+                      className={getLectureClasses(room)}
+                      id={subtitle && `agenda/${getLectureId(subtitle)}`}>
+                      <div
+                        className={getLectureContentClasses(backgroundColor, logo && logo.url)}
+                        onClick={subtitle ? (event) => handleModalToggle(event, { ...modalProps }) : undefined}>
                         {subtitle && <span className="agenda__lecture-subtitle">{subtitle}</span>}
                         <span className="agenda__lecture-title">{title}</span>
                         {logo && (
@@ -138,9 +230,16 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
               <div className="agenda__lecture-hour">{key}</div>
               <div className="agenda__lecture-inner">
                 {thirdSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
+                  const modalProps = subtitle && getSpeaker(subtitle)
+
                   return (
-                    <div key={idx} className={getLectureClasses(room)}>
-                      <div className={getLectureContentClasses(backgroundColor, logo && logo.url)}>
+                    <div
+                      key={idx}
+                      className={getLectureClasses(room)}
+                      id={subtitle && `agenda/${getLectureId(subtitle)}`}>
+                      <div
+                        className={getLectureContentClasses(backgroundColor, logo && logo.url)}
+                        onClick={subtitle ? (event) => handleModalToggle(event, { ...modalProps }) : undefined}>
                         {subtitle && <span className="agenda__lecture-subtitle">{subtitle}</span>}
                         <span className="agenda__lecture-title">{title}</span>
                         {logo && (
@@ -157,6 +256,9 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
           )
         })}
       </div>
+      <Modal className="" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
+        <LectureDetails {...modalData} />
+      </Modal>
     </div>
   )
 }

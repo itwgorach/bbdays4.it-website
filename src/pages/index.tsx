@@ -15,6 +15,7 @@ const HomePage: FC<HomePageType> = ({
   data: {
     strapiHomepage: { homepage },
   },
+  location, 
 }) => {
   const content = useMemo(
     () =>
@@ -49,7 +50,7 @@ const HomePage: FC<HomePageType> = ({
           }
           case 'base.agenda': {
             const agenda = component as AgendaType
-            return <Agenda key={agenda.id} {...agenda} />
+            return <Agenda key={agenda.id} {...agenda} location={location} />
           }
           default:
             return null
@@ -181,6 +182,19 @@ export const query = graphql`
                           url
                       }
                   }
+                  speakers {
+                    firstName
+                    lastName
+                    title
+                    photo {
+                      url
+                    }
+                    description
+                    position
+                    linkedinUrl
+                    twitterUrl
+                    linktrUrl
+                }
               }
           }
       } 

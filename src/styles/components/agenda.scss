@@ -348,9 +348,10 @@
       padding: $m-sm $m-xs;
       width: 100%;
       transition: background-color .1s ease-in-out;
-
+      
       &.-primary {
         background-color: $color-primary;
+        cursor: pointer;
       }
 
       &.-secondary {
