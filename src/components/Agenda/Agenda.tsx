@@ -256,7 +256,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
           )
         })}
       </div>
-      <Modal className="" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
+      <Modal className="-lecture" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
         <LectureDetails {...modalData} />
       </Modal>
     </div>
