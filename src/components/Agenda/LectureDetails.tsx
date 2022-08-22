@@ -30,6 +30,10 @@ const LectureDetails: FC<SpeakerType> = ({
         <CloseButtonIcon />
       </button>
       <div className="lecture-details__description">
+        <div className="lecture-details__description-speaker">
+          <div className="lecture-details__speaker-position">{position}</div>
+          <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
+        </div>
         <div className="lecture-details__header">
           <div className="lecture-details__header-text">
             <DateIcon />
@@ -45,7 +49,13 @@ const LectureDetails: FC<SpeakerType> = ({
         <div className="lecture-details__share">
           <span className="lecture-details__share-text">Udostępnij</span>
           <div className="lecture-details__copy">
-            <input className="lecture-details__copy-input" name="lectureHref" type="text" />
+            <input
+              className="lecture-details__copy-input"
+              name="lectureHref"
+              readOnly
+              type="text"
+              value={`link do prelekcji`}
+            />
             <button className="lecture-details__copy-button">
               <CopyIcon />
               <span>Kopiuj link</span>
@@ -54,6 +64,16 @@ const LectureDetails: FC<SpeakerType> = ({
         </div>
       </div>
       <div className="lecture-details__speaker">
+        <div className="lecture-details__header -desktop">
+          <div className="lecture-details__header-text">
+            <DateIcon />
+            <span>10 września 2022</span>
+          </div>
+          <div className="lecture-details__header-text">
+            <ClockIcon />
+            <span>11:30 - Aula główna ATH</span>
+          </div>
+        </div>
         <div className="lecture-details__speaker-socials">
           {linkedinUrl && (
             <a className="lecture-details__speaker-link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">

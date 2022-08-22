@@ -3,6 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    padding: $m-xl $m-lg 0;
+    align-items: start;
+  }
 
   &__button {
     display: flex;
@@ -20,6 +27,12 @@
       border-bottom: 1px solid $color-dark;
       background: none;
       cursor: pointer;
+      
+      @include media-breakpoint-up(md) {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
     }
   }
 
@@ -30,6 +43,32 @@
     padding: 0 $m-md $m-xl;
     margin-bottom: $m-xl;
     box-sizing: border-box;
+
+    @include media-breakpoint-up(md) {
+      max-width: 60%;
+    }
+
+    &-speaker {
+      display: none;
+
+      @include media-breakpoint-up(md) {
+        display: block;
+        color: $color-dark;
+        font-weight: $font-weight-extra-bold;
+        position: relative;
+        margin-bottom: $m-xl;
+
+        &::before {
+          position: absolute;
+          content: "";
+          background-color: $color-primary;
+          width: $m-sm;
+          height: 80px;
+          top: 0;
+          left: -$m-xl - $m-xs;
+        }
+      }
+    }
   }
 
   &__header {
@@ -37,6 +76,10 @@
     display: flex;
     flex-direction: column;
     gap: $m-sm;
+
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
     
     &-text {
       color: rgba($color-dark, 0.6);
@@ -47,6 +90,15 @@
       gap: 12px;
       justify-content: start;
       align-items: center;
+    }
+
+    &.-desktop {
+      display: none;
+
+      @include media-breakpoint-up(md) {
+        display: flex;
+        margin-bottom: $m-xl;
+      }
     }
   }
 
@@ -67,8 +119,11 @@
       top: 0;
       left: -$m-md;
       background-color: $color-primary;
-    }
 
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
+    }
   }
   
   &__explanation {
@@ -84,6 +139,11 @@
     display: flex;
     flex-direction: column;
     gap: $m-base;
+    z-index: 1;
+
+    @include media-breakpoint-up(md) {
+      width: 100%;
+    }
 
     &-text {
       font-family: $font-family-body;
@@ -94,9 +154,29 @@
   }
 
   &__copy {
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      width: 100%;
+    }
     
     &-input {
       display: none;
+
+      @include media-breakpoint-up(md) {
+        display: block;
+        background-color: rgba(25, 69, 80, 0.05);
+        border: none;
+        border-radius: 4px 0 0 4px;
+        width: 50%;
+        padding: 12px $m-base;
+        overflow: hidden;
+        outline: none;
+        font-family: $font-family-body;
+        font-weight: $font-weight-medium;
+        font-size: $font-size-base-xs;
+        color: rgba($color-dark, 0.8)
+      }
     }
 
     &-button {
@@ -105,12 +185,13 @@
       align-items: center;
       gap: $m-xs;
       border: none;
-      border-radius: 4px;
+      border-radius: 0 4px 4px 0;
       background-color: $color-secondary;
       padding: 12px $m-base;
       font-family: $font-family-body;
       font-weight: $font-weight-extra-bold;
       font-size: $font-size-base-xs;
+      cursor: pointer;
     }
   }
 
@@ -120,13 +201,25 @@
     position: relative;
     background-color: $color-primary;
 
+    @include media-breakpoint-up(md) {
+      background-color: unset;
+      position: unset;
+      height: 100%;
+      justify-self: start;
+      padding-inline: $m-md;
+    }
+
     .image {
       position: absolute;
       height: 250px;
-      max-height: 280px;
+      max-height: 500px;
       width: auto;
       right: 0;
       bottom: 0;
+
+      @include media-breakpoint-up(md) {
+        height: 500px;
+      }
 
       &.-placeholder {
           right: -30px;
@@ -141,6 +234,10 @@
       left: $m-base;
       display: flex;
       gap: $m-xs;
+
+      @include media-breakpoint-up(md) {
+        position: unset;
+      }
     }
 
     &-link {
@@ -175,6 +272,40 @@
           }
         }
       }
+
+      @include media-breakpoint-up(md) {
+        .lecture-details__speaker-twitter {
+          path {
+            stroke: rgba($color-dark, 0.8);
+          
+            &:nth-last-of-type(1) {
+              fill: rgba($color-dark, 0.8);
+            }
+          }
+        }
+  
+        .lecture-details__speaker-linkedin {
+          path {
+            stroke: rgba($color-dark, 0.8);
+    
+            &:nth-last-of-type(2) {
+              fill: rgba($color-dark, 0.8);
+            }
+          }
+        }
+  
+        .lecture-details__speaker-linktr {
+          path {
+            &:first-of-type {
+              stroke: rgba($color-dark, 0.8);
+            }
+            
+            &:last-of-type {
+              fill: rgba($color-dark, 0.8);
+            }
+          }
+        }
+      }
     }
 
     &-info {
@@ -188,6 +319,10 @@
       display: flex;
       flex-direction: column;
       gap: $m-xs;
+
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
     }
     
     &-name {
@@ -198,6 +333,10 @@
     &-position {
       font-family: $font-family-body;
       font-size: $font-size-base;
+
+      @include media-breakpoint-up(md) {
+        margin-bottom: $m-sm;
+      }
     }
   }
 
@@ -207,8 +346,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-block: $m-xs;
+    margin-top: $m-xs;
+    padding-bottom: $m-xs;
     gap: $m-xs;
+    
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      bottom: 0;
+      flex-direction: row;
+      gap: 0;
+      background-color: rgba($color-background, 0.9);
+    }
   }
 
   &__prev, &__next {
@@ -266,10 +414,25 @@
   &__prev {
     border: 1px solid $color-dark;
     border-right: none;
+    
+    @include media-breakpoint-up(md) {
+      border: 1px solid $color-dark;
+      border-left: none;
+      justify-content: start;
+      padding-left: $m-xl;
+      margin-left: $m-sm;
+    }
   }
   
   &__next {
     border: 1px solid $color-dark;
     border-left: none;
+    
+    @include media-breakpoint-up(md) {
+      border-right: none;
+      justify-content: end;
+      padding-right: $m-xl;
+      margin-right: $m-sm;
+    }
   }
 }
