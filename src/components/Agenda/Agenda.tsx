@@ -28,6 +28,7 @@ type AgendaProps = AgendaType & {
 
 const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location }) => {
   const [modalData, setModalData] = useState<SpeakerType>({
+    backgroundColor: '',
     description: '',
     firstName: '',
     lastName: '',
@@ -257,7 +258,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
         })}
       </div>
       <Modal className="-lecture" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
-        <LectureDetails {...modalData} />
+        <LectureDetails {...modalData} handleModalToggle={handleModalToggle} />
       </Modal>
     </div>
   )

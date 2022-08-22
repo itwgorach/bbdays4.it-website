@@ -13,7 +13,12 @@ import {
   TwitterIcon,
 } from 'components/icons'
 
-const LectureDetails: FC<SpeakerType> = ({
+type LectureDetailsProps = SpeakerType & {
+  handleModalToggle: () => void,
+}
+
+const LectureDetails: FC<LectureDetailsProps> = ({
+  backgroundColor,
   description,
   firstName,
   lastName,
@@ -23,14 +28,25 @@ const LectureDetails: FC<SpeakerType> = ({
   position,
   title,
   twitterUrl,
+  handleModalToggle,
 }) => {
+  const getClassesWithColor = (baseClass: string) => {
+    const classes = cx(baseClass, {
+      '-primary': backgroundColor === 'primary',
+      '-secondary': backgroundColor === 'secondary',
+      '-tertiary': backgroundColor === 'tertiary',
+    })
+
+    return classes
+  }
+
   return (
     <div className="lecture-details">
       <button className="lecture-details__button-close">
-        <CloseButtonIcon />
+        <CloseButtonIcon onClick={handleModalToggle} />
       </button>
       <div className="lecture-details__description">
-        <div className="lecture-details__description-speaker">
+        <div className={getClassesWithColor('lecture-details__description-speaker')}>
           <div className="lecture-details__speaker-position">{position}</div>
           <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
         </div>
@@ -44,7 +60,7 @@ const LectureDetails: FC<SpeakerType> = ({
             <span>11:30 - Aula główna ATH</span>
           </div>
         </div>
-        <div className="lecture-details__title">{title}</div>
+        <div className={getClassesWithColor('lecture-details__title')}>{title}</div>
         <div className="lecture-details__explanation">{description}</div>
         <div className="lecture-details__share">
           <span className="lecture-details__share-text">Udostępnij</span>
@@ -63,7 +79,7 @@ const LectureDetails: FC<SpeakerType> = ({
           </div>
         </div>
       </div>
-      <div className="lecture-details__speaker">
+      <div className={getClassesWithColor('lecture-details__speaker')}>
         <div className="lecture-details__header -desktop">
           <div className="lecture-details__header-text">
             <DateIcon />

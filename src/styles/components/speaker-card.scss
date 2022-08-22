@@ -8,30 +8,7 @@
 
     border-radius: $border-radius-xxs;
 
-    // cursor: pointer;
     overflow: hidden;
-
-    &:nth-child(3n - 2) {
-        .speaker-card {
-            &__image-placeholder {
-                background-color: $color-primary;
-            }
-        }
-    }
-    &:nth-child(3n - 3) {
-        .speaker-card {
-            &__image-placeholder {
-                background-color: #f9ca3e;
-            }
-        }
-    }
-    &:nth-child(3n - 4) {
-        .speaker-card {
-            &__image-placeholder {
-                background-color: #f2933b;
-            }
-        }
-    }
 
     &__content {
         padding: $m-base;
@@ -67,6 +44,18 @@
     &__image-placeholder {
         height: 175px;
         width: 100%;
+
+        &.-primary {
+            background-color: $color-primary;
+        }
+
+        &.-secondary {
+            background-color: #f9ca3e;
+        }
+
+        &.-tertiary {
+            background-color: #f2933b;
+        }
 
         position: relative;
         .image {

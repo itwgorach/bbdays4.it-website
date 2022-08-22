@@ -58,10 +58,27 @@
         position: relative;
         margin-bottom: $m-xl;
 
+        &.-primary {
+          &::before {
+            background-color: $color-primary;
+          }
+        }
+    
+        &.-secondary {
+          &::before {
+            background-color: #f9ca3e;
+          }
+        }
+    
+        &.-tertiary {
+          &::before {
+            background-color: #f2933b;
+          }
+        }
+
         &::before {
           position: absolute;
           content: "";
-          background-color: $color-primary;
           width: $m-sm;
           height: 80px;
           top: 0;
@@ -111,6 +128,24 @@
     word-break: break-word;
     position: relative;
 
+    &.-primary {
+      &::before {
+        background-color: $color-primary;
+      }
+    }
+
+    &.-secondary {
+      &::before {
+        background-color: #f9ca3e;
+      }
+    }
+
+    &.-tertiary {
+      &::before {
+        background-color: #f2933b;
+      }
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -118,7 +153,6 @@
       width: $m-sm;
       top: 0;
       left: -$m-md;
-      background-color: $color-primary;
 
       @include media-breakpoint-up(md) {
         display: none;
@@ -199,14 +233,28 @@
     height: 175px;
     width: 100%;
     position: relative;
-    background-color: $color-primary;
+
+    &.-primary {
+      background-color: $color-primary;
+    }
+
+    &.-secondary {
+      background-color: #f9ca3e;
+    }
+
+    &.-tertiary {
+      background-color: #f2933b;
+    }
 
     @include media-breakpoint-up(md) {
-      background-color: unset;
       position: unset;
       height: 100%;
       justify-self: start;
       padding-inline: $m-md;
+      
+      &.-primary, &.-secondary, &.-tertiary {
+        background-color: unset;
+      }
     }
 
     .image {

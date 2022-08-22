@@ -129,6 +129,7 @@ export const query = graphql`
                       linkedinUrl
                       twitterUrl
                       linktrUrl
+                      backgroundColor
                   }
               }
               ... on STRAPI__COMPONENT_BASE_SCHEDULE {
@@ -194,6 +195,7 @@ export const query = graphql`
                     linkedinUrl
                     twitterUrl
                     linktrUrl
+                    backgroundColor
                 }
               }
           }

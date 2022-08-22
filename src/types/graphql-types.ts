@@ -559,6 +559,7 @@ type STRAPI_SPEAKER = Node & {
   readonly linkedinUrl: Maybe<Scalars['String']>;
   readonly twitterUrl: Maybe<Scalars['String']>;
   readonly linktrUrl: Maybe<Scalars['String']>;
+  readonly backgroundColor: Maybe<Scalars['String']>;
   readonly photo: Maybe<STRAPI_SPEAKERPhoto>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -1674,6 +1675,7 @@ type Query_strapiSpeakerArgs = {
   linkedinUrl: Maybe<StringQueryOperatorInput>;
   twitterUrl: Maybe<StringQueryOperatorInput>;
   linktrUrl: Maybe<StringQueryOperatorInput>;
+  backgroundColor: Maybe<StringQueryOperatorInput>;
   photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -3947,6 +3949,7 @@ type STRAPI_SPEAKERFilterInput = {
   readonly linkedinUrl: Maybe<StringQueryOperatorInput>;
   readonly twitterUrl: Maybe<StringQueryOperatorInput>;
   readonly linktrUrl: Maybe<StringQueryOperatorInput>;
+  readonly backgroundColor: Maybe<StringQueryOperatorInput>;
   readonly photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -4228,6 +4231,7 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFieldsEnum =
   | 'speakers.linkedinUrl'
   | 'speakers.twitterUrl'
   | 'speakers.linktrUrl'
+  | 'speakers.backgroundColor'
   | 'speakers.photo.id'
   | 'speakers.photo.name'
   | 'speakers.photo.alternativeText'
@@ -6534,6 +6538,7 @@ type STRAPI__COMPONENT_BASE_AGENDAFieldsEnum =
   | 'speakers.linkedinUrl'
   | 'speakers.twitterUrl'
   | 'speakers.linktrUrl'
+  | 'speakers.backgroundColor'
   | 'speakers.photo.id'
   | 'speakers.photo.name'
   | 'speakers.photo.alternativeText'
@@ -6752,6 +6757,7 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'linkedinUrl'
   | 'twitterUrl'
   | 'linktrUrl'
+  | 'backgroundColor'
   | 'photo.id'
   | 'photo.name'
   | 'photo.alternativeText'
@@ -8874,16 +8880,16 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2889617628QueryVariables = Exact<{ [key: string]: never; }>;
+type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2427077673QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2889617628Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
+type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2427077673Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
       Pick<STRAPI__COMPONENT_BASE_AGENDA, 'id' | 'title' | 'subtitle' | 'strapi_component' | 'isSectionVisible'>
       & { readonly lectures: Maybe<ReadonlyArray<Maybe<(
         Pick<STRAPI_LECTURE, 'title' | 'subtitle' | 'room' | 'startHour' | 'backgroundColor'>
         & { readonly logo: Maybe<Pick<STRAPI_LECTURELogo, 'url'>> }
       )>>>, readonly speakers: Maybe<ReadonlyArray<Maybe<(
-        Pick<STRAPI_SPEAKER, 'firstName' | 'lastName' | 'title' | 'description' | 'position' | 'linkedinUrl' | 'twitterUrl' | 'linktrUrl'>
+        Pick<STRAPI_SPEAKER, 'strapi_id' | 'firstName' | 'lastName' | 'title' | 'description' | 'position' | 'linkedinUrl' | 'twitterUrl' | 'linktrUrl' | 'backgroundColor'>
         & { readonly photo: Maybe<Pick<STRAPI_SPEAKERPhoto, 'url'>> }
       )>>> }
     ) | (
@@ -8910,7 +8916,7 @@ type pageHomejawordevbbdaysWebsitesrcpagesindexTsx2889617628Query = { readonly s
     ) | (
       Pick<STRAPI__COMPONENT_BASE_SPEAKERS_GRID, 'id' | 'sectionTitle' | 'sectionSubtitle' | 'strapi_component' | 'isSectionVisible'>
       & { readonly speakers: Maybe<ReadonlyArray<Maybe<(
-        Pick<STRAPI_SPEAKER, 'firstName' | 'lastName' | 'title' | 'description' | 'position' | 'linkedinUrl' | 'twitterUrl' | 'linktrUrl'>
+        Pick<STRAPI_SPEAKER, 'strapi_id' | 'firstName' | 'lastName' | 'title' | 'description' | 'position' | 'linkedinUrl' | 'twitterUrl' | 'linktrUrl' | 'backgroundColor'>
         & { readonly photo: Maybe<Pick<STRAPI_SPEAKERPhoto, 'url'>> }
       )>>> }
     )>>> }> };

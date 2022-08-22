@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import cx from 'classnames'
 
 import { SpeakerType } from 'types'
 import { getSpeakerFullName } from 'utils/getSpeakerFullName'
@@ -11,9 +12,15 @@ type SpeakerCardProps = {
 }
 
 const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
-  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, linktrUrl, position } = speaker
+  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, linktrUrl, position, backgroundColor } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
+
+  const getImagePlaceholderClasses = cx('speaker-card__image-placeholder', {
+    '-primary': backgroundColor === 'primary',
+    '-secondary': backgroundColor === 'secondary',
+    '-tertiary': backgroundColor === 'tertiary',
+  })
 
   return (
     <div className="speaker-card">
@@ -24,7 +31,7 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
         </h3>
         <div className="speaker-card__subtitle">{title}</div>
       </div>
-      <div className="speaker-card__image-placeholder">
+      <div className={getImagePlaceholderClasses}>
         <div className="speaker-card__social">
           {linkedinUrl && (
             <a className="speaker-card__link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">
