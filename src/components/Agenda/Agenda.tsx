@@ -25,17 +25,17 @@ const Agenda: FC<AgendaType> = ({ title, subtitle, lectures }) => {
     (a, b) => parseInt(a.startHour.substring(0, 2)) - parseInt(b.startHour.substring(0, 2)),
   )
 
-  const firstSection = lecturesSorted.filter((event) => event.startHour < '14:40').sort((a, b) => a.room - b.room)
+  const firstSection = lecturesSorted.filter((event) => event.startHour < '14:20').sort((a, b) => a.room - b.room)
   const firstSectionGrouped = groupArrayByKey(firstSection, 'startHour')
   const firstSectionContent = makeContent(firstSectionGrouped)
 
   const secondSection = lecturesSorted
-    .filter((event) => event.startHour >= '14:40' && event.startHour < '16:00')
+    .filter((event) => event.startHour >= '14:20' && event.startHour < '15:40')
     .sort((a, b) => a.room - b.room)
   const secondSectionGrouped = groupArrayByKey(secondSection, 'startHour')
   const secondSectionContent = makeContent(secondSectionGrouped)
 
-  const thirdSection = lecturesSorted.filter((event) => event.startHour >= '16:00').sort((a, b) => a.room - b.room)
+  const thirdSection = lecturesSorted.filter((event) => event.startHour >= '15:40').sort((a, b) => a.room - b.room)
   const thirdSectionGrouped = groupArrayByKey(thirdSection, 'startHour')
   const thirdSectionContent = makeContent(thirdSectionGrouped)
 
