@@ -1,9 +1,8 @@
 .lecture-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 55% 45%;
   position: relative;
+  background-color: $color-background;
 
   @include media-breakpoint-up(md) {
     flex-direction: row;
@@ -43,10 +42,6 @@
     padding: 0 $m-md $m-xl;
     margin-bottom: $m-xl;
     box-sizing: border-box;
-
-    @include media-breakpoint-up(md) {
-      max-width: 60%;
-    }
 
     &-speaker {
       display: none;
@@ -418,6 +413,11 @@
     cursor: pointer;
     box-sizing: border-box;
     padding: $m-xs 0;
+    transition: all .3s ease-out;
+
+    &.-disabled {
+      display: none;
+    }
 
     &-text {
       width: fit-content;
@@ -444,6 +444,7 @@
       font-size: $font-size-base;
       font-weight: $font-weight-semi-bold;
       color: rgba($color-dark, 0.7);
+      transition: all .3s ease-out;
       
       &::after {
         content: '\a';
@@ -456,6 +457,14 @@
       font-size: $font-size-base;
       font-weight: $font-weight-extra-bold;
       color: $color-dark;
+    }
+
+    &:hover {
+      border-width: 2px;
+
+      .lecture-details__prev-direction, .lecture-details__next-direction {
+        font-weight: $font-weight-bold;
+      }
     }
   }
 
@@ -477,6 +486,7 @@
     border-left: none;
     
     @include media-breakpoint-up(md) {
+      border: 1px solid $color-dark;
       border-right: none;
       justify-content: end;
       padding-right: $m-xl;

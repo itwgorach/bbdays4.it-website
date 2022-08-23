@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import cx from 'classnames'
-import { SpeakerType } from 'types'
+import { ModalType } from 'types'
 import Image from 'components/Image'
 import {
   ArrowButtonIcon,
@@ -13,11 +13,7 @@ import {
   TwitterIcon,
 } from 'components/icons'
 
-type LectureDetailsProps = SpeakerType & {
-  handleModalToggle: () => void,
-}
-
-const LectureDetails: FC<LectureDetailsProps> = ({
+const LectureDetails: FC<ModalType> = ({
   backgroundColor,
   description,
   firstName,
@@ -28,7 +24,13 @@ const LectureDetails: FC<LectureDetailsProps> = ({
   position,
   title,
   twitterUrl,
+  hour,
+  room,
   handleModalToggle,
+  handlePrevLectureClick,
+  handleNextLectureClick,
+  prevLecture,
+  nextLecture,
 }) => {
   const getClassesWithColor = (baseClass: string) => {
     const classes = cx(baseClass, {
@@ -40,10 +42,30 @@ const LectureDetails: FC<LectureDetailsProps> = ({
     return classes
   }
 
+  const getPrevButtonClasses = cx('lecture-details__prev', {
+    '-disabled': !prevLecture,
+  })
+
+  const getNextButtonClasses = cx('lecture-details__next', {
+    '-disabled': !nextLecture,
+  })
+
+  const generateUrlToCopy = () => {
+    const speakerName = `${firstName}-${lastName}`.toLocaleLowerCase()
+
+    return `google.com/${speakerName}`
+  }
+
+  const urlToCopy = generateUrlToCopy()
+
+  const getRoom = (room: number) => {
+    return room === 1 ? 'Aula głowna ATH' : 'Sala druga ATH'
+  }
+
   return (
     <div className="lecture-details">
-      <button className="lecture-details__button-close">
-        <CloseButtonIcon onClick={handleModalToggle} />
+      <button className="lecture-details__button-close" onClick={handleModalToggle}>
+        <CloseButtonIcon />
       </button>
       <div className="lecture-details__description">
         <div className={getClassesWithColor('lecture-details__description-speaker')}>
@@ -57,7 +79,9 @@ const LectureDetails: FC<LectureDetailsProps> = ({
           </div>
           <div className="lecture-details__header-text">
             <ClockIcon />
-            <span>11:30 - Aula główna ATH</span>
+            <span>
+              {hour} - {getRoom(room)}
+            </span>
           </div>
         </div>
         <div className={getClassesWithColor('lecture-details__title')}>{title}</div>
@@ -65,14 +89,8 @@ const LectureDetails: FC<LectureDetailsProps> = ({
         <div className="lecture-details__share">
           <span className="lecture-details__share-text">Udostępnij</span>
           <div className="lecture-details__copy">
-            <input
-              className="lecture-details__copy-input"
-              name="lectureHref"
-              readOnly
-              type="text"
-              value={`link do prelekcji`}
-            />
-            <button className="lecture-details__copy-button">
+            <input className="lecture-details__copy-input" name="lectureHref" readOnly type="text" value={urlToCopy} />
+            <button className="lecture-details__copy-button" onClick={() => navigator.clipboard.writeText(urlToCopy)}>
               <CopyIcon />
               <span>Kopiuj link</span>
             </button>
@@ -87,7 +105,9 @@ const LectureDetails: FC<LectureDetailsProps> = ({
           </div>
           <div className="lecture-details__header-text">
             <ClockIcon />
-            <span>11:30 - Aula główna ATH</span>
+            <span>
+              {hour} - {getRoom(room)}
+            </span>
           </div>
         </div>
         <div className="lecture-details__speaker-socials">
@@ -114,17 +134,21 @@ const LectureDetails: FC<LectureDetailsProps> = ({
         </div>
       </div>
       <div className="lecture-details__navigation">
-        <button className="lecture-details__prev">
+        <button
+          className={getPrevButtonClasses}
+          onClick={prevLecture ? () => handlePrevLectureClick(`${firstName} ${lastName}`) : undefined}>
           <div className="lecture-details__prev-text">
             <ArrowButtonIcon className="-left" />
             <span className="lecture-details__prev-direction">Wcześniej</span>
-            <span className="lecture-details__prev-name">prev.name</span>
+            <span className="lecture-details__prev-name">{prevLecture}</span>
           </div>
         </button>
-        <button className="lecture-details__next">
+        <button
+          className={getNextButtonClasses}
+          onClick={nextLecture ? () => handleNextLectureClick(`${firstName} ${lastName}`) : undefined}>
           <div className="lecture-details__next-text">
             <span className="lecture-details__next-direction">Dalej</span>
-            <span className="lecture-details__next-name">next.name</span>
+            <span className="lecture-details__next-name">{nextLecture}</span>
             <ArrowButtonIcon className="-right" />
           </div>
         </button>

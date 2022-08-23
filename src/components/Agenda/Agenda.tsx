@@ -40,6 +40,58 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     twitterUrl: '',
   })
 
+  const handleNextLectureClick = (name: string) => {
+    const lecturesWithSpeakers = lectures.filter((lecture) => lecture.subtitle)
+
+    const indexOfCurrentLecture = lecturesWithSpeakers.findIndex((lecture) => lecture?.subtitle === name)
+    const nextLecture = lecturesWithSpeakers[indexOfCurrentLecture + 1]
+    const nextSpeaker = getSpeaker(nextLecture.subtitle)
+
+    setModalData({
+      ...nextSpeaker,
+      hour: nextLecture.startHour,
+      room: nextLecture.room,
+    })
+  }
+
+  const handlePrevLectureClick = (name: string) => {
+    const lecturesWithSpeakers = lectures.filter((lecture) => lecture.subtitle)
+
+    const indexOfCurrentLecture = lecturesWithSpeakers.findIndex((lecture) => lecture?.subtitle === name)
+    const prevLecture = lecturesWithSpeakers[indexOfCurrentLecture - 1]
+    const prevSpeaker = getSpeaker(prevLecture.subtitle)
+
+    setModalData({
+      ...prevSpeaker,
+      hour: prevLecture.startHour,
+      room: prevLecture.room,
+    })
+  }
+
+  const getPrevLecture = () => {
+    const lecturesWithSpeakers = lectures.filter((lecture) => lecture.subtitle)
+
+    const indexOfCurrentLecture = lecturesWithSpeakers.findIndex(
+      (lecture) => lecture?.subtitle === `${modalData.firstName} ${modalData.lastName}`,
+    )
+
+    const hasPrevLecture = indexOfCurrentLecture > 0 ? true : false
+
+    return hasPrevLecture ? lecturesWithSpeakers[indexOfCurrentLecture - 1]?.subtitle : null
+  }
+
+  const getNextLecture = () => {
+    const lecturesWithSpeakers = lectures.filter((lecture) => lecture.subtitle)
+
+    const indexOfCurrentLecture = lecturesWithSpeakers.findIndex(
+      (lecture) => lecture?.subtitle === `${modalData.firstName} ${modalData.lastName}`,
+    )
+
+    const hasNextLecture = indexOfCurrentLecture < lecturesWithSpeakers.length - 1 ? true : false
+
+    return hasNextLecture ? lecturesWithSpeakers[indexOfCurrentLecture + 1]?.subtitle : null
+  }
+
   const getSpeaker = (name: string) => {
     const speaker =
       speakers &&
@@ -57,6 +109,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     if (lecture) {
       const selectedSpeaker = lecture.split('-').join(' ')
       const modalProps = getSpeaker(selectedSpeaker)
+      console.log('xd')
 
       setModalData(modalProps)
 
@@ -66,7 +119,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     return false
   })
 
-  const handleModalToggle = (event, { ...modalProps }) =>
+  const handleModalToggle = (event, { ...modalProps }) => {
     setIsModalOpen((isModalOpen) => {
       setModalData(modalProps)
 
@@ -93,22 +146,23 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
 
       return !isModalOpen
     })
+  }
 
   const lecturesSorted = lectures.sort(
     (a, b) => parseInt(a.startHour.substring(0, 2)) - parseInt(b.startHour.substring(0, 2)),
   )
 
-  const firstSection = lecturesSorted.filter((event) => event.startHour < '14:40').sort((a, b) => a.room - b.room)
+  const firstSection = lecturesSorted.filter((event) => event.startHour < '14:20').sort((a, b) => a.room - b.room)
   const firstSectionGrouped = groupArrayByKey(firstSection, 'startHour')
   const firstSectionContent = makeContent(firstSectionGrouped)
 
   const secondSection = lecturesSorted
-    .filter((event) => event.startHour >= '14:40' && event.startHour < '16:00')
+    .filter((event) => event.startHour >= '14:20' && event.startHour < '15:40')
     .sort((a, b) => a.room - b.room)
   const secondSectionGrouped = groupArrayByKey(secondSection, 'startHour')
   const secondSectionContent = makeContent(secondSectionGrouped)
 
-  const thirdSection = lecturesSorted.filter((event) => event.startHour >= '16:00').sort((a, b) => a.room - b.room)
+  const thirdSection = lecturesSorted.filter((event) => event.startHour >= '15:40').sort((a, b) => a.room - b.room)
   const thirdSectionGrouped = groupArrayByKey(thirdSection, 'startHour')
   const thirdSectionContent = makeContent(thirdSectionGrouped)
 
@@ -156,7 +210,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
               <div className="agenda__lecture-hour">{key}</div>
               <div className="agenda__lecture-inner">
                 {firstSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
-                  const modalProps = subtitle && getSpeaker(subtitle)
+                  const modalProps = subtitle && { ...getSpeaker(subtitle), hour: key, room: room }
 
                   return (
                     <div
@@ -194,7 +248,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
               <div className="agenda__lecture-hour">{key}</div>
               <div className="agenda__lecture-inner">
                 {secondSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
-                  const modalProps = subtitle && getSpeaker(subtitle)
+                  const modalProps = subtitle && { ...getSpeaker(subtitle), hour: key, room: room }
 
                   return (
                     <div
@@ -231,7 +285,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
               <div className="agenda__lecture-hour">{key}</div>
               <div className="agenda__lecture-inner">
                 {thirdSectionContent[key].map(({ backgroundColor, title, subtitle, room, logo }, idx) => {
-                  const modalProps = subtitle && getSpeaker(subtitle)
+                  const modalProps = subtitle && { ...getSpeaker(subtitle), hour: key, room: room }
 
                   return (
                     <div
@@ -258,7 +312,14 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
         })}
       </div>
       <Modal className="-lecture" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
-        <LectureDetails {...modalData} handleModalToggle={handleModalToggle} />
+        <LectureDetails
+          {...modalData}
+          handleModalToggle={handleModalToggle}
+          handleNextLectureClick={handleNextLectureClick}
+          handlePrevLectureClick={handlePrevLectureClick}
+          nextLecture={getNextLecture()}
+          prevLecture={getPrevLecture()}
+        />
       </Modal>
     </div>
   )
