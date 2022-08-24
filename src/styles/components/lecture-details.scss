@@ -222,6 +222,31 @@
       font-size: $font-size-base-xs;
       cursor: pointer;
     }
+
+    &-alert {
+      position: absolute;
+      bottom: $m-xl + $m-xs;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $color-dark;
+      color: $color-white;
+      font-family: $font-family-header;
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+      padding: $m-sm $m-base;
+      border-radius: 5px;
+      animation: fade-out 1s linear;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fade-out {
+      from {
+        opacity: 1;
+      } to {
+        opacity: 0;
+      }
+    }
   }
 
   &__speaker {

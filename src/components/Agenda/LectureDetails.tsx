@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import cx from 'classnames'
 import { ModalType } from 'types'
 import Image from 'components/Image'
@@ -31,7 +31,10 @@ const LectureDetails: FC<ModalType> = ({
   handleNextLectureClick,
   prevLecture,
   nextLecture,
+  location,
 }) => {
+  const [copyAlertVisible, setCopyAlertVisible] = useState(false)
+
   const getClassesWithColor = (baseClass: string) => {
     const classes = cx(baseClass, {
       '-primary': backgroundColor === 'primary',
@@ -53,13 +56,19 @@ const LectureDetails: FC<ModalType> = ({
   const generateUrlToCopy = () => {
     const speakerName = `${firstName}-${lastName}`.toLocaleLowerCase()
 
-    return `google.com/${speakerName}`
+    return `${location.origin}/?lecture=${speakerName}#agenda`
   }
-
-  const urlToCopy = generateUrlToCopy()
 
   const getRoom = (room: number) => {
     return room === 1 ? 'Aula głowna ATH' : 'Sala druga ATH'
+  }
+
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(generateUrlToCopy())
+
+    setCopyAlertVisible(true)
+
+    setTimeout(() => setCopyAlertVisible(false), 2000)
   }
 
   return (
@@ -89,8 +98,14 @@ const LectureDetails: FC<ModalType> = ({
         <div className="lecture-details__share">
           <span className="lecture-details__share-text">Udostępnij</span>
           <div className="lecture-details__copy">
-            <input className="lecture-details__copy-input" name="lectureHref" readOnly type="text" value={urlToCopy} />
-            <button className="lecture-details__copy-button" onClick={() => navigator.clipboard.writeText(urlToCopy)}>
+            <input
+              className="lecture-details__copy-input"
+              name="lectureHref"
+              readOnly
+              type="text"
+              value={generateUrlToCopy()}
+            />
+            <button className="lecture-details__copy-button" onClick={handleCopyClick}>
               <CopyIcon />
               <span>Kopiuj link</span>
             </button>
@@ -152,6 +167,9 @@ const LectureDetails: FC<ModalType> = ({
             <ArrowButtonIcon className="-right" />
           </div>
         </button>
+      </div>
+      <div className="lecture-details__copy-alert" style={{ display: copyAlertVisible ? 'block' : 'none' }}>
+        Skopiowano!
       </div>
     </div>
   )

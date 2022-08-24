@@ -1,5 +1,5 @@
 import Modal from 'components/Modal'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import cx from 'classnames'
 import { AgendaType, LectureType, SpeakerType } from 'types'
 import LectureDetails from './LectureDetails'
@@ -40,17 +40,25 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     twitterUrl: '',
   })
 
+  const agendaRef = useRef(null)
+
   const handleNextLectureClick = (name: string) => {
     const lecturesWithSpeakers = lectures.filter((lecture) => lecture.subtitle)
 
     const indexOfCurrentLecture = lecturesWithSpeakers.findIndex((lecture) => lecture?.subtitle === name)
     const nextLecture = lecturesWithSpeakers[indexOfCurrentLecture + 1]
     const nextSpeaker = getSpeaker(nextLecture.subtitle)
+    const searchQuery = `?lecture=${nextLecture.subtitle?.split(' ').join('-').toLocaleLowerCase()}`
+
+    if (typeof window !== 'undefined') {
+      window.history.pushState({}, '', `${location.origin}/${searchQuery}#agenda`)
+    }
 
     setModalData({
       ...nextSpeaker,
       hour: nextLecture.startHour,
       room: nextLecture.room,
+      location: location,
     })
   }
 
@@ -60,11 +68,17 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     const indexOfCurrentLecture = lecturesWithSpeakers.findIndex((lecture) => lecture?.subtitle === name)
     const prevLecture = lecturesWithSpeakers[indexOfCurrentLecture - 1]
     const prevSpeaker = getSpeaker(prevLecture.subtitle)
+    const searchQuery = `?lecture=${prevLecture.subtitle?.split(' ').join('-').toLocaleLowerCase()}`
+
+    if (typeof window !== 'undefined') {
+      window.history.pushState({}, '', `${location.origin}/${searchQuery}#agenda`)
+    }
 
     setModalData({
       ...prevSpeaker,
       hour: prevLecture.startHour,
       room: prevLecture.room,
+      location: location,
     })
   }
 
@@ -107,13 +121,23 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     const lecture = params && params.get('lecture')
 
     if (lecture) {
+      const lecturesWithSpeakers = lectures.filter((lecture) => lecture.subtitle)
       const selectedSpeaker = lecture.split('-').join(' ')
       const modalProps = getSpeaker(selectedSpeaker)
-      console.log('xd')
 
-      setModalData(modalProps)
+      if (modalProps) {
+        const selectedLecture = lecturesWithSpeakers.filter(
+          (lecture) => lecture?.subtitle === `${modalProps.firstName} ${modalProps.lastName}`,
+        )
 
-      return true
+        setModalData({
+          ...modalProps,
+          hour: selectedLecture[0].startHour,
+          room: selectedLecture[0].room,
+          location: location,
+        })
+        return true
+      }
     }
 
     return false
@@ -121,28 +145,18 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
 
   const handleModalToggle = (event, { ...modalProps }) => {
     setIsModalOpen((isModalOpen) => {
-      setModalData(modalProps)
+      setModalData({
+        ...modalProps,
+        location: location,
+      })
 
-      // const parentId = event.target.parentNode.id
-      // const selectedLecture = parentId.substring(parentId.indexOf('/') + 1)
-      // const searchQuery = `?lecture=${selectedLecture}`
-      // console.log(event)
+      const parentId = event.target.parentNode.id
+      const selectedLecture = parentId.substring(parentId.indexOf('/') + 1)
+      const searchQuery = `?lecture=${selectedLecture}`
 
-      // console.log(location)
-      // if (!location.href.includes('?lecture=')) {
-      //   navigate(`${location.origin}/#agenda${searchQuery}`, { replace: true })
-      // } else {
-      //   navigate(`${location.origin}/#agenda`, { replace: true })
-      // }
-
-      // if (typeof window !== 'undefined') {
-      //   console.log(location)
-      //   if (!location.href.includes('?lecture=')) {
-      //     window.history.pushState({}, '', `${location.origin}/${searchQuery}#agenda`)
-      //   } else {
-      //     window.history.back()
-      //   }
-      // }
+      if (typeof window !== 'undefined') {
+        window.history.pushState({}, '', `${location.origin}/${searchQuery}#agenda`)
+      }
 
       return !isModalOpen
     })
@@ -192,8 +206,14 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     return lectureId
   }
 
+  useEffect(() => {
+    if (location.search) {
+      agendaRef.current.scrollIntoView()
+    }
+  }, [agendaRef.current])
+
   return (
-    <div className="agenda" id="agenda">
+    <div className="agenda" id="agenda" ref={agendaRef}>
       <div className="agenda__header">
         <div className="agenda__header-title">{title}</div>
         <div className="agenda__header-subtitle">{subtitle}</div>

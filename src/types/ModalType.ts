@@ -8,6 +8,7 @@ type ModalType = SpeakerType & {
   handlePrevLectureClick: (name: string) => void,
   prevLecture: string | null,
   nextLecture: string | null,
+  location: unknown,
 }
 
 export default ModalType
