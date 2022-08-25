@@ -17,9 +17,7 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
   const imageUrl = photo?.url
 
   const getImagePlaceholderClasses = cx('speaker-card__image-placeholder', {
-    '-primary': backgroundColor === 'primary',
-    '-secondary': backgroundColor === 'secondary',
-    '-tertiary': backgroundColor === 'tertiary',
+    [`-${backgroundColor}`]: backgroundColor,
   })
 
   return (

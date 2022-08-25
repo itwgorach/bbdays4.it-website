@@ -5,10 +5,8 @@ import { getSpeaker } from 'utils/agendaDataProcessing'
 const AgendaSection = ({ section, handleModalToggle, speakers }) => {
   const getLectureContentClasses = (backgroundColor: string | null, logoUrl: string | null) => {
     const lectureContentClasses = cx('agenda__lecture-content', {
-      '-dark': backgroundColor === 'dark',
-      '-primary': backgroundColor === 'primary',
+      [`-${backgroundColor}`]: backgroundColor,
       '-row': logoUrl,
-      '-secondary': backgroundColor === 'secondary',
     })
 
     return lectureContentClasses

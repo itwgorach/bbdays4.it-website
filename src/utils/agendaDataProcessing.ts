@@ -41,10 +41,10 @@ export const makeLectureSection = (lectures: LectureType[], fromHour: string | n
 
 export const getSpeaker = (name: string, speakers: SpeakerType[]) => {
   const speaker =
-    speakers &&
-    speakers.filter((speaker) => {
+    speakers.length > 0 &&
+    speakers.find((speaker) => {
       return `${speaker.firstName} ${speaker.lastName}`.toLocaleLowerCase() === name.toLocaleLowerCase()
     })
 
-  return speaker && speaker[0]
+  return speaker && speaker
 }

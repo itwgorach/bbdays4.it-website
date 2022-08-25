@@ -1,7 +1,8 @@
 import Modal from 'components/Modal'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { AgendaType, SpeakerType } from 'types'
 import { makeLectureSection, getSpeaker } from 'utils/agendaDataProcessing'
+import { navigate } from 'gatsby'
 import LectureDetails from './LectureDetails'
 import AgendaSection from './AgendaSection'
 
@@ -20,22 +21,9 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
   const secondSection = makeLectureSection(lecturesSorted, '14:20', '15:40')
   const thirdSection = makeLectureSection(lecturesSorted, '15:40', null)
 
-  const agendaRef = useRef(null)
+  const [modalData, setModalData] = useState<SpeakerType | null>(null)
 
-  const [modalData, setModalData] = useState<SpeakerType>({
-    backgroundColor: '',
-    description: '',
-    firstName: '',
-    lastName: '',
-    linkedinUrl: '',
-    linktrUrl: '',
-    photo: null,
-    position: '',
-    title: '',
-    twitterUrl: '',
-  })
-
-  const [isModalOpen, setIsModalOpen] = useState(() => {
+  const shouldOpenModal = () => {
     const params = new URLSearchParams(location.search)
     const lecture = params && params.get('lecture')
 
@@ -44,14 +32,17 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
       const modalProps = getSpeaker(selectedSpeaker, speakers)
 
       if (modalProps) {
-        const selectedLecture = lecturesWithSpeakersOnly.filter(
+        const selectedLecture = lecturesWithSpeakersOnly.find(
           (lecture) => lecture?.subtitle === `${modalProps.firstName} ${modalProps.lastName}`,
         )
 
+        const searchQuery = `?lecture=${selectedLecture?.subtitle?.split(' ').join('-').toLocaleLowerCase()}`
+        navigate(`/${searchQuery}#agenda`)
+
         setModalData({
           ...modalProps,
-          hour: selectedLecture[0].startHour,
-          room: selectedLecture[0].room,
+          hour: selectedLecture.startHour,
+          room: selectedLecture.room,
           location: location,
         })
         return true
@@ -59,7 +50,9 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     }
 
     return false
-  })
+  }
+
+  const [isModalOpen, setIsModalOpen] = useState(shouldOpenModal)
 
   const handleUrlChange = (searchQuery: string) => {
     if (typeof window !== 'undefined') {
@@ -115,7 +108,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
 
   const getPrevLecture = () => {
     const indexOfCurrentLecture = lecturesWithSpeakersOnly.findIndex(
-      (lecture) => lecture?.subtitle === `${modalData.firstName} ${modalData.lastName}`,
+      (lecture) => lecture?.subtitle === `${modalData?.firstName} ${modalData?.lastName}`,
     )
 
     const hasPrevLecture = indexOfCurrentLecture > 0 ? true : false
@@ -123,22 +116,17 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
   }
 
   const getNextLecture = () => {
+    console.log(modalData)
     const indexOfCurrentLecture = lecturesWithSpeakersOnly.findIndex(
-      (lecture) => lecture?.subtitle === `${modalData.firstName} ${modalData.lastName}`,
+      (lecture) => lecture?.subtitle === `${modalData?.firstName} ${modalData?.lastName}`,
     )
 
     const hasNextLecture = indexOfCurrentLecture < lecturesWithSpeakersOnly.length - 1 ? true : false
     return hasNextLecture ? lecturesWithSpeakersOnly[indexOfCurrentLecture + 1]?.subtitle : null
   }
 
-  useEffect(() => {
-    if (location.search) {
-      agendaRef.current.scrollIntoView()
-    }
-  }, [agendaRef.current])
-
   return (
-    <div className="agenda" id="agenda" ref={agendaRef}>
+    <div className="agenda" id="agenda">
       <div className="agenda__header">
         <div className="agenda__header-title">{title}</div>
         <div className="agenda__header-subtitle">{subtitle}</div>

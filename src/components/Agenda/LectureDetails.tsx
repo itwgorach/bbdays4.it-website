@@ -37,9 +37,7 @@ const LectureDetails: FC<ModalType> = ({
 
   const getClassesWithColor = (baseClass: string) => {
     const classes = cx(baseClass, {
-      '-primary': backgroundColor === 'primary',
-      '-secondary': backgroundColor === 'secondary',
-      '-tertiary': backgroundColor === 'tertiary',
+      [`-${backgroundColor}`]: backgroundColor,
     })
 
     return classes
