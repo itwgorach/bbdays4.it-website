@@ -1,16 +1,16 @@
 .lecture-details {
+  align-items: center;
+  background-color: $color-background;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   position: relative;
-  background-color: $color-background;
   
   @include media-breakpoint-up(md) {
+    align-items: start;
     display: grid;
     grid-template-columns: 55% 45%;
     padding: $m-xl $m-lg 0;
-    align-items: start;
   }
 
   &__button {
@@ -20,41 +20,41 @@
 
     &-close {
       align-self: flex-end;
-      width: 50px;
-      height: 50px;
-      margin: 2px 2px 0 0;
-      padding: 0;
+      background: none;
       border: none;
       border-left: 1px solid $color-dark;
       border-bottom: 1px solid $color-dark;
-      background: none;
       cursor: pointer;
+      height: 50px;
+      margin: 2px 2px 0 0;
+      padding: 0;
+      width: 50px;
       
       @include media-breakpoint-up(md) {
         position: absolute;
-        top: 0;
         right: 0;
+        top: 0;
       }
     }
   }
 
   &__description {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 $m-md $m-xl;
     margin-bottom: $m-xl;
-    box-sizing: border-box;
+    padding: 0 $m-md $m-xl;
 
     &-speaker {
       display: none;
 
       @include media-breakpoint-up(md) {
-        display: block;
         color: $color-dark;
+        display: block;
         font-weight: $font-weight-extra-bold;
-        position: relative;
         margin-bottom: $m-xl;
+        position: relative;
 
         &.-primary {
           &::before {
@@ -75,36 +75,36 @@
         }
 
         &::before {
-          position: absolute;
           content: "";
-          width: $m-sm;
           height: 80px;
-          top: 0;
           left: -$m-xl - $m-xs;
+          position: absolute;
+          top: 0;
+          width: $m-sm;
         }
       }
     }
   }
 
   &__header {
-    margin-bottom: $m-md;
     display: flex;
     flex-direction: column;
     gap: $m-sm;
+    margin-bottom: $m-md;
 
     @include media-breakpoint-up(md) {
       display: none;
     }
     
     &-text {
+      align-items: center;
       color: rgba($color-dark, 0.6);
-      font-family: $font-family-header;
-      font-weight: $font-weight-extra-bold;
-      font-size: $font-size-lg;
       display: flex;
+      font-family: $font-family-header;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-extra-bold;
       gap: 12px;
       justify-content: start;
-      align-items: center;
     }
 
     &.-desktop {
@@ -118,13 +118,13 @@
   }
 
   &__title {
-    font-family: $font-family-body;
-    font-weight: $font-weight-extra-bold;
-    font-size: $font-size-xl;
-    margin-bottom: $m-base;
     color: $color-dark;
-    word-break: break-word;
+    font-family: $font-family-body;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-extra-bold;
+    margin-bottom: $m-base;
     position: relative;
+    word-break: break-word;
 
     &.-primary {
       &::before {
@@ -146,11 +146,11 @@
 
     &::before {
       content: '';
-      position: absolute;
       height: 80px;
-      width: $m-sm;
-      top: 0;
       left: -$m-md;
+      position: absolute;
+      top: 0;
+      width: $m-sm;
 
       @include media-breakpoint-up(md) {
         display: none;
@@ -159,11 +159,11 @@
   }
   
   &__explanation {
-    font-family: $font-family-body;
-    font-weight: $font-weight-medium;
-    font-size: $font-size-base;
-    margin-bottom: $m-lg;
     color: $color-dark;
+    font-family: $font-family-body;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    margin-bottom: $m-lg;
   }
 
   &__share {
@@ -178,10 +178,10 @@
     }
 
     &-text {
-      font-family: $font-family-body;
-      font-weight: $font-weight-extra-bold;
-      font-size: $font-size-base;
       color: $color-dark;
+      font-family: $font-family-body;
+      font-size: $font-size-base;
+      font-weight: $font-weight-extra-bold;
     }
   }
 
@@ -196,51 +196,51 @@
       display: none;
 
       @include media-breakpoint-up(md) {
-        display: block;
         background-color: rgba(25, 69, 80, 0.05);
         border: none;
         border-radius: 4px 0 0 4px;
-        width: 50%;
-        padding: 12px $m-base;
-        overflow: hidden;
-        outline: none;
+        color: rgba($color-dark, 0.8);
+        display: block;
         font-family: $font-family-body;
-        font-weight: $font-weight-medium;
         font-size: $font-size-base-xs;
-        color: rgba($color-dark, 0.8)
+        font-weight: $font-weight-medium;
+        outline: none;
+        overflow: hidden;
+        padding: 12px $m-base;
+        width: 50%;
       }
     }
 
     &-button {
-      display: flex;
-      justify-content: center;
       align-items: center;
-      gap: $m-xs;
+      background-color: $color-secondary;
       border: none;
       border-radius: 0 4px 4px 0;
-      background-color: $color-secondary;
-      padding: 12px $m-base;
-      font-family: $font-family-body;
-      font-weight: $font-weight-extra-bold;
-      font-size: $font-size-base-xs;
       cursor: pointer;
+      display: flex;
+      font-family: $font-family-body;
+      font-size: $font-size-base-xs;
+      font-weight: $font-weight-extra-bold;
+      gap: $m-xs;
+      justify-content: center;
+      padding: 12px $m-base;
     }
 
     &-alert {
-      position: absolute;
-      bottom: $m-xl + $m-xs;
-      left: 50%;
-      transform: translateX(-50%);
+      animation: fade-out 1s linear;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
       background-color: $color-dark;
+      border-radius: 5px;
+      bottom: $m-xl + $m-xs;
       color: $color-white;
       font-family: $font-family-header;
       font-size: $font-size-base;
       font-weight: $font-weight-medium;
+      left: 50%;
       padding: $m-sm $m-base;
-      border-radius: 5px;
-      animation: fade-out 1s linear;
-      animation-delay: 1s;
-      animation-fill-mode: forwards;
+      position: absolute;
+      transform: translateX(-50%);
     }
 
     @keyframes fade-out {
@@ -270,10 +270,10 @@
     }
 
     @include media-breakpoint-up(md) {
-      position: unset;
       height: 100%;
       justify-self: start;
       padding-inline: $m-md;
+      position: unset;
       
       &.-primary, &.-secondary, &.-tertiary {
         background-color: unset;
@@ -281,30 +281,30 @@
     }
 
     .image {
-      position: absolute;
+      bottom: 0;
       height: 250px;
       max-height: 500px;
-      width: auto;
+      position: absolute;
       right: 0;
-      bottom: 0;
+      width: auto;
 
       @include media-breakpoint-up(md) {
         height: 500px;
       }
 
       &.-placeholder {
-          right: -30px;
-          bottom: 15px;
+        bottom: 15px;
+        right: -30px;
       }
     }
 
     &-socials {
-      z-index: 1;
-      position: absolute;
-      top: -60px;
-      left: $m-base;
       display: flex;
       gap: $m-xs;
+      left: $m-base;
+      position: absolute;
+      top: -60px;
+      z-index: 1;
 
       @include media-breakpoint-up(md) {
         position: unset;
@@ -380,16 +380,16 @@
     }
 
     &-info {
-      position: absolute;
-      inset: auto 0 0;
       background: linear-gradient(360deg, rgba(25, 69, 80, 0.8) 0%, rgba(25, 69, 80, 0) 100%);
-      padding: $m-base;
       color: $color-white;
-      letter-spacing: 0.75px;
-      font-weight: $font-weight-extra-bold;
       display: flex;
       flex-direction: column;
+      font-weight: $font-weight-extra-bold;
       gap: $m-xs;
+      inset: auto 0 0;
+      letter-spacing: 0.75px;
+      padding: $m-base;
+      position: absolute;
 
       @include media-breakpoint-up(md) {
         display: none;
@@ -412,66 +412,66 @@
   }
 
   &__navigation {
-    width: 100%;
+    align-items: center;
     display: flex;
     flex-direction: column;
+    gap: $m-xs;
     justify-content: center;
-    align-items: center;
     margin-top: $m-xs;
     padding-bottom: $m-xs;
-    gap: $m-xs;
+    width: 100%;
     
     @include media-breakpoint-up(md) {
-      position: absolute;
+      background-color: rgba($color-background, 0.9);
       bottom: 0;
       flex-direction: row;
       gap: 0;
-      background-color: rgba($color-background, 0.9);
+      position: absolute;
     }
   }
 
   &__prev, &__next {
+    align-items: center;
     background: none;
     border: none;
-    width: calc(100% - $m-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: $m-base;
-    cursor: pointer;
     box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    gap: $m-base;
+    justify-content: center;
     padding: $m-xs 0;
     transition: all .3s ease-out;
+    width: calc(100% - $m-sm);
 
     &.-disabled {
       display: none;
     }
 
     &-text {
-      width: fit-content;
-      text-align: left;
       position: relative;
+      text-align: left;
+      width: fit-content;
     }
 
     .-left {
+      left: -$m-lg;
       position: absolute;
       top: 50%;
-      left: -$m-lg;
       transform: translateY(-50%);
     }
     
     .-right {
       position: absolute;
-      top: 50%;
       right: -$m-lg;
+      top: 50%;
       transform: translateY(-50%) rotateZ(180deg);
     }
     
     &-direction {
+      color: rgba($color-dark, 0.7);
       font-family: $font-family-header;
       font-size: $font-size-base;
       font-weight: $font-weight-semi-bold;
-      color: rgba($color-dark, 0.7);
       transition: all .3s ease-out;
       
       &::after {
@@ -481,10 +481,10 @@
     }
     
     &-name {
+      color: $color-dark;
       font-family: $font-family-header;
       font-size: $font-size-base;
       font-weight: $font-weight-extra-bold;
-      color: $color-dark;
     }
 
     &:hover {
@@ -504,8 +504,8 @@
       border: 1px solid $color-dark;
       border-left: none;
       justify-content: start;
-      padding-left: $m-xl;
       margin-left: $m-sm;
+      padding-left: $m-xl;
     }
   }
   
@@ -517,8 +517,8 @@
       border: 1px solid $color-dark;
       border-right: none;
       justify-content: end;
-      padding-right: $m-xl;
       margin-right: $m-sm;
+      padding-right: $m-xl;
     }
   }
 }
