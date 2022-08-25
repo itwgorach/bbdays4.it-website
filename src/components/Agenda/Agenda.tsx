@@ -116,7 +116,6 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
   }
 
   const getNextLecture = () => {
-    console.log(modalData)
     const indexOfCurrentLecture = lecturesWithSpeakersOnly.findIndex(
       (lecture) => lecture?.subtitle === `${modalData?.firstName} ${modalData?.lastName}`,
     )
