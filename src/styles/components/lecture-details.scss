@@ -27,6 +27,7 @@
       cursor: pointer;
       height: 50px;
       margin: 2px 2px 0 0;
+      outline: none;
       padding: 0;
       width: 50px;
       
@@ -439,6 +440,7 @@
     display: flex;
     gap: $m-base;
     justify-content: center;
+    outline: none;
     padding: $m-xs 0;
     transition: all .3s ease-out;
     width: calc(100% - $m-sm);
@@ -486,36 +488,35 @@
       font-size: $font-size-base;
       font-weight: $font-weight-extra-bold;
     }
-
-    &:hover {
-      border-width: 2px;
-
-      .lecture-details__prev-direction, .lecture-details__next-direction {
-        font-weight: $font-weight-bold;
-      }
-    }
   }
 
   &__prev {
-    border: 1px solid $color-dark;
-    border-right: none;
+    box-shadow: inset -1px 1px $color-dark, inset -1px -1px $color-dark;
+
+    &:hover {
+      box-shadow: inset -2px 2px $color-dark, inset -2px -2px $color-dark;
+    }
     
     @include media-breakpoint-up(md) {
-      border: 1px solid $color-dark;
-      border-left: none;
       justify-content: start;
       margin-left: $m-sm;
       padding-left: $m-xl;
+      box-shadow: inset 0 1px $color-dark, inset 0 -1px $color-dark;
+
+      &:hover {
+        box-shadow: inset -1px 2px $color-dark, inset -1px -2px $color-dark;
+      }
     }
   }
   
   &__next {
-    border: 1px solid $color-dark;
-    border-left: none;
+    box-shadow: inset 1px 1px $color-dark, inset 1px -1px $color-dark;
+
+    &:hover {
+      box-shadow: inset 2px 2px $color-dark, inset 2px -2px $color-dark;
+    }
     
     @include media-breakpoint-up(md) {
-      border: 1px solid $color-dark;
-      border-right: none;
       justify-content: end;
       margin-right: $m-sm;
       padding-right: $m-xl;
