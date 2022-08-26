@@ -4,13 +4,22 @@ import { Link } from 'gatsby'
 import { BBDaysLogoLight } from 'components/icons'
 import cx from 'classnames'
 import { HeaderType } from 'types'
+import { useActiveLink } from 'contexts/ActiveLinkContext'
 
 type DesktopHeaderProps = HeaderType & {
   pathname: string,
 }
 
+const isActive = (activeLink, path) => {
+  if (['partnerzy honorowi', 'partnerzy', 'patronat medialny'].includes(activeLink)) {
+    return '#organizatorzy' === path ? { className: 'header-desktop__link -active' } : {}
+  }
+  return `#${activeLink}` === path ? { className: 'header-desktop__link -active' } : {}
+}
+
 const DesktopHeader: FC<DesktopHeaderProps> = ({ links, pathname }) => {
   const [hasNavbarBackground, setHasNavbarBackground] = useState(false)
+  const { activeLink } = useActiveLink()
 
   const isOnRulesPage = pathname === '/regulamin' || pathname === '/regulamin/'
   const shouldHeaderBeColoured = hasNavbarBackground || isOnRulesPage
@@ -27,19 +36,22 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ links, pathname }) => {
     }
   }, [])
 
-  const getLinkComponent = useCallback((link) => {
-    if (link.path.startsWith('http'))
+  const getLinkComponent = useCallback(
+    (link) => {
+      if (link.path.startsWith('http'))
+        return (
+          <a className="header-desktop__link" href={link.path} rel="noopener noreferrer" target="_blank">
+            {link.name}
+          </a>
+        )
       return (
-        <a className="header-desktop__link" href={link.path} rel="noopener noreferrer" target="_blank">
+        <Link className="header-desktop__link" getProps={() => isActive(activeLink, link.path)} to={`/${link.path}`}>
           {link.name}
-        </a>
+        </Link>
       )
-    return (
-      <Link className="header-desktop__link" to={`/${link.path}`}>
-        {link.name}
-      </Link>
-    )
-  }, [])
+    },
+    [activeLink],
+  )
 
   useEffect(() => {
     onScroll()
