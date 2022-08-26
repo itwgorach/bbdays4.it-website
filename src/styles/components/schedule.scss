@@ -185,8 +185,8 @@
         &__header {
             color: $color-dark;
             text-align: center;
-            font-weight: $font-weight-bold;
             font-size: $font-size-lg;
+            font-weight: $font-weight-bold;
         }
         
         &__grid {
@@ -201,8 +201,8 @@
                 background: #FCCC3E;
                 flex: 1 1;
                 font-family: $font-family-header;
-                font-weight: $font-weight-bold;
                 font-size: $font-size-lg;
+                font-weight: $font-weight-bold;
                 grid-column: 1;
                 min-height: $m-xl;
                 padding: $m-xs 0 0 $m-sm;
@@ -210,8 +210,8 @@
                 
                 &-day {
                     font-family: $font-family-header;
-                    font-weight: $font-weight-medium;
                     font-size: $font-size-base-xs;
+                    font-weight: $font-weight-medium;
                 }
 
                 &:nth-child(1) {
@@ -254,7 +254,20 @@
 
             &-events {
                 margin: 0 0 $m-base $m-xs;
-                grid-column: 2
+                grid-column: 2;
+                position: relative;
+                z-index: 1;
+                
+                &::before {
+                    @include dashedBorder(false, top, $color-black);
+
+                    content: "";
+                    height: 1px;
+                    left: -$m-xs;
+                    position: absolute;
+                    top: 0;
+                    width: calc(100% + $m-xs);
+                }
             }
             
             &-event {
@@ -262,29 +275,26 @@
 
                 align-items: center;
                 display: flex;
-                justify-content: space-between;
                 height: 48px;
+                justify-content: space-between;
                 padding: 0 $m-sm;
+                text-decoration: none;
 
                 &-title {
                     color: $color-white;
-                    font-weight: $font-weight-bold;
                     font-size: $font-size-sm;
+                    font-weight: $font-weight-bold;
                 }
                 
                 &-hours {
                     color: $color-white;
-                    font-weight: $font-weight-semi-bold;
                     font-size: $font-size-sm;
+                    font-weight: $font-weight-semi-bold;
                 }
 
                 &:last-of-type {
                     background-image: none;
                 }
-            }
-            
-            &-placeholder {
-                @include dashedBorder(false, top, $color-black);
             }
         }
     }
