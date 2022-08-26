@@ -144,6 +144,7 @@ export const query = graphql`
                       date
                       backgroundColor
                       displayTitleOnDesktop
+                      link
                       logo {
                           url
                       }

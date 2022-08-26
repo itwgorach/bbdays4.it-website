@@ -254,7 +254,20 @@
 
             &-events {
                 margin: 0 0 $m-base $m-xs;
-                grid-column: 2
+                grid-column: 2;
+                position: relative;
+                z-index: 1;
+                
+                &::before {
+                    @include dashedBorder(false, top, $color-black);
+
+                    content: "";
+                    height: 1px;
+                    left: -$m-xs;
+                    position: absolute;
+                    top: 0;
+                    width: calc(100% + $m-xs);
+                }
             }
             
             &-event {
@@ -265,6 +278,7 @@
                 justify-content: space-between;
                 height: 48px;
                 padding: 0 $m-sm;
+                text-decoration: none;
 
                 &-title {
                     color: $color-white;
@@ -281,10 +295,6 @@
                 &:last-of-type {
                     background-image: none;
                 }
-            }
-            
-            &-placeholder {
-                @include dashedBorder(false, top, $color-black);
             }
         }
     }
