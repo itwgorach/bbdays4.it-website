@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ScheduleEventMobile = ({ bgColor, startHour, endHour, title, link }) => {
+const ScheduleEventMobile = ({ bgColor, endHour, link, startHour, title }) => {
   return (
     <>
       {link ? (

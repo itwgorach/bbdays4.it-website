@@ -11,7 +11,7 @@ type ScheduleEventType = {
 }
 
 const ScheduleEventDesktop: FC<ScheduleEventType> = ({
-  event: { backgroundColor, endHour, startHour, title, logo, displayTitleOnDesktop, link },
+  event: { backgroundColor, displayTitleOnDesktop, endHour, link, logo, startHour, title },
   gridColumnNumber,
   isConcurrent,
   startParentGridColumn,
