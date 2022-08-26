@@ -14,7 +14,7 @@ const Schedule: FC<ScheduleType> = ({ events, scheduleTitle }) => {
     <div className="schedule" id={titleId}>
       <Waypoint
         bottomOffset="60%"
-        topOffset="39%"
+        topOffset="-200%"
         onEnter={() => {
           setActiveLink(titleId)
         }}
