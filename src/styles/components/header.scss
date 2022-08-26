@@ -28,14 +28,23 @@
     width: 75%;
     max-width: 800px;
   }
-
+  
   &__link {
     color: $color-white;
     text-decoration: none;
-  }
+    letter-spacing: .5px;
+    position: relative;
 
-  &__link:visited {
-    color: $color-white;
+    &.-active {
+      &::before {
+        position: absolute;
+        content: '';
+        top: calc($icon-size-lg / -2 - $m-sm);
+        width: 100%;
+        height: 4px;
+        background-color: rgba($color-white, 0.8);
+      }
+    }
   }
 
   @include media-breakpoint-up(lg) {
