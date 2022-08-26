@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import { BBDaysLogoLight } from 'components/icons'
 import cx from 'classnames'
 import { HeaderType } from 'types'
-import { useActiveLink } from 'components/Layout/Layout'
+import { useActiveLink } from 'contexts/ActiveLinkContext'
 
 type DesktopHeaderProps = HeaderType & {
   pathname: string,

@@ -1,5 +1,5 @@
-import { useActiveLink } from 'components/Layout/Layout'
 import React, { FC } from 'react'
+import { useActiveLink } from 'contexts/ActiveLinkContext'
 import { Waypoint } from 'react-waypoint'
 import { SignupSectionType, SignupType } from 'types'
 
