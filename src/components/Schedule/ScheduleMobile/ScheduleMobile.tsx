@@ -35,6 +35,7 @@ const ScheduleMobile: FC<ScheduleType> = ({ scheduleTitle, events }) => {
                       key={event.id}
                       bgColor={event.backgroundColor}
                       endHour={event.endHour}
+                      link={event.link}
                       startHour={event.startHour}
                       title={event.title}
                     />
@@ -43,9 +44,6 @@ const ScheduleMobile: FC<ScheduleType> = ({ scheduleTitle, events }) => {
                 return null
               })}
           </div>
-        ))}
-        {Array.from({ length: 10 }, (_, y) => (
-          <div className="schedule-mobile__grid-placeholder" style={{ gridColumn: 2, gridRow: `${y + 1}` }}></div>
         ))}
       </div>
     </div>

@@ -11,7 +11,7 @@ type ScheduleEventType = {
 }
 
 const ScheduleEventDesktop: FC<ScheduleEventType> = ({
-  event: { backgroundColor, endHour, startHour, title, logo, displayTitleOnDesktop },
+  event: { backgroundColor, displayTitleOnDesktop, endHour, link, logo, startHour, title },
   gridColumnNumber,
   isConcurrent,
   startParentGridColumn,
@@ -27,12 +27,26 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
   })
 
   return (
-    <div
-      className={eventClasses}
-      style={{ backgroundColor: backgroundColor, gridColumn: `${startGridColumn} / ${endGridColumn}` }}>
-      {displayTitleOnDesktop && <div className="schedule-desktop__grid-events-event-title">{title}</div>}
-      {shouldDisplayLogo && <img alt="Logo" className="schedule-desktop__grid-events-event-logo" src={logo.url} />}
-    </div>
+    <>
+      {link ? (
+        <a
+          className={eventClasses}
+          href={link}
+          rel="noopener noreferrer"
+          style={{ backgroundColor: backgroundColor, gridColumn: `${startGridColumn} / ${endGridColumn}` }}
+          target="_blank">
+          {displayTitleOnDesktop && <div className="schedule-desktop__grid-events-event-title">{title}</div>}
+          {shouldDisplayLogo && <img alt="Logo" className="schedule-desktop__grid-events-event-logo" src={logo.url} />}
+        </a>
+      ) : (
+        <div
+          className={eventClasses}
+          style={{ backgroundColor: backgroundColor, gridColumn: `${startGridColumn} / ${endGridColumn}` }}>
+          {displayTitleOnDesktop && <div className="schedule-desktop__grid-events-event-title">{title}</div>}
+          {shouldDisplayLogo && <img alt="Logo" className="schedule-desktop__grid-events-event-logo" src={logo.url} />}
+        </div>
+      )}
+    </>
   )
 }
 
