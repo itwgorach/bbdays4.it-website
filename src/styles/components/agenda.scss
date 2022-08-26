@@ -116,18 +116,19 @@
 
     &.-first {
       background: none;
-      gap: $m-lg;
-      justify-content: center;
+      justify-content: space-around;
       margin-left: 104px;
       width: calc(100% - 104px);
     }
-
+    
     &.-desktop {
       display: none;
     }
-
+    
     &.-mobile {
       margin-left: 0;
+      margin-bottom: $m-sm;
+      width: 100%;
     }
     
     @include media-breakpoint-up(md) {
@@ -220,8 +221,20 @@
 
     @include media-breakpoint-up(md) {
       &:hover {
-        filter: brightness(90%);
-        
+        .agenda__lecture-content {
+          &.-primary {
+            background-color: #2D8252;
+          }
+    
+          &.-secondary {
+            background-color: #CE7D32;
+          }
+    
+          &.-dark {
+            background-color: #143740;
+          }
+        }
+
         .agenda__lecture-title {
           font-weight: $font-weight-extra-bold;
         }
@@ -280,20 +293,20 @@
         top: 0;
         width: 90%;
       }
-
-      &::after {
-        background-color: $color-background;
-        bottom: 0;
-        content: "";
-        height: $m-xs;
-        position: absolute;
-        width: 90%;
-      }
-
+      
       @include media-breakpoint-up(md) {
         min-height: 80px;
         min-width: 96px;
         padding: $m-xs 0 0 16px;
+        
+        &::after {
+          background-color: $color-background;
+          bottom: 0;
+          content: "";
+          height: $m-xs;
+          position: absolute;
+          width: 90%;
+        }
       }
     }
 
@@ -301,7 +314,7 @@
       display: flex;
       flex-direction: column;
       margin: 0 0 $m-xs $m-xs;
-      min-height: 72px;
+      min-height: 62px;
       position: relative;
       width: 100%;
       
@@ -334,6 +347,25 @@
       justify-content: center;
       padding: $m-sm $m-xs;
       width: 100%;
+      transition: background-color .1s ease-in-out;
+      
+      &.-primary {
+        background-color: $color-primary;
+        cursor: pointer;
+      }
+
+      &.-secondary {
+        background-color: $color-tertiary;
+      }
+
+      &.-dark {
+        background-color: $color-dark;
+      }
+
+      &.-row {
+        flex-direction: row;
+        gap: $m-sm;
+      }
 
       @include media-breakpoint-up(md) {
         flex-direction: row;
@@ -352,16 +384,13 @@
     
     &-subtitle {
       font-weight: $font-weight-regular;
+      line-height: $line-height-md;
       position: relative;
       transition: font-weight .1s ease-in-out;
     }
 
     &-logo {
-      display: none;
-      
-      @include media-breakpoint-up(md) {
-        display: block;
-      }
+      display: block;
     }
   }
 }
