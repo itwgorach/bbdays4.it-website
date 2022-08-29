@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import cx from 'classnames'
 import { ModalType } from 'types'
 import Image from 'components/Image'
@@ -74,18 +74,26 @@ const LectureDetails: FC<ModalType> = ({
     setTimeout(() => setCopyAlertVisible(false), 2000)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.code === 'ArrowRight' && nextLecture) {
-      handleNextLectureClick(`${firstName} ${lastName}`)
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === 'ArrowRight' && nextLecture) {
+        handleNextLectureClick(`${firstName} ${lastName}`)
+      }
+
+      if (event.code === 'ArrowLeft' && prevLecture) {
+        handlePrevLectureClick(`${firstName} ${lastName}`)
+      }
     }
 
-    if (event.code === 'ArrowLeft' && prevLecture) {
-      handlePrevLectureClick(`${firstName} ${lastName}`)
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
     }
-  }
+  }, [firstName, lastName])
 
   return (
-    <div className="lecture-details" onKeyDown={handleKeyDown}>
+    <div className="lecture-details">
       <button className="lecture-details__button-close" onClick={handleModalToggle}>
         <CloseButtonIcon />
       </button>
