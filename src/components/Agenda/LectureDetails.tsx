@@ -43,6 +43,11 @@ const LectureDetails: FC<ModalType> = ({
     return classes
   }
 
+  const getSpeakerClasses = cx('lecture-details__speaker', {
+    [`-${backgroundColor}`]: backgroundColor,
+    '-short': !prevLecture || !nextLecture,
+  })
+
   const getPrevButtonClasses = cx('lecture-details__prev', {
     '-disabled': !prevLecture,
   })
@@ -58,7 +63,7 @@ const LectureDetails: FC<ModalType> = ({
   }
 
   const getRoom = (room: number) => {
-    return room === 1 ? 'Aula głowna ATH' : 'Sala druga ATH'
+    return room === 1 ? 'Aula główna ATH' : 'Sala druga ATH'
   }
 
   const handleCopyClick = () => {
@@ -110,7 +115,7 @@ const LectureDetails: FC<ModalType> = ({
           </div>
         </div>
       </div>
-      <div className={getClassesWithColor('lecture-details__speaker')}>
+      <div className={getSpeakerClasses}>
         <div className="lecture-details__header -desktop">
           <div className="lecture-details__header-text">
             <DateIcon />

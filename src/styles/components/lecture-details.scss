@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  height: 100%;
   
   @include media-breakpoint-up(md) {
     align-items: start;
@@ -30,11 +31,15 @@
       outline: none;
       padding: 0;
       width: 50px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: rgba($color-background, 0.9);
+      z-index: 5;
       
       @include media-breakpoint-up(md) {
-        position: absolute;
-        right: 0;
-        top: 0;
+        top: 5%;
+        right: calc(5% + $m-sm);
       }
     }
   }
@@ -91,7 +96,7 @@
     display: flex;
     flex-direction: column;
     gap: $m-sm;
-    margin-bottom: $m-md;
+    margin-block: $m-md;
 
     @include media-breakpoint-up(md) {
       display: none;
@@ -99,13 +104,16 @@
     
     &-text {
       align-items: center;
-      color: rgba($color-dark, 0.6);
       display: flex;
-      font-family: $font-family-header;
-      font-size: $font-size-lg;
-      font-weight: $font-weight-extra-bold;
       gap: 12px;
       justify-content: start;
+      
+      & span {
+        color: rgba($color-dark, 0.6);
+        font-family: $font-family-header;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-extra-bold;
+      }
     }
 
     &.-desktop {
@@ -126,6 +134,10 @@
     margin-bottom: $m-base;
     position: relative;
     word-break: break-word;
+
+    @include media-breakpoint-up(md) {
+      font-size: $font-size-lg;
+    }
 
     &.-primary {
       &::before {
@@ -207,7 +219,7 @@
         font-weight: $font-weight-medium;
         outline: none;
         overflow: hidden;
-        padding: 12px $m-base;
+        padding: 12px $m-sm;
         width: 50%;
       }
     }
@@ -257,6 +269,11 @@
     height: 175px;
     width: 100%;
     position: relative;
+    margin-bottom: 140px;
+
+    &.-short {
+      margin-bottom: 70px;
+    }
 
     &.-primary {
       background-color: $color-primary;
@@ -274,7 +291,7 @@
       height: 100%;
       justify-self: start;
       padding-inline: $m-md;
-      position: unset;
+      margin-bottom: 0;
       
       &.-primary, &.-secondary, &.-tertiary {
         background-color: unset;
@@ -306,6 +323,7 @@
       position: absolute;
       top: -60px;
       z-index: 1;
+      margin-bottom: 500px;
 
       @include media-breakpoint-up(md) {
         position: unset;
@@ -418,16 +436,22 @@
     flex-direction: column;
     gap: $m-xs;
     justify-content: center;
-    margin-top: $m-xs;
-    padding-bottom: $m-xs;
+    padding-block: $m-xs;
     width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba($color-background, 0.9);
     
     @include media-breakpoint-up(md) {
-      background-color: rgba($color-background, 0.9);
-      bottom: 0;
       flex-direction: row;
       gap: 0;
-      position: absolute;
+      width: calc(90% - $m-sm);
+      bottom: 5%;
+      left: 5%;
+      transform: none;
     }
   }
 
@@ -486,16 +510,12 @@
       color: $color-dark;
       font-family: $font-family-header;
       font-size: $font-size-base;
-      font-weight: $font-weight-extra-bold;
+      font-weight: $font-weight-semi-bold;
     }
   }
 
   &__prev {
     box-shadow: inset -1px 1px $color-dark, inset -1px -1px $color-dark;
-
-    &:hover {
-      box-shadow: inset -2px 2px $color-dark, inset -2px -2px $color-dark;
-    }
     
     @include media-breakpoint-up(md) {
       justify-content: start;
@@ -512,14 +532,14 @@
   &__next {
     box-shadow: inset 1px 1px $color-dark, inset 1px -1px $color-dark;
 
-    &:hover {
-      box-shadow: inset 2px 2px $color-dark, inset 2px -2px $color-dark;
-    }
-    
     @include media-breakpoint-up(md) {
       justify-content: end;
       margin-right: $m-sm;
       padding-right: $m-xl;
+      
+      &:hover {
+        box-shadow: inset 2px 2px $color-dark, inset 2px -2px $color-dark;
+      }
     }
   }
 }

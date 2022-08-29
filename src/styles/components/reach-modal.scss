@@ -143,9 +143,19 @@
     }
 
     &.-lecture {
+        background-color: $color-background;
         width: 100% !important;
         overflow-y: auto;
         overflow-x: hidden;
+
+        max-height: 100vh !important;
+        max-width: 100vw !important;
+
+        @include media-breakpoint-up(md) {
+            height: 90vh !important;
+            max-height: 90vh !important;
+            max-width: 90vw !important;
+        }
     }
 
     .footer__modal {
