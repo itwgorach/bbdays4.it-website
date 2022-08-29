@@ -74,8 +74,18 @@ const LectureDetails: FC<ModalType> = ({
     setTimeout(() => setCopyAlertVisible(false), 2000)
   }
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === 'ArrowRight' && nextLecture) {
+      handleNextLectureClick(`${firstName} ${lastName}`)
+    }
+
+    if (event.code === 'ArrowLeft' && prevLecture) {
+      handlePrevLectureClick(`${firstName} ${lastName}`)
+    }
+  }
+
   return (
-    <div className="lecture-details">
+    <div className="lecture-details" onKeyDown={handleKeyDown}>
       <button className="lecture-details__button-close" onClick={handleModalToggle}>
         <CloseButtonIcon />
       </button>
