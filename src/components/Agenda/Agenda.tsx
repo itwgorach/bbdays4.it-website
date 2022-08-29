@@ -17,9 +17,9 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
 
   const lecturesWithSpeakersOnly = lectures.filter((lecture) => lecture.subtitle)
 
-  const firstSection = makeLectureSection(lecturesSorted, null, '14:20')
-  const secondSection = makeLectureSection(lecturesSorted, '14:20', '15:40')
-  const thirdSection = makeLectureSection(lecturesSorted, '15:40', null)
+  const firstSection = makeLectureSection(lecturesSorted, null, '14:45')
+  const secondSection = makeLectureSection(lecturesSorted, '14:45', '16:00')
+  const thirdSection = makeLectureSection(lecturesSorted, '16:00', null)
 
   const [modalData, setModalData] = useState<SpeakerType | null>(null)
 
