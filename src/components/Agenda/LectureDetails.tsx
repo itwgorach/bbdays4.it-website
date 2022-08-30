@@ -3,7 +3,8 @@ import cx from 'classnames'
 import { ModalType } from 'types'
 import Image from 'components/Image'
 import {
-  ArrowButtonIcon,
+  ArrowButtonIconLong,
+  ArrowButtonIconShort,
   ClockIcon,
   CloseButtonIcon,
   CopyIcon,
@@ -50,10 +51,12 @@ const LectureDetails: FC<ModalType> = ({
 
   const getPrevButtonClasses = cx('lecture-details__prev', {
     '-disabled': !prevLecture,
+    '-long': !nextLecture,
   })
 
   const getNextButtonClasses = cx('lecture-details__next', {
     '-disabled': !nextLecture,
+    '-long': !prevLecture,
   })
 
   const generateUrlToCopy = () => {
@@ -173,8 +176,11 @@ const LectureDetails: FC<ModalType> = ({
         <button
           className={getPrevButtonClasses}
           onClick={prevLecture ? () => handlePrevLectureClick(`${firstName} ${lastName}`) : undefined}>
+          <div className="lecture-details__arrow">
+            <ArrowButtonIconLong className="-left -long" />
+            <ArrowButtonIconShort className="-left -short" />
+          </div>
           <div className="lecture-details__prev-text">
-            <ArrowButtonIcon className="-left" />
             <span className="lecture-details__prev-direction">Wcześniej</span>
             <span className="lecture-details__prev-name">{prevLecture}</span>
           </div>
@@ -185,7 +191,10 @@ const LectureDetails: FC<ModalType> = ({
           <div className="lecture-details__next-text">
             <span className="lecture-details__next-direction">Dalej</span>
             <span className="lecture-details__next-name">{nextLecture}</span>
-            <ArrowButtonIcon className="-right" />
+          </div>
+          <div className="lecture-details__arrow">
+            <ArrowButtonIconLong className="-right -long" />
+            <ArrowButtonIconShort className="-right -short" />
           </div>
         </button>
       </div>

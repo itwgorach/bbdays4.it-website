@@ -130,7 +130,7 @@
     color: $color-dark;
     font-family: $font-family-body;
     font-size: $font-size-xl;
-    font-weight: $font-weight-extra-bold;
+    font-weight: $font-weight-bold;
     margin-bottom: $m-base;
     position: relative;
     word-break: break-word;
@@ -177,6 +177,7 @@
     font-size: $font-size-base;
     font-weight: $font-weight-medium;
     margin-bottom: $m-lg;
+    line-height: 1.8rem;
   }
 
   &__share {
@@ -274,10 +275,10 @@
     height: 175px;
     width: 100%;
     position: relative;
-    margin-bottom: 140px;
+    margin-bottom: 184px;
 
     &.-short {
-      margin-bottom: 70px;
+      margin-bottom: 96px;
     }
 
     &.-primary {
@@ -306,13 +307,14 @@
     .image {
       bottom: 0;
       height: 250px;
-      max-height: 500px;
       position: absolute;
       right: 0;
       width: auto;
 
       @include media-breakpoint-up(md) {
-        height: 500px;
+        height: auto;
+        width: 100%;
+        max-width: 550px;
       }
 
       &.-placeholder {
@@ -423,6 +425,7 @@
     &-name {
       font-family: $font-family-header;
       font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
     }
     
     &-position {
@@ -449,6 +452,7 @@
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba($color-background, 0.9);
+    backdrop-filter: blur(3px);
     
     @include media-breakpoint-up(md) {
       flex-direction: row;
@@ -470,9 +474,33 @@
     gap: $m-base;
     justify-content: center;
     outline: none;
-    padding: $m-xs 0;
-    transition: all .3s ease-out;
+    padding: $m-sm 0;
+    position: relative;
+    transition: box-shadow .3s ease-out;
     width: calc(100% - $m-sm);
+
+    @include media-breakpoint-up(md) {
+      width: calc(50% - $m-sm);
+
+      &:hover {
+        .lecture-details__prev-direction,
+        .lecture-details__next-direction,
+        .lecture-details__prev-name,
+        .lecture-details__next-name {
+          font-weight: $font-weight-bold;
+        }
+
+        .lecture-details__arrow {
+          .-left {
+            transform: none;
+          }
+  
+          .-right {
+            transform: rotateZ(180deg);
+          }
+        }
+      }
+    }
 
     &.-disabled {
       display: none;
@@ -483,27 +511,14 @@
       text-align: left;
       width: fit-content;
     }
-
-    .-left {
-      left: -$m-lg;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    
-    .-right {
-      position: absolute;
-      right: -$m-lg;
-      top: 50%;
-      transform: translateY(-50%) rotateZ(180deg);
-    }
     
     &-direction {
       color: rgba($color-dark, 0.7);
       font-family: $font-family-header;
       font-size: $font-size-base;
       font-weight: $font-weight-semi-bold;
-      transition: all .3s ease-out;
+      transition: font-weight .3s ease-in-out;
+      line-height: 1.5rem;
       
       &::after {
         content: '\a';
@@ -516,6 +531,8 @@
       font-family: $font-family-header;
       font-size: $font-size-base;
       font-weight: $font-weight-semi-bold;
+      transition: font-weight .3s ease-in-out;
+      line-height: 1.5rem;
     }
   }
 
@@ -524,10 +541,16 @@
     
     @include media-breakpoint-up(md) {
       justify-content: start;
-      margin-left: $m-sm;
-      padding-left: $m-xl;
       box-shadow: inset 0 1px $color-dark, inset 0 -1px $color-dark;
 
+      &.-long {
+        width: calc(100% - $m-sm * 2);
+        
+        &:hover {
+          box-shadow: inset 0px 2px $color-dark, inset 0px -2px $color-dark;
+        }
+      }
+      
       &:hover {
         box-shadow: inset -1px 2px $color-dark, inset -1px -2px $color-dark;
       }
@@ -539,11 +562,76 @@
 
     @include media-breakpoint-up(md) {
       justify-content: end;
-      margin-right: $m-sm;
-      padding-right: $m-xl;
+
+      &.-long {
+        width: calc(100% - $m-sm * 2);
+        box-shadow: inset 0px 1px $color-dark, inset 0px -1px $color-dark;
+        
+        &:hover {
+          box-shadow: inset 0px 2px $color-dark, inset 0px -2px $color-dark;
+        }
+      }
       
       &:hover {
         box-shadow: inset 2px 2px $color-dark, inset 2px -2px $color-dark;
+      }
+    }
+  }
+
+  &__arrow {
+    overflow: hidden;
+
+    .-left {
+      left: $m-base;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      &.-long {
+        display: none;
+      }
+
+      @include media-breakpoint-up(md) {
+        &.-short {
+          display: none;
+        }
+
+        &.-long {
+          display: block;
+        }
+
+        position: initial;
+        top: 0;
+        left: 0;
+        transform: translateX(14px);
+        transition: transform .3s ease-in-out;
+      }
+    }
+    
+    .-right {
+      position: absolute;
+      right: $m-base;
+      top: 50%;
+      transform: translateY(-50%) rotateZ(180deg);
+
+      &.-long {
+        display: none;
+      }
+
+      @include media-breakpoint-up(md) {
+        &.-short {
+          display: none;
+        }
+
+        &.-long {
+          display: block;
+        }
+
+        position: initial;
+        top: 0;
+        right: 0;
+        transform: translateX(-14px) rotateZ(180deg);
+        transition: transform .3s ease-in-out;
       }
     }
   }
