@@ -245,15 +245,20 @@
       animation-fill-mode: forwards;
       background-color: $color-dark;
       border-radius: 5px;
-      bottom: $m-xl + $m-xs;
+      bottom: 25%;
       color: $color-white;
       font-family: $font-family-header;
       font-size: $font-size-base;
       font-weight: $font-weight-medium;
       left: 50%;
       padding: $m-sm $m-base;
-      position: absolute;
+      position: fixed;
       transform: translateX(-50%);
+      z-index: 10;
+      
+      @include media-breakpoint-up(md) {
+        bottom: 15%;
+      }
     }
 
     @keyframes fade-out {
