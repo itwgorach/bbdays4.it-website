@@ -96,80 +96,82 @@ const LectureDetails: FC<ModalType> = ({
   }, [firstName, lastName])
 
   return (
-    <div className="lecture-details">
+    <>
       <button className="lecture-details__button-close" onClick={handleModalToggle}>
         <CloseButtonIcon />
       </button>
-      <div className="lecture-details__description">
-        <div className={getClassesWithColor('lecture-details__description-speaker')}>
-          <div className="lecture-details__speaker-position">{position}</div>
-          <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
-        </div>
-        <div className="lecture-details__header">
-          <div className="lecture-details__header-text">
-            <DateIcon />
-            <span>10 września 2022</span>
+      <div className="lecture-details__inner">
+        <div className="lecture-details__description">
+          <div className={getClassesWithColor('lecture-details__description-speaker')}>
+            <div className="lecture-details__speaker-position">{position}</div>
+            <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
           </div>
-          <div className="lecture-details__header-text">
-            <ClockIcon />
-            <span>
-              {hour} - {getRoom(room)}
-            </span>
+          <div className="lecture-details__header">
+            <div className="lecture-details__header-text">
+              <DateIcon />
+              <span>10 września 2022</span>
+            </div>
+            <div className="lecture-details__header-text">
+              <ClockIcon />
+              <span>
+                {hour} - {getRoom(room)}
+              </span>
+            </div>
           </div>
-        </div>
-        <div className={getClassesWithColor('lecture-details__title')}>{title}</div>
-        <div className="lecture-details__explanation">{description}</div>
-        <div className="lecture-details__share">
-          <span className="lecture-details__share-text">Udostępnij</span>
-          <div className="lecture-details__copy">
-            <input
-              className="lecture-details__copy-input"
-              name="lectureHref"
-              readOnly
-              type="text"
-              value={generateUrlToCopy()}
-            />
-            <button className="lecture-details__copy-button" onClick={handleCopyClick}>
-              <CopyIcon />
-              <span>Kopiuj link</span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className={getSpeakerClasses}>
-        <div className="lecture-details__header -desktop">
-          <div className="lecture-details__header-text">
-            <DateIcon />
-            <span>10 września 2022</span>
-          </div>
-          <div className="lecture-details__header-text">
-            <ClockIcon />
-            <span>
-              {hour} - {getRoom(room)}
-            </span>
+          <div className={getClassesWithColor('lecture-details__title')}>{title}</div>
+          <div className="lecture-details__explanation">{description}</div>
+          <div className="lecture-details__share">
+            <span className="lecture-details__share-text">Udostępnij</span>
+            <div className="lecture-details__copy">
+              <input
+                className="lecture-details__copy-input"
+                name="lectureHref"
+                readOnly
+                type="text"
+                value={generateUrlToCopy()}
+              />
+              <button className="lecture-details__copy-button" onClick={handleCopyClick}>
+                <CopyIcon />
+                <span>Kopiuj link</span>
+              </button>
+            </div>
           </div>
         </div>
-        <div className="lecture-details__speaker-socials">
-          {linkedinUrl && (
-            <a className="lecture-details__speaker-link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">
-              <LinkedinIcon className="lecture-details__speaker-linkedin" />
-            </a>
-          )}
-          {linktrUrl && (
-            <a className="lecture-details__speaker-link" href={linktrUrl} rel="noopener noreferrer" target="_blank">
-              <LinktrIcon className="lecture-details__speaker-twitter" />
-            </a>
-          )}
-          {twitterUrl && (
-            <a className="lecture-details__speaker-link" href={twitterUrl} rel="noopener noreferrer" target="_blank">
-              <TwitterIcon className="lecture-details__speaker-linktr" />
-            </a>
-          )}
-        </div>
-        <Image alt={`${firstName} ${lastName}`} url={photo && photo.url} />
-        <div className="lecture-details__speaker-info">
-          <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
-          <div className="lecture-details__speaker-position">{position}</div>
+        <div className={getSpeakerClasses}>
+          <div className="lecture-details__header -desktop">
+            <div className="lecture-details__header-text">
+              <DateIcon />
+              <span>10 września 2022</span>
+            </div>
+            <div className="lecture-details__header-text">
+              <ClockIcon />
+              <span>
+                {hour} - {getRoom(room)}
+              </span>
+            </div>
+          </div>
+          <div className="lecture-details__speaker-socials">
+            {linkedinUrl && (
+              <a className="lecture-details__speaker-link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">
+                <LinkedinIcon className="lecture-details__speaker-linkedin" />
+              </a>
+            )}
+            {linktrUrl && (
+              <a className="lecture-details__speaker-link" href={linktrUrl} rel="noopener noreferrer" target="_blank">
+                <LinktrIcon className="lecture-details__speaker-linktr" />
+              </a>
+            )}
+            {twitterUrl && (
+              <a className="lecture-details__speaker-link" href={twitterUrl} rel="noopener noreferrer" target="_blank">
+                <TwitterIcon className="lecture-details__speaker-twitter" />
+              </a>
+            )}
+          </div>
+          <Image alt={`${firstName} ${lastName}`} url={photo && photo.url} />
+          <div className="lecture-details__speaker-info">
+            <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
+            <div className="lecture-details__speaker-position">{position}</div>
+          </div>
         </div>
       </div>
       <div className="lecture-details__navigation">
@@ -201,7 +203,7 @@ const LectureDetails: FC<ModalType> = ({
       <div className="lecture-details__copy-alert" style={{ display: copyAlertVisible ? 'block' : 'none' }}>
         Skopiowano!
       </div>
-    </div>
+    </>
   )
 }
 
