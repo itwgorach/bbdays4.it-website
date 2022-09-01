@@ -35,7 +35,7 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
     return (
       <Link
         className="header-mobile__link"
-        to={link.path}
+        to={`/${link.path}`}
         onClick={() => {
           setIsMenuOpen(false)
         }}>

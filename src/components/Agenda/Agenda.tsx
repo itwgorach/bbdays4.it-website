@@ -1,5 +1,7 @@
 import Modal from 'components/Modal'
 import React, { FC, useState } from 'react'
+import { Waypoint } from 'react-waypoint'
+import { useActiveLink } from 'contexts/ActiveLinkContext'
 import { AgendaType, SpeakerType } from 'types'
 import { makeLectureSection, getSpeaker } from 'utils/agendaDataProcessing'
 import { navigate } from 'gatsby'
@@ -124,46 +126,58 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     return hasNextLecture ? lecturesWithSpeakersOnly[indexOfCurrentLecture + 1]?.subtitle : null
   }
 
+  const { setActiveLink } = useActiveLink()
+
   return (
-    <div className="agenda" id="agenda">
-      <div className="agenda__header">
-        <div className="agenda__header-title">{title}</div>
-        <div className="agenda__header-subtitle">{subtitle}</div>
-      </div>
-      <div className="agenda__rooms -desktop -first">Aula główna</div>
-      <div className="agenda__rooms -mobile -first">
-        <span className="agenda__rooms-main">Aula główna</span>
-        <span className="agenda__rooms-second">Sala druga</span>
-      </div>
-      <div className="agenda__lectures">
-        <AgendaSection handleModalToggle={handleModalToggle} section={firstSection} speakers={speakers} />
-        <div className="agenda__rooms -desktop">
-          <div className="agenda__rooms-hour"></div>
-          <div className="agenda__rooms-inner">
-            <span>Aula główna</span>
-            <span>Sala druga</span>
-          </div>
+    <Waypoint
+      bottomOffset="60%"
+      topOffset="39%"
+      onEnter={() => {
+        setActiveLink('agenda')
+      }}
+      onLeave={() => {
+        setActiveLink('')
+      }}>
+      <div className="agenda" id="agenda">
+        <div className="agenda__header">
+          <div className="agenda__header-title">{title}</div>
+          <div className="agenda__header-subtitle">{subtitle}</div>
         </div>
-        <AgendaSection handleModalToggle={handleModalToggle} section={secondSection} speakers={speakers} />
-        <div className="agenda__rooms -desktop">
-          <div className="agenda__rooms-hour"></div>
-          <div className="agenda__rooms-inner">
-            <span>Aula główna</span>
-          </div>
+        <div className="agenda__rooms -desktop -first">Aula główna</div>
+        <div className="agenda__rooms -mobile -first">
+          <span className="agenda__rooms-main">Aula główna</span>
+          <span className="agenda__rooms-second">Sala druga</span>
         </div>
-        <AgendaSection handleModalToggle={handleModalToggle} section={thirdSection} speakers={speakers} />
+        <div className="agenda__lectures">
+          <AgendaSection handleModalToggle={handleModalToggle} section={firstSection} speakers={speakers} />
+          <div className="agenda__rooms -desktop">
+            <div className="agenda__rooms-hour"></div>
+            <div className="agenda__rooms-inner">
+              <span>Aula główna</span>
+              <span>Sala druga</span>
+            </div>
+          </div>
+          <AgendaSection handleModalToggle={handleModalToggle} section={secondSection} speakers={speakers} />
+          <div className="agenda__rooms -desktop">
+            <div className="agenda__rooms-hour"></div>
+            <div className="agenda__rooms-inner">
+              <span>Aula główna</span>
+            </div>
+          </div>
+          <AgendaSection handleModalToggle={handleModalToggle} section={thirdSection} speakers={speakers} />
+        </div>
+        <Modal className="-lecture" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
+          <LectureDetails
+            {...modalData}
+            handleModalToggle={handleModalToggle}
+            handleNextLectureClick={handleNextLectureClick}
+            handlePrevLectureClick={handlePrevLectureClick}
+            nextLecture={getNextLecture()}
+            prevLecture={getPrevLecture()}
+          />
+        </Modal>
       </div>
-      <Modal className="-lecture" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
-        <LectureDetails
-          {...modalData}
-          handleModalToggle={handleModalToggle}
-          handleNextLectureClick={handleNextLectureClick}
-          handlePrevLectureClick={handlePrevLectureClick}
-          nextLecture={getNextLecture()}
-          prevLecture={getPrevLecture()}
-        />
-      </Modal>
-    </div>
+    </Waypoint>
   )
 }
 
