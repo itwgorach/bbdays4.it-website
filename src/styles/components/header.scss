@@ -26,7 +26,7 @@
     display: flex;
     justify-content: space-around;
     width: 75%;
-    max-width: 800px;
+    max-width: 900px;
   }
   
   &__link {
@@ -35,14 +35,6 @@
     letter-spacing: .5px;
     position: relative;
     text-align: center;
-
-    &-subtitle {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -$font-size-base;
-      font-size: $font-size-sm;
-    }
 
     &.-active {
       font-weight: $font-weight-bold;
@@ -54,10 +46,6 @@
         width: 100%;
         height: 4px;
         background-color: rgba($color-white, 0.8);
-      }
-
-      .header-desktop__link-subtitle {
-        font-weight: $font-weight-bold;
       }
     }
   }

@@ -4,40 +4,30 @@ import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
 
-type LinkDesktopProps = LinkType & {
-  subtitle: string | null,
-}
-
 const linksData: LinkDesktopProps[] = [
   {
     name: 'Dołącz do nas',
     path: '#dolaczdonas',
-    subtitle: null,
   },
   {
     name: 'Prelegenci',
     path: '#prelegenci',
-    subtitle: null,
   },
   {
     name: 'Harmonogram',
     path: '#harmonogram',
-    subtitle: null,
   },
   {
-    name: 'Agenda',
+    name: 'Agenda ATH',
     path: '#agenda',
-    subtitle: 'ATH',
   },
   {
     name: 'Organizatorzy',
     path: '#organizatorzy',
-    subtitle: null,
   },
   {
     name: 'Edycja 2021',
     path: 'https://bbdays4it-2021.netlify.app/',
-    subtitle: null,
   },
   // {
   //   name: 'Edycja 2020',
