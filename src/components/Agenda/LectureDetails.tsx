@@ -66,7 +66,7 @@ const LectureDetails: FC<ModalType> = ({
   }
 
   const getRoom = (room: number) => {
-    return room === 1 ? 'Aula główna ATH' : 'Sala druga ATH'
+    return room === 1 ? 'Sala pierwsza ATH' : 'Sala druga ATH'
   }
 
   const handleCopyClick = () => {
