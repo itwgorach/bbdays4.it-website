@@ -1,9 +1,10 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import cx from 'classnames'
 import { ModalType } from 'types'
 import Image from 'components/Image'
 import {
-  ArrowButtonIcon,
+  ArrowButtonIconLong,
+  ArrowButtonIconShort,
   ClockIcon,
   CloseButtonIcon,
   CopyIcon,
@@ -43,12 +44,19 @@ const LectureDetails: FC<ModalType> = ({
     return classes
   }
 
+  const getSpeakerClasses = cx('lecture-details__speaker', {
+    [`-${backgroundColor}`]: backgroundColor,
+    '-short': !prevLecture || !nextLecture,
+  })
+
   const getPrevButtonClasses = cx('lecture-details__prev', {
     '-disabled': !prevLecture,
+    '-long': !nextLecture,
   })
 
   const getNextButtonClasses = cx('lecture-details__next', {
     '-disabled': !nextLecture,
+    '-long': !prevLecture,
   })
 
   const generateUrlToCopy = () => {
@@ -58,7 +66,7 @@ const LectureDetails: FC<ModalType> = ({
   }
 
   const getRoom = (room: number) => {
-    return room === 1 ? 'Aula głowna ATH' : 'Sala druga ATH'
+    return room === 1 ? 'Aula główna ATH' : 'Sala druga ATH'
   }
 
   const handleCopyClick = () => {
@@ -69,89 +77,112 @@ const LectureDetails: FC<ModalType> = ({
     setTimeout(() => setCopyAlertVisible(false), 2000)
   }
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === 'ArrowRight' && nextLecture) {
+        handleNextLectureClick(`${firstName} ${lastName}`)
+      }
+
+      if (event.code === 'ArrowLeft' && prevLecture) {
+        handlePrevLectureClick(`${firstName} ${lastName}`)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [firstName, lastName])
+
   return (
-    <div className="lecture-details">
+    <>
       <button className="lecture-details__button-close" onClick={handleModalToggle}>
         <CloseButtonIcon />
       </button>
-      <div className="lecture-details__description">
-        <div className={getClassesWithColor('lecture-details__description-speaker')}>
-          <div className="lecture-details__speaker-position">{position}</div>
-          <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
-        </div>
-        <div className="lecture-details__header">
-          <div className="lecture-details__header-text">
-            <DateIcon />
-            <span>10 września 2022</span>
+      <div className="lecture-details__inner">
+        <div className="lecture-details__description">
+          <div className={getClassesWithColor('lecture-details__description-speaker')}>
+            <div className="lecture-details__speaker-position">{position}</div>
+            <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
           </div>
-          <div className="lecture-details__header-text">
-            <ClockIcon />
-            <span>
-              {hour} - {getRoom(room)}
-            </span>
+          <div className="lecture-details__header">
+            <div className="lecture-details__header-text">
+              <DateIcon />
+              <span>10 września 2022</span>
+            </div>
+            <div className="lecture-details__header-text">
+              <ClockIcon />
+              <span>
+                {hour} - {getRoom(room)}
+              </span>
+            </div>
           </div>
-        </div>
-        <div className={getClassesWithColor('lecture-details__title')}>{title}</div>
-        <div className="lecture-details__explanation">{description}</div>
-        <div className="lecture-details__share">
-          <span className="lecture-details__share-text">Udostępnij</span>
-          <div className="lecture-details__copy">
-            <input
-              className="lecture-details__copy-input"
-              name="lectureHref"
-              readOnly
-              type="text"
-              value={generateUrlToCopy()}
-            />
-            <button className="lecture-details__copy-button" onClick={handleCopyClick}>
-              <CopyIcon />
-              <span>Kopiuj link</span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className={getClassesWithColor('lecture-details__speaker')}>
-        <div className="lecture-details__header -desktop">
-          <div className="lecture-details__header-text">
-            <DateIcon />
-            <span>10 września 2022</span>
-          </div>
-          <div className="lecture-details__header-text">
-            <ClockIcon />
-            <span>
-              {hour} - {getRoom(room)}
-            </span>
+          <div className={getClassesWithColor('lecture-details__title')}>{title}</div>
+          <div className="lecture-details__explanation">{description}</div>
+          <div className="lecture-details__share">
+            <span className="lecture-details__share-text">Udostępnij</span>
+            <div className="lecture-details__copy">
+              <input
+                className="lecture-details__copy-input"
+                name="lectureHref"
+                readOnly
+                type="text"
+                value={generateUrlToCopy()}
+              />
+              <button className="lecture-details__copy-button" onClick={handleCopyClick}>
+                <CopyIcon />
+                <span>Kopiuj link</span>
+              </button>
+            </div>
           </div>
         </div>
-        <div className="lecture-details__speaker-socials">
-          {linkedinUrl && (
-            <a className="lecture-details__speaker-link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">
-              <LinkedinIcon className="lecture-details__speaker-linkedin" />
-            </a>
-          )}
-          {linktrUrl && (
-            <a className="lecture-details__speaker-link" href={linktrUrl} rel="noopener noreferrer" target="_blank">
-              <LinktrIcon className="lecture-details__speaker-twitter" />
-            </a>
-          )}
-          {twitterUrl && (
-            <a className="lecture-details__speaker-link" href={twitterUrl} rel="noopener noreferrer" target="_blank">
-              <TwitterIcon className="lecture-details__speaker-linktr" />
-            </a>
-          )}
-        </div>
-        <Image alt={`${firstName} ${lastName}`} url={photo && photo.url} />
-        <div className="lecture-details__speaker-info">
-          <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
-          <div className="lecture-details__speaker-position">{position}</div>
+        <div className={getSpeakerClasses}>
+          <div className="lecture-details__header -desktop">
+            <div className="lecture-details__header-text">
+              <DateIcon />
+              <span>10 września 2022</span>
+            </div>
+            <div className="lecture-details__header-text">
+              <ClockIcon />
+              <span>
+                {hour} - {getRoom(room)}
+              </span>
+            </div>
+          </div>
+          <div className="lecture-details__speaker-socials">
+            {linkedinUrl && (
+              <a className="lecture-details__speaker-link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">
+                <LinkedinIcon className="lecture-details__speaker-linkedin" />
+              </a>
+            )}
+            {linktrUrl && (
+              <a className="lecture-details__speaker-link" href={linktrUrl} rel="noopener noreferrer" target="_blank">
+                <LinktrIcon className="lecture-details__speaker-linktr" />
+              </a>
+            )}
+            {twitterUrl && (
+              <a className="lecture-details__speaker-link" href={twitterUrl} rel="noopener noreferrer" target="_blank">
+                <TwitterIcon className="lecture-details__speaker-twitter" />
+              </a>
+            )}
+          </div>
+          <Image alt={`${firstName} ${lastName}`} url={photo && photo.url} />
+          <div className="lecture-details__speaker-info">
+            <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
+            <div className="lecture-details__speaker-position">{position}</div>
+          </div>
         </div>
       </div>
       <div className="lecture-details__navigation">
         <button
           className={getPrevButtonClasses}
           onClick={prevLecture ? () => handlePrevLectureClick(`${firstName} ${lastName}`) : undefined}>
+          <div className="lecture-details__arrow">
+            <ArrowButtonIconLong className="-left -long" />
+            <ArrowButtonIconShort className="-left -short" />
+          </div>
           <div className="lecture-details__prev-text">
-            <ArrowButtonIcon className="-left" />
             <span className="lecture-details__prev-direction">Wcześniej</span>
             <span className="lecture-details__prev-name">{prevLecture}</span>
           </div>
@@ -162,14 +193,17 @@ const LectureDetails: FC<ModalType> = ({
           <div className="lecture-details__next-text">
             <span className="lecture-details__next-direction">Dalej</span>
             <span className="lecture-details__next-name">{nextLecture}</span>
-            <ArrowButtonIcon className="-right" />
+          </div>
+          <div className="lecture-details__arrow">
+            <ArrowButtonIconLong className="-right -long" />
+            <ArrowButtonIconShort className="-right -short" />
           </div>
         </button>
       </div>
       <div className="lecture-details__copy-alert" style={{ display: copyAlertVisible ? 'block' : 'none' }}>
         Skopiowano!
       </div>
-    </div>
+    </>
   )
 }
 

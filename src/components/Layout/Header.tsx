@@ -4,7 +4,7 @@ import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
 
-const linksData: LinkType[] = [
+const linksData: LinkDesktopProps[] = [
   {
     name: 'Dołącz do nas',
     path: '#dolaczdonas',
@@ -16,6 +16,10 @@ const linksData: LinkType[] = [
   {
     name: 'Harmonogram',
     path: '#harmonogram',
+  },
+  {
+    name: 'Agenda ATH',
+    path: '#agenda',
   },
   {
     name: 'Organizatorzy',

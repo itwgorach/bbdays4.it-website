@@ -11,9 +11,6 @@ type DesktopHeaderProps = HeaderType & {
 }
 
 const isActive = (activeLink, path) => {
-  if (['partnerzy honorowi', 'partnerzy', 'patronat medialny'].includes(activeLink)) {
-    return '#organizatorzy' === path ? { className: 'header-desktop__link -active' } : {}
-  }
   return `#${activeLink}` === path ? { className: 'header-desktop__link -active' } : {}
 }
 
@@ -46,7 +43,7 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ links, pathname }) => {
         )
       return (
         <Link className="header-desktop__link" getProps={() => isActive(activeLink, link.path)} to={`/${link.path}`}>
-          {link.name}
+          <span>{link.name}</span>
         </Link>
       )
     },
