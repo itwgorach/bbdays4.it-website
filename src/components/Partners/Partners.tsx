@@ -19,7 +19,7 @@ const Partners: FC<PartnersType> = ({ partners, sectionTitle }) => {
         bottomOffset="40%"
         topOffset="59%"
         onEnter={() => {
-          setActiveLink(sectionTitle.toLowerCase())
+          setActiveLink('organizatorzy')
         }}
         onLeave={({ currentPosition }) => {
           if (currentPosition === 'below' && sectionTitle.toLowerCase() === 'organizatorzy') {
