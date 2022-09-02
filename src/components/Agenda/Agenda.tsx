@@ -143,9 +143,9 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
           <div className="agenda__header-title">{title}</div>
           <div className="agenda__header-subtitle">{subtitle}</div>
         </div>
-        <div className="agenda__rooms -desktop -first">Aula główna</div>
+        <div className="agenda__rooms -desktop -first">Sala pierwsza</div>
         <div className="agenda__rooms -mobile -first">
-          <span className="agenda__rooms-main">Aula główna</span>
+          <span className="agenda__rooms-main">Sala pierwsza</span>
           <span className="agenda__rooms-second">Sala druga</span>
         </div>
         <div className="agenda__lectures">
@@ -153,7 +153,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
           <div className="agenda__rooms -desktop">
             <div className="agenda__rooms-hour"></div>
             <div className="agenda__rooms-inner">
-              <span>Aula główna</span>
+              <span>Sala pierwsza</span>
               <span>Sala druga</span>
             </div>
           </div>
@@ -161,7 +161,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
           <div className="agenda__rooms -desktop">
             <div className="agenda__rooms-hour"></div>
             <div className="agenda__rooms-inner">
-              <span>Aula główna</span>
+              <span>Sala pierwsza</span>
             </div>
           </div>
           <AgendaSection handleModalToggle={handleModalToggle} section={thirdSection} speakers={speakers} />
