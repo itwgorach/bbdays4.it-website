@@ -7,20 +7,21 @@ const LiveBanner = () => {
   const [displayBanner, setDisplayBanner] = useState(false)
   const [date, setDate] = useState(new Date())
 
+  const currentDay = date.getDate()
+  const currentHour = date.getHours()
+  const liveDayLink = YoutubeLinks.find((link) => link.date === currentDay)
+
   useEffect(() => {
-    const currentDay = date.getDate()
-    const currentHour = date.getHours()
-    const isLiveDay = YoutubeLinks.some((link) => link.date === currentDay)
     const interval = setInterval(() => setDate(new Date()), 10 * 1000)
 
-    if (isLiveDay && currentHour >= 15 && currentHour <= 18) {
+    if (liveDayLink && currentHour >= 15 && currentHour <= 18) {
       setDisplayBanner(true)
     } else {
       setDisplayBanner(false)
     }
 
     return () => clearInterval(interval)
-  }, [date])
+  }, [currentHour, liveDayLink])
 
   const LiveBannerClasses = cx('live-banner', {
     '-hidden': !displayBanner,
@@ -30,7 +31,7 @@ const LiveBanner = () => {
     <div className={LiveBannerClasses}>
       <div className="live-banner__inner">
         <span className="live-banner__header">Jesteśmy live</span>
-        <a className="live-banner__button">
+        <a className="live-banner__button" href={liveDayLink?.href} rel="noopener noreferrer" target="_blank">
           <span>Dołącz</span>
           <PlayIcon className="-icon" />
         </a>

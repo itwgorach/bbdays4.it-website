@@ -140,6 +140,7 @@
     line-height: $line-height-sm;
     outline: none;
     padding-inline: 13px 11px; 
+    text-decoration: none;
     transition: box-shadow $transition-function .2s;
 
     &:hover {
