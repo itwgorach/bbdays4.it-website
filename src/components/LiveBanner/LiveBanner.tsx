@@ -28,15 +28,15 @@ const LiveBanner = () => {
   })
 
   return (
-    <div className={LiveBannerClasses}>
+    <a className={LiveBannerClasses} href={liveDayLink?.href} rel="noopener noreferrer" target="_blank">
       <div className="live-banner__inner">
         <span className="live-banner__header">Jesteśmy live</span>
-        <a className="live-banner__button" href={liveDayLink?.href} rel="noopener noreferrer" target="_blank">
+        <div className="live-banner__button">
           <span>Dołącz</span>
           <PlayIcon className="-icon" />
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
   )
 }
 

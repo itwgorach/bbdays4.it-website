@@ -1,12 +1,14 @@
 .live-banner {
   align-items: center;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(2.5px);
   box-sizing: border-box;
+  color: $color-white;
   display: flex;
   justify-content: center;
   left: 50%;
   padding: $m-sm 18px;
   position: absolute;
+  text-decoration: none;
   top: 10%;
   transform: translateX(-50%);
   width: 288px;
@@ -37,10 +39,10 @@
 
   &::before, &::after {
     content: '';
-    height: 24px;
+    height: 16px;
     position: absolute;
     top: 0;
-    width: 24px;
+    width: 16px;
   }
   
   &::before {
@@ -83,9 +85,9 @@
     &::before, &::after {
       bottom: 0;
       content: '';
-      height: 24px;
+      height: 16px;
       position: absolute;
-      width: 24px;
+      width: 16px;
 
       @include media-breakpoint-up(lg) {
         display: none;
@@ -109,7 +111,7 @@
     font-family: $font-family-header;
     font-size: $font-size-base-xs;
     font-weight: $font-weight-extra-bold;
-    letter-spacing: 1%;
+    letter-spacing: 0.5px;
     
     @include media-breakpoint-between(md, lg) {
       font-size: $font-size-base;
@@ -132,33 +134,40 @@
     color: $color-white;
     cursor: pointer;
     display: flex;
-    font-family: $font-family-header;
-    font-size: $font-size-base;
-    font-weight: $font-weight-extra-bold;
-    gap: $m-sm;
+    gap: $m-xs;
     justify-content: center;
     line-height: $line-height-sm;
     outline: none;
     padding-inline: 13px 11px; 
     text-decoration: none;
     transition: box-shadow $transition-function .2s;
+    
+    span {
+      font-family: $font-family-header;
+      font-size: $font-size-base;
+      font-weight: $font-weight-extra-bold;
+      
+      @include media-breakpoint-between(md, lg) {
+        font-size: $font-size-lg;
+      }
+  
+      @include media-breakpoint-between(lg, xl) {
+        font-size: $font-size-xl;
+        line-height: $line-height-md;
+      }
+      
+      @include media-breakpoint-up(xl) {
+        font-size: $font-size-2xl;
+      }
+    }
 
     &:hover {
       box-shadow: 0 0 8px #FF4242;
     }
     
-    @include media-breakpoint-between(md, lg) {
-      font-size: $font-size-lg;
-    }
-
-    @include media-breakpoint-between(lg, xl) {
-      font-size: $font-size-xl;
-      line-height: $line-height-md;
+    @include media-breakpoint-up(lg) {
       padding: $m-sm 20px;
-    }
-    
-    @include media-breakpoint-up(xl) {
-      font-size: $font-size-2xl;
+      gap: $m-sm;
     }
 
     .-icon {
