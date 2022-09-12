@@ -131,3 +131,26 @@ export const ScheduleWeek = [
     dayMobile: 'Ndz.',
   },
 ]
+
+export const YoutubeLinks = [
+  {
+    date: 12,
+    href: 'https://www.youtube.com/watch?v=kGxJ9mQ_QJw',
+  },
+  {
+    date: 13,
+    href: 'https://www.youtube.com/watch?v=IF69Ydv9sNQ',
+  },
+  {
+    date: 14,
+    href: 'https://www.youtube.com/watch?v=MojemUvWCYs',
+  },
+  {
+    date: 15,
+    href: 'https://www.youtube.com/watch?v=MhCoRQ-vvbc',
+  },
+  {
+    date: 16,
+    href: 'https://www.youtube.com/watch?v=hpd3NEP_M7Q',
+  },
+]
