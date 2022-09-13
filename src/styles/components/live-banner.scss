@@ -3,6 +3,7 @@
   backdrop-filter: blur(2.5px);
   box-sizing: border-box;
   color: $color-white;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   left: 50%;
@@ -26,6 +27,7 @@
 
     height: 200px;
     left: unset;
+    cursor: unset;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
