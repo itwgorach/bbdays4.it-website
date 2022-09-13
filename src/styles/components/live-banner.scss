@@ -3,6 +3,7 @@
   backdrop-filter: blur(2.5px);
   box-sizing: border-box;
   color: $color-white;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   left: 50%;
@@ -26,6 +27,8 @@
 
     height: 200px;
     left: unset;
+    cursor: unset;
+    pointer-events: none;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
@@ -154,6 +157,7 @@
       @include media-breakpoint-between(lg, xl) {
         font-size: $font-size-xl;
         line-height: $line-height-md;
+        pointer-events: all;
       }
       
       @include media-breakpoint-up(xl) {

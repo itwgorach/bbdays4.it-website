@@ -14,7 +14,7 @@ const LiveBanner = () => {
   useEffect(() => {
     const interval = setInterval(() => setDate(new Date()), 10 * 1000)
 
-    if (liveDayLink && currentHour >= 15 && currentHour <= 18) {
+    if (liveDayLink && currentHour === 12) {
       setDisplayBanner(true)
     } else {
       setDisplayBanner(false)
@@ -31,10 +31,10 @@ const LiveBanner = () => {
     <a className={LiveBannerClasses} href={liveDayLink?.href} rel="noopener noreferrer" target="_blank">
       <div className="live-banner__inner">
         <span className="live-banner__header">Jesteśmy live</span>
-        <div className="live-banner__button">
+        <a className="live-banner__button" href={liveDayLink?.href} rel="noopener noreferrer" target="_blank">
           <span>Dołącz</span>
           <PlayIcon className="-icon" />
-        </div>
+        </a>
       </div>
     </a>
   )
