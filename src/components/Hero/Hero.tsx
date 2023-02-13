@@ -1,5 +1,4 @@
 import cx from 'classnames'
-import LiveBanner from 'components/LiveBanner/LiveBanner'
 import React, { FC } from 'react'
 
 import { BaseHeroType } from 'types'
@@ -27,7 +26,7 @@ const Hero: FC<BaseHeroType> = ({
     <div
       className={heroClasses}
       style={{ backgroundColor: backgroundColor, backgroundImage: `url(${backgroundImage?.url}` }}>
-      <LiveBanner />
+      {/* <LiveBanner /> */}
       {hasSubtitle && subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
       <h1 className={titleClasses}>{title}</h1>
       {hasSubtitle && subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
