@@ -13,11 +13,23 @@ type AgendaProps = AgendaType & {
 }
 
 const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location }) => {
-  const lecturesSorted = lectures.sort(
-    (a, b) => parseInt(a.startHour.substring(0, 2)) - parseInt(b.startHour.substring(0, 2)),
-  )
+  const lecturesSorted =
+    Array.isArray(lectures) &&
+    lectures.sort((a, b) => {
+      const hourA = parseInt(a.startHour.substring(0, 2))
+      const hourB = parseInt(b.startHour.substring(0, 2))
 
-  const lecturesWithSpeakersOnly = lectures.filter((lecture) => lecture.subtitle)
+      if (hourA !== hourB) {
+        return hourA - hourB
+      }
+
+      const minuteA = parseInt(a.startHour.substring(3, 5))
+      const minuteB = parseInt(b.startHour.substring(3, 5))
+
+      return minuteA - minuteB
+    })
+
+  const lecturesWithSpeakersOnly = lecturesSorted.filter((lecture) => lecture.subtitle)
 
   const firstSection = makeLectureSection(lecturesSorted, null, '14:45')
   const secondSection = makeLectureSection(lecturesSorted, '14:45', '16:00')
@@ -44,8 +56,8 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
         setModalData({
           ...modalProps,
           hour: selectedLecture.startHour,
-          room: selectedLecture.room,
           location: location,
+          room: selectedLecture.room,
         })
         return true
       }
@@ -88,8 +100,8 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     setModalData({
       ...nextSpeaker,
       hour: nextLecture.startHour,
-      room: nextLecture.room,
       location: location,
+      room: nextLecture.room,
     })
   }
 
@@ -103,8 +115,8 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     setModalData({
       ...prevSpeaker,
       hour: prevLecture.startHour,
-      room: prevLecture.room,
       location: location,
+      room: prevLecture.room,
     })
   }
 
