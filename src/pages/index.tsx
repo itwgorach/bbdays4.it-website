@@ -100,6 +100,7 @@ export const query = graphql`
                   strapi_component
                   isSectionVisible
                   partners {
+                      index
                       id
                       Name
                       WebsiteURL
@@ -118,6 +119,7 @@ export const query = graphql`
                   strapi_component
                   isSectionVisible
                   speakers {
+                      index
                       firstName
                       lastName
                       title

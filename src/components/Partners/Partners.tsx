@@ -3,6 +3,7 @@ import { useActiveLink } from 'contexts/ActiveLinkContext'
 import { Waypoint } from 'react-waypoint'
 
 import { PartnerType } from 'types'
+import { getSortedByIndex } from 'utils/getSortedSpeakers'
 import Partner from './Partner'
 
 type PartnersType = {
@@ -12,6 +13,8 @@ type PartnersType = {
 
 const Partners: FC<PartnersType> = ({ partners, sectionTitle }) => {
   const { setActiveLink } = useActiveLink()
+
+  const sortedPartners = getSortedByIndex(partners)
 
   return (
     <div className="partners" id={sectionTitle.toLowerCase()}>
@@ -29,7 +32,7 @@ const Partners: FC<PartnersType> = ({ partners, sectionTitle }) => {
         <div className="partners__inner">
           <h1 className="partners__header">{sectionTitle}</h1>
           <div className="partners__logos">
-            {partners?.map((partner: PartnerType) => (
+            {sortedPartners?.map((partner: PartnerType) => (
               <Partner key={partner.id} partner={partner} />
             ))}
           </div>
