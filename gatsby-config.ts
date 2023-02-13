@@ -14,6 +14,7 @@ const strapiConfig = {
           homepage: {
             populate: {
               backgroundImage: '*',
+              bannerImage: '*',
               events: {
                 populate: '*',
               },
@@ -24,11 +25,10 @@ const strapiConfig = {
               partners: {
                 populate: '*',
               },
-              signupImage: '*',
-              bannerImage: '*',
               signup_sections: {
                 populate: '*',
               },
+              signupImage: '*',
               speakers: {
                 populate: '*',
               },
@@ -101,7 +101,7 @@ const config: GatsbyConfig = {
   ],
   siteMetadata: {
     siteUrl: `https://bbdays4.it/`,
-    title: `BB Days 4 IT :: 9-18 września 2022`,
+    title: `BB Days 4 IT :: 8-17 września 2023`,
   },
 }
 if (process.env.NODE_ENV === 'development') {
