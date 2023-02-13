@@ -27,7 +27,7 @@ const linksData: LinkDesktopProps[] = [
   },
   {
     name: 'Edycja 2021',
-    path: 'https://bbdays4it-2021.netlify.app/',
+    path: 'https://2021.bbdays4.it/',
   },
   // {
   //   name: 'Edycja 2020',
@@ -54,7 +54,7 @@ const linksDataMobile: LinkType[] = [
   },
   {
     name: 'Edycja 2021',
-    path: 'https://bbdays4it-2021.netlify.app/',
+    path: 'https://2021.bbdays4.it/',
   },
 ]
 
