@@ -39,7 +39,7 @@ const Footer: FC<FooterProps> = ({ pathname }) => {
   return (
     <footer className={footerClasses}>
       <div className="footer__text">
-        <span className="footer__text-copyright">2019-2022 wszelkie prawa zastrzeżone © BBdays4IT </span>
+        <span className="footer__text-copyright">2019-2023 wszelkie prawa zastrzeżone © BBdays4IT </span>
         <div className="footer__text-modal" onClick={toggleModal}>
           Polityka prywatności
         </div>
