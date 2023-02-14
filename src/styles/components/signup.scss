@@ -235,6 +235,11 @@
       &:active {
         background-color: $color-active;
       }
+
+      &.-disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+      }
     }
   }
 }
