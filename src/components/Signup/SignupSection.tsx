@@ -1,7 +1,12 @@
 import React, { FC } from 'react'
 import { SignupSectionType } from 'types'
+import cx from 'classnames'
 
 const SignupSection: FC<SignupSectionType> = ({ buttonText, buttonUrl, title, subtitle, link }) => {
+  const buttonClasses = cx('signup__section-button', {
+    '-disabled': !buttonUrl,
+  })
+
   return (
     <div className="signup__section">
       <div className="signup__section-inner">
@@ -16,7 +21,11 @@ const SignupSection: FC<SignupSectionType> = ({ buttonText, buttonUrl, title, su
               <div className="signup__section-title">{title}</div>
             )}
           </div>
-          <a className="signup__section-button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
+          <a
+            className={buttonClasses}
+            rel="noopener noreferrer"
+            target="_blank"
+            {...(buttonUrl && { href: buttonUrl })}>
             {buttonText}
           </a>
         </div>
