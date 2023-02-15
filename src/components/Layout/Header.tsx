@@ -9,18 +9,18 @@ const linksData: LinkDesktopProps[] = [
     name: 'Dołącz do nas',
     path: '#dolaczdonas',
   },
-  {
-    name: 'Prelegenci',
-    path: '#prelegenci',
-  },
-  {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
-  {
-    name: 'Agenda ATH',
-    path: '#agenda',
-  },
+  // {
+  //   name: 'Prelegenci',
+  //   path: '#prelegenci',
+  // },
+  // {
+  //   name: 'Harmonogram',
+  //   path: '#harmonogram',
+  // },
+  // {
+  //   name: 'Agenda ATH',
+  //   path: '#agenda',
+  // },
   {
     name: 'Organizatorzy',
     path: '#organizatorzy',
@@ -40,14 +40,14 @@ const linksData: LinkDesktopProps[] = [
 ]
 
 const linksDataMobile: LinkType[] = [
-  {
-    name: 'Prelegenci',
-    path: '#prelegenci',
-  },
-  {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
+  // {
+  //   name: 'Prelegenci',
+  //   path: '#prelegenci',
+  // },
+  // {
+  //   name: 'Harmonogram',
+  //   path: '#harmonogram',
+  // },
   {
     name: 'Organizatorzy',
     path: '#organizatorzy',
