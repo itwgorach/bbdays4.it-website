@@ -3,6 +3,7 @@ import LiveBanner from 'components/LiveBanner/LiveBanner'
 import React, { FC } from 'react'
 
 import { BaseHeroType } from 'types'
+import { BackgroundVideo } from './BackgroundVideo'
 
 const Hero: FC<BaseHeroType> = ({
   title,
@@ -12,6 +13,7 @@ const Hero: FC<BaseHeroType> = ({
   backgroundColor,
   buttonText,
   buttonUrl,
+  backgroundVideo,
 }) => {
   const hasButton = buttonText && buttonUrl
   const hasSubtitle = subtitle
@@ -28,14 +30,17 @@ const Hero: FC<BaseHeroType> = ({
       className={heroClasses}
       style={{ backgroundColor: backgroundColor, backgroundImage: `url(${backgroundImage?.url}` }}>
       <LiveBanner />
-      {hasSubtitle && subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
-      <h1 className={titleClasses}>{title}</h1>
-      {hasSubtitle && subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
-      {hasButton && (
-        <a className="hero__button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
-          {buttonText}
-        </a>
-      )}
+      <BackgroundVideo {...backgroundVideo} />
+      <div className="hero__content">
+        {hasSubtitle && subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
+        <h1 className={titleClasses}>{title}</h1>
+        {hasSubtitle && subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
+        {hasButton && (
+          <a className="hero__button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
+            {buttonText}
+          </a>
+        )}
+      </div>
     </div>
   )
 }
