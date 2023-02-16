@@ -88,6 +88,14 @@ export const query = graphql`
                   subtitle
                   subtitlePos
                   title
+                  backgroundVideo {
+                    webm {
+                      url
+                    }
+                    mp4 {
+                      url
+                    }
+                  }
                   strapi_component
                   isSectionVisible
                   backgroundImage {

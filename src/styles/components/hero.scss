@@ -42,6 +42,16 @@
     }
   }
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+
   &__title {
     font-family: $font-family-header;
     font-size: $font-size-2xl;
@@ -99,5 +109,18 @@
     &:active {
       background-color: $color-active;
     }
+  }
+
+  &__video {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform-origin: center center;
+    transition: transform 8s linear .2s;
+    object-fit: cover;
   }
 }
