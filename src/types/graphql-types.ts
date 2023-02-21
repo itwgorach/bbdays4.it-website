@@ -526,8 +526,8 @@ type STRAPI__COMPONENT_BASE_HERO = Node & {
   readonly subtitlePos: Maybe<Scalars['String']>;
   readonly isSectionVisible: Maybe<Scalars['Boolean']>;
   readonly backgroundImage: Maybe<STRAPI__MEDIA>;
-  readonly backgroundVideo: Maybe<STRAPI__COMPONENT_BASE_VIDEO>;
   readonly strapi_id: Maybe<Scalars['Int']>;
+  readonly backgroundVideo: Maybe<STRAPI__COMPONENT_BASE_VIDEO>;
 };
 
 type STRAPI__COMPONENT_BASE_GALERY_SLIDER = Node & {
@@ -539,6 +539,18 @@ type STRAPI__COMPONENT_BASE_GALERY_SLIDER = Node & {
   readonly title: Maybe<Scalars['String']>;
   readonly isSectionVisible: Maybe<Scalars['Boolean']>;
   readonly images: Maybe<ReadonlyArray<Maybe<STRAPI__MEDIA>>>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly strapi_component: Maybe<Scalars['String']>;
+  readonly isSectionVisible: Maybe<Scalars['Boolean']>;
+  readonly achievements: Maybe<ReadonlyArray<Maybe<STRAPI_ACHIEVEMENT>>>;
+  readonly backgroundImages: Maybe<ReadonlyArray<Maybe<STRAPI__MEDIA>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -572,6 +584,7 @@ type STRAPI_SPEAKER = Node & {
   readonly twitterUrl: Maybe<Scalars['String']>;
   readonly linktrUrl: Maybe<Scalars['String']>;
   readonly backgroundColor: Maybe<Scalars['String']>;
+  readonly index: Maybe<Scalars['Int']>;
   readonly photo: Maybe<STRAPI_SPEAKERPhoto>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -818,6 +831,7 @@ type STRAPI_PARTNER = Node & {
   readonly WebsiteURL: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly index: Maybe<Scalars['Int']>;
   readonly Logo: Maybe<STRAPI_PARTNERLogo>;
   readonly whiteLogo: Maybe<STRAPI_PARTNERWhiteLogo>;
   readonly strapi_id: Maybe<Scalars['Int']>;
@@ -1126,7 +1140,7 @@ type STRAPI_HOMEPAGE = Node & {
   readonly internal: Internal;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
-  readonly homepage: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_AGENDASTRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SIGNUP_GRIDSTRAPI__COMPONENT_BASE_SPEAKERS_GRIDUnion>>>;
+  readonly homepage: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_AGENDASTRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSSTRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SIGNUP_GRIDSTRAPI__COMPONENT_BASE_SPEAKERS_GRIDUnion>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -1146,7 +1160,7 @@ type STRAPI_HOMEPAGE_updatedAtArgs = {
   locale: Maybe<Scalars['String']>;
 };
 
-type STRAPI__COMPONENT_BASE_AGENDASTRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SIGNUP_GRIDSTRAPI__COMPONENT_BASE_SPEAKERS_GRIDUnion = STRAPI__COMPONENT_BASE_AGENDA | STRAPI__COMPONENT_BASE_GALERY_SLIDER | STRAPI__COMPONENT_BASE_HERO | STRAPI__COMPONENT_BASE_PARTNERS_SLIDER | STRAPI__COMPONENT_BASE_SCHEDULE | STRAPI__COMPONENT_BASE_SIGNUP_GRID | STRAPI__COMPONENT_BASE_SPEAKERS_GRID;
+type STRAPI__COMPONENT_BASE_AGENDASTRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSSTRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SIGNUP_GRIDSTRAPI__COMPONENT_BASE_SPEAKERS_GRIDUnion = STRAPI__COMPONENT_BASE_AGENDA | STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS | STRAPI__COMPONENT_BASE_GALERY_SLIDER | STRAPI__COMPONENT_BASE_HERO | STRAPI__COMPONENT_BASE_PARTNERS_SLIDER | STRAPI__COMPONENT_BASE_SCHEDULE | STRAPI__COMPONENT_BASE_SIGNUP_GRID | STRAPI__COMPONENT_BASE_SPEAKERS_GRID;
 
 type STRAPI_EVENT = Node & {
   readonly id: Scalars['ID'];
@@ -1214,6 +1228,35 @@ type STRAPI_EVENTLogo_updatedAtArgs = {
   locale: Maybe<Scalars['String']>;
 };
 
+type STRAPI_ACHIEVEMENT = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly name: Maybe<Scalars['String']>;
+  readonly number: Maybe<Scalars['String']>;
+  readonly index: Maybe<Scalars['Int']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
+
+type STRAPI_ACHIEVEMENT_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_ACHIEVEMENT_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
 type Query = {
   readonly file: Maybe<File>;
   readonly allFile: FileConnection;
@@ -1245,6 +1288,8 @@ type Query = {
   readonly allStrapiComponentBaseHero: STRAPI__COMPONENT_BASE_HEROConnection;
   readonly strapiComponentBaseGalerySlider: Maybe<STRAPI__COMPONENT_BASE_GALERY_SLIDER>;
   readonly allStrapiComponentBaseGalerySlider: STRAPI__COMPONENT_BASE_GALERY_SLIDERConnection;
+  readonly strapiComponentBaseFestivalInNumbers: Maybe<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS>;
+  readonly allStrapiComponentBaseFestivalInNumbers: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection;
   readonly strapiComponentBaseAgenda: Maybe<STRAPI__COMPONENT_BASE_AGENDA>;
   readonly allStrapiComponentBaseAgenda: STRAPI__COMPONENT_BASE_AGENDAConnection;
   readonly strapiSpeaker: Maybe<STRAPI_SPEAKER>;
@@ -1267,6 +1312,8 @@ type Query = {
   readonly allStrapiHomepage: STRAPI_HOMEPAGEConnection;
   readonly strapiEvent: Maybe<STRAPI_EVENT>;
   readonly allStrapiEvent: STRAPI_EVENTConnection;
+  readonly strapiAchievement: Maybe<STRAPI_ACHIEVEMENT>;
+  readonly allStrapiAchievement: STRAPI_ACHIEVEMENTConnection;
 };
 
 
@@ -1630,8 +1677,8 @@ type Query_strapiComponentBaseHeroArgs = {
   subtitlePos: Maybe<StringQueryOperatorInput>;
   isSectionVisible: Maybe<BooleanQueryOperatorInput>;
   backgroundImage: Maybe<STRAPI__MEDIAFilterInput>;
-  backgroundVideo: Maybe<STRAPI__COMPONENT_BASE_VIDEOFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
+  backgroundVideo: Maybe<STRAPI__COMPONENT_BASE_VIDEOFilterInput>;
 };
 
 
@@ -1659,6 +1706,27 @@ type Query_strapiComponentBaseGalerySliderArgs = {
 type Query_allStrapiComponentBaseGalerySliderArgs = {
   filter: Maybe<STRAPI__COMPONENT_BASE_GALERY_SLIDERFilterInput>;
   sort: Maybe<STRAPI__COMPONENT_BASE_GALERY_SLIDERSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type Query_strapiComponentBaseFestivalInNumbersArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  strapi_component: Maybe<StringQueryOperatorInput>;
+  isSectionVisible: Maybe<BooleanQueryOperatorInput>;
+  achievements: Maybe<STRAPI_ACHIEVEMENTFilterListInput>;
+  backgroundImages: Maybe<STRAPI__MEDIAFilterListInput>;
+  strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+
+type Query_allStrapiComponentBaseFestivalInNumbersArgs = {
+  filter: Maybe<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFilterInput>;
+  sort: Maybe<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -1703,6 +1771,7 @@ type Query_strapiSpeakerArgs = {
   twitterUrl: Maybe<StringQueryOperatorInput>;
   linktrUrl: Maybe<StringQueryOperatorInput>;
   backgroundColor: Maybe<StringQueryOperatorInput>;
+  index: Maybe<IntQueryOperatorInput>;
   photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -1823,6 +1892,7 @@ type Query_strapiPartnerArgs = {
   WebsiteURL: Maybe<StringQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
+  index: Maybe<IntQueryOperatorInput>;
   Logo: Maybe<STRAPI_PARTNERLogoFilterInput>;
   whiteLogo: Maybe<STRAPI_PARTNERWhiteLogoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
@@ -1903,6 +1973,28 @@ type Query_strapiEventArgs = {
 type Query_allStrapiEventArgs = {
   filter: Maybe<STRAPI_EVENTFilterInput>;
   sort: Maybe<STRAPI_EVENTSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type Query_strapiAchievementArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  number: Maybe<StringQueryOperatorInput>;
+  index: Maybe<IntQueryOperatorInput>;
+  createdAt: Maybe<DateQueryOperatorInput>;
+  updatedAt: Maybe<DateQueryOperatorInput>;
+  strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+
+type Query_allStrapiAchievementArgs = {
+  filter: Maybe<STRAPI_ACHIEVEMENTFilterInput>;
+  sort: Maybe<STRAPI_ACHIEVEMENTSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -4504,6 +4596,7 @@ type STRAPI_SPEAKERFilterInput = {
   readonly twitterUrl: Maybe<StringQueryOperatorInput>;
   readonly linktrUrl: Maybe<StringQueryOperatorInput>;
   readonly backgroundColor: Maybe<StringQueryOperatorInput>;
+  readonly index: Maybe<IntQueryOperatorInput>;
   readonly photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -4796,6 +4889,7 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFieldsEnum =
   | 'speakers.twitterUrl'
   | 'speakers.linktrUrl'
   | 'speakers.backgroundColor'
+  | 'speakers.index'
   | 'speakers.photo.id'
   | 'speakers.photo.name'
   | 'speakers.photo.alternativeText'
@@ -5730,6 +5824,7 @@ type STRAPI_PARTNERFilterInput = {
   readonly WebsiteURL: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly index: Maybe<IntQueryOperatorInput>;
   readonly Logo: Maybe<STRAPI_PARTNERLogoFilterInput>;
   readonly whiteLogo: Maybe<STRAPI_PARTNERWhiteLogoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
@@ -6107,6 +6202,7 @@ type STRAPI__COMPONENT_BASE_PARTNERS_SLIDERFieldsEnum =
   | 'partners.WebsiteURL'
   | 'partners.createdAt'
   | 'partners.updatedAt'
+  | 'partners.index'
   | 'partners.Logo.id'
   | 'partners.Logo.name'
   | 'partners.Logo.alternativeText'
@@ -6476,6 +6572,7 @@ type STRAPI__COMPONENT_BASE_HEROFieldsEnum =
   | 'backgroundImage.localFile.internal.owner'
   | 'backgroundImage.localFile.internal.type'
   | 'backgroundImage.localFile.internal.contentFilePath'
+  | 'strapi_id'
   | 'backgroundVideo.id'
   | 'backgroundVideo.parent.id'
   | 'backgroundVideo.parent.parent.id'
@@ -6645,8 +6742,7 @@ type STRAPI__COMPONENT_BASE_HEROFieldsEnum =
   | 'backgroundVideo.mp4.localFile.url'
   | 'backgroundVideo.mp4.localFile.id'
   | 'backgroundVideo.mp4.localFile.children'
-  | 'backgroundVideo.strapi_id'
-  | 'strapi_id';
+  | 'backgroundVideo.strapi_id';
 
 type STRAPI__COMPONENT_BASE_HEROGroupConnection = {
   readonly totalCount: Scalars['Int'];
@@ -6703,8 +6799,8 @@ type STRAPI__COMPONENT_BASE_HEROFilterInput = {
   readonly subtitlePos: Maybe<StringQueryOperatorInput>;
   readonly isSectionVisible: Maybe<BooleanQueryOperatorInput>;
   readonly backgroundImage: Maybe<STRAPI__MEDIAFilterInput>;
-  readonly backgroundVideo: Maybe<STRAPI__COMPONENT_BASE_VIDEOFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
+  readonly backgroundVideo: Maybe<STRAPI__COMPONENT_BASE_VIDEOFilterInput>;
 };
 
 type STRAPI__COMPONENT_BASE_HEROSortInput = {
@@ -7054,6 +7150,408 @@ type STRAPI__COMPONENT_BASE_GALERY_SLIDERSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type STRAPI_ACHIEVEMENTFilterListInput = {
+  readonly elemMatch: Maybe<STRAPI_ACHIEVEMENTFilterInput>;
+};
+
+type STRAPI_ACHIEVEMENTFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly parent: Maybe<NodeFilterInput>;
+  readonly children: Maybe<NodeFilterListInput>;
+  readonly internal: Maybe<InternalFilterInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly number: Maybe<StringQueryOperatorInput>;
+  readonly index: Maybe<IntQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSEdge>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSGroupConnection>;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection_maxArgs = {
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection_minArgs = {
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection_sumArgs = {
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSEdge = {
+  readonly next: Maybe<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS>;
+  readonly node: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS;
+  readonly previous: Maybe<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS>;
+};
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum =
+  | 'id'
+  | 'parent.id'
+  | 'parent.parent.id'
+  | 'parent.parent.parent.id'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.children.children'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.children'
+  | 'parent.children.id'
+  | 'parent.children.parent.id'
+  | 'parent.children.parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.children.children'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.internal.contentFilePath'
+  | 'children'
+  | 'children.id'
+  | 'children.parent.id'
+  | 'children.parent.parent.id'
+  | 'children.parent.parent.children'
+  | 'children.parent.children'
+  | 'children.parent.children.id'
+  | 'children.parent.children.children'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.children'
+  | 'children.children.id'
+  | 'children.children.parent.id'
+  | 'children.children.parent.children'
+  | 'children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.children.children'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.internal.contentFilePath'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.internal.contentFilePath'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'internal.contentFilePath'
+  | 'strapi_component'
+  | 'isSectionVisible'
+  | 'achievements'
+  | 'achievements.id'
+  | 'achievements.parent.id'
+  | 'achievements.parent.parent.id'
+  | 'achievements.parent.parent.children'
+  | 'achievements.parent.children'
+  | 'achievements.parent.children.id'
+  | 'achievements.parent.children.children'
+  | 'achievements.parent.internal.content'
+  | 'achievements.parent.internal.contentDigest'
+  | 'achievements.parent.internal.description'
+  | 'achievements.parent.internal.fieldOwners'
+  | 'achievements.parent.internal.ignoreType'
+  | 'achievements.parent.internal.mediaType'
+  | 'achievements.parent.internal.owner'
+  | 'achievements.parent.internal.type'
+  | 'achievements.parent.internal.contentFilePath'
+  | 'achievements.children'
+  | 'achievements.children.id'
+  | 'achievements.children.parent.id'
+  | 'achievements.children.parent.children'
+  | 'achievements.children.children'
+  | 'achievements.children.children.id'
+  | 'achievements.children.children.children'
+  | 'achievements.children.internal.content'
+  | 'achievements.children.internal.contentDigest'
+  | 'achievements.children.internal.description'
+  | 'achievements.children.internal.fieldOwners'
+  | 'achievements.children.internal.ignoreType'
+  | 'achievements.children.internal.mediaType'
+  | 'achievements.children.internal.owner'
+  | 'achievements.children.internal.type'
+  | 'achievements.children.internal.contentFilePath'
+  | 'achievements.internal.content'
+  | 'achievements.internal.contentDigest'
+  | 'achievements.internal.description'
+  | 'achievements.internal.fieldOwners'
+  | 'achievements.internal.ignoreType'
+  | 'achievements.internal.mediaType'
+  | 'achievements.internal.owner'
+  | 'achievements.internal.type'
+  | 'achievements.internal.contentFilePath'
+  | 'achievements.name'
+  | 'achievements.number'
+  | 'achievements.index'
+  | 'achievements.createdAt'
+  | 'achievements.updatedAt'
+  | 'achievements.strapi_id'
+  | 'backgroundImages'
+  | 'backgroundImages.id'
+  | 'backgroundImages.parent.id'
+  | 'backgroundImages.parent.parent.id'
+  | 'backgroundImages.parent.parent.children'
+  | 'backgroundImages.parent.children'
+  | 'backgroundImages.parent.children.id'
+  | 'backgroundImages.parent.children.children'
+  | 'backgroundImages.parent.internal.content'
+  | 'backgroundImages.parent.internal.contentDigest'
+  | 'backgroundImages.parent.internal.description'
+  | 'backgroundImages.parent.internal.fieldOwners'
+  | 'backgroundImages.parent.internal.ignoreType'
+  | 'backgroundImages.parent.internal.mediaType'
+  | 'backgroundImages.parent.internal.owner'
+  | 'backgroundImages.parent.internal.type'
+  | 'backgroundImages.parent.internal.contentFilePath'
+  | 'backgroundImages.children'
+  | 'backgroundImages.children.id'
+  | 'backgroundImages.children.parent.id'
+  | 'backgroundImages.children.parent.children'
+  | 'backgroundImages.children.children'
+  | 'backgroundImages.children.children.id'
+  | 'backgroundImages.children.children.children'
+  | 'backgroundImages.children.internal.content'
+  | 'backgroundImages.children.internal.contentDigest'
+  | 'backgroundImages.children.internal.description'
+  | 'backgroundImages.children.internal.fieldOwners'
+  | 'backgroundImages.children.internal.ignoreType'
+  | 'backgroundImages.children.internal.mediaType'
+  | 'backgroundImages.children.internal.owner'
+  | 'backgroundImages.children.internal.type'
+  | 'backgroundImages.children.internal.contentFilePath'
+  | 'backgroundImages.internal.content'
+  | 'backgroundImages.internal.contentDigest'
+  | 'backgroundImages.internal.description'
+  | 'backgroundImages.internal.fieldOwners'
+  | 'backgroundImages.internal.ignoreType'
+  | 'backgroundImages.internal.mediaType'
+  | 'backgroundImages.internal.owner'
+  | 'backgroundImages.internal.type'
+  | 'backgroundImages.internal.contentFilePath'
+  | 'backgroundImages.name'
+  | 'backgroundImages.alternativeText'
+  | 'backgroundImages.caption'
+  | 'backgroundImages.width'
+  | 'backgroundImages.height'
+  | 'backgroundImages.formats.small.ext'
+  | 'backgroundImages.formats.small.url'
+  | 'backgroundImages.formats.small.hash'
+  | 'backgroundImages.formats.small.mime'
+  | 'backgroundImages.formats.small.name'
+  | 'backgroundImages.formats.small.size'
+  | 'backgroundImages.formats.small.width'
+  | 'backgroundImages.formats.small.height'
+  | 'backgroundImages.formats.medium.ext'
+  | 'backgroundImages.formats.medium.url'
+  | 'backgroundImages.formats.medium.hash'
+  | 'backgroundImages.formats.medium.mime'
+  | 'backgroundImages.formats.medium.name'
+  | 'backgroundImages.formats.medium.size'
+  | 'backgroundImages.formats.medium.width'
+  | 'backgroundImages.formats.medium.height'
+  | 'backgroundImages.formats.thumbnail.ext'
+  | 'backgroundImages.formats.thumbnail.url'
+  | 'backgroundImages.formats.thumbnail.hash'
+  | 'backgroundImages.formats.thumbnail.mime'
+  | 'backgroundImages.formats.thumbnail.name'
+  | 'backgroundImages.formats.thumbnail.size'
+  | 'backgroundImages.formats.thumbnail.width'
+  | 'backgroundImages.formats.thumbnail.height'
+  | 'backgroundImages.formats.large.ext'
+  | 'backgroundImages.formats.large.url'
+  | 'backgroundImages.formats.large.hash'
+  | 'backgroundImages.formats.large.mime'
+  | 'backgroundImages.formats.large.name'
+  | 'backgroundImages.formats.large.size'
+  | 'backgroundImages.formats.large.width'
+  | 'backgroundImages.formats.large.height'
+  | 'backgroundImages.hash'
+  | 'backgroundImages.ext'
+  | 'backgroundImages.mime'
+  | 'backgroundImages.size'
+  | 'backgroundImages.url'
+  | 'backgroundImages.createdAt'
+  | 'backgroundImages.updatedAt'
+  | 'backgroundImages.strapi_id'
+  | 'backgroundImages.localFile.sourceInstanceName'
+  | 'backgroundImages.localFile.absolutePath'
+  | 'backgroundImages.localFile.relativePath'
+  | 'backgroundImages.localFile.extension'
+  | 'backgroundImages.localFile.size'
+  | 'backgroundImages.localFile.prettySize'
+  | 'backgroundImages.localFile.modifiedTime'
+  | 'backgroundImages.localFile.accessTime'
+  | 'backgroundImages.localFile.changeTime'
+  | 'backgroundImages.localFile.birthTime'
+  | 'backgroundImages.localFile.root'
+  | 'backgroundImages.localFile.dir'
+  | 'backgroundImages.localFile.base'
+  | 'backgroundImages.localFile.ext'
+  | 'backgroundImages.localFile.name'
+  | 'backgroundImages.localFile.relativeDirectory'
+  | 'backgroundImages.localFile.dev'
+  | 'backgroundImages.localFile.mode'
+  | 'backgroundImages.localFile.nlink'
+  | 'backgroundImages.localFile.uid'
+  | 'backgroundImages.localFile.gid'
+  | 'backgroundImages.localFile.rdev'
+  | 'backgroundImages.localFile.ino'
+  | 'backgroundImages.localFile.atimeMs'
+  | 'backgroundImages.localFile.mtimeMs'
+  | 'backgroundImages.localFile.ctimeMs'
+  | 'backgroundImages.localFile.atime'
+  | 'backgroundImages.localFile.mtime'
+  | 'backgroundImages.localFile.ctime'
+  | 'backgroundImages.localFile.birthtime'
+  | 'backgroundImages.localFile.birthtimeMs'
+  | 'backgroundImages.localFile.blksize'
+  | 'backgroundImages.localFile.blocks'
+  | 'backgroundImages.localFile.url'
+  | 'backgroundImages.localFile.id'
+  | 'backgroundImages.localFile.parent.id'
+  | 'backgroundImages.localFile.parent.children'
+  | 'backgroundImages.localFile.children'
+  | 'backgroundImages.localFile.children.id'
+  | 'backgroundImages.localFile.children.children'
+  | 'backgroundImages.localFile.internal.content'
+  | 'backgroundImages.localFile.internal.contentDigest'
+  | 'backgroundImages.localFile.internal.description'
+  | 'backgroundImages.localFile.internal.fieldOwners'
+  | 'backgroundImages.localFile.internal.ignoreType'
+  | 'backgroundImages.localFile.internal.mediaType'
+  | 'backgroundImages.localFile.internal.owner'
+  | 'backgroundImages.localFile.internal.type'
+  | 'backgroundImages.localFile.internal.contentFilePath'
+  | 'strapi_id';
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSGroupConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSEdge>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSGroupConnection>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSGroupConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSGroupConnection_maxArgs = {
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSGroupConnection_minArgs = {
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSGroupConnection_sumArgs = {
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSGroupConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum;
+};
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly parent: Maybe<NodeFilterInput>;
+  readonly children: Maybe<NodeFilterListInput>;
+  readonly internal: Maybe<InternalFilterInput>;
+  readonly strapi_component: Maybe<StringQueryOperatorInput>;
+  readonly isSectionVisible: Maybe<BooleanQueryOperatorInput>;
+  readonly achievements: Maybe<STRAPI_ACHIEVEMENTFilterListInput>;
+  readonly backgroundImages: Maybe<STRAPI__MEDIAFilterListInput>;
+  readonly strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSSortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum>>>;
+  readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
 type STRAPI_LECTUREFilterListInput = {
   readonly elemMatch: Maybe<STRAPI_LECTUREFilterInput>;
 };
@@ -7349,6 +7847,7 @@ type STRAPI__COMPONENT_BASE_AGENDAFieldsEnum =
   | 'speakers.twitterUrl'
   | 'speakers.linktrUrl'
   | 'speakers.backgroundColor'
+  | 'speakers.index'
   | 'speakers.photo.id'
   | 'speakers.photo.name'
   | 'speakers.photo.alternativeText'
@@ -7575,6 +8074,7 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'twitterUrl'
   | 'linktrUrl'
   | 'backgroundColor'
+  | 'index'
   | 'photo.id'
   | 'photo.name'
   | 'photo.alternativeText'
@@ -8835,6 +9335,7 @@ type STRAPI_PARTNERFieldsEnum =
   | 'WebsiteURL'
   | 'createdAt'
   | 'updatedAt'
+  | 'index'
   | 'Logo.id'
   | 'Logo.name'
   | 'Logo.alternativeText'
@@ -9585,6 +10086,198 @@ type STRAPI_EVENTGroupConnection_groupArgs = {
 
 type STRAPI_EVENTSortInput = {
   readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI_EVENTFieldsEnum>>>;
+  readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
+type STRAPI_ACHIEVEMENTConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<STRAPI_ACHIEVEMENTEdge>;
+  readonly nodes: ReadonlyArray<STRAPI_ACHIEVEMENT>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<STRAPI_ACHIEVEMENTGroupConnection>;
+};
+
+
+type STRAPI_ACHIEVEMENTConnection_distinctArgs = {
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+
+type STRAPI_ACHIEVEMENTConnection_maxArgs = {
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+
+type STRAPI_ACHIEVEMENTConnection_minArgs = {
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+
+type STRAPI_ACHIEVEMENTConnection_sumArgs = {
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+
+type STRAPI_ACHIEVEMENTConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+type STRAPI_ACHIEVEMENTEdge = {
+  readonly next: Maybe<STRAPI_ACHIEVEMENT>;
+  readonly node: STRAPI_ACHIEVEMENT;
+  readonly previous: Maybe<STRAPI_ACHIEVEMENT>;
+};
+
+type STRAPI_ACHIEVEMENTFieldsEnum =
+  | 'id'
+  | 'parent.id'
+  | 'parent.parent.id'
+  | 'parent.parent.parent.id'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.children.children'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.children'
+  | 'parent.children.id'
+  | 'parent.children.parent.id'
+  | 'parent.children.parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.children.children'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.internal.contentFilePath'
+  | 'children'
+  | 'children.id'
+  | 'children.parent.id'
+  | 'children.parent.parent.id'
+  | 'children.parent.parent.children'
+  | 'children.parent.children'
+  | 'children.parent.children.id'
+  | 'children.parent.children.children'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.children'
+  | 'children.children.id'
+  | 'children.children.parent.id'
+  | 'children.children.parent.children'
+  | 'children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.children.children'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.internal.contentFilePath'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.internal.contentFilePath'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'internal.contentFilePath'
+  | 'name'
+  | 'number'
+  | 'index'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'strapi_id';
+
+type STRAPI_ACHIEVEMENTGroupConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<STRAPI_ACHIEVEMENTEdge>;
+  readonly nodes: ReadonlyArray<STRAPI_ACHIEVEMENT>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<STRAPI_ACHIEVEMENTGroupConnection>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_ACHIEVEMENTGroupConnection_distinctArgs = {
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+
+type STRAPI_ACHIEVEMENTGroupConnection_maxArgs = {
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+
+type STRAPI_ACHIEVEMENTGroupConnection_minArgs = {
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+
+type STRAPI_ACHIEVEMENTGroupConnection_sumArgs = {
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+
+type STRAPI_ACHIEVEMENTGroupConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: STRAPI_ACHIEVEMENTFieldsEnum;
+};
+
+type STRAPI_ACHIEVEMENTSortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI_ACHIEVEMENTFieldsEnum>>>;
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 

@@ -1,0 +1,66 @@
+.achievements {
+  scroll-margin-top: $scroll-margin-base;
+  background-color: $color-primary;
+  background-repeat: round;
+  padding: $m-2xl 0;
+
+  &__wrapper {
+    display: grid; 
+    grid-template-columns: 240px;
+    justify-content: center;
+    gap: 64px;
+    overflow: hidden;
+
+    @include media-breakpoint-up(sm) {
+      gap: 88px;
+      grid-template-columns: 240px 240px;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: 240px 240px 240px 240px; 
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(243, 243, 243, 16%);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: $border-radius-xs;
+    max-width: 240px;
+    height: 160px;
+    gap: $m-xs;
+
+    &:nth-child(3) {
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
+    }
+
+    &-first-line {
+      font-family: $font-face-body;
+      margin: 0;
+      font-size: $font-size-3xl;
+      text-align: center;
+      font-weight: $font-weight-extra-bold;
+      color: $color-background;
+
+      .plusIcon {
+        color: $color-secondary;
+      }
+    }
+
+    &-second-line {
+      font-family: $font-face-body;
+      margin: 0;
+      font-size: 24px;
+      font-weight: $font-weight-bold;
+      color: $color-background
+    }
+  }
+}
