@@ -4015,48 +4015,48 @@ type STRAPI__MEDIAFieldsEnum =
   | 'localFile.internal.contentFilePath'
   | 'strapi_id';
 
-type STRAPI__MEDIAGroupConnection = {
+type STRAPI__COMPONENT_BASE_VIDEO_SECTIONGroupConnection = {
   readonly totalCount: Scalars['Int'];
-  readonly edges: ReadonlyArray<STRAPI__MEDIAEdge>;
-  readonly nodes: ReadonlyArray<STRAPI__MEDIA>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEO_SECTIONEdge>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEO_SECTION>;
   readonly pageInfo: PageInfo;
   readonly distinct: ReadonlyArray<Scalars['String']>;
   readonly max: Maybe<Scalars['Float']>;
   readonly min: Maybe<Scalars['Float']>;
   readonly sum: Maybe<Scalars['Float']>;
-  readonly group: ReadonlyArray<STRAPI__MEDIAGroupConnection>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEO_SECTIONGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue: Maybe<Scalars['String']>;
 };
 
 
-type STRAPI__MEDIAGroupConnection_distinctArgs = {
-  field: STRAPI__MEDIAFieldsEnum;
+type STRAPI__COMPONENT_BASE_VIDEO_SECTIONGroupConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEO_SECTIONFieldsEnum;
 };
 
 
-type STRAPI__MEDIAGroupConnection_maxArgs = {
-  field: STRAPI__MEDIAFieldsEnum;
+type STRAPI__COMPONENT_BASE_VIDEO_SECTIONGroupConnection_maxArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEO_SECTIONFieldsEnum;
 };
 
 
-type STRAPI__MEDIAGroupConnection_minArgs = {
-  field: STRAPI__MEDIAFieldsEnum;
+type STRAPI__COMPONENT_BASE_VIDEO_SECTIONGroupConnection_minArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEO_SECTIONFieldsEnum;
 };
 
 
-type STRAPI__MEDIAGroupConnection_sumArgs = {
-  field: STRAPI__MEDIAFieldsEnum;
+type STRAPI__COMPONENT_BASE_VIDEO_SECTIONGroupConnection_sumArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEO_SECTIONFieldsEnum;
 };
 
 
-type STRAPI__MEDIAGroupConnection_groupArgs = {
+type STRAPI__COMPONENT_BASE_VIDEO_SECTIONGroupConnection_groupArgs = {
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
-  field: STRAPI__MEDIAFieldsEnum;
+  field: STRAPI__COMPONENT_BASE_VIDEO_SECTIONFieldsEnum;
 };
 
-type STRAPI__MEDIAFilterInput = {
+type STRAPI__COMPONENT_BASE_VIDEO_SECTIONFilterInput = {
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
@@ -4078,8 +4078,8 @@ type STRAPI__MEDIAFilterInput = {
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
-type STRAPI__MEDIASortInput = {
-  readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI__MEDIAFieldsEnum>>>;
+type STRAPI__COMPONENT_BASE_VIDEO_SECTIONSortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_VIDEO_SECTIONFieldsEnum>>>;
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 

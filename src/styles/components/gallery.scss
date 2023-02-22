@@ -22,15 +22,45 @@
         transition: opacity $transition-duration $transition-function;
 
         &-image {
-            height: clamp(300px, 400px, 35vh);
             width: 100%;
             object-fit: cover;
             object-position: center;
             user-select: none;
+            min-height: 300px;
         }
     }
 
     &__navigation-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 56px;
+
+      .gallery-see-more {
+        display: inline-block;
+        color: $color-dark;
+        padding: $m-sm;
+        background-color: $color-secondary;
+        text-decoration: none;
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-extra-bold;
+        border-radius: $border-radius-xs;
+        letter-spacing: 0.04em;
+
+        &:hover {
+          box-shadow: 0 0 8px $color-secondary;
+        }
+
+        &:visited {
+          color: $color-dark;
+        }
+      }
+
+      @media only screen and (min-width: map-get($grid-breakpoints, md)) {
+        margin-top: 80px;
+      }
+    }
+
+    &__navigation-control_buttons {
         display: none;
 
         &-mobile {
@@ -43,59 +73,61 @@
 
             #gallery-next-slide {
                 right: 5%;
-                transform: translateY(-50%) scale(2.5);
-
-                @media only screen and (max-width: map-get($grid-breakpoints, md)) {
-                    transform: translateY(-50%) scale(2);
-                }
+                transform: translateY(-50%) scale(1.5);
 
                 @media only screen and (max-width: map-get($grid-breakpoints, sm)) {
                     right: 3%;
-                    transform: translateY(-50%) scale(1.5);
                 }
             }
 
             #gallery-prev-slide {
                 left: 5%;
-                transform: translateY(-50%) scale(2.5);
-
-                @media only screen and (max-width: map-get($grid-breakpoints, md)) {
-                    transform: translateY(-50%) scale(2);
-                }
+                transform: translateY(-50%) scale(1.5);
 
                 @media only screen and (max-width: map-get($grid-breakpoints, sm)) {
                     left: 3%;
-                    transform: translateY(-50%) scale(1.5);
                 }
             }
         }
     }
 
-    @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+    @media only screen and (min-width: map-get($grid-breakpoints, xl)) {
         margin: $m-2xl $m-lg;
 
         &__navigation-buttons {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: $m-base;
+        }
+
+        &__navigation-control_buttons {
             display: flex;
-            justify-content: flex-end;
-            margin: $m-base $m-2xl 0 0;
+            justify-content: space;
             text-align: right;
+            gap: $m-xs;
 
             &-mobile {
-                display: none;
+              display: none;
             }
 
             #gallery-next-slide,
             #gallery-prev-slide {
+                background-color: $color-secondary;
                 align-items: center;
-                border: 2px solid $color-text;
-                border-radius: 0;
+                border-radius: $border-radius-xs;
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
-                padding: $m-xs * 1.2 $m-sm;
+                padding: $m-sm $m-base;
                 text-align: center;
-                width: $icon-size-sm;
+                width: $icon-size-xs;
                 height: unset;
+                border: 1px solid $color-secondary;
+
+                &:hover {
+                  box-shadow: 0 0 8px $color-secondary;
+                }
             }
 
             #gallery-prev-slide {
@@ -108,8 +140,8 @@
         &__slide:not(.swiper-slide-active) {
             &::before {
                 content: "";
-                background: linear-gradient(0deg, rgba(243, 243, 243, 0.4), rgba(243, 243, 243, 0.4)),
-                    linear-gradient(180deg, rgba(0, 0, 0, 0) 80.26%, rgba(0, 0, 0, 0.2) 100%);
+                background: $color-dark;
+                opacity: .6;
                 position: absolute;
                 width: 100%;
                 height: 100%;
