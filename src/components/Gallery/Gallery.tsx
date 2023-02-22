@@ -20,6 +20,12 @@ const swiperOptions: SwiperProps = {
   breakpoints: {
     992: {
       centeredSlides: false,
+      slidesPerGroup: 2,
+      slidesPerView: 2,
+      slideToClickedSlide: false,
+    },
+    1440: {
+      centeredSlides: false,
       slidesPerGroup: 3,
       slidesPerView: 3,
       slideToClickedSlide: false,
@@ -37,7 +43,7 @@ const swiperOptions: SwiperProps = {
   spaceBetween: 8,
 }
 
-const Gallery: FC<BaseGalleryType> = ({ images }) => (
+const Gallery: FC<BaseGalleryType> = ({ images, buttonUrl, buttonText }) => (
   <div className="gallery">
     <h3 className="gallery__heading">#BBDays4IT</h3>
     <div className="gallery__wrapper">
@@ -49,14 +55,21 @@ const Gallery: FC<BaseGalleryType> = ({ images }) => (
             </SwiperSlide>
           ))}
       </Swiper>
-      <div className="gallery__navigation-buttons-mobile">
+      <div className="gallery__navigation-control_buttons-mobile">
         <GalleryPrevButtonMobile id="gallery-prev-slide" />
         <GalleryNextButtonMobile id="gallery-next-slide" />
       </div>
     </div>
     <div className="gallery__navigation-buttons">
-      <GalleryPrevButton id="gallery-prev-slide" />
-      <GalleryNextButton id="gallery-next-slide" />
+      <div className="gallery__navigation-control_buttons">
+        <GalleryPrevButton id="gallery-prev-slide" />
+        <GalleryNextButton id="gallery-next-slide" />
+      </div>
+      {buttonText && (
+        <a className="gallery-see-more" href={buttonUrl} rel="noreferrer" target="_blank">
+          {buttonText}
+        </a>
+      )}
     </div>
   </div>
 )
