@@ -22,6 +22,10 @@ const linksData: LinkDesktopProps[] = [
   //   path: '#agenda',
   // },
   {
+    name: 'Festiwal w liczbach',
+    path: '#festiwal_w_liczbach',
+  },
+  {
     name: 'Organizatorzy',
     path: '#organizatorzy',
   },
@@ -48,6 +52,10 @@ const linksDataMobile: LinkType[] = [
   //   name: 'Harmonogram',
   //   path: '#harmonogram',
   // },
+  {
+    name: 'Festiwal w liczbach',
+    path: '#festiwal_w_liczbach',
+  },
   {
     name: 'Organizatorzy',
     path: '#organizatorzy',

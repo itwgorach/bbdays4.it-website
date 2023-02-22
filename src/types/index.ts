@@ -23,6 +23,8 @@ export import LectureType = GatsbyTypes.STRAPI_LECTURE
 export import AgendaType = GatsbyTypes.STRAPI__COMPONENT_BASE_AGENDA
 
 export import VideoSectionType = GatsbyTypes.STRAPI__COMPONENT_BASE_VIDEO_SECTION
+export import FestivalInNumbersType = GatsbyTypes.STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS
+export import AchievementType = GatsbyTypes.STRAPI_ACHIEVEMENT
 
 export type { default as PartnersPageType } from 'types/PartnersPageType'
 export type { default as PostTemplateType } from './PostTemplateType'
