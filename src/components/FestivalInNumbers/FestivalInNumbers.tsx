@@ -58,11 +58,13 @@ const FestivalInNumbers = ({ achievements, backgroundImages }: FestivalInNumbers
 
               return (
                 <div key={id} className="achievements__title">
-                  <h1 className="achievements__title-first-line">
-                    {title}
-                    {plusSign && <span className="plusIcon">+</span>}
-                  </h1>
-                  <p className="achievements__title-second-line">{name}</p>
+                  {title && (
+                    <h1 className="achievements__title-first-line">
+                      {title}
+                      {plusSign && <span className="plusIcon">+</span>}
+                    </h1>
+                  )}
+                  {name && <p className="achievements__title-second-line">{name}</p>}
                 </div>
               )
             })}
