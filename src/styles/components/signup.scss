@@ -6,7 +6,7 @@
   justify-content: center;
   scroll-margin-top: $scroll-margin-base;
   
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(xl) {
     background-color: $color-primary;
     flex-direction: row;
     padding-bottom: $m-sm;
@@ -15,7 +15,7 @@
   &__banner {
     align-items: center;
     background-color: $color-primary;
-    background-position: 65%;
+    background-position: 15%;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -36,6 +36,26 @@
       width: 2px;
     }
 
+    @include media-breakpoint-between(md, lg) {
+      background-position: 0;
+
+      &:before {
+        height: $m-sm;
+      }
+
+      &:after {
+        background-color: $color-white;
+        content: "";
+        height: $m-sm;
+        left: 50%;
+        position: absolute;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+        width: 2px;
+        z-index: $z-lower;
+      }
+    }
+
     &:hover {
       .signup__banner-icon {
         &.-desktop {
@@ -45,7 +65,11 @@
     }
 
     @include media-breakpoint-up(md) {
-      height: 380px;
+      height: 160px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      height: 360px;
       max-width: 25%;
       background-color: $color-dark;
       background-image: none !important;
@@ -76,7 +100,7 @@
       font-size: $font-size-xl;
       font-weight: $font-weight-bold;
 
-      @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(xl) {
         font-size: $font-size-2xl;
 
         &.-first-line {
@@ -105,12 +129,14 @@
       }
 
       @include media-breakpoint-up(md) {
-        &.-desktop {
-          display: block;
-        }
-
         &.-mobile {
           display: none;
+        }
+      }
+
+      @include media-breakpoint-up(xl) {
+        &.-desktop {
+          display: block;
         }
       }
     }
@@ -129,6 +155,9 @@
       background-position: 70% 60%;
       flex-direction: row;
       max-width: unset;
+    }
+
+    @include media-breakpoint-up(xl) {
       width: unset;
     }
   }
@@ -143,10 +172,28 @@
     justify-content: center;
     position: relative;
     width: 100%;
+
+    @include media-breakpoint-down(lg) {    
+      &:not(:first-child) {
+        .signup__section-inner {
+          @include dashedBorder(true, left, $color-white, false);
+        }
+      }
+    }
+
+    @include media-breakpoint-down(sm) {    
+      &:not(:first-child) {
+        .signup__section-inner {
+          @include dashedBorder(false, top, $color-white);
+        }
+      }
+    }
     
     @include media-breakpoint-up(md) {    
-      height: 380px;
+      height: 360px;
+    }
 
+    @include media-breakpoint-up(xl) {
       &:nth-of-type(1) {
         .signup__section-inner {
           @include dashedBorder(false, top, $color-white);
@@ -155,8 +202,7 @@
     }
     
     &-inner {
-      @include dashedBorder(false, top, $color-white);
-      
+      background-image: unset;
       align-items: center;
       background-color: rgba($color-dark, 0.8);
       display: flex;
@@ -169,7 +215,7 @@
         background-color: unset;
       }
 
-      @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(xl) {
         @include dashedBorder(true, top, $color-white);
         background-color: rgba($color-dark, 0.4);
       }
