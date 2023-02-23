@@ -44,6 +44,7 @@
         font-size: $font-size-base-xs;
         font-weight: $font-weight-extra-bold;
         border-radius: $border-radius-xs;
+        transition: box-shadow $transition-function .2s;
         letter-spacing: 0.04em;
 
         &:hover {
@@ -124,6 +125,7 @@
                 width: $icon-size-xs;
                 height: unset;
                 border: 1px solid $color-secondary;
+                transition: box-shadow $transition-function .2s;
 
                 &:hover {
                   box-shadow: 0 0 8px $color-secondary;
