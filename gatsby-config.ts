@@ -13,7 +13,11 @@ const strapiConfig = {
         populate: {
           homepage: {
             populate: {
+              achievements: {
+                populate: '*',
+              },
               backgroundImage: '*',
+              backgroundImages: '*',
               backgroundVideo: {
                 populate: '*',
               },

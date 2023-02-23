@@ -154,3 +154,12 @@ export const YoutubeLinks = [
     href: 'https://www.youtube.com/watch?v=hpd3NEP_M7Q',
   },
 ]
+
+export const breakpoints = {
+  lg: '992px',
+  md: '768px',
+  sm: '576px',
+  xl: '1200px',
+  xs: '0px',
+  xxl: '1600px',
+}
