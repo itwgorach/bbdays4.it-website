@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import HomePageType from 'types/HomePageType'
 import Hero from 'components/Hero'
-import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType, ScheduleType, SignupType, AgendaType, FestivalInNumbersType } from 'types'
+import { BaseGalleryType, BaseHeroType, PartnersType, SpeakersType, ScheduleType, SignupType, AgendaType, FestivalInNumbersType, VideoSectionType } from 'types'
 import Partners from 'components/Partners'
 import Gallery from 'components/Gallery'
 import Speakers from 'components/Speakers'
@@ -11,6 +11,7 @@ import Schedule from 'components/Schedule'
 import Signup from 'components/Signup'
 import Agenda from 'components/Agenda'
 import FestivalInNumbers from 'components/FestivalInNumbers'
+import VideoSection from 'components/VideoSection'
 
 const HomePage: FC<HomePageType> = ({
   data: {
@@ -56,6 +57,10 @@ const HomePage: FC<HomePageType> = ({
           case 'base.festival-in-numbers': {
             const achievements = component as FestivalInNumbersType
             return <FestivalInNumbers key={achievements.id} {...achievements} />
+          }
+          case 'base.video-section': {
+            const section = component as VideoSectionType
+            return <VideoSection {...section} />
           }
           default:
             return null
@@ -230,6 +235,15 @@ export const query = graphql`
                   number
                   index
                 }
+              }
+              ... on STRAPI__COMPONENT_BASE_VIDEO_SECTION {
+                id
+                title
+                article
+                footer
+                isSectionVisible
+                videoId
+                strapi_component
               }
           }
       } 
