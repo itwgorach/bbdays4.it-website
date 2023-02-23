@@ -6,9 +6,10 @@
   color: $color-white;
   display: none;
   font-family: $font-family-body;
-  font-size: $font-size-base;
+  font-size: $font-size-base-xs;
+  font-weight: $font-weight-extra-bold;
   justify-content: space-between;
-  padding: $m-base $m-lg;
+  padding: 20px 40px;
   position: fixed;
   transition: background-color $transition-duration $transition-function;
   width: 100%;
@@ -18,14 +19,14 @@
     background-color: $color-primary;
   }
 
-  &__logo {
-    height: $icon-size-lg;
+  &__logo-wrapper {
+    height: $icon-size-md;
   }
 
   &__nav {
     display: flex;
-    justify-content: space-around;
-    width: 75%;
+    justify-content: space-between;
+    gap: 64px;
     max-width: 900px;
   }
   
@@ -59,7 +60,7 @@
 
 .header-mobile {
   align-items: center;
-  background-color: $color-white;
+  background-color: $color-primary;
   box-sizing: border-box;
   color: $color-white;
   display: flex;
@@ -68,19 +69,22 @@
   font-size: $font-size-base;
   font-weight: $font-weight-bold;
   justify-content: space-between;
-  padding: $m-base;
+  padding: 20px $m-base;
   position: sticky;
   top: 0;
   width: 100%;
   z-index: $z-base;
 
-  &__logo,
-  &__hamburger-icon {
-    height: $icon-size-base;
-
-    &.-light {
-      display: none;
+  &__logo {
+    height: $icon-size-md;
+    
+    &-wrapper {
+      height: $icon-size-md;
     }
+  }
+
+  &__hamburger-icon {
+    height: $icon-size-md;
   }
 
   &__social-icon {
@@ -105,21 +109,11 @@
     background-size: cover;
     height: 100vh;
     margin: 0;
-    padding: $m-base;
+    padding: 20px $m-base;
     width: 100vw;
     z-index: $z-base;
 
     .header-mobile {
-      &__logo {
-        &.-light {
-          display: block;
-        }
-
-        &.-dark {
-          display: none;
-        }
-      }
-
       &__menu {
         align-items: center;
         display: flex;
@@ -182,7 +176,7 @@
   @media only screen and (min-width: map-get($grid-breakpoints, md)) {
     &__logo,
     &__hamburger-icon {
-      height: $icon-size-lg;
+      height: $icon-size-md;
     }
 
     &__social-icon {
@@ -199,6 +193,14 @@
           font-size: $font-size-xl;
         }
       }
+    }
+  }
+
+  @media only screen and (min-width: map-get($grid-breakpoints, sm)) {
+    padding: 20px 40px;
+
+    &.-hamburger-open {
+      padding: 20px 40px;
     }
   }
 }

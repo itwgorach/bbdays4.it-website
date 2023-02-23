@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 
-import { BBDaysLogoLight } from 'components/icons'
+import { BBDaysNewLogoWhite } from 'components/icons'
 import cx from 'classnames'
 import { HeaderType } from 'types'
 import { useActiveLink } from 'contexts/ActiveLinkContext'
@@ -61,8 +61,8 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ links, pathname }) => {
 
   return (
     <header key="desktop-header" className={headerClasses}>
-      <Link to="/">
-        <BBDaysLogoLight className="header-desktop__logo" />
+      <Link className="header-desktop__logo-wrapper" to="/">
+        <BBDaysNewLogoWhite className="header-desktop__logo" />
       </Link>
       <div className="header-desktop__nav">{links.map(getLinkComponent)}</div>
     </header>
