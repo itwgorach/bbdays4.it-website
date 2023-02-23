@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import React, { FC, useCallback, useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
-import { BBDaysLogoDark, BBDaysLogoLight, CloseHamburgerIcon, HamburgerIcon } from 'components/icons'
+import { BBDaysNewLogoWhite, CloseHamburgerIcon, HamburgerIcon } from 'components/icons'
 
 const MobileHeader: FC<HeaderType> = ({ links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -48,12 +48,12 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
     <header key="mobile-header" className={headerMobileClasses}>
       <div className="header-mobile__top-bar">
         <Link
+          className="header-mobile__logo-wrapper"
           to="/"
           onClick={() => {
             setIsMenuOpen(false)
           }}>
-          <BBDaysLogoLight className="header-mobile__logo -light" />
-          <BBDaysLogoDark className="header-mobile__logo -dark" />
+          <BBDaysNewLogoWhite className="header-mobile__logo" />
         </Link>
         {isMenuOpen ? (
           <CloseHamburgerIcon className="header-mobile__hamburger-icon" onClick={() => setIsMenuOpen(!isMenuOpen)} />
