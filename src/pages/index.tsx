@@ -35,7 +35,7 @@ const HomePage: FC<HomePageType> = ({
           }
           case 'base.galery-slider': {
             const gallery = component as BaseGalleryType
-            return <Gallery key={gallery.id} images={gallery.images} />
+            return <Gallery key={gallery.id} {...gallery}/>
           }
           case 'base.speakers-grid': {
             const speakers = component as SpeakersType
@@ -78,6 +78,8 @@ export const query = graphql`
               ... on STRAPI__COMPONENT_BASE_GALERY_SLIDER {
                 id
                 title
+                buttonUrl
+                buttonText
                 images {
                   id
                   url
