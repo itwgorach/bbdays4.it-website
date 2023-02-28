@@ -23,6 +23,10 @@
       max-height: 595px;
     }
 
+    @include media-breakpoint-down(xs) {
+      background-position-x: 25%;
+    }
+
     @include media-breakpoint-up(xl) {
       padding-top: 80px;
     }
@@ -279,6 +283,7 @@
 
       @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
         height: 80vh;
+        width: calc(16/9 * 80vh);
       }
 
       @media (orientation: portrait) and (min-width: map-get($grid-breakpoints, lg)) {
