@@ -25,6 +25,8 @@ const Hero: FC<BaseHeroType> = ({
   const hasVideo = videoId
   const hasSubtitle = subtitle
   const [videoMode, setVideoMode] = useState(false)
+  const [showVideoOverlay, setShowVideoOverlay] = useState(false)
+  const [showContent, setShowContent] = useState(true)
   const isDesktop = useMediaQuery({ minWidth: 1200 })
 
   const heroClasses = cx('hero -full-height', {
@@ -34,8 +36,24 @@ const Hero: FC<BaseHeroType> = ({
   })
 
   const titleClasses = cx('hero__title', { '-small': !hasSubtitle && !hasVideo })
+  const heroContentClasses = cx('hero__content', { '-hidden': videoMode })
 
   const handleVideoModeToggle = () => {
+    setShowVideoOverlay((prev) => !prev)
+
+    if (!videoMode) {
+      setTimeout(() => {
+        setVideoMode((prev) => !prev)
+      }, 500)
+
+      setTimeout(() => {
+        setShowContent((prev) => !prev)
+      }, 1000)
+
+      return
+    }
+
+    setShowContent((prev) => !prev)
     setVideoMode((prev) => !prev)
   }
 
@@ -45,10 +63,16 @@ const Hero: FC<BaseHeroType> = ({
     <div
       className={heroClasses}
       style={{ backgroundColor: backgroundColor, backgroundImage: `url(${backgroundImage?.url}` }}>
-      {videoMode ? (
-        <VideoMode videoUrl={videoUrl} onToggle={handleVideoModeToggle} />
-      ) : (
-        <div className="hero__content">
+      {showVideoOverlay && (
+        <VideoMode
+          showOverlay={showVideoOverlay}
+          videoMode={videoMode}
+          videoUrl={videoUrl}
+          onToggle={handleVideoModeToggle}
+        />
+      )}
+      {showContent && (
+        <div className={heroContentClasses}>
           <LiveBanner />
           {backgroundVideo && <BackgroundVideo {...backgroundVideo} />}
           <div className="hero__content-wrapper">

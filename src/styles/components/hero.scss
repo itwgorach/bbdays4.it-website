@@ -41,6 +41,12 @@
         height: 100%;
         width: 100%;
         z-index: 1;
+
+        &.-hidden {
+          position: absolute;
+          transition: all .5s ease-in-out;
+          opacity: 0;
+        }
         
         &:before,
         &:after {
@@ -245,7 +251,7 @@
   }
 
   &__video-mode {
-    transition: all 1s ease-in-out;
+    transition: all .5s ease-in-out;
     position: relative;
     width: 100%;
     height: 100%;
@@ -254,15 +260,21 @@
     align-items: center;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(25, 69, 80, 0.8), rgba(25, 69, 80, 0.8));
     backdrop-filter: blur(4px);
+    opacity: 1;
 
     @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
       min-height: 100vh;
     }
 
+    &.-hidden {
+      opacity: 0;
+      position: absolute;
+    }
+
     &-container {
       @media (orientation: landscape) {
         height: 80%;
-        width: calc(16/9 * .8 * 80vh);
+        width: calc(16/9 * .7 * 80vh);
       }
 
       @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
