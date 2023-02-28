@@ -100,6 +100,8 @@ export const query = graphql`
                   subtitle
                   subtitlePos
                   title
+                  videoId
+                  footer
                   backgroundVideo {
                     webm {
                       url

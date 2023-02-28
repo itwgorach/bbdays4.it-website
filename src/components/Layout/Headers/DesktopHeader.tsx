@@ -60,7 +60,7 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ links, pathname }) => {
   }, [])
 
   return (
-    <header key="desktop-header" className={headerClasses}>
+    <header key="desktop-header -colored" className={headerClasses}>
       <Link className="header-desktop__logo-wrapper" to="/">
         <BBDaysNewLogoWhite className="header-desktop__logo" />
       </Link>

@@ -14,6 +14,139 @@
     min-height: 60vh;
   }
 
+  &.-with-video {
+    background-position: top;
+    height: 70vh;
+    padding: 0;
+
+    @include media-breakpoint-down(lg) {
+      max-height: 595px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      padding-top: 80px;
+    }
+
+    @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
+      height: auto;
+      min-height: 70vh;
+    }
+
+    .hero {
+      &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        
+        &:before,
+        &:after {
+          position: absolute;
+          content: "";
+          width: 100vw;
+          height: 100%;
+          bottom: 0;
+          border-radius: 364px 364px 0 0;
+          background-color: $color-black;
+          opacity: .6;
+          filter: blur(125px);
+          z-index: -1;
+        }
+    
+        &:before {
+          background-color: $color-dark;
+          opacity: .2;
+        }
+    
+        @include media-breakpoint-up(md) {
+          &:before {
+            width: 100vw;
+          }
+    
+          &:after {
+            width: 90vw;
+          }
+        }
+    
+        @include media-breakpoint-up(xl) {
+          &:before {
+            width: 65vw;
+          }
+    
+          &:after {
+            width: 50vw;
+          }
+        }
+    
+        @media (orientation: portrait) and (min-width: map-get($grid-breakpoints, lg)) {
+          justify-content: center;
+        }
+    
+        &-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: auto;
+          z-index: 1;
+          margin-bottom: $m-lg;
+    
+          @include media-breakpoint-up(md) {
+            margin-bottom: $m-2xl;
+          }
+    
+          @include media-breakpoint-up(xl) {
+            margin-bottom: 15vh;
+          }
+        }
+    
+        &-footer {
+          display: flex;
+          flex-direction: column;
+          gap: $m-base;
+          font-family: $font-face-body;
+          font-size: $font-size-base;
+          font-weight: $font-weight-extra-bold;
+    
+          &-icons {
+            justify-content: center;
+            display: flex;
+            gap: $m-sm;
+    
+            svg {
+              width: $icon-size-xs;
+              height: $icon-size-xs;
+            }
+          }
+    
+          @include media-breakpoint-down(md) {
+            inline-size: 245px;
+          }
+    
+          @include media-breakpoint-up(xl) {
+            font-size: $font-size-lg;
+          }
+    
+          @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
+            margin-bottom: $m-base;
+          }
+        }
+      }
+  
+      &__title {
+        margin-bottom: $m-lg;
+  
+        @include media-breakpoint-up(md) {
+          margin-bottom: $m-lg;
+        }
+      }
+    }
+  }
+
   &.-simple {
     position: relative;
 
@@ -42,7 +175,7 @@
     }
   }
 
-  &__content {
+  &__content-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,7 +199,7 @@
       line-height: $line-height-base;
     }
 
-    @media only screen and (min-width: map-get($grid-breakpoints, md)) {
+    @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
       font-size: $font-size-3xl;
       font-weight: $font-weight-bold;
       line-height: $line-height-2xl;
@@ -108,6 +241,75 @@
 
     &:active {
       background-color: $color-active;
+    }
+  }
+
+  &__video-mode {
+    transition: all 1s ease-in-out;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(25, 69, 80, 0.8), rgba(25, 69, 80, 0.8));
+    backdrop-filter: blur(4px);
+
+    @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
+      min-height: 100vh;
+    }
+
+    &-container {
+      @media (orientation: landscape) {
+        height: 80%;
+        width: calc(16/9 * .8 * 80vh);
+      }
+
+      @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
+        height: 80vh;
+      }
+
+      @media (orientation: portrait) and (min-width: map-get($grid-breakpoints, lg)) {
+        width: 80%;
+        height: 56.25vw * .8;
+      }
+
+      width: 100%;
+      height: 56.25vw;
+    }
+
+    &-play-button {
+      cursor: pointer;
+      transition: box-shadow $transition-function .2s;
+      border-radius: 100%;
+
+      &:hover {
+        box-shadow: 0 0 8px $color-secondary;
+      }
+  
+      &:active {
+        background-color: $color-active;
+      }
+
+      &.-disabled {
+        cursor: not-allowed;
+        opacity: .8;
+      }
+    }
+
+    &__close-button {
+      $close-icon-size: rem(20px);
+
+      cursor: pointer;
+      position: absolute;
+      width: $close-icon-size;
+      height: $close-icon-size;
+      right: $m-lg;
+      top: $m-base;
+
+      @include media-breakpoint-down(xs) {
+        right: $m-md;
+      }
     }
   }
 
