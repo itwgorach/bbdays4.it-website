@@ -139,6 +139,10 @@
     background-position: center;
     height: $video-height-mobile;
 
+    @include media-breakpoint-down(xs) {
+      background-position: left;
+    }
+
     @include media-breakpoint-up(2xl) {
       height: $video-height-desktop;
     }

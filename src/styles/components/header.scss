@@ -14,6 +14,7 @@
   transition: background-color $transition-duration $transition-function;
   width: 100%;
   z-index: $z-base;
+  background-color: $color-primary;
 
   &.-colored {
     background-color: $color-primary;

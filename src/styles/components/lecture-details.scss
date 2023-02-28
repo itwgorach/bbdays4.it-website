@@ -43,6 +43,7 @@
       right: 0;
       background-color: rgba($color-background, 0.9);
       z-index: 5;
+      color: $color-dark;
       
       @include media-breakpoint-up(md) {
         // top: 5%;
