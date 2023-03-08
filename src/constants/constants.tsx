@@ -155,6 +155,8 @@ export const YoutubeLinks = [
   },
 ]
 
+export const c4pUrl = 'https://selleo.typeform.com/to/XRHfxfrj'
+
 export const breakpoints = {
   lg: '992px',
   md: '768px',

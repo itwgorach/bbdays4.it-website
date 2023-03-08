@@ -1,4 +1,4 @@
-import { socialLinks } from 'constants/constants'
+import { c4pUrl, socialLinks } from 'constants/constants'
 import cx from 'classnames'
 import { PlayButtonIcon } from 'components/icons'
 import LiveBanner from 'components/LiveBanner/LiveBanner'
@@ -89,7 +89,7 @@ const Hero: FC<BaseHeroType> = ({
           {footer && (
             <div className="hero__content-footer">
               <div>{footer}</div>
-              {isDesktop && (
+              {isDesktop ? (
                 <div className="hero__content-footer-icons">
                   {socialLinks.map(({ href, Icon, name }) => (
                     <a key={href} href={href} rel="noopener noreferrer" target="_blank">
@@ -97,6 +97,10 @@ const Hero: FC<BaseHeroType> = ({
                     </a>
                   ))}
                 </div>
+              ) : (
+                <a className="hero__content-footer-button" href={c4pUrl} rel="noopener noreferrer" target="_blank">
+                  Zostań prelegentem
+                </a>
               )}
             </div>
           )}

@@ -35,14 +35,18 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ links, pathname }) => {
 
   const getLinkComponent = useCallback(
     (link) => {
+      const linkClasses = cx('header-desktop__link', {
+        '-special': link?.special,
+      })
+
       if (link.path.startsWith('http'))
         return (
-          <a className="header-desktop__link" href={link.path} rel="noopener noreferrer" target="_blank">
+          <a className={linkClasses} href={link.path} rel="noopener noreferrer" target="_blank">
             {link.name}
           </a>
         )
       return (
-        <Link className="header-desktop__link" getProps={() => isActive(activeLink, link.path)} to={`/${link.path}`}>
+        <Link className={linkClasses} getProps={() => isActive(activeLink, link.path)} to={`/${link.path}`}>
           <span>{link.name}</span>
         </Link>
       )
