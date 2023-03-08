@@ -117,6 +117,7 @@
         &-footer {
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: $m-base;
           font-family: $font-face-body;
           font-size: $font-size-base;
@@ -132,8 +133,13 @@
               height: $icon-size-xs;
             }
           }
+
+          &-button {
+            @include special-button;
+            max-width: 220px;
+          }
     
-          @include media-breakpoint-down(md) {
+          @include media-breakpoint-down(xs) {
             inline-size: 245px;
           }
     

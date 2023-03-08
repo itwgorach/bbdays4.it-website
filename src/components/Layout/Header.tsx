@@ -1,3 +1,4 @@
+import { c4pUrl } from 'constants/constants'
 import React, { FC } from 'react'
 
 import { LinkType } from 'types'
@@ -41,6 +42,11 @@ const linksData: LinkDesktopProps[] = [
   //   name: 'Edycja 2019',
   //   path: 'https://2019.bbdays4.it/',
   // },
+  {
+    name: 'Zostań prelegentem',
+    path: c4pUrl,
+    special: true,
+  },
 ]
 
 const linksDataMobile: LinkType[] = [

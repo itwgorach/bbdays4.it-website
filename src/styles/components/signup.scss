@@ -26,15 +26,17 @@
     position: relative;
     z-index: $z-lower;
 
-    &:before {
-      background-color: $color-white;
-      content: "";
-      height: 32px;
-      left: 50%;
-      position: absolute;
-      top: 0;
-      transform: translate(-50%, -50%);
-      width: 2px;
+    @include media-breakpoint-up(sm) {
+      &:before {
+        background-color: $color-white;
+        content: "";
+        height: 32px;
+        left: 50%;
+        position: absolute;
+        top: 0;
+        transform: translate(-50%, -50%);
+        width: 2px;
+      }
     }
 
     @include media-breakpoint-between(md, lg) {

@@ -13,6 +13,7 @@
   position: fixed;
   transition: background-color $transition-duration $transition-function;
   width: 100%;
+  height: 80px;
   z-index: $z-base;
   background-color: $color-primary;
 
@@ -27,8 +28,8 @@
   &__nav {
     display: flex;
     justify-content: space-between;
-    gap: 64px;
-    max-width: 900px;
+    align-items: center;
+    gap: 62px;
   }
   
   &__link {
@@ -50,9 +51,13 @@
         background-color: rgba($color-white, 0.8);
       }
     }
+
+    &.-special {
+      @include special-button;
+    }
   }
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(xl) {
     display: flex;
   }
 }
