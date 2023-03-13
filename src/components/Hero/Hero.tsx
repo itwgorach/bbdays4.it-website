@@ -1,7 +1,6 @@
 import { c4pUrl, socialLinks } from 'constants/constants'
 import cx from 'classnames'
 import { PlayButtonIcon } from 'components/icons'
-import LiveBanner from 'components/LiveBanner/LiveBanner'
 import React, { FC, useState } from 'react'
 
 import { BaseHeroType } from 'types'
@@ -57,6 +56,8 @@ const Hero: FC<BaseHeroType> = ({
     setVideoMode((prev) => !prev)
   }
 
+  const subtitleLines = subtitle?.split(/\r?\n/)
+
   const videoUrl = `https://www.youtube.com/embed/${videoId}?showinfo=1&controls=1&modestbranding=1&autoplay=1&start=1`
 
   return (
@@ -73,12 +74,17 @@ const Hero: FC<BaseHeroType> = ({
       )}
       {showContent && (
         <div className={heroContentClasses}>
-          <LiveBanner />
           {backgroundVideo && <BackgroundVideo {...backgroundVideo} />}
           <div className="hero__content-wrapper">
             {hasSubtitle && subtitlePos === 'top' && <h3 className="hero__subtitle">{subtitle}</h3>}
             <h1 className={titleClasses}>{title}</h1>
-            {hasSubtitle && subtitlePos === 'bottom' && <h3 className="hero__subtitle -bottom">{subtitle}</h3>}
+            {hasSubtitle &&
+              subtitlePos === 'bottom' &&
+              subtitleLines?.map((subtitleLine, index) => (
+                <h3 key={index} className="hero__subtitle -bottom">
+                  {subtitleLine}
+                </h3>
+              ))}
             {hasButton && (
               <a className="hero__button" href={buttonUrl} rel="noopener noreferrer" target="_blank">
                 {buttonText}

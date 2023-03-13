@@ -458,11 +458,11 @@ type STRAPI__COMPONENT_BASE_VIDEO_SECTION = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
   readonly strapi_component: Maybe<Scalars['String']>;
-  readonly videoId: Maybe<Scalars['String']>;
   readonly isSectionVisible: Maybe<Scalars['Boolean']>;
   readonly title: Maybe<Scalars['String']>;
   readonly article: Maybe<Scalars['String']>;
   readonly footer: Maybe<Scalars['String']>;
+  readonly videoId: Maybe<Scalars['String']>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -672,6 +672,12 @@ type STRAPI_SPEAKERPhotoFormatsLarge = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsSmall = {
@@ -683,6 +689,12 @@ type STRAPI_SPEAKERPhotoFormatsSmall = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsSmallProvider_metadata>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsMedium = {
@@ -694,6 +706,12 @@ type STRAPI_SPEAKERPhotoFormatsMedium = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnail = {
@@ -705,6 +723,12 @@ type STRAPI_SPEAKERPhotoFormatsThumbnail = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadata>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_SIGNUP_SECTION = Node & {
@@ -881,27 +905,10 @@ type STRAPI_PARTNERLogo_updatedAtArgs = {
 };
 
 type STRAPI_PARTNERLogoFormats = {
-  readonly thumbnail: Maybe<STRAPI_PARTNERLogoFormatsThumbnail>;
   readonly large: Maybe<STRAPI_PARTNERLogoFormatsLarge>;
   readonly small: Maybe<STRAPI_PARTNERLogoFormatsSmall>;
   readonly medium: Maybe<STRAPI_PARTNERLogoFormatsMedium>;
-};
-
-type STRAPI_PARTNERLogoFormatsThumbnail = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsThumbnailProvider_metadata>;
-};
-
-type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadata = {
-  readonly public_id: Maybe<Scalars['String']>;
-  readonly resource_type: Maybe<Scalars['String']>;
+  readonly thumbnail: Maybe<STRAPI_PARTNERLogoFormatsThumbnail>;
 };
 
 type STRAPI_PARTNERLogoFormatsLarge = {
@@ -924,6 +931,12 @@ type STRAPI_PARTNERLogoFormatsSmall = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsSmallProvider_metadata>;
+};
+
+type STRAPI_PARTNERLogoFormatsSmallProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_PARTNERLogoFormatsMedium = {
@@ -935,6 +948,29 @@ type STRAPI_PARTNERLogoFormatsMedium = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsMediumProvider_metadata>;
+};
+
+type STRAPI_PARTNERLogoFormatsMediumProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PARTNERLogoFormatsThumbnail = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsThumbnailProvider_metadata>;
+};
+
+type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_PARTNERWhiteLogo = {
@@ -971,21 +1007,10 @@ type STRAPI_PARTNERWhiteLogo_updatedAtArgs = {
 };
 
 type STRAPI_PARTNERWhiteLogoFormats = {
-  readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnail>;
   readonly large: Maybe<STRAPI_PARTNERWhiteLogoFormatsLarge>;
   readonly small: Maybe<STRAPI_PARTNERWhiteLogoFormatsSmall>;
   readonly medium: Maybe<STRAPI_PARTNERWhiteLogoFormatsMedium>;
-};
-
-type STRAPI_PARTNERWhiteLogoFormatsThumbnail = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
+  readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnail>;
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsLarge = {
@@ -1008,6 +1033,12 @@ type STRAPI_PARTNERWhiteLogoFormatsSmall = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsSmallProvider_metadata>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsSmallProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsMedium = {
@@ -1019,6 +1050,29 @@ type STRAPI_PARTNERWhiteLogoFormatsMedium = {
   readonly size: Maybe<Scalars['Float']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadata>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsThumbnail = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadata>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
 };
 
 type STRAPI_LECTURE = Node & {
@@ -1518,11 +1572,11 @@ type Query_strapiComponentBaseVideoSectionArgs = {
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
   strapi_component: Maybe<StringQueryOperatorInput>;
-  videoId: Maybe<StringQueryOperatorInput>;
   isSectionVisible: Maybe<BooleanQueryOperatorInput>;
   title: Maybe<StringQueryOperatorInput>;
   article: Maybe<StringQueryOperatorInput>;
   footer: Maybe<StringQueryOperatorInput>;
+  videoId: Maybe<StringQueryOperatorInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -4230,11 +4284,11 @@ type STRAPI__COMPONENT_BASE_VIDEO_SECTIONFieldsEnum =
   | 'internal.type'
   | 'internal.contentFilePath'
   | 'strapi_component'
-  | 'videoId'
   | 'isSectionVisible'
   | 'title'
   | 'article'
   | 'footer'
+  | 'videoId'
   | 'strapi_id';
 
 type STRAPI__COMPONENT_BASE_VIDEO_SECTIONGroupConnection = {
@@ -4284,11 +4338,11 @@ type STRAPI__COMPONENT_BASE_VIDEO_SECTIONFilterInput = {
   readonly children: Maybe<NodeFilterListInput>;
   readonly internal: Maybe<InternalFilterInput>;
   readonly strapi_component: Maybe<StringQueryOperatorInput>;
-  readonly videoId: Maybe<StringQueryOperatorInput>;
   readonly isSectionVisible: Maybe<BooleanQueryOperatorInput>;
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly article: Maybe<StringQueryOperatorInput>;
   readonly footer: Maybe<StringQueryOperatorInput>;
+  readonly videoId: Maybe<StringQueryOperatorInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -4822,6 +4876,12 @@ type STRAPI_SPEAKERPhotoFormatsLargeFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsLargeProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsSmallFilterInput = {
@@ -4833,6 +4893,12 @@ type STRAPI_SPEAKERPhotoFormatsSmallFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsSmallProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsMediumFilterInput = {
@@ -4844,6 +4910,12 @@ type STRAPI_SPEAKERPhotoFormatsMediumFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsMediumProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput = {
@@ -4855,6 +4927,12 @@ type STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadataFilterInput>;
+};
+
+type STRAPI_SPEAKERPhotoFormatsThumbnailProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDConnection = {
@@ -6012,27 +6090,10 @@ type STRAPI_PARTNERLogoFilterInput = {
 };
 
 type STRAPI_PARTNERLogoFormatsFilterInput = {
-  readonly thumbnail: Maybe<STRAPI_PARTNERLogoFormatsThumbnailFilterInput>;
   readonly large: Maybe<STRAPI_PARTNERLogoFormatsLargeFilterInput>;
   readonly small: Maybe<STRAPI_PARTNERLogoFormatsSmallFilterInput>;
   readonly medium: Maybe<STRAPI_PARTNERLogoFormatsMediumFilterInput>;
-};
-
-type STRAPI_PARTNERLogoFormatsThumbnailFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFilterInput>;
-};
-
-type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFilterInput = {
-  readonly public_id: Maybe<StringQueryOperatorInput>;
-  readonly resource_type: Maybe<StringQueryOperatorInput>;
+  readonly thumbnail: Maybe<STRAPI_PARTNERLogoFormatsThumbnailFilterInput>;
 };
 
 type STRAPI_PARTNERLogoFormatsLargeFilterInput = {
@@ -6055,6 +6116,12 @@ type STRAPI_PARTNERLogoFormatsSmallFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsSmallProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsSmallProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_PARTNERLogoFormatsMediumFilterInput = {
@@ -6066,6 +6133,29 @@ type STRAPI_PARTNERLogoFormatsMediumFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsMediumProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsMediumProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsThumbnailFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_PARTNERWhiteLogoFilterInput = {
@@ -6086,21 +6176,10 @@ type STRAPI_PARTNERWhiteLogoFilterInput = {
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsFilterInput = {
-  readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput>;
   readonly large: Maybe<STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput>;
   readonly small: Maybe<STRAPI_PARTNERWhiteLogoFormatsSmallFilterInput>;
   readonly medium: Maybe<STRAPI_PARTNERWhiteLogoFormatsMediumFilterInput>;
-};
-
-type STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly thumbnail: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput>;
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsLargeFilterInput = {
@@ -6123,6 +6202,12 @@ type STRAPI_PARTNERWhiteLogoFormatsSmallFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsSmallProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsSmallProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI_PARTNERWhiteLogoFormatsMediumFilterInput = {
@@ -6134,6 +6219,29 @@ type STRAPI_PARTNERWhiteLogoFormatsMediumFilterInput = {
   readonly size: Maybe<FloatQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsMediumProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsThumbnailFilterInput = {
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadataFilterInput>;
+};
+
+type STRAPI_PARTNERWhiteLogoFormatsThumbnailProvider_metadataFilterInput = {
+  readonly public_id: Maybe<StringQueryOperatorInput>;
+  readonly resource_type: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI__COMPONENT_BASE_PARTNERS_SLIDERConnection = {
@@ -9472,14 +9580,6 @@ type STRAPI_PARTNERFieldsEnum =
   | 'Logo.caption'
   | 'Logo.width'
   | 'Logo.height'
-  | 'Logo.formats.thumbnail.ext'
-  | 'Logo.formats.thumbnail.url'
-  | 'Logo.formats.thumbnail.hash'
-  | 'Logo.formats.thumbnail.mime'
-  | 'Logo.formats.thumbnail.name'
-  | 'Logo.formats.thumbnail.size'
-  | 'Logo.formats.thumbnail.width'
-  | 'Logo.formats.thumbnail.height'
   | 'Logo.formats.large.ext'
   | 'Logo.formats.large.url'
   | 'Logo.formats.large.hash'
@@ -9504,6 +9604,14 @@ type STRAPI_PARTNERFieldsEnum =
   | 'Logo.formats.medium.size'
   | 'Logo.formats.medium.width'
   | 'Logo.formats.medium.height'
+  | 'Logo.formats.thumbnail.ext'
+  | 'Logo.formats.thumbnail.url'
+  | 'Logo.formats.thumbnail.hash'
+  | 'Logo.formats.thumbnail.mime'
+  | 'Logo.formats.thumbnail.name'
+  | 'Logo.formats.thumbnail.size'
+  | 'Logo.formats.thumbnail.width'
+  | 'Logo.formats.thumbnail.height'
   | 'Logo.hash'
   | 'Logo.ext'
   | 'Logo.mime'
@@ -9517,14 +9625,6 @@ type STRAPI_PARTNERFieldsEnum =
   | 'whiteLogo.caption'
   | 'whiteLogo.width'
   | 'whiteLogo.height'
-  | 'whiteLogo.formats.thumbnail.ext'
-  | 'whiteLogo.formats.thumbnail.url'
-  | 'whiteLogo.formats.thumbnail.hash'
-  | 'whiteLogo.formats.thumbnail.mime'
-  | 'whiteLogo.formats.thumbnail.name'
-  | 'whiteLogo.formats.thumbnail.size'
-  | 'whiteLogo.formats.thumbnail.width'
-  | 'whiteLogo.formats.thumbnail.height'
   | 'whiteLogo.formats.large.ext'
   | 'whiteLogo.formats.large.url'
   | 'whiteLogo.formats.large.hash'
@@ -9549,6 +9649,14 @@ type STRAPI_PARTNERFieldsEnum =
   | 'whiteLogo.formats.medium.size'
   | 'whiteLogo.formats.medium.width'
   | 'whiteLogo.formats.medium.height'
+  | 'whiteLogo.formats.thumbnail.ext'
+  | 'whiteLogo.formats.thumbnail.url'
+  | 'whiteLogo.formats.thumbnail.hash'
+  | 'whiteLogo.formats.thumbnail.mime'
+  | 'whiteLogo.formats.thumbnail.name'
+  | 'whiteLogo.formats.thumbnail.size'
+  | 'whiteLogo.formats.thumbnail.width'
+  | 'whiteLogo.formats.thumbnail.height'
   | 'whiteLogo.hash'
   | 'whiteLogo.ext'
   | 'whiteLogo.mime'

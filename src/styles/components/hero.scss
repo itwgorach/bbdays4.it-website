@@ -152,11 +152,20 @@
           }
         }
       }
-  
+
       &__title {
-        margin-bottom: $m-lg;
+        margin-bottom: $m-sm;
+
+        @include media-breakpoint-down(lg) {
+          margin-bottom: $m-xs;
+        }
+      }
   
-        @include media-breakpoint-up(md) {
+      &__subtitle {
+        margin-bottom: 0;
+        font-size: $font-size-xl;
+
+        &:last-of-type {
           margin-bottom: $m-lg;
         }
       }
