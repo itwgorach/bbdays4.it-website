@@ -154,19 +154,14 @@
       }
 
       &__title {
-        margin-bottom: $m-sm;
-
-        @include media-breakpoint-down(lg) {
-          margin-bottom: $m-xs;
-        }
-      }
+        margin-bottom: $m-lg;
+        font-size: 32px;
+        inline-size: 250px;
+        font-weight: $font-weight-bold;
   
-      &__subtitle {
-        margin-bottom: 0;
-        font-size: $font-size-xl;
-
-        &:last-of-type {
-          margin-bottom: $m-lg;
+        @include media-breakpoint-up(lg) {
+          font-size: $font-size-2xl;
+          inline-size: unset;
         }
       }
     }
