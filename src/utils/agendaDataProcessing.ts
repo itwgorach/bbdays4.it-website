@@ -1,6 +1,6 @@
 import { LectureType, SpeakerType } from 'types'
 
-const groupArrayByKey = (arr: LectureType[], key: string) => {
+export const groupArrayByKey = (arr: LectureType[], key: string) => {
   return arr.reduce((storage, item) => {
     const group = item[key]
     storage[group] = storage[group] || []
@@ -9,7 +9,7 @@ const groupArrayByKey = (arr: LectureType[], key: string) => {
   }, {})
 }
 
-const makeContent = (arr) => {
+export const makeContent = (arr) => {
   return Object.keys(arr)
     .sort()
     .reduce((obj, key) => {

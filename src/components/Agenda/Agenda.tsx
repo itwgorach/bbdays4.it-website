@@ -3,7 +3,7 @@ import React, { FC, useState } from 'react'
 import { Waypoint } from 'react-waypoint'
 import { useActiveLink } from 'contexts/ActiveLinkContext'
 import { AgendaType, SpeakerType } from 'types'
-import { makeLectureSection, getSpeaker } from 'utils/agendaDataProcessing'
+import { getSpeaker, groupArrayByKey, makeContent } from 'utils/agendaDataProcessing'
 import { navigate } from 'gatsby'
 import LectureDetails from './LectureDetails'
 import AgendaSection from './AgendaSection'
@@ -31,9 +31,8 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
 
   const lecturesWithSpeakersOnly = lecturesSorted.filter((lecture) => lecture.subtitle)
 
-  const firstSection = makeLectureSection(lecturesSorted, null, '14:45')
-  const secondSection = makeLectureSection(lecturesSorted, '14:45', '16:00')
-  const thirdSection = makeLectureSection(lecturesSorted, '16:00', null)
+  const lecturesGrouped = groupArrayByKey(lecturesSorted, 'startHour')
+  const section = makeContent(lecturesGrouped)
 
   const [modalData, setModalData] = useState<SpeakerType | null>(null)
 
@@ -155,28 +154,8 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
           <div className="agenda__header-title">{title}</div>
           <div className="agenda__header-subtitle">{subtitle}</div>
         </div>
-        <div className="agenda__rooms -desktop -first">Sala pierwsza</div>
-        <div className="agenda__rooms -mobile -first">
-          <span className="agenda__rooms-main">Sala pierwsza</span>
-          <span className="agenda__rooms-second">Sala druga</span>
-        </div>
         <div className="agenda__lectures">
-          <AgendaSection handleModalToggle={handleModalToggle} section={firstSection} speakers={speakers} />
-          <div className="agenda__rooms -desktop">
-            <div className="agenda__rooms-hour"></div>
-            <div className="agenda__rooms-inner">
-              <span>Sala pierwsza</span>
-              <span>Sala druga</span>
-            </div>
-          </div>
-          <AgendaSection handleModalToggle={handleModalToggle} section={secondSection} speakers={speakers} />
-          <div className="agenda__rooms -desktop">
-            <div className="agenda__rooms-hour"></div>
-            <div className="agenda__rooms-inner">
-              <span>Sala pierwsza</span>
-            </div>
-          </div>
-          <AgendaSection handleModalToggle={handleModalToggle} section={thirdSection} speakers={speakers} />
+          <AgendaSection handleModalToggle={handleModalToggle} section={section} speakers={speakers} />
         </div>
         <Modal className="-lecture" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
           <LectureDetails
