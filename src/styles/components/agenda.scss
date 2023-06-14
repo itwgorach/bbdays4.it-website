@@ -224,24 +224,17 @@
         .agenda__lecture-content {
           &.-primary {
             background-color: #2D8252;
-          }
-    
-          &.-secondary {
-            background-color: #CE7D32;
-          }
-    
-          &.-dark {
-            background-color: #143740;
+
+            .agenda__lecture-title {
+              font-weight: $font-weight-extra-bold;
+            }
+            
+            .agenda__lecture-subtitle {
+              font-weight: $font-weight-semi-bold;
+            }
           }
         }
 
-        .agenda__lecture-title {
-          font-weight: $font-weight-extra-bold;
-        }
-        
-        .agenda__lecture-subtitle {
-          font-weight: $font-weight-semi-bold;
-        }
       }
 
       &.-main, &.-second {
