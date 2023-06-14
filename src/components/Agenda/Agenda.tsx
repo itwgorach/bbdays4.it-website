@@ -3,7 +3,7 @@ import React, { FC, useState } from 'react'
 import { Waypoint } from 'react-waypoint'
 import { useActiveLink } from 'contexts/ActiveLinkContext'
 import { AgendaType, SpeakerType } from 'types'
-import { getSpeaker, groupArrayByKey, makeContent } from 'utils/agendaDataProcessing'
+import { getSpeaker } from 'utils/agendaDataProcessing'
 import { navigate } from 'gatsby'
 import LectureDetails from './LectureDetails'
 import AgendaSection from './AgendaSection'
@@ -30,9 +30,6 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     })
 
   const lecturesWithSpeakersOnly = lecturesSorted.filter((lecture) => lecture.subtitle)
-
-  const lecturesGrouped = groupArrayByKey(lecturesSorted, 'startHour')
-  const section = makeContent(lecturesGrouped)
 
   const [modalData, setModalData] = useState<SpeakerType | null>(null)
 
@@ -155,7 +152,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
           <div className="agenda__header-subtitle">{subtitle}</div>
         </div>
         <div className="agenda__lectures">
-          <AgendaSection handleModalToggle={handleModalToggle} section={section} speakers={speakers} />
+          <AgendaSection handleModalToggle={handleModalToggle} lectures={lecturesSorted} speakers={speakers} />
         </div>
         <Modal className="-lecture" handleToggle={handleModalToggle} isOpen={isModalOpen} title={title}>
           <LectureDetails
