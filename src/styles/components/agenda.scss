@@ -220,22 +220,21 @@
     }
 
     @include media-breakpoint-up(md) {
-      &:hover {
-        .agenda__lecture-content {
-          &.-primary {
-            background-color: #2D8252;
+      // &:hover {
+      //   .agenda__lecture-content {
+      //     &.-primary {
+      //       background-color: #2D8252;
 
-            .agenda__lecture-title {
-              font-weight: $font-weight-extra-bold;
-            }
+      //       .agenda__lecture-title {
+      //         font-weight: $font-weight-extra-bold;
+      //       }
             
-            .agenda__lecture-subtitle {
-              font-weight: $font-weight-semi-bold;
-            }
-          }
-        }
-
-      }
+      //       .agenda__lecture-subtitle {
+      //         font-weight: $font-weight-semi-bold;
+      //       }
+      //     }
+      //   }
+      // }
 
       &.-main, &.-second {
         &::after {
@@ -344,7 +343,7 @@
       
       &.-primary {
         background-color: $color-primary;
-        cursor: pointer;
+        // cursor: pointer;
       }
 
       &.-secondary {
