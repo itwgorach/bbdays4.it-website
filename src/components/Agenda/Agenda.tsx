@@ -16,15 +16,15 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
   const lecturesSorted =
     Array.isArray(lectures) &&
     lectures.sort((a, b) => {
-      const hourA = parseInt(a.startHour.substring(0, 2))
-      const hourB = parseInt(b.startHour.substring(0, 2))
+      const hourA = parseInt(a.startHour.split(':')[0])
+      const hourB = parseInt(b.startHour.split(':')[0])
 
       if (hourA !== hourB) {
         return hourA - hourB
       }
 
-      const minuteA = parseInt(a.startHour.substring(3, 5))
-      const minuteB = parseInt(b.startHour.substring(3, 5))
+      const minuteA = parseInt(a.startHour.split(':')[1])
+      const minuteB = parseInt(b.startHour.split(':')[1])
 
       return minuteA - minuteB
     })
