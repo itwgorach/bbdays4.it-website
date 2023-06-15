@@ -18,10 +18,10 @@ const linksData: LinkDesktopProps[] = [
   //   name: 'Harmonogram',
   //   path: '#harmonogram',
   // },
-  // {
-  //   name: 'Agenda ATH',
-  //   path: '#agenda',
-  // },
+  {
+    name: 'Agenda ATH',
+    path: '#agenda',
+  },
   {
     name: 'Festiwal w liczbach',
     path: '#festiwal_w_liczbach',
