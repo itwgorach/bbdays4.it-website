@@ -10,10 +10,10 @@ const linksData: LinkDesktopProps[] = [
     name: 'Dołącz do nas',
     path: '#dolaczdonas',
   },
-  // {
-  //   name: 'Prelegenci',
-  //   path: '#prelegenci',
-  // },
+  {
+    name: 'Prelegenci',
+    path: '#prelegenci',
+  },
   // {
   //   name: 'Harmonogram',
   //   path: '#harmonogram',
@@ -50,10 +50,10 @@ const linksData: LinkDesktopProps[] = [
 ]
 
 const linksDataMobile: LinkType[] = [
-  // {
-  //   name: 'Prelegenci',
-  //   path: '#prelegenci',
-  // },
+  {
+    name: 'Prelegenci',
+    path: '#prelegenci',
+  },
   // {
   //   name: 'Harmonogram',
   //   path: '#harmonogram',
