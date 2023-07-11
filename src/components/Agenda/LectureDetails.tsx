@@ -36,6 +36,9 @@ const LectureDetails: FC<ModalType> = ({
 }) => {
   const [copyAlertVisible, setCopyAlertVisible] = useState(false)
 
+  const firstNameTrimmed = firstName?.trim()
+  const lastNameTrimmed = lastName?.trim()
+
   const getClassesWithColor = (baseClass: string) => {
     const classes = cx(baseClass, {
       [`-${backgroundColor}`]: backgroundColor,
@@ -60,7 +63,7 @@ const LectureDetails: FC<ModalType> = ({
   })
 
   const generateUrlToCopy = () => {
-    const speakerName = `${firstName}-${lastName}`.toLocaleLowerCase()
+    const speakerName = `${firstNameTrimmed}-${lastNameTrimmed}`.toLocaleLowerCase()
 
     return `${location.origin}/?lecture=${speakerName}#agenda`
   }
@@ -80,11 +83,11 @@ const LectureDetails: FC<ModalType> = ({
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === 'ArrowRight' && nextLecture) {
-        handleNextLectureClick(`${firstName} ${lastName}`)
+        handleNextLectureClick(`${firstNameTrimmed} ${lastNameTrimmed}`)
       }
 
       if (event.code === 'ArrowLeft' && prevLecture) {
-        handlePrevLectureClick(`${firstName} ${lastName}`)
+        handlePrevLectureClick(`${firstNameTrimmed} ${lastNameTrimmed}`)
       }
     }
 
@@ -93,7 +96,7 @@ const LectureDetails: FC<ModalType> = ({
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [firstName, lastName])
+  }, [firstNameTrimmed, lastNameTrimmed])
 
   return (
     <>
@@ -104,12 +107,12 @@ const LectureDetails: FC<ModalType> = ({
         <div className="lecture-details__description">
           <div className={getClassesWithColor('lecture-details__description-speaker')}>
             <div className="lecture-details__speaker-position">{position}</div>
-            <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
+            <div className="lecture-details__speaker-name">{`${firstNameTrimmed} ${lastNameTrimmed}`}</div>
           </div>
           <div className="lecture-details__header">
             <div className="lecture-details__header-text">
               <DateIcon />
-              <span>10 września 2022</span>
+              <span>16 września 2023</span>
             </div>
             <div className="lecture-details__header-text">
               <ClockIcon />
@@ -167,9 +170,9 @@ const LectureDetails: FC<ModalType> = ({
               </a>
             )}
           </div>
-          <Image alt={`${firstName} ${lastName}`} url={photo && photo.url} />
+          <Image alt={`${firstNameTrimmed} ${lastNameTrimmed}`} url={photo && photo.url} />
           <div className="lecture-details__speaker-info">
-            <div className="lecture-details__speaker-name">{`${firstName} ${lastName}`}</div>
+            <div className="lecture-details__speaker-name">{`${firstNameTrimmed} ${lastNameTrimmed}`}</div>
             <div className="lecture-details__speaker-position">{position}</div>
           </div>
         </div>
@@ -177,7 +180,7 @@ const LectureDetails: FC<ModalType> = ({
       <div className="lecture-details__navigation">
         <button
           className={getPrevButtonClasses}
-          onClick={prevLecture ? () => handlePrevLectureClick(`${firstName} ${lastName}`) : undefined}>
+          onClick={prevLecture ? () => handlePrevLectureClick(`${firstNameTrimmed} ${lastNameTrimmed}`) : undefined}>
           <div className="lecture-details__arrow">
             <ArrowButtonIconLong className="-left -long" />
             <ArrowButtonIconShort className="-left -short" />
@@ -189,7 +192,7 @@ const LectureDetails: FC<ModalType> = ({
         </button>
         <button
           className={getNextButtonClasses}
-          onClick={nextLecture ? () => handleNextLectureClick(`${firstName} ${lastName}`) : undefined}>
+          onClick={nextLecture ? () => handleNextLectureClick(`${firstNameTrimmed} ${lastNameTrimmed}`) : undefined}>
           <div className="lecture-details__next-text">
             <span className="lecture-details__next-direction">Dalej</span>
             <span className="lecture-details__next-name">{nextLecture}</span>
