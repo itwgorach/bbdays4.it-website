@@ -26,7 +26,6 @@ const LectureDetails: FC<ModalType> = ({
   title,
   twitterUrl,
   hour,
-  room,
   handleModalToggle,
   handlePrevLectureClick,
   handleNextLectureClick,
@@ -66,10 +65,6 @@ const LectureDetails: FC<ModalType> = ({
     const speakerName = `${firstNameTrimmed}-${lastNameTrimmed}`.toLocaleLowerCase()
 
     return `${location.origin}/?lecture=${speakerName}#agenda`
-  }
-
-  const getRoom = (room: number) => {
-    return room === 1 ? 'Sala pierwsza ATH' : 'Sala druga ATH'
   }
 
   const handleCopyClick = () => {
@@ -116,9 +111,7 @@ const LectureDetails: FC<ModalType> = ({
             </div>
             <div className="lecture-details__header-text">
               <ClockIcon />
-              <span>
-                {hour} - {getRoom(room)}
-              </span>
+              <span>{hour}</span>
             </div>
           </div>
           <div className={getClassesWithColor('lecture-details__title')}>{title}</div>
@@ -144,13 +137,11 @@ const LectureDetails: FC<ModalType> = ({
           <div className="lecture-details__header -desktop">
             <div className="lecture-details__header-text">
               <DateIcon />
-              <span>10 września 2022</span>
+              <span>16 września 2023</span>
             </div>
             <div className="lecture-details__header-text">
               <ClockIcon />
-              <span>
-                {hour} - {getRoom(room)}
-              </span>
+              <span>{hour}</span>
             </div>
           </div>
           <div className="lecture-details__speaker-socials">
