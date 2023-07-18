@@ -33,7 +33,6 @@
     }
 
     &__subtitle {
-        @include maxTextLines(4);
         font-size: $font-size-base-xs;
         font-weight: $font-weight-semi-bold;
         line-height: 22px;
@@ -138,6 +137,12 @@
         font-size: $font-size-base-xs;
         letter-spacing: 0.75px;
         font-family: $font-family-body;
+    }
+
+    @include media-breakpoint-down(md) {
+        &__subtitle {
+            @include maxTextLines(4)
+        }
     }
 
     @include media-breakpoint-up(lg) {
