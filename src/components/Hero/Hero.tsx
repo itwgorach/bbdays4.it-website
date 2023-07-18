@@ -95,19 +95,20 @@ const Hero: FC<BaseHeroType> = ({
           {footer && (
             <div className="hero__content-footer">
               <div>{footer}</div>
-              {isDesktop ? (
+              {isDesktop && (
                 <div className="hero__content-footer-icons">
                   {socialLinks.map(({ href, Icon, name }) => (
                     <a key={href} href={href} rel="noopener noreferrer" target="_blank">
-                      <Icon />
+                      <Icon className={`hero__content-footer-icon -${name}`} />
                     </a>
                   ))}
                 </div>
-              ) : (
+              )}
+              {/* ) : (
                 <a className="hero__content-footer-button" href={c4pUrl} rel="noopener noreferrer" target="_blank">
                   Zostań prelegentem
                 </a>
-              )}
+              )} */}
             </div>
           )}
         </div>
