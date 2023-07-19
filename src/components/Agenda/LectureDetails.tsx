@@ -161,7 +161,11 @@ const LectureDetails: FC<ModalType> = ({
               </a>
             )}
           </div>
-          <Image alt={`${firstNameTrimmed} ${lastNameTrimmed}`} url={photo && photo.url} />
+          <Image
+            alt={`${firstNameTrimmed} ${lastNameTrimmed}`}
+            style={{ maxHeight: '480px', minWidth: 'unset' }}
+            url={photo && photo.url}
+          />
           <div className="lecture-details__speaker-info">
             <div className="lecture-details__speaker-name">{`${firstNameTrimmed} ${lastNameTrimmed}`}</div>
             <div className="lecture-details__speaker-position">{position}</div>

@@ -108,10 +108,6 @@
           @include media-breakpoint-up(md) {
             margin-bottom: $m-2xl;
           }
-    
-          @include media-breakpoint-up(xl) {
-            margin-bottom: 15vh;
-          }
         }
     
         &-footer {
@@ -121,16 +117,77 @@
           gap: $m-base;
           font-family: $font-face-body;
           font-size: $font-size-base;
-          font-weight: $font-weight-extra-bold;
+          font-weight: $font-weight-semi-bold;
+          letter-spacing: 1px;
     
           &-icons {
             justify-content: center;
             display: flex;
             gap: $m-sm;
-    
-            svg {
-              width: $icon-size-xs;
-              height: $icon-size-xs;
+          }
+          
+          &-icon {
+            width: $icon-size-sm;
+            height: $icon-size-sm;
+            
+            path {
+              transition: fill $transition-duration, stroke $transition-duration;
+            }
+            
+            &:hover {
+              &.-facebook {
+                path {
+                  &:first-of-type {
+                    fill: $color-secondary;
+                  }
+        
+                  &:last-of-type {
+                    stroke: $color-secondary;
+                  }
+                }
+              }
+        
+              &.-instagram {
+                path {
+                  &:first-of-type {
+                    fill: $color-secondary;
+                  }
+        
+                  &:nth-last-of-type(-n+3) {
+                    stroke: $color-secondary;
+                  }
+                }
+              }
+        
+              &.-linkedin {
+                path {
+                  stroke: $color-secondary;
+        
+                  &:nth-last-of-type(2) {
+                      fill: $color-secondary;
+                  }
+                }
+              }
+        
+              &.-twitter {
+                path {
+                  stroke: $color-secondary;
+        
+                  &:last-of-type {
+                      fill: $color-secondary;
+                  }
+                }
+              }
+        
+              &.-youtube {
+                path {
+                  stroke: $color-secondary;
+        
+                  &:last-of-type {
+                      fill: $color-secondary;
+                  }
+                }
+              }
             }
           }
 

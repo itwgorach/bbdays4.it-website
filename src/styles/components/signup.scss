@@ -5,6 +5,14 @@
   flex-wrap: wrap;
   justify-content: center;
   scroll-margin-top: $scroll-margin-base;
+
+  &:hover {
+    .signup__banner-icon {
+     &.-desktop {
+       transform: translateX(0);
+     }
+   }
+ }
   
   @include media-breakpoint-up(xl) {
     background-color: $color-primary;
@@ -56,14 +64,6 @@
         transform: translate(-50%, 50%);
         width: 2px;
         z-index: $z-low;
-      }
-    }
-
-    &:hover {
-      .signup__banner-icon {
-        &.-desktop {
-          transform: translateX(0);
-        }
       }
     }
 

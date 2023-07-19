@@ -45,7 +45,7 @@
       &::before {
         position: absolute;
         content: '';
-        top: calc($icon-size-lg / -2 - $m-sm);
+        top: -$m-md;
         width: 100%;
         height: 4px;
         background-color: rgba($color-white, 0.8);
