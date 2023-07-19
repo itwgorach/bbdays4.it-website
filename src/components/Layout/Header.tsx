@@ -14,10 +14,10 @@ const linksData: LinkDesktopProps[] = [
     name: 'Prelegenci',
     path: '#prelegenci',
   },
-  // {
-  //   name: 'Harmonogram',
-  //   path: '#harmonogram',
-  // },
+  {
+    name: 'Harmonogram',
+    path: '#harmonogram',
+  },
   {
     name: 'Agenda ATH',
     path: '#agenda',
