@@ -49,6 +49,8 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
           return (
             ((eventStartHour >= eStartHour && eventStartHour <= eEndHour) ||
               (eventEndHour >= eStartHour && eventEndHour <= eEndHour)) &&
+            eventStartHour !== eEndHour &&
+            eventEndHour !== eStartHour &&
             event.date === e.date
           )
         })

@@ -24,6 +24,9 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
   const endHourIndex = eventHours.findIndex((hour) => hour.split(':')[0] === endHour?.split(':')[0])
   const endGridColumn = (endHourIndex === -1 ? eventHours.length * 2 : endHourIndex * 2) + 1
 
+  const startGridColumnWithMinutes = parseInt(startHour.split(':')[1]) > 0 ? startGridColumn + 1 : startGridColumn
+  const endGridColumnWithMinutes = parseInt(endHour.split(':')[1]) > 0 ? endGridColumn + 1 : endGridColumn
+
   const isOneHourLong = (endGridColumn - startGridColumn) / 2 === 1
   const shouldDisplayLogo = !(isOneHourLong && isConcurrent) && logo
 
@@ -40,7 +43,9 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
           rel="noopener noreferrer"
           style={{
             backgroundColor: backgroundColor,
-            gridColumn: `${startGridColumn} / ${endGridColumn}`,
+            ...(isConcurrent
+              ? { gridColumn: `${startGridColumn} / ${endGridColumn}` }
+              : { gridColumn: `${startGridColumnWithMinutes} / ${endGridColumnWithMinutes}` }),
           }}
           target="_blank">
           {displayTitleOnDesktop && <div className="schedule-desktop__grid-events-event-title">{title}</div>}
@@ -51,7 +56,9 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
           className={eventClasses}
           style={{
             backgroundColor: backgroundColor,
-            gridColumn: `${startGridColumn} / ${endGridColumn}`,
+            ...(isConcurrent
+              ? { gridColumn: `${startGridColumn} / ${endGridColumn}` }
+              : { gridColumn: `${startGridColumnWithMinutes} / ${endGridColumnWithMinutes}` }),
           }}>
           {displayTitleOnDesktop && <div className="schedule-desktop__grid-events-event-title">{title}</div>}
           {shouldDisplayLogo && <img alt="Logo" className="schedule-desktop__grid-events-event-logo" src={logo.url} />}
