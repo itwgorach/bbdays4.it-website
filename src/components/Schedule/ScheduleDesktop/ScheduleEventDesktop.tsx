@@ -8,6 +8,7 @@ type ScheduleEventType = {
   gridColumnNumber: number,
   isConcurrent: boolean,
   startParentGridColumn: number,
+  isParentStartWithMinutes: boolean,
 }
 
 const ScheduleEventDesktop: FC<ScheduleEventType> = ({
@@ -15,6 +16,7 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
   gridColumnNumber,
   isConcurrent,
   startParentGridColumn,
+  isParentStartWithMinutes,
 }) => {
   const eventHours = Hours.slice(startParentGridColumn / 2 - 1, (startParentGridColumn + gridColumnNumber) / 2)
 
@@ -26,6 +28,14 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
 
   const startGridColumnWithMinutes = parseInt(startHour.split(':')[1]) > 0 ? startGridColumn + 1 : startGridColumn
   const endGridColumnWithMinutes = parseInt(endHour.split(':')[1]) > 0 ? endGridColumn + 1 : endGridColumn
+
+  const startGridColumnRelativeToParent = isParentStartWithMinutes
+    ? startGridColumnWithMinutes - 1
+    : startGridColumnWithMinutes
+
+  const endGridColumnRelativeToParent = isParentStartWithMinutes
+    ? endGridColumnWithMinutes - 1
+    : endGridColumnWithMinutes
 
   const isOneHourLong = (endGridColumn - startGridColumn) / 2 === 1
   const shouldDisplayLogo = !(isOneHourLong && isConcurrent) && logo
@@ -43,9 +53,7 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
           rel="noopener noreferrer"
           style={{
             backgroundColor: backgroundColor,
-            ...(isConcurrent
-              ? { gridColumn: `${startGridColumn} / ${endGridColumn}` }
-              : { gridColumn: `${startGridColumnWithMinutes} / ${endGridColumnWithMinutes}` }),
+            gridColumn: `${startGridColumnRelativeToParent} / ${endGridColumnRelativeToParent}`,
           }}
           target="_blank">
           {displayTitleOnDesktop && <div className="schedule-desktop__grid-events-event-title">{title}</div>}
@@ -56,9 +64,7 @@ const ScheduleEventDesktop: FC<ScheduleEventType> = ({
           className={eventClasses}
           style={{
             backgroundColor: backgroundColor,
-            ...(isConcurrent
-              ? { gridColumn: `${startGridColumn} / ${endGridColumn}` }
-              : { gridColumn: `${startGridColumnWithMinutes} / ${endGridColumnWithMinutes}` }),
+            gridColumn: `${startGridColumnRelativeToParent} / ${endGridColumnRelativeToParent}`,
           }}>
           {displayTitleOnDesktop && <div className="schedule-desktop__grid-events-event-title">{title}</div>}
           {shouldDisplayLogo && <img alt="Logo" className="schedule-desktop__grid-events-event-logo" src={logo.url} />}

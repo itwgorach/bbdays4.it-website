@@ -5,31 +5,22 @@ import cx from 'classnames'
 
 import ScheduleEventDesktop from './ScheduleEventDesktop'
 
-const areArraysEqual = (
-  arr1: GatsbyTypes.Maybe<GatsbyTypes.STRAPI_EVENT>[],
-  arr2: GatsbyTypes.Maybe<GatsbyTypes.STRAPI_EVENT>[],
-): boolean => {
-  if (arr1.length !== arr2.length) return false
-  for (let i = 0; i < arr1.length; i++) {
-    if (JSON.stringify(arr1[i]) !== JSON.stringify(arr2[i])) {
-      return false
-    }
-  }
-  return true
-}
+const areTimeRangesConcurrent = (
+  range1Start: string | undefined,
+  range1End: string | undefined,
+  range2Start: string | undefined,
+  range2End: string | undefined,
+) => {
+  const startTime1 = new Date(`2000-01-01T${range1Start}:00`)
+  const endTime1 = new Date(`2000-01-01T${range1End}:00`)
+  const startTime2 = new Date(`2000-01-01T${range2Start}:00`)
+  const endTime2 = new Date(`2000-01-01T${range2End}:00`)
 
-const removeDuplicatedChildArrays = (
-  parentArray: GatsbyTypes.Maybe<GatsbyTypes.STRAPI_EVENT>[][],
-): GatsbyTypes.Maybe<GatsbyTypes.STRAPI_EVENT>[][] => {
-  const uniqueChildArrays: GatsbyTypes.Maybe<GatsbyTypes.STRAPI_EVENT>[][] = []
-
-  for (const childArray of parentArray) {
-    if (!uniqueChildArrays.some((arr) => areArraysEqual(arr, childArray))) {
-      uniqueChildArrays.push(childArray)
-    }
+  if ((startTime1 <= startTime2 && startTime2 < endTime1) || (startTime2 <= startTime1 && startTime1 < endTime2)) {
+    return true
   }
 
-  return uniqueChildArrays
+  return false
 }
 
 const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
@@ -38,26 +29,28 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
     return { hour: parseInt(hourNumber), minutes: parseInt(minutesNumber) }
   }
 
-  const eventsContent = events?.length
-    ? events.map((event) => {
-        return events.filter((e) => {
-          const { hour: eventStartHour } = getHourAndMinutesFromString(event.startHour)
-          const { hour: eStartHour } = getHourAndMinutesFromString(e.startHour)
-          const { hour: eventEndHour } = getHourAndMinutesFromString(event.endHour)
-          const { hour: eEndHour } = getHourAndMinutesFromString(e.endHour)
+  const eventsContent =
+    events?.length &&
+    events?.reduce((accumulator, currentValue) => {
+      const currInAcc = accumulator.some((arr) => arr.some((a) => a.id === currentValue.id))
 
-          return (
-            ((eventStartHour >= eStartHour && eventStartHour <= eEndHour) ||
-              (eventEndHour >= eStartHour && eventEndHour <= eEndHour)) &&
-            eventStartHour !== eEndHour &&
-            eventEndHour !== eStartHour &&
-            event.date === e.date
-          )
-        })
-      })
-    : []
+      if (currInAcc) return accumulator
 
-  const uniqueEventsContent = removeDuplicatedChildArrays(eventsContent)
+      const newArr = events.filter(
+        (e) =>
+          areTimeRangesConcurrent(currentValue?.startHour, currentValue?.endHour, e?.startHour, e?.endHour) &&
+          currentValue.date === e.date &&
+          currentValue.id !== e.id,
+      )
+
+      if (newArr.length > 0) {
+        accumulator.push([currentValue, ...newArr])
+        return accumulator
+      } else {
+        accumulator.push([currentValue])
+        return accumulator
+      }
+    }, [])
 
   const getEarlierHour = (event) => {
     return event.reduce((a, b) => {
@@ -116,8 +109,8 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
             </div>
           ))}
         </div>
-        {uniqueEventsContent?.length > 0 &&
-          uniqueEventsContent.map((eventDay) => {
+        {eventsContent?.length > 0 &&
+          eventsContent.map((eventDay) => {
             const earlierStartHour = getEarlierHour(eventDay)
             const laterEndHour = getLaterHour(eventDay)
 
@@ -157,7 +150,7 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
 
             return (
               <div
-                key={uniqueEventsContent.indexOf(eventDaySorted)}
+                key={eventsContent.indexOf(eventDaySorted)}
                 className="schedule-desktop__grid-events"
                 style={{
                   gridColumn: `${startGridColumnWithMinutes} / ${endGridColumnWithMinutes}`,
@@ -174,6 +167,7 @@ const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
                       event={event}
                       gridColumnNumber={gridColumnNumber}
                       isConcurrent={isConcurrent}
+                      isParentStartWithMinutes={earlierStartMinutesNumber > 0}
                       startParentGridColumn={startGridColumnWithMinutes}
                     />
                   )
