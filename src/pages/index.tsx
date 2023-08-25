@@ -162,6 +162,7 @@ export const query = graphql`
                   strapi_component
                   isSectionVisible
                   events {
+                      id
                       title
                       startHour
                       endHour
