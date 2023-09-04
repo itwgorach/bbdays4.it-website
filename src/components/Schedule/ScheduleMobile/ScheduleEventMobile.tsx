@@ -1,6 +1,8 @@
 import React from 'react'
 
-const ScheduleEventMobile = ({ bgColor, endHour, link, startHour, title }) => {
+const ScheduleEventMobile = ({ bgColor, endHour, link, startHour, title, logo }) => {
+  const shouldDisplayLogo = title.length === 0
+
   return (
     <>
       {link ? (
@@ -10,14 +12,22 @@ const ScheduleEventMobile = ({ bgColor, endHour, link, startHour, title }) => {
           rel="noopener noreferrer"
           style={{ backgroundColor: bgColor }}
           target="_blank">
-          <div className="schedule-mobile__grid-event-title">{title}</div>
+          {shouldDisplayLogo ? (
+            <img alt="Logo" className="schedule-mobile__grid-event-logo" src={logo.url} />
+          ) : (
+            <div className="schedule-mobile__grid-event-title">{title}</div>
+          )}
           <div className="schedule-mobile__grid-event-hours">
             {startHour} - {endHour}
           </div>
         </a>
       ) : (
         <div className="schedule-mobile__grid-event" style={{ backgroundColor: bgColor }}>
-          <div className="schedule-mobile__grid-event-title">{title}</div>
+          {shouldDisplayLogo ? (
+            <img alt="Logo" className="schedule-mobile__grid-event-logo" src={logo.url} />
+          ) : (
+            <div className="schedule-mobile__grid-event-title">{title}</div>
+          )}
           <div className="schedule-mobile__grid-event-hours">
             {startHour} - {endHour}
           </div>
