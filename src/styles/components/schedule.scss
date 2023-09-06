@@ -136,6 +136,7 @@
                         font-weight: $font-weight-bold;
                         font-size: $font-size-sm;
                         text-align: center;
+                        padding-inline: $m-sm;
                     }
                     
                     &-logo {
@@ -285,6 +286,10 @@
                     color: $color-white;
                     font-size: $font-size-sm;
                     font-weight: $font-weight-bold;
+                }
+
+                &-logo {
+                    max-height: 40%;
                 }
                 
                 &-hours {

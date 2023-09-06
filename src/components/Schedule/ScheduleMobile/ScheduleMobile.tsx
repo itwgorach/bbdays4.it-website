@@ -36,6 +36,7 @@ const ScheduleMobile: FC<ScheduleType> = ({ scheduleTitle, events }) => {
                       bgColor={event.backgroundColor}
                       endHour={event.endHour}
                       link={event.link}
+                      logo={event.logo}
                       startHour={event.startHour}
                       title={event.title}
                     />

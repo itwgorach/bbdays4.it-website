@@ -54,10 +54,14 @@ const linksDataMobile: LinkType[] = [
     name: 'Prelegenci',
     path: '#prelegenci',
   },
-  // {
-  //   name: 'Harmonogram',
-  //   path: '#harmonogram',
-  // },
+  {
+    name: 'Harmonogram',
+    path: '#harmonogram',
+  },
+  {
+    name: 'Agenda',
+    path: '#agenda',
+  },
   {
     name: 'Festiwal w liczbach',
     path: '#festiwal_w_liczbach',
