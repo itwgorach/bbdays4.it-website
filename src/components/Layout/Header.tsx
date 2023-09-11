@@ -19,7 +19,7 @@ const linksData: LinkDesktopProps[] = [
     path: '#harmonogram',
   },
   {
-    name: 'Agenda ATH',
+    name: 'Agenda UBB',
     path: '#agenda',
   },
   {

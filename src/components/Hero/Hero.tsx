@@ -5,6 +5,7 @@ import React, { FC, useState } from 'react'
 
 import { BaseHeroType } from 'types'
 import { useMediaQuery } from 'react-responsive'
+import LiveBanner from 'components/LiveBanner/LiveBanner'
 import { BackgroundVideo } from './BackgroundVideo'
 import VideoMode from './VideoMode'
 
@@ -64,6 +65,7 @@ const Hero: FC<BaseHeroType> = ({
     <div
       className={heroClasses}
       style={{ backgroundColor: backgroundColor, backgroundImage: `url(${backgroundImage?.url}` }}>
+      <LiveBanner />
       {showVideoOverlay && (
         <VideoMode
           showOverlay={showVideoOverlay}
