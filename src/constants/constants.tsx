@@ -135,24 +135,16 @@ export const ScheduleWeek = [
 
 export const YoutubeLinks = [
   {
-    date: 12,
-    href: 'https://www.youtube.com/watch?v=kGxJ9mQ_QJw',
-  },
-  {
-    date: 13,
-    href: 'https://www.youtube.com/watch?v=IF69Ydv9sNQ',
-  },
-  {
-    date: 14,
-    href: 'https://www.youtube.com/watch?v=MojemUvWCYs',
+    date: 11,
+    href: 'https://www.youtube.com/watch?v=zIo-gbbqBNc',
   },
   {
     date: 15,
-    href: 'https://www.youtube.com/watch?v=MhCoRQ-vvbc',
+    href: 'https://www.youtube.com/watch?v=Qvl34ShRqQM',
   },
   {
-    date: 16,
-    href: 'https://www.youtube.com/watch?v=hpd3NEP_M7Q',
+    date: 18,
+    href: 'https://www.youtube.com/watch?v=rzK6SycV1UM',
   },
 ]
 

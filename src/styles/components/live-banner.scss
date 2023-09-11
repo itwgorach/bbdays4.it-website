@@ -10,19 +10,21 @@
   padding: $m-sm 18px;
   position: absolute;
   text-decoration: none;
-  top: 10%;
+  top: $m-xs;
   transform: translateX(-50%);
   width: 288px;
+  z-index: $z-higher;
 
   &.-hidden {
     display: none;
   }
   
   @include media-breakpoint-between(md, lg) {
+    top: $m-md;
     width: 320px;
   }
   
-  @include media-breakpoint-between(lg, xl) {
+  @include media-breakpoint-up(lg) {
     @include dashedBorder(true, top, $color-white);
 
     height: 200px;
@@ -63,7 +65,7 @@
     right: 0;
 
     @include media-breakpoint-up(lg) {
-      @include dashedBorder(false, bottom, $color-white);
+      @include dashedBorder(true, bottom, $color-white);
 
       border: none;
       bottom: 0;
