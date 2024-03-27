@@ -10,18 +10,18 @@ const linksData: LinkDesktopProps[] = [
     name: 'Dołącz do nas',
     path: '#dolaczdonas',
   },
-  {
-    name: 'Prelegenci',
-    path: '#prelegenci',
-  },
-  {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
-  {
-    name: 'Agenda UBB',
-    path: '#agenda',
-  },
+  // {
+  //   name: 'Prelegenci',
+  //   path: '#prelegenci',
+  // },
+  // {
+  //   name: 'Harmonogram',
+  //   path: '#harmonogram',
+  // },
+  // {
+  //   name: 'Agenda UBB',
+  //   path: '#agenda',
+  // },
   {
     name: 'Festiwal w liczbach',
     path: '#festiwal_w_liczbach',
@@ -42,11 +42,11 @@ const linksData: LinkDesktopProps[] = [
   //   name: 'Edycja 2019',
   //   path: 'https://2019.bbdays4.it/',
   // },
-  // {
-  //   name: 'Zostań prelegentem',
-  //   path: c4pUrl,
-  //   special: true,
-  // },
+  {
+    name: 'Zostań prelegentem',
+    path: c4pUrl,
+    special: true,
+  },
 ]
 
 const linksDataMobile: LinkType[] = [
