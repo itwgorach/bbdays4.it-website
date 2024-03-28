@@ -32,7 +32,7 @@ const linksData: LinkDesktopProps[] = [
   },
   {
     name: 'Edycja 2023',
-    path: 'https://2023.bbdays4.it/',
+    path: 'https://65dc631182e2ae000866851a--bbdays4it.netlify.app/',
   },
   // {
   //   name: 'Edycja 2022',
