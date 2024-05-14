@@ -19,7 +19,7 @@
   "dependencies": {
     "@reach/dialog": "^0.17.0",
     "classnames": "^2.5.1",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.4.5",
     "gatsby": "^4.13.1",
     "gatsby-plugin-image": "^2.13.0",
     "gatsby-plugin-manifest": "^4.13.0",
@@ -41,7 +41,7 @@
     "react-markdown": "^8.0.3",
     "react-responsive": "^9.0.0-beta.8",
     "react-waypoint": "^10.3.0",
-    "sass": "^1.51.0",
+    "sass": "^1.77.1",
     "swiper": "^8.1.5"
   },
   "devDependencies": {
