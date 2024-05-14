@@ -61,7 +61,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "gatsby-plugin-root-import": "^2.0.8",
+    "gatsby-plugin-root-import": "^2.0.9",
     "prettier": "^2.6.2",
     "stylelint": "^14.8.2",
     "stylelint-config-prettier": "^9.0.5",
