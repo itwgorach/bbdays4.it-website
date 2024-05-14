@@ -63,7 +63,7 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "gatsby-plugin-root-import": "^2.0.9",
     "prettier": "^3.2.5",
-    "stylelint": "^14.8.2",
+    "stylelint": "^16.5.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-order": "^6.0.4",
