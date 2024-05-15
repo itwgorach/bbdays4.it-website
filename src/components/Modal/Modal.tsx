@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
-import { Dialog } from '@reach/dialog'
-import '@reach/dialog/styles.css'
+// import { Dialog } from '@reach/dialog'
+// import '@reach/dialog/styles.css'
 
 type ModalProps = {
   children: ReactNode,
