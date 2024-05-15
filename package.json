@@ -17,6 +17,7 @@
     "lint:style": "stylelint --fix \"src/**/*.scss\""
   },
   "dependencies": {
+    "@reach/dialog": "^0.18.0",
     "classnames": "^2.5.1",
     "dotenv": "^16.4.5",
     "gatsby": "^5.13.4",

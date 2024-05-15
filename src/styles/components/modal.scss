@@ -1,0 +1,13 @@
+.modal  {
+    &__
+    &__dialog{
+        // background-color: red;
+        display: flex;
+        top: 0;
+        margin: 25px;
+        z-index: 51;
+        max-height: 90vh;
+        overflow-y: scroll;
+    }
+    
+}

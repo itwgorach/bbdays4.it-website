@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
-// import { Dialog } from '@reach/dialog'
-// import '@reach/dialog/styles.css'
+import { Dialog } from '@reach/dialog'
+import '@reach/dialog/styles.css'
 
 type ModalProps = {
   children: ReactNode,
@@ -12,8 +12,12 @@ type ModalProps = {
 
 const Modal = ({ children, handleToggle, title, isOpen, className }: ModalProps) => {
   return (
-    <h1>Modal</h1>
-    // <Dialog allowPinchZoom aria-label={title} className={className} isOpen={isOpen} onDismiss={handleToggle}>
+    <>
+      <dialog className="modal__dialog" open={!isOpen}>
+        {children}
+      </dialog>
+    </>
+    // <Dialog allowPinchZoom aria-label={title} className={className} isOpen={!isOpen} onDismiss={handleToggle}>
     //   {children}
     // </Dialog>
   )
