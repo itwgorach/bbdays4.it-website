@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Dialog } from '@reach/dialog'
-import '@reach/dialog/styles.css'
+import ReactModal from 'react-modal'
 
 type ModalProps = {
   children: ReactNode,
@@ -10,16 +9,13 @@ type ModalProps = {
   className: string,
 }
 
-const Modal = ({ children, handleToggle, title, isOpen, className }: ModalProps) => {
+const Modal = ({ children, title, isOpen, className, handleToggle }: ModalProps) => {
   return (
     <>
-      <dialog className="modal__dialog" open={!isOpen}>
+      <ReactModal isOpen={isOpen} overlayClassName={'modal'} bodyOpenClassName={'modal__body-open'}>
         {children}
-      </dialog>
+      </ReactModal>
     </>
-    // <Dialog allowPinchZoom aria-label={title} className={className} isOpen={!isOpen} onDismiss={handleToggle}>
-    //   {children}
-    // </Dialog>
   )
 }
 

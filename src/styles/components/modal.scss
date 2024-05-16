@@ -1,13 +1,35 @@
-.modal  {
-    &__
-    &__dialog{
-        // background-color: red;
-        display: flex;
-        top: 0;
-        margin: 25px;
-        z-index: 51;
-        max-height: 90vh;
-        overflow-y: scroll;
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 55;
+  background-color: rgba(255, 255, 255, 0.75);
+
+  // Set on body when modal is open
+  &__body-open {
+    overflow: hidden !important;
     }
-    
+
+    &__btn{    
+    align-self: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    margin: 2px 2px 0 0;
+    outline: none;
+    padding: 0;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba($color-background, 0.9);
+    z-index: 5;
+    color: $color-dark;
+  }
 }
+
+
+
