@@ -13,21 +13,22 @@
     }
 
     &__btn{    
-    align-self: flex-end;
-    background: none;
-    border: none;
-    cursor: pointer;
-    height: 50px;
-    margin: 2px 2px 0 0;
-    outline: none;
-    padding: 0;
-    width: 50px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgba($color-background, 0.9);
-    z-index: 5;
-    color: $color-dark;
+      
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 50px;
+      width: 50px;
+      padding: 0;
+      margin: 2px 2px 0 0;
+      align-self: flex-end;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      background-color: rgba($color-background, 0.9);
+      color: $color-dark;
+      z-index: 5;
   }
 }
 

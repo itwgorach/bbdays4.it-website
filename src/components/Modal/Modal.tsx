@@ -3,13 +3,10 @@ import ReactModal from 'react-modal'
 
 type ModalProps = {
   children: ReactNode,
-  handleToggle?: () => void,
-  title: string,
   isOpen: boolean,
-  className: string,
 }
 
-const Modal = ({ children, title, isOpen, className, handleToggle }: ModalProps) => {
+const Modal = ({ children, isOpen }: ModalProps) => {
   return (
     <>
       <ReactModal isOpen={isOpen} overlayClassName={'modal'} bodyOpenClassName={'modal__body-open'}>
