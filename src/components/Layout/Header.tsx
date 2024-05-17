@@ -7,6 +7,10 @@ import DesktopHeader from './Headers/DesktopHeader'
 
 const linksData: LinkDesktopProps[] = [
   {
+    name: 'Nagrania',
+    path: 'videos',
+  },
+  {
     name: 'Prelegenci',
     path: '#prelegenci',
   },
@@ -46,6 +50,10 @@ const linksData: LinkDesktopProps[] = [
 ]
 
 const linksDataMobile: LinkType[] = [
+  {
+    name: 'Nagrania',
+    path: 'videos',
+  },
   {
     name: 'Prelegenci',
     path: '#prelegenci',
