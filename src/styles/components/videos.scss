@@ -1,6 +1,14 @@
-.video-controler {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;   
+.videos{
+    background-color: red;
 
+    &__controler {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+        
+        justify-content: center;  
+        
+        &-video {
+        }
+    }
 }
