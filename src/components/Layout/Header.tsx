@@ -7,10 +7,6 @@ import DesktopHeader from './Headers/DesktopHeader'
 
 const linksData: LinkDesktopProps[] = [
   {
-    name: 'Dołącz do nas',
-    path: '#dolaczdonas',
-  },
-  {
     name: 'Prelegenci',
     path: '#prelegenci',
   },
