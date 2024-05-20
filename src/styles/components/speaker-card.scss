@@ -12,6 +12,82 @@
 
     cursor: pointer;
 
+    &__modal{
+        overflow-y: scroll;
+        .primary {
+            background-color: $color-primary;
+        }
+
+        .secondary {
+            background-color: #f9ca3e;
+        }
+
+        .tertiary {
+            background-color: #f2933b;
+        }
+
+        &-biography {
+
+            &-spacing{
+
+                display: flex;
+                justify-content: space-between;
+            }
+            p{
+                margin: auto;
+                padding-left: 15px;
+
+            }
+
+            img {
+                max-width: 300px;
+            }
+        }
+
+
+        &-button {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        
+            &-close {
+              align-self: flex-end;
+              background: none;
+              border: none;
+              border: 1px solid $color-dark;
+              cursor: pointer;
+              height: 50px;
+              margin: 2px 2px 0 0;
+              outline: none;
+              padding: 0;
+              width: 50px;
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              background-color: rgba($color-background, 0.9);
+              z-index: 5;
+              color: $color-dark;
+              
+              @include media-breakpoint-up(md) {
+                // top: 5%;
+                // right: calc(5% + $m-sm);
+              }
+            }
+          }
+
+
+        &-text  {
+            font-size: 24px;
+            font-weight: $font-weight-extra-bold;
+            line-height: $line-height-md;
+    
+            margin: $m-xs 0 calc($m-xs * 2);
+    
+                font-family: $font-family-header;
+        }
+
+    }
+
     &__content {
         padding: $m-base;
         height: 250px;

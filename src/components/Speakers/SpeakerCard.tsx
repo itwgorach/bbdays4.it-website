@@ -6,7 +6,7 @@ import { getSpeakerFullName } from 'utils/getSpeakerFullName'
 
 import Image from 'components/Image'
 import Modal from 'components/Modal'
-import { LinkedinIcon, TwitterIcon, LinktrIcon } from 'components/icons'
+import { LinkedinIcon, TwitterIcon, LinktrIcon, CloseButtonIcon } from 'components/icons'
 
 type SpeakerCardProps = {
   speaker: SpeakerType,
@@ -15,7 +15,18 @@ type SpeakerCardProps = {
 const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
-  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, linktrUrl, position, backgroundColor } = speaker
+  const {
+    photo,
+    firstName,
+    lastName,
+    title,
+    linkedinUrl,
+    twitterUrl,
+    linktrUrl,
+    position,
+    backgroundColor,
+    description,
+  } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
 
@@ -28,8 +39,30 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
   }
   return (
     <div className="speaker-card" onClick={showModalFn}>
-      <Modal handleToggle={showModalFn} isOpen={showModal} title={title}>
-        <h1>Title</h1>
+      <Modal className="speaker-card__modal" handleToggle={showModalFn} isOpen={showModal} title={title}>
+        <button className="speaker-card__modal-button-close" onClick={showModalFn}>
+          <CloseButtonIcon />
+        </button>
+        <h4>{title}</h4>
+        <p>{description}</p>
+        <div className={`speaker-card__modal-biography ${backgroundColor}`}>
+          <div>
+            <div>
+              <div>
+                <div className="speaker-card__modal-name">{firstName}</div>
+                <div className="speaker-card__modal-name">{lastName}</div>
+              </div>
+              <p>{position}</p>
+            </div>
+            <p>Link</p>
+            <p>twitter</p>
+            <p>fb</p>
+          </div>
+          <div className="speaker-card__modal-biography-spacing">
+            <p>BIOGRAPHY------{description}</p>
+            <Image alt={fullName} url={imageUrl} />
+          </div>
+        </div>
       </Modal>
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">
