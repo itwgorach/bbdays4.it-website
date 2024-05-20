@@ -43,26 +43,26 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
         <button className="speaker-card__modal-button-close" onClick={showModalFn}>
           <CloseButtonIcon />
         </button>
-        <h4>{title}</h4>
-        <p>{description}</p>
+
         <div className={`speaker-card__modal-biography ${backgroundColor}`}>
-          <div>
+          <div className="speaker-card__modal-biography-spacing">
             <div>
-              <div>
-                <div className="speaker-card__modal-name">{firstName}</div>
-                <div className="speaker-card__modal-name">{lastName}</div>
-              </div>
+              <div className="speaker-card__modal-name">{`${firstName} ${lastName}`}</div>
               <p>{position}</p>
             </div>
-            <p>Link</p>
-            <p>twitter</p>
-            <p>fb</p>
+            <div className="speaker-card__modal-biography-spacing">
+              <p>Link</p>
+              <p>twitter</p>
+              <p>fb</p>
+            </div>
           </div>
           <div className="speaker-card__modal-biography-spacing">
             <p>BIOGRAPHY------{description}</p>
             <Image alt={fullName} url={imageUrl} />
           </div>
         </div>
+        <h4>{title}</h4>
+        <p>{description}</p>
       </Modal>
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">
