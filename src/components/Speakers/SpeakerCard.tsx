@@ -44,26 +44,25 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
         <button className="speaker-card__modal-button-close" onClick={showModalFn}>
           <CloseButtonIcon />
         </button>
-
-        <div className={`speaker-card__modal-biography ${backgroundColor}`}>
-          <div className="speaker-card__modal-biography-spacing">
+        <div className={` ${backgroundColor}`}>
+          <div className="speaker-card__modal-spacing">
             <div>
               <div className="speaker-card__modal-name">{`${firstName} ${lastName}`}</div>
-              <p>{position}</p>
+              <div className="speaker-card__modal-status">{position}</div>
             </div>
-            <div className="speaker-card__modal-biography-spacing">
+            <div className="speaker-card__modal-icons">
               {linkedinUrl && <SpeakerCardSocial href={linkedinUrl} type={'linkedin'} />}
               {twitterUrl && <SpeakerCardSocial href={twitterUrl} type={'twitter'} />}
               {linktrUrl && <SpeakerCardSocial href={linktrUrl} type={'linktr'} />}
             </div>
           </div>
-          <div className="speaker-card__modal-biography-spacing">
-            <p>BIOGRAPHY------{description}</p>
+          <div className="speaker-card__modal-spacing">
+            <p className="speaker-card__modal-biography">BIOGRAPHY------{description}</p>
             <Image alt={fullName} url={imageUrl} />
           </div>
         </div>
-        <h4>{title}</h4>
-        <p>{description}</p>
+        <h3 className="speaker-card__modal-title">{title}</h3>
+        <p className="speaker-card__modal-description">{description}</p>
       </Modal>
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">
