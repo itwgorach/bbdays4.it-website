@@ -10,6 +10,8 @@
 
     overflow: hidden;
 
+    cursor: pointer;
+
     &__content {
         padding: $m-base;
         height: 250px;

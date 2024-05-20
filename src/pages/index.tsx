@@ -19,6 +19,7 @@ const HomePage: FC<HomePageType> = ({
   },
   location, 
 }) => {
+  
   const content = useMemo(
     () =>
       homepage?.map((component) => {

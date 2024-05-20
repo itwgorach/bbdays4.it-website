@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import cx from 'classnames'
 
 import { SpeakerType } from 'types'
 import { getSpeakerFullName } from 'utils/getSpeakerFullName'
 
 import Image from 'components/Image'
+import Modal from 'components/Modal'
 import { LinkedinIcon, TwitterIcon, LinktrIcon } from 'components/icons'
 
 type SpeakerCardProps = {
@@ -12,6 +13,8 @@ type SpeakerCardProps = {
 }
 
 const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
+  const [showModal, setShowModal] = useState<boolean>(false)
+
   const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, linktrUrl, position, backgroundColor } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
@@ -20,8 +23,14 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
     [`-${backgroundColor}`]: backgroundColor,
   })
 
+  const showModalFn = () => {
+    setShowModal((prevValue) => !prevValue)
+  }
   return (
-    <div className="speaker-card">
+    <div className="speaker-card" onClick={showModalFn}>
+      <Modal handleToggle={showModalFn} isOpen={showModal} title={title}>
+        <h1>Title</h1>
+      </Modal>
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">
           <div className="speaker-card__title-text">{firstName}</div>
