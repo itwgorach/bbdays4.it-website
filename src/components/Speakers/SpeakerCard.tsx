@@ -7,6 +7,7 @@ import { getSpeakerFullName } from 'utils/getSpeakerFullName'
 import Image from 'components/Image'
 import Modal from 'components/Modal'
 import { LinkedinIcon, TwitterIcon, LinktrIcon, CloseButtonIcon } from 'components/icons'
+import SpeakerCardSocial from './SpeakerCardSocial'
 
 type SpeakerCardProps = {
   speaker: SpeakerType,
@@ -51,9 +52,9 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
               <p>{position}</p>
             </div>
             <div className="speaker-card__modal-biography-spacing">
-              <p>Link</p>
-              <p>twitter</p>
-              <p>fb</p>
+              {linkedinUrl && <SpeakerCardSocial href={linkedinUrl} type={'linkedin'} />}
+              {twitterUrl && <SpeakerCardSocial href={twitterUrl} type={'twitter'} />}
+              {linktrUrl && <SpeakerCardSocial href={linktrUrl} type={'linktr'} />}
             </div>
           </div>
           <div className="speaker-card__modal-biography-spacing">
@@ -73,21 +74,9 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
       </div>
       <div className={getImagePlaceholderClasses}>
         <div className="speaker-card__social">
-          {linkedinUrl && (
-            <a className="speaker-card__link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">
-              <LinkedinIcon className="speaker-card__linkedin" />
-            </a>
-          )}
-          {linktrUrl && (
-            <a className="speaker-card__link" href={linktrUrl} rel="noopener noreferrer" target="_blank">
-              <LinktrIcon className="speaker-card__linktr" />
-            </a>
-          )}
-          {twitterUrl && (
-            <a className="speaker-card__link" href={twitterUrl} rel="noopener noreferrer" target="_blank">
-              <TwitterIcon className="speaker-card__twitter" />
-            </a>
-          )}
+          {linkedinUrl && <SpeakerCardSocial href={linkedinUrl} type={'linkedin'} />}
+          {twitterUrl && <SpeakerCardSocial href={twitterUrl} type={'twitter'} />}
+          {linktrUrl && <SpeakerCardSocial href={linktrUrl} type={'linktr'} />}
         </div>
         <Image alt={fullName} url={imageUrl} />
         <div className="speaker-card__position">{position}</div>
