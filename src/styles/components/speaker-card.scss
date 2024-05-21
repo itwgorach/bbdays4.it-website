@@ -13,7 +13,6 @@
     cursor: pointer;
 
     &__modal{
-
         overflow-y: scroll;
 
         // query to modal width
@@ -137,7 +136,6 @@
             color: $color-dark;
         }
 
-
         .primary {
             background-color: $color-primary;
         }
@@ -149,7 +147,6 @@
         .tertiary {
             background-color: #f2933b;
         }
-
     }
 
     &__content {
@@ -166,7 +163,6 @@
         font-size: 24px;
         font-weight: $font-weight-extra-bold;
         line-height: $line-height-md;
-
         margin: $m-xs 0 calc($m-xs * 2);
 
         &-text {
