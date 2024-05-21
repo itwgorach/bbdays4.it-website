@@ -1,20 +1,18 @@
 import React, { ReactNode } from 'react'
-import { Dialog } from '@reach/dialog'
-import '@reach/dialog/styles.css'
+import ReactModal from 'react-modal'
 
 type ModalProps = {
   children: ReactNode,
-  handleToggle?: () => void,
-  title: string,
   isOpen: boolean,
-  className: string,
 }
 
-const Modal = ({ children, handleToggle, title, isOpen, className }: ModalProps) => {
+const Modal = ({ children, isOpen }: ModalProps) => {
   return (
-    <Dialog allowPinchZoom aria-label={title} className={className} isOpen={isOpen} onDismiss={handleToggle}>
-      {children}
-    </Dialog>
+    <>
+      <ReactModal isOpen={isOpen} overlayClassName={'modal'} bodyOpenClassName={'modal__body-open'}>
+        {children}
+      </ReactModal>
+    </>
   )
 }
 

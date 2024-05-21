@@ -163,20 +163,5 @@
         &-header {
             text-align: center;
         }
-
-        &-button {
-            background: none;
-            border: none;
-            position: absolute;
-            right: $m-sm;
-            top: $m-sm;
-            
-            &::before{
-                color: $color-text;
-                content: '✖';
-                cursor: pointer;
-                font-size: 2em;
-            }
-        }
     }
 }

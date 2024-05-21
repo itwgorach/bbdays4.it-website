@@ -26,11 +26,7 @@ const CookiesConsent = () => {
           Polityka prywatności
         </div>
       </CookieConsent>
-      <PrivacyPolicy
-        handleModalToggle={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
-        isOpen={isModalOpen}
-        title="Polityka prywatności"
-      />
+      <PrivacyPolicy handleModalToggle={() => setIsModalOpen((isModalOpen) => !isModalOpen)} isOpen={isModalOpen} />
     </>
   )
 }
