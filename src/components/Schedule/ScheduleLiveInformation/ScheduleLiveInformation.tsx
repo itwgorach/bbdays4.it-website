@@ -14,15 +14,12 @@ type Event = {
 }
 
 const ScheduleLiveInformation = ({ events }: { events: [Event] }) => {
-  const click = () => {
-    events.map((event) => {
-      const { date, startHour, endHour } = event
-      console.log(checkEventIsActive(date, startHour, endHour))
-    })
-  }
   return (
     <>
-      <button onClick={click}>Click</button>
+      {events.map((event) => {
+        const { date, startHour, endHour } = event
+        return checkEventIsActive(date, startHour, endHour) && <p>Event details</p>
+      })}
     </>
   )
 }
