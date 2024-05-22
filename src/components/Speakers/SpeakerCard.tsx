@@ -6,11 +6,11 @@ import { getSpeakerFullName } from 'utils/getSpeakerFullName'
 
 import Image from 'components/Image'
 import Modal from 'components/Modal'
-import { LinkedinIcon, TwitterIcon, LinktrIcon, CloseButtonIcon } from 'components/icons'
+import { CloseButtonIcon } from 'components/icons'
 import SpeakerCardSocial from './SpeakerCardSocial'
 
 type SpeakerCardProps = {
-  speaker: SpeakerType,
+  speaker: SpeakerType
 }
 
 const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
@@ -27,6 +27,7 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
     position,
     backgroundColor,
     description,
+    bio,
   } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
@@ -57,7 +58,7 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
             </div>
           </div>
           <div className="speaker-card__modal-spacing">
-            <p className="speaker-card__modal-biography">BIOGRAPHY------{description}</p>
+            <p className="speaker-card__modal-biography">{bio}</p>
             <Image alt={fullName} url={imageUrl} />
           </div>
         </div>
