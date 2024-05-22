@@ -1,357 +1,496 @@
 .speaker-card {
-    height: $card-height-mobile;
-    width: $card-width;
-    background-color: $color-white;
+  height: $card-height-mobile;
+  width: $card-width;
+  background-color: $color-white;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: $border-radius-xxs;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  &__modal {
+    overflow-y: scroll;
+
+    // query to modal width
+    @include media-breakpoint-up(xs) {
+      width: 96vw;
+    }
+    @include media-breakpoint-up(sm) {
+      width: 92vw;
+    }
+    @include media-breakpoint-up(md) {
+      width: 82vw;
+    }
+    @include media-breakpoint-up(lg) {
+      width: 72vw;
+    }
+    @include media-breakpoint-up(xl) {
+      width: 52vw;
+      overflow: hidden;
+    }
+
+    &-spacing {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      img {
+        position: relative;
+        margin-left: auto;
+        max-width: 200px;
+      }
+
+      @include media-breakpoint-up(md) {
+        flex-wrap: nowrap;
+      }
+
+      @include media-breakpoint-up(lg) {
+        img {
+          position: relative;
+          margin-left: auto;
+          max-width: 300px;
+        }
+      }
+    }
+
+    &-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right: $m-base;
+      padding-top: 10px;
+      gap: 8px;
+      margin-left: 20px;
+      width: 50%;
+
+      a {
+        padding: 0 4px 8px;
+      }
+
+      @include media-breakpoint-up(sm) {
+        margin-left: 0;
+        a {
+          padding: 0 4px;
+        }
+      }
+    }
+
+    &-name {
+      margin: $m-sm calc($m-xs * 2) 5px;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-extra-bold;
+      line-height: $line-height-md;
+      font-family: $font-family-header;
+    }
+
+    &-status {
+      margin: 0 calc($m-xs * 2);
+      font-weight: $font-weight-medium;
+      font-size: $font-size-base-xs;
+      letter-spacing: 0.75px;
+      font-family: $font-family-body;
+    }
+
+    &-biography {
+      margin: 8px 0 auto $m-sm;
+      padding-right: 10px;
+
+      @include media-breakpoint-up(md) {
+        margin: auto 0 auto $m-sm;
+        padding-right: 0px;
+      }
+    }
+
+    &-button {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      &-close {
+        align-self: flex-end;
+        background: none;
+        border: none;
+        border: 1px solid $color-dark;
+        cursor: pointer;
+        height: 50px;
+        margin: 2px 2px 0 0;
+        outline: none;
+        padding: 0;
+        width: 50px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba($color-background, 0.9);
+        z-index: 5;
+        color: $color-dark;
+      }
+    }
+
+    &-title,
+    &-description {
+      padding: $m-sm;
+      color: $color-dark;
+    }
+
+    .primary {
+      background-color: $color-primary;
+    }
+
+    .secondary {
+      background-color: #f9ca3e;
+    }
+
+    .tertiary {
+      background-color: #f2933b;
+    }
+  }
+
+  &__content {
+    padding: $m-base;
+    height: 250px;
+  }
+
+  &__title,
+  &__subtitle {
+    color: $color-dark;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: $font-weight-extra-bold;
+    line-height: $line-height-md;
+    margin: $m-xs 0 calc($m-xs * 2);
+
+    &-text {
+      font-family: $font-family-header;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-base-xs;
+    font-weight: $font-weight-semi-bold;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    margin-bottom: $m-base;
+  }
+
+  &__image-placeholder {
+    height: 175px;
+    width: 100%;
+
+    &.-primary {
+      background-color: $color-primary;
+    }
+
+    &.-secondary {
+      background-color: #f9ca3e;
+    }
+
+    &.-tertiary {
+      background-color: #f2933b;
+    }
+
+    position: relative;
+    .image {
+      position: absolute;
+
+      height: 250px;
+      max-height: 280px;
+      width: auto;
+      max-width: 100%;
+
+      right: 0;
+      bottom: 0;
+
+      &.-placeholder {
+        right: -30px;
+        bottom: 15px;
+      }
+    }
+  }
+
+  &__social {
+    height: 125px;
+    z-index: 1;
+    position: absolute;
+    top: -60px;
+    left: $m-base;
+    gap: 8px;
 
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
+  }
 
-    border-radius: $border-radius-xxs;
+  &__link {
+    &:first-of-type {
+      .speaker-card__twitter {
+        path {
+          stroke: $color-dark;
 
-    overflow: hidden;
+          &:nth-last-of-type(1) {
+            fill: $color-dark;
+          }
+        }
+      }
+
+      .speaker-card__linkedin {
+        path {
+          stroke: $color-dark;
+
+          &:nth-last-of-type(2) {
+            fill: $color-dark;
+          }
+        }
+      }
+
+      .speaker-card__linktr {
+        path {
+          &:first-of-type {
+            stroke: $color-dark;
+          }
+
+          &:last-of-type {
+            fill: $color-dark;
+          }
+        }
+      }
+    }
+  }
+
+  &__position {
+    position: absolute;
+
+    inset: auto 0 0;
+
+    background: linear-gradient(360deg, rgba(25, 69, 80, 0.8) 0%, rgba(25, 69, 80, 0) 100%);
+
+    padding: $m-base;
+
+    color: $color-white;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-base-xs;
+    letter-spacing: 0.75px;
+    font-family: $font-family-body;
+  }
+
+  @include media-breakpoint-down(md) {
+    &__subtitle {
+      @include maxTextLines(4);
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: $card-height-desktop;
 
     &__content {
-        padding: $m-base;
-        height: 250px;
-    }
-
-    &__title,
-    &__subtitle {
-        color: $color-dark;
-    }
-
-    &__title {
-        font-size: 24px;
-        font-weight: $font-weight-extra-bold;
-        line-height: $line-height-md;
-
-        margin: $m-xs 0 calc($m-xs * 2);
-
-        &-text {
-            font-family: $font-family-header;
-        }
-    }
-
-    &__subtitle {
-        font-size: $font-size-base-xs;
-        font-weight: $font-weight-semi-bold;
-        line-height: 22px;
-        letter-spacing: 0.5px;
-        margin-bottom: $m-base;
+      padding-bottom: $m-lg;
     }
 
     &__image-placeholder {
-        height: 175px;
-        width: 100%;
+      height: 190px;
 
-        &.-primary {
-            background-color: $color-primary;
+      .image {
+        height: 280px;
+        max-height: 280px;
+
+        &.-placeholder {
+          right: -50px;
         }
-
-        &.-secondary {
-            background-color: #f9ca3e;
-        }
-
-        &.-tertiary {
-            background-color: #f2933b;
-        }
-
-        position: relative;
-        .image {
-            position: absolute;
-
-            height: 250px;
-            max-height: 280px;
-            width: auto;
-            max-width: 100%;
-
-            right: 0;
-            bottom: 0;
-
-            &.-placeholder {
-                right: -30px;
-                bottom: 15px;
-            }
-        }
+      }
     }
 
     &__social {
-        height: 125px;
-        z-index: 1;
-        position: absolute;
-        top: -60px;
-        left: $m-base;
+      height: unset;
+      flex-direction: row;
 
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+      width: 55px;
+    }
+    &__linkedin,
+    &__twitter,
+    &__linktr {
+      width: $icon-size;
     }
 
-    &__link {
+    &__linkedin {
+      path {
+        stroke: $color-dark;
+
+        &:nth-last-of-type(2) {
+          fill: $color-dark;
+        }
+      }
+    }
+
+    &__twitter {
+      path {
+        stroke: $color-dark;
+
+        &:nth-last-of-type(1) {
+          fill: $color-dark;
+        }
+      }
+    }
+
+    &__linktr {
+      path {
         &:first-of-type {
-            .speaker-card__twitter {
-                path {
-                    stroke: $color-dark;
-            
-                    &:nth-last-of-type(1) {
-                        fill: $color-dark;
-                    }
-                }
-            }
-
-            .speaker-card__linkedin {
-                path {
-                    stroke: $color-dark;
-            
-                    &:nth-last-of-type(2) {
-                        fill: $color-dark;
-                    }
-                }
-            }
-
-            .speaker-card__linktr {
-                path {
-                    &:first-of-type {
-                        stroke: $color-dark;
-                    }
-                    
-                    &:last-of-type {
-                        fill: $color-dark;
-                    }
-                }
-            }
+          stroke: $color-dark;
         }
-    }
 
-    &__position {
+        &:last-of-type {
+          fill: $color-dark;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-between(xs, xl) {
+    &::before {
+      @include dashedBorder(false, top, $color-black);
+      content: '';
+      height: 2px;
+    }
+  }
+
+  @include media-breakpoint-up(2xl) {
+    position: relative;
+    overflow: inherit;
+
+    + .speaker-card {
+      &::before {
+        @include dashedBorder(false, bottom, $color-black);
+
         position: absolute;
+        content: '';
 
-        inset: auto 0 0;
+        width: 498px;
+        height: 1px;
 
-        background: linear-gradient(360deg, rgba(25, 69, 80, 0.8) 0%, rgba(25, 69, 80, 0) 100%);
+        transform: rotate(90deg);
 
-        padding: $m-base;
-
-        color: $color-white;
-        font-weight: $font-weight-medium;
-        font-size: $font-size-base-xs;
-        letter-spacing: 0.75px;
-        font-family: $font-family-body;
-    }
-
-    @include media-breakpoint-down(md) {
-        &__subtitle {
-            @include maxTextLines(4)
-        }
-    }
-
-    @include media-breakpoint-up(lg) {
-        height: $card-height-desktop;
-
-        &__content {
-            padding-bottom: $m-lg;
-        }
-
-        &__image-placeholder {
-            height: 190px;
-
-            .image {
-                height: 280px;
-                max-height: 280px;
-
-                &.-placeholder {
-                    right: -50px;
-                }
-            }
-        }
-
-        &__social {
-            height: unset;
-            flex-direction: row;
-
-            width: 55px;
-        }
-        &__linkedin,
-        &__twitter,
-        &__linktr {
-            width: $icon-size;
-        }
-
-        &__linkedin {
-            path {
-                stroke: $color-dark;
-    
-                &:nth-last-of-type(2) {
-                    fill: $color-dark;
-                }
-            }
-        }
-
-        &__twitter {
-            path {
-                stroke: $color-dark;
-
-                &:nth-last-of-type(1) {
-                    fill: $color-dark;
-                }
-            }
-        }
-
-        &__linktr {
-            path {
-                &:first-of-type {
-                    stroke: $color-dark;
-                }
-
-                &:last-of-type {
-                    fill: $color-dark;
-                }
-            }
-        }
-    }
-
-    @include media-breakpoint-between(xs, xl) {
+        right: 85px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      &:nth-child(5),
+      &:nth-child(9),
+      &:nth-child(13) {
         &::before {
-            @include dashedBorder(false, top, $color-black);
-            content: "";
-            height: 2px;
+          display: none;
         }
+      }
     }
-
-    @include media-breakpoint-up(2xl) {
-        position: relative;
-        overflow: inherit;
-
-        + .speaker-card {
-            &::before {
-                @include dashedBorder(false, bottom, $color-black);
-
-                position: absolute;
-                content: "";
-
-                width: 498px;
-                height: 1px;
-
-                transform: rotate(90deg);
-
-                right: 85px;
-                top: 0;
-                bottom: 0;
-                margin: auto;
-            }
-            &:nth-child(5),
-            &:nth-child(9),
-            &:nth-child(13) {
-                &::before {
-                    display: none;
-                }
-            }
-        }
-    }
+  }
 }
 
 .speaker-soon {
-    align-items: center;
-    background: url('https://www.otouczelnie.pl/assets/uploads/zdjecia/ATH-studia.jpg');
+  align-items: center;
+  background: url('https://www.otouczelnie.pl/assets/uploads/zdjecia/ATH-studia.jpg');
+  background-color: $color-primary;
+  background-position: top left 35%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  height: $card-height-mobile;
+  gap: $m-lg;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+  width: $card-width;
+
+  &::after {
+    background-image: linear-gradient(360deg, rgba(25, 69, 80, 0.8) 0%, rgba(25, 69, 80, 0) 100%);
+    bottom: 0;
+    content: '';
+    height: $font-size-4xl;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 20px $color-primary;
+
+    .speaker-soon__mask {
+      background-color: rgba($color-primary, 0.9);
+    }
+
+    .speaker-soon__icons-eye {
+      circle {
+        fill: $color-white;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: $card-height-desktop;
+  }
+
+  @include media-breakpoint-up(2xl) {
+    &::before {
+      @include dashedBorder(false, bottom, $color-black);
+
+      content: '';
+      position: absolute;
+      bottom: 0;
+      height: 1px;
+      margin: auto;
+      right: 85px;
+      top: 0;
+      transform: rotate(90deg);
+      width: 498px;
+    }
+  }
+
+  &__mask {
     background-color: $color-primary;
-    background-position: top left 35%;
-    background-repeat: no-repeat;
+    height: 100%;
+    position: absolute;
+    transition: all 0.3s ease-out;
+    width: 100%;
+  }
+
+  &__title {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    height: $card-height-mobile;
-    gap: $m-lg;
-    position: relative;
-    text-decoration: none;
-    transition: all .3s ease-out;
-    width: $card-width;    
-    
-    &::after {
-        background-image: linear-gradient(360deg, rgba(25, 69, 80, 0.8) 0%, rgba(25, 69, 80, 0) 100%);
-        bottom: 0;
-        content: '';
-        height: $font-size-4xl;
-        left: 0;
-        position: absolute;
-        width: 100%;
-    }
-
-    &:hover {
-        box-shadow: 0px 0px 20px $color-primary;
-
-        .speaker-soon__mask {
-            background-color: rgba($color-primary, 0.9);
-        }
-
-        .speaker-soon__icons-eye {
-            circle {
-                fill: $color-white;
-            }
-        }
-    }
+    gap: $m-xs;
+    justify-content: center;
+    margin-top: 94px;
+    z-index: 2;
 
     @include media-breakpoint-up(lg) {
-        height: $card-height-desktop;
+      margin-top: 126px;
     }
+  }
 
-    @include media-breakpoint-up(2xl) {
-        &::before {
-            @include dashedBorder(false, bottom, $color-black);
-    
-            content: "";
-            position: absolute;
-            bottom: 0;
-            height: 1px;
-            margin: auto;
-            right: 85px;
-            top: 0;
-            transform: rotate(90deg);
-            width: 498px;
-        }
-    }
+  &__text {
+    color: $color-white;
+    font-family: $font-family-header;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-extra-bold;
+    text-align: center;
+  }
 
-    &__mask {
-        background-color: $color-primary;
-        height: 100%;
-        position: absolute;
-        transition: all .3s ease-out;
-        width: 100%;
-    }
+  &__icons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    z-index: 2;
 
-    &__title {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: $m-xs;
-        justify-content: center;
-        margin-top: 94px;
-        z-index: 2;
-        
-        @include media-breakpoint-up(lg) {
-            margin-top: 126px;
-        }
+    &-eye {
+      circle {
+        fill: transparent;
+        transition: all 0.3s ease-out;
+      }
     }
-    
-    &__text {
-        color: $color-white;
-        font-family: $font-family-header;
-        font-size: $font-size-3xl;
-        font-weight: $font-weight-extra-bold;
-        text-align: center;
-    }
-    
-    &__icons {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-        justify-content: center;
-        z-index: 2;
-
-        &-eye {            
-            circle {
-                fill: transparent;
-                transition: all .3s ease-out;
-            }
-        }
-    }
+  }
 }

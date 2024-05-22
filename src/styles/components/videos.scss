@@ -1,14 +1,17 @@
-.videos{
-    background-color: red;
+.videos {
+  background-color: red;
 
-    &__controler {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 50px;
-        
-        justify-content: center;  
-        
-        &-video {
-        }
+  &__controler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+
+    justify-content: center;
+
+    &-video {
+      background: red;
+      width: 10px;
+      justify-self: unset;
     }
+  }
 }

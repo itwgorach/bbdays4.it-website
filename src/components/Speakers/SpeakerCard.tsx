@@ -1,18 +1,34 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import cx from 'classnames'
 
 import { SpeakerType } from 'types'
 import { getSpeakerFullName } from 'utils/getSpeakerFullName'
 
 import Image from 'components/Image'
-import { LinkedinIcon, TwitterIcon, LinktrIcon } from 'components/icons'
+import Modal from 'components/Modal'
+import { CloseButtonIcon } from 'components/icons'
+import SpeakerCardSocial from './SpeakerCardSocial'
 
 type SpeakerCardProps = {
-  speaker: SpeakerType,
+  speaker: SpeakerType
 }
 
 const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
-  const { photo, firstName, lastName, title, linkedinUrl, twitterUrl, linktrUrl, position, backgroundColor } = speaker
+  const [showModal, setShowModal] = useState<boolean>(false)
+
+  const {
+    photo,
+    firstName,
+    lastName,
+    title,
+    linkedinUrl,
+    twitterUrl,
+    linktrUrl,
+    position,
+    backgroundColor,
+    description,
+    bio,
+  } = speaker
   const fullName = getSpeakerFullName(speaker)
   const imageUrl = photo?.url
 
@@ -20,8 +36,35 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
     [`-${backgroundColor}`]: backgroundColor,
   })
 
+  const showModalFn = () => {
+    setShowModal((prevValue) => !prevValue)
+  }
   return (
-    <div className="speaker-card">
+    <div className="speaker-card" onClick={showModalFn}>
+      <Modal className="speaker-card__modal" handleToggle={showModalFn} isOpen={showModal} title={title}>
+        <button className="speaker-card__modal-button-close" onClick={showModalFn}>
+          <CloseButtonIcon />
+        </button>
+        <div className={` ${backgroundColor}`}>
+          <div className="speaker-card__modal-spacing">
+            <div>
+              <div className="speaker-card__modal-name">{`${firstName} ${lastName}`}</div>
+              <div className="speaker-card__modal-status">{position}</div>
+            </div>
+            <div className="speaker-card__modal-icons">
+              {linkedinUrl && <SpeakerCardSocial href={linkedinUrl} type={'linkedin'} />}
+              {twitterUrl && <SpeakerCardSocial href={twitterUrl} type={'twitter'} />}
+              {linktrUrl && <SpeakerCardSocial href={linktrUrl} type={'linktr'} />}
+            </div>
+          </div>
+          <div className="speaker-card__modal-spacing">
+            <p className="speaker-card__modal-biography">{bio}</p>
+            <Image alt={fullName} url={imageUrl} />
+          </div>
+        </div>
+        <h3 className="speaker-card__modal-title">{title}</h3>
+        <p className="speaker-card__modal-description">{description}</p>
+      </Modal>
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">
           <div className="speaker-card__title-text">{firstName}</div>
@@ -31,21 +74,9 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
       </div>
       <div className={getImagePlaceholderClasses}>
         <div className="speaker-card__social">
-          {linkedinUrl && (
-            <a className="speaker-card__link" href={linkedinUrl} rel="noopener noreferrer" target="_blank">
-              <LinkedinIcon className="speaker-card__linkedin" />
-            </a>
-          )}
-          {linktrUrl && (
-            <a className="speaker-card__link" href={linktrUrl} rel="noopener noreferrer" target="_blank">
-              <LinktrIcon className="speaker-card__linktr" />
-            </a>
-          )}
-          {twitterUrl && (
-            <a className="speaker-card__link" href={twitterUrl} rel="noopener noreferrer" target="_blank">
-              <TwitterIcon className="speaker-card__twitter" />
-            </a>
-          )}
+          {linkedinUrl && <SpeakerCardSocial href={linkedinUrl} type={'linkedin'} />}
+          {twitterUrl && <SpeakerCardSocial href={twitterUrl} type={'twitter'} />}
+          {linktrUrl && <SpeakerCardSocial href={linktrUrl} type={'linktr'} />}
         </div>
         <Image alt={fullName} url={imageUrl} />
         <div className="speaker-card__position">{position}</div>
