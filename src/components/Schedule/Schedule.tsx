@@ -5,6 +5,7 @@ import { ScheduleType } from 'types'
 
 import ScheduleDesktop from './ScheduleDesktop/ScheduleDesktop'
 import ScheduleMobile from './ScheduleMobile/ScheduleMobile'
+import ScheduleLiveInformation from './ScheduleLiveInformation/ScheduleLiveInformation'
 
 const Schedule: FC<ScheduleType> = ({ events, scheduleTitle }) => {
   const titleId = scheduleTitle ? scheduleTitle.toLocaleLowerCase() : ''
@@ -22,6 +23,7 @@ const Schedule: FC<ScheduleType> = ({ events, scheduleTitle }) => {
           setActiveLink('')
         }}>
         <div>
+          <ScheduleLiveInformation events={events} />
           <ScheduleMobile events={events} scheduleTitle={scheduleTitle} />
           <ScheduleDesktop events={events} scheduleTitle={scheduleTitle} />
         </div>
