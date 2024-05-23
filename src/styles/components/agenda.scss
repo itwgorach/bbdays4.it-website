@@ -7,10 +7,52 @@
   max-width: 1200px;
   scroll-margin-top: 112px;
 
+  &__live {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: 90px;
+    border-top: 1px solid white;
+
+    z-index: 2;
+    &-title,
+    &-lecturer {
+      color: $color-white;
+      font-family: $font-family-body;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semi-bold;
+    }
+
+    &-title {
+      font-weight: $font-weight-regular;
+      line-height: $line-height-md;
+    }
+
+    &-primary {
+      background-color: $color-primary;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+    &-primary:hover {
+      background-color: $color-success;
+    }
+
+    &-secondary {
+      background-color: $color-tertiary;
+    }
+
+    &-dark {
+      background-color: $color-dark;
+    }
+  }
+
   &__header {
     margin-bottom: $m-lg;
     text-align: center;
-    
+
     &-title {
       color: $color-dark;
       font-family: $font-family-header;
@@ -18,14 +60,14 @@
       font-weight: $font-weight-bold;
       line-height: $line-height-base;
     }
-    
+
     &-subtitle {
       color: $color-dark;
       font-family: $font-family-header;
       font-size: $font-size-lg;
       font-weight: $font-weight-regular;
     }
-    
+
     @include media-breakpoint-up(md) {
       margin: 0 0 $m-lg 104px;
     }
@@ -42,16 +84,17 @@
     font-weight: $font-weight-bold;
     height: 72px;
     text-align: center;
-    
-    &-main, &-second {
+
+    &-main,
+    &-second {
       display: flex;
       font-family: $font-family-header;
       font-size: $font-size-base;
       font-weight: $font-weight-bold;
       position: relative;
-      
+
       &::after {
-        content: "";
+        content: '';
         height: 30px;
         position: absolute;
         right: -$m-sm;
@@ -66,7 +109,7 @@
         background-color: $color-secondary;
       }
     }
-    
+
     &-second {
       &::after {
         background-color: $color-dark;
@@ -78,7 +121,7 @@
       gap: $m-base;
       margin-left: $m-xs;
       width: 100%;
-      
+
       span {
         color: $color-text;
         font-family: $font-family-header;
@@ -95,11 +138,11 @@
       position: relative;
       min-height: 80px;
       min-width: 72px;
-      
+
       &::before {
         @include dashedBorder(false, top, $color-black);
 
-        content: "";
+        content: '';
         height: 1px;
         position: absolute;
         right: -$m-xs;
@@ -120,17 +163,17 @@
       margin-left: 104px;
       width: calc(100% - 104px);
     }
-    
+
     &.-desktop {
       display: none;
     }
-    
+
     &.-mobile {
       margin-left: 0;
       margin-bottom: $m-sm;
       width: 100%;
     }
-    
+
     @include media-breakpoint-up(md) {
       &.-desktop {
         display: flex;
@@ -147,15 +190,16 @@
     width: 100%;
     position: relative;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       background-color: $color-secondary;
-      content: "";
+      content: '';
       height: $m-xs;
       left: 0;
       position: absolute;
       width: 72px;
     }
-    
+
     &::before {
       top: -$m-xs;
     }
@@ -173,7 +217,8 @@
     }
 
     @include media-breakpoint-up(md) {
-      &::before, &::after {
+      &::before,
+      &::after {
         width: 96px;
       }
     }
@@ -183,7 +228,7 @@
     height: 100%;
     position: relative;
     width: 100%;
-    transition: filter .1s ease-in-out;
+    transition: filter 0.1s ease-in-out;
 
     &:not(:first-of-type) {
       .agenda__lecture-content {
@@ -195,9 +240,10 @@
       }
     }
 
-    &.-main, &.-second {
+    &.-main,
+    &.-second {
       &::after {
-        content: "";
+        content: '';
         height: 100%;
         position: absolute;
         right: 0;
@@ -209,13 +255,13 @@
 
     &.-main {
       &::after {
-        background-color: #F8C83E; 
+        background-color: #f8c83e;
       }
     }
 
     &.-second {
       &::after {
-        background-color: #1D4550; 
+        background-color: #1d4550;
       }
     }
 
@@ -223,12 +269,12 @@
       &:hover {
         .agenda__lecture-content {
           &.-primary {
-            background-color: #2D8252;
+            background-color: #2d8252;
 
             .agenda__lecture-title {
               font-weight: $font-weight-extra-bold;
             }
-            
+
             .agenda__lecture-subtitle {
               font-weight: $font-weight-semi-bold;
             }
@@ -236,7 +282,8 @@
         }
       }
 
-      &.-main, &.-second {
+      &.-main,
+      &.-second {
         &::after {
           display: none;
         }
@@ -245,7 +292,7 @@
       &-subtitle {
         &::after {
           color: $color-white;
-          content: "-";
+          content: '-';
           font-family: $font-family-body;
           font-size: $font-size-base;
           font-weight: $font-weight-medium;
@@ -275,26 +322,26 @@
       min-width: 72px;
       padding: $m-xs 0 0 12px;
       position: relative;
-      
+
       &::before {
         @include dashedBorder(false, top, $color-black);
 
-        content: "";
+        content: '';
         height: 1px;
         position: absolute;
         top: 0;
         width: 90%;
       }
-      
+
       @include media-breakpoint-up(md) {
         min-height: 80px;
         min-width: 96px;
         padding: $m-xs 0 0 16px;
-        
+
         &::after {
           background-color: $color-background;
           bottom: 0;
-          content: "";
+          content: '';
           height: $m-xs;
           position: absolute;
           width: 90%;
@@ -302,18 +349,18 @@
       }
     }
 
-    &-inner {      
+    &-inner {
       display: flex;
       flex-direction: column;
       margin: 0 0 $m-xs $m-xs;
       min-height: 62px;
       position: relative;
       width: 100%;
-      
+
       &::before {
         @include dashedBorder(false, top, $color-black);
 
-        content: "";
+        content: '';
         height: 1px;
         position: absolute;
         right: 0;
@@ -327,7 +374,7 @@
         gap: $m-base;
       }
     }
-    
+
     &-content {
       align-items: center;
       box-sizing: border-box;
@@ -339,8 +386,8 @@
       justify-content: center;
       padding: $m-sm $m-xs;
       width: 100%;
-      transition: background-color .1s ease-in-out;
-      
+      transition: background-color 0.1s ease-in-out;
+
       &.-primary {
         background-color: $color-primary;
         cursor: pointer;
@@ -364,21 +411,22 @@
         gap: $m-xs $m-sm;
       }
     }
-    
-    &-title, &-subtitle {
+
+    &-title,
+    &-subtitle {
       color: $color-white;
       font-family: $font-family-body;
       font-size: $font-size-base;
       font-weight: $font-weight-semi-bold;
       text-align: center;
-      transition: font-weight .1s ease-in-out;
+      transition: font-weight 0.1s ease-in-out;
     }
-    
+
     &-subtitle {
       font-weight: $font-weight-regular;
       line-height: $line-height-md;
       position: relative;
-      transition: font-weight .1s ease-in-out;
+      transition: font-weight 0.1s ease-in-out;
     }
 
     &-logo {

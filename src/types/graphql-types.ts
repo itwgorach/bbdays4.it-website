@@ -579,6 +579,7 @@ type STRAPI_SPEAKER = Node & {
   readonly linktrUrl: Maybe<Scalars['String']>;
   readonly backgroundColor: Maybe<Scalars['String']>;
   readonly index: Maybe<Scalars['Int']>;
+  readonly bio: Maybe<Scalars['String']>;
   readonly photo: Maybe<STRAPI_SPEAKERPhoto>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -1789,6 +1790,7 @@ type Query_strapiSpeakerArgs = {
   linktrUrl: Maybe<StringQueryOperatorInput>;
   backgroundColor: Maybe<StringQueryOperatorInput>;
   index: Maybe<IntQueryOperatorInput>;
+  bio: Maybe<StringQueryOperatorInput>;
   photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -4793,6 +4795,7 @@ type STRAPI_SPEAKERFilterInput = {
   readonly linktrUrl: Maybe<StringQueryOperatorInput>;
   readonly backgroundColor: Maybe<StringQueryOperatorInput>;
   readonly index: Maybe<IntQueryOperatorInput>;
+  readonly bio: Maybe<StringQueryOperatorInput>;
   readonly photo: Maybe<STRAPI_SPEAKERPhotoFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
@@ -5062,6 +5065,7 @@ type STRAPI__COMPONENT_BASE_SPEAKERS_GRIDFieldsEnum =
   | 'speakers.linktrUrl'
   | 'speakers.backgroundColor'
   | 'speakers.index'
+  | 'speakers.bio'
   | 'speakers.photo.id'
   | 'speakers.photo.name'
   | 'speakers.photo.alternativeText'
@@ -8038,6 +8042,7 @@ type STRAPI__COMPONENT_BASE_AGENDAFieldsEnum =
   | 'speakers.linktrUrl'
   | 'speakers.backgroundColor'
   | 'speakers.index'
+  | 'speakers.bio'
   | 'speakers.photo.id'
   | 'speakers.photo.name'
   | 'speakers.photo.alternativeText'
@@ -8265,6 +8270,7 @@ type STRAPI_SPEAKERFieldsEnum =
   | 'linktrUrl'
   | 'backgroundColor'
   | 'index'
+  | 'bio'
   | 'photo.id'
   | 'photo.name'
   | 'photo.alternativeText'
