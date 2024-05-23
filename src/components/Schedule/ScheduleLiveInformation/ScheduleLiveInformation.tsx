@@ -25,7 +25,7 @@ const ScheduleLiveInformation = ({ events }: { events: [Event] }) => {
         const isActive = checkEventIsActive(date, startHour, endHour)
         return (
           isActive && (
-            <div className="schedule__live-item" style={{ background: `${event.backgroundColor}` }}>
+            <div key={event.id} className="schedule__live-item" style={{ background: `${event.backgroundColor}` }}>
               <p className="schedule__live-title">{event.title}</p>
             </div>
           )
