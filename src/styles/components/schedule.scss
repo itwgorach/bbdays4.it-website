@@ -1,403 +1,431 @@
 .schedule {
   scroll-margin-top: $scroll-margin-base;
 
-    // Desktop styling
-    
-    &-desktop {
-        align-items: center;
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: $m-xl;
-    
-        &__header {
-            color: $color-dark;
-            text-align: center;
-        }
-        
-        &__grid {
-            box-sizing: border-box;
-            display: grid;
-            grid-template-columns: 150px repeat(28, 1fr);
-            grid-template-rows: 100px repeat(11, 80px);
-            max-width: 95%;
-            
-            &-hours {
-                display: flex;
-                grid-column: 2/58;
-                grid-row: 1;
-            }
+  // Live information styling
 
-            &-hour {
-                align-items: end;
-                display: flex;
-                flex: 1 1;
-                font-family: $font-family-header;
-                font-weight: $font-weight-bold;
-                font-size: $font-size-lg;
-                justify-content: flex-start;
-                margin-bottom: $m-sm;
+  &__live {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 80px;
+    width: 100%;
 
-                @media only screen and (max-width: map-get($grid-breakpoints, xl)) {
-                    font-size: $font-size-base;
-                }
-            }
-            
-            &-days {
-                background: #FCCC3E;
-                display: flex;
-                flex-direction: column;
-                grid-column: 1;
-                grid-row: 2/13;
-                position: relative;
-                
-                &::before {
-                    content: '';
-                    background: #FCCC3E;
-                    width: 100%;
-                    position: absolute;
-                    height: 1%;
-                    top: -1%;
-                }
-                
-                &::after {
-                    content: '';
-                    background: #FCCC3E;
-                    width: 100%;
-                    position: absolute;
-                    height: 1%;
-                    bottom: -1%;
-                }
+    z-index: 1;
 
-            }
-            
-            &-date {
-                flex: 1 1;
-                font-family: $font-family-header;
-                font-weight: $font-weight-bold;
-                font-size: $font-size-lg;
-                padding: $m-xs 0 0 $m-sm;
-                position: relative;
-                
-                &-day {
-                    font-family: $font-family-header;
-                    font-weight: $font-weight-medium;
-                    font-size: $font-size-base-xs;
-                }
-                
-                &::before {
-                    @include dashedBorder(false, top, $color-black);
-                    
-                    content: '';
-                    height: 1px;
-                    position: absolute;
-                    top: 0;
-                    width: 90%;
-                }
-                
-                &::after {
-                    background-color: $color-background;
-                    bottom: 0;
-                    content: '';
-                    height: $m-xs;
-                    position: absolute;
-                    right: 0;
-                    width: 90%;
-                }
-                
-                &:last-of-type {
-                    &::after {
-                        background-color: #FCCC3E;
-                        @include dashedBorder(false, bottom, $color-black);
-                    }
-                }
-            }
-
-            &-events {
-                grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
-                margin-bottom: $m-xs;
-                z-index: $z-lower;
-                
-                &-event {
-                    align-content: center;
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: wrap;
-                    column-gap: $m-sm;
-                    row-gap: $m-xs;
-                    height: 100%;
-                    justify-content: center;
-                    margin-left: $m-xs;
-                    text-decoration: none;
-                    z-index: 1;
-
-                    &-title {
-                        color: $color-white;
-                        font-weight: $font-weight-bold;
-                        font-size: $font-size-sm;
-                        text-align: center;
-                        padding-inline: $m-sm;
-                    }
-                    
-                    &-logo {
-                        max-height: 70%;
-                        max-width: 80%;
-                    }
-
-                    &.-vertical {
-                        flex-direction: column;
-                        padding-inline: $m-xs;
-                    }
-                }
-            }
-            
-            &-placeholder {
-                @include dashedBorder(true, top, $color-black);
-
-                position: relative;
-                
-                &.-no-left-line {
-                    @include dashedBorder(false, top, $color-black);
-                }
-
-                &:nth-last-child(11n+1) {
-                    &::after {
-                        @include dashedBorder(false, bottom, $color-black);
-
-                        bottom: 0;
-                        content: '';
-                        height: 1px;
-                        position: absolute;
-                        width: 100%;
-                    }
-                }
-            }
-        }
+    &-item {
+      position: relative;
+      width: 100%;
+      min-height: 60px;
+      text-align: center;
+      align-content: center;
+    }
+    &-item:not(:first-child) {
+      border-left: 1px solid white;
     }
 
-    // Mobile styling
-    
-    &-mobile {  
-        align-items: center;
+    &-title {
+      color: $color-white;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-sm;
+      text-align: center;
+      padding-inline: $m-sm;
+    }
+  }
+
+  // Desktop styling
+
+  &-desktop {
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: $m-xl;
+
+    &__header {
+      color: $color-dark;
+      text-align: center;
+    }
+
+    &__grid {
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 150px repeat(28, 1fr);
+      grid-template-rows: 100px repeat(11, 80px);
+      max-width: 95%;
+
+      &-hours {
+        display: flex;
+        grid-column: 2/58;
+        grid-row: 1;
+      }
+
+      &-hour {
+        align-items: end;
+        display: flex;
+        flex: 1 1;
+        font-family: $font-family-header;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-lg;
+        justify-content: flex-start;
+        margin-bottom: $m-sm;
+
+        @media only screen and (max-width: map-get($grid-breakpoints, xl)) {
+          font-size: $font-size-base;
+        }
+      }
+
+      &-days {
+        background: #fccc3e;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        margin-top: $m-lg;
+        grid-column: 1;
+        grid-row: 2/13;
+        position: relative;
 
-        &__header {
-            color: $color-dark;
-            text-align: center;
-            font-size: $font-size-lg;
+        &::before {
+          content: '';
+          background: #fccc3e;
+          width: 100%;
+          position: absolute;
+          height: 1%;
+          top: -1%;
+        }
+
+        &::after {
+          content: '';
+          background: #fccc3e;
+          width: 100%;
+          position: absolute;
+          height: 1%;
+          bottom: -1%;
+        }
+      }
+
+      &-date {
+        flex: 1 1;
+        font-family: $font-family-header;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-lg;
+        padding: $m-xs 0 0 $m-sm;
+        position: relative;
+
+        &-day {
+          font-family: $font-family-header;
+          font-weight: $font-weight-medium;
+          font-size: $font-size-base-xs;
+        }
+
+        &::before {
+          @include dashedBorder(false, top, $color-black);
+
+          content: '';
+          height: 1px;
+          position: absolute;
+          top: 0;
+          width: 90%;
+        }
+
+        &::after {
+          background-color: $color-background;
+          bottom: 0;
+          content: '';
+          height: $m-xs;
+          position: absolute;
+          right: 0;
+          width: 90%;
+        }
+
+        &:last-of-type {
+          &::after {
+            background-color: #fccc3e;
+            @include dashedBorder(false, bottom, $color-black);
+          }
+        }
+      }
+
+      &-events {
+        grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+        margin-bottom: $m-xs;
+        z-index: $z-lower;
+
+        &-event {
+          align-content: center;
+          align-items: center;
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: $m-sm;
+          row-gap: $m-xs;
+          height: 100%;
+          justify-content: center;
+          margin-left: $m-xs;
+          text-decoration: none;
+          z-index: 1;
+
+          &-title {
+            color: $color-white;
             font-weight: $font-weight-bold;
+            font-size: $font-size-sm;
+            text-align: center;
+            padding-inline: $m-sm;
+          }
+
+          &-logo {
+            max-height: 70%;
+            max-width: 80%;
+          }
+
+          &.-vertical {
+            flex-direction: column;
+            padding-inline: $m-xs;
+          }
         }
-        
-        &__grid {
-            box-sizing: border-box;
-            display: grid;
-            grid-template-columns: 72px 1fr;
-            grid-template-rows: auto;
-            margin-top: $m-lg;
+      }
+
+      &-placeholder {
+        @include dashedBorder(true, top, $color-black);
+
+        position: relative;
+
+        &.-no-left-line {
+          @include dashedBorder(false, top, $color-black);
+        }
+
+        &:nth-last-child(11n + 1) {
+          &::after {
+            @include dashedBorder(false, bottom, $color-black);
+
+            bottom: 0;
+            content: '';
+            height: 1px;
+            position: absolute;
             width: 100%;
-            
-            &-date {
-                background: #FCCC3E;
-                flex: 1 1;
-                font-family: $font-family-header;
-                font-size: $font-size-lg;
-                font-weight: $font-weight-bold;
-                grid-column: 1;
-                min-height: $m-xl;
-                padding: $m-xs 0 0 $m-sm;
-                position: relative;
-                
-                &-day {
-                    font-family: $font-family-header;
-                    font-size: $font-size-base-xs;
-                    font-weight: $font-weight-medium;
-                }
-
-                &:nth-child(1) {
-                    ::before {
-                        background-color: #FCCC3E;
-                        content: '';
-                        height: $m-xs;
-                        left: 0;
-                        position: absolute;
-                        top: -$m-xs;
-                        width: 100%;
-                    }
-                }
-
-                &::before {
-                    @include dashedBorder(false, bottom, $color-black);
-                    
-                    content: '';
-                    height: 1px;
-                    position: absolute;
-                    top: 0;
-                    width: 90%;
-                }
-
-                &::after {
-                    background-color: $color-background;
-                    bottom: 0;
-                    content: '';
-                    height: $m-xs;
-                    position: absolute;
-                    width: 90%;
-                }
-
-                &:nth-child(11) {
-                    &::after {
-                        display: none;
-                    }
-                }
-            }
-
-            &-events {
-                margin: 0 0 $m-base $m-xs;
-                grid-column: 2;
-                position: relative;
-                z-index: 1;
-                
-                &::before {
-                    @include dashedBorder(false, top, $color-black);
-
-                    content: "";
-                    height: 1px;
-                    left: -$m-xs;
-                    position: absolute;
-                    top: 0;
-                    width: calc(100% + $m-xs);
-                }
-            }
-            
-            &-event {
-                @include dashedBorder(false, bottom, $color-background);
-
-                align-items: center;
-                display: flex;
-                height: 48px;
-                justify-content: space-between;
-                padding: 0 $m-sm;
-                text-decoration: none;
-
-                &-title {
-                    color: $color-white;
-                    font-size: $font-size-sm;
-                    font-weight: $font-weight-bold;
-                }
-
-                &-logo {
-                    max-height: 40%;
-                }
-                
-                &-hours {
-                    color: $color-white;
-                    font-size: $font-size-sm;
-                    font-weight: $font-weight-semi-bold;
-                }
-
-                &:last-of-type {
-                    background-image: none;
-                }
-            }
+          }
         }
+      }
+    }
+  }
+
+  // Mobile styling
+
+  &-mobile {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: $m-lg;
+
+    &__header {
+      color: $color-dark;
+      text-align: center;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
     }
 
-    @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
-        &-mobile {
+    &__grid {
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      grid-template-rows: auto;
+      margin-top: $m-lg;
+      width: 100%;
+
+      &-date {
+        background: #fccc3e;
+        flex: 1 1;
+        font-family: $font-family-header;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-bold;
+        grid-column: 1;
+        min-height: $m-xl;
+        padding: $m-xs 0 0 $m-sm;
+        position: relative;
+
+        &-day {
+          font-family: $font-family-header;
+          font-size: $font-size-base-xs;
+          font-weight: $font-weight-medium;
+        }
+
+        &:nth-child(1) {
+          ::before {
+            background-color: #fccc3e;
+            content: '';
+            height: $m-xs;
+            left: 0;
+            position: absolute;
+            top: -$m-xs;
+            width: 100%;
+          }
+        }
+
+        &::before {
+          @include dashedBorder(false, bottom, $color-black);
+
+          content: '';
+          height: 1px;
+          position: absolute;
+          top: 0;
+          width: 90%;
+        }
+
+        &::after {
+          background-color: $color-background;
+          bottom: 0;
+          content: '';
+          height: $m-xs;
+          position: absolute;
+          width: 90%;
+        }
+
+        &:nth-child(11) {
+          &::after {
             display: none;
+          }
+        }
+      }
+
+      &-events {
+        margin: 0 0 $m-base $m-xs;
+        grid-column: 2;
+        position: relative;
+        z-index: 1;
+
+        &::before {
+          @include dashedBorder(false, top, $color-black);
+
+          content: '';
+          height: 1px;
+          left: -$m-xs;
+          position: absolute;
+          top: 0;
+          width: calc(100% + $m-xs);
+        }
+      }
+
+      &-event {
+        @include dashedBorder(false, bottom, $color-background);
+
+        align-items: center;
+        display: flex;
+        height: 48px;
+        justify-content: space-between;
+        padding: 0 $m-sm;
+        text-decoration: none;
+
+        &-title {
+          color: $color-white;
+          font-size: $font-size-sm;
+          font-weight: $font-weight-bold;
         }
 
-        &-desktop {
-            display: flex;
+        &-logo {
+          max-height: 40%;
         }
+
+        &-hours {
+          color: $color-white;
+          font-size: $font-size-sm;
+          font-weight: $font-weight-semi-bold;
+        }
+
+        &:last-of-type {
+          background-image: none;
+        }
+      }
     }
-}
+  }
 
+  @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+    &-mobile {
+      display: none;
+    }
+
+    &-desktop {
+      display: flex;
+    }
+  }
+}
 
 // Calendar styling
 
 .calendar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: $m-lg;
+
+  &__button {
     align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
     display: flex;
-    flex-direction: column;
-    margin-top: $m-lg;
-        
-    &__button {
-        align-items: center;
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        gap: $m-sm;
-        justify-content: center;
-        outline: none;
-        position: relative;
-        width: 100%;
-        
-        &-text {
-            color: $color-black;
-            font-weight: $font-weight-bold;
-            font-size: $font-size-base;
-        }
-        
-        &:after {
-            @include dashedBorder(false, bottom, $color-black);
-            
-            bottom: -$m-xs;
-            content: "";
-            height: 1px;
-            left: 0;
-            position: absolute;
-            width: 100%;
-        }
+    gap: $m-sm;
+    justify-content: center;
+    outline: none;
+    position: relative;
+    width: 100%;
+
+    &-text {
+      color: $color-black;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-base;
     }
 
-    &__icon-rotated {
-        transform: rotateZ(180deg);
-    }
-    
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: repeat(6, 40px);
-        margin-top: $m-sm;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s $transition-function;
-        
-        &-day {
-            align-items: center;
-            display: flex;
-            font-weight: $font-weight-bold;
-            font-size: $font-size-base;
-            justify-content: center;
-        }
-        
-        &-date {
-            align-items: center;
-            display: flex;
-            font-weight: $font-weight-semi-bold;
-            font-size: $font-size-base;
-            justify-content: center;
-            margin: 4px 0;
-            opacity: 0.4;
-            
-            &.-first {
-                grid-column: 4;
-            }
-            
-            &.-coloured {
-                background-color: #fece3e;
-                opacity: 1;
-            }
-        }
+    &:after {
+      @include dashedBorder(false, bottom, $color-black);
 
-        &.-open {
-            max-height: 300px;
-        }
+      bottom: -$m-xs;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      width: 100%;
     }
+  }
+
+  &__icon-rotated {
+    transform: rotateZ(180deg);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 40px);
+    margin-top: $m-sm;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s $transition-function;
+
+    &-day {
+      align-items: center;
+      display: flex;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-base;
+      justify-content: center;
+    }
+
+    &-date {
+      align-items: center;
+      display: flex;
+      font-weight: $font-weight-semi-bold;
+      font-size: $font-size-base;
+      justify-content: center;
+      margin: 4px 0;
+      opacity: 0.4;
+
+      &.-first {
+        grid-column: 4;
+      }
+
+      &.-coloured {
+        background-color: #fece3e;
+        opacity: 1;
+      }
+    }
+
+    &.-open {
+      max-height: 300px;
+    }
+  }
 }
-
