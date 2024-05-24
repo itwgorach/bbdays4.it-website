@@ -29,13 +29,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 62px;
+    gap: 40px;
   }
-  
+
   &__link {
     color: $color-white;
     text-decoration: none;
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
     position: relative;
     text-align: center;
 
@@ -83,7 +83,7 @@
 
   &__logo {
     height: $icon-size-md;
-    
+
     &-wrapper {
       height: $icon-size-md;
     }
