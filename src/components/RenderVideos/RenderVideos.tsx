@@ -1,14 +1,15 @@
 import React from 'react'
 import ImageYT from '../../../../YT.jpg'
+import Video from './Video'
 
-const Recording = ({ videosData }: { videosData: string[] }) => {
+const RenderVideos = ({ videosData }: { videosData: string[] }) => {
   return (
     <div className="videos__controler">
       {videosData.map((video) => {
-        return <img src={ImageYT} alt="YouTube" className="videos__video" />
+        return <Video key={video} src={ImageYT} />
       })}
     </div>
   )
 }
 
-export default Recording
+export default RenderVideos

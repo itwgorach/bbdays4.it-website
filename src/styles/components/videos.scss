@@ -1,10 +1,22 @@
 .videos {
   padding: 80px 15px 20px;
-  background-color: green;
-
   &__title {
+    font-family: $font-family-header;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 45px;
+    letter-spacing: 0.04em;
     text-align: center;
-    color: red;
+    color: #194550;
+  }
+  &__subtitle {
+    font-family: $font-family-header;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: #194550;
   }
   &__controler {
     display: flex;
@@ -14,6 +26,38 @@
   }
   &__video {
     min-width: 200px;
-    max-width: 400px;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease-in;
+    &-img {
+      min-width: 200px;
+      max-width: 300px;
+    }
+    &-title,
+    &-subtitle {
+      text-align: center;
+    }
+    &-title {
+      color: red;
+    }
+    &-subtitle {
+      color: green;
+    }
+  }
+  &__video:hover {
+    background-color: red;
+  }
+  &__video::nth-child(3n) {
+    background-color: red;
+  }
+  &__video::nth-child(3n)::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 100%;
+    border-left: 3px dashed black;
+    margin-right: 1em;
+    top: 0;
+    bottom: 0;
   }
 }

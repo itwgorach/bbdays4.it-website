@@ -1,1 +1,3 @@
-export { default } from './RenderVideos'
+import RenderVideos from './RenderVideos'
+
+export default RenderVideos

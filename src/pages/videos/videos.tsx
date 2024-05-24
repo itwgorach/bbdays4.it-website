@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import RenderVideos from 'components/RenderVideos'
 
 const videosData = [
@@ -22,11 +22,11 @@ const videosData = [
   'https://www.youtube.com/embed/rzK6SycV1UM?si=YtpVRr1qxFs4oh8u',
   'https://www.youtube.com/embed/zIo-gbbqBNc?si=XVqvPNtaStlhwztB',
 ]
-
 const videos = () => {
   return (
     <div className="videos">
       <h1 className="videos__title">Youtube playlist</h1>
+      <p className="videos__subtitle">Youtube playlist</p>
       <RenderVideos videosData={videosData} />
     </div>
   )
