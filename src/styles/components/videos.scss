@@ -1,17 +1,19 @@
 .videos {
-  background-color: red;
+  padding: 80px 15px 20px;
+  background-color: green;
 
+  &__title {
+    text-align: center;
+    color: red;
+  }
   &__controler {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
-
     justify-content: center;
-
-    &-video {
-      background: red;
-      width: 10px;
-      justify-self: unset;
-    }
+    gap: 40px;
+  }
+  &__video {
+    min-width: 200px;
+    max-width: 400px;
   }
 }

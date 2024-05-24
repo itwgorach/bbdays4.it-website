@@ -1,15 +1,14 @@
-import * as React from 'react'
+import React from 'react'
+import ImageYT from '../../../../YT.jpg'
 
-const RenderVideos = ({ videosData }) => {
-  return videosData.map((video) => (
-    <iframe
-      className="video__controler-video"
-      src={video}
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen></iframe>
-  ))
+const Recording = ({ videosData }: { videosData: string[] }) => {
+  return (
+    <div className="videos__controler">
+      {videosData.map((video) => {
+        return <img src={ImageYT} alt="YouTube" className="videos__video" />
+      })}
+    </div>
+  )
 }
 
-export default RenderVideos
+export default Recording
