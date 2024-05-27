@@ -2,14 +2,14 @@ import React from 'react'
 
 const Video = ({ src }) => {
   return (
-    <div className="videos__video">
-      <div>
-        <img src={src} alt="YouTube" className="videos__video-img" />
-        <div>
-          <h2 className="videos__video-title">TITLE</h2>
-          <h3 className="videos__video-subtitle">Subtitle</h3>
-        </div>
-      </div>
+    <div class="videos__video">
+      <img src={src} alt="YouTube" class="videos__video-img" />
+      <button class="videos__video-button">Zobacz</button>
+      <h3 class="videos__video-subtitle">
+        "Historia za małego przycisku" czyli opowieść o tym, jak nasze codzienne, frontendowe wybory mają ogromny wpływ
+        na życie innych". Łukasz Jakubowski - developer z wieloletnim doświadczeniem, w swojej prezentacji podywaguje
+        nieco o tym dlaczego warto pisać kod zgodnie z zasadami oraz dlaczego dostępność aplikacji jest tak ważna
+      </h3>
     </div>
   )
 }

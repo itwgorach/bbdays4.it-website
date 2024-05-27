@@ -1,63 +1,68 @@
 .videos {
-  padding: 80px 15px 20px;
-  &__title {
-    font-family: $font-family-header;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 45px;
-    letter-spacing: 0.04em;
-    text-align: center;
-    color: #194550;
-  }
+  max-width: 1280px;
+  margin: 0 auto;
+
   &__subtitle {
-    font-family: $font-family-header;
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 33px;
-    letter-spacing: 0.04em;
+    margin: 0;
+    padding: 75px 20px 45px;
     text-align: center;
-    color: #194550;
+    font-family: $font-family-header;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-md;
+    color: $color-dark;
   }
+
   &__controler {
+    margin: auto;
+    padding: 0 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
   }
+
   &__video {
-    min-width: 200px;
-    max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s ease-in;
+    width: 300px;
+    height: 450px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
     &-img {
-      min-width: 200px;
-      max-width: 300px;
+      width: 300px;
+      height: 170px;
+      object-fit: cover;
+      object-position: center;
     }
-    &-title,
+
+    &-button {
+      position: relative;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      padding: 10px 20px;
+      background-color: $color-secondary;
+      border: none;
+      cursor: pointer;
+      color: $color-dark;
+      transition: background-color 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        background-color: #fdc92d;
+        box-shadow: 0 0 5px #fdc92d;
+      }
+    }
+
     &-subtitle {
+      height: 100%;
+      margin: 0;
+      padding: 0 8px 16px;
       text-align: center;
+      color: $color-text;
+      font-family: $font-family-body;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
     }
-    &-title {
-      color: red;
-    }
-    &-subtitle {
-      color: green;
-    }
-  }
-  &__video:hover {
-    background-color: red;
-  }
-  &__video::nth-child(3n) {
-    background-color: red;
-  }
-  &__video::nth-child(3n)::after {
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 100%;
-    border-left: 3px dashed black;
-    margin-right: 1em;
-    top: 0;
-    bottom: 0;
   }
 }

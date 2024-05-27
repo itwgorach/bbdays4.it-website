@@ -1,5 +1,7 @@
 import React from 'react'
 import RenderVideos from 'components/RenderVideos'
+import Hero from 'components/Hero'
+import heroImg from '../../../../Hero_videos.jpg'
 
 const videosData = [
   'https://www.youtube.com/embed/Iwd9oP3B96U?si=OFCjHrwZND9Fjr_c',
@@ -22,13 +24,30 @@ const videosData = [
   'https://www.youtube.com/embed/rzK6SycV1UM?si=YtpVRr1qxFs4oh8u',
   'https://www.youtube.com/embed/zIo-gbbqBNc?si=XVqvPNtaStlhwztB',
 ]
+const heroData = {
+  title: 'Zobaczcie sami jak minął \n najdłuższy festiwal technologiczny w Polsce!',
+  subtitle: '',
+  subtitlePos: '',
+  backgroundImage: { url: heroImg },
+  backgroundColor: '#389381',
+  buttonText: '',
+  buttonUrl: '',
+  backgroundVideo: 'https://youtu.be/Iwd9oP3B96U',
+  videoId: 'Iwd9oP3B96U',
+  footer: 'Zostańcie z nami na dłużej! 👇👇👇',
+}
+const subtitlePageData =
+  'Ten rok był dla festiwalu wyjątkowy, obok kultowych wydarzeń jak Konferencja na Uniwersytecie Bielsko-Bialskimi  uwielbianym BBQ4IT, ogrom nowości - Turniej Esportowy, Mistrzostwa branży IT w Enduro, Coder Dojo w międzynarodowym formacie. 😎'
 const videos = () => {
   return (
-    <div className="videos">
-      <h1 className="videos__title">Youtube playlist</h1>
-      <p className="videos__subtitle">Youtube playlist</p>
-      <RenderVideos videosData={videosData} />
-    </div>
+    <>
+      <Hero {...heroData} />
+      <div className="videos">
+        <p className="videos__subtitle">{subtitlePageData}</p>
+        <RenderVideos videosData={videosData} />
+        <p className="videos__subtitle">Też nie możecie doczekać się kolejnej edycji? 🤔 </p>
+      </div>
+    </>
   )
 }
 
