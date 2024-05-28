@@ -3,8 +3,9 @@
   margin: 0 auto;
 
   &__subtitle {
-    margin: 0;
-    padding: 75px 20px 45px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 75px 20px 65px;
     text-align: center;
     font-family: $font-family-header;
     font-size: $font-size-lg;
@@ -24,7 +25,7 @@
 
   &__video {
     width: 300px;
-    height: 450px;
+    height: 400px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 
@@ -37,35 +38,39 @@
 
     &-button {
       position: relative;
-      top: 0;
+      top: 45px;
       left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
+      transform: translateX(-50%);
       padding: 10px 20px;
+      z-index: 10;
+      color: $color-dark;
+      font-weight: $font-weight-extra-bold;
       background-color: $color-secondary;
       border: none;
+      border-radius: 4px;
       cursor: pointer;
-      color: $color-dark;
       transition: background-color 0.3s, box-shadow 0.3s;
+      &-card {
+        top: 0px;
+        transform: translate(-50%, -50%);
+      }
 
       &:hover {
-        background-color: #fdc92d;
+        background-color: #9accb0;
         box-shadow: 0 0 5px #fdc92d;
       }
     }
 
     &-subtitle {
-      height: 100%;
-      padding: 0 8px 16px;
-      margin: 0;
+      display: flex;
+      align-items: center;
       text-align: center;
+      margin: 0;
+      padding: 0 8px;
       color: $color-text;
       font-family: $font-family-body;
       font-size: $font-size-sm;
       font-weight: $font-weight-medium;
-    }
-    &-controler {
-      background-color: red;
     }
   }
 }

@@ -1,18 +1,13 @@
 import React from 'react'
 
-const Video = ({ src }) => {
+const Video = ({ img, videoUrl, subtitle }) => {
   return (
     <div class="videos__video">
-      <img src={src} alt="YouTube" class="videos__video-img" />
-      <button class="videos__video-button">Zobacz</button>
-      <div class="videos__video-controler">
-        <h3 class="videos__video-subtitle">
-          "Historia za małego przycisku" czyli opowieść o tym, jak nasze codzienne, frontendowe wybory mają ogromny
-          wpływ na życie innych". Łukasz Jakubowski - developer z wieloletnim doświadczeniem, w swojej prezentacji
-          podywaguje nieco o tym dlaczego warto pisać kod zgodnie z zasadami oraz dlaczego dostępność aplikacji jest tak
-          ważna
-        </h3>
-      </div>
+      <img src={img} alt="YouTube" class="videos__video-img" />
+      <a href={videoUrl} target="_blank" rel="noopener noreferrer">
+        <button class="videos__video-button videos__video-button-card">Zobacz</button>
+      </a>
+      <h3 class="videos__video-subtitle">{subtitle}</h3>
     </div>
   )
 }
