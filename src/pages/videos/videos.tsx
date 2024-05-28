@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import RenderVideos from 'components/RenderVideos'
 import Hero from 'components/Hero'
 import heroImg from '../../../../Hero_videos.jpg'
@@ -61,7 +62,7 @@ const heroData = {
   title: 'Zobaczcie sami jak minął \n najdłuższy festiwal technologiczny w Polsce!',
   backgroundImage: { url: heroImg },
   backgroundColor: '#389381',
-  backgroundVideo: 'https://youtu.be/Iwd9oP3B96U',
+  // backgroundVideo: 'https://youtu.be/Iwd9oP3B96U',
   videoId: 'Iwd9oP3B96U',
   footer: 'Zostańcie z nami na dłużej! 👇👇👇',
 }
@@ -82,5 +83,17 @@ const videos = () => {
     </>
   )
 }
+
+export const query = graphql`
+  {
+    strapiRules {
+      text {
+        data {
+          text
+        }
+      }
+    }
+  }
+`
 
 export default videos

@@ -26,16 +26,16 @@ const codeStyles = {
 
 // markup
 const NotFoundPage = () => {
-  React.useEffect(() => {
-    document.querySelector('.layout').style.backgroundColor = 'white'
-    const vh = window.innerHeight
-    document.getElementById('footer').style.cssText = `
-      position: ${vh < 550 ? 'relative' : 'absolute'};
-      bottom: 0px;
-      left: 0;
-      right: 0;
-    `
-  }, [])
+  // React.useEffect(() => {
+  //   document.querySelector('.layout').style.backgroundColor = 'white'
+  //   const vh = window.innerHeight
+  //   document.getElementById('footer').style.cssText = `
+  //     position: ${vh < 550 ? 'relative' : 'absolute'};
+  //     bottom: 0px;
+  //     left: 0;
+  //     right: 0;
+  //   `
+  // }, [])
 
   return (
     <main style={pageStyles}>
