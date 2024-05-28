@@ -56,13 +56,16 @@
 
     &-subtitle {
       height: 100%;
-      margin: 0;
       padding: 0 8px 16px;
+      margin: 0;
       text-align: center;
       color: $color-text;
       font-family: $font-family-body;
       font-size: $font-size-sm;
       font-weight: $font-weight-medium;
+    }
+    &-controler {
+      background-color: red;
     }
   }
 }
