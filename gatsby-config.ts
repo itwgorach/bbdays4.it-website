@@ -65,6 +65,17 @@ const strapiConfig = {
       },
       singularName: 'rules',
     },
+    {
+      queryParams: {
+        populate: {
+          videospage: {
+            Subtitle: '*',
+            footerSubtitle: '*',
+          },
+        },
+      },
+      singularName: 'videospage',
+    },
   ],
 }
 

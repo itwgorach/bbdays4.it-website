@@ -442,6 +442,16 @@ type STRAPI__COMPONENT_BASE_VIDEO_SECTION = Node & {
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
+type STRAPI__COMPONENT_BASE_VIDEOSLIST = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly strapi_component: Maybe<Scalars['String']>;
+  readonly isSectionVisible: Maybe<Scalars['Boolean']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
 type STRAPI__COMPONENT_BASE_VIDEO = Node & {
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
@@ -561,6 +571,37 @@ type STRAPI__COMPONENT_BASE_AGENDA = Node & {
   readonly speakers: Maybe<ReadonlyArray<Maybe<STRAPI_SPEAKER>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
+
+type STRAPI_VIDEOSPAGE = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly Subtitle: Maybe<Scalars['String']>;
+  readonly footerSubtitle: Maybe<Scalars['String']>;
+  readonly videospage: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_VIDEOSLISTUnion>>>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
+
+type STRAPI_VIDEOSPAGE_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOSPAGE_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type STRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_VIDEOSLISTUnion = STRAPI__COMPONENT_BASE_GALERY_SLIDER | STRAPI__COMPONENT_BASE_HERO | STRAPI__COMPONENT_BASE_VIDEOSLIST;
 
 type STRAPI_SPEAKER = Node & {
   readonly id: Scalars['ID'];
@@ -1213,6 +1254,8 @@ type Query = {
   readonly allStrapiMedia: STRAPI__MEDIAConnection;
   readonly strapiComponentBaseVideoSection: Maybe<STRAPI__COMPONENT_BASE_VIDEO_SECTION>;
   readonly allStrapiComponentBaseVideoSection: STRAPI__COMPONENT_BASE_VIDEO_SECTIONConnection;
+  readonly strapiComponentBaseVideoslist: Maybe<STRAPI__COMPONENT_BASE_VIDEOSLIST>;
+  readonly allStrapiComponentBaseVideoslist: STRAPI__COMPONENT_BASE_VIDEOSLISTConnection;
   readonly strapiComponentBaseVideo: Maybe<STRAPI__COMPONENT_BASE_VIDEO>;
   readonly allStrapiComponentBaseVideo: STRAPI__COMPONENT_BASE_VIDEOConnection;
   readonly strapiComponentBaseSpeakersGrid: Maybe<STRAPI__COMPONENT_BASE_SPEAKERS_GRID>;
@@ -1231,6 +1274,8 @@ type Query = {
   readonly allStrapiComponentBaseFestivalInNumbers: STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection;
   readonly strapiComponentBaseAgenda: Maybe<STRAPI__COMPONENT_BASE_AGENDA>;
   readonly allStrapiComponentBaseAgenda: STRAPI__COMPONENT_BASE_AGENDAConnection;
+  readonly strapiVideospage: Maybe<STRAPI_VIDEOSPAGE>;
+  readonly allStrapiVideospage: STRAPI_VIDEOSPAGEConnection;
   readonly strapiSpeaker: Maybe<STRAPI_SPEAKER>;
   readonly allStrapiSpeaker: STRAPI_SPEAKERConnection;
   readonly strapiSignupSection: Maybe<STRAPI_SIGNUP_SECTION>;
@@ -1520,6 +1565,25 @@ type Query_allStrapiComponentBaseVideoSectionArgs = {
 };
 
 
+type Query_strapiComponentBaseVideoslistArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  strapi_component: Maybe<StringQueryOperatorInput>;
+  isSectionVisible: Maybe<BooleanQueryOperatorInput>;
+  strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+
+type Query_allStrapiComponentBaseVideoslistArgs = {
+  filter: Maybe<STRAPI__COMPONENT_BASE_VIDEOSLISTFilterInput>;
+  sort: Maybe<STRAPI__COMPONENT_BASE_VIDEOSLISTSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
 type Query_strapiComponentBaseVideoArgs = {
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
@@ -1716,6 +1780,27 @@ type Query_strapiComponentBaseAgendaArgs = {
 type Query_allStrapiComponentBaseAgendaArgs = {
   filter: Maybe<STRAPI__COMPONENT_BASE_AGENDAFilterInput>;
   sort: Maybe<STRAPI__COMPONENT_BASE_AGENDASortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type Query_strapiVideospageArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  createdAt: Maybe<DateQueryOperatorInput>;
+  updatedAt: Maybe<DateQueryOperatorInput>;
+  Subtitle: Maybe<StringQueryOperatorInput>;
+  footerSubtitle: Maybe<StringQueryOperatorInput>;
+  strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+
+type Query_allStrapiVideospageArgs = {
+  filter: Maybe<STRAPI_VIDEOSPAGEFilterInput>;
+  sort: Maybe<STRAPI_VIDEOSPAGESortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -4252,6 +4337,205 @@ type STRAPI__COMPONENT_BASE_VIDEO_SECTIONFilterInput = {
 
 type STRAPI__COMPONENT_BASE_VIDEO_SECTIONSortInput = {
   readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_VIDEO_SECTIONFieldsEnum>>>;
+  readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOSLISTEdge>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOSLIST>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOSLISTGroupConnection>;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTConnection_maxArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTConnection_minArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTConnection_sumArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTEdge = {
+  readonly next: Maybe<STRAPI__COMPONENT_BASE_VIDEOSLIST>;
+  readonly node: STRAPI__COMPONENT_BASE_VIDEOSLIST;
+  readonly previous: Maybe<STRAPI__COMPONENT_BASE_VIDEOSLIST>;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum =
+  | 'id'
+  | 'parent.id'
+  | 'parent.parent.id'
+  | 'parent.parent.parent.id'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.children.children'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.children'
+  | 'parent.children.id'
+  | 'parent.children.parent.id'
+  | 'parent.children.parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.children.children'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.internal.contentFilePath'
+  | 'children'
+  | 'children.id'
+  | 'children.parent.id'
+  | 'children.parent.parent.id'
+  | 'children.parent.parent.children'
+  | 'children.parent.children'
+  | 'children.parent.children.id'
+  | 'children.parent.children.children'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.children'
+  | 'children.children.id'
+  | 'children.children.parent.id'
+  | 'children.children.parent.children'
+  | 'children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.children.children'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.internal.contentFilePath'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.internal.contentFilePath'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'internal.contentFilePath'
+  | 'strapi_component'
+  | 'isSectionVisible'
+  | 'strapi_id';
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTGroupConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOSLISTEdge>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOSLIST>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOSLISTGroupConnection>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTGroupConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTGroupConnection_maxArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTGroupConnection_minArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTGroupConnection_sumArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTGroupConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly parent: Maybe<NodeFilterInput>;
+  readonly children: Maybe<NodeFilterListInput>;
+  readonly internal: Maybe<InternalFilterInput>;
+  readonly strapi_component: Maybe<StringQueryOperatorInput>;
+  readonly isSectionVisible: Maybe<BooleanQueryOperatorInput>;
+  readonly strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOSLISTSortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_VIDEOSLISTFieldsEnum>>>;
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
@@ -8012,6 +8296,209 @@ type STRAPI__COMPONENT_BASE_AGENDAFilterInput = {
 
 type STRAPI__COMPONENT_BASE_AGENDASortInput = {
   readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_AGENDAFieldsEnum>>>;
+  readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
+type STRAPI_VIDEOSPAGEConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<STRAPI_VIDEOSPAGEEdge>;
+  readonly nodes: ReadonlyArray<STRAPI_VIDEOSPAGE>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<STRAPI_VIDEOSPAGEGroupConnection>;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_distinctArgs = {
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_maxArgs = {
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_minArgs = {
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_sumArgs = {
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+type STRAPI_VIDEOSPAGEEdge = {
+  readonly next: Maybe<STRAPI_VIDEOSPAGE>;
+  readonly node: STRAPI_VIDEOSPAGE;
+  readonly previous: Maybe<STRAPI_VIDEOSPAGE>;
+};
+
+type STRAPI_VIDEOSPAGEFieldsEnum =
+  | 'id'
+  | 'parent.id'
+  | 'parent.parent.id'
+  | 'parent.parent.parent.id'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.children.children'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.children'
+  | 'parent.children.id'
+  | 'parent.children.parent.id'
+  | 'parent.children.parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.children.children'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.internal.contentFilePath'
+  | 'children'
+  | 'children.id'
+  | 'children.parent.id'
+  | 'children.parent.parent.id'
+  | 'children.parent.parent.children'
+  | 'children.parent.children'
+  | 'children.parent.children.id'
+  | 'children.parent.children.children'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.children'
+  | 'children.children.id'
+  | 'children.children.parent.id'
+  | 'children.children.parent.children'
+  | 'children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.children.children'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.internal.contentFilePath'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.internal.contentFilePath'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'internal.contentFilePath'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'Subtitle'
+  | 'footerSubtitle'
+  | 'strapi_id';
+
+type STRAPI_VIDEOSPAGEGroupConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<STRAPI_VIDEOSPAGEEdge>;
+  readonly nodes: ReadonlyArray<STRAPI_VIDEOSPAGE>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<STRAPI_VIDEOSPAGEGroupConnection>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_distinctArgs = {
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_maxArgs = {
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_minArgs = {
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_sumArgs = {
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: STRAPI_VIDEOSPAGEFieldsEnum;
+};
+
+type STRAPI_VIDEOSPAGEFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly parent: Maybe<NodeFilterInput>;
+  readonly children: Maybe<NodeFilterListInput>;
+  readonly internal: Maybe<InternalFilterInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly Subtitle: Maybe<StringQueryOperatorInput>;
+  readonly footerSubtitle: Maybe<StringQueryOperatorInput>;
+  readonly strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOSPAGESortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<STRAPI_VIDEOSPAGEFieldsEnum>>>;
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
