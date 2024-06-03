@@ -8,7 +8,7 @@ import DesktopHeader from './Headers/DesktopHeader'
 const linksData: LinkDesktopProps[] = [
   {
     name: 'Nagrania',
-    path: 'videos',
+    path: 'nagrania',
   },
   {
     name: 'Prelegenci',
@@ -52,7 +52,7 @@ const linksData: LinkDesktopProps[] = [
 const linksDataMobile: LinkType[] = [
   {
     name: 'Nagrania',
-    path: 'videos',
+    path: 'nagrania',
   },
   {
     name: 'Prelegenci',
@@ -81,7 +81,7 @@ const linksDataMobile: LinkType[] = [
 ]
 
 type HeaderProps = {
-  pathname: string,
+  pathname: string
 }
 
 const Header: FC<HeaderProps> = ({ pathname }) => {
