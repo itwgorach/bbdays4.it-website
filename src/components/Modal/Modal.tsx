@@ -5,9 +5,9 @@ import '@reach/dialog/styles.css'
 type ModalProps = {
   children: ReactNode
   handleToggle?: () => void
-  title: string
+  title: GatsbyTypes.Maybe<string>
   isOpen: boolean
-  className: string
+  className?: string
 }
 
 const Modal = ({ children, handleToggle, title, isOpen, className }: ModalProps) => {
