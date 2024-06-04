@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Video = ({ img, videoUrl, subtitle }) => {
+const Video = ({ thumbnail, videoUrl, subtitle }) => {
   return (
     <div class="videos__video">
-      <img src={img} alt="YouTube" class="videos__video-img" />
+      <img src={thumbnail.url} alt="YouTube" class="videos__video-img" />
       <a href={videoUrl} target="_blank" rel="noopener noreferrer">
         <button class="videos__video-button videos__video-button-card">Zobacz</button>
       </a>

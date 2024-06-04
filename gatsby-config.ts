@@ -69,7 +69,19 @@ const strapiConfig = {
       queryParams: {
         populate: {
           videospage: {
-            Subtitle: '*',
+            populate: {
+              backgroundImage: '*',
+              backgroundImages: '*',
+              backgroundVideo: {
+                populate: '*',
+              },
+              bannerImage: '*',
+              images: '*',
+              video_lists: {
+                populate: '*',
+              },
+            },
+            subtitle: '*',
             footerSubtitle: '*',
           },
         },

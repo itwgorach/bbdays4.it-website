@@ -17,15 +17,8 @@ const Videos = ({ data }) => {
     strapiVideospage: { subtitle, footerSubtitle, videospage },
   } = data
 
-  const heroData = videospage[1]
-
-  const click = () => {
-    console.log(videospage)
-  }
-
   return (
     <>
-      <button onClick={click}>Click</button>
       <div className="videos">
         {videospage?.map((sectionData) => {
           if (!sectionData?.isSectionVisible) {
@@ -41,7 +34,7 @@ const Videos = ({ data }) => {
               )
             }
             case 'base.videos-list': {
-              return <RenderVideos videosData={videosData} />
+              return <RenderVideos {...sectionData} />
             }
             case 'base.galery-slider': {
               return <Gallery key={sectionData.id} {...sectionData} />
@@ -100,6 +93,15 @@ export const query = graphql`
         ... on STRAPI__COMPONENT_BASE_VIDEOS_LIST {
           id
           isSectionVisible
+          video_lists {
+            videoUrl
+            subtitle
+            thumbnail {
+              url
+              alternativeText
+            }
+            id
+          }
           strapi_component
         }
       }
