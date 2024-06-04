@@ -3,11 +3,11 @@ import { Dialog } from '@reach/dialog'
 import '@reach/dialog/styles.css'
 
 type ModalProps = {
-  children: ReactNode,
-  handleToggle?: () => void,
-  title: string,
-  isOpen: boolean,
-  className: string,
+  children: ReactNode
+  handleToggle?: () => void
+  title: string
+  isOpen: boolean
+  className: string
 }
 
 const Modal = ({ children, handleToggle, title, isOpen, className }: ModalProps) => {

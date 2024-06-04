@@ -52,8 +52,6 @@ const HomePage: FC<HomePageType> = ({
           }
           case 'base.galery-slider': {
             const gallery = component as BaseGalleryType
-            console.log(gallery)
-
             return <Gallery key={gallery.id} {...gallery} />
           }
           case 'base.speakers-grid': {

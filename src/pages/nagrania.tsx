@@ -1,51 +1,54 @@
-import React from 'react'
+import React, { FC, useMemo } from 'react'
 import { graphql } from 'gatsby'
+import VideosPageType from 'types/VideosPageType'
+import { BaseGalleryType, BaseHeroType, BaseVideosType } from 'types'
 import RenderVideos from 'components/RenderVideos'
 import Hero from 'components/Hero'
-import ImageYT from '../../../YT.jpg'
 import Gallery from 'components/Gallery'
 
-const videosData = [
-  {
-    img: ImageYT,
-    videoUrl: 'https://www.youtube.com/embed/B4CFseJDkFU?si=OBh3RKPCZTY3Q6tU',
-    subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quibusdam?',
-  },
-]
-const Videos = ({ data }) => {
+const Videos: FC<VideosPageType> = ({ data }) => {
   const {
     strapiVideospage: { subtitle, footerSubtitle, videospage },
   } = data
 
-  return (
-    <>
-      <div className="videos">
-        {videospage?.map((sectionData) => {
-          if (!sectionData?.isSectionVisible) {
-            return null
-          }
-          switch (sectionData?.strapi_component) {
-            case 'base.hero': {
-              return (
-                <>
-                  <Hero {...sectionData} />
-                  {subtitle && <p className="videos__subtitle">{subtitle}</p>}
-                </>
-              )
+  const content = useMemo(
+    () => (
+      <>
+        <div className="videos">
+          {videospage?.map((sectionData) => {
+            if (!sectionData?.isSectionVisible) {
+              return null
             }
-            case 'base.videos-list': {
-              return <RenderVideos {...sectionData} />
+            switch (sectionData?.strapi_component) {
+              case 'base.hero': {
+                const hero = sectionData as BaseHeroType
+                return (
+                  <>
+                    <Hero key={hero.id} {...hero} />
+                    {subtitle && <p className="videos__subtitle">{subtitle}</p>}
+                  </>
+                )
+              }
+              case 'base.videos-list': {
+                const videos = sectionData as BaseVideosType
+                return <RenderVideos {...videos} />
+              }
+              case 'base.galery-slider': {
+                const gallery = sectionData as BaseGalleryType
+                return <Gallery key={gallery.id} {...gallery} />
+              }
             }
-            case 'base.galery-slider': {
-              return <Gallery key={sectionData.id} {...sectionData} />
-            }
-          }
-        })}
+          })}
 
-        {footerSubtitle && <p className="videos__subtitle">{footerSubtitle}</p>}
-      </div>
-    </>
+          {footerSubtitle && <p className="videos__subtitle">{footerSubtitle}</p>}
+        </div>
+      </>
+    ),
+
+    [videospage, subtitle, footerSubtitle],
   )
+
+  return <>{content}</>
 }
 
 export const query = graphql`

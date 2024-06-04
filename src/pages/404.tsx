@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 const pageStyles = {
   color: '#232129',
   fontFamily: '-apple-system, Roboto, sans-serif, serif',
+  minHeight: '71vh',
   padding: '96px',
 }
 const headingStyles = {
@@ -26,17 +27,6 @@ const codeStyles = {
 
 // markup
 const NotFoundPage = () => {
-  // React.useEffect(() => {
-  //   document.querySelector('.layout').style.backgroundColor = 'white'
-  //   const vh = window.innerHeight
-  //   document.getElementById('footer').style.cssText = `
-  //     position: ${vh < 550 ? 'relative' : 'absolute'};
-  //     bottom: 0px;
-  //     left: 0;
-  //     right: 0;
-  //   `
-  // }, [])
-
   return (
     <main style={pageStyles}>
       <title>Not found</title>

@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { VideoType } from 'types'
 
-const Video = ({ thumbnail, videoUrl, subtitle }) => {
+const Video: FC<VideoType> = ({ thumbnail, videoUrl, subtitle }) => {
   return (
-    <div class="videos__video">
-      <img src={thumbnail.url} alt="YouTube" class="videos__video-img" />
+    <div className="videos__video">
+      <img alt={thumbnail?.alternativeText} className="videos__video-img" src={thumbnail?.url} />
       <a href={videoUrl} target="_blank" rel="noopener noreferrer">
-        <button class="videos__video-button videos__video-button-card">Zobacz</button>
+        <button className="videos__video-button videos__video-button-card">Zobacz</button>
       </a>
-      <h3 class="videos__video-subtitle">{subtitle}</h3>
+      <h3 className="videos__video-subtitle">{subtitle}</h3>
     </div>
   )
 }
