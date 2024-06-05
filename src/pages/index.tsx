@@ -236,6 +236,18 @@ export const query = graphql`
             logo {
               url
             }
+            localizations {
+              data {
+                attributes {
+                  backgroundColor
+                  title
+                  subtitle
+                  startHour
+                  room
+                  locale
+                }
+              }
+            }
           }
           speakers {
             firstName
@@ -250,6 +262,25 @@ export const query = graphql`
             twitterUrl
             linktrUrl
             backgroundColor
+            localizations {
+              data {
+                id
+                attributes {
+                  backgroundColor
+                  bio
+                  description
+                  firstName
+                  index
+                  lastName
+                  linkedinUrl
+                  linktrUrl
+                  locale
+                  position
+                  title
+                  twitterUrl
+                }
+              }
+            }
           }
         }
         ... on STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS {
