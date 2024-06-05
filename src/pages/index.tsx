@@ -250,6 +250,17 @@ export const query = graphql`
             name
             number
             index
+            locale
+            localizations {
+              data {
+                attributes {
+                  index
+                  name
+                  number
+                  locale
+                }
+              }
+            }
           }
         }
         ... on STRAPI__COMPONENT_BASE_VIDEO_SECTION {

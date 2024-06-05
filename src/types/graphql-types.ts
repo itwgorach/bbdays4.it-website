@@ -1330,6 +1330,8 @@ type STRAPI_ACHIEVEMENT = Node & {
   readonly index: Maybe<Scalars['Int']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_ACHIEVEMENTLocalizations>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -1343,6 +1345,40 @@ type STRAPI_ACHIEVEMENT_createdAtArgs = {
 
 
 type STRAPI_ACHIEVEMENT_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type STRAPI_ACHIEVEMENTLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_ACHIEVEMENTLocalizationsData>>>;
+};
+
+type STRAPI_ACHIEVEMENTLocalizationsData = {
+  readonly id: Maybe<Scalars['Int']>;
+  readonly attributes: Maybe<STRAPI_ACHIEVEMENTLocalizationsDataAttributes>;
+};
+
+type STRAPI_ACHIEVEMENTLocalizationsDataAttributes = {
+  readonly name: Maybe<Scalars['String']>;
+  readonly number: Maybe<Scalars['String']>;
+  readonly index: Maybe<Scalars['Int']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_ACHIEVEMENTLocalizationsDataAttributes_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_ACHIEVEMENTLocalizationsDataAttributes_updatedAtArgs = {
   formatString: Maybe<Scalars['String']>;
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
@@ -2183,6 +2219,8 @@ type Query_strapiAchievementArgs = {
   index: Maybe<IntQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
+  locale: Maybe<StringQueryOperatorInput>;
+  localizations: Maybe<STRAPI_ACHIEVEMENTLocalizationsFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -7823,7 +7861,31 @@ type STRAPI_ACHIEVEMENTFilterInput = {
   readonly index: Maybe<IntQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
+  readonly localizations: Maybe<STRAPI_ACHIEVEMENTLocalizationsFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_ACHIEVEMENTLocalizationsFilterInput = {
+  readonly data: Maybe<STRAPI_ACHIEVEMENTLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_ACHIEVEMENTLocalizationsDataFilterListInput = {
+  readonly elemMatch: Maybe<STRAPI_ACHIEVEMENTLocalizationsDataFilterInput>;
+};
+
+type STRAPI_ACHIEVEMENTLocalizationsDataFilterInput = {
+  readonly id: Maybe<IntQueryOperatorInput>;
+  readonly attributes: Maybe<STRAPI_ACHIEVEMENTLocalizationsDataAttributesFilterInput>;
+};
+
+type STRAPI_ACHIEVEMENTLocalizationsDataAttributesFilterInput = {
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly number: Maybe<StringQueryOperatorInput>;
+  readonly index: Maybe<IntQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSConnection = {
@@ -8014,6 +8076,9 @@ type STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSFieldsEnum =
   | 'achievements.index'
   | 'achievements.createdAt'
   | 'achievements.updatedAt'
+  | 'achievements.locale'
+  | 'achievements.localizations.data'
+  | 'achievements.localizations.data.id'
   | 'achievements.strapi_id'
   | 'backgroundImages'
   | 'backgroundImages.id'
@@ -11515,6 +11580,15 @@ type STRAPI_ACHIEVEMENTFieldsEnum =
   | 'index'
   | 'createdAt'
   | 'updatedAt'
+  | 'locale'
+  | 'localizations.data'
+  | 'localizations.data.id'
+  | 'localizations.data.attributes.name'
+  | 'localizations.data.attributes.number'
+  | 'localizations.data.attributes.index'
+  | 'localizations.data.attributes.createdAt'
+  | 'localizations.data.attributes.updatedAt'
+  | 'localizations.data.attributes.locale'
   | 'strapi_id';
 
 type STRAPI_ACHIEVEMENTGroupConnection = {
