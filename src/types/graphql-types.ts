@@ -1268,7 +1268,9 @@ type STRAPI_EVENT = Node & {
   readonly link: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
   readonly logo: Maybe<STRAPI_EVENTLogo>;
+  readonly localizations: Maybe<STRAPI_EVENTLocalizations>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
 
@@ -1314,6 +1316,44 @@ type STRAPI_EVENTLogo_createdAtArgs = {
 
 
 type STRAPI_EVENTLogo_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type STRAPI_EVENTLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_EVENTLocalizationsData>>>;
+};
+
+type STRAPI_EVENTLocalizationsData = {
+  readonly id: Maybe<Scalars['Int']>;
+  readonly attributes: Maybe<STRAPI_EVENTLocalizationsDataAttributes>;
+};
+
+type STRAPI_EVENTLocalizationsDataAttributes = {
+  readonly startHour: Maybe<Scalars['String']>;
+  readonly endHour: Maybe<Scalars['String']>;
+  readonly date: Maybe<Scalars['String']>;
+  readonly backgroundColor: Maybe<Scalars['String']>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly displayTitleOnDesktop: Maybe<Scalars['Boolean']>;
+  readonly link: Maybe<Scalars['String']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_EVENTLocalizationsDataAttributes_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_EVENTLocalizationsDataAttributes_updatedAtArgs = {
   formatString: Maybe<Scalars['String']>;
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
@@ -2196,7 +2236,9 @@ type Query_strapiEventArgs = {
   link: Maybe<StringQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
+  locale: Maybe<StringQueryOperatorInput>;
   logo: Maybe<STRAPI_EVENTLogoFilterInput>;
+  localizations: Maybe<STRAPI_EVENTLocalizationsFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -6255,7 +6297,9 @@ type STRAPI_EVENTFilterInput = {
   readonly link: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
   readonly logo: Maybe<STRAPI_EVENTLogoFilterInput>;
+  readonly localizations: Maybe<STRAPI_EVENTLocalizationsFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -6273,6 +6317,32 @@ type STRAPI_EVENTLogoFilterInput = {
   readonly url: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_EVENTLocalizationsFilterInput = {
+  readonly data: Maybe<STRAPI_EVENTLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_EVENTLocalizationsDataFilterListInput = {
+  readonly elemMatch: Maybe<STRAPI_EVENTLocalizationsDataFilterInput>;
+};
+
+type STRAPI_EVENTLocalizationsDataFilterInput = {
+  readonly id: Maybe<IntQueryOperatorInput>;
+  readonly attributes: Maybe<STRAPI_EVENTLocalizationsDataAttributesFilterInput>;
+};
+
+type STRAPI_EVENTLocalizationsDataAttributesFilterInput = {
+  readonly startHour: Maybe<StringQueryOperatorInput>;
+  readonly endHour: Maybe<StringQueryOperatorInput>;
+  readonly date: Maybe<StringQueryOperatorInput>;
+  readonly backgroundColor: Maybe<StringQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly displayTitleOnDesktop: Maybe<BooleanQueryOperatorInput>;
+  readonly link: Maybe<StringQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
 };
 
 type STRAPI__COMPONENT_BASE_SCHEDULEConnection = {
@@ -6468,6 +6538,7 @@ type STRAPI__COMPONENT_BASE_SCHEDULEFieldsEnum =
   | 'events.link'
   | 'events.createdAt'
   | 'events.updatedAt'
+  | 'events.locale'
   | 'events.logo.id'
   | 'events.logo.name'
   | 'events.logo.alternativeText'
@@ -6481,6 +6552,8 @@ type STRAPI__COMPONENT_BASE_SCHEDULEFieldsEnum =
   | 'events.logo.url'
   | 'events.logo.createdAt'
   | 'events.logo.updatedAt'
+  | 'events.localizations.data'
+  | 'events.localizations.data.id'
   | 'events.strapi_id'
   | 'strapi_id';
 
@@ -11375,6 +11448,7 @@ type STRAPI_EVENTFieldsEnum =
   | 'link'
   | 'createdAt'
   | 'updatedAt'
+  | 'locale'
   | 'logo.id'
   | 'logo.name'
   | 'logo.alternativeText'
@@ -11388,6 +11462,18 @@ type STRAPI_EVENTFieldsEnum =
   | 'logo.url'
   | 'logo.createdAt'
   | 'logo.updatedAt'
+  | 'localizations.data'
+  | 'localizations.data.id'
+  | 'localizations.data.attributes.startHour'
+  | 'localizations.data.attributes.endHour'
+  | 'localizations.data.attributes.date'
+  | 'localizations.data.attributes.backgroundColor'
+  | 'localizations.data.attributes.title'
+  | 'localizations.data.attributes.displayTitleOnDesktop'
+  | 'localizations.data.attributes.link'
+  | 'localizations.data.attributes.createdAt'
+  | 'localizations.data.attributes.updatedAt'
+  | 'localizations.data.attributes.locale'
   | 'strapi_id';
 
 type STRAPI_EVENTGroupConnection = {

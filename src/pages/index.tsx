@@ -183,8 +183,23 @@ export const query = graphql`
             backgroundColor
             displayTitleOnDesktop
             link
+            locale
             logo {
               url
+            }
+            localizations {
+              data {
+                attributes {
+                  title
+                  startHour
+                  locale
+                  endHour
+                  displayTitleOnDesktop
+                  date
+                  backgroundColor
+                }
+                id
+              }
             }
           }
         }
