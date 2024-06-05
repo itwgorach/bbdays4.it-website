@@ -104,6 +104,15 @@ export const query = graphql`
               alternativeText
             }
             id
+            localizations {
+              data {
+                attributes {
+                  videoUrl
+                  subtitle
+                  locale
+                }
+              }
+            }
           }
           strapi_component
         }
