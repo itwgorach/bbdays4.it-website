@@ -146,27 +146,34 @@ export const query = graphql`
             }
           }
         }
-        ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
+        ... on STRAPI__COMPONENT_BASE_SIGNUP_GRID {
           id
-          sectionTitle
-          sectionSubtitle
+          signupImage {
+            url
+          }
+          bannerImage {
+            url
+          }
           strapi_component
           isSectionVisible
-          speakers {
-            index
-            firstName
-            lastName
+          signup_sections {
+            buttonText
+            buttonUrl
             title
-            photo {
-              url
+            subtitle
+            link
+            localizations {
+              data {
+                attributes {
+                  buttonText
+                  buttonUrl
+                  link
+                  locale
+                  subtitle
+                  title
+                }
+              }
             }
-            description
-            position
-            linkedinUrl
-            twitterUrl
-            linktrUrl
-            backgroundColor
-            bio
           }
         }
         ... on STRAPI__COMPONENT_BASE_SCHEDULE {
