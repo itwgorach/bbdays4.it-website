@@ -11,7 +11,6 @@ type PrivacyPolicyType = {
 
 const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title }) => {
   const data = useStaticQuery(query)
-  console.log(data)
 
   return (
     <Modal className="-large" handleToggle={handleModalToggle} isOpen={isOpen} title={title}>

@@ -643,7 +643,6 @@ type STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospage = {
   readonly id: Maybe<Scalars['Int']>;
   readonly _xcomponent: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
-  readonly subtitle: Maybe<Scalars['String']>;
   readonly buttonText: Maybe<Scalars['String']>;
   readonly buttonUrl: Maybe<Scalars['String']>;
   readonly backgroundColor: Maybe<Scalars['String']>;
@@ -9440,7 +9439,6 @@ type STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageFilterInput = {
   readonly id: Maybe<IntQueryOperatorInput>;
   readonly _xcomponent: Maybe<StringQueryOperatorInput>;
   readonly title: Maybe<StringQueryOperatorInput>;
-  readonly subtitle: Maybe<StringQueryOperatorInput>;
   readonly buttonText: Maybe<StringQueryOperatorInput>;
   readonly buttonUrl: Maybe<StringQueryOperatorInput>;
   readonly backgroundColor: Maybe<StringQueryOperatorInput>;

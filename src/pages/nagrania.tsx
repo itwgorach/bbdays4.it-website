@@ -6,13 +6,18 @@ import RenderVideos from 'components/RenderVideos'
 import Hero from 'components/Hero'
 import Gallery from 'components/Gallery'
 import { useLanguageContext } from 'contexts/LanguageContext'
+import getPolishVideosPage from 'utils/getPolishVideosPage'
+import getEnglishVideosPage from 'utils/getEnglishVideosPage'
 
 const Videos: FC<VideosPageType> = ({ data }) => {
   const {
-    strapiVideospage: { subtitle, footerSubtitle, videospage },
+    strapiVideospage: { videospage },
   } = data
+  console.log(videospage)
 
-  const { language, toggleLanguage } = useLanguageContext()
+  const { language } = useLanguageContext()
+
+  const [subtitle, footerSubtitle] = language === 'pl' ? getPolishVideosPage(data) : getEnglishVideosPage(data)
 
   const content = useMemo(
     () => (
@@ -126,6 +131,18 @@ export const query = graphql`
             subtitle
             footerSubtitle
             locale
+            videospage {
+              videoId
+              title
+              subtitlePos
+              isSectionVisible
+              id
+              footer
+              buttonUrl
+              buttonText
+              _xcomponent
+              backgroundColor
+            }
           }
         }
       }
