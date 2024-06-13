@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import ReactMarkdown from 'react-markdown'
 import RulesPageType from 'types/RulesPageType'
+import { useLanguageContext } from 'contexts/LanguageContext'
 
 const RulesPage: FC<RulesPageType> = ({
   data: {
@@ -9,11 +10,16 @@ const RulesPage: FC<RulesPageType> = ({
   },
   data,
 }) => {
+  const { language } = useLanguageContext()
   console.log(data)
+  const plText = data.strapiRules.text?.data?.text
+  const engText = data.strapiRules.localizations.data[0].attributes.text
+
+  const rulesText = language === 'pl' ? plText : engText
 
   return (
     <div className="rules">
-      <ReactMarkdown>{text.data.text}</ReactMarkdown>
+      <ReactMarkdown>{rulesText}</ReactMarkdown>
     </div>
   )
 }
