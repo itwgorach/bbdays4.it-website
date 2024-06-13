@@ -1651,6 +1651,8 @@ type STRAPI_HOMEPAGE = Node & {
   readonly internal: Internal;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_HOMEPAGELocalizations>;
   readonly homepage: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_AGENDASTRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSSTRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_PARTNERS_SLIDERSTRAPI__COMPONENT_BASE_SCHEDULESTRAPI__COMPONENT_BASE_SIGNUP_GRIDSTRAPI__COMPONENT_BASE_SPEAKERS_GRIDSTRAPI__COMPONENT_BASE_VIDEO_SECTIONUnion>>>;
   readonly strapi_id: Maybe<Scalars['Int']>;
 };
@@ -1665,6 +1667,88 @@ type STRAPI_HOMEPAGE_createdAtArgs = {
 
 
 type STRAPI_HOMEPAGE_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type STRAPI_HOMEPAGELocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_HOMEPAGELocalizationsData>>>;
+};
+
+type STRAPI_HOMEPAGELocalizationsData = {
+  readonly id: Maybe<Scalars['Int']>;
+  readonly attributes: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributes>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly homepage: Maybe<ReadonlyArray<Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesHomepage>>>;
+  readonly localizations: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizations>;
+};
+
+
+type STRAPI_HOMEPAGELocalizationsDataAttributes_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_HOMEPAGELocalizationsDataAttributes_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesHomepage = {
+  readonly id: Maybe<Scalars['Int']>;
+  readonly _xcomponent: Maybe<Scalars['String']>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly subtitle: Maybe<Scalars['String']>;
+  readonly buttonText: Maybe<Scalars['String']>;
+  readonly buttonUrl: Maybe<Scalars['String']>;
+  readonly backgroundColor: Maybe<Scalars['String']>;
+  readonly subtitlePos: Maybe<Scalars['String']>;
+  readonly isSectionVisible: Maybe<Scalars['Boolean']>;
+  readonly videoId: Maybe<Scalars['String']>;
+  readonly footer: Maybe<Scalars['String']>;
+  readonly scheduleTitle: Maybe<Scalars['String']>;
+  readonly sectionTitle: Maybe<Scalars['String']>;
+  readonly sectionSubtitle: Maybe<Scalars['String']>;
+  readonly article: Maybe<Scalars['String']>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsData>>>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsData = {
+  readonly id: Maybe<Scalars['Int']>;
+  readonly attributes: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributes>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributes_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributes_updatedAtArgs = {
   formatString: Maybe<Scalars['String']>;
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
@@ -2695,6 +2779,8 @@ type Query_strapiHomepageArgs = {
   internal: Maybe<InternalFilterInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
+  locale: Maybe<StringQueryOperatorInput>;
+  localizations: Maybe<STRAPI_HOMEPAGELocalizationsFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
 };
 
@@ -12058,6 +12144,68 @@ type STRAPI_LECTURESortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type STRAPI_HOMEPAGELocalizationsFilterInput = {
+  readonly data: Maybe<STRAPI_HOMEPAGELocalizationsDataFilterListInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataFilterListInput = {
+  readonly elemMatch: Maybe<STRAPI_HOMEPAGELocalizationsDataFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataFilterInput = {
+  readonly id: Maybe<IntQueryOperatorInput>;
+  readonly attributes: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesFilterInput = {
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
+  readonly homepage: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterListInput>;
+  readonly localizations: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterListInput = {
+  readonly elemMatch: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterInput = {
+  readonly id: Maybe<IntQueryOperatorInput>;
+  readonly _xcomponent: Maybe<StringQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly subtitle: Maybe<StringQueryOperatorInput>;
+  readonly buttonText: Maybe<StringQueryOperatorInput>;
+  readonly buttonUrl: Maybe<StringQueryOperatorInput>;
+  readonly backgroundColor: Maybe<StringQueryOperatorInput>;
+  readonly subtitlePos: Maybe<StringQueryOperatorInput>;
+  readonly isSectionVisible: Maybe<BooleanQueryOperatorInput>;
+  readonly videoId: Maybe<StringQueryOperatorInput>;
+  readonly footer: Maybe<StringQueryOperatorInput>;
+  readonly scheduleTitle: Maybe<StringQueryOperatorInput>;
+  readonly sectionTitle: Maybe<StringQueryOperatorInput>;
+  readonly sectionSubtitle: Maybe<StringQueryOperatorInput>;
+  readonly article: Maybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsFilterInput = {
+  readonly data: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFilterListInput = {
+  readonly elemMatch: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFilterInput = {
+  readonly id: Maybe<IntQueryOperatorInput>;
+  readonly attributes: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributesFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributesFilterInput = {
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
+};
+
 type STRAPI_HOMEPAGEConnection = {
   readonly totalCount: Scalars['Int'];
   readonly edges: ReadonlyArray<STRAPI_HOMEPAGEEdge>;
@@ -12199,6 +12347,13 @@ type STRAPI_HOMEPAGEFieldsEnum =
   | 'internal.contentFilePath'
   | 'createdAt'
   | 'updatedAt'
+  | 'locale'
+  | 'localizations.data'
+  | 'localizations.data.id'
+  | 'localizations.data.attributes.createdAt'
+  | 'localizations.data.attributes.updatedAt'
+  | 'localizations.data.attributes.locale'
+  | 'localizations.data.attributes.homepage'
   | 'strapi_id';
 
 type STRAPI_HOMEPAGEGroupConnection = {
@@ -12249,6 +12404,8 @@ type STRAPI_HOMEPAGEFilterInput = {
   readonly internal: Maybe<InternalFilterInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
+  readonly localizations: Maybe<STRAPI_HOMEPAGELocalizationsFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
 };
 

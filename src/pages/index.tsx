@@ -331,6 +331,31 @@ export const query = graphql`
           strapi_component
         }
       }
+      localizations {
+        data {
+          id
+          attributes {
+            locale
+            homepage {
+              videoId
+              title
+              subtitlePos
+              subtitle
+              sectionTitle
+              sectionSubtitle
+              scheduleTitle
+              isSectionVisible
+              id
+              footer
+              buttonUrl
+              buttonText
+              backgroundColor
+              article
+              _xcomponent
+            }
+          }
+        }
+      }
     }
   }
 `

@@ -41,6 +41,9 @@ const strapiConfig = {
               },
             },
           },
+          localizations: {
+            populate: '*',
+          },
         },
       },
       singularName: 'homepage',
