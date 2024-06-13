@@ -1531,7 +1531,6 @@ type STRAPI_LECTURELogo = {
   readonly caption: Maybe<Scalars['String']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
-  readonly formats: Maybe<STRAPI_LECTURELogoFormats>;
   readonly hash: Maybe<Scalars['String']>;
   readonly ext: Maybe<Scalars['String']>;
   readonly mime: Maybe<Scalars['String']>;
@@ -1555,57 +1554,6 @@ type STRAPI_LECTURELogo_updatedAtArgs = {
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
   locale: Maybe<Scalars['String']>;
-};
-
-type STRAPI_LECTURELogoFormats = {
-  readonly large: Maybe<STRAPI_LECTURELogoFormatsLarge>;
-  readonly small: Maybe<STRAPI_LECTURELogoFormatsSmall>;
-  readonly medium: Maybe<STRAPI_LECTURELogoFormatsMedium>;
-  readonly thumbnail: Maybe<STRAPI_LECTURELogoFormatsThumbnail>;
-};
-
-type STRAPI_LECTURELogoFormatsLarge = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_LECTURELogoFormatsSmall = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_LECTURELogoFormatsMedium = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_LECTURELogoFormatsThumbnail = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly width: Maybe<Scalars['Int']>;
-  readonly height: Maybe<Scalars['Int']>;
 };
 
 type STRAPI_LECTURELocalizations = {
@@ -9085,7 +9033,6 @@ type STRAPI_LECTURELogoFilterInput = {
   readonly caption: Maybe<StringQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
-  readonly formats: Maybe<STRAPI_LECTURELogoFormatsFilterInput>;
   readonly hash: Maybe<StringQueryOperatorInput>;
   readonly ext: Maybe<StringQueryOperatorInput>;
   readonly mime: Maybe<StringQueryOperatorInput>;
@@ -9093,57 +9040,6 @@ type STRAPI_LECTURELogoFilterInput = {
   readonly url: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
-};
-
-type STRAPI_LECTURELogoFormatsFilterInput = {
-  readonly large: Maybe<STRAPI_LECTURELogoFormatsLargeFilterInput>;
-  readonly small: Maybe<STRAPI_LECTURELogoFormatsSmallFilterInput>;
-  readonly medium: Maybe<STRAPI_LECTURELogoFormatsMediumFilterInput>;
-  readonly thumbnail: Maybe<STRAPI_LECTURELogoFormatsThumbnailFilterInput>;
-};
-
-type STRAPI_LECTURELogoFormatsLargeFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_LECTURELogoFormatsSmallFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_LECTURELogoFormatsMediumFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_LECTURELogoFormatsThumbnailFilterInput = {
-  readonly ext: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-  readonly hash: Maybe<StringQueryOperatorInput>;
-  readonly mime: Maybe<StringQueryOperatorInput>;
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly size: Maybe<FloatQueryOperatorInput>;
-  readonly width: Maybe<IntQueryOperatorInput>;
-  readonly height: Maybe<IntQueryOperatorInput>;
 };
 
 type STRAPI_LECTURELocalizationsFilterInput = {
@@ -12047,38 +11943,6 @@ type STRAPI_LECTUREFieldsEnum =
   | 'logo.caption'
   | 'logo.width'
   | 'logo.height'
-  | 'logo.formats.large.ext'
-  | 'logo.formats.large.url'
-  | 'logo.formats.large.hash'
-  | 'logo.formats.large.mime'
-  | 'logo.formats.large.name'
-  | 'logo.formats.large.size'
-  | 'logo.formats.large.width'
-  | 'logo.formats.large.height'
-  | 'logo.formats.small.ext'
-  | 'logo.formats.small.url'
-  | 'logo.formats.small.hash'
-  | 'logo.formats.small.mime'
-  | 'logo.formats.small.name'
-  | 'logo.formats.small.size'
-  | 'logo.formats.small.width'
-  | 'logo.formats.small.height'
-  | 'logo.formats.medium.ext'
-  | 'logo.formats.medium.url'
-  | 'logo.formats.medium.hash'
-  | 'logo.formats.medium.mime'
-  | 'logo.formats.medium.name'
-  | 'logo.formats.medium.size'
-  | 'logo.formats.medium.width'
-  | 'logo.formats.medium.height'
-  | 'logo.formats.thumbnail.ext'
-  | 'logo.formats.thumbnail.url'
-  | 'logo.formats.thumbnail.hash'
-  | 'logo.formats.thumbnail.mime'
-  | 'logo.formats.thumbnail.name'
-  | 'logo.formats.thumbnail.size'
-  | 'logo.formats.thumbnail.width'
-  | 'logo.formats.thumbnail.height'
   | 'logo.hash'
   | 'logo.ext'
   | 'logo.mime'

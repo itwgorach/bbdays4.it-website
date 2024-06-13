@@ -5,11 +5,14 @@ import { BaseGalleryType, BaseHeroType, BaseVideosType } from 'types'
 import RenderVideos from 'components/RenderVideos'
 import Hero from 'components/Hero'
 import Gallery from 'components/Gallery'
+import { useLanguageContext } from 'contexts/LanguageContext'
 
 const Videos: FC<VideosPageType> = ({ data }) => {
   const {
     strapiVideospage: { subtitle, footerSubtitle, videospage },
   } = data
+
+  const { language, toggleLanguage } = useLanguageContext()
 
   const content = useMemo(
     () => (
