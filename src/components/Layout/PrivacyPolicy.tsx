@@ -4,13 +4,14 @@ import React, { FC } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 type PrivacyPolicyType = {
-  handleModalToggle: () => void,
-  isOpen: boolean,
-  title: string,
+  handleModalToggle: () => void
+  isOpen: boolean
+  title: string
 }
 
 const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title }) => {
   const data = useStaticQuery(query)
+  console.log(data)
 
   return (
     <Modal className="-large" handleToggle={handleModalToggle} isOpen={isOpen} title={title}>
@@ -29,8 +30,19 @@ const query = graphql`
       text {
         data {
           text
+          id
         }
       }
+      localizations {
+        data {
+          id
+          attributes {
+            locale
+            text
+          }
+        }
+      }
+      locale
     }
   }
 `

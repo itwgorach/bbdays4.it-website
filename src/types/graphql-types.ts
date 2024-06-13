@@ -1114,6 +1114,7 @@ type STRAPI_PRIVACYPOLICY = Node & {
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
   readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_PRIVACYPOLICYLocalizations>;
   readonly strapi_id: Maybe<Scalars['Int']>;
   /** Returns all children nodes filtered by type STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE */
   readonly childrenStrapiPrivacypolicyTextTextnode: Maybe<ReadonlyArray<Maybe<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE>>>;
@@ -1139,6 +1140,71 @@ type STRAPI_PRIVACYPOLICY_updatedAtArgs = {
 
 type STRAPI_PRIVACYPOLICYText = {
   readonly data: Maybe<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_PRIVACYPOLICYLocalizationsData>>>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsData = {
+  readonly id: Maybe<Scalars['Int']>;
+  readonly attributes: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributes>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributes = {
+  readonly text: Maybe<Scalars['String']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizations>;
+};
+
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributes_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributes_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsData>>>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsData = {
+  readonly id: Maybe<Scalars['Int']>;
+  readonly attributes: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributes>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributes = {
+  readonly text: Maybe<Scalars['String']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributes_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributes_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
 };
 
 type STRAPI_PARTNER = Node & {
@@ -2470,6 +2536,7 @@ type Query_strapiPrivacypolicyArgs = {
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
   locale: Maybe<StringQueryOperatorInput>;
+  localizations: Maybe<STRAPI_PRIVACYPOLICYLocalizationsFilterInput>;
   strapi_id: Maybe<IntQueryOperatorInput>;
   childrenStrapiPrivacypolicyTextTextnode: Maybe<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODEFilterListInput>;
   childStrapiPrivacypolicyTextTextnode: Maybe<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODEFilterInput>;
@@ -10943,6 +11010,47 @@ type STRAPI_PRIVACYPOLICYTextFilterInput = {
   readonly data: Maybe<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODEFilterInput>;
 };
 
+type STRAPI_PRIVACYPOLICYLocalizationsFilterInput = {
+  readonly data: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataFilterListInput = {
+  readonly elemMatch: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataFilterInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataFilterInput = {
+  readonly id: Maybe<IntQueryOperatorInput>;
+  readonly attributes: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesFilterInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesFilterInput = {
+  readonly text: Maybe<StringQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
+  readonly localizations: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsFilterInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsFilterInput = {
+  readonly data: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFilterListInput = {
+  readonly elemMatch: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFilterInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFilterInput = {
+  readonly id: Maybe<IntQueryOperatorInput>;
+  readonly attributes: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributesFilterInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributesFilterInput = {
+  readonly text: Maybe<StringQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly locale: Maybe<StringQueryOperatorInput>;
+};
+
 type STRAPI_PRIVACYPOLICY_TEXT_TEXTNODEFilterListInput = {
   readonly elemMatch: Maybe<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODEFilterInput>;
 };
@@ -11105,6 +11213,12 @@ type STRAPI_PRIVACYPOLICYFieldsEnum =
   | 'createdAt'
   | 'updatedAt'
   | 'locale'
+  | 'localizations.data'
+  | 'localizations.data.id'
+  | 'localizations.data.attributes.text'
+  | 'localizations.data.attributes.createdAt'
+  | 'localizations.data.attributes.updatedAt'
+  | 'localizations.data.attributes.locale'
   | 'strapi_id'
   | 'childrenStrapiPrivacypolicyTextTextnode'
   | 'childrenStrapiPrivacypolicyTextTextnode.id'
@@ -11242,6 +11356,7 @@ type STRAPI_PRIVACYPOLICYFilterInput = {
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
   readonly locale: Maybe<StringQueryOperatorInput>;
+  readonly localizations: Maybe<STRAPI_PRIVACYPOLICYLocalizationsFilterInput>;
   readonly strapi_id: Maybe<IntQueryOperatorInput>;
   readonly childrenStrapiPrivacypolicyTextTextnode: Maybe<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODEFilterListInput>;
   readonly childStrapiPrivacypolicyTextTextnode: Maybe<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODEFilterInput>;
@@ -12516,10 +12631,13 @@ type pageCMateuszSelleobbdays4ItWebsitesrcpagesnagraniaTsx1306665336Query = { re
     )>>> }
   )> };
 
-type pageCMateuszSelleobbdays4ItWebsitesrcpagesregulaminTsx3755587593QueryVariables = Exact<{ [key: string]: never; }>;
+type pageCMateuszSelleobbdays4ItWebsitesrcpagesregulaminTsx3197740961QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageCMateuszSelleobbdays4ItWebsitesrcpagesregulaminTsx3755587593Query = { readonly strapiRules: Maybe<{ readonly text: Maybe<{ readonly data: Maybe<Pick<STRAPI_RULES_TEXT_TEXTNODE, 'text'>> }> }> };
+type pageCMateuszSelleobbdays4ItWebsitesrcpagesregulaminTsx3197740961Query = { readonly strapiRules: Maybe<{ readonly text: Maybe<{ readonly data: Maybe<Pick<STRAPI_RULES_TEXT_TEXTNODE, 'text'>> }>, readonly localizations: Maybe<{ readonly data: Maybe<ReadonlyArray<Maybe<(
+        Pick<STRAPI_RULESLocalizationsData, 'id'>
+        & { readonly attributes: Maybe<Pick<STRAPI_RULESLocalizationsDataAttributes, 'locale' | 'text'>> }
+      )>>> }> }> };
 
 type staticCMateuszSelleobbdays4ItWebsitesrccomponentsLayoutPrivacyPolicyTsx429278234QueryVariables = Exact<{ [key: string]: never; }>;
 
