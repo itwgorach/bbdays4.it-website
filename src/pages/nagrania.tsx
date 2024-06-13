@@ -117,6 +117,15 @@ export const query = graphql`
           strapi_component
         }
       }
+      localizations {
+        data {
+          attributes {
+            subtitle
+            footerSubtitle
+            locale
+          }
+        }
+      }
     }
   }
 `

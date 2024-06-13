@@ -74,7 +74,11 @@ const strapiConfig = {
     {
       queryParams: {
         populate: {
+          localizations: {
+            populate: '*',
+          },
           videospage: {
+            footerSubtitle: '*',
             populate: {
               backgroundImage: '*',
               backgroundImages: '*',
@@ -88,7 +92,6 @@ const strapiConfig = {
               },
             },
             subtitle: '*',
-            footerSubtitle: '*',
           },
         },
       },
