@@ -58,6 +58,9 @@ const strapiConfig = {
     {
       queryParams: {
         populate: {
+          localizations: {
+            populate: '*',
+          },
           rules: {
             populate: '*',
           },

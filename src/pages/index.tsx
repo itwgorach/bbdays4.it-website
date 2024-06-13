@@ -100,6 +100,7 @@ export const query = graphql`
           images {
             id
             url
+            alternativeText
           }
           strapi_component
           isSectionVisible
@@ -242,6 +243,7 @@ export const query = graphql`
             backgroundColor
             logo {
               url
+              alternativeText
             }
             localizations {
               data {
@@ -262,6 +264,7 @@ export const query = graphql`
             title
             photo {
               url
+              alternativeText
             }
             description
             position
@@ -297,6 +300,7 @@ export const query = graphql`
           backgroundImages {
             id
             url
+            alternativeText
           }
           achievements {
             id
@@ -312,6 +316,7 @@ export const query = graphql`
                   number
                   locale
                 }
+                id
               }
             }
           }

@@ -7,7 +7,10 @@ const RulesPage: FC<RulesPageType> = ({
   data: {
     strapiRules: { text },
   },
+  data,
 }) => {
+  console.log(data)
+
   return (
     <div className="rules">
       <ReactMarkdown>{text.data.text}</ReactMarkdown>
@@ -21,6 +24,15 @@ export const query = graphql`
       text {
         data {
           text
+        }
+      }
+      localizations {
+        data {
+          id
+          attributes {
+            locale
+            text
+          }
         }
       }
     }
