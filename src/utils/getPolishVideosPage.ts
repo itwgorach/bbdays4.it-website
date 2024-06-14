@@ -1,7 +1,9 @@
 const getPolishVideosPage = (data) => {
-  const subtitle = data.strapiVideospage.subtitle
-  const footerSubtitle = data.strapiVideospage.footerSubtitle
-  return [subtitle, footerSubtitle]
+  const { videospage } = data.strapiVideospage
+
+  const { subtitle } = data.strapiVideospage
+  const { footerSubtitle } = data.strapiVideospage
+  return [subtitle, footerSubtitle, videospage]
 }
 
 export default getPolishVideosPage

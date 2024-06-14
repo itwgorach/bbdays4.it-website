@@ -10,14 +10,10 @@ import getPolishVideosPage from 'utils/getPolishVideosPage'
 import getEnglishVideosPage from 'utils/getEnglishVideosPage'
 
 const Videos: FC<VideosPageType> = ({ data }) => {
-  const {
-    strapiVideospage: { videospage },
-  } = data
-  console.log(videospage)
-
   const { language } = useLanguageContext()
 
-  const [subtitle, footerSubtitle] = language === 'pl' ? getPolishVideosPage(data) : getEnglishVideosPage(data)
+  const [subtitle, footerSubtitle, videospage] =
+    language === 'pl' ? getPolishVideosPage(data) : getEnglishVideosPage(data)
 
   const content = useMemo(
     () => (
@@ -132,16 +128,12 @@ export const query = graphql`
             footerSubtitle
             locale
             videospage {
-              videoId
               title
-              subtitlePos
               isSectionVisible
-              id
               footer
               buttonUrl
               buttonText
               _xcomponent
-              backgroundColor
             }
           }
         }
