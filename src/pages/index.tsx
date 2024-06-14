@@ -22,13 +22,15 @@ import Signup from 'components/Signup'
 import Agenda from 'components/Agenda'
 import FestivalInNumbers from 'components/FestivalInNumbers'
 import VideoSection from 'components/VideoSection'
+import getPolishhHomepage from 'utils/getPolishHomepage'
+import { useLanguageContext } from 'contexts/LanguageContext'
+import getEnglishHomepage from 'utils/getEnglishHomepage'
 
-const HomePage: FC<HomePageType> = ({
-  data: {
-    strapiHomepage: { homepage },
-  },
-  location,
-}) => {
+const HomePage: FC<HomePageType> = ({ location, data }) => {
+  const { language } = useLanguageContext()
+
+  const homepage = language === 'pl' ? getPolishhHomepage(data) : getEnglishHomepage(data)
+
   const content = useMemo(
     () =>
       homepage?.map((component) => {
@@ -169,7 +171,6 @@ export const query = graphql`
                   buttonText
                   buttonUrl
                   link
-                  locale
                   subtitle
                   title
                 }
@@ -200,13 +201,10 @@ export const query = graphql`
                 attributes {
                   title
                   startHour
-                  locale
                   endHour
                   displayTitleOnDesktop
                   date
-                  backgroundColor
                 }
-                id
               }
             }
           }
@@ -248,12 +246,10 @@ export const query = graphql`
             localizations {
               data {
                 attributes {
-                  backgroundColor
                   title
                   subtitle
                   startHour
                   room
-                  locale
                 }
               }
             }
@@ -274,23 +270,17 @@ export const query = graphql`
             backgroundColor
             localizations {
               data {
-                id
                 attributes {
-                  backgroundColor
                   bio
                   description
                   firstName
-                  index
                   lastName
-                  linkedinUrl
-                  linktrUrl
-                  locale
                   position
                   title
-                  twitterUrl
                 }
               }
             }
+            bio
           }
         }
         ... on STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS {
@@ -311,12 +301,9 @@ export const query = graphql`
             localizations {
               data {
                 attributes {
-                  index
                   name
                   number
-                  locale
                 }
-                id
               }
             }
           }
@@ -333,9 +320,7 @@ export const query = graphql`
       }
       localizations {
         data {
-          id
           attributes {
-            locale
             homepage {
               videoId
               title
@@ -344,12 +329,9 @@ export const query = graphql`
               sectionTitle
               sectionSubtitle
               scheduleTitle
-              isSectionVisible
-              id
               footer
               buttonUrl
               buttonText
-              backgroundColor
               article
               _xcomponent
             }
