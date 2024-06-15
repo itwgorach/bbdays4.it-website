@@ -7,14 +7,10 @@ const getEnglishHomepage = (data) => {
       const englishItem = englishData.find((engItem) => engItem._xcomponent === polishItem.strapi_component)
       if (englishItem?._xcomponent === 'base.festival-in-numbers') {
         englishItem.achievements = [
-          {
-            ...polishItem.achievements[0],
-            name: polishItem.achievements[0].localizations.data[0].attributes.name,
-            number: polishItem.achievements[0].localizations.data[0].attributes.number,
-          },
+          ...polishItem.achievements.map((item) => {
+            return item.localizations.data[0].attributes
+          }),
         ]
-        console.log(englishItem)
-        console.log(polishItem)
       }
 
       if (englishItem) {
@@ -31,11 +27,6 @@ const getEnglishHomepage = (data) => {
   }
 
   const homepage = mergeData(plHomepage, enHomepage)
-  // console.log(plHomepage)
-  // console.log('------------')
-  // console.log(enHomepage)
-  // console.log('------------')
-  // console.log(homepage)
 
   return homepage
 }

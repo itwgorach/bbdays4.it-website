@@ -12736,10 +12736,10 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type pageCMateuszSelleobbdays4ItWebsitesrcpagesindexTsx500656475QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageCMateuszSelleobbdays4ItWebsitesrcpagesindexTsx500656475Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
+type Unnamed_1_Query = { readonly strapiHomepage: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<(
       Pick<STRAPI__COMPONENT_BASE_AGENDA, 'id' | 'title' | 'subtitle' | 'strapi_component' | 'isSectionVisible'>
       & { readonly lectures: Maybe<ReadonlyArray<Maybe<(
         Pick<STRAPI_LECTURE, 'title' | 'subtitle' | 'room' | 'startHour' | 'backgroundColor'>
@@ -12780,10 +12780,10 @@ type pageCMateuszSelleobbdays4ItWebsitesrcpagesindexTsx500656475Query = { readon
       )>>> }
     ) | Pick<STRAPI__COMPONENT_BASE_VIDEO_SECTION, 'id' | 'title' | 'article' | 'footer' | 'isSectionVisible' | 'videoId' | 'strapi_component'>>>>, readonly localizations: Maybe<{ readonly data: Maybe<ReadonlyArray<Maybe<{ readonly attributes: Maybe<{ readonly homepage: Maybe<ReadonlyArray<Maybe<Pick<STRAPI_HOMEPAGELocalizationsDataAttributesHomepage, 'videoId' | 'title' | 'subtitlePos' | 'subtitle' | 'sectionTitle' | 'sectionSubtitle' | 'scheduleTitle' | 'footer' | 'buttonUrl' | 'buttonText' | 'article' | '_xcomponent'>>>> }> }>>> }> }> };
 
-type pageCMateuszSelleobbdays4ItWebsitesrcpagesnagraniaTsx1886524413QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageCMateuszSelleobbdays4ItWebsitesrcpagesnagraniaTsx1886524413Query = { readonly strapiVideospage: Maybe<(
+type Unnamed_2_Query = { readonly strapiVideospage: Maybe<(
     Pick<STRAPI_VIDEOSPAGE, 'subtitle' | 'footerSubtitle'>
     & { readonly videospage: Maybe<ReadonlyArray<Maybe<(
       Pick<STRAPI__COMPONENT_BASE_GALERY_SLIDER, 'id' | 'title' | 'buttonUrl' | 'buttonText' | 'strapi_component' | 'isSectionVisible'>
@@ -12803,18 +12803,18 @@ type pageCMateuszSelleobbdays4ItWebsitesrcpagesnagraniaTsx1886524413Query = { re
         )> }>>> }> }
   )> };
 
-type pageCMateuszSelleobbdays4ItWebsitesrcpagesregulaminTsx3197740961QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageCMateuszSelleobbdays4ItWebsitesrcpagesregulaminTsx3197740961Query = { readonly strapiRules: Maybe<{ readonly text: Maybe<{ readonly data: Maybe<Pick<STRAPI_RULES_TEXT_TEXTNODE, 'text'>> }>, readonly localizations: Maybe<{ readonly data: Maybe<ReadonlyArray<Maybe<(
+type Unnamed_3_Query = { readonly strapiRules: Maybe<{ readonly text: Maybe<{ readonly data: Maybe<Pick<STRAPI_RULES_TEXT_TEXTNODE, 'text'>> }>, readonly localizations: Maybe<{ readonly data: Maybe<ReadonlyArray<Maybe<(
         Pick<STRAPI_RULESLocalizationsData, 'id'>
         & { readonly attributes: Maybe<Pick<STRAPI_RULESLocalizationsDataAttributes, 'locale' | 'text'>> }
       )>>> }> }> };
 
-type staticCMateuszSelleobbdays4ItWebsitesrccomponentsLayoutPrivacyPolicyTsx602048249QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type staticCMateuszSelleobbdays4ItWebsitesrccomponentsLayoutPrivacyPolicyTsx602048249Query = { readonly strapiPrivacypolicy: Maybe<(
+type Unnamed_4_Query = { readonly strapiPrivacypolicy: Maybe<(
     Pick<STRAPI_PRIVACYPOLICY, 'locale'>
     & { readonly text: Maybe<{ readonly data: Maybe<Pick<STRAPI_PRIVACYPOLICY_TEXT_TEXTNODE, 'text' | 'id'>> }>, readonly localizations: Maybe<{ readonly data: Maybe<ReadonlyArray<Maybe<(
         Pick<STRAPI_PRIVACYPOLICYLocalizationsData, 'id'>
