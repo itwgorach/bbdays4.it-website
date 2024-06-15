@@ -12,6 +12,13 @@ const getEnglishHomepage = (data) => {
           }),
         ]
       }
+      if (englishItem?._xcomponent === 'base.signup-grid') {
+        englishItem.signup_sections = [
+          ...polishItem.signup_sections.map((item) => {
+            return item.localizations.data[0].attributes
+          }),
+        ]
+      }
 
       if (englishItem) {
         for (const key in englishItem) {

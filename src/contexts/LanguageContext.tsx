@@ -7,8 +7,6 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     const detectedDisplayLangBtn = () => {
       navigator.languages.map((lang) => {
-        console.log(lang)
-
         if (lang === 'pl' || lang === 'pl-PL') {
           setLanguage('pl')
         }
