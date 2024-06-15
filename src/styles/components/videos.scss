@@ -55,10 +55,8 @@
         top: 0px;
         transform: translate(-50%, -50%);
       }
-
       &:hover {
-        background-color: #9accb0;
-        box-shadow: 0 0 5px #fdc92d;
+        box-shadow: 0 0 8px $color-secondary;
       }
     }
 

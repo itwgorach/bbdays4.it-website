@@ -4,10 +4,28 @@
 
 .language {
   position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translate(0, -50%);
-  z-index: 10;
+  right: 10px;
+  bottom: 20px;
+  z-index: 100;
+  border: none;
+  cursor: pointer;
+  color: $color-dark;
+  padding: $m-xs $m-sm;
+  background-color: $color-secondary;
+  text-decoration: none;
+  font-size: $font-size-base-xs;
+  font-weight: $font-weight-extra-bold;
+  border-radius: $border-radius-xs;
+  transition: box-shadow $transition-function 0.2s;
+  letter-spacing: 0.04em;
+
+  &:hover {
+    box-shadow: 0 0 8px $color-secondary;
+  }
+
+  &:visited {
+    color: $color-dark;
+  }
 }
 
 .cookies {
