@@ -1,9 +1,21 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useContext, useEffect } from 'react'
 
 export const LanguageContext = createContext({ language: '', toggleLanguage: () => {} })
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('pl')
+  const [language, setLanguage] = useState('en')
+  useEffect(() => {
+    const detectedDisplayLangBtn = () => {
+      navigator.languages.map((lang) => {
+        console.log(lang)
+
+        if (lang === 'pl' || lang === 'pl-PL') {
+          setLanguage('pl')
+        }
+      })
+    }
+    detectedDisplayLangBtn()
+  }, [])
 
   const toggleLanguage = () => {
     setLanguage((prevLanguage) => (prevLanguage === 'pl' ? 'en' : 'pl'))
