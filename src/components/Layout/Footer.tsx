@@ -1,8 +1,9 @@
-import { socialLinks, footerLinks } from 'constants/constants'
+import { socialLinks, plFooterLinks, enFooterLinks } from 'constants/constants'
 import React, { FC, useState, useCallback } from 'react'
 import cx from 'classnames'
 import { Link } from 'gatsby'
 import { LinkType } from 'types'
+import { useLanguageContext } from 'contexts/LanguageContext'
 import PrivacyPolicy from './PrivacyPolicy'
 
 type FooterProps = {
@@ -15,6 +16,8 @@ const Footer: FC<FooterProps> = ({ pathname }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const isOnRulesPage = pathname === '/regulamin' || pathname === '/regulamin/'
+
+  const { language } = useLanguageContext()
 
   const footerClasses = cx('footer', {
     '-rules': isOnRulesPage,
@@ -39,11 +42,15 @@ const Footer: FC<FooterProps> = ({ pathname }) => {
   return (
     <footer id="footer" className={footerClasses}>
       <div className="footer__text">
-        <span className="footer__text-copyright">2019-2023 wszelkie prawa zastrzeżone © BBdays4IT </span>
+        <span className="footer__text-copyright">
+          {language === 'pl'
+            ? '2019-2024 wszelkie prawa zastrzeżone © BBdays4IT '
+            : '2019-2024 all rights reserved © BBdays4IT '}
+        </span>
         <div className="footer__text-modal" onClick={toggleModal}>
-          Polityka prywatności
+          {language === 'pl' ? 'Polityka prywatności' : 'Privacy policy'}
         </div>
-        {footerLinks.map(getLinkComponent)}
+        {language === 'pl' ? plFooterLinks.map(getLinkComponent) : enFooterLinks.map(getLinkComponent)}
       </div>
       <div className="footer__social">
         {socialLinks.map(({ href, Icon, name }) => (
@@ -55,7 +62,7 @@ const Footer: FC<FooterProps> = ({ pathname }) => {
       <PrivacyPolicy
         handleModalToggle={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
         isOpen={isModalOpen}
-        title="Polityka prywatności"
+        title={language === 'pl' ? 'Polityka prywatności' : 'Privacy policy'}
       />
     </footer>
   )
