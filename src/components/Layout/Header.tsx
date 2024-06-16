@@ -1,11 +1,12 @@
 import { c4pUrl } from 'constants/constants'
 import React, { FC } from 'react'
 
+import { useLanguageContext } from 'contexts/LanguageContext'
 import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
 
-const linksData: LinkDesktopProps[] = [
+const plLinksData: LinkType[] = [
   {
     name: 'Nagrania',
     path: 'nagrania',
@@ -49,7 +50,51 @@ const linksData: LinkDesktopProps[] = [
   // },
 ]
 
-const linksDataMobile: LinkType[] = [
+const enLinksData: LinkType[] = [
+  {
+    name: 'Videos',
+    path: 'nagrania',
+  },
+  {
+    name: 'Speakers',
+    path: '#prelegenci',
+  },
+  {
+    name: 'Schedule',
+    path: '#harmonogram',
+  },
+  {
+    name: 'Agenda UBB',
+    path: '#agenda',
+  },
+  {
+    name: 'Festival in numbers',
+    path: '#festiwal_w_liczbach',
+  },
+  {
+    name: 'Organizers',
+    path: '#organizatorzy',
+  },
+  {
+    name: 'Edition 2022',
+    path: 'https://2022.bbdays4.it/',
+  },
+  // {
+  //   name: 'Edycja 2020',
+  //   path: 'https://bbdays4it-2020.netlify.app/',
+  // },
+  // {
+  //   name: 'Edycja 2019',
+  //   path: 'https://2019.bbdays4.it/',
+  // },
+  // {
+  //   name: 'Zostań prelegentem',
+  //   path: c4pUrl,
+  //   special: true,
+  // },
+]
+
+const plLinksDataMobile: LinkType[] = [
   {
     name: 'Nagrania',
     path: 'nagrania',
@@ -80,15 +125,47 @@ const linksDataMobile: LinkType[] = [
   },
 ]
 
+const enLinksDataMobile: LinkType[] = [
+  {
+    name: 'Videos',
+    path: 'nagrania',
+  },
+  {
+    name: 'Speakers',
+    path: '#prelegenci',
+  },
+  {
+    name: 'Schedule',
+    path: '#harmonogram',
+  },
+  {
+    name: 'Agenda',
+    path: '#agenda',
+  },
+  {
+    name: 'Festival in numbers',
+    path: '#festiwal_w_liczbach',
+  },
+  {
+    name: 'Organizers',
+    path: '#organizatorzy',
+  },
+  {
+    name: 'Edition 2022',
+    path: 'https://2022.bbdays4.it/',
+  },
+]
+
 type HeaderProps = {
   pathname: string
 }
 
 const Header: FC<HeaderProps> = ({ pathname }) => {
+  const { language } = useLanguageContext()
   return (
     <>
-      <DesktopHeader links={linksData} pathname={pathname} />
-      <MobileHeader links={linksDataMobile} />
+      <DesktopHeader links={language === 'pl' ? plLinksData : enLinksData} pathname={pathname} />
+      <MobileHeader links={language === 'pl' ? plLinksDataMobile : enLinksDataMobile} />
     </>
   )
 }

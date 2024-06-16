@@ -6,10 +6,13 @@ import React, { FC, useCallback, useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import { BBDaysNewLogoWhite, CloseHamburgerIcon, HamburgerIcon } from 'components/icons'
+import { useLanguageContext } from 'contexts/LanguageContext'
 
 const MobileHeader: FC<HeaderType> = ({ links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const isMobile = useMediaQuery({ maxWidth: 1200 })
+
+  const { language } = useLanguageContext()
 
   const headerMobileClasses = cx('header-mobile', { '-hamburger-open': isMenuOpen })
 
@@ -63,13 +66,13 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
       </div>
       <div className="header-mobile__menu">
         <div className="header-mobile__nav">{links.map(getLinkComponent)}</div>
-        <a
+        {/* <a
           className="header-mobile__contact-button"
           href="https://www.facebook.com/bbdays4.it"
           rel="noopener noreferrer"
           target="_blank">
-          Dołącz do nas
-        </a>
+          {language === 'pl' ? 'Dołącz do nas' : 'Join to us'}
+        </a> */}
         <div className="header-mobile__socials">
           {socialLinks.map(({ href, Icon }) => {
             return (
