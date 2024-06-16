@@ -317,6 +317,44 @@ export const query = graphql`
           videoId
           strapi_component
         }
+        ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
+          id
+          sectionTitle
+          sectionSubtitle
+          strapi_component
+          isSectionVisible
+          speakers {
+            index
+            firstName
+            lastName
+            title
+            photo {
+              url
+            }
+            description
+            position
+            linkedinUrl
+            twitterUrl
+            linktrUrl
+            backgroundColor
+            localizations {
+              data {
+                attributes {
+                  twitterUrl
+                  title
+                  position
+                  linktrUrl
+                  linkedinUrl
+                  lastName
+                  firstName
+                  description
+                  bio
+                  backgroundColor
+                }
+              }
+            }
+          }
+        }
       }
       localizations {
         data {

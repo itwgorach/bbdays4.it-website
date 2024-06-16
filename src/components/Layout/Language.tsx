@@ -3,7 +3,7 @@ import React from 'react'
 
 const Language = () => {
   const { toggleLanguage, language } = useLanguageContext()
-  const displayLangBtn = language === 'pl' ? 'en' : 'pl'
+  const displayLangBtn = language === 'pl' ? 'EN' : 'PL'
 
   return (
     <>

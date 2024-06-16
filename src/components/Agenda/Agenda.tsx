@@ -9,7 +9,7 @@ import LectureDetails from './LectureDetails'
 import AgendaSection from './AgendaSection'
 
 type AgendaProps = AgendaType & {
-  location: unknown,
+  location: unknown
 }
 
 const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location }) => {
@@ -35,6 +35,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
 
   const shouldOpenModal = () => {
     const params = new URLSearchParams(location.search)
+
     const lecture = params && params.get('lecture')
 
     if (lecture) {

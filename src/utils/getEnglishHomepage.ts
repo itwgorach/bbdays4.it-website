@@ -19,6 +19,25 @@ const getEnglishHomepage = (data) => {
           }),
         ]
       }
+      if (englishItem?._xcomponent === 'base.speakers-grid') {
+        englishItem.speakers = [
+          ...polishItem.speakers.map((item) => {
+            const mergeObjects = (polishItem, englishItem) => {
+              if (englishItem) {
+                for (const key in englishItem) {
+                  if (englishItem.hasOwnProperty(key) && englishItem[key] !== null) {
+                    polishItem[key] = englishItem[key]
+                  }
+                }
+              }
+              return polishItem
+            }
+            const merg = mergeObjects(item, item.localizations.data[0].attributes)
+
+            return merg
+          }),
+        ]
+      }
 
       if (englishItem) {
         for (const key in englishItem) {
