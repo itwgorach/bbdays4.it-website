@@ -12,14 +12,14 @@ import getEnglishVideosPage from 'utils/getEnglishVideosPage'
 const Videos: FC<VideosPageType> = ({ data }) => {
   const { language } = useLanguageContext()
 
-  const [subtitle, footerSubtitle, videospage] =
+  const [subtitle, footerSubtitle, videosPage] =
     language === 'pl' ? getPolishVideosPage(data) : getEnglishVideosPage(data)
 
   const content = useMemo(
     () => (
       <>
         <div className="videos">
-          {videospage?.map((sectionData) => {
+          {videosPage?.map((sectionData) => {
             if (!sectionData?.isSectionVisible) {
               return null
             }
@@ -49,7 +49,7 @@ const Videos: FC<VideosPageType> = ({ data }) => {
       </>
     ),
 
-    [videospage, subtitle, footerSubtitle],
+    [videosPage, subtitle, footerSubtitle],
   )
 
   return <>{content}</>
