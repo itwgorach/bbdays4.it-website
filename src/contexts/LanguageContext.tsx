@@ -1,12 +1,25 @@
-import React, { createContext, useState, useContext, useEffect } from 'react'
+import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react'
 
-export const LanguageContext = createContext({ language: '', toggleLanguage: () => {} })
+type Language = 'en' | 'pl'
 
-export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('en')
+type LanguageContextProps = {
+  language: Language
+  toggleLanguage: () => void
+}
+
+const defaultLanguageContext: LanguageContextProps = {
+  language: 'en',
+  toggleLanguage: () => {},
+}
+
+export const LanguageContext = createContext<LanguageContextProps>(defaultLanguageContext)
+
+export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const [language, setLanguage] = useState<Language>('en')
+
   useEffect(() => {
     const detectedDisplayLangBtn = () => {
-      navigator.languages.map((lang) => {
+      navigator.languages.forEach((lang) => {
         if (lang === 'pl' || lang === 'pl-PL') {
           setLanguage('pl')
         }
@@ -22,4 +35,4 @@ export const LanguageProvider = ({ children }) => {
   return <LanguageContext.Provider value={{ language, toggleLanguage }}>{children}</LanguageContext.Provider>
 }
 
-export const useLanguageContext = () => useContext(LanguageContext)
+export const useLanguageContext = (): LanguageContextProps => useContext(LanguageContext)

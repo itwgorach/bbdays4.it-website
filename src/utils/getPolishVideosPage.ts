@@ -1,4 +1,6 @@
-const getPolishVideosPage = (data) => {
+import VideosPageDateType from 'types/VideosPageDataType'
+
+const getPolishVideosPage = (data: VideosPageDateType) => {
   const { videospage } = data.strapiVideospage
 
   const { subtitle } = data.strapiVideospage

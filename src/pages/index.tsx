@@ -84,7 +84,7 @@ const HomePage: FC<HomePageType> = ({ location, data }) => {
             return null
         }
       }),
-    [homepage],
+    [homepage, location],
   )
 
   return <>{content}</>
@@ -353,6 +353,7 @@ export const query = graphql`
                 }
               }
             }
+            bio
           }
         }
       }
