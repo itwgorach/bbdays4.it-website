@@ -13,7 +13,7 @@ const SignupBanner: FC<SignupBannerProps> = ({ bannerImageUrl }) => {
       <div className="signup__banner-inner">
         <div className="signup__banner-title">
           <span className="signup__banner-title -first-line">{language === 'pl' ? 'Dołącz ' : 'Join '}</span>
-          <span className="signup__banner-title -second-line">{language === 'pl' ? 'do nas' : 'to us'}</span>
+          <span className="signup__banner-title -second-line">{language === 'pl' ? 'do nas' : 'us'}</span>
         </div>
         <SignupArrowIcon className="signup__banner-icon -mobile" />
         <SignupArrowIconLong className="signup__banner-icon -desktop" />

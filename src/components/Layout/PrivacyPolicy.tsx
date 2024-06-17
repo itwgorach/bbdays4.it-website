@@ -14,7 +14,7 @@ const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title
   const data = useStaticQuery(query)
 
   const { language } = useLanguageContext()
-  const privacypolicy =
+  const privacyPolicy =
     language === 'pl'
       ? data.strapiPrivacypolicy.text.data.text
       : data.strapiPrivacypolicy.localizations.data[0].attributes.text
@@ -24,7 +24,7 @@ const PrivacyPolicy: FC<PrivacyPolicyType> = ({ handleModalToggle, isOpen, title
       <div className="footer__modal">
         <h2 className="footer__modal-header">{language === 'pl' ? 'Polityka prywatności' : 'Privacy policy'}</h2>
         <button className="footer__modal-button" onClick={handleModalToggle} />
-        <ReactMarkdown>{privacypolicy}</ReactMarkdown>
+        <ReactMarkdown>{privacyPolicy}</ReactMarkdown>
       </div>
     </Modal>
   )

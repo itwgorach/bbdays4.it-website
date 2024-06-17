@@ -71,7 +71,7 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
           href="https://www.facebook.com/bbdays4.it"
           rel="noopener noreferrer"
           target="_blank">
-          {language === 'pl' ? 'Dołącz do nas' : 'Join to us'}
+          {language === 'pl' ? 'Dołącz do nas' : 'Join us'}
         </a> */}
         <div className="header-mobile__socials">
           {socialLinks.map(({ href, Icon }) => {

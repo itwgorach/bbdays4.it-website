@@ -1,7 +1,7 @@
-import STRAPI_VIDEOSPAGE = GatsbyTypes.STRAPI_VIDEOSPAGE
+import STRAPI_VIDEOS_PAGE = GatsbyTypes.STRAPI_VIDEOSPAGE
 
 type VideosPageDateType = {
-  strapiVideospage: STRAPI_VIDEOSPAGE
+  strapiVideospage: STRAPI_VIDEOS_PAGE
 }
 
 export default VideosPageDateType

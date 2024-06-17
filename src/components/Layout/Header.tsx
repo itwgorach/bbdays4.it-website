@@ -35,19 +35,6 @@ const plLinksData: LinkType[] = [
     name: 'Edycja 2022',
     path: 'https://2022.bbdays4.it/',
   },
-  // {
-  //   name: 'Edycja 2020',
-  //   path: 'https://bbdays4it-2020.netlify.app/',
-  // },
-  // {
-  //   name: 'Edycja 2019',
-  //   path: 'https://2019.bbdays4.it/',
-  // },
-  // {
-  //   name: 'Zostań prelegentem',
-  //   path: c4pUrl,
-  //   special: true,
-  // },
 ]
 
 const enLinksData: LinkType[] = [
@@ -79,19 +66,6 @@ const enLinksData: LinkType[] = [
     name: 'Edition 2022',
     path: 'https://2022.bbdays4.it/',
   },
-  // {
-  //   name: 'Edycja 2020',
-  //   path: 'https://bbdays4it-2020.netlify.app/',
-  // },
-  // {
-  //   name: 'Edycja 2019',
-  //   path: 'https://2019.bbdays4.it/',
-  // },
-  // {
-  //   name: 'Zostań prelegentem',
-  //   path: c4pUrl,
-  //   special: true,
-  // },
 ]
 
 const plLinksDataMobile: LinkType[] = [

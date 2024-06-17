@@ -23,7 +23,7 @@ const CookiesConsent = () => {
             BBdays4.it
           </Link>{' '}
           {language === 'pl'
-            ? 'zapisuje informacje w postaci ciasteczek (ang. cookies). Ciasteczka używane są do zapisywania informacji dotyczących anonimowch odwiedzin naszego serwisu oraz umożliwiają prawidłowe funcjonowanie strony'
+            ? 'zapisuje informacje w postaci ciasteczek (ang. cookies). Ciasteczka używane są do zapisywania informacji dotyczących anonimowych odwiedzin naszego serwisu oraz umożliwiają prawidłowe funcjonowanie strony'
             : 'saves information in the form of cookies. Cookies are used to save information regarding anonymous visits to our website and enable the proper functioning of the website'}
         </span>
         <div className="cookies__text-modal" onClick={handleClick}>

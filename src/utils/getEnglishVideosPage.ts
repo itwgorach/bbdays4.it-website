@@ -1,8 +1,8 @@
 import VideosPageDateType from 'types/VideosPageDataType'
 
 const getEnglishVideosPage = (data: VideosPageDateType) => {
-  const enVideospage = data.strapiVideospage.localizations.data[0]?.attributes.videospage
-  const plVideospage = JSON.parse(JSON.stringify(data.strapiVideospage.videospage))
+  const enVideosPage = data.strapiVideospage.localizations.data[0]?.attributes.videospage
+  const plVideosPage = JSON.parse(JSON.stringify(data.strapiVideospage.videospage))
 
   const updateVideoLists = (component) => {
     if (component.video_lists?.length > 0) {
@@ -39,10 +39,10 @@ const getEnglishVideosPage = (data: VideosPageDateType) => {
     })
   }
 
-  const videospage = mergeData(plVideospage, enVideospage)
+  const videosPage = mergeData(plVideosPage, enVideosPage)
   const { subtitle, footerSubtitle } = data.strapiVideospage.localizations.data[0]?.attributes
 
-  return [subtitle, footerSubtitle, videospage]
+  return [subtitle, footerSubtitle, videosPage]
 }
 
 export default getEnglishVideosPage
