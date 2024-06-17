@@ -22,14 +22,14 @@ import Signup from 'components/Signup'
 import Agenda from 'components/Agenda'
 import FestivalInNumbers from 'components/FestivalInNumbers'
 import VideoSection from 'components/VideoSection'
-import getPolishhHomepage from 'utils/getPolishHomepage'
+import getPolishHomepage from 'utils/getPolishHomepage'
 import { useLanguageContext } from 'contexts/LanguageContext'
 import getEnglishHomepage from 'utils/getEnglishHomepage'
 
 const HomePage: FC<HomePageType> = ({ location, data }) => {
   const { language } = useLanguageContext()
 
-  const homepage = language === 'pl' ? getPolishhHomepage(data) : getEnglishHomepage(data)
+  const homepage = language === 'pl' ? getPolishHomepage(data) : getEnglishHomepage(data)
 
   const content = useMemo(
     () =>

@@ -1,9 +1,9 @@
 import HomePageDataType from 'types/HomePageDataType'
 
-const getPolishhHomepage = (data: HomePageDataType) => {
+const getPolishHomepage = (data: HomePageDataType) => {
   const { homepage } = data.strapiHomepage
 
   return homepage
 }
 
-export default getPolishhHomepage
+export default getPolishHomepage
