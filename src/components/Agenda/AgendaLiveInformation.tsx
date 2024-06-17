@@ -29,7 +29,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       const lecture = lectures[index]
       const { startHour } = lecture
       const [hours, minutes] = startHour.split(':').map(Number)
-      const startDate = new Date(2024, 4, 23, hours, minutes).getTime()
+      const startDate = new Date(2024, 5, 16, hours, minutes).getTime()
 
       let endDate: number
 
@@ -39,7 +39,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       } else {
         const nextLecture = lectures[index + 1]
         const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
-        const nextStartDate = new Date(2024, 4, 23, nextHours, nextMinutes).getTime()
+        const nextStartDate = new Date(2024, 5, 17, nextHours, nextMinutes).getTime()
 
         endDate = nextStartDate
       }
@@ -63,6 +63,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       }
       handleModalToggle(event, modalProps)
     }
+  }
+  if (activeLecture === null) {
+    return <></>
   }
 
   return (
