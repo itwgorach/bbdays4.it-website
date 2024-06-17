@@ -100,6 +100,29 @@ const strapiConfig = {
       },
       singularName: 'videospage',
     },
+    {
+      queryParams: {
+        populate: {
+          videospage: {
+            populate: {
+              backgroundImage: '*',
+              backgroundImages: '*',
+              backgroundVideo: {
+                populate: '*',
+              },
+              bannerImage: '*',
+              images: '*',
+              video_lists: {
+                populate: '*',
+              },
+            },
+            subtitle: '*',
+            footerSubtitle: '*',
+          },
+        },
+      },
+      singularName: 'videospage',
+    },
   ],
 }
 

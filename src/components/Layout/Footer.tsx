@@ -40,7 +40,7 @@ const Footer: FC<FooterProps> = ({ pathname }) => {
   }, [])
 
   return (
-    <footer id="footer" className={footerClasses}>
+    <footer className={footerClasses} id="footer">
       <div className="footer__text">
         <span className="footer__text-copyright">
           {language === 'pl'
