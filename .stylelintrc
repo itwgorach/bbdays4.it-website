@@ -1,11 +1,12 @@
 {
   "extends": [
-    "stylelint-config-prettier",
+    "stylelint-config-standard",
     "stylelint-config-standard-scss"
   ],
   "plugins": [
     "stylelint-order"
   ],
+  "files": ["*.css"],
   "rules": {
     "at-rule-no-unknown": null,
     "at-rule-semicolon-space-before": "never",
