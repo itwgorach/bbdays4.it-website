@@ -63,13 +63,13 @@ const MobileHeader: FC<HeaderType> = ({ links }) => {
       </div>
       <div className="header-mobile__menu">
         <div className="header-mobile__nav">{links.map(getLinkComponent)}</div>
-        <a
+        {/* <a
           className="header-mobile__contact-button"
           href="https://www.facebook.com/bbdays4.it"
           rel="noopener noreferrer"
           target="_blank">
           Dołącz do nas
-        </a>
+        </a> */}
         <div className="header-mobile__socials">
           {socialLinks.map(({ href, Icon }) => {
             return (
