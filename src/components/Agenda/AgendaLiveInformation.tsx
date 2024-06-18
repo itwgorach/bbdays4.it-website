@@ -29,7 +29,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       const lecture = lectures[index]
       const { startHour } = lecture
       const [hours, minutes] = startHour.split(':').map(Number)
-      const startDate = new Date(2024, 5, 16, hours, minutes).getTime()
+      const startDate = new Date(2024, 5, 17, hours, minutes).getTime()
 
       let endDate: number
 
@@ -39,7 +39,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       } else {
         const nextLecture = lectures[index + 1]
         const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
-        const nextStartDate = new Date(2024, 5, 17, nextHours, nextMinutes).getTime()
+        const nextStartDate = new Date(2024, 5, 18, nextHours, nextMinutes).getTime()
 
         endDate = nextStartDate
       }
@@ -69,11 +69,19 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
   }
 
   return (
-    <div className={`agenda__live agenda__live-${activeLecture.backgroundColor}`} onClick={handleClick}>
+    <div className="agenda__live">
       {activeLecture && (
-        <div>
-          <span className="agenda__live-lecturer">{activeLecture.subtitle}:</span>
-          <span className="agenda__live-title"> {activeLecture.title}</span>
+        <div className="agenda__live-controler">
+          <div
+            className={`agenda__live-${activeLecture.backgroundColor} agenda__live-description`}
+            onClick={handleClick}>
+            <div className="agenda__live-lecturer">
+              {activeLecture.subtitle}:<span className="agenda__live-title"> {activeLecture.title}</span>
+            </div>
+          </div>
+          <div className="agenda__live-vote">
+            <button>Vote</button>
+          </div>
         </div>
       )}
     </div>
