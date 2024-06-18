@@ -120,6 +120,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
         feedback: vote.feedback,
       }
       console.log(voteResult)
+      console.log(speakers)
     }
   }
 
