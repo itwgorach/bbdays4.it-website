@@ -176,11 +176,11 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
     <div className="agenda__live">
       {activeLecture && (
         <div className="agenda__live-controler">
-          <Modal handleToggle={voteModal} isOpen={isOpenVote} title="vote">
-            <button className="agenda__button-close" onClick={voteModal}>
-              <CloseButtonIcon />
-            </button>
-            <div>
+          <Modal className="agenda__live-modal" handleToggle={voteModal} isOpen={isOpenVote} title="vote">
+            <div className="agenda__live-rating-controler">
+              <button className="agenda__button-close" onClick={voteModal}>
+                <CloseButtonIcon />
+              </button>
               {ratingFields.map((field) => (
                 <div key={field.name} className="agenda__live-rating">
                   <p>
@@ -193,7 +193,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
                   />
                 </div>
               ))}
+              <label htmlFor="feedback">Podziel się swoimi przemyśleniami Twoja opinia jest dla nas ważna 😉</label>
               <input
+                name="feedback"
                 placeholder="Opcjonalne"
                 type="text"
                 value={vote.feedback}

@@ -18,12 +18,34 @@
 
     z-index: 2;
 
+    &-modal {
+      min-width: 95vw;
+      @include media-breakpoint-up(sm) {
+        min-width: 90vw;
+      }
+      @include media-breakpoint-up(md) {
+        min-width: clear;
+      }
+    }
+
     &-rating {
       display: flex;
       flex-direction: column;
       align-items: center;
+      p {
+        margin: $m-xs;
+        font-family: $font-family-body;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semi-bold;
+      }
       &-error {
         color: red;
+      }
+      &-controler {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: $m-sm;
       }
     }
 
