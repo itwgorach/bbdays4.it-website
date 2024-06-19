@@ -1,40 +1,9 @@
 import Modal from 'components/Modal'
 import React, { useState } from 'react'
-import ModalProps from 'types/ModalProps'
 import { Rating } from 'react-simple-star-rating'
 import { getSpeaker } from 'utils/agendaDataProcessing'
 import { CloseButtonIcon } from 'components/icons'
-
-type Lecture = {
-  title: string
-  startHour: string
-  subtitle?: string
-  room?: number
-  backgroundColor?: string
-  logo?: { url: string }
-}
-
-type Speaker = {
-  name: string
-}
-type Vote = {
-  presentation: number
-  topic: number
-  content: number
-  feedback: string
-}
-
-type RatingEvent = {
-  name: string
-  rate?: number
-  event?: React.ChangeEvent<HTMLInputElement>
-}
-
-type AgendaLiveInformationProps = {
-  handleModalToggle: (event: React.MouseEvent, modalProps: ModalProps) => void
-  lectures: Lecture[]
-  speakers: Speaker[]
-}
+import { Lecture, AgendaLiveInformationProps, Vote, VoteError, RatingEvent } from 'types/AgendaType'
 
 const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleModalToggle, lectures, speakers }) => {
   const [isOpenVote, setIsOpenVote] = useState<boolean>(false)
@@ -44,6 +13,16 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
     presentation: 0,
     topic: 0,
   })
+  const [voteError, setVoteError] = useState<VoteError>({
+    content: false,
+    presentation: false,
+    topic: false,
+  })
+  const ratingFields = [
+    { error: voteError.presentation, label: 'Prezentacja', name: 'presentation' },
+    { error: voteError.topic, label: 'Tematyka', name: 'topic' },
+    { error: voteError.content, label: 'Merytoryka', name: 'content' },
+  ]
 
   const getActiveLecture = (): Lecture | null => {
     const currentDate = Date.now()
@@ -62,7 +41,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       } else {
         const nextLecture = lectures[index + 1]
         const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
-        const nextStartDate = new Date(2024, 5, 18, nextHours, nextMinutes).getTime()
+        const nextStartDate = new Date(2024, 5, 20, nextHours, nextMinutes).getTime()
 
         endDate = nextStartDate
       }
@@ -96,16 +75,31 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       return
     }
     if (isOpenVote && window.confirm('Czy na pewno chcesz opuścić formularz?')) {
+      setVote({
+        content: 0,
+        feedback: '',
+        presentation: 0,
+        topic: 0,
+      })
       setIsOpenVote((prevValue) => !prevValue)
     }
   }
+
   const handleRating = ({ name, rate, event }: RatingEvent) => {
+    if (voteError.content || voteError.presentation || voteError.topic) {
+      setVoteError((prevValue) => ({
+        ...prevValue,
+        [name]: false,
+      }))
+    }
     if (rate !== undefined) {
       setVote((prevValue) => ({
         ...prevValue,
         [name]: rate,
       }))
-    } else if (event !== undefined) {
+      return
+    }
+    if (event !== undefined) {
       const { value } = event.target
       setVote((prevValue) => ({
         ...prevValue,
@@ -113,14 +107,42 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       }))
     }
   }
+
   const submitRating = () => {
+    setVoteError({ content: false, presentation: false, topic: false })
+    if (!vote.presentation) {
+      setVoteError((prevValue) => ({
+        ...prevValue,
+        presentation: true,
+      }))
+    }
+    if (!vote.topic) {
+      setVoteError((prevValue) => ({
+        ...prevValue,
+        topic: true,
+      }))
+    }
+    if (!vote.content) {
+      setVoteError((prevValue) => ({
+        ...prevValue,
+        content: true,
+      }))
+      return
+    }
+
     if (vote.content && vote.topic && vote.presentation) {
       const voteResult = {
         average: ((vote.content + vote.topic + vote.presentation) / 3).toFixed(2),
         feedback: vote.feedback,
       }
       console.log(voteResult)
-      console.log(speakers)
+      setVote({
+        content: 0,
+        feedback: '',
+        presentation: 0,
+        topic: 0,
+      })
+      setIsOpenVote((prevValue) => !prevValue)
     }
   }
 
@@ -137,30 +159,18 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
               <CloseButtonIcon />
             </button>
             <div>
-              <div className="agenda__live-rating">
-                <p>Prezentacja:</p>
-                <Rating
-                  allowFraction
-                  titleSeparator="z"
-                  onClick={(rate) => handleRating({ name: 'presentation', rate: rate })}
-                />
-              </div>
-              <div className="agenda__live-rating">
-                <p>Tematyka:</p>
-                <Rating
-                  allowFraction
-                  titleSeparator="z"
-                  onClick={(rate) => handleRating({ name: 'topic', rate: rate })}
-                />
-              </div>
-              <div className="agenda__live-rating">
-                <p>Merytoryka:</p>
-                <Rating
-                  allowFraction
-                  titleSeparator="z"
-                  onClick={(rate) => handleRating({ name: 'content', rate: rate })}
-                />
-              </div>
+              {ratingFields.map((field) => (
+                <div key={field.name} className="agenda__live-rating">
+                  <p>
+                    {field.label}:{field.error && <span className="agenda__live-rating-error">*</span>}
+                  </p>
+                  <Rating
+                    allowFraction
+                    titleSeparator="z"
+                    onClick={(rate) => handleRating({ name: field.name, rate })}
+                  />
+                </div>
+              ))}
               <input
                 placeholder="Opcjonalne"
                 type="text"
