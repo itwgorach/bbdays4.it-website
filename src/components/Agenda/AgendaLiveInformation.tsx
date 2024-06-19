@@ -108,7 +108,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
     }
   }
 
-  const submitRating = () => {
+  const submitRating = async () => {
     setVoteError({ content: false, presentation: false, topic: false })
     if (!vote.presentation) {
       setVoteError((prevValue) => ({
@@ -131,17 +131,39 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
     }
 
     if (vote.content && vote.topic && vote.presentation) {
-      const voteResult = {
-        average: ((vote.content + vote.topic + vote.presentation) / 3).toFixed(2),
-        feedback: vote.feedback,
+      const ratingData = {
+        data: {
+          average: ((vote.content + vote.topic + vote.presentation) / 3).toFixed(2),
+          content: vote.content,
+          feedback: vote.feedback,
+          presentation: vote.presentation,
+          topic: vote.topic,
+        },
       }
-      console.log(voteResult)
+      console.log(ratingData)
       setVote({
         content: 0,
         feedback: '',
         presentation: 0,
         topic: 0,
       })
+      try {
+        const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(ratingData),
+        })
+
+        if (!response.ok) {
+          console.error('Response status:', response.status)
+          console.error('Response text:', await response.text())
+          throw new Error('Failed to submit rating')
+        }
+      } catch (error) {
+        console.error('Error submitting rating:', error)
+      }
       setIsOpenVote((prevValue) => !prevValue)
     }
   }
