@@ -68,6 +68,22 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       handleModalToggle(event, modalProps)
     }
   }
+  function findPrevLecture(activeLecture, lectures) {
+    const actualLectureIndex = lectures.findIndex((item) => item.subtitle === activeLecture.subtitle)
+
+    if (actualLectureIndex === -1) {
+      return null
+    }
+
+    const prevLecture = lectures[actualLectureIndex - 1]
+
+    if (!prevLecture) {
+      return null
+    }
+
+    return prevLecture
+  }
+  const prevLecture = findPrevLecture(activeLecture, lectures)
 
   const voteModal = () => {
     if (!isOpenVote) {
@@ -137,16 +153,11 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
           content: vote.content,
           feedback: vote.feedback,
           presentation: vote.presentation,
+          speaker: prevLecture.subtitle,
           topic: vote.topic,
         },
       }
-      console.log(ratingData)
-      setVote({
-        content: 0,
-        feedback: '',
-        presentation: 0,
-        topic: 0,
-      })
+
       try {
         const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
           method: 'POST',
@@ -164,6 +175,12 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       } catch (error) {
         console.error('Error submitting rating:', error)
       }
+      setVote({
+        content: 0,
+        feedback: '',
+        presentation: 0,
+        topic: 0,
+      })
       setIsOpenVote((prevValue) => !prevValue)
     }
   }
@@ -178,6 +195,10 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
         <div className="agenda__live-controler">
           <Modal className="agenda__live-modal" handleToggle={voteModal} isOpen={isOpenVote} title="vote">
             <div className="agenda__live-rating-controler">
+              <div className="agenda__live-modal--title">
+                <span>{prevLecture.subtitle}: </span>
+                <span>{prevLecture.title}</span>
+              </div>
               <button className="agenda__button-close" onClick={voteModal}>
                 <CloseButtonIcon />
               </button>
@@ -193,15 +214,21 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
                   />
                 </div>
               ))}
-              <label htmlFor="feedback">Podziel się swoimi przemyśleniami Twoja opinia jest dla nas ważna 😉</label>
+              <label className="agenda__live-input--label" htmlFor="feedback">
+                Podziel się swoimi przemyśleniami. <br />
+                Twoja opinia jest dla nas ważna 😉
+              </label>
               <input
+                className="agenda__live-input"
                 name="feedback"
                 placeholder="Opcjonalne"
                 type="text"
                 value={vote.feedback}
                 onChange={(event) => handleRating({ event, name: 'feedback' })}
               />
-              <button onClick={submitRating}>Wyślij</button>
+              <button className="agenda__live-button" onClick={submitRating}>
+                Wyślij
+              </button>
             </div>
           </Modal>
           <div
@@ -212,7 +239,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
             </div>
           </div>
           <div className="agenda__live-vote">
-            <button onClick={voteModal}>Vote</button>
+            <button onClick={voteModal}>Głosuj</button>
           </div>
         </div>
       )}

@@ -24,7 +24,67 @@
         min-width: 90vw;
       }
       @include media-breakpoint-up(md) {
-        min-width: clear;
+        min-width: 70vw;
+      }
+      @include media-breakpoint-up(lg) {
+        min-width: 60vw;
+      }
+      @include media-breakpoint-up(xl) {
+        min-width: 50vw;
+      }
+
+      &--title {
+        margin: 0;
+        padding: 0;
+        margin-right: 40px;
+        color: $color-text;
+        font-family: $font-family-body;
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-regular;
+      }
+    }
+    &-input {
+      max-width: 80%;
+      min-width: 30%;
+      padding: 10px;
+      background-color: rgba(25, 69, 80, 0.05);
+      border: none;
+      border-radius: 4px 0 0 4px;
+      color: $color-text;
+      display: block;
+      font-family: $font-family-body;
+      font-size: $font-size-base-xs;
+      font-weight: 500;
+      outline: none;
+      overflow: hidden;
+      padding: 12px 1rem;
+      &--label {
+        padding: $m-xs 0;
+        color: $color-text;
+        font-family: $font-family-body;
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-regular;
+      }
+    }
+    &-button {
+      margin: $m-sm 0;
+      color: $color-dark;
+      padding: $m-sm;
+      background-color: $color-secondary;
+      text-decoration: none;
+      font-size: $font-size-base-xs;
+      font-weight: $font-weight-extra-bold;
+      border: none;
+      border-radius: $border-radius-xs;
+      transition: box-shadow $transition-function 0.2s;
+      letter-spacing: 0.04em;
+
+      &:hover {
+        box-shadow: 0 0 8px $color-secondary;
+      }
+
+      &:visited {
+        color: $color-dark;
       }
     }
 
