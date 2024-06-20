@@ -13,7 +13,7 @@ type AgendaProps = AgendaType & {
   location: unknown
 }
 
-const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location }) => {
+const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location, dateOfLectures }) => {
   const lecturesSorted =
     Array.isArray(lectures) &&
     lectures.sort((a, b) => {
@@ -71,7 +71,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     }
   }
 
-  const handleModalToggle = (event, modalProps ) => {
+  const handleModalToggle = (event, modalProps) => {
     setIsModalOpen((isModalOpen) => {
       setModalData({
         ...modalProps,
@@ -148,7 +148,12 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
         setActiveLink('')
       }}>
       <div className="agenda" id="agenda">
-        <AgendaLiveInformation handleModalToggle={handleModalToggle} lectures={lecturesSorted} speakers={speakers} />
+        <AgendaLiveInformation
+          handleModalToggle={handleModalToggle}
+          dateOfLectures={dateOfLectures}
+          lectures={lecturesSorted}
+          speakers={speakers}
+        />
         <div className="agenda__header">
           <div className="agenda__header-title">{title}</div>
           <div className="agenda__header-subtitle">{subtitle}</div>

@@ -5,7 +5,12 @@ import { getSpeaker } from 'utils/agendaDataProcessing'
 import { CloseButtonIcon } from 'components/icons'
 import { Lecture, AgendaLiveInformationProps, Vote, VoteError, RatingEvent } from 'types/AgendaType'
 
-const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleModalToggle, lectures, speakers }) => {
+const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
+  dateOfLectures,
+  handleModalToggle,
+  lectures,
+  speakers,
+}) => {
   const [isOpenVote, setIsOpenVote] = useState<boolean>(false)
   const [vote, setVote] = useState<Vote>({
     content: 0,
@@ -27,11 +32,14 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
   const getActiveLecture = (): Lecture | null => {
     const currentDate = Date.now()
 
+    const [year, month, day] = dateOfLectures.split('.')
+
     for (let index = 0; index < lectures.length; index++) {
       const lecture = lectures[index]
       const { startHour } = lecture
+
       const [hours, minutes] = startHour.split(':').map(Number)
-      const startDate = new Date(2024, 5, 17, hours, minutes).getTime()
+      const startDate = new Date(+year, +month - 1, +day, hours, minutes).getTime()
 
       let endDate: number
 
@@ -41,7 +49,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
       } else {
         const nextLecture = lectures[index + 1]
         const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
-        const nextStartDate = new Date(2024, 5, 20, nextHours, nextMinutes).getTime()
+        const nextStartDate = new Date(+year, +month - 1, +day, nextHours, nextMinutes).getTime()
 
         endDate = nextStartDate
       }
@@ -63,13 +71,12 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
         hour: activeLecture.startHour,
         room: activeLecture.room,
       }
-      console.log(modalProps)
 
       handleModalToggle(event, modalProps)
     }
   }
   function findPrevLecture(activeLecture, lectures) {
-    const actualLectureIndex = lectures.findIndex((item) => item.subtitle === activeLecture.subtitle)
+    const actualLectureIndex = lectures.findIndex((item) => item.subtitle === activeLecture?.subtitle)
 
     if (actualLectureIndex === -1) {
       return null

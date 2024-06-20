@@ -32,6 +32,7 @@ export type RatingEvent = {
 }
 
 export type AgendaLiveInformationProps = {
+  dateOfLectures: string
   handleModalToggle: (event: React.MouseEvent, modalProps: ModalProps) => void
   lectures: Lecture[]
   speakers: Speaker[]
