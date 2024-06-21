@@ -228,7 +228,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           </div>
           {prevLecture && (
             <div className="agenda__live-vote">
-              <button onClick={voteModal}>Głosuj</button>
+              <button className="agenda__live-vote--button" onClick={voteModal}>
+                Zagłosuj na poprzedniego prelegenta
+              </button>
             </div>
           )}
         </div>

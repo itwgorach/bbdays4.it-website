@@ -151,6 +151,25 @@
     &-vote {
       display: flex;
       justify-content: center;
+      &--button {
+        border: none;
+        color: $color-dark;
+        background-color: $color-secondary;
+        text-decoration: none;
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-extra-bold;
+        transition: box-shadow $transition-function 0.2s;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: 0 0 8px $color-secondary;
+        }
+
+        &:visited {
+          color: $color-dark;
+        }
+      }
     }
 
     &-primary {
