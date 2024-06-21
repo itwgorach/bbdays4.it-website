@@ -30,22 +30,28 @@
         min-width: 60vw;
       }
       @include media-breakpoint-up(xl) {
-        min-width: 50vw;
+        min-width: 40vw;
       }
 
       &--title {
-        margin: 0;
+        margin: 0 0 $m-xs 0;
+        max-width: 95%;
         padding: 0;
-        margin-right: 40px;
         color: $color-text;
         font-family: $font-family-body;
-        font-size: $font-size-base-xs;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        &.margin-right {
+          margin-right: 40px;
+        }
+      }
+      &--description {
         font-weight: $font-weight-regular;
       }
     }
     &-input {
-      max-width: 80%;
-      min-width: 30%;
+      max-width: 100%;
+      min-width: 85%;
       padding: 10px;
       background-color: rgba(25, 69, 80, 0.05);
       border: none;
@@ -58,8 +64,12 @@
       outline: none;
       overflow: hidden;
       padding: 12px 1rem;
+      @include media-breakpoint-up(lg) {
+        max-width: 80%;
+        min-width: 60%;
+      }
       &--label {
-        padding: $m-xs 0;
+        margin: $m-sm;
         color: $color-text;
         font-family: $font-family-body;
         font-size: $font-size-base-xs;
@@ -78,6 +88,7 @@
       border-radius: $border-radius-xs;
       transition: box-shadow $transition-function 0.2s;
       letter-spacing: 0.04em;
+      cursor: pointer;
 
       &:hover {
         box-shadow: 0 0 8px $color-secondary;
@@ -95,17 +106,20 @@
       p {
         margin: $m-xs;
         font-family: $font-family-body;
-        font-size: $font-size-base;
-        font-weight: $font-weight-semi-bold;
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-medium;
       }
       &-error {
+        font-family: $font-family-body;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semi-bold;
         color: red;
       }
       &-controler {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: $m-sm;
+        padding: $m-base;
       }
     }
 
@@ -119,7 +133,7 @@
       justify-content: center;
       align-items: center;
       padding: 8px;
-      cursor: pointer;
+
       transition: background-color 0.2s ease-in-out;
     }
     &-title,
@@ -141,6 +155,7 @@
 
     &-primary {
       background-color: $color-primary;
+      cursor: pointer;
       width: 100%;
     }
     &-primary:hover {
@@ -149,16 +164,12 @@
 
     &-secondary {
       background-color: $color-tertiary;
-    }
-    &-secondary:hover {
-      background-color: #ff9f45;
+      width: 100%;
     }
 
     &-dark {
       background-color: $color-dark;
-    }
-    &-dark:hover {
-      background-color: #235561;
+      width: 100%;
     }
   }
 

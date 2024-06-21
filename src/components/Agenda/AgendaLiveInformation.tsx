@@ -75,20 +75,22 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       handleModalToggle(event, modalProps)
     }
   }
-  function findPrevLecture(activeLecture, lectures) {
+  const findPrevLecture = (activeLecture, lectures) => {
     const actualLectureIndex = lectures.findIndex((item) => item.subtitle === activeLecture?.subtitle)
 
     if (actualLectureIndex === -1) {
       return null
     }
 
-    const prevLecture = lectures[actualLectureIndex - 1]
-
-    if (!prevLecture) {
-      return null
+    let index = actualLectureIndex - 1
+    while (index >= 0) {
+      if (lectures[index]?.backgroundColor === 'primary') {
+        return lectures[index]
+      }
+      index--
     }
 
-    return prevLecture
+    return null
   }
   const prevLecture = findPrevLecture(activeLecture, lectures)
 
@@ -202,9 +204,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
         <div className="agenda__live-controler">
           <Modal className="agenda__live-modal" handleToggle={voteModal} isOpen={isOpenVote} title="vote">
             <div className="agenda__live-rating-controler">
-              <div className="agenda__live-modal--title">
-                <span>{prevLecture.subtitle}: </span>
-                <span>{prevLecture.title}</span>
+              <div className={`agenda__live-modal--title ${prevLecture?.title.length > 50 ? 'margin-right' : ''}`}>
+                <span>{prevLecture?.subtitle}: </span>
+                <span className="agenda__live-modal--description">{prevLecture?.title}</span>
               </div>
               <button className="agenda__button-close" onClick={voteModal}>
                 <CloseButtonIcon />
@@ -242,12 +244,15 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
             className={`agenda__live-${activeLecture.backgroundColor} agenda__live-description`}
             onClick={speakerModal}>
             <div className="agenda__live-lecturer">
-              {activeLecture.subtitle}:<span className="agenda__live-title"> {activeLecture.title}</span>
+              {activeLecture.subtitle && activeLecture.subtitle + ': '}
+              <span className="agenda__live-title"> {activeLecture.title}</span>
             </div>
           </div>
-          <div className="agenda__live-vote">
-            <button onClick={voteModal}>Głosuj</button>
-          </div>
+          {prevLecture && (
+            <div className="agenda__live-vote">
+              <button onClick={voteModal}>Głosuj</button>
+            </div>
+          )}
         </div>
       )}
     </div>
