@@ -25,7 +25,11 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   })
 
   const ratingFields = [
-    { error: voteError.presentation, label: 'Prezentacja', name: 'presentation' },
+    {
+      error: voteError.presentation,
+      label: 'Prezentacja',
+      name: 'presentation',
+    },
     { error: voteError.topic, label: 'Tematyka', name: 'topic' },
     { error: voteError.content, label: 'Merytoryka', name: 'content' },
   ]
@@ -74,11 +78,14 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 
   const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Lecture | null => {
     if (!activeLecture) return null
+    console.log(lectures)
 
-    const actualLectureIndex = lectures.findIndex((item) => item.subtitle === activeLecture.subtitle)
+    const actualLectureIndex = lectures.findIndex((item) => item.title === activeLecture.title)
+
     if (actualLectureIndex === -1) return null
 
     let index = actualLectureIndex - 1
+
     while (index >= 0) {
       if (lectures[index]?.backgroundColor === 'primary') {
         return lectures[index]
@@ -217,6 +224,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
             className={`agenda__live-${activeLecture.backgroundColor} agenda__live-description`}
             onClick={speakerModal}>
             <div className="agenda__live-lecturer">
+              {activeLecture.subtitle && <p className="agenda__live-header">Aktualny wykład:</p>}
               {activeLecture.subtitle && `${activeLecture.subtitle}: `}
               <span className="agenda__live-title"> {activeLecture.title}</span>
               {activeLecture.logo && (

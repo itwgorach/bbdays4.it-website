@@ -8,15 +8,15 @@
   scroll-margin-top: 112px;
 
   &__live {
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
     top: 79px;
     width: 100%;
     border-top: 1px solid white;
 
-    z-index: 2;
+    z-index: 40;
 
     &-modal {
       min-width: 95vw;
@@ -48,6 +48,13 @@
       &--description {
         font-weight: $font-weight-regular;
       }
+    }
+    &-header {
+      margin: 0;
+      padding: 0;
+      font-family: $font-family-header;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
     }
     &-input {
       max-width: 100%;
