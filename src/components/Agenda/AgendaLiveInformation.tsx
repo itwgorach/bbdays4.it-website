@@ -1,5 +1,5 @@
-import Modal from 'components/Modal'
 import React, { useState } from 'react'
+import Modal from 'components/Modal'
 import { Rating } from 'react-simple-star-rating'
 import { getSpeaker } from 'utils/agendaDataProcessing'
 import { CloseButtonIcon } from 'components/icons'
@@ -23,6 +23,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     presentation: false,
     topic: false,
   })
+
   const ratingFields = [
     { error: voteError.presentation, label: 'Prezentacja', name: 'presentation' },
     { error: voteError.topic, label: 'Tematyka', name: 'topic' },
@@ -31,26 +32,21 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 
   const getActiveLecture = (): Lecture | null => {
     const currentDate = Date.now()
-
     const [year, month, day] = dateOfLectures.split('.')
 
     for (let index = 0; index < lectures.length; index++) {
       const lecture = lectures[index]
-      const { startHour } = lecture
-
-      const [hours, minutes] = startHour.split(':').map(Number)
+      const [hours, minutes] = lecture.startHour.split(':').map(Number)
       const startDate = new Date(+year, +month - 1, +day, hours, minutes).getTime()
 
       let endDate: number
-
       if (!lectures[index + 1]) {
-        // add 2h to last lecture
+        // Add 2 hours to the last lecture
         endDate = startDate + 120 * 60 * 1000
       } else {
         const nextLecture = lectures[index + 1]
         const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
         const nextStartDate = new Date(+year, +month - 1, +day, nextHours, nextMinutes).getTime()
-
         endDate = nextStartDate
       }
 
@@ -75,12 +71,12 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       handleModalToggle(event, modalProps)
     }
   }
-  const findPrevLecture = (activeLecture, lectures) => {
-    const actualLectureIndex = lectures.findIndex((item) => item.subtitle === activeLecture?.subtitle)
 
-    if (actualLectureIndex === -1) {
-      return null
-    }
+  const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Lecture | null => {
+    if (!activeLecture) return null
+
+    const actualLectureIndex = lectures.findIndex((item) => item.subtitle === activeLecture.subtitle)
+    if (actualLectureIndex === -1) return null
 
     let index = actualLectureIndex - 1
     while (index >= 0) {
@@ -92,21 +88,20 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 
     return null
   }
+
   const prevLecture = findPrevLecture(activeLecture, lectures)
 
   const voteModal = () => {
     if (!isOpenVote) {
-      setIsOpenVote((prevValue) => !prevValue)
-      return
-    }
-    if (isOpenVote && window.confirm('Czy na pewno chcesz opuścić formularz?')) {
+      setIsOpenVote(!isOpenVote)
+    } else if (window.confirm('Czy na pewno chcesz opuścić formularz?')) {
       setVote({
         content: 0,
         feedback: '',
         presentation: 0,
         topic: 0,
       })
-      setIsOpenVote((prevValue) => !prevValue)
+      setIsOpenVote(!isOpenVote)
     }
   }
 
@@ -122,9 +117,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
         ...prevValue,
         [name]: rate,
       }))
-      return
-    }
-    if (event !== undefined) {
+    } else if (event !== undefined) {
       const { value } = event.target
       setVote((prevValue) => ({
         ...prevValue,
@@ -135,25 +128,10 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 
   const submitRating = async () => {
     setVoteError({ content: false, presentation: false, topic: false })
-    if (!vote.presentation) {
-      setVoteError((prevValue) => ({
-        ...prevValue,
-        presentation: true,
-      }))
-    }
-    if (!vote.topic) {
-      setVoteError((prevValue) => ({
-        ...prevValue,
-        topic: true,
-      }))
-    }
-    if (!vote.content) {
-      setVoteError((prevValue) => ({
-        ...prevValue,
-        content: true,
-      }))
-      return
-    }
+
+    if (!vote.presentation) setVoteError((prevValue) => ({ ...prevValue, presentation: true }))
+    if (!vote.topic) setVoteError((prevValue) => ({ ...prevValue, topic: true }))
+    if (!vote.content) setVoteError((prevValue) => ({ ...prevValue, content: true }))
 
     if (vote.content && vote.topic && vote.presentation) {
       const ratingData = {
@@ -162,7 +140,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           content: vote.content,
           feedback: vote.feedback,
           presentation: vote.presentation,
-          speaker: prevLecture.subtitle,
+          speaker: prevLecture?.subtitle,
           topic: vote.topic,
         },
       }
@@ -170,27 +148,22 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       try {
         const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(ratingData),
         })
 
-        if (!response.ok) {
-          console.error('Response status:', response.status)
-          console.error('Response text:', await response.text())
-          throw new Error('Failed to submit rating')
-        }
+        if (!response.ok) throw new Error('Failed to submit rating')
+
+        setVote({
+          content: 0,
+          feedback: '',
+          presentation: 0,
+          topic: 0,
+        })
+        setIsOpenVote(!isOpenVote)
       } catch (error) {
         console.error('Error submitting rating:', error)
       }
-      setVote({
-        content: 0,
-        feedback: '',
-        presentation: 0,
-        topic: 0,
-      })
-      setIsOpenVote((prevValue) => !prevValue)
     }
   }
 
@@ -244,8 +217,13 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
             className={`agenda__live-${activeLecture.backgroundColor} agenda__live-description`}
             onClick={speakerModal}>
             <div className="agenda__live-lecturer">
-              {activeLecture.subtitle && activeLecture.subtitle + ': '}
+              {activeLecture.subtitle && `${activeLecture.subtitle}: `}
               <span className="agenda__live-title"> {activeLecture.title}</span>
+              {activeLecture.logo && (
+                <span className="agenda__lecture-logo">
+                  <img alt="Logo" src={activeLecture.logo.url} />
+                </span>
+              )}
             </div>
           </div>
           {prevLecture && (
