@@ -65,7 +65,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
     }
   }
   if (activeLecture === null) {
-    return <></>
+    return null
   }
 
   return (
