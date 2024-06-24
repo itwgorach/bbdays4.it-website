@@ -65,7 +65,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   const activeLecture = getActiveLecture()
 
   const speakerModal = (event: React.MouseEvent) => {
-    if (activeLecture && activeLecture.subtitle) {
+    if ((activeLecture && activeLecture.subtitle) || (activeLecture && activeLecture?.title)) {
       const modalProps = {
         ...getSpeaker(activeLecture.subtitle, speakers),
         hour: activeLecture.startHour,
@@ -78,7 +78,6 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 
   const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Lecture | null => {
     if (!activeLecture) return null
-    console.log(lectures)
 
     const actualLectureIndex = lectures.findIndex((item) => item.title === activeLecture.title)
 
@@ -224,7 +223,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
             className={`agenda__live-${activeLecture.backgroundColor} agenda__live-description`}
             onClick={speakerModal}>
             <div className="agenda__live-lecturer">
-              {activeLecture.subtitle && <p className="agenda__live-header">Aktualny wykład:</p>}
+              {activeLecture.subtitle && <p className="agenda__live-header">AKTUALNY WYKŁAD:</p>}
               {activeLecture.subtitle && `${activeLecture.subtitle}: `}
               <span className="agenda__live-title"> {activeLecture.title}</span>
               {activeLecture.logo && (
