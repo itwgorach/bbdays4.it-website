@@ -14,6 +14,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   const [isOpenVote, setIsOpenVote] = useState<boolean>(false)
   const [vote, setVote] = useState<Vote>({
     content: 0,
+    email: '',
     feedback: '',
     presentation: 0,
     topic: 0,
@@ -96,6 +97,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   }
 
   const prevLecture = findPrevLecture(activeLecture, lectures)
+  const votedStorage = localStorage.getItem(`${prevLecture?.subtitle}`)
 
   const voteModal = () => {
     if (!isOpenVote) {
@@ -103,6 +105,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     } else if (window.confirm('Czy na pewno chcesz opuścić formularz?')) {
       setVote({
         content: 0,
+        email: '',
         feedback: '',
         presentation: 0,
         topic: 0,
@@ -123,11 +126,12 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
         ...prevValue,
         [name]: rate,
       }))
-    } else if (event !== undefined) {
+    }
+    if (event !== undefined) {
       const { value } = event.target
       setVote((prevValue) => ({
         ...prevValue,
-        feedback: value,
+        [name]: value,
       }))
     }
   }
@@ -144,6 +148,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
         data: {
           average: ((vote.content + vote.topic + vote.presentation) / 3).toFixed(2),
           content: vote.content,
+          email: vote.email,
           feedback: vote.feedback,
           presentation: vote.presentation,
           speaker: prevLecture?.subtitle,
@@ -162,6 +167,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 
         setVote({
           content: 0,
+          email: '',
           feedback: '',
           presentation: 0,
           topic: 0,
@@ -174,7 +180,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   }
 
   if (activeLecture === null) {
-    return <></>
+    return null
   }
 
   return (
@@ -183,40 +189,59 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
         <div className="agenda__live-controler">
           <Modal className="agenda__live-modal" handleToggle={voteModal} isOpen={isOpenVote} title="vote">
             <div className="agenda__live-rating-controler">
-              <div className={`agenda__live-modal--title ${prevLecture?.title.length > 50 ? 'margin-right' : ''}`}>
-                <span>{prevLecture?.subtitle}: </span>
-                <span className="agenda__live-modal--description">{prevLecture?.title}</span>
-              </div>
-              <button className="agenda__button-close" onClick={voteModal}>
-                <CloseButtonIcon />
-              </button>
-              {ratingFields.map((field) => (
-                <div key={field.name} className="agenda__live-rating">
-                  <p>
-                    {field.label}:{field.error && <span className="agenda__live-rating-error">*</span>}
-                  </p>
-                  <Rating
-                    allowFraction
-                    titleSeparator="z"
-                    onClick={(rate) => handleRating({ name: field.name, rate })}
+              {!votedStorage ? (
+                <>
+                  <div className={`agenda__live-modal--title ${prevLecture?.title.length > 50 ? 'margin-right' : ''}`}>
+                    <span>{prevLecture?.subtitle}: </span>
+                    <span className="agenda__live-modal--description">{prevLecture?.title}</span>
+                  </div>
+                  <button className="agenda__button-close" onClick={voteModal}>
+                    <CloseButtonIcon />
+                  </button>
+                  {ratingFields.map((field) => (
+                    <div key={field.name} className="agenda__live-rating">
+                      <p>
+                        {field.label}:{field.error && <span className="agenda__live-rating-error">*</span>}
+                      </p>
+                      <Rating
+                        allowFraction
+                        titleSeparator="z"
+                        onClick={(rate) => handleRating({ name: field.name, rate })}
+                      />
+                    </div>
+                  ))}
+                  <label className="agenda__live-input--label" htmlFor="feedback">
+                    Podziel się swoimi przemyśleniami. <br />
+                    Twoja opinia jest dla nas ważna 😉
+                  </label>
+                  <input
+                    className="agenda__live-input"
+                    name="feedback"
+                    placeholder="Opcjonalne"
+                    type="text"
+                    value={vote.feedback}
+                    onChange={(event) => handleRating({ event, name: 'feedback' })}
                   />
-                </div>
-              ))}
-              <label className="agenda__live-input--label" htmlFor="feedback">
-                Podziel się swoimi przemyśleniami. <br />
-                Twoja opinia jest dla nas ważna 😉
-              </label>
-              <input
-                className="agenda__live-input"
-                name="feedback"
-                placeholder="Opcjonalne"
-                type="text"
-                value={vote.feedback}
-                onChange={(event) => handleRating({ event, name: 'feedback' })}
-              />
-              <button className="agenda__live-button" onClick={submitRating}>
-                Wyślij
-              </button>
+                  <input
+                    className="agenda__live-input"
+                    name="email"
+                    placeholder="Email"
+                    type="email"
+                    value={vote.email}
+                    onChange={(event) => handleRating({ event, name: 'email' })}
+                  />
+                  <button className="agenda__live-button" onClick={submitRating}>
+                    Wyślij
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p>Już oddałeś głos na tego prelegenta 🫶</p>
+                  <button className="agenda__live-button" onClick={() => setIsOpenVote(!isOpenVote)}>
+                    Zamknij
+                  </button>
+                </>
+              )}
             </div>
           </Modal>
           <div

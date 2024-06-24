@@ -17,6 +17,7 @@ export type Vote = {
   topic: number
   content: number
   feedback: string
+  email: string
 }
 
 export type VoteError = {
