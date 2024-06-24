@@ -108,7 +108,7 @@ const config: GatsbyConfig = {
   ],
   siteMetadata: {
     siteUrl: `https://bbdays4.it/`,
-    title: `BB Days 4 IT :: 8-17 września 2023`,
+    title: `BB Days 4 IT : 6-15 września 2024`,
   },
 }
 if (process.env.NODE_ENV === 'development') {
