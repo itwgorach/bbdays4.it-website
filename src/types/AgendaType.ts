@@ -13,17 +13,15 @@ export type Speaker = {
   name: string
 }
 export type Vote = {
-  presentation: number
-  topic: number
-  content: number
+  educationalValue: number
+  speech: number
   feedback: string
-  email: string
+  nick: string
 }
 
 export type VoteError = {
-  content: boolean
-  presentation: boolean
-  topic: boolean
+  educationalValue: boolean
+  speech: boolean
 }
 
 export type RatingEvent = {

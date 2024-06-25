@@ -13,26 +13,29 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 }) => {
   const [isOpenVote, setIsOpenVote] = useState<boolean>(false)
   const [vote, setVote] = useState<Vote>({
-    content: 0,
-    email: '',
+    educationalValue: 0,
     feedback: '',
-    presentation: 0,
-    topic: 0,
+    nick: '',
+    speech: 0,
   })
   const [voteError, setVoteError] = useState<VoteError>({
-    content: false,
-    presentation: false,
-    topic: false,
+    educationalValue: false,
+    speech: false,
   })
 
   const ratingFields = [
     {
-      error: voteError.presentation,
-      label: 'Prezentacja',
-      name: 'presentation',
+      error: voteError.speech,
+      label: 'Wystąpienie',
+      name: 'speech',
+      paragraph: '(czy prelegent opowiadał w interesujący i angażujący sposób, prezentacja miała klarowną strukturę)',
     },
-    { error: voteError.topic, label: 'Tematyka', name: 'topic' },
-    { error: voteError.content, label: 'Merytoryka', name: 'content' },
+    {
+      error: voteError.educationalValue,
+      label: 'Wartość edukacyjna',
+      name: 'educationalValue',
+      paragraph: '(Czy nauczyłeś się nowych rzeczy, czy prezentacja zgłębiła temat)',
+    },
   ]
 
   const getActiveLecture = (): Lecture | null => {
@@ -66,7 +69,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   const activeLecture = getActiveLecture()
 
   const speakerModal = (event: React.MouseEvent) => {
-    if ((activeLecture && activeLecture.subtitle) || (activeLecture && activeLecture?.title)) {
+    if (activeLecture && activeLecture.subtitle) {
       const modalProps = {
         ...getSpeaker(activeLecture.subtitle, speakers),
         hour: activeLecture.startHour,
@@ -98,24 +101,24 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 
   const prevLecture = findPrevLecture(activeLecture, lectures)
   const votedStorage = localStorage.getItem(`${prevLecture?.subtitle}`)
+  const nickStorage = localStorage.getItem(`nick`)
 
   const voteModal = () => {
     if (!isOpenVote) {
       setIsOpenVote(!isOpenVote)
     } else if (window.confirm('Czy na pewno chcesz opuścić formularz?')) {
       setVote({
-        content: 0,
-        email: '',
+        educationalValue: 0,
         feedback: '',
-        presentation: 0,
-        topic: 0,
+        nick: '',
+        speech: 0,
       })
       setIsOpenVote(!isOpenVote)
     }
   }
 
   const handleRating = ({ name, rate, event }: RatingEvent) => {
-    if (voteError.content || voteError.presentation || voteError.topic) {
+    if (voteError.educationalValue || voteError.speech) {
       setVoteError((prevValue) => ({
         ...prevValue,
         [name]: false,
@@ -137,22 +140,20 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   }
 
   const submitRating = async () => {
-    setVoteError({ content: false, presentation: false, topic: false })
+    setVoteError({ educationalValue: false, speech: false })
 
-    if (!vote.presentation) setVoteError((prevValue) => ({ ...prevValue, presentation: true }))
-    if (!vote.topic) setVoteError((prevValue) => ({ ...prevValue, topic: true }))
-    if (!vote.content) setVoteError((prevValue) => ({ ...prevValue, content: true }))
+    if (!vote.educationalValue) setVoteError((prevValue) => ({ ...prevValue, educationalValue: true }))
+    if (!vote.speech) setVoteError((prevValue) => ({ ...prevValue, speech: true }))
 
-    if (vote.content && vote.topic && vote.presentation) {
+    if (vote.educationalValue && vote.speech) {
       const ratingData = {
         data: {
-          average: ((vote.content + vote.topic + vote.presentation) / 3).toFixed(2),
-          content: vote.content,
-          email: vote.email,
+          average: ((vote.educationalValue + vote.speech) / 2).toFixed(2),
+          educationalValue: vote.educationalValue,
           feedback: vote.feedback,
-          presentation: vote.presentation,
+          nick: nickStorage ? nickStorage : vote.nick,
           speaker: prevLecture?.subtitle,
-          topic: vote.topic,
+          speech: vote.speech,
         },
       }
 
@@ -166,12 +167,15 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
         if (!response.ok) throw new Error('Failed to submit rating')
 
         setVote({
-          content: 0,
-          email: '',
+          educationalValue: 0,
           feedback: '',
-          presentation: 0,
-          topic: 0,
+          nick: '',
+          speech: 0,
         })
+        localStorage.setItem(prevLecture?.subtitle, JSON.stringify(ratingData))
+        if (!nickStorage && ratingData.data.nick !== '') {
+          localStorage.setItem('nick', ratingData.data.nick)
+        }
         setIsOpenVote(!isOpenVote)
       } catch (error) {
         console.error('Error submitting rating:', error)
@@ -200,9 +204,10 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                   </button>
                   {ratingFields.map((field) => (
                     <div key={field.name} className="agenda__live-rating">
-                      <p>
+                      <p className="agenda__live-rating-title">
                         {field.label}:{field.error && <span className="agenda__live-rating-error">*</span>}
                       </p>
+                      <p className="agenda__live-rating-subtitle">{field.paragraph}</p>
                       <Rating
                         allowFraction
                         titleSeparator="z"
@@ -222,25 +227,41 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                     value={vote.feedback}
                     onChange={(event) => handleRating({ event, name: 'feedback' })}
                   />
-                  <input
-                    className="agenda__live-input"
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    value={vote.email}
-                    onChange={(event) => handleRating({ event, name: 'email' })}
-                  />
+                  {!nickStorage ? (
+                    <>
+                      <label className="agenda__live-input--label" htmlFor="nick">
+                        Weź udział w losowaniu nagród! 🎁 Zostaw nam swoje imię i nazwisko, a podczas zakończenia
+                        wybierzemy zwycięzców niespodzianek od organizatorów. <br />
+                        Trzymamy kciuki! 🤞
+                      </label>
+                      <input
+                        className="agenda__live-input"
+                        name="nick"
+                        placeholder="Imię Nazwisko"
+                        type="text"
+                        value={vote.nick}
+                        onChange={(event) => handleRating({ event, name: 'nick' })}
+                      />
+                    </>
+                  ) : (
+                    <p className="agenda__live-input--label">
+                      Każde głosowanie zwiększa szansę na nagrodę! Twoje dane zostają automatycznie powielony w puli
+                      losowania po każdym, oddanym na prelegenta głosie. 🙌
+                    </p>
+                  )}
                   <button className="agenda__live-button" onClick={submitRating}>
                     Wyślij
                   </button>
                 </>
               ) : (
-                <>
+                <div className="agenda__live-voted">
                   <p>Już oddałeś głos na tego prelegenta 🫶</p>
+                  <p>Możliwość głosowania na kolejnego pojawi się podczas następnej prelekcji.</p>
+                  <p>Dziękujemy!</p>
                   <button className="agenda__live-button" onClick={() => setIsOpenVote(!isOpenVote)}>
                     Zamknij
                   </button>
-                </>
+                </div>
               )}
             </div>
           </Modal>
