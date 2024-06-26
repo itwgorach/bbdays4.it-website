@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
+import confetti from 'canvas-confetti'
 import logo from '../../static/images/bbdays_logo.png'
 
 const Lottery = () => {
@@ -37,15 +38,34 @@ const Lottery = () => {
       }
 
       setTimeout(() => {
-        setWinner((prevWinner) => getWinner(prevWinner))
+        const newWinner = getWinner(winner)
+        setWinner(newWinner)
         setIsDrawing(false)
-      }, 1000)
+        launchConfetti()
+      }, 2000)
 
       if (!response.ok) throw new Error('Failed to submit rating')
     } catch (error) {
       console.error('Error submitting rating:', error)
       setIsDrawing(false)
     }
+  }
+
+  const launchConfetti = () => {
+    confetti({
+      particleCount: 1000,
+      spread: 90,
+      origin: { x: 0, y: 0.8 },
+      angle: 50,
+      decay: 0.95,
+    })
+    confetti({
+      particleCount: 1000,
+      spread: 90,
+      origin: { x: 1, y: 0.8 },
+      angle: 130,
+      decay: 0.95,
+    })
   }
 
   const winnerSpring = useSpring({

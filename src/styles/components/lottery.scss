@@ -54,12 +54,13 @@
       font-size: $font-size-2xl;
       color: $color-white;
       transform: scale(1.5);
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.4s ease-in-out;
     }
 
     &--drawing {
+      margin: 35px 0;
       font-family: $font-face-header;
-      font-size: $font-size-xl;
+      font-size: $font-size-2xl;
       color: $color-secondary;
       animation: pulse 1s infinite;
     }
