@@ -20,6 +20,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   })
   const [voteError, setVoteError] = useState<VoteError>({
     educationalValue: false,
+    name: false,
     speech: false,
   })
 
@@ -37,6 +38,16 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       paragraph: '(Czy nauczyłeś się nowych rzeczy, czy prezentacja zgłębiła temat)',
     },
   ]
+
+  const nameValidation = (name: string) => {
+    if (name === '') {
+      return true
+    }
+    const firstName = name.split(' ')[0]
+    const lastName = name.split(' ')[1]
+
+    return lastName ? `${firstName} ${lastName}` : false
+  }
 
   const getActiveLecture = (): Lecture | null => {
     const currentDate = Date.now()
@@ -140,10 +151,14 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   }
 
   const submitRating = async () => {
-    setVoteError({ educationalValue: false, speech: false })
+    setVoteError({ educationalValue: false, name: false, speech: false })
+
+    const nameError = nameValidation(nickStorage ? nickStorage : vote.nick)
+    console.log(nameError)
 
     if (!vote.educationalValue) setVoteError((prevValue) => ({ ...prevValue, educationalValue: true }))
     if (!vote.speech) setVoteError((prevValue) => ({ ...prevValue, speech: true }))
+    if (!nameError) setVoteError((prevValue) => ({ ...prevValue, name: true }))
 
     if (vote.educationalValue && vote.speech) {
       const ratingData = {
@@ -243,6 +258,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                         value={vote.nick}
                         onChange={(event) => handleRating({ event, name: 'nick' })}
                       />
+                      {voteError.name && (
+                        <p className="agenda__live-rating-error--name">*Podaj proszę poprawnę imię i nazwosko.</p>
+                      )}
                     </>
                   ) : (
                     <p className="agenda__live-input--label">

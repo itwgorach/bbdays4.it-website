@@ -132,11 +132,15 @@
         font-size: $font-size-base-xs;
         font-weight: $font-weight-medium;
       }
-      &-error {
+      &-error,
+      &-error--name {
         font-family: $font-family-body;
         font-size: $font-size-lg;
         font-weight: $font-weight-semi-bold;
         color: red;
+        &--name {
+          font-size: $font-size-sm;
+        }
       }
       &-title,
       &-subtitle {
