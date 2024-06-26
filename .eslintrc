@@ -6,6 +6,12 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
   ],
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto",
+    },
+  ],
   "globals": {
     "Blob": true,
     "Cypress": true,
