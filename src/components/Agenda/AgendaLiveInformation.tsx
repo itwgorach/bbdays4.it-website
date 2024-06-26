@@ -5,13 +5,66 @@ import { getSpeaker } from 'utils/agendaDataProcessing'
 import { CloseButtonIcon } from 'components/icons'
 import { Lecture, AgendaLiveInformationProps, Vote, VoteError, RatingEvent } from 'types/AgendaType'
 
+const nameValidation = (name: string) => {
+  if (name === '') return true
+
+  const [firstName, lastName] = name.split(' ')
+
+  return lastName ? `${firstName} ${lastName}` : false
+}
+
+const getActiveLecture = (dateOfLectures: string, lectures: Lecture[]): Lecture | null => {
+  const currentDate = Date.now()
+  const [year, month, day] = dateOfLectures.split('.')
+
+  for (let index = 0; index < lectures.length; index++) {
+    const lecture = lectures[index]
+    const [hours, minutes] = lecture.startHour.split(':').map(Number)
+    const startDate = new Date(+year, +month - 1, +day, hours, minutes).getTime()
+
+    let endDate: number
+    if (!lectures[index + 1]) {
+      // Add 2 hours to the last lecture
+      endDate = startDate + 120 * 60 * 1000
+    } else {
+      const nextLecture = lectures[index + 1]
+      const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
+      const nextStartDate = new Date(+year, +month - 1, +day, nextHours, nextMinutes).getTime()
+      endDate = nextStartDate
+    }
+
+    if (currentDate >= startDate && currentDate < endDate) {
+      return lecture
+    }
+  }
+
+  return null
+}
+
+const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Lecture | null => {
+  if (!activeLecture) return null
+
+  const actualLectureIndex = lectures.findIndex((item) => item.title === activeLecture.title)
+  if (actualLectureIndex === -1) return null
+
+  let index = actualLectureIndex - 1
+  while (index >= 0) {
+    if (lectures[index]?.backgroundColor === 'primary') {
+      return lectures[index]
+    }
+    index--
+  }
+
+  return null
+}
+
 const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   dateOfLectures,
   handleModalToggle,
   lectures,
   speakers,
 }) => {
-  const [isOpenVote, setIsOpenVote] = useState<boolean>(false)
+  const [isOpenVote, setIsOpenVote] = useState(false)
   const [vote, setVote] = useState<Vote>({
     educationalValue: 0,
     feedback: '',
@@ -23,6 +76,10 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     name: false,
     speech: false,
   })
+  const activeLecture = getActiveLecture(dateOfLectures, lectures)
+  const prevLecture = findPrevLecture(activeLecture, lectures)
+  const votedStorage = localStorage.getItem(`${prevLecture?.subtitle}`)
+  const nickStorage = localStorage.getItem('nick')
 
   const ratingFields = [
     {
@@ -39,81 +96,6 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     },
   ]
 
-  const nameValidation = (name: string) => {
-    if (name === '') {
-      return true
-    }
-    const firstName = name.split(' ')[0]
-    const lastName = name.split(' ')[1]
-
-    return lastName ? `${firstName} ${lastName}` : false
-  }
-
-  const getActiveLecture = (): Lecture | null => {
-    const currentDate = Date.now()
-    const [year, month, day] = dateOfLectures.split('.')
-
-    for (let index = 0; index < lectures.length; index++) {
-      const lecture = lectures[index]
-      const [hours, minutes] = lecture.startHour.split(':').map(Number)
-      const startDate = new Date(+year, +month - 1, +day, hours, minutes).getTime()
-
-      let endDate: number
-      if (!lectures[index + 1]) {
-        // Add 2 hours to the last lecture
-        endDate = startDate + 120 * 60 * 1000
-      } else {
-        const nextLecture = lectures[index + 1]
-        const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
-        const nextStartDate = new Date(+year, +month - 1, +day, nextHours, nextMinutes).getTime()
-        endDate = nextStartDate
-      }
-
-      if (currentDate >= startDate && currentDate < endDate) {
-        return lecture
-      }
-    }
-
-    return null
-  }
-
-  const activeLecture = getActiveLecture()
-
-  const speakerModal = (event: React.MouseEvent) => {
-    if (activeLecture && activeLecture.subtitle) {
-      const modalProps = {
-        ...getSpeaker(activeLecture.subtitle, speakers),
-        hour: activeLecture.startHour,
-        room: activeLecture.room,
-      }
-
-      handleModalToggle(event, modalProps)
-    }
-  }
-
-  const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Lecture | null => {
-    if (!activeLecture) return null
-
-    const actualLectureIndex = lectures.findIndex((item) => item.title === activeLecture.title)
-
-    if (actualLectureIndex === -1) return null
-
-    let index = actualLectureIndex - 1
-
-    while (index >= 0) {
-      if (lectures[index]?.backgroundColor === 'primary') {
-        return lectures[index]
-      }
-      index--
-    }
-
-    return null
-  }
-
-  const prevLecture = findPrevLecture(activeLecture, lectures)
-  const votedStorage = localStorage.getItem(`${prevLecture?.subtitle}`)
-  const nickStorage = localStorage.getItem(`nick`)
-
   const voteModal = () => {
     if (!isOpenVote) {
       setIsOpenVote(!isOpenVote)
@@ -129,24 +111,14 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   }
 
   const handleRating = ({ name, rate, event }: RatingEvent) => {
-    if (voteError.educationalValue || voteError.speech) {
-      setVoteError((prevValue) => ({
-        ...prevValue,
-        [name]: false,
-      }))
-    }
+    setVoteError((prevValue) => ({ ...prevValue, [name]: false }))
+
     if (rate !== undefined) {
-      setVote((prevValue) => ({
-        ...prevValue,
-        [name]: rate,
-      }))
+      setVote((prevValue) => ({ ...prevValue, [name]: rate }))
     }
     if (event !== undefined) {
       const { value } = event.target
-      setVote((prevValue) => ({
-        ...prevValue,
-        [name]: value,
-      }))
+      setVote((prevValue) => ({ ...prevValue, [name]: value }))
     }
   }
 
@@ -154,13 +126,12 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     setVoteError({ educationalValue: false, name: false, speech: false })
 
     const nameError = nameValidation(nickStorage ? nickStorage : vote.nick)
-    console.log(nameError)
 
     if (!vote.educationalValue) setVoteError((prevValue) => ({ ...prevValue, educationalValue: true }))
     if (!vote.speech) setVoteError((prevValue) => ({ ...prevValue, speech: true }))
     if (!nameError) setVoteError((prevValue) => ({ ...prevValue, name: true }))
 
-    if (vote.educationalValue && vote.speech) {
+    if (vote.educationalValue && vote.speech && nameError) {
       const ratingData = {
         data: {
           average: ((vote.educationalValue + vote.speech) / 2).toFixed(2),
@@ -171,13 +142,12 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           speech: vote.speech,
         },
       }
-      console.log(ratingData)
 
       try {
         const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(ratingData),
+          headers: { 'Content-Type': 'application/json' },
+          method: 'POST',
         })
 
         if (!response.ok) throw new Error('Failed to submit rating')
@@ -199,9 +169,18 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     }
   }
 
-  if (activeLecture === null) {
-    return null
+  const speakerModal = (event: React.MouseEvent) => {
+    if (activeLecture && activeLecture.subtitle) {
+      const modalProps = {
+        ...getSpeaker(activeLecture.subtitle, speakers),
+        hour: activeLecture.startHour,
+        room: activeLecture.room,
+      }
+      handleModalToggle(event, modalProps)
+    }
   }
+
+  if (!activeLecture) return null
 
   return (
     <div className="agenda__live">
@@ -259,12 +238,12 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                         onChange={(event) => handleRating({ event, name: 'nick' })}
                       />
                       {voteError.name && (
-                        <p className="agenda__live-rating-error--name">*Podaj proszę poprawnę imię i nazwosko.</p>
+                        <p className="agenda__live-rating-error--name">*Podaj proszę poprawnę imię i nazwisko.</p>
                       )}
                     </>
                   ) : (
                     <p className="agenda__live-input--label">
-                      Każde głosowanie zwiększa szansę na nagrodę! Twoje dane zostają automatycznie powielony w puli
+                      Każde głosowanie zwiększa szansę na nagrodę! Twoje dane zostają automatycznie powielone w puli
                       losowania po każdym, oddanym na prelegenta głosie. 🙌
                     </p>
                   )}
