@@ -156,6 +156,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           speech: vote.speech,
         },
       }
+      console.log(ratingData)
 
       try {
         const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
