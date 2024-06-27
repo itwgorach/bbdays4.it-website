@@ -83,25 +83,28 @@ const Lottery = () => {
   return (
     <div className="lottery">
       <div className="lottery-content">
-        {winner && !isDrawing ? (
-          <animated.h2 style={winnerSpring} className="lottery-content--winner">
-            {winner}🏆🥳
-          </animated.h2>
-        ) : (
-          <></>
-        )}
-        <div id="lottery">
-          {isDrawing && (
-            <animated.div style={drawingSpring} className="lottery-content--drawing">
-              Losowanie...
-            </animated.div>
-          )}
-        </div>
         <img alt="bbdays logo" className="lottery-logo" src={logo} />
         {isLogged ? (
-          <button className="lottery-content--button" onClick={drawWinner}>
-            Losuj
-          </button>
+          <>
+            {' '}
+            {winner && !isDrawing ? (
+              <animated.h2 style={winnerSpring} className="lottery-content--winner">
+                {winner}🏆🥳
+              </animated.h2>
+            ) : (
+              <></>
+            )}
+            <div id="lottery">
+              {isDrawing && (
+                <animated.div style={drawingSpring} className="lottery-content--drawing">
+                  Losowanie...
+                </animated.div>
+              )}
+            </div>
+            <button className="lottery-content--button" onClick={drawWinner}>
+              Losuj
+            </button>
+          </>
         ) : (
           <form className="lottery-content--form">
             <input className="lottery-content--input" type="password" onChange={handleChange} />
