@@ -14,7 +14,7 @@ const CookiesConsent = () => {
     <>
       <CookieConsent
         buttonClasses="cookies__button"
-        buttonText="Akceptuję"
+        buttonText={language === 'pl' ? 'Akceptuję' : 'Accept'}
         containerClasses="cookies"
         location="bottom">
         <span className="cookies__text">

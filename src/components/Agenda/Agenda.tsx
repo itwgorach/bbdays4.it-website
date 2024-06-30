@@ -71,7 +71,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     }
   }
 
-  const handleModalToggle = (event, { ...modalProps }) => {
+  const handleModalToggle = (event, modalProps) => {
     setIsModalOpen((isModalOpen) => {
       setModalData({
         ...modalProps,
