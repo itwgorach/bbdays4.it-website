@@ -9,7 +9,7 @@
 @import 'components/partners';
 
 @import 'components/speakers';
-@import 'components/speaker-card.scss';
+@import 'components/speaker-card';
 
 @import 'components/gallery';
 @import 'components/footer';
@@ -21,10 +21,10 @@
 @import 'components/agenda';
 @import 'components/lecture-details';
 @import 'components/live-banner';
-@import 'components/festival-in-numbers.scss';
-@import 'components/video-section.scss';
-@import 'components/videos.scss';
-@import 'components/modal.scss';
+@import 'components/festival-in-numbers';
+@import 'components/video-section';
+@import 'components/videos';
+@import 'components/modal';
 
 * {
   font-family: $font-family-body;

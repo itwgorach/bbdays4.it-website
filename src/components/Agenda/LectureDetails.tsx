@@ -110,7 +110,7 @@ const LectureDetails: FC<ModalType> = ({
           <div className="lecture-details__header">
             <div className="lecture-details__header-text">
               <DateIcon />
-              <span>{language === 'pl' ? '16 września 2023' : 'September 16, 2023'}</span>
+              <span>{language === 'pl' ? '14 września 2024' : 'September 14, 2024'}</span>
             </div>
             <div className="lecture-details__header-text">
               <ClockIcon />
@@ -140,7 +140,7 @@ const LectureDetails: FC<ModalType> = ({
           <div className="lecture-details__header -desktop">
             <div className="lecture-details__header-text">
               <DateIcon />
-              <span>{language === 'pl' ? '16 września 2023' : 'September 16, 2023'}</span>
+              <span>{language === 'pl' ? '14 września 2024' : 'September 14, 2024'}</span>
             </div>
             <div className="lecture-details__header-text">
               <ClockIcon />
