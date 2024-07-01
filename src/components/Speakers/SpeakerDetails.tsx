@@ -16,7 +16,7 @@ const SpeakerDetails: FC<SpeakerDetailsType> = ({ handleToggleModal, isOpen, spe
   const imageUrl = photo?.url
 
   return (
-    <Modal handleToggle={handleToggleModal} isOpen={isOpen} title={fullName} withModifier="-medium">
+    <Modal className="-medium" handleToggle={handleToggleModal} isOpen={isOpen} title={fullName}>
       <div className="speaker-details">
         <div className="speaker-details__header">
           <Image alt={fullName} url={imageUrl} />

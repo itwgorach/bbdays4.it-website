@@ -1,7 +1,15 @@
 {
   "bracketSpacing": true,
   "jsxBracketSameLine": true,
-  "parser": "flow",
+  {
+    "parser": "scss",
+    "overrides": [
+      {
+        "files": "*.tsx",
+        "parser": "flow"
+      }
+    ]
+  },
   "printWidth": 120,
   "semi": false,
   "singleQuote": true,

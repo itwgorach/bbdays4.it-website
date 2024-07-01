@@ -13,6 +13,7 @@ import {
   LinktrIcon,
   TwitterIcon,
 } from 'components/icons'
+import { useLanguageContext } from 'contexts/LanguageContext'
 
 const LectureDetails: FC<ModalType> = ({
   backgroundColor,
@@ -34,6 +35,8 @@ const LectureDetails: FC<ModalType> = ({
   location,
 }) => {
   const [copyAlertVisible, setCopyAlertVisible] = useState(false)
+
+  const { language } = useLanguageContext()
 
   const firstNameTrimmed = firstName?.trim()
   const lastNameTrimmed = lastName?.trim()
@@ -107,7 +110,7 @@ const LectureDetails: FC<ModalType> = ({
           <div className="lecture-details__header">
             <div className="lecture-details__header-text">
               <DateIcon />
-              <span>16 września 2023</span>
+              <span>{language === 'pl' ? '16 września 2023' : 'September 16, 2023'}</span>
             </div>
             <div className="lecture-details__header-text">
               <ClockIcon />
@@ -117,7 +120,7 @@ const LectureDetails: FC<ModalType> = ({
           <div className={getClassesWithColor('lecture-details__title')}>{title}</div>
           <div className="lecture-details__explanation">{description}</div>
           <div className="lecture-details__share">
-            <span className="lecture-details__share-text">Udostępnij</span>
+            <span className="lecture-details__share-text">{language === 'pl' ? 'Udostępnij' : 'Share'}</span>
             <div className="lecture-details__copy">
               <input
                 className="lecture-details__copy-input"
@@ -128,7 +131,7 @@ const LectureDetails: FC<ModalType> = ({
               />
               <button className="lecture-details__copy-button" onClick={handleCopyClick}>
                 <CopyIcon />
-                <span>Kopiuj link</span>
+                <span>{language === 'pl' ? 'Kopiuj link' : 'Copy link'}</span>
               </button>
             </div>
           </div>
@@ -137,7 +140,7 @@ const LectureDetails: FC<ModalType> = ({
           <div className="lecture-details__header -desktop">
             <div className="lecture-details__header-text">
               <DateIcon />
-              <span>16 września 2023</span>
+              <span>{language === 'pl' ? '16 września 2023' : 'September 16, 2023'}</span>
             </div>
             <div className="lecture-details__header-text">
               <ClockIcon />
@@ -181,7 +184,7 @@ const LectureDetails: FC<ModalType> = ({
             <ArrowButtonIconShort className="-left -short" />
           </div>
           <div className="lecture-details__prev-text">
-            <span className="lecture-details__prev-direction">Wcześniej</span>
+            <span className="lecture-details__prev-direction">{language === 'pl' ? 'Wcześniej' : 'Before'}</span>
             <span className="lecture-details__prev-name">{prevLecture}</span>
           </div>
         </button>
@@ -189,7 +192,7 @@ const LectureDetails: FC<ModalType> = ({
           className={getNextButtonClasses}
           onClick={nextLecture ? () => handleNextLectureClick(`${firstNameTrimmed} ${lastNameTrimmed}`) : undefined}>
           <div className="lecture-details__next-text">
-            <span className="lecture-details__next-direction">Dalej</span>
+            <span className="lecture-details__next-direction">{language === 'pl' ? 'Dalej' : 'Next'}</span>
             <span className="lecture-details__next-name">{nextLecture}</span>
           </div>
           <div className="lecture-details__arrow">
@@ -199,7 +202,7 @@ const LectureDetails: FC<ModalType> = ({
         </button>
       </div>
       <div className="lecture-details__copy-alert" style={{ display: copyAlertVisible ? 'block' : 'none' }}>
-        Skopiowano!
+        {language === 'pl' ? 'Skopiowano!' : 'Copied!'}
       </div>
     </>
   )
