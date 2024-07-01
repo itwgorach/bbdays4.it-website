@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from "react"
+import React, { createContext, useContext, useState } from 'react'
 
 type ActiveLinkContextType = {
-  activeLink: string,
-  setActiveLink: (link: string) => void,
+  activeLink: string
+  setActiveLink: (link: string) => void
 }
 
 export const ActiveLinkContext = createContext<ActiveLinkContextType>({} as ActiveLinkContextType)

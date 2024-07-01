@@ -36,6 +36,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
 
   const shouldOpenModal = () => {
     const params = new URLSearchParams(location.search)
+
     const lecture = params && params.get('lecture')
 
     if (lecture) {
@@ -71,7 +72,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
     }
   }
 
-  const handleModalToggle = (event, { ...modalProps }) => {
+  const handleModalToggle = (event, modalProps) => {
     setIsModalOpen((isModalOpen) => {
       setModalData({
         ...modalProps,
