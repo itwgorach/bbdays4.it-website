@@ -1,11 +1,14 @@
-import { ScheduleWeek } from 'constants/constants'
+import { PlScheduleWeek, EnScheduleWeek } from 'constants/constants'
 import React, { FC } from 'react'
 import { ScheduleType } from 'types'
 
+import { useLanguageContext } from 'contexts/LanguageContext'
 import ScheduleCalendar from '../ScheduleCalendar/ScheduleCalendar'
 import ScheduleEventMobile from './ScheduleEventMobile'
 
 const ScheduleMobile: FC<ScheduleType> = ({ scheduleTitle, events }) => {
+  const { language } = useLanguageContext()
+  const ScheduleWeek = language === 'pl' ? PlScheduleWeek : EnScheduleWeek
   const getHourFromString = (hour: string) => {
     return hour.substring(0, 2)
   }

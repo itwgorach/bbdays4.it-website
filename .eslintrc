@@ -4,7 +4,13 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+  ],
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto",
+    },
   ],
   "globals": {
     "Blob": true,
@@ -16,37 +22,27 @@
     "document": true,
     "localStorage": true,
     "navigator": true,
-    "window": true
+    "window": true,
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
     },
     "ecmaVersion": 2020,
-    "sourceType": "module"
+    "sourceType": "module",
   },
-  "plugins": [
-    "import",
-    "sort-keys-fix"
-  ],
+  "plugins": ["import", "sort-keys-fix"],
   "rules": {
-    "@typescript-eslint/no-unused-vars": [
-      "error"
-    ],
-    "import/imports-first": [
-      "error",
-      "absolute-first"
-    ],
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
     "import/order": "error",
     "jsx-a11y/anchor-is-valid": [
       "warn",
       {
-        "aspects": [
-          "invalidHref"
-        ]
-      }
+        "aspects": ["invalidHref"],
+      },
     ],
     "jsx-a11y/href-no-hash": "off",
     "no-debugger": "off",
@@ -55,20 +51,15 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".ts",
-          ".tsx"
-        ]
-      }
+        "extensions": [".ts", ".tsx"],
+      },
     ],
     "react/jsx-sort-props": [
       "warn",
       {
         "callbacksLast": true,
-        "reservedFirst": [
-          "key"
-        ]
-      }
+        "reservedFirst": ["key"],
+      },
     ],
     "react/prop-types": 0,
     "react/react-in-jsx-scope": "off",
@@ -77,13 +68,13 @@
       "asc",
       {
         "caseSensitive": false,
-        "natural": true
-      }
-    ]
+        "natural": true,
+      },
+    ],
   },
   "settings": {
     "react": {
-      "version": "detect"
-    }
-  }
+      "version": "detect",
+    },
+  },
 }

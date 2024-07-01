@@ -1,18 +1,20 @@
 import React, { ReactNode } from 'react'
-import ReactModal from 'react-modal'
+import { Dialog } from '@reach/dialog'
+import '@reach/dialog/styles.css'
 
 type ModalProps = {
-  children: ReactNode,
-  isOpen: boolean,
+  children: ReactNode
+  handleToggle?: () => void
+  title: GatsbyTypes.Maybe<string>
+  isOpen: boolean
+  className?: string
 }
 
-const Modal = ({ children, isOpen }: ModalProps) => {
+const Modal = ({ children, handleToggle, title, isOpen, className }: ModalProps) => {
   return (
-    <>
-      <ReactModal isOpen={isOpen} overlayClassName={'modal'} bodyOpenClassName={'modal__body-open'}>
-        {children}
-      </ReactModal>
-    </>
+    <Dialog allowPinchZoom aria-label={title} className={className} isOpen={isOpen} onDismiss={handleToggle}>
+      {children}
+    </Dialog>
   )
 }
 
