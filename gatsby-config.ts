@@ -41,6 +41,9 @@ const strapiConfig = {
               },
             },
           },
+          localizations: {
+            populate: '*',
+          },
         },
       },
       singularName: 'homepage',
@@ -48,6 +51,9 @@ const strapiConfig = {
     {
       queryParams: {
         populate: {
+          localizations: {
+            populate: '*',
+          },
           privacypolicy: {
             populate: '*',
           },
@@ -58,12 +64,41 @@ const strapiConfig = {
     {
       queryParams: {
         populate: {
+          localizations: {
+            populate: '*',
+          },
           rules: {
             populate: '*',
           },
         },
       },
       singularName: 'rules',
+    },
+    {
+      queryParams: {
+        populate: {
+          localizations: {
+            populate: '*',
+          },
+          videospage: {
+            footerSubtitle: '*',
+            populate: {
+              backgroundImage: '*',
+              backgroundImages: '*',
+              backgroundVideo: {
+                populate: '*',
+              },
+              bannerImage: '*',
+              images: '*',
+              video_lists: {
+                populate: '*',
+              },
+            },
+            subtitle: '*',
+          },
+        },
+      },
+      singularName: 'videospage',
     },
     {
       queryParams: {

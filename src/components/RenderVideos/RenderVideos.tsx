@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { BaseVideosType, VideoType } from 'types'
 
+import { useLanguageContext } from 'contexts/LanguageContext'
 import Video from './Video'
 
-const RenderVideos = ({ video_lists }: BaseVideosType) => {
+const RenderVideos = ({ video_lists: videoLists }: BaseVideosType) => {
   const [showMore, setShowMore] = useState(false)
+  const { language } = useLanguageContext()
 
-  const showMoreFn = () => {
+  const toggleShowMore = () => {
     setShowMore((prevValue) => !prevValue)
   }
 
@@ -14,18 +16,18 @@ const RenderVideos = ({ video_lists }: BaseVideosType) => {
     <>
       <div className="videos__controler">
         {showMore
-          ? video_lists?.map((video) => {
+          ? videoLists?.map((video) => {
               const videoData = video as VideoType
               return <Video key={videoData?.id} {...videoData} />
             })
-          : video_lists?.slice(0, 3).map((video) => {
+          : videoLists?.slice(0, 3).map((video) => {
               const videoData = video as VideoType
               return <Video key={videoData?.id} {...videoData} />
             })}
       </div>
-      {video_lists && video_lists.length > 3 && !showMore && (
-        <button onClick={showMoreFn} className="videos__video-button">
-          Pokaż wszystkie prelekcje
+      {videoLists && videoLists.length > 3 && !showMore && (
+        <button className="videos__video-button" onClick={toggleShowMore}>
+          {language === 'pl' ? 'Pokaż wszystkie prelekcje' : 'Show all lectures'}
         </button>
       )}
     </>

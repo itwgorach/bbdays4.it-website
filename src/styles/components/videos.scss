@@ -12,8 +12,24 @@
     line-height: $line-height-md;
     color: $color-dark;
   }
+  margin: 0 auto;
+
+  &__subtitle {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 75px 20px 65px;
+    text-align: center;
+    font-family: $font-family-header;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-md;
+    color: $color-dark;
+  }
 
   &__controler {
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 20px;
     max-width: 1280px;
     margin: auto;
     padding: 0 20px;
@@ -55,10 +71,8 @@
         top: 0px;
         transform: translate(-50%, -50%);
       }
-
       &:hover {
-        background-color: #9accb0;
-        box-shadow: 0 0 5px #fdc92d;
+        box-shadow: 0 0 8px $color-secondary;
       }
     }
 

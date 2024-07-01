@@ -29,7 +29,7 @@ export const socialLinks = [
   },
 ]
 
-export const footerLinks: LinkType[] = [
+export const plFooterLinks: LinkType[] = [
   {
     name: 'Konferencyjny kodeks postępowania',
     path: 'https://confcodeofconduct.com/index-pl.html',
@@ -40,6 +40,20 @@ export const footerLinks: LinkType[] = [
   },
   {
     name: 'Regulamin Konferencji',
+    path: 'regulamin',
+  },
+]
+export const enFooterLinks: LinkType[] = [
+  {
+    name: 'Conference code of conduct',
+    path: 'https://confcodeofconduct.com/index-pl.html',
+  },
+  {
+    name: 'kontakt@bbdays4.it',
+    path: 'mailto:kontakt@bbdays4.it',
+  },
+  {
+    name: 'Conference Regulations',
     path: 'regulamin',
   },
 ]
@@ -64,7 +78,7 @@ export const Hours = [
   '21:00',
 ]
 
-export const ScheduleWeek = [
+export const PlScheduleWeek = [
   {
     dateDesktop: '08.09',
     dateMobile: '08',
@@ -130,6 +144,74 @@ export const ScheduleWeek = [
     dateMobile: '18',
     dayDesktop: 'Poniedziałek',
     dayMobile: 'Pon.',
+  },
+]
+export const EnScheduleWeek = [
+  {
+    dateDesktop: '08.09',
+    dateMobile: '08',
+    dayDesktop: 'Friday',
+    dayMobile: 'Fri.',
+  },
+  {
+    dateDesktop: '09.09',
+    dateMobile: '09',
+    dayDesktop: 'Saturday',
+    dayMobile: 'Sat.',
+  },
+  {
+    dateDesktop: '10.09',
+    dateMobile: '10',
+    dayDesktop: 'Sunday',
+    dayMobile: 'Sun.',
+  },
+  {
+    dateDesktop: '11.09',
+    dateMobile: '11',
+    dayDesktop: 'Monday',
+    dayMobile: 'Mon.',
+  },
+  {
+    dateDesktop: '12.09',
+    dateMobile: '12',
+    dayDesktop: 'Tuesday',
+    dayMobile: 'Tue.',
+  },
+  {
+    dateDesktop: '13.09',
+    dateMobile: '13',
+    dayDesktop: 'Wednesday',
+    dayMobile: 'Wed.',
+  },
+  {
+    dateDesktop: '14.09',
+    dateMobile: '14',
+    dayDesktop: 'Thursday',
+    dayMobile: 'Thu.',
+  },
+  {
+    dateDesktop: '15.09',
+    dateMobile: '15',
+    dayDesktop: 'Friday',
+    dayMobile: 'Fri.',
+  },
+  {
+    dateDesktop: '16.09',
+    dateMobile: '16',
+    dayDesktop: 'Saturday',
+    dayMobile: 'Sat.',
+  },
+  {
+    dateDesktop: '17.09',
+    dateMobile: '17',
+    dayDesktop: 'Sunday',
+    dayMobile: 'Sun.',
+  },
+  {
+    dateDesktop: '18.09',
+    dateMobile: '18',
+    dayDesktop: 'Monday',
+    dayMobile: 'Mon.',
   },
 ]
 

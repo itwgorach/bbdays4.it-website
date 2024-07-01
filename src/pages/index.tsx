@@ -22,13 +22,15 @@ import Signup from 'components/Signup'
 import Agenda from 'components/Agenda'
 import FestivalInNumbers from 'components/FestivalInNumbers'
 import VideoSection from 'components/VideoSection'
+import getPolishHomepage from 'utils/getPolishHomepage'
+import { useLanguageContext } from 'contexts/LanguageContext'
+import getEnglishHomepage from 'utils/getEnglishHomepage'
 
-const HomePage: FC<HomePageType> = ({
-  data: {
-    strapiHomepage: { homepage },
-  },
-  location,
-}) => {
+const HomePage: FC<HomePageType> = ({ location, data }) => {
+  const { language } = useLanguageContext()
+
+  const homepage = language === 'pl' ? getPolishHomepage(data) : getEnglishHomepage(data)
+
   const content = useMemo(
     () =>
       homepage?.map((component) => {
@@ -82,7 +84,7 @@ const HomePage: FC<HomePageType> = ({
             return null
         }
       }),
-    [homepage],
+    [homepage, location],
   )
 
   return <>{content}</>
@@ -100,6 +102,7 @@ export const query = graphql`
           images {
             id
             url
+            alternativeText
           }
           strapi_component
           isSectionVisible
@@ -146,27 +149,33 @@ export const query = graphql`
             }
           }
         }
-        ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
+        ... on STRAPI__COMPONENT_BASE_SIGNUP_GRID {
           id
-          sectionTitle
-          sectionSubtitle
+          signupImage {
+            url
+          }
+          bannerImage {
+            url
+          }
           strapi_component
           isSectionVisible
-          speakers {
-            index
-            firstName
-            lastName
+          signup_sections {
+            buttonText
+            buttonUrl
             title
-            photo {
-              url
+            subtitle
+            link
+            localizations {
+              data {
+                attributes {
+                  buttonText
+                  buttonUrl
+                  link
+                  subtitle
+                  title
+                }
+              }
             }
-            description
-            position
-            linkedinUrl
-            twitterUrl
-            linktrUrl
-            backgroundColor
-            bio
           }
         }
         ... on STRAPI__COMPONENT_BASE_SCHEDULE {
@@ -183,8 +192,20 @@ export const query = graphql`
             backgroundColor
             displayTitleOnDesktop
             link
+            locale
             logo {
               url
+            }
+            localizations {
+              data {
+                attributes {
+                  title
+                  startHour
+                  endHour
+                  displayTitleOnDesktop
+                  date
+                }
+              }
             }
           }
         }
@@ -220,9 +241,90 @@ export const query = graphql`
             backgroundColor
             logo {
               url
+              alternativeText
+            }
+            localizations {
+              data {
+                attributes {
+                  title
+                  subtitle
+                  startHour
+                  room
+                }
+              }
             }
           }
           speakers {
+            firstName
+            lastName
+            title
+            photo {
+              url
+              alternativeText
+            }
+            description
+            position
+            linkedinUrl
+            twitterUrl
+            linktrUrl
+            backgroundColor
+            localizations {
+              data {
+                attributes {
+                  bio
+                  description
+                  firstName
+                  lastName
+                  position
+                  title
+                }
+              }
+            }
+            bio
+          }
+        }
+        ... on STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS {
+          id
+          strapi_component
+          isSectionVisible
+          backgroundImages {
+            id
+            url
+            alternativeText
+          }
+          achievements {
+            id
+            name
+            number
+            index
+            locale
+            localizations {
+              data {
+                attributes {
+                  name
+                  number
+                }
+              }
+            }
+          }
+        }
+        ... on STRAPI__COMPONENT_BASE_VIDEO_SECTION {
+          id
+          title
+          article
+          footer
+          isSectionVisible
+          videoId
+          strapi_component
+        }
+        ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
+          id
+          sectionTitle
+          sectionSubtitle
+          strapi_component
+          isSectionVisible
+          speakers {
+            index
             firstName
             lastName
             title
@@ -235,31 +337,44 @@ export const query = graphql`
             twitterUrl
             linktrUrl
             backgroundColor
+            localizations {
+              data {
+                attributes {
+                  twitterUrl
+                  title
+                  position
+                  linktrUrl
+                  linkedinUrl
+                  lastName
+                  firstName
+                  description
+                  bio
+                  backgroundColor
+                }
+              }
+            }
+            bio
           }
         }
-        ... on STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS {
-          id
-          strapi_component
-          isSectionVisible
-          backgroundImages {
-            id
-            url
+      }
+      localizations {
+        data {
+          attributes {
+            homepage {
+              videoId
+              title
+              subtitlePos
+              subtitle
+              sectionTitle
+              sectionSubtitle
+              scheduleTitle
+              footer
+              buttonUrl
+              buttonText
+              article
+              _xcomponent
+            }
           }
-          achievements {
-            id
-            name
-            number
-            index
-          }
-        }
-        ... on STRAPI__COMPONENT_BASE_VIDEO_SECTION {
-          id
-          title
-          article
-          footer
-          isSectionVisible
-          videoId
-          strapi_component
         }
       }
     }

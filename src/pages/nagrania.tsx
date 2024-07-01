@@ -5,17 +5,21 @@ import { BaseGalleryType, BaseHeroType, BaseVideosType } from 'types'
 import RenderVideos from 'components/RenderVideos'
 import Hero from 'components/Hero'
 import Gallery from 'components/Gallery'
+import { useLanguageContext } from 'contexts/LanguageContext'
+import getPolishVideosPage from 'utils/getPolishVideosPage'
+import getEnglishVideosPage from 'utils/getEnglishVideosPage'
 
 const Videos: FC<VideosPageType> = ({ data }) => {
-  const {
-    strapiVideospage: { subtitle, footerSubtitle, videospage },
-  } = data
+  const { language } = useLanguageContext()
+
+  const [subtitle, footerSubtitle, videosPage] =
+    language === 'pl' ? getPolishVideosPage(data) : getEnglishVideosPage(data)
 
   const content = useMemo(
     () => (
       <>
         <div className="videos">
-          {videospage?.map((sectionData) => {
+          {videosPage?.map((sectionData) => {
             if (!sectionData?.isSectionVisible) {
               return null
             }
@@ -45,7 +49,7 @@ const Videos: FC<VideosPageType> = ({ data }) => {
       </>
     ),
 
-    [videospage, subtitle, footerSubtitle],
+    [videosPage, subtitle, footerSubtitle],
   )
 
   return <>{content}</>
@@ -104,8 +108,34 @@ export const query = graphql`
               alternativeText
             }
             id
+            localizations {
+              data {
+                attributes {
+                  videoUrl
+                  subtitle
+                  locale
+                }
+              }
+            }
           }
           strapi_component
+        }
+      }
+      localizations {
+        data {
+          attributes {
+            subtitle
+            footerSubtitle
+            locale
+            videospage {
+              title
+              isSectionVisible
+              footer
+              buttonUrl
+              buttonText
+              _xcomponent
+            }
+          }
         }
       }
     }
