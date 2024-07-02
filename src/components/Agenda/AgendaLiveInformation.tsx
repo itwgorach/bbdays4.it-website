@@ -152,7 +152,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       }
 
       try {
-        const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
+        const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(ratingData),
