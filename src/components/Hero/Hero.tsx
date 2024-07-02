@@ -106,7 +106,7 @@ const Hero: FC<BaseHeroType> = ({
                   ))}
                 </div>
               )}
-{/*               <a className="hero__content-footer-button" href={c4pUrl} rel="noopener noreferrer" target="_blank">
+              {/* <a className="hero__content-footer-button" href={c4pUrl} rel="noopener noreferrer" target="_blank">
                 Zostań prelegentem
               </a> */}
             </div>

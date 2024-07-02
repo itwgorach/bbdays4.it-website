@@ -8,16 +8,141 @@
   scroll-margin-top: 112px;
 
   &__live {
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 80px;
+    top: 79px;
     width: 100%;
-    height: 90px;
     border-top: 1px solid white;
 
-    z-index: 2;
+    z-index: 40;
+
+    &-modal {
+      min-width: 95vw;
+      @include media-breakpoint-up(sm) {
+        min-width: 90vw;
+      }
+      @include media-breakpoint-up(md) {
+        min-width: 70vw;
+      }
+      @include media-breakpoint-up(lg) {
+        min-width: 60vw;
+      }
+      @include media-breakpoint-up(xl) {
+        min-width: 40vw;
+      }
+
+      &--title {
+        margin: 0 0 $m-xs 0;
+        max-width: 95%;
+        padding: 0;
+        color: $color-text;
+        font-family: $font-family-body;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        &.margin-right {
+          margin-right: 40px;
+        }
+      }
+      &--description {
+        font-weight: $font-weight-regular;
+      }
+    }
+    &-header {
+      margin: 0;
+      padding: 0;
+      font-family: $font-family-header;
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+    }
+    &-input {
+      max-width: 100%;
+      min-width: 85%;
+      padding: 10px;
+      background-color: rgba(25, 69, 80, 0.05);
+      border: none;
+      border-radius: 4px 0 0 4px;
+      color: $color-text;
+      display: block;
+      font-family: $font-family-body;
+      font-size: $font-size-base-xs;
+      font-weight: 500;
+      outline: none;
+      overflow: hidden;
+      padding: 12px 1rem;
+      @include media-breakpoint-up(lg) {
+        max-width: 80%;
+        min-width: 60%;
+      }
+      &--label {
+        margin: $m-sm;
+        color: $color-text;
+        font-family: $font-family-body;
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-regular;
+      }
+    }
+    &-button {
+      margin: $m-sm 0;
+      color: $color-dark;
+      padding: $m-sm;
+      background-color: $color-secondary;
+      text-decoration: none;
+      font-size: $font-size-base-xs;
+      font-weight: $font-weight-extra-bold;
+      border: none;
+      border-radius: $border-radius-xs;
+      transition: box-shadow $transition-function 0.2s;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 8px $color-secondary;
+      }
+
+      &:visited {
+        color: $color-dark;
+      }
+    }
+
+    &-rating {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        margin: $m-xs;
+        font-family: $font-family-body;
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-medium;
+      }
+      &-error {
+        font-family: $font-family-body;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semi-bold;
+        color: red;
+      }
+      &-controler {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: $m-base;
+      }
+    }
+
+    &-controler {
+      display: flex;
+      min-height: 90px;
+      width: 100vw;
+    }
+    &-description {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+
+      transition: background-color 0.2s ease-in-out;
+    }
     &-title,
     &-lecturer {
       color: $color-white;
@@ -30,11 +155,34 @@
       font-weight: $font-weight-regular;
       line-height: $line-height-md;
     }
+    &-vote {
+      display: flex;
+      justify-content: center;
+      &--button {
+        border: none;
+        color: $color-dark;
+        background-color: $color-secondary;
+        text-decoration: none;
+        font-size: $font-size-base-xs;
+        font-weight: $font-weight-extra-bold;
+        transition: box-shadow $transition-function 0.2s;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: 0 0 8px $color-secondary;
+        }
+
+        &:visited {
+          color: $color-dark;
+        }
+      }
+    }
 
     &-primary {
       background-color: $color-primary;
       cursor: pointer;
-      transition: background-color 0.2s ease-in-out;
+      width: 100%;
     }
     &-primary:hover {
       background-color: $color-success;
@@ -42,10 +190,12 @@
 
     &-secondary {
       background-color: $color-tertiary;
+      width: 100%;
     }
 
     &-dark {
       background-color: $color-dark;
+      width: 100%;
     }
   }
 
@@ -431,6 +581,35 @@
 
     &-logo {
       display: block;
+      img {
+        display: flex;
+        margin: auto;
+      }
+    }
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &-close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      border-left: 1px solid $color-dark;
+      border-bottom: 1px solid $color-dark;
+      cursor: pointer;
+      height: 50px;
+      margin: 2px 2px 0 0;
+      outline: none;
+      padding: 0;
+      width: 50px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: rgba($color-background, 0.9);
+      z-index: 5;
+      color: $color-dark;
     }
   }
 }

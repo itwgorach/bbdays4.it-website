@@ -1,46 +1,56 @@
-import React from 'react'
-import ModalProps from 'types/ModalProps'
+import React, { useState } from 'react'
+import Modal from 'components/Modal'
+import { Rating } from 'react-simple-star-rating'
 import { getSpeaker } from 'utils/agendaDataProcessing'
+import { CloseButtonIcon } from 'components/icons'
+import { Lecture, AgendaLiveInformationProps, Vote, VoteError, RatingEvent } from 'types/AgendaType'
 
-type Lecture = {
-  title: string
-  startHour: string
-  subtitle?: string
-  room?: number
-  backgroundColor?: string
-  logo?: { url: string }
-}
+const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
+  dateOfLectures,
+  handleModalToggle,
+  lectures,
+  speakers,
+}) => {
+  const [isOpenVote, setIsOpenVote] = useState<boolean>(false)
+  const [vote, setVote] = useState<Vote>({
+    content: 0,
+    feedback: '',
+    presentation: 0,
+    topic: 0,
+  })
+  const [voteError, setVoteError] = useState<VoteError>({
+    content: false,
+    presentation: false,
+    topic: false,
+  })
 
-type Speaker = {
-  name: string
-}
+  const ratingFields = [
+    {
+      error: voteError.presentation,
+      label: 'Prezentacja',
+      name: 'presentation',
+    },
+    { error: voteError.topic, label: 'Tematyka', name: 'topic' },
+    { error: voteError.content, label: 'Merytoryka', name: 'content' },
+  ]
 
-type AgendaLiveInformationProps = {
-  handleModalToggle: (event: React.MouseEvent, modalProps: ModalProps) => void
-  lectures: Lecture[]
-  speakers: Speaker[]
-}
-
-const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleModalToggle, lectures, speakers }) => {
   const getActiveLecture = (): Lecture | null => {
     const currentDate = Date.now()
+    const [year, month, day] = dateOfLectures.split('.')
 
     for (let index = 0; index < lectures.length; index++) {
       const lecture = lectures[index]
-      const { startHour } = lecture
-      const [hours, minutes] = startHour.split(':').map(Number)
-      const startDate = new Date(2024, 5, 16, hours, minutes).getTime()
+      const [hours, minutes] = lecture.startHour.split(':').map(Number)
+      const startDate = new Date(+year, +month - 1, +day, hours, minutes).getTime()
 
       let endDate: number
-
       if (!lectures[index + 1]) {
-        // add 2h to last lecture
+        // Add 2 hours to the last lecture
         endDate = startDate + 120 * 60 * 1000
       } else {
         const nextLecture = lectures[index + 1]
         const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
-        const nextStartDate = new Date(2024, 5, 17, nextHours, nextMinutes).getTime()
-
+        const nextStartDate = new Date(+year, +month - 1, +day, nextHours, nextMinutes).getTime()
         endDate = nextStartDate
       }
 
@@ -54,26 +64,182 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({ handleMod
 
   const activeLecture = getActiveLecture()
 
-  const handleClick = (event: React.MouseEvent) => {
-    if (activeLecture && activeLecture.subtitle) {
+  const speakerModal = (event: React.MouseEvent) => {
+    if ((activeLecture && activeLecture.subtitle) || (activeLecture && activeLecture?.title)) {
       const modalProps = {
         ...getSpeaker(activeLecture.subtitle, speakers),
         hour: activeLecture.startHour,
         room: activeLecture.room,
       }
+
       handleModalToggle(event, modalProps)
     }
   }
-  if (activeLecture === null) {
+
+  const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Lecture | null => {
+    if (!activeLecture) return null
+
+    const actualLectureIndex = lectures.findIndex((item) => item.title === activeLecture.title)
+
+    if (actualLectureIndex === -1) return null
+
+    let index = actualLectureIndex - 1
+
+    while (index >= 0) {
+      if (lectures[index]?.backgroundColor === 'primary') {
+        return lectures[index]
+      }
+      index--
+    }
+
     return null
   }
 
+  const prevLecture = findPrevLecture(activeLecture, lectures)
+
+  const voteModal = () => {
+    if (!isOpenVote) {
+      setIsOpenVote(!isOpenVote)
+    } else if (window.confirm('Czy na pewno chcesz opuścić formularz?')) {
+      setVote({
+        content: 0,
+        feedback: '',
+        presentation: 0,
+        topic: 0,
+      })
+      setIsOpenVote(!isOpenVote)
+    }
+  }
+
+  const handleRating = ({ name, rate, event }: RatingEvent) => {
+    if (voteError.content || voteError.presentation || voteError.topic) {
+      setVoteError((prevValue) => ({
+        ...prevValue,
+        [name]: false,
+      }))
+    }
+    if (rate !== undefined) {
+      setVote((prevValue) => ({
+        ...prevValue,
+        [name]: rate,
+      }))
+    } else if (event !== undefined) {
+      const { value } = event.target
+      setVote((prevValue) => ({
+        ...prevValue,
+        feedback: value,
+      }))
+    }
+  }
+
+  const submitRating = async () => {
+    setVoteError({ content: false, presentation: false, topic: false })
+
+    if (!vote.presentation) setVoteError((prevValue) => ({ ...prevValue, presentation: true }))
+    if (!vote.topic) setVoteError((prevValue) => ({ ...prevValue, topic: true }))
+    if (!vote.content) setVoteError((prevValue) => ({ ...prevValue, content: true }))
+
+    if (vote.content && vote.topic && vote.presentation) {
+      const ratingData = {
+        data: {
+          average: ((vote.content + vote.topic + vote.presentation) / 3).toFixed(2),
+          content: vote.content,
+          feedback: vote.feedback,
+          presentation: vote.presentation,
+          speaker: prevLecture?.subtitle,
+          topic: vote.topic,
+        },
+      }
+
+      try {
+        const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(ratingData),
+        })
+
+        if (!response.ok) throw new Error('Failed to submit rating')
+
+        setVote({
+          content: 0,
+          feedback: '',
+          presentation: 0,
+          topic: 0,
+        })
+        setIsOpenVote(!isOpenVote)
+      } catch (error) {
+        console.error('Error submitting rating:', error)
+      }
+    }
+  }
+
+  if (activeLecture === null) {
+    return <></>
+  }
+
   return (
-    <div className={`agenda__live agenda__live-${activeLecture.backgroundColor}`} onClick={handleClick}>
+    <div className="agenda__live">
       {activeLecture && (
-        <div>
-          <span className="agenda__live-lecturer">{activeLecture.subtitle}:</span>
-          <span className="agenda__live-title"> {activeLecture.title}</span>
+        <div className="agenda__live-controler">
+          <Modal className="agenda__live-modal" handleToggle={voteModal} isOpen={isOpenVote} title="vote">
+            <div className="agenda__live-rating-controler">
+              <div className={`agenda__live-modal--title ${prevLecture?.title.length > 50 ? 'margin-right' : ''}`}>
+                <span>{prevLecture?.subtitle}: </span>
+                <span className="agenda__live-modal--description">{prevLecture?.title}</span>
+              </div>
+              <button className="agenda__button-close" onClick={voteModal}>
+                <CloseButtonIcon />
+              </button>
+              {ratingFields.map((field) => (
+                <div key={field.name} className="agenda__live-rating">
+                  <p>
+                    {field.label}:{field.error && <span className="agenda__live-rating-error">*</span>}
+                  </p>
+                  <Rating
+                    allowFraction
+                    titleSeparator="z"
+                    onClick={(rate) => handleRating({ name: field.name, rate })}
+                  />
+                </div>
+              ))}
+              <label className="agenda__live-input--label" htmlFor="feedback">
+                Podziel się swoimi przemyśleniami. <br />
+                Twoja opinia jest dla nas ważna 😉
+              </label>
+              <input
+                className="agenda__live-input"
+                name="feedback"
+                placeholder="Opcjonalne"
+                type="text"
+                value={vote.feedback}
+                onChange={(event) => handleRating({ event, name: 'feedback' })}
+              />
+              <button className="agenda__live-button" onClick={submitRating}>
+                Wyślij
+              </button>
+            </div>
+          </Modal>
+          <div
+            className={`agenda__live-${activeLecture.backgroundColor} agenda__live-description`}
+            onClick={speakerModal}>
+            <div className="agenda__live-lecturer">
+              {activeLecture.subtitle && <p className="agenda__live-header">AKTUALNY WYKŁAD:</p>}
+              {activeLecture.subtitle && `${activeLecture.subtitle}: `}
+              <span className="agenda__live-title"> {activeLecture.title}</span>
+              {activeLecture.logo && (
+                <span className="agenda__lecture-logo">
+                  <img alt="Logo" src={activeLecture.logo.url} />
+                </span>
+              )}
+            </div>
+          </div>
+          {prevLecture && (
+            <div className="agenda__live-vote">
+              <button className="agenda__live-vote--button" onClick={voteModal}>
+                Zagłosuj na poprzedniego prelegenta
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

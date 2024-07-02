@@ -1267,6 +1267,7 @@ type Query_strapiAchievementArgs = {
 
 type Query_strapiComponentBaseAgendaArgs = {
   children: InputMaybe<NodeFilterListInput>;
+  dateOfLectures: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   isSectionVisible: InputMaybe<BooleanQueryOperatorInput>;
@@ -6754,6 +6755,7 @@ type STRAPI_VIDEOSPAGESortInput = {
 
 type STRAPI__COMPONENT_BASE_AGENDA = Node & {
   readonly children: ReadonlyArray<Node>;
+  readonly dateOfLectures: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly isSectionVisible: Maybe<Scalars['Boolean']>;
@@ -6813,6 +6815,7 @@ type STRAPI__COMPONENT_BASE_AGENDAEdge = {
 
 type STRAPI__COMPONENT_BASE_AGENDAFieldSelector = {
   readonly children: InputMaybe<NodeFieldSelector>;
+  readonly dateOfLectures: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly isSectionVisible: InputMaybe<FieldSelectorEnum>;
@@ -6827,6 +6830,7 @@ type STRAPI__COMPONENT_BASE_AGENDAFieldSelector = {
 
 type STRAPI__COMPONENT_BASE_AGENDAFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
+  readonly dateOfLectures: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly isSectionVisible: InputMaybe<BooleanQueryOperatorInput>;
@@ -6884,6 +6888,7 @@ type STRAPI__COMPONENT_BASE_AGENDASTRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERSSTRA
 
 type STRAPI__COMPONENT_BASE_AGENDASortInput = {
   readonly children: InputMaybe<NodeSortInput>;
+  readonly dateOfLectures: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly isSectionVisible: InputMaybe<SortOrderEnum>;

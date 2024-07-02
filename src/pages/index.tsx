@@ -282,6 +282,7 @@ export const query = graphql`
             }
             bio
           }
+          dateOfLectures
         }
         ... on STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS {
           id

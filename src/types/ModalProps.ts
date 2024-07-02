@@ -5,7 +5,7 @@ type ModalProps = {
   handleToggle?: () => void
   title: string
   isOpen: boolean
-  className: string
+  className?: string
 }
 
 export default ModalProps
