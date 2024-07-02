@@ -43,61 +43,60 @@
         justify-content: center;
         align-items: center;
         height: 100%;
-        margin-top: $m-md;
         width: 100%;
         z-index: 1;
 
         &.-hidden {
           position: absolute;
-          transition: all .5s ease-in-out;
+          transition: all 0.5s ease-in-out;
           opacity: 0;
         }
-        
+
         &:before,
         &:after {
           position: absolute;
-          content: "";
+          content: '';
           width: 100vw;
           height: 100%;
           bottom: 0;
           border-radius: 364px 364px 0 0;
           background-color: $color-black;
-          opacity: .6;
+          opacity: 0.6;
           filter: blur(125px);
           z-index: -1;
         }
-    
+
         &:before {
           background-color: $color-dark;
-          opacity: .2;
+          opacity: 0.2;
         }
-    
+
         @include media-breakpoint-up(md) {
           margin-top: 0;
 
           &:before {
             width: 100vw;
           }
-    
+
           &:after {
             width: 90vw;
           }
         }
-    
+
         @include media-breakpoint-up(xl) {
           &:before {
             width: 65vw;
           }
-    
+
           &:after {
             width: 50vw;
           }
         }
-    
+
         @media (orientation: portrait) and (min-width: map-get($grid-breakpoints, lg)) {
           justify-content: center;
         }
-    
+
         &-wrapper {
           display: flex;
           flex-direction: column;
@@ -106,13 +105,12 @@
           width: 100%;
           height: auto;
           z-index: 1;
-          margin-bottom: $m-lg;
-    
+
           @include media-breakpoint-up(md) {
             margin-bottom: $m-2xl;
           }
         }
-    
+
         &-footer {
           display: flex;
           flex-direction: column;
@@ -122,72 +120,73 @@
           font-size: $font-size-base;
           font-weight: $font-weight-semi-bold;
           letter-spacing: 1px;
-    
+
           &-icons {
             justify-content: center;
             display: flex;
             gap: $m-sm;
+            z-index: 1;
           }
-          
+
           &-icon {
             width: $icon-size-sm;
             height: $icon-size-sm;
-            
+
             path {
               transition: fill $transition-duration, stroke $transition-duration;
             }
-            
+
             &:hover {
               &.-facebook {
                 path {
                   &:first-of-type {
                     fill: $color-secondary;
                   }
-        
+
                   &:last-of-type {
                     stroke: $color-secondary;
                   }
                 }
               }
-        
+
               &.-instagram {
                 path {
                   &:first-of-type {
                     fill: $color-secondary;
                   }
-        
-                  &:nth-last-of-type(-n+3) {
+
+                  &:nth-last-of-type(-n + 3) {
                     stroke: $color-secondary;
                   }
                 }
               }
-        
+
               &.-linkedin {
                 path {
                   stroke: $color-secondary;
-        
+
                   &:nth-last-of-type(2) {
-                      fill: $color-secondary;
+                    fill: $color-secondary;
                   }
                 }
               }
-        
+
               &.-twitter {
                 path {
                   stroke: $color-secondary;
-        
+
                   &:last-of-type {
-                      fill: $color-secondary;
+                    fill: $color-secondary;
                   }
                 }
               }
-        
+
               &.-youtube {
                 path {
                   stroke: $color-secondary;
-        
+
                   &:last-of-type {
-                      fill: $color-secondary;
+                    fill: $color-secondary;
                   }
                 }
               }
@@ -198,15 +197,15 @@
             @include special-button;
             max-width: 220px;
           }
-    
+
           @include media-breakpoint-down(xs) {
             inline-size: 245px;
           }
-    
+
           @include media-breakpoint-up(xl) {
             font-size: $font-size-lg;
           }
-    
+
           @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
             margin-bottom: $m-base;
           }
@@ -214,13 +213,19 @@
       }
 
       &__title {
-        margin-bottom: $m-lg;
-        font-size: 32px;
-        inline-size: 250px;
+        margin: 0;
+        font-size: $font-size-xl;
+        inline-size: 280px;
         font-weight: $font-weight-bold;
-  
-        @include media-breakpoint-up(lg) {
+
+        @include media-breakpoint-up(sm) {
+          margin-bottom: $m-md;
           font-size: $font-size-2xl;
+          inline-size: 550px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          margin-bottom: $m-lg;
           inline-size: unset;
         }
       }
@@ -233,7 +238,7 @@
     &:before,
     &:after {
       background-color: $color-white;
-      content: "";
+      content: '';
       height: 32px;
       left: 50%;
       position: absolute;
@@ -260,6 +265,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: $m-xs;
     height: 100%;
     width: 100%;
     z-index: 1;
@@ -272,7 +278,7 @@
     line-height: $line-height-lg;
     margin: $m-base;
     white-space: pre-line;
- 
+
     &.-small {
       font-size: $font-size-xl;
       font-weight: $font-weight-medium;
@@ -291,13 +297,13 @@
       }
     }
   }
-  
+
   &__subtitle {
     font-family: $font-family-body;
     font-size: $font-size-lg;
     font-weight: $font-weight-semi-bold;
     margin: 0;
-    
+
     &.-bottom {
       margin-bottom: $m-xl;
     }
@@ -313,7 +319,7 @@
     font-weight: $font-weight-bold;
     padding: $m-sm;
     text-decoration: none;
-    transition: box-shadow $transition-function .2s;
+    transition: box-shadow $transition-function 0.2s;
 
     &:hover {
       box-shadow: 0 0 8px $color-secondary;
@@ -325,14 +331,15 @@
   }
 
   &__video-mode {
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(25, 69, 80, 0.8), rgba(25, 69, 80, 0.8));
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      linear-gradient(0deg, rgba(25, 69, 80, 0.8), rgba(25, 69, 80, 0.8));
     backdrop-filter: blur(4px);
     opacity: 1;
 
@@ -348,17 +355,17 @@
     &-container {
       @media (orientation: landscape) {
         height: 80%;
-        width: calc(16/9 * .7 * 80vh);
+        width: calc(16 / 9 * 0.7 * 80vh);
       }
 
       @media (orientation: landscape) and (min-width: map-get($grid-breakpoints, sm)) and (max-height: map-get($grid-breakpoints, sm)) {
         height: 80vh;
-        width: calc(16/9 * 80vh);
+        width: calc(16 / 9 * 80vh);
       }
 
       @media (orientation: portrait) and (min-width: map-get($grid-breakpoints, lg)) {
         width: 80%;
-        height: 56.25vw * .8;
+        height: 56.25vw * 0.8;
       }
 
       width: 100%;
@@ -367,20 +374,20 @@
 
     &-play-button {
       cursor: pointer;
-      transition: box-shadow $transition-function .2s;
+      transition: box-shadow $transition-function 0.2s;
       border-radius: 100%;
 
       &:hover {
         box-shadow: 0 0 8px $color-secondary;
       }
-  
+
       &:active {
         background-color: $color-active;
       }
 
       &.-disabled {
         cursor: not-allowed;
-        opacity: .8;
+        opacity: 0.8;
       }
     }
 
@@ -409,7 +416,7 @@
     left: 0;
     top: 0;
     transform-origin: center center;
-    transition: transform 8s linear .2s;
+    transition: transform 8s linear 0.2s;
     object-fit: cover;
   }
 }

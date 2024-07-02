@@ -792,6 +792,7 @@ type Query = {
   readonly allStrapiComponentBaseSpeakersGrid: STRAPI__COMPONENT_BASE_SPEAKERS_GRIDConnection;
   readonly allStrapiComponentBaseVideo: STRAPI__COMPONENT_BASE_VIDEOConnection;
   readonly allStrapiComponentBaseVideoSection: STRAPI__COMPONENT_BASE_VIDEO_SECTIONConnection;
+  readonly allStrapiComponentBaseVideosList: STRAPI__COMPONENT_BASE_VIDEOS_LISTConnection;
   readonly allStrapiEvent: STRAPI_EVENTConnection;
   readonly allStrapiHomepage: STRAPI_HOMEPAGEConnection;
   readonly allStrapiLecture: STRAPI_LECTUREConnection;
@@ -803,6 +804,8 @@ type Query = {
   readonly allStrapiRulesTextTextnode: STRAPI_RULES_TEXT_TEXTNODEConnection;
   readonly allStrapiSignupSection: STRAPI_SIGNUP_SECTIONConnection;
   readonly allStrapiSpeaker: STRAPI_SPEAKERConnection;
+  readonly allStrapiVideolist: STRAPI_VIDEOLISTConnection;
+  readonly allStrapiVideospage: STRAPI_VIDEOSPAGEConnection;
   readonly directory: Maybe<Directory>;
   readonly file: Maybe<File>;
   readonly site: Maybe<Site>;
@@ -821,6 +824,7 @@ type Query = {
   readonly strapiComponentBaseSpeakersGrid: Maybe<STRAPI__COMPONENT_BASE_SPEAKERS_GRID>;
   readonly strapiComponentBaseVideo: Maybe<STRAPI__COMPONENT_BASE_VIDEO>;
   readonly strapiComponentBaseVideoSection: Maybe<STRAPI__COMPONENT_BASE_VIDEO_SECTION>;
+  readonly strapiComponentBaseVideosList: Maybe<STRAPI__COMPONENT_BASE_VIDEOS_LIST>;
   readonly strapiEvent: Maybe<STRAPI_EVENT>;
   readonly strapiHomepage: Maybe<STRAPI_HOMEPAGE>;
   readonly strapiLecture: Maybe<STRAPI_LECTURE>;
@@ -832,6 +836,8 @@ type Query = {
   readonly strapiRulesTextTextnode: Maybe<STRAPI_RULES_TEXT_TEXTNODE>;
   readonly strapiSignupSection: Maybe<STRAPI_SIGNUP_SECTION>;
   readonly strapiSpeaker: Maybe<STRAPI_SPEAKER>;
+  readonly strapiVideolist: Maybe<STRAPI_VIDEOLIST>;
+  readonly strapiVideospage: Maybe<STRAPI_VIDEOSPAGE>;
 };
 
 
@@ -979,6 +985,14 @@ type Query_allStrapiComponentBaseVideoSectionArgs = {
 };
 
 
+type Query_allStrapiComponentBaseVideosListArgs = {
+  filter: InputMaybe<STRAPI__COMPONENT_BASE_VIDEOS_LISTFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI__COMPONENT_BASE_VIDEOS_LISTSortInput>>>;
+};
+
+
 type Query_allStrapiEventArgs = {
   filter: InputMaybe<STRAPI_EVENTFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
@@ -1064,6 +1078,22 @@ type Query_allStrapiSpeakerArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI_SPEAKERSortInput>>>;
+};
+
+
+type Query_allStrapiVideolistArgs = {
+  filter: InputMaybe<STRAPI_VIDEOLISTFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI_VIDEOLISTSortInput>>>;
+};
+
+
+type Query_allStrapiVideospageArgs = {
+  filter: InputMaybe<STRAPI_VIDEOSPAGEFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI_VIDEOSPAGESortInput>>>;
 };
 
 
@@ -1380,6 +1410,18 @@ type Query_strapiComponentBaseVideoSectionArgs = {
 };
 
 
+type Query_strapiComponentBaseVideosListArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  isSectionVisible: InputMaybe<BooleanQueryOperatorInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  strapi_component: InputMaybe<StringQueryOperatorInput>;
+  strapi_id: InputMaybe<IntQueryOperatorInput>;
+  video_lists: InputMaybe<STRAPI_VIDEOLISTFilterListInput>;
+};
+
+
 type Query_strapiEventArgs = {
   backgroundColor: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
@@ -1407,6 +1449,7 @@ type Query_strapiHomepageArgs = {
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   locale: InputMaybe<StringQueryOperatorInput>;
+  localizations: InputMaybe<STRAPI_HOMEPAGELocalizationsFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
   updatedAt: InputMaybe<DateQueryOperatorInput>;
@@ -1477,6 +1520,7 @@ type Query_strapiPrivacypolicyArgs = {
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   locale: InputMaybe<StringQueryOperatorInput>;
+  localizations: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
   text: InputMaybe<STRAPI_PRIVACYPOLICYTextFilterInput>;
@@ -1499,6 +1543,7 @@ type Query_strapiRulesArgs = {
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   locale: InputMaybe<StringQueryOperatorInput>;
+  localizations: InputMaybe<STRAPI_RULESLocalizationsFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
   text: InputMaybe<STRAPI_RULESTextFilterInput>;
@@ -1554,6 +1599,37 @@ type Query_strapiSpeakerArgs = {
   strapi_id: InputMaybe<IntQueryOperatorInput>;
   title: InputMaybe<StringQueryOperatorInput>;
   twitterUrl: InputMaybe<StringQueryOperatorInput>;
+  updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+
+type Query_strapiVideolistArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  createdAt: InputMaybe<DateQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  locale: InputMaybe<StringQueryOperatorInput>;
+  localizations: InputMaybe<STRAPI_VIDEOLISTLocalizationsFilterInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  strapi_id: InputMaybe<IntQueryOperatorInput>;
+  subtitle: InputMaybe<StringQueryOperatorInput>;
+  thumbnail: InputMaybe<STRAPI_VIDEOLISTThumbnailFilterInput>;
+  updatedAt: InputMaybe<DateQueryOperatorInput>;
+  videoUrl: InputMaybe<StringQueryOperatorInput>;
+};
+
+
+type Query_strapiVideospageArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  createdAt: InputMaybe<DateQueryOperatorInput>;
+  footerSubtitle: InputMaybe<StringQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  locale: InputMaybe<StringQueryOperatorInput>;
+  localizations: InputMaybe<STRAPI_VIDEOSPAGELocalizationsFilterInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  strapi_id: InputMaybe<IntQueryOperatorInput>;
+  subtitle: InputMaybe<StringQueryOperatorInput>;
   updatedAt: InputMaybe<DateQueryOperatorInput>;
 };
 
@@ -2404,6 +2480,7 @@ type STRAPI_HOMEPAGE = Node & {
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_HOMEPAGELocalizations>;
   readonly parent: Maybe<Node>;
   readonly strapi_id: Maybe<Scalars['Int']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
@@ -2476,6 +2553,7 @@ type STRAPI_HOMEPAGEFieldSelector = {
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_HOMEPAGELocalizationsFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
   readonly updatedAt: InputMaybe<FieldSelectorEnum>;
@@ -2487,6 +2565,7 @@ type STRAPI_HOMEPAGEFilterInput = {
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_HOMEPAGELocalizationsFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
   readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
@@ -2533,12 +2612,257 @@ type STRAPI_HOMEPAGEGroupConnection_sumArgs = {
   field: STRAPI_HOMEPAGEFieldSelector;
 };
 
+type STRAPI_HOMEPAGELocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_HOMEPAGELocalizationsData>>>;
+};
+
+type STRAPI_HOMEPAGELocalizationsData = {
+  readonly attributes: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly homepage: Maybe<ReadonlyArray<Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesHomepage>>>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizations>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type STRAPI_HOMEPAGELocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_HOMEPAGELocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly homepage: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFieldSelector>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsFieldSelector>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly homepage: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterListInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsFilterInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesHomepage = {
+  readonly _xcomponent: Maybe<Scalars['String']>;
+  readonly article: Maybe<Scalars['String']>;
+  readonly backgroundColor: Maybe<Scalars['String']>;
+  readonly buttonText: Maybe<Scalars['String']>;
+  readonly buttonUrl: Maybe<Scalars['String']>;
+  readonly footer: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['Int']>;
+  readonly isSectionVisible: Maybe<Scalars['Boolean']>;
+  readonly scheduleTitle: Maybe<Scalars['String']>;
+  readonly sectionSubtitle: Maybe<Scalars['String']>;
+  readonly sectionTitle: Maybe<Scalars['String']>;
+  readonly subtitle: Maybe<Scalars['String']>;
+  readonly subtitlePos: Maybe<Scalars['String']>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly videoId: Maybe<Scalars['String']>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFieldSelector = {
+  readonly _xcomponent: InputMaybe<FieldSelectorEnum>;
+  readonly article: InputMaybe<FieldSelectorEnum>;
+  readonly backgroundColor: InputMaybe<FieldSelectorEnum>;
+  readonly buttonText: InputMaybe<FieldSelectorEnum>;
+  readonly buttonUrl: InputMaybe<FieldSelectorEnum>;
+  readonly footer: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly isSectionVisible: InputMaybe<FieldSelectorEnum>;
+  readonly scheduleTitle: InputMaybe<FieldSelectorEnum>;
+  readonly sectionSubtitle: InputMaybe<FieldSelectorEnum>;
+  readonly sectionTitle: InputMaybe<FieldSelectorEnum>;
+  readonly subtitle: InputMaybe<FieldSelectorEnum>;
+  readonly subtitlePos: InputMaybe<FieldSelectorEnum>;
+  readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly videoId: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterInput = {
+  readonly _xcomponent: InputMaybe<StringQueryOperatorInput>;
+  readonly article: InputMaybe<StringQueryOperatorInput>;
+  readonly backgroundColor: InputMaybe<StringQueryOperatorInput>;
+  readonly buttonText: InputMaybe<StringQueryOperatorInput>;
+  readonly buttonUrl: InputMaybe<StringQueryOperatorInput>;
+  readonly footer: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+  readonly isSectionVisible: InputMaybe<BooleanQueryOperatorInput>;
+  readonly scheduleTitle: InputMaybe<StringQueryOperatorInput>;
+  readonly sectionSubtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly sectionTitle: InputMaybe<StringQueryOperatorInput>;
+  readonly subtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly subtitlePos: InputMaybe<StringQueryOperatorInput>;
+  readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly videoId: InputMaybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageSortInput = {
+  readonly _xcomponent: InputMaybe<SortOrderEnum>;
+  readonly article: InputMaybe<SortOrderEnum>;
+  readonly backgroundColor: InputMaybe<SortOrderEnum>;
+  readonly buttonText: InputMaybe<SortOrderEnum>;
+  readonly buttonUrl: InputMaybe<SortOrderEnum>;
+  readonly footer: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly isSectionVisible: InputMaybe<SortOrderEnum>;
+  readonly scheduleTitle: InputMaybe<SortOrderEnum>;
+  readonly sectionSubtitle: InputMaybe<SortOrderEnum>;
+  readonly sectionTitle: InputMaybe<SortOrderEnum>;
+  readonly subtitle: InputMaybe<SortOrderEnum>;
+  readonly subtitlePos: InputMaybe<SortOrderEnum>;
+  readonly title: InputMaybe<SortOrderEnum>;
+  readonly videoId: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsData>>>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsData = {
+  readonly attributes: Maybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFieldSelector>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsDataSortInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly homepage: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesHomepageSortInput>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesLocalizationsSortInput>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_HOMEPAGELocalizationsDataFilterInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_HOMEPAGELocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_HOMEPAGELocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_HOMEPAGELocalizationsDataFieldSelector>;
+};
+
+type STRAPI_HOMEPAGELocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_HOMEPAGELocalizationsDataFilterListInput>;
+};
+
+type STRAPI_HOMEPAGELocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_HOMEPAGELocalizationsDataSortInput>;
+};
+
 type STRAPI_HOMEPAGESortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly createdAt: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_HOMEPAGELocalizationsSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;
   readonly updatedAt: InputMaybe<SortOrderEnum>;
@@ -3286,6 +3610,7 @@ type STRAPI_PARTNERLogoFormatsThumbnail = {
   readonly height: Maybe<Scalars['Int']>;
   readonly mime: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
+  readonly provider_metadata: Maybe<STRAPI_PARTNERLogoFormatsThumbnailProvider_metadata>;
   readonly size: Maybe<Scalars['Float']>;
   readonly url: Maybe<Scalars['String']>;
   readonly width: Maybe<Scalars['Int']>;
@@ -3297,6 +3622,7 @@ type STRAPI_PARTNERLogoFormatsThumbnailFieldSelector = {
   readonly height: InputMaybe<FieldSelectorEnum>;
   readonly mime: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
+  readonly provider_metadata: InputMaybe<STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFieldSelector>;
   readonly size: InputMaybe<FieldSelectorEnum>;
   readonly url: InputMaybe<FieldSelectorEnum>;
   readonly width: InputMaybe<FieldSelectorEnum>;
@@ -3308,9 +3634,30 @@ type STRAPI_PARTNERLogoFormatsThumbnailFilterInput = {
   readonly height: InputMaybe<IntQueryOperatorInput>;
   readonly mime: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly provider_metadata: InputMaybe<STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFilterInput>;
   readonly size: InputMaybe<FloatQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadata = {
+  readonly public_id: Maybe<Scalars['String']>;
+  readonly resource_type: Maybe<Scalars['String']>;
+};
+
+type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFieldSelector = {
+  readonly public_id: InputMaybe<FieldSelectorEnum>;
+  readonly resource_type: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataFilterInput = {
+  readonly public_id: InputMaybe<StringQueryOperatorInput>;
+  readonly resource_type: InputMaybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataSortInput = {
+  readonly public_id: InputMaybe<SortOrderEnum>;
+  readonly resource_type: InputMaybe<SortOrderEnum>;
 };
 
 type STRAPI_PARTNERLogoFormatsThumbnailSortInput = {
@@ -3319,6 +3666,7 @@ type STRAPI_PARTNERLogoFormatsThumbnailSortInput = {
   readonly height: InputMaybe<SortOrderEnum>;
   readonly mime: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
+  readonly provider_metadata: InputMaybe<STRAPI_PARTNERLogoFormatsThumbnailProvider_metadataSortInput>;
   readonly size: InputMaybe<SortOrderEnum>;
   readonly url: InputMaybe<SortOrderEnum>;
   readonly width: InputMaybe<SortOrderEnum>;
@@ -3650,6 +3998,7 @@ type STRAPI_PRIVACYPOLICY = Node & {
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_PRIVACYPOLICYLocalizations>;
   readonly parent: Maybe<Node>;
   readonly strapi_id: Maybe<Scalars['Int']>;
   readonly text: Maybe<STRAPI_PRIVACYPOLICYText>;
@@ -3723,6 +4072,7 @@ type STRAPI_PRIVACYPOLICYFieldSelector = {
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
   readonly text: InputMaybe<STRAPI_PRIVACYPOLICYTextFieldSelector>;
@@ -3735,6 +4085,7 @@ type STRAPI_PRIVACYPOLICYFilterInput = {
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
   readonly text: InputMaybe<STRAPI_PRIVACYPOLICYTextFilterInput>;
@@ -3782,12 +4133,185 @@ type STRAPI_PRIVACYPOLICYGroupConnection_sumArgs = {
   field: STRAPI_PRIVACYPOLICYFieldSelector;
 };
 
+type STRAPI_PRIVACYPOLICYLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_PRIVACYPOLICYLocalizationsData>>>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsData = {
+  readonly attributes: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizations>;
+  readonly text: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsFieldSelector>;
+  readonly text: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsFilterInput>;
+  readonly text: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsData>>>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsData = {
+  readonly attributes: Maybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly text: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly text: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly text: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly text: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFilterInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFieldSelector>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsDataSortInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesLocalizationsSortInput>;
+  readonly text: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataFilterInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataFieldSelector>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_PRIVACYPOLICYLocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsDataSortInput>;
+};
+
 type STRAPI_PRIVACYPOLICYSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly createdAt: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_PRIVACYPOLICYLocalizationsSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;
   readonly text: InputMaybe<STRAPI_PRIVACYPOLICYTextSortInput>;
@@ -3934,6 +4458,7 @@ type STRAPI_RULES = Node & {
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_RULESLocalizations>;
   readonly parent: Maybe<Node>;
   readonly strapi_id: Maybe<Scalars['Int']>;
   readonly text: Maybe<STRAPI_RULESText>;
@@ -4007,6 +4532,7 @@ type STRAPI_RULESFieldSelector = {
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_RULESLocalizationsFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
   readonly text: InputMaybe<STRAPI_RULESTextFieldSelector>;
@@ -4019,6 +4545,7 @@ type STRAPI_RULESFilterInput = {
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_RULESLocalizationsFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
   readonly text: InputMaybe<STRAPI_RULESTextFilterInput>;
@@ -4066,12 +4593,185 @@ type STRAPI_RULESGroupConnection_sumArgs = {
   field: STRAPI_RULESFieldSelector;
 };
 
+type STRAPI_RULESLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_RULESLocalizationsData>>>;
+};
+
+type STRAPI_RULESLocalizationsData = {
+  readonly attributes: Maybe<STRAPI_RULESLocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_RULESLocalizationsDataAttributesLocalizations>;
+  readonly text: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type STRAPI_RULESLocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_RULESLocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsFieldSelector>;
+  readonly text: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsFilterInput>;
+  readonly text: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsData>>>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsData = {
+  readonly attributes: Maybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly text: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly text: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly text: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly text: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsDataFilterInput>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsDataFieldSelector>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesLocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsDataSortInput>;
+};
+
+type STRAPI_RULESLocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_RULESLocalizationsDataAttributesLocalizationsSortInput>;
+  readonly text: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_RULESLocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_RULESLocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_RULESLocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_RULESLocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_RULESLocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_RULESLocalizationsDataFilterInput>;
+};
+
+type STRAPI_RULESLocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_RULESLocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_RULESLocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_RULESLocalizationsDataFieldSelector>;
+};
+
+type STRAPI_RULESLocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_RULESLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_RULESLocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_RULESLocalizationsDataSortInput>;
+};
+
 type STRAPI_RULESSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly createdAt: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_RULESLocalizationsSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;
   readonly text: InputMaybe<STRAPI_RULESTextSortInput>;
@@ -5100,6 +5800,959 @@ type STRAPI_SPEAKERSortInput = {
   readonly updatedAt: InputMaybe<SortOrderEnum>;
 };
 
+type STRAPI_VIDEOLIST = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_VIDEOLISTLocalizations>;
+  readonly parent: Maybe<Node>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+  readonly subtitle: Maybe<Scalars['String']>;
+  readonly thumbnail: Maybe<STRAPI_VIDEOLISTThumbnail>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly videoUrl: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOLIST_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOLIST_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_VIDEOLISTConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI_VIDEOLISTEdge>;
+  readonly group: ReadonlyArray<STRAPI_VIDEOLISTGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI_VIDEOLIST>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI_VIDEOLISTConnection_distinctArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+};
+
+
+type STRAPI_VIDEOLISTConnection_groupArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI_VIDEOLISTConnection_maxArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+};
+
+
+type STRAPI_VIDEOLISTConnection_minArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+};
+
+
+type STRAPI_VIDEOLISTConnection_sumArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+};
+
+type STRAPI_VIDEOLISTEdge = {
+  readonly next: Maybe<STRAPI_VIDEOLIST>;
+  readonly node: STRAPI_VIDEOLIST;
+  readonly previous: Maybe<STRAPI_VIDEOLIST>;
+};
+
+type STRAPI_VIDEOLISTFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOLISTLocalizationsFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+  readonly subtitle: InputMaybe<FieldSelectorEnum>;
+  readonly thumbnail: InputMaybe<STRAPI_VIDEOLISTThumbnailFieldSelector>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+  readonly videoUrl: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOLISTFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOLISTLocalizationsFilterInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+  readonly subtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly thumbnail: InputMaybe<STRAPI_VIDEOLISTThumbnailFilterInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+  readonly videoUrl: InputMaybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOLISTFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_VIDEOLISTFilterInput>;
+};
+
+type STRAPI_VIDEOLISTGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI_VIDEOLISTEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<STRAPI_VIDEOLISTGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI_VIDEOLIST>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI_VIDEOLISTGroupConnection_distinctArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+};
+
+
+type STRAPI_VIDEOLISTGroupConnection_groupArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI_VIDEOLISTGroupConnection_maxArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+};
+
+
+type STRAPI_VIDEOLISTGroupConnection_minArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+};
+
+
+type STRAPI_VIDEOLISTGroupConnection_sumArgs = {
+  field: STRAPI_VIDEOLISTFieldSelector;
+};
+
+type STRAPI_VIDEOLISTLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_VIDEOLISTLocalizationsData>>>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsData = {
+  readonly attributes: Maybe<STRAPI_VIDEOLISTLocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly subtitle: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly videoUrl: Maybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOLISTLocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOLISTLocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly subtitle: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+  readonly videoUrl: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly subtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+  readonly videoUrl: InputMaybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly subtitle: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+  readonly videoUrl: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOLISTLocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOLISTLocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_VIDEOLISTLocalizationsDataFilterInput>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOLISTLocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_VIDEOLISTLocalizationsDataFieldSelector>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_VIDEOLISTLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_VIDEOLISTLocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_VIDEOLISTLocalizationsDataSortInput>;
+};
+
+type STRAPI_VIDEOLISTSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOLISTLocalizationsSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly strapi_id: InputMaybe<SortOrderEnum>;
+  readonly subtitle: InputMaybe<SortOrderEnum>;
+  readonly thumbnail: InputMaybe<STRAPI_VIDEOLISTThumbnailSortInput>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+  readonly videoUrl: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnail = {
+  readonly alternativeText: Maybe<Scalars['String']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly ext: Maybe<Scalars['String']>;
+  readonly formats: Maybe<STRAPI_VIDEOLISTThumbnailFormats>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly id: Maybe<Scalars['Int']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+};
+
+
+type STRAPI_VIDEOLISTThumbnail_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOLISTThumbnail_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFieldSelector = {
+  readonly alternativeText: InputMaybe<FieldSelectorEnum>;
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly ext: InputMaybe<FieldSelectorEnum>;
+  readonly formats: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsFieldSelector>;
+  readonly hash: InputMaybe<FieldSelectorEnum>;
+  readonly height: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly mime: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
+  readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
+  readonly width: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFilterInput = {
+  readonly alternativeText: InputMaybe<StringQueryOperatorInput>;
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly ext: InputMaybe<StringQueryOperatorInput>;
+  readonly formats: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsFilterInput>;
+  readonly hash: InputMaybe<StringQueryOperatorInput>;
+  readonly height: InputMaybe<IntQueryOperatorInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+  readonly mime: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
+  readonly width: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormats = {
+  readonly large: Maybe<STRAPI_VIDEOLISTThumbnailFormatsLarge>;
+  readonly medium: Maybe<STRAPI_VIDEOLISTThumbnailFormatsMedium>;
+  readonly small: Maybe<STRAPI_VIDEOLISTThumbnailFormatsSmall>;
+  readonly thumbnail: Maybe<STRAPI_VIDEOLISTThumbnailFormatsThumbnail>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsFieldSelector = {
+  readonly large: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsLargeFieldSelector>;
+  readonly medium: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsMediumFieldSelector>;
+  readonly small: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsSmallFieldSelector>;
+  readonly thumbnail: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsThumbnailFieldSelector>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsFilterInput = {
+  readonly large: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsLargeFilterInput>;
+  readonly medium: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsMediumFilterInput>;
+  readonly small: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsSmallFilterInput>;
+  readonly thumbnail: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsThumbnailFilterInput>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsLarge = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly sizeInBytes: Maybe<Scalars['Int']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsLargeFieldSelector = {
+  readonly ext: InputMaybe<FieldSelectorEnum>;
+  readonly hash: InputMaybe<FieldSelectorEnum>;
+  readonly height: InputMaybe<FieldSelectorEnum>;
+  readonly mime: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
+  readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly sizeInBytes: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
+  readonly width: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsLargeFilterInput = {
+  readonly ext: InputMaybe<StringQueryOperatorInput>;
+  readonly hash: InputMaybe<StringQueryOperatorInput>;
+  readonly height: InputMaybe<IntQueryOperatorInput>;
+  readonly mime: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly sizeInBytes: InputMaybe<IntQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
+  readonly width: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsLargeSortInput = {
+  readonly ext: InputMaybe<SortOrderEnum>;
+  readonly hash: InputMaybe<SortOrderEnum>;
+  readonly height: InputMaybe<SortOrderEnum>;
+  readonly mime: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
+  readonly size: InputMaybe<SortOrderEnum>;
+  readonly sizeInBytes: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
+  readonly width: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsMedium = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly sizeInBytes: Maybe<Scalars['Int']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsMediumFieldSelector = {
+  readonly ext: InputMaybe<FieldSelectorEnum>;
+  readonly hash: InputMaybe<FieldSelectorEnum>;
+  readonly height: InputMaybe<FieldSelectorEnum>;
+  readonly mime: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
+  readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly sizeInBytes: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
+  readonly width: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsMediumFilterInput = {
+  readonly ext: InputMaybe<StringQueryOperatorInput>;
+  readonly hash: InputMaybe<StringQueryOperatorInput>;
+  readonly height: InputMaybe<IntQueryOperatorInput>;
+  readonly mime: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly sizeInBytes: InputMaybe<IntQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
+  readonly width: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsMediumSortInput = {
+  readonly ext: InputMaybe<SortOrderEnum>;
+  readonly hash: InputMaybe<SortOrderEnum>;
+  readonly height: InputMaybe<SortOrderEnum>;
+  readonly mime: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
+  readonly size: InputMaybe<SortOrderEnum>;
+  readonly sizeInBytes: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
+  readonly width: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsSmall = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly sizeInBytes: Maybe<Scalars['Int']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsSmallFieldSelector = {
+  readonly ext: InputMaybe<FieldSelectorEnum>;
+  readonly hash: InputMaybe<FieldSelectorEnum>;
+  readonly height: InputMaybe<FieldSelectorEnum>;
+  readonly mime: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
+  readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly sizeInBytes: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
+  readonly width: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsSmallFilterInput = {
+  readonly ext: InputMaybe<StringQueryOperatorInput>;
+  readonly hash: InputMaybe<StringQueryOperatorInput>;
+  readonly height: InputMaybe<IntQueryOperatorInput>;
+  readonly mime: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly sizeInBytes: InputMaybe<IntQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
+  readonly width: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsSmallSortInput = {
+  readonly ext: InputMaybe<SortOrderEnum>;
+  readonly hash: InputMaybe<SortOrderEnum>;
+  readonly height: InputMaybe<SortOrderEnum>;
+  readonly mime: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
+  readonly size: InputMaybe<SortOrderEnum>;
+  readonly sizeInBytes: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
+  readonly width: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsSortInput = {
+  readonly large: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsLargeSortInput>;
+  readonly medium: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsMediumSortInput>;
+  readonly small: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsSmallSortInput>;
+  readonly thumbnail: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsThumbnailSortInput>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsThumbnail = {
+  readonly ext: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly sizeInBytes: Maybe<Scalars['Int']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsThumbnailFieldSelector = {
+  readonly ext: InputMaybe<FieldSelectorEnum>;
+  readonly hash: InputMaybe<FieldSelectorEnum>;
+  readonly height: InputMaybe<FieldSelectorEnum>;
+  readonly mime: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
+  readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly sizeInBytes: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
+  readonly width: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsThumbnailFilterInput = {
+  readonly ext: InputMaybe<StringQueryOperatorInput>;
+  readonly hash: InputMaybe<StringQueryOperatorInput>;
+  readonly height: InputMaybe<IntQueryOperatorInput>;
+  readonly mime: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly sizeInBytes: InputMaybe<IntQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
+  readonly width: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOLISTThumbnailFormatsThumbnailSortInput = {
+  readonly ext: InputMaybe<SortOrderEnum>;
+  readonly hash: InputMaybe<SortOrderEnum>;
+  readonly height: InputMaybe<SortOrderEnum>;
+  readonly mime: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
+  readonly size: InputMaybe<SortOrderEnum>;
+  readonly sizeInBytes: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
+  readonly width: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOLISTThumbnailSortInput = {
+  readonly alternativeText: InputMaybe<SortOrderEnum>;
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly ext: InputMaybe<SortOrderEnum>;
+  readonly formats: InputMaybe<STRAPI_VIDEOLISTThumbnailFormatsSortInput>;
+  readonly hash: InputMaybe<SortOrderEnum>;
+  readonly height: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly mime: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
+  readonly size: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
+  readonly width: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOSPAGE = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly footerSubtitle: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_VIDEOSPAGELocalizations>;
+  readonly parent: Maybe<Node>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+  readonly subtitle: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly videospage: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_VIDEOS_LISTUnion>>>;
+};
+
+
+type STRAPI_VIDEOSPAGE_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOSPAGE_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_VIDEOSPAGEConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI_VIDEOSPAGEEdge>;
+  readonly group: ReadonlyArray<STRAPI_VIDEOSPAGEGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI_VIDEOSPAGE>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_distinctArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_groupArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_maxArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_minArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+};
+
+
+type STRAPI_VIDEOSPAGEConnection_sumArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+};
+
+type STRAPI_VIDEOSPAGEEdge = {
+  readonly next: Maybe<STRAPI_VIDEOSPAGE>;
+  readonly node: STRAPI_VIDEOSPAGE;
+  readonly previous: Maybe<STRAPI_VIDEOSPAGE>;
+};
+
+type STRAPI_VIDEOSPAGEFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly footerSubtitle: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOSPAGELocalizationsFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+  readonly subtitle: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOSPAGEFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly footerSubtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOSPAGELocalizationsFilterInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+  readonly subtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOSPAGEGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI_VIDEOSPAGEEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<STRAPI_VIDEOSPAGEGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI_VIDEOSPAGE>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_distinctArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_groupArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_maxArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_minArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+};
+
+
+type STRAPI_VIDEOSPAGEGroupConnection_sumArgs = {
+  field: STRAPI_VIDEOSPAGEFieldSelector;
+};
+
+type STRAPI_VIDEOSPAGELocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_VIDEOSPAGELocalizationsData>>>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsData = {
+  readonly attributes: Maybe<STRAPI_VIDEOSPAGELocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly footerSubtitle: Maybe<Scalars['String']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly localizations: Maybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizations>;
+  readonly subtitle: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly videospage: Maybe<ReadonlyArray<Maybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospage>>>;
+};
+
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly footerSubtitle: InputMaybe<FieldSelectorEnum>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsFieldSelector>;
+  readonly subtitle: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+  readonly videospage: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageFieldSelector>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly footerSubtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsFilterInput>;
+  readonly subtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+  readonly videospage: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageFilterListInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizations = {
+  readonly data: Maybe<ReadonlyArray<Maybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsData>>>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsData = {
+  readonly attributes: Maybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributes>;
+  readonly id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributes = {
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly footerSubtitle: Maybe<Scalars['String']>;
+  readonly locale: Maybe<Scalars['String']>;
+  readonly subtitle: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributes_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributes_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributesFieldSelector = {
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly footerSubtitle: InputMaybe<FieldSelectorEnum>;
+  readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly subtitle: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributesFilterInput = {
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly footerSubtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly subtitle: InputMaybe<StringQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly footerSubtitle: InputMaybe<SortOrderEnum>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly subtitle: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataFilterInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataFieldSelector>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataFilterListInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsDataSortInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesSortInput = {
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly footerSubtitle: InputMaybe<SortOrderEnum>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesLocalizationsSortInput>;
+  readonly subtitle: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+  readonly videospage: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageSortInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospage = {
+  readonly _xcomponent: Maybe<Scalars['String']>;
+  readonly backgroundColor: Maybe<Scalars['String']>;
+  readonly buttonText: Maybe<Scalars['String']>;
+  readonly buttonUrl: Maybe<Scalars['String']>;
+  readonly footer: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['Int']>;
+  readonly isSectionVisible: Maybe<Scalars['Boolean']>;
+  readonly subtitlePos: Maybe<Scalars['String']>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly videoId: Maybe<Scalars['String']>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageFieldSelector = {
+  readonly _xcomponent: InputMaybe<FieldSelectorEnum>;
+  readonly backgroundColor: InputMaybe<FieldSelectorEnum>;
+  readonly buttonText: InputMaybe<FieldSelectorEnum>;
+  readonly buttonUrl: InputMaybe<FieldSelectorEnum>;
+  readonly footer: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly isSectionVisible: InputMaybe<FieldSelectorEnum>;
+  readonly subtitlePos: InputMaybe<FieldSelectorEnum>;
+  readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly videoId: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageFilterInput = {
+  readonly _xcomponent: InputMaybe<StringQueryOperatorInput>;
+  readonly backgroundColor: InputMaybe<StringQueryOperatorInput>;
+  readonly buttonText: InputMaybe<StringQueryOperatorInput>;
+  readonly buttonUrl: InputMaybe<StringQueryOperatorInput>;
+  readonly footer: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+  readonly isSectionVisible: InputMaybe<BooleanQueryOperatorInput>;
+  readonly subtitlePos: InputMaybe<StringQueryOperatorInput>;
+  readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly videoId: InputMaybe<StringQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageFilterInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataAttributesVideospageSortInput = {
+  readonly _xcomponent: InputMaybe<SortOrderEnum>;
+  readonly backgroundColor: InputMaybe<SortOrderEnum>;
+  readonly buttonText: InputMaybe<SortOrderEnum>;
+  readonly buttonUrl: InputMaybe<SortOrderEnum>;
+  readonly footer: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly isSectionVisible: InputMaybe<SortOrderEnum>;
+  readonly subtitlePos: InputMaybe<SortOrderEnum>;
+  readonly title: InputMaybe<SortOrderEnum>;
+  readonly videoId: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataFieldSelector = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataFilterInput = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesFilterInput>;
+  readonly id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataFilterInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsDataSortInput = {
+  readonly attributes: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataAttributesSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsFieldSelector = {
+  readonly data: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataFieldSelector>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsFilterInput = {
+  readonly data: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataFilterListInput>;
+};
+
+type STRAPI_VIDEOSPAGELocalizationsSortInput = {
+  readonly data: InputMaybe<STRAPI_VIDEOSPAGELocalizationsDataSortInput>;
+};
+
+type STRAPI_VIDEOSPAGESortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly footerSubtitle: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly locale: InputMaybe<SortOrderEnum>;
+  readonly localizations: InputMaybe<STRAPI_VIDEOSPAGELocalizationsSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly strapi_id: InputMaybe<SortOrderEnum>;
+  readonly subtitle: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
 type STRAPI__COMPONENT_BASE_AGENDA = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly dateOfLectures: Maybe<Scalars['String']>;
@@ -5509,6 +7162,8 @@ type STRAPI__COMPONENT_BASE_GALERY_SLIDERGroupConnection_minArgs = {
 type STRAPI__COMPONENT_BASE_GALERY_SLIDERGroupConnection_sumArgs = {
   field: STRAPI__COMPONENT_BASE_GALERY_SLIDERFieldSelector;
 };
+
+type STRAPI__COMPONENT_BASE_GALERY_SLIDERSTRAPI__COMPONENT_BASE_HEROSTRAPI__COMPONENT_BASE_VIDEOS_LISTUnion = STRAPI__COMPONENT_BASE_GALERY_SLIDER | STRAPI__COMPONENT_BASE_HERO | STRAPI__COMPONENT_BASE_VIDEOS_LIST;
 
 type STRAPI__COMPONENT_BASE_GALERY_SLIDERSortInput = {
   readonly buttonText: InputMaybe<SortOrderEnum>;
@@ -6348,6 +8003,136 @@ type STRAPI__COMPONENT_BASE_VIDEOGroupConnection_minArgs = {
 
 type STRAPI__COMPONENT_BASE_VIDEOGroupConnection_sumArgs = {
   field: STRAPI__COMPONENT_BASE_VIDEOFieldSelector;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LIST = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly isSectionVisible: Maybe<Scalars['Boolean']>;
+  readonly parent: Maybe<Node>;
+  readonly strapi_component: Maybe<Scalars['String']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+  readonly video_lists: Maybe<ReadonlyArray<Maybe<STRAPI_VIDEOLIST>>>;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOS_LISTEdge>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOS_LISTGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOS_LIST>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTConnection_groupArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTConnection_maxArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTConnection_minArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTConnection_sumArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTEdge = {
+  readonly next: Maybe<STRAPI__COMPONENT_BASE_VIDEOS_LIST>;
+  readonly node: STRAPI__COMPONENT_BASE_VIDEOS_LIST;
+  readonly previous: Maybe<STRAPI__COMPONENT_BASE_VIDEOS_LIST>;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isSectionVisible: InputMaybe<FieldSelectorEnum>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly strapi_component: InputMaybe<FieldSelectorEnum>;
+  readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+  readonly video_lists: InputMaybe<STRAPI_VIDEOLISTFieldSelector>;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isSectionVisible: InputMaybe<BooleanQueryOperatorInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly strapi_component: InputMaybe<StringQueryOperatorInput>;
+  readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+  readonly video_lists: InputMaybe<STRAPI_VIDEOLISTFilterListInput>;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOS_LISTEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOS_LISTGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_BASE_VIDEOS_LIST>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTGroupConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTGroupConnection_groupArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTGroupConnection_maxArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTGroupConnection_minArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTGroupConnection_sumArgs = {
+  field: STRAPI__COMPONENT_BASE_VIDEOS_LISTFieldSelector;
+};
+
+type STRAPI__COMPONENT_BASE_VIDEOS_LISTSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly isSectionVisible: InputMaybe<SortOrderEnum>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly strapi_component: InputMaybe<SortOrderEnum>;
+  readonly strapi_id: InputMaybe<SortOrderEnum>;
+  readonly video_lists: InputMaybe<STRAPI_VIDEOLISTSortInput>;
 };
 
 type STRAPI__COMPONENT_BASE_VIDEOSortInput = {

@@ -41,6 +41,9 @@ const strapiConfig = {
               },
             },
           },
+          localizations: {
+            populate: '*',
+          },
         },
       },
       singularName: 'homepage',
@@ -48,6 +51,9 @@ const strapiConfig = {
     {
       queryParams: {
         populate: {
+          localizations: {
+            populate: '*',
+          },
           privacypolicy: {
             populate: '*',
           },
@@ -58,12 +64,64 @@ const strapiConfig = {
     {
       queryParams: {
         populate: {
+          localizations: {
+            populate: '*',
+          },
           rules: {
             populate: '*',
           },
         },
       },
       singularName: 'rules',
+    },
+    {
+      queryParams: {
+        populate: {
+          localizations: {
+            populate: '*',
+          },
+          videospage: {
+            footerSubtitle: '*',
+            populate: {
+              backgroundImage: '*',
+              backgroundImages: '*',
+              backgroundVideo: {
+                populate: '*',
+              },
+              bannerImage: '*',
+              images: '*',
+              video_lists: {
+                populate: '*',
+              },
+            },
+            subtitle: '*',
+          },
+        },
+      },
+      singularName: 'videospage',
+    },
+    {
+      queryParams: {
+        populate: {
+          videospage: {
+            populate: {
+              backgroundImage: '*',
+              backgroundImages: '*',
+              backgroundVideo: {
+                populate: '*',
+              },
+              bannerImage: '*',
+              images: '*',
+              video_lists: {
+                populate: '*',
+              },
+            },
+            subtitle: '*',
+            footerSubtitle: '*',
+          },
+        },
+      },
+      singularName: 'videospage',
     },
   ],
 }
@@ -108,7 +166,7 @@ const config: GatsbyConfig = {
   ],
   siteMetadata: {
     siteUrl: `https://bbdays4.it/`,
-    title: `BB Days 4 IT :: 8-17 września 2023`,
+    title: `BB Days 4 IT : 6-15 września 2024`,
   },
 }
 if (process.env.NODE_ENV === 'development') {
