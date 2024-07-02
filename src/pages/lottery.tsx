@@ -19,7 +19,7 @@ const Lottery = () => {
   const drawWinner = async () => {
     try {
       setIsDrawing(true)
-      const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
+      const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
         method: 'GET',
       })
       const responseData = await response.json()

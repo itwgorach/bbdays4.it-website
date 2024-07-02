@@ -37,7 +37,7 @@ const getBestSpeakers: React.FC = () => {
 
   const getSpeakersRate = async () => {
     try {
-      const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
+      const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
         method: 'GET',
       })
       if (!response.ok) throw new Error('Failed to fetch ratings')
