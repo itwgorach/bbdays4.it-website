@@ -1,8 +1,9 @@
-import { Hours, ScheduleWeek } from 'constants/constants'
+import { Hours, PlScheduleWeek, EnScheduleWeek } from 'constants/constants'
 import React, { FC } from 'react'
 import { ScheduleType } from 'types'
 import cx from 'classnames'
 
+import { useLanguageContext } from 'contexts/LanguageContext'
 import ScheduleEventDesktop from './ScheduleEventDesktop'
 
 const areTimeRangesConcurrent = (
@@ -24,6 +25,9 @@ const areTimeRangesConcurrent = (
 }
 
 const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
+  const { language } = useLanguageContext()
+  const ScheduleWeek = language === 'pl' ? PlScheduleWeek : EnScheduleWeek
+
   const getHourAndMinutesFromString = (hour: string) => {
     const [hourNumber, minutesNumber] = hour.split(':')
     return { hour: parseInt(hourNumber), minutes: parseInt(minutesNumber) }

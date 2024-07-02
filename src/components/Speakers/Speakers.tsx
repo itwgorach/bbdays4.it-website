@@ -35,7 +35,6 @@ const Speakers: FC<SpeakersType> = ({ speakers, sectionTitle, sectionSubtitle })
             ) : (
               <div>Brak prelegentów</div>
             )}
-            <SpeakerCommingSoon />
           </div>
           <div className="speakers__spacer -down" />
         </div>

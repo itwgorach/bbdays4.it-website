@@ -21,10 +21,11 @@
 @import 'components/agenda';
 @import 'components/lecture-details';
 @import 'components/live-banner';
-@import 'components/festival-in-numbers.scss';
-@import 'components/video-section.scss';
-@import 'components/modal.scss';
-@import 'components/lottery.scss';
+@import 'components/festival-in-numbers';
+@import 'components/video-section';
+@import 'components/videos';
+@import 'components/modal';
+@import 'components/lottery';
 
 * {
   font-family: $font-family-body;
