@@ -7,6 +7,7 @@ import { getSpeaker } from 'utils/agendaDataProcessing'
 import { navigate } from 'gatsby'
 import LectureDetails from './LectureDetails'
 import AgendaSection from './AgendaSection'
+import AgendaLiveInformation from './AgendaLiveInformation'
 
 type AgendaProps = AgendaType & {
   location: unknown
@@ -148,6 +149,7 @@ const Agenda: FC<AgendaProps> = ({ title, subtitle, lectures, speakers, location
         setActiveLink('')
       }}>
       <div className="agenda" id="agenda">
+        <AgendaLiveInformation handleModalToggle={handleModalToggle} lectures={lecturesSorted} speakers={speakers} />
         <div className="agenda__header">
           <div className="agenda__header-title">{title}</div>
           <div className="agenda__header-subtitle">{subtitle}</div>
