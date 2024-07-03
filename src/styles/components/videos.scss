@@ -66,13 +66,19 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition:
+        background-color 0.3s,
+        box-shadow 0.3s;
       &-card {
         top: 0px;
         transform: translate(-50%, -50%);
       }
       &:hover {
         box-shadow: 0 0 8px $color-secondary;
+      }
+      a {
+        color: $color-dark;
+        text-decoration: none;
       }
     }
 
