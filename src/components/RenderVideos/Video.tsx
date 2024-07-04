@@ -3,8 +3,6 @@ import React, { FC } from 'react'
 import { VideoType } from 'types'
 
 const Video: FC<VideoType> = ({ thumbnail, videoUrl, subtitle }) => {
-  console.log(thumbnail)
-
   const { language } = useLanguageContext()
   return (
     <div className="videos__video">

@@ -26,6 +26,12 @@ const Footer: FC<FooterProps> = ({ pathname }) => {
   const toggleModal = () => setIsModalOpen((isModalOpen) => !isModalOpen)
 
   const getLinkComponent = useCallback((link: LinkType) => {
+    if (link.name === 'kontakt@bbdays4.it')
+      return (
+        <a className="footer__text-link" href={link.path} rel="noopener noreferrer">
+          {link.name}
+        </a>
+      )
     if (isExternalLink(link))
       return (
         <a className="footer__text-link" href={link.path} rel="noopener noreferrer" target="_blank">

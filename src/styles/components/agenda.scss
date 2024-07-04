@@ -87,6 +87,9 @@
         max-width: 80%;
         min-width: 60%;
       }
+      &--error {
+        color: red;
+      }
       &--label {
         margin: $m-sm 0;
         text-align: center;
@@ -134,9 +137,12 @@
       }
       &-error,
       &-error--name {
+        padding: 0;
+        margin: 0;
         font-family: $font-family-body;
-        font-size: $font-size-lg;
+        font-size: $font-size-xl;
         font-weight: $font-weight-semi-bold;
+        line-height: $m-sm;
         color: red;
         &--name {
           font-size: $font-size-sm;
@@ -147,6 +153,9 @@
         text-align: center;
         margin: $m-base 0 0;
         padding: 0;
+      }
+      &-title {
+        line-height: $m-lg;
       }
       &-subtitle {
         margin: 0;

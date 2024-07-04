@@ -37,10 +37,7 @@ const EventDetails = ({ data, pageContext }) => {
     'December',
   ]
   const event = events.find((event) => event.eventSlug === slug)
-  console.log(event)
-
   const [day, month] = event.date.split('.')
-
   const nameOfMonth = lang ? monthsPl[parseInt(month) - 1] : monthsEn[parseInt(month) - 1]
   const newDate = `${day} - ${nameOfMonth}`
 
@@ -73,7 +70,7 @@ const EventDetails = ({ data, pageContext }) => {
           </p>
 
           <p>
-            {event.startHour} - <span>{event.endHour}</span>
+            {event.startHour} - {event.endHour}
           </p>
         </div>
         {event.isSecondDescription && (

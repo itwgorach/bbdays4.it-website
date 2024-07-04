@@ -6,9 +6,14 @@ import { CloseButtonIcon } from 'components/icons'
 import { Lecture, AgendaLiveInformationProps, Vote, VoteError, RatingEvent } from 'types/AgendaType'
 
 const nameValidation = (name: string) => {
+  const regex = /^[a-zA-Z\s\.,-]+$/
+
   if (name === '') return true
 
   const [firstName, lastName] = name.split(' ')
+
+  if (firstName === '' || lastName === '') return false
+  if (!regex.test(name)) return false
 
   return lastName ? `${firstName} ${lastName}` : false
 }
@@ -75,6 +80,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     educationalValue: false,
     name: false,
     speech: false,
+    feedback: false,
   })
   const activeLecture = getActiveLecture(dateOfLectures, lectures)
   const prevLecture = findPrevLecture(activeLecture, lectures)
@@ -123,13 +129,16 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   }
 
   const submitRating = async () => {
-    setVoteError({ educationalValue: false, name: false, speech: false })
+    setVoteError({ educationalValue: false, name: false, speech: false, feedback: false })
 
     const nameError = nameValidation(nickStorage ? nickStorage : vote.nick)
 
     if (!vote.educationalValue) setVoteError((prevValue) => ({ ...prevValue, educationalValue: true }))
     if (!vote.speech) setVoteError((prevValue) => ({ ...prevValue, speech: true }))
+    if (vote.feedback.length > 1000) setVoteError((prevValue) => ({ ...prevValue, feedback: true }))
     if (!nameError) setVoteError((prevValue) => ({ ...prevValue, name: true }))
+
+    if (!vote.educationalValue || !vote.speech || !nameError || vote.feedback.length > 1000) return
 
     if (vote.educationalValue && vote.speech && nameError) {
       const ratingData = {
@@ -222,6 +231,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                     value={vote.feedback}
                     onChange={(event) => handleRating({ event, name: 'feedback' })}
                   />
+                  <span className={vote.feedback.length > 1000 ? 'agenda__live-input--error' : undefined}>
+                    {vote.feedback.length + '/1000'}
+                  </span>
                   {!nickStorage ? (
                     <>
                       <label className="agenda__live-input--label" htmlFor="nick">

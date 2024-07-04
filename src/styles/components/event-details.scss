@@ -23,6 +23,7 @@
 
     &-content {
       position: absolute;
+      margin: 0 $m-base;
       text-align: center;
       color: $color-white;
 
@@ -45,28 +46,44 @@
     padding: 0;
 
     &-description {
-      max-width: 1120px;
-      margin: auto;
-      padding: $m-base;
       position: relative;
+      margin: auto;
+      padding: $m-sm;
+      text-align: justify;
+      max-width: 1120px;
+      @include media-breakpoint-up(md) {
+        padding: $m-lg;
+      }
 
       &-image {
-        max-width: 33%;
         min-width: 300px;
+        max-width: 33%;
         display: block;
+
         &--right {
-          margin: 20px 0 8px 16px;
-          float: right;
+          min-width: 95%;
+          margin: auto;
+          @include media-breakpoint-up(md) {
+            min-width: 300px;
+            margin: 20px 0 8px 32px;
+            float: right;
+          }
         }
         &--left {
-          margin: 20px 16px 8px 0;
-          float: left;
+          min-width: 95%;
+          margin: auto;
+          @include media-breakpoint-up(md) {
+            min-width: 300px;
+            margin: 20px 32px 8px 0;
+            float: left;
+          }
         }
       }
 
       p {
         font-family: $font-face-body;
         font-size: $font-size-base;
+        line-height: $line-height-md;
       }
 
       &:after {
@@ -77,20 +94,27 @@
     }
     &-info {
       display: flex;
+      margin: 0;
       padding: $m-base 0;
       background-color: $color-secondary;
-      align-items: center;
-      text-align: center;
-      @include media-breakpoint-up(lg) {
-        padding: $m-base $m-2xl * 2;
+      @include media-breakpoint-up(xl) {
+        padding: $m-base $m-2xl * 3;
+      }
+      @include media-breakpoint-up(2xl) {
+        padding: $m-base $m-2xl * 5;
       }
       p {
         margin: auto;
-        padding: $m-base;
-        font-size: $font-size-2xl;
+        text-align: center;
+        font-size: $font-size-xl;
         font-family: $font-family-body;
         font-weight: $font-weight-bold;
         color: $color-dark;
+
+        @include media-breakpoint-up(md) {
+          padding: $m-base 0;
+          font-size: $font-size-2xl;
+        }
       }
     }
   }
