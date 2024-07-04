@@ -1,0 +1,79 @@
+.event-details {
+  .hero {
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    &-image {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 50vh;
+      object-fit: cover;
+    }
+
+    &-content {
+      position: absolute;
+      text-align: center;
+      color: $color-white;
+
+      h1 {
+        font-family: $font-face-header;
+        font-size: $font-size-3xl;
+        margin: 35px 0;
+      }
+
+      h2 {
+        font-family: $font-face-header;
+        font-size: $font-size-xl;
+        margin: 35px 0;
+      }
+    }
+  }
+
+  .controler {
+    margin: 0;
+    padding: 0;
+
+    &-description {
+      max-width: 1120px;
+      margin: auto;
+      padding: $m-base;
+      position: relative;
+
+      &-event-image {
+        float: right;
+        max-width: 33%;
+        min-width: 300px;
+        margin: 0 0 1rem 1rem;
+        display: block;
+      }
+
+      p {
+        font-family: $font-face-body;
+        font-size: $font-size-base;
+      }
+
+      &:after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+    &-info {
+      display: flex;
+      padding: $m-base $m-2xl * 2;
+      background-color: $color-secondary;
+      align-items: center;
+      text-align: center;
+      p {
+        margin: auto;
+        padding: $m-base;
+        font-size: $font-size-2xl;
+        font-family: $font-family-body;
+        font-weight: $font-weight-bold;
+        color: $color-dark;
+      }
+    }
+  }
+}
