@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'components/Modal'
 import { Rating } from 'react-simple-star-rating'
 import { getSpeaker } from 'utils/agendaDataProcessing'
@@ -64,6 +64,21 @@ const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Le
   return null
 }
 
+const calculateTimeDifference = (eventDate: string) => {
+  const currentDate = new Date()
+  const targetDate = new Date(eventDate)
+
+  const difference = targetDate.getTime() - currentDate.getTime()
+  const totalSeconds = Math.floor(difference / 1000)
+  const days = Math.floor(totalSeconds / (60 * 60 * 24))
+  const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+
+  return { days, hours, minutes, seconds }
+}
+const formatNumber = (num: number) => (num < 10 ? `0${num}` : num)
+
 const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   dateOfLectures,
   handleModalToggle,
@@ -71,6 +86,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   speakers,
 }) => {
   const [isOpenVote, setIsOpenVote] = useState(false)
+  const [isOpenCounter, setIsOpenCounter] = useState(true)
+  const [timeLeft, setTimeLeft] = useState(calculateTimeDifference(dateOfLectures))
+
   const [vote, setVote] = useState<Vote>({
     educationalValue: 0,
     feedback: '',
@@ -103,6 +121,17 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       paragraph: '(Czy nauczyłeś się nowych rzeczy, czy prezentacja zgłębiła temat)',
     },
   ]
+  useEffect(() => {
+    if (timeLeft.days > 60) {
+      setIsOpenCounter(false)
+    } else {
+      const timer = setInterval(() => {
+        setTimeLeft(calculateTimeDifference(dateOfLectures))
+      }, 1000)
+
+      return () => clearInterval(timer)
+    }
+  }, [timeLeft.days])
 
   const voteModal = () => {
     if (!isOpenVote) {
@@ -191,6 +220,20 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       handleModalToggle(event, modalProps)
     }
   }
+  if (isOpenCounter)
+    return (
+      <div className="agenda__live">
+        <div className="agenda__live-counter">
+          <button className="agenda__button-close" onClick={() => setIsOpenCounter(false)}>
+            <CloseButtonIcon />
+          </button>
+          <p className="agenda__live-counter--number">
+            Zaczynamy za: {timeLeft.days} {timeLeft.days === 1 ? 'dzień' : 'dni'} {formatNumber(timeLeft.hours)} godz.{' '}
+            {formatNumber(timeLeft.minutes)} min. i {formatNumber(timeLeft.seconds)} sec.
+          </p>
+        </div>
+      </div>
+    )
 
   if (!activeLecture) return null
 
