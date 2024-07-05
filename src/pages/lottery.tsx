@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import confetti from 'canvas-confetti'
 import logo from '../../static/images/bbdays_logo.png'
+import { useLanguageContext } from 'contexts/LanguageContext'
 
 const Lottery = () => {
   const [isLogged, setIsLogged] = useState(false)
   const [winner, setWinner] = useState('')
   const [isDrawing, setIsDrawing] = useState(false)
+  const { language } = useLanguageContext()
 
   const password = 'a'
 
@@ -16,14 +18,33 @@ const Lottery = () => {
     }
   }
 
+  const getUniqueParticipants = (data) => {
+    const uniqueVotes = new Map()
+
+    data.forEach((participant) => {
+      const { nick, speaker } = participant.attributes
+      const key = `${nick}-${speaker}`
+
+      if (!uniqueVotes.has(key)) {
+        uniqueVotes.set(key, participant)
+      }
+    })
+
+    return Array.from(uniqueVotes.values())
+  }
+
   const drawWinner = async () => {
     try {
       setIsDrawing(true)
-      const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
+      const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
         method: 'GET',
       })
       const responseData = await response.json()
-      const getParticipants = responseData.data.filter((participant) => {
+
+      const uniqueParticipants = getUniqueParticipants(responseData.data)
+      console.log(uniqueParticipants)
+
+      const getParticipants = uniqueParticipants.filter((participant) => {
         return participant.attributes.nick
       })
 
@@ -42,7 +63,7 @@ const Lottery = () => {
         setWinner(newWinner)
         setIsDrawing(false)
         launchConfetti()
-      }, 2000)
+      }, 5000)
 
       if (!response.ok) throw new Error('Failed to submit rating')
     } catch (error) {
@@ -97,12 +118,12 @@ const Lottery = () => {
             <div id="lottery">
               {isDrawing && (
                 <animated.div style={drawingSpring} className="lottery-content--drawing">
-                  Losowanie...
+                  {language === 'pl' ? 'Losowanie...' : 'Drawing...'}
                 </animated.div>
               )}
             </div>
             <button className="lottery-content--button" onClick={drawWinner}>
-              Losuj
+              {language === 'pl' ? 'Losuj' : 'Draw'}
             </button>
           </>
         ) : (
