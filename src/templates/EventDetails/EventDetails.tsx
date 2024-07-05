@@ -53,6 +53,11 @@ const EventDetails = ({ data, pageContext }) => {
         <div className="hero-content">
           <h1>{lang ? event.title : event.localizations.data[0].attributes.title}</h1>
           <h2>{lang ? event.eventSubtitle : event.localizations.data[0].attributes.eventSubtitle}</h2>
+          {event.eventButtonText && event.eventButtonUrl && (
+            <a className="hero-content-button" href={event.eventButtonUrl} rel="noopener noreferrer" target="_blank">
+              {lang ? event.eventButtonText : event.localizations.data[0].attributes.eventButtonText}
+            </a>
+          )}
         </div>
       </div>
       <div className="controler">
@@ -65,13 +70,22 @@ const EventDetails = ({ data, pageContext }) => {
           <p>{lang ? event.eventDescription : event.localizations.data[0].attributes.eventDescription}</p>
         </div>
         <div className="controler-info">
-          <p>
-            <span>{newDate}</span>
-          </p>
+          <div className="controler-info--container">
+            <div>
+              <p>{newDate}</p>
 
-          <p>
-            {event.startHour} - {event.endHour}
-          </p>
+              <p>
+                {event.startHour} - {event.endHour}
+              </p>
+            </div>
+            {event.eventAddressText && (
+              <p>
+                <a href={event?.eventAddressUrl} rel="noopener noreferrer" target="_blank">
+                  {event.eventAddressText}
+                </a>
+              </p>
+            )}
+          </div>
         </div>
         {event.isSecondDescription && (
           <div className="controler-description">
@@ -89,7 +103,7 @@ const EventDetails = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query MyQuery {
+  query EventDetails {
     strapiComponentBaseSchedule {
       events {
         eventHero {
@@ -122,9 +136,14 @@ export const query = graphql`
               eventSecondDescription
               eventSubtitle
               title
+              eventButtonText
             }
           }
         }
+        eventButtonText
+        eventButtonUrl
+        eventAddressUrl
+        eventAddressText
       }
     }
   }

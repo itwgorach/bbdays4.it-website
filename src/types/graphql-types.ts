@@ -1429,6 +1429,10 @@ type Query_strapiEventArgs = {
   date: InputMaybe<StringQueryOperatorInput>;
   displayTitleOnDesktop: InputMaybe<BooleanQueryOperatorInput>;
   endHour: InputMaybe<StringQueryOperatorInput>;
+  eventAddressText: InputMaybe<StringQueryOperatorInput>;
+  eventAddressUrl: InputMaybe<StringQueryOperatorInput>;
+  eventButtonText: InputMaybe<StringQueryOperatorInput>;
+  eventButtonUrl: InputMaybe<StringQueryOperatorInput>;
   eventDescription: InputMaybe<StringQueryOperatorInput>;
   eventHero: InputMaybe<STRAPI_EVENTEventHeroFilterInput>;
   eventPicture: InputMaybe<STRAPI_EVENTEventPictureFilterInput>;
@@ -1906,6 +1910,10 @@ type STRAPI_EVENT = Node & {
   readonly date: Maybe<Scalars['String']>;
   readonly displayTitleOnDesktop: Maybe<Scalars['Boolean']>;
   readonly endHour: Maybe<Scalars['String']>;
+  readonly eventAddressText: Maybe<Scalars['String']>;
+  readonly eventAddressUrl: Maybe<Scalars['String']>;
+  readonly eventButtonText: Maybe<Scalars['String']>;
+  readonly eventButtonUrl: Maybe<Scalars['String']>;
   readonly eventDescription: Maybe<Scalars['String']>;
   readonly eventHero: Maybe<STRAPI_EVENTEventHero>;
   readonly eventPicture: Maybe<STRAPI_EVENTEventPicture>;
@@ -2859,6 +2867,10 @@ type STRAPI_EVENTFieldSelector = {
   readonly date: InputMaybe<FieldSelectorEnum>;
   readonly displayTitleOnDesktop: InputMaybe<FieldSelectorEnum>;
   readonly endHour: InputMaybe<FieldSelectorEnum>;
+  readonly eventAddressText: InputMaybe<FieldSelectorEnum>;
+  readonly eventAddressUrl: InputMaybe<FieldSelectorEnum>;
+  readonly eventButtonText: InputMaybe<FieldSelectorEnum>;
+  readonly eventButtonUrl: InputMaybe<FieldSelectorEnum>;
   readonly eventDescription: InputMaybe<FieldSelectorEnum>;
   readonly eventHero: InputMaybe<STRAPI_EVENTEventHeroFieldSelector>;
   readonly eventPicture: InputMaybe<STRAPI_EVENTEventPictureFieldSelector>;
@@ -2887,6 +2899,10 @@ type STRAPI_EVENTFilterInput = {
   readonly date: InputMaybe<StringQueryOperatorInput>;
   readonly displayTitleOnDesktop: InputMaybe<BooleanQueryOperatorInput>;
   readonly endHour: InputMaybe<StringQueryOperatorInput>;
+  readonly eventAddressText: InputMaybe<StringQueryOperatorInput>;
+  readonly eventAddressUrl: InputMaybe<StringQueryOperatorInput>;
+  readonly eventButtonText: InputMaybe<StringQueryOperatorInput>;
+  readonly eventButtonUrl: InputMaybe<StringQueryOperatorInput>;
   readonly eventDescription: InputMaybe<StringQueryOperatorInput>;
   readonly eventHero: InputMaybe<STRAPI_EVENTEventHeroFilterInput>;
   readonly eventPicture: InputMaybe<STRAPI_EVENTEventPictureFilterInput>;
@@ -2968,6 +2984,10 @@ type STRAPI_EVENTLocalizationsDataAttributes = {
   readonly date: Maybe<Scalars['String']>;
   readonly displayTitleOnDesktop: Maybe<Scalars['Boolean']>;
   readonly endHour: Maybe<Scalars['String']>;
+  readonly eventAddressText: Maybe<Scalars['String']>;
+  readonly eventAddressUrl: Maybe<Scalars['String']>;
+  readonly eventButtonText: Maybe<Scalars['String']>;
+  readonly eventButtonUrl: Maybe<Scalars['String']>;
   readonly eventDescription: Maybe<Scalars['String']>;
   readonly eventSecondDescription: Maybe<Scalars['String']>;
   readonly eventSlug: Maybe<Scalars['String']>;
@@ -3002,6 +3022,10 @@ type STRAPI_EVENTLocalizationsDataAttributesFieldSelector = {
   readonly date: InputMaybe<FieldSelectorEnum>;
   readonly displayTitleOnDesktop: InputMaybe<FieldSelectorEnum>;
   readonly endHour: InputMaybe<FieldSelectorEnum>;
+  readonly eventAddressText: InputMaybe<FieldSelectorEnum>;
+  readonly eventAddressUrl: InputMaybe<FieldSelectorEnum>;
+  readonly eventButtonText: InputMaybe<FieldSelectorEnum>;
+  readonly eventButtonUrl: InputMaybe<FieldSelectorEnum>;
   readonly eventDescription: InputMaybe<FieldSelectorEnum>;
   readonly eventSecondDescription: InputMaybe<FieldSelectorEnum>;
   readonly eventSlug: InputMaybe<FieldSelectorEnum>;
@@ -3020,6 +3044,10 @@ type STRAPI_EVENTLocalizationsDataAttributesFilterInput = {
   readonly date: InputMaybe<StringQueryOperatorInput>;
   readonly displayTitleOnDesktop: InputMaybe<BooleanQueryOperatorInput>;
   readonly endHour: InputMaybe<StringQueryOperatorInput>;
+  readonly eventAddressText: InputMaybe<StringQueryOperatorInput>;
+  readonly eventAddressUrl: InputMaybe<StringQueryOperatorInput>;
+  readonly eventButtonText: InputMaybe<StringQueryOperatorInput>;
+  readonly eventButtonUrl: InputMaybe<StringQueryOperatorInput>;
   readonly eventDescription: InputMaybe<StringQueryOperatorInput>;
   readonly eventSecondDescription: InputMaybe<StringQueryOperatorInput>;
   readonly eventSlug: InputMaybe<StringQueryOperatorInput>;
@@ -3038,6 +3066,10 @@ type STRAPI_EVENTLocalizationsDataAttributesSortInput = {
   readonly date: InputMaybe<SortOrderEnum>;
   readonly displayTitleOnDesktop: InputMaybe<SortOrderEnum>;
   readonly endHour: InputMaybe<SortOrderEnum>;
+  readonly eventAddressText: InputMaybe<SortOrderEnum>;
+  readonly eventAddressUrl: InputMaybe<SortOrderEnum>;
+  readonly eventButtonText: InputMaybe<SortOrderEnum>;
+  readonly eventButtonUrl: InputMaybe<SortOrderEnum>;
   readonly eventDescription: InputMaybe<SortOrderEnum>;
   readonly eventSecondDescription: InputMaybe<SortOrderEnum>;
   readonly eventSlug: InputMaybe<SortOrderEnum>;
@@ -3376,6 +3408,10 @@ type STRAPI_EVENTSortInput = {
   readonly date: InputMaybe<SortOrderEnum>;
   readonly displayTitleOnDesktop: InputMaybe<SortOrderEnum>;
   readonly endHour: InputMaybe<SortOrderEnum>;
+  readonly eventAddressText: InputMaybe<SortOrderEnum>;
+  readonly eventAddressUrl: InputMaybe<SortOrderEnum>;
+  readonly eventButtonText: InputMaybe<SortOrderEnum>;
+  readonly eventButtonUrl: InputMaybe<SortOrderEnum>;
   readonly eventDescription: InputMaybe<SortOrderEnum>;
   readonly eventHero: InputMaybe<STRAPI_EVENTEventHeroSortInput>;
   readonly eventPicture: InputMaybe<STRAPI_EVENTEventPictureSortInput>;
@@ -10324,10 +10360,10 @@ type StringQueryOperatorInput = {
   readonly regex: InputMaybe<Scalars['String']>;
 };
 
-type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type EventDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type MyQueryQuery = { readonly strapiComponentBaseSchedule: { readonly events: ReadonlyArray<{ readonly backgroundColor: string | null, readonly date: string | null, readonly endHour: string | null, readonly eventDescription: string | null, readonly eventSlug: string | null, readonly eventSubtitle: string | null, readonly id: string, readonly startHour: string | null, readonly title: string | null, readonly eventSecondDescription: string | null, readonly isSecondDescription: boolean | null, readonly eventHero: { readonly url: string | null, readonly id: number | null } | null, readonly eventPicture: { readonly url: string | null, readonly id: number | null } | null, readonly eventSecondPicture: { readonly url: string | null, readonly id: number | null } | null, readonly localizations: { readonly data: ReadonlyArray<{ readonly attributes: { readonly eventDescription: string | null, readonly eventSecondDescription: string | null, readonly eventSubtitle: string | null, readonly title: string | null } | null } | null> | null } | null } | null> | null } | null };
+type EventDetailsQuery = { readonly strapiComponentBaseSchedule: { readonly events: ReadonlyArray<{ readonly backgroundColor: string | null, readonly date: string | null, readonly endHour: string | null, readonly eventDescription: string | null, readonly eventSlug: string | null, readonly eventSubtitle: string | null, readonly id: string, readonly startHour: string | null, readonly title: string | null, readonly eventSecondDescription: string | null, readonly isSecondDescription: boolean | null, readonly eventButtonText: string | null, readonly eventButtonUrl: string | null, readonly eventAddressUrl: string | null, readonly eventAddressText: string | null, readonly eventHero: { readonly url: string | null, readonly id: number | null } | null, readonly eventPicture: { readonly url: string | null, readonly id: number | null } | null, readonly eventSecondPicture: { readonly url: string | null, readonly id: number | null } | null, readonly localizations: { readonly data: ReadonlyArray<{ readonly attributes: { readonly eventDescription: string | null, readonly eventSecondDescription: string | null, readonly eventSubtitle: string | null, readonly title: string | null, readonly eventButtonText: string | null } | null } | null> | null } | null } | null> | null } | null };
 
 
 }

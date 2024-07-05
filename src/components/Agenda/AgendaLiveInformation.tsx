@@ -4,6 +4,7 @@ import { Rating } from 'react-simple-star-rating'
 import { getSpeaker } from 'utils/agendaDataProcessing'
 import { CloseButtonIcon } from 'components/icons'
 import { Lecture, AgendaLiveInformationProps, Vote, VoteError, RatingEvent } from 'types/AgendaType'
+import { useLanguageContext } from 'contexts/LanguageContext'
 
 const nameValidation = (name: string) => {
   const regex = /^[a-zA-Z\s\.,-]+$/
@@ -82,6 +83,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     speech: false,
     feedback: false,
   })
+  const { language } = useLanguageContext()
   const activeLecture = getActiveLecture(dateOfLectures, lectures)
   const prevLecture = findPrevLecture(activeLecture, lectures)
   const votedStorage = localStorage.getItem(`${prevLecture?.subtitle}`)
@@ -261,16 +263,26 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                     </p>
                   )}
                   <button className="agenda__live-button" onClick={submitRating}>
-                    Wyślij
+                    {language === 'pl' ? 'Wyślij' : 'Send'}
                   </button>
                 </>
               ) : (
                 <div className="agenda__live-voted">
-                  <p>Już oddałeś głos na tego prelegenta 🫶</p>
-                  <p>Możliwość głosowania na kolejnego pojawi się podczas następnej prelekcji.</p>
-                  <p>Dziękujemy!</p>
+                  {language === 'pl' ? (
+                    <>
+                      <p>Już oddałeś głos na tego prelegenta 🫶</p>
+                      <p>Możliwość głosowania na kolejnego pojawi się podczas następnej prelekcji.</p>
+                      <p>Dziękujemy!</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>You have already voted for this speaker 🫶</p>
+                      <p>The opportunity to vote for the next one will appear during the next lecture.</p>
+                      <p>Thank you!</p>
+                    </>
+                  )}
                   <button className="agenda__live-button" onClick={() => setIsOpenVote(!isOpenVote)}>
-                    Zamknij
+                    {language === 'pl' ? 'Zamknij' : 'Close'}
                   </button>
                 </div>
               )}
@@ -280,7 +292,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
             className={`agenda__live-${activeLecture.backgroundColor} agenda__live-description`}
             onClick={speakerModal}>
             <div className="agenda__live-lecturer">
-              {activeLecture.subtitle && <p className="agenda__live-header">AKTUALNY WYKŁAD:</p>}
+              {activeLecture.subtitle && (
+                <p className="agenda__live-header">{language === 'pl' ? 'AKTUALNY WYKŁAD:' : 'CURRENT LECTURE:'}</p>
+              )}
               {activeLecture.subtitle && `${activeLecture.subtitle}: `}
               <span className="agenda__live-title"> {activeLecture.title}</span>
               {activeLecture.logo && (
@@ -293,7 +307,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           {prevLecture && (
             <div className="agenda__live-vote">
               <button className="agenda__live-vote--button" onClick={voteModal}>
-                Zagłosuj na poprzedniego prelegenta
+                {language === 'pl' ? 'Zagłosuj na poprzedniego prelegenta' : 'Vote for the previous speaker'}
               </button>
             </div>
           )}

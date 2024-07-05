@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
+import { useLanguageContext } from 'contexts/LanguageContext'
 import confetti from 'canvas-confetti'
 import logo from '../../static/images/bbdays_logo.png'
-import { useLanguageContext } from 'contexts/LanguageContext'
 
 const Lottery = () => {
   const [isLogged, setIsLogged] = useState(false)
