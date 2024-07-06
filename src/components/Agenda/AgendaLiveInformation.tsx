@@ -87,6 +87,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 }) => {
   const [isOpenVote, setIsOpenVote] = useState(false)
   const [isOpenCounter, setIsOpenCounter] = useState(true)
+  const [isSendRate, setIsSendRate] = useState(false)
   const [timeLeft, setTimeLeft] = useState(calculateTimeDifference(dateOfLectures))
   const [vote, setVote] = useState<Vote>({
     educationalValue: 0,
@@ -171,6 +172,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     if (!vote.educationalValue || !vote.speech || !nameError || vote.feedback.length > 1000) return
 
     if (vote.educationalValue && vote.speech && nameError) {
+      setIsSendRate(true)
       const ratingData = {
         data: {
           average: ((vote.educationalValue + vote.speech) / 2).toFixed(2),
@@ -183,8 +185,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       }
 
       try {
-        // const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
-        const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
+        const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
           body: JSON.stringify(ratingData),
           headers: { 'Content-Type': 'application/json' },
           method: 'POST',
@@ -202,9 +203,13 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
         if (!nickStorage && ratingData.data.nick !== '') {
           localStorage.setItem('nick', ratingData.data.nick)
         }
-        setIsOpenVote(!isOpenVote)
       } catch (error) {
         console.error('Error submitting rating:', error)
+      } finally {
+        setTimeout(() => {
+          setIsSendRate(false)
+          setIsOpenVote(!isOpenVote)
+        }, 4000)
       }
     }
   }
@@ -227,8 +232,13 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
             <CloseButtonIcon />
           </button>
           <p className="agenda__live-counter--number">
-            Zaczynamy za: {timeLeft.days} {timeLeft.days === 1 ? 'dzień' : 'dni'} {formatNumber(timeLeft.hours)} godz.{' '}
-            {formatNumber(timeLeft.minutes)} min. i {formatNumber(timeLeft.seconds)} sec.
+            Zaczynamy za: {timeLeft.days}
+            <span className="agenda__live-counter--time-unit">{timeLeft.days === 1 ? 'dzień' : 'dni'}</span>{' '}
+            {formatNumber(timeLeft.hours)}
+            <span className="agenda__live-counter--time-unit"> godz.</span> {formatNumber(timeLeft.minutes)}
+            <span className="agenda__live-counter--time-unit"> min.</span>
+            {formatNumber(timeLeft.seconds)}
+            <span className="agenda__live-counter--time-unit">sec.</span>
           </p>
         </div>
       </div>
@@ -309,23 +319,33 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                   </button>
                 </>
               ) : (
-                <div className="agenda__live-voted">
-                  {language === 'pl' ? (
-                    <>
-                      <p>Już oddałeś głos na tego prelegenta 🫶</p>
-                      <p>Możliwość głosowania na kolejnego pojawi się podczas następnej prelekcji.</p>
-                      <p>Dziękujemy!</p>
-                    </>
+                <div>
+                  {' '}
+                  {isSendRate ? (
+                    <p className="agenda__live-thanks">
+                      Dziękujemy za oddanie głosu! Jeśli zostawiłeś swoje dane, zapraszamy na losowanie nagród podczas
+                      zakończenia konferencji 🫡
+                    </p>
                   ) : (
-                    <>
-                      <p>You have already voted for this speaker 🫶</p>
-                      <p>The opportunity to vote for the next one will appear during the next lecture.</p>
-                      <p>Thank you!</p>
-                    </>
+                    <div className="agenda__live-voted">
+                      {language === 'pl' ? (
+                        <>
+                          <p>Już oddałeś głos na tego prelegenta 🫶</p>
+                          <p>Możliwość głosowania na kolejnego pojawi się podczas następnej prelekcji.</p>
+                          <p>Dziękujemy!</p>
+                        </>
+                      ) : (
+                        <>
+                          <p>You have already voted for this speaker 🫶</p>
+                          <p>The opportunity to vote for the next one will appear during the next lecture.</p>
+                          <p>Thank you!</p>
+                        </>
+                      )}
+                      <button className="agenda__live-button" onClick={() => setIsOpenVote(!isOpenVote)}>
+                        {language === 'pl' ? 'Zamknij' : 'Close'}
+                      </button>
+                    </div>
                   )}
-                  <button className="agenda__live-button" onClick={() => setIsOpenVote(!isOpenVote)}>
-                    {language === 'pl' ? 'Zamknij' : 'Close'}
-                  </button>
                 </div>
               )}
             </div>

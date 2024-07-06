@@ -1,49 +1,62 @@
 import { useLanguageContext } from 'contexts/LanguageContext'
 import { graphql } from 'gatsby'
-import React from 'react'
+import React, { FC, useMemo } from 'react'
+import EventDetailsType from 'types/EventDetailsType'
 
-const EventDetails = ({ data, pageContext }) => {
+const EventDetails: FC<EventDetailsType> = ({ data, pageContext }) => {
+  console.log(data.strapiComponentBaseSchedule)
+
   const { events } = data.strapiComponentBaseSchedule
   const { slug } = pageContext
   const { language } = useLanguageContext()
 
-  const lang = language === 'pl' ? true : false
-  const monthsPl = [
-    'Stycznia',
-    'Lutego',
-    'Marca',
-    'Kwietnia',
-    'Maja',
-    'Czerwca',
-    'Lipca',
-    'Sierpnia',
-    'Września',
-    'Października',
-    'Listopada',
-    'Grudnia',
-  ]
-  const monthsEn = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ]
+  const lang = language === 'pl'
+  const months = {
+    pl: [
+      'Stycznia',
+      'Lutego',
+      'Marca',
+      'Kwietnia',
+      'Maja',
+      'Czerwca',
+      'Lipca',
+      'Sierpnia',
+      'Września',
+      'Października',
+      'Listopada',
+      'Grudnia',
+    ],
+    en: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+  }
+
   const event = events.find((event) => event.eventSlug === slug)
-  const [day, month] = event.date.split('.')
-  const nameOfMonth = lang ? monthsPl[parseInt(month) - 1] : monthsEn[parseInt(month) - 1]
-  const newDate = `${day} - ${nameOfMonth}`
+
+  const newDate = useMemo(() => {
+    if (!event) return ''
+    const [day, month] = event.date.split('.')
+    const monthIndex = parseInt(month) - 1
+    const nameOfMonth = lang ? months.pl[monthIndex] : months.en[monthIndex]
+    return `${day} - ${nameOfMonth}`
+  }, [event, lang, months])
 
   if (!event) {
-    return <div>Event nie znaleziony</div>
+    return <h2>Event nie znaleziony</h2>
   }
+
+  const localizedEvent = lang ? event : event.localizations.data[0].attributes
 
   return (
     <div className="event-details">
@@ -51,11 +64,11 @@ const EventDetails = ({ data, pageContext }) => {
         <div className="hero-gray" />
         <img src={event.eventHero.url} alt={event.title} className="hero-image" />
         <div className="hero-content">
-          <h1>{lang ? event.title : event.localizations.data[0].attributes.title}</h1>
-          <h2>{lang ? event.eventSubtitle : event.localizations.data[0].attributes.eventSubtitle}</h2>
+          <h1>{localizedEvent.title}</h1>
+          <h2>{localizedEvent.eventSubtitle}</h2>
           {event.eventButtonText && event.eventButtonUrl && (
             <a className="hero-content-button" href={event.eventButtonUrl} rel="noopener noreferrer" target="_blank">
-              {lang ? event.eventButtonText : event.localizations.data[0].attributes.eventButtonText}
+              {localizedEvent.eventButtonText}
             </a>
           )}
         </div>
@@ -67,20 +80,19 @@ const EventDetails = ({ data, pageContext }) => {
             alt={event.title}
             className="controler-description-image controler-description-image--right"
           />
-          <p>{lang ? event.eventDescription : event.localizations.data[0].attributes.eventDescription}</p>
+          <p>{localizedEvent.eventDescription}</p>
         </div>
         <div className="controler-info">
           <div className="controler-info--container">
             <div>
               <p>{newDate}</p>
-
               <p>
                 {event.startHour} - {event.endHour}
               </p>
             </div>
             {event.eventAddressText && (
               <p>
-                <a href={event?.eventAddressUrl} rel="noopener noreferrer" target="_blank">
+                <a href={event.eventAddressUrl} rel="noopener noreferrer" target="_blank">
                   {event.eventAddressText}
                 </a>
               </p>
@@ -90,11 +102,11 @@ const EventDetails = ({ data, pageContext }) => {
         {event.isSecondDescription && (
           <div className="controler-description">
             <img
-              src={event.eventPicture.url}
+              src={event.eventSecondPicture.url}
               alt={event.title}
               className="controler-description-image controler-description-image--left"
             />
-            <p>{lang ? event.eventSecondDescription : event.localizations.data[0].attributes.eventSecondDescription}</p>
+            <p>{localizedEvent.eventSecondDescription}</p>
           </div>
         )}
       </div>

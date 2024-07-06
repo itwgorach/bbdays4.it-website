@@ -14,7 +14,15 @@
     align-items: center;
     top: 79px;
     width: 100%;
-    border-top: 1px solid white;
+    &::before {
+      @include dashedBorder(false, top, $color-black);
+
+      content: '';
+      height: 1px;
+      position: absolute;
+      top: 1px;
+      width: 100%;
+    }
 
     z-index: 40;
 
@@ -47,6 +55,19 @@
           font-size: $font-size-2xl;
         }
       }
+      &--time-unit {
+        font-family: $font-face-body;
+        font-size: $font-size-base;
+      }
+    }
+
+    &-thanks {
+      max-width: 600px;
+      text-align: center;
+      color: $color-dark;
+      font-family: $font-family-body;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
     }
 
     &-voted {
@@ -201,7 +222,7 @@
 
     &-controler {
       display: flex;
-      min-height: 90px;
+      min-height: 80px;
       width: 100vw;
     }
     &-description {

@@ -1,25 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useLanguageContext } from 'contexts/LanguageContext'
 import confetti from 'canvas-confetti'
 import logo from '../../static/images/bbdays_logo.png'
 
-const Lottery = () => {
-  const [isLogged, setIsLogged] = useState(false)
-  const [winner, setWinner] = useState('')
-  const [isDrawing, setIsDrawing] = useState(false)
+type Participant = {
+  attributes: {
+    nick: string
+    speaker: string
+  }
+}
+
+type ApiResponse = {
+  data: Participant[]
+}
+
+const Lottery: React.FC = () => {
+  const [isLogged, setIsLogged] = useState<boolean>(false)
+  const [winner, setWinner] = useState<string>('')
+  const [isDrawing, setIsDrawing] = useState<boolean>(false)
   const { language } = useLanguageContext()
 
   const password = 'a'
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === password) {
       setIsLogged(true)
     }
   }
 
-  const getUniqueParticipants = (data) => {
-    const uniqueVotes = new Map()
+  const getUniqueParticipants = (data: Participant[]): Participant[] => {
+    const uniqueVotes = new Map<string, Participant>()
 
     data.forEach((participant) => {
       const { nick, speaker } = participant.attributes
@@ -36,19 +47,21 @@ const Lottery = () => {
   const drawWinner = async () => {
     try {
       setIsDrawing(true)
-      const response = await fetch('http://localhost:1337/api/speaker-ratings/', {
+      const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
         method: 'GET',
       })
-      const responseData = await response.json()
+
+      if (!response.ok) throw new Error('Failed to fetch ratings')
+
+      const responseData: ApiResponse = await response.json()
 
       const uniqueParticipants = getUniqueParticipants(responseData.data)
-      console.log(uniqueParticipants)
 
       const getParticipants = uniqueParticipants.filter((participant) => {
         return participant.attributes.nick
       })
 
-      const getWinner = (prevWinner) => {
+      const getWinner = (prevWinner: string): string => {
         const newWinner = getParticipants[Math.floor(Math.random() * getParticipants.length)].attributes.nick
         const winnerUpperCase = newWinner.toUpperCase()
 
@@ -64,10 +77,8 @@ const Lottery = () => {
         setIsDrawing(false)
         launchConfetti()
       }, 5000)
-
-      if (!response.ok) throw new Error('Failed to submit rating')
     } catch (error) {
-      console.error('Error submitting rating:', error)
+      console.error('Error fetching ratings:', error)
       setIsDrawing(false)
     }
   }
