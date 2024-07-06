@@ -88,7 +88,6 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   const [isOpenVote, setIsOpenVote] = useState(false)
   const [isOpenCounter, setIsOpenCounter] = useState(true)
   const [timeLeft, setTimeLeft] = useState(calculateTimeDifference(dateOfLectures))
-
   const [vote, setVote] = useState<Vote>({
     educationalValue: 0,
     feedback: '',
@@ -102,6 +101,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     feedback: false,
   })
   const { language } = useLanguageContext()
+
   const activeLecture = getActiveLecture(dateOfLectures, lectures)
   const prevLecture = findPrevLecture(activeLecture, lectures)
   const votedStorage = localStorage.getItem(`${prevLecture?.subtitle}`)
@@ -122,15 +122,14 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     },
   ]
   useEffect(() => {
-    if (timeLeft.days > 60) {
+    if (timeLeft.days > 60 || timeLeft.days <= 0) {
       setIsOpenCounter(false)
-    } else {
-      const timer = setInterval(() => {
-        setTimeLeft(calculateTimeDifference(dateOfLectures))
-      }, 1000)
-
-      return () => clearInterval(timer)
     }
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeDifference(dateOfLectures))
+    }, 1000)
+
+    return () => clearInterval(timer)
   }, [timeLeft.days])
 
   const voteModal = () => {
