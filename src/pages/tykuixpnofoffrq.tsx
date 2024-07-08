@@ -89,32 +89,22 @@ const getBestSpeakers: React.FC = () => {
     <div className="lottery">
       <div className="lottery-content">
         {isLogged ? (
-          <table
-            style={{
-              width: '80%',
-              margin: '0 auto',
-              borderCollapse: 'collapse',
-              marginTop: '20px',
-              textAlign: 'center',
-              color: 'white',
-            }}>
+          <table className="get-speakers-rate__table">
             <thead>
               <tr>
-                <th style={{ border: '2px solid #5bc0de', padding: '8px' }}>Prelegent</th>
-                <th style={{ border: '2px solid #5bc0de', padding: '8px' }}>Średnia</th>
-                <th style={{ border: '2px solid #5bc0de', padding: '8px' }}>Wystąpienie</th>
-                <th style={{ border: '2px solid #5bc0de', padding: '8px' }}>Wartość edukacyjna</th>
+                <th className="get-speakers-rate__table-header">Prelegent</th>
+                <th className="get-speakers-rate__table-header">Średnia</th>
+                <th className="get-speakers-rate__table-header">Wystąpienie</th>
+                <th className="get-speakers-rate__table-header">Wartość edukacyjna</th>
               </tr>
             </thead>
             <tbody>
               {bestSpeakers.map((speaker, index) => (
                 <tr key={index}>
-                  <td style={{ border: '2px solid #5bc0de', padding: '8px' }}>{speaker.speaker}</td>
-                  <td style={{ border: '2px solid #5bc0de', padding: '8px' }}>{speaker.avg.toFixed(2)}</td>
-                  <td style={{ border: '2px solid #5bc0de', padding: '8px' }}>{speaker.avgSpeech.toFixed(2)}</td>
-                  <td style={{ border: '2px solid #5bc0de', padding: '8px' }}>
-                    {speaker.avgEducationalValue.toFixed(2)}
-                  </td>
+                  <td className="get-speakers-rate__table-data-cell">{speaker.speaker}</td>
+                  <td className="get-speakers-rate__table-data-cell">{speaker.avg.toFixed(2)}</td>
+                  <td className="get-speakers-rate__table-data-cell">{speaker.avgSpeech.toFixed(2)}</td>
+                  <td className="get-speakers-rate__table-data-cell">{speaker.avgEducationalValue.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

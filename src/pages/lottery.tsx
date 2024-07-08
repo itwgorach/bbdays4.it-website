@@ -10,7 +10,7 @@ const Lottery = () => {
 
   const password = 'a'
 
-  const handleChange = (event) => {
+  const hanglePassword = (event) => {
     if (event.target.value === password) {
       setIsLogged(true)
     }
@@ -80,36 +80,39 @@ const Lottery = () => {
     from: { opacity: 0 },
   })
 
+  const LotteryForm = ({ hanglePassword }) => (
+    <form className="lottery-content--form">
+      <input className="lottery-content--input" type="password" onChange={hanglePassword} />
+    </form>
+  )
+
+  const LotteryDraw = () => {
+    return (
+      <>
+        {winner && !isDrawing ? (
+          <animated.h2 style={winnerSpring} className="lottery-content--winner">
+            {winner}🏆🥳
+          </animated.h2>
+        ) : null}
+        <div id="lottery">
+          {isDrawing && (
+            <animated.div style={drawingSpring} className="lottery-content--drawing">
+              Losowanie...
+            </animated.div>
+          )}
+        </div>
+        <button className="lottery-content--button" onClick={drawWinner}>
+          Losuj
+        </button>
+      </>
+    )
+  }
+
   return (
     <div className="lottery">
       <div className="lottery-content">
         <img alt="bbdays logo" className="lottery-logo" src={logo} />
-        {isLogged ? (
-          <>
-            {' '}
-            {winner && !isDrawing ? (
-              <animated.h2 style={winnerSpring} className="lottery-content--winner">
-                {winner}🏆🥳
-              </animated.h2>
-            ) : (
-              <></>
-            )}
-            <div id="lottery">
-              {isDrawing && (
-                <animated.div style={drawingSpring} className="lottery-content--drawing">
-                  Losowanie...
-                </animated.div>
-              )}
-            </div>
-            <button className="lottery-content--button" onClick={drawWinner}>
-              Losuj
-            </button>
-          </>
-        ) : (
-          <form className="lottery-content--form">
-            <input className="lottery-content--input" type="password" onChange={handleChange} />
-          </form>
-        )}
+        {isLogged ? <LotteryDraw /> : <LotteryForm hanglePassword={hanglePassword} />}
       </div>
     </div>
   )
