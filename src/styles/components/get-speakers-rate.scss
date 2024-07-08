@@ -1,0 +1,20 @@
+.get-speakers-rate {
+  &__table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+  }
+
+  &__table-header {
+    border: 2px solid #5bc0de;
+    padding: 8px;
+  }
+
+  &__table-data-cell {
+    border: 2px solid #5bc0de;
+    padding: 8px;
+  }
+}

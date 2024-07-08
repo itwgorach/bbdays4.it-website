@@ -18,8 +18,20 @@
 
     z-index: 40;
 
+    &-voted {
+      text-align: center;
+      font-family: $font-family-body;
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+      &-subtitle {
+        font-size: $font-size-lg;
+        font-family: $font-family-header;
+      }
+    }
+
     &-modal {
       min-width: 95vw;
+      overflow-y: auto;
       @include media-breakpoint-up(sm) {
         min-width: 90vw;
       }
@@ -62,7 +74,7 @@
       padding: 10px;
       background-color: rgba(25, 69, 80, 0.05);
       border: none;
-      border-radius: 4px 0 0 4px;
+      border-radius: 4px;
       color: $color-text;
       display: block;
       font-family: $font-family-body;
@@ -76,11 +88,16 @@
         min-width: 60%;
       }
       &--label {
-        margin: $m-sm;
+        margin: $m-sm 0;
+        text-align: center;
         color: $color-text;
         font-family: $font-family-body;
         font-size: $font-size-base-xs;
         font-weight: $font-weight-regular;
+        @include media-breakpoint-up(lg) {
+          max-width: 70%;
+          min-width: 60%;
+        }
       }
     }
     &-button {
@@ -111,16 +128,28 @@
       flex-direction: column;
       align-items: center;
       p {
-        margin: $m-xs;
         font-family: $font-family-body;
         font-size: $font-size-base-xs;
         font-weight: $font-weight-medium;
       }
-      &-error {
+      &-error,
+      &-error--name {
         font-family: $font-family-body;
         font-size: $font-size-lg;
         font-weight: $font-weight-semi-bold;
         color: red;
+        &--name {
+          font-size: $font-size-sm;
+        }
+      }
+      &-title,
+      &-subtitle {
+        text-align: center;
+        margin: $m-base 0 0;
+        padding: 0;
+      }
+      &-subtitle {
+        margin: 0;
       }
       &-controler {
         display: flex;

@@ -1,0 +1,121 @@
+import React, { useState } from 'react'
+import { useSpring, animated } from 'react-spring'
+import confetti from 'canvas-confetti'
+import logo from '../../static/images/bbdays_logo.png'
+
+const Lottery = () => {
+  const [isLogged, setIsLogged] = useState(false)
+  const [winner, setWinner] = useState('')
+  const [isDrawing, setIsDrawing] = useState(false)
+
+  const password = 'a'
+
+  const hanglePassword = (event) => {
+    if (event.target.value === password) {
+      setIsLogged(true)
+    }
+  }
+
+  const drawWinner = async () => {
+    try {
+      setIsDrawing(true)
+      const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
+        method: 'GET',
+      })
+      const responseData = await response.json()
+      const getParticipants = responseData.data.filter((participant) => {
+        return participant.attributes.nick
+      })
+
+      const getWinner = (prevWinner) => {
+        const newWinner = getParticipants[Math.floor(Math.random() * getParticipants.length)].attributes.nick
+        const winnerUpperCase = newWinner.toUpperCase()
+
+        if (winnerUpperCase === prevWinner) {
+          return getWinner(prevWinner)
+        }
+        return winnerUpperCase
+      }
+
+      setTimeout(() => {
+        const newWinner = getWinner(winner)
+        setWinner(newWinner)
+        setIsDrawing(false)
+        launchConfetti()
+      }, 2000)
+
+      if (!response.ok) throw new Error('Failed to submit rating')
+    } catch (error) {
+      console.error('Error submitting rating:', error)
+      setIsDrawing(false)
+    }
+  }
+
+  const launchConfetti = () => {
+    confetti({
+      particleCount: 1000,
+      spread: 90,
+      origin: { x: 0, y: 0.8 },
+      angle: 50,
+      decay: 0.95,
+    })
+    confetti({
+      particleCount: 1000,
+      spread: 90,
+      origin: { x: 1, y: 0.8 },
+      angle: 130,
+      decay: 0.95,
+    })
+  }
+
+  const winnerSpring = useSpring({
+    opacity: winner ? 1 : 0,
+    transform: winner ? 'scale(1.5)' : 'scale(1)',
+    from: { opacity: 0, transform: 'scale(1)' },
+    reset: true,
+  })
+
+  const drawingSpring = useSpring({
+    opacity: isDrawing ? 1 : 0,
+    from: { opacity: 0 },
+  })
+
+  const LotteryForm = ({ hanglePassword }) => (
+    <form className="lottery-content--form">
+      <input className="lottery-content--input" type="password" onChange={hanglePassword} />
+    </form>
+  )
+
+  const LotteryDraw = () => {
+    return (
+      <>
+        {winner && !isDrawing ? (
+          <animated.h2 style={winnerSpring} className="lottery-content--winner">
+            {winner}🏆🥳
+          </animated.h2>
+        ) : null}
+        <div id="lottery">
+          {isDrawing && (
+            <animated.div style={drawingSpring} className="lottery-content--drawing">
+              Losowanie...
+            </animated.div>
+          )}
+        </div>
+        <button className="lottery-content--button" onClick={drawWinner}>
+          Losuj
+        </button>
+      </>
+    )
+  }
+
+  return (
+    <div className="lottery">
+      <div className="lottery-content">
+        <img alt="bbdays logo" className="lottery-logo" src={logo} />
+        {isLogged ? <LotteryDraw /> : <LotteryForm hanglePassword={hanglePassword} />}
+      </div>
+    </div>
+  )
+}
+
+export default Lottery
