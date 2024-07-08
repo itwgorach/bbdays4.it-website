@@ -78,8 +78,10 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   })
   const activeLecture = getActiveLecture(dateOfLectures, lectures)
   const prevLecture = findPrevLecture(activeLecture, lectures)
-  const votedStorage = localStorage.getItem(`${prevLecture?.subtitle}`)
-  const nickStorage = localStorage.getItem('nick')
+
+  const votedStorage =
+    typeof localStorage !== 'undefined' ? localStorage.getItem(`${prevLecture?.subtitle}`) : undefined
+  const nickStorage = typeof localStorage !== 'undefined' ? localStorage.getItem('nick') : undefined
 
   const ratingFields = [
     {
@@ -158,9 +160,13 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           nick: '',
           speech: 0,
         })
-        localStorage.setItem(prevLecture?.subtitle, JSON.stringify(ratingData))
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem(prevLecture?.subtitle, JSON.stringify(ratingData))
+        }
         if (!nickStorage && ratingData.data.nick !== '') {
-          localStorage.setItem('nick', ratingData.data.nick)
+          if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('nick', ratingData.data.nick)
+          }
         }
         setIsOpenVote(!isOpenVote)
       } catch (error) {
