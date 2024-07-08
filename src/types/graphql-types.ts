@@ -10360,5 +10360,10 @@ type StringQueryOperatorInput = {
   readonly regex: InputMaybe<Scalars['String']>;
 };
 
+type EventDetailsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type EventDetailsQuery = { readonly strapiComponentBaseSchedule: { readonly events: ReadonlyArray<{ readonly backgroundColor: string | null, readonly date: string | null, readonly endHour: string | null, readonly eventDescription: string | null, readonly eventSlug: string | null, readonly eventSubtitle: string | null, readonly id: string, readonly startHour: string | null, readonly title: string | null, readonly eventSecondDescription: string | null, readonly isSecondDescription: boolean | null, readonly eventButtonText: string | null, readonly eventButtonUrl: string | null, readonly eventAddressUrl: string | null, readonly eventAddressText: string | null, readonly eventHero: { readonly url: string | null, readonly id: number | null } | null, readonly eventPicture: { readonly url: string | null, readonly id: number | null } | null, readonly eventSecondPicture: { readonly url: string | null, readonly id: number | null } | null, readonly localizations: { readonly data: ReadonlyArray<{ readonly attributes: { readonly eventDescription: string | null, readonly eventSecondDescription: string | null, readonly eventSubtitle: string | null, readonly title: string | null, readonly eventButtonText: string | null } | null } | null> | null } | null } | null> | null } | null };
+
 
 }
