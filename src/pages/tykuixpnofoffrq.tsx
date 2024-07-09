@@ -27,7 +27,7 @@ const getBestSpeakers: React.FC = () => {
   const [isLogged, setIsLogged] = useState(false)
   const [bestSpeakers, setBestSpeakers] = useState<SpeakerAverages[]>([])
 
-  const password = 'a'
+  const password = process.env.GATSBY_LOTTERY_PASSWORD
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === password) {

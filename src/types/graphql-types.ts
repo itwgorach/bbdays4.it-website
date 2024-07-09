@@ -2640,112 +2640,18 @@ type STRAPI_EVENTEventSecondPictureFilterInput = {
 };
 
 type STRAPI_EVENTEventSecondPictureFormats = {
-  readonly large: Maybe<STRAPI_EVENTEventSecondPictureFormatsLarge>;
-  readonly medium: Maybe<STRAPI_EVENTEventSecondPictureFormatsMedium>;
   readonly small: Maybe<STRAPI_EVENTEventSecondPictureFormatsSmall>;
   readonly thumbnail: Maybe<STRAPI_EVENTEventSecondPictureFormatsThumbnail>;
 };
 
 type STRAPI_EVENTEventSecondPictureFormatsFieldSelector = {
-  readonly large: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsLargeFieldSelector>;
-  readonly medium: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsMediumFieldSelector>;
   readonly small: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsSmallFieldSelector>;
   readonly thumbnail: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsThumbnailFieldSelector>;
 };
 
 type STRAPI_EVENTEventSecondPictureFormatsFilterInput = {
-  readonly large: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsLargeFilterInput>;
-  readonly medium: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsMediumFilterInput>;
   readonly small: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsSmallFilterInput>;
   readonly thumbnail: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsThumbnailFilterInput>;
-};
-
-type STRAPI_EVENTEventSecondPictureFormatsLarge = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly width: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_EVENTEventSecondPictureFormatsLargeFieldSelector = {
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly hash: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly mime: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
-type STRAPI_EVENTEventSecondPictureFormatsLargeFilterInput = {
-  readonly ext: InputMaybe<StringQueryOperatorInput>;
-  readonly hash: InputMaybe<StringQueryOperatorInput>;
-  readonly height: InputMaybe<IntQueryOperatorInput>;
-  readonly mime: InputMaybe<StringQueryOperatorInput>;
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly size: InputMaybe<FloatQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
-  readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_EVENTEventSecondPictureFormatsLargeSortInput = {
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly hash: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly mime: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
-};
-
-type STRAPI_EVENTEventSecondPictureFormatsMedium = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly width: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_EVENTEventSecondPictureFormatsMediumFieldSelector = {
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly hash: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly mime: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
-type STRAPI_EVENTEventSecondPictureFormatsMediumFilterInput = {
-  readonly ext: InputMaybe<StringQueryOperatorInput>;
-  readonly hash: InputMaybe<StringQueryOperatorInput>;
-  readonly height: InputMaybe<IntQueryOperatorInput>;
-  readonly mime: InputMaybe<StringQueryOperatorInput>;
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly size: InputMaybe<FloatQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
-  readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_EVENTEventSecondPictureFormatsMediumSortInput = {
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly hash: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly mime: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
 };
 
 type STRAPI_EVENTEventSecondPictureFormatsSmall = {
@@ -2793,8 +2699,6 @@ type STRAPI_EVENTEventSecondPictureFormatsSmallSortInput = {
 };
 
 type STRAPI_EVENTEventSecondPictureFormatsSortInput = {
-  readonly large: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsLargeSortInput>;
-  readonly medium: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsMediumSortInput>;
   readonly small: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsSmallSortInput>;
   readonly thumbnail: InputMaybe<STRAPI_EVENTEventSecondPictureFormatsThumbnailSortInput>;
 };
@@ -3118,7 +3022,6 @@ type STRAPI_EVENTLogo = {
   readonly caption: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly ext: Maybe<Scalars['String']>;
-  readonly formats: Maybe<STRAPI_EVENTLogoFormats>;
   readonly hash: Maybe<Scalars['String']>;
   readonly height: Maybe<Scalars['Int']>;
   readonly id: Maybe<Scalars['Int']>;
@@ -3151,7 +3054,6 @@ type STRAPI_EVENTLogoFieldSelector = {
   readonly caption: InputMaybe<FieldSelectorEnum>;
   readonly createdAt: InputMaybe<FieldSelectorEnum>;
   readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly formats: InputMaybe<STRAPI_EVENTLogoFormatsFieldSelector>;
   readonly hash: InputMaybe<FieldSelectorEnum>;
   readonly height: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
@@ -3168,7 +3070,6 @@ type STRAPI_EVENTLogoFilterInput = {
   readonly caption: InputMaybe<StringQueryOperatorInput>;
   readonly createdAt: InputMaybe<DateQueryOperatorInput>;
   readonly ext: InputMaybe<StringQueryOperatorInput>;
-  readonly formats: InputMaybe<STRAPI_EVENTLogoFormatsFilterInput>;
   readonly hash: InputMaybe<StringQueryOperatorInput>;
   readonly height: InputMaybe<IntQueryOperatorInput>;
   readonly id: InputMaybe<IntQueryOperatorInput>;
@@ -3180,216 +3081,11 @@ type STRAPI_EVENTLogoFilterInput = {
   readonly width: InputMaybe<IntQueryOperatorInput>;
 };
 
-type STRAPI_EVENTLogoFormats = {
-  readonly large: Maybe<STRAPI_EVENTLogoFormatsLarge>;
-  readonly medium: Maybe<STRAPI_EVENTLogoFormatsMedium>;
-  readonly small: Maybe<STRAPI_EVENTLogoFormatsSmall>;
-  readonly thumbnail: Maybe<STRAPI_EVENTLogoFormatsThumbnail>;
-};
-
-type STRAPI_EVENTLogoFormatsFieldSelector = {
-  readonly large: InputMaybe<STRAPI_EVENTLogoFormatsLargeFieldSelector>;
-  readonly medium: InputMaybe<STRAPI_EVENTLogoFormatsMediumFieldSelector>;
-  readonly small: InputMaybe<STRAPI_EVENTLogoFormatsSmallFieldSelector>;
-  readonly thumbnail: InputMaybe<STRAPI_EVENTLogoFormatsThumbnailFieldSelector>;
-};
-
-type STRAPI_EVENTLogoFormatsFilterInput = {
-  readonly large: InputMaybe<STRAPI_EVENTLogoFormatsLargeFilterInput>;
-  readonly medium: InputMaybe<STRAPI_EVENTLogoFormatsMediumFilterInput>;
-  readonly small: InputMaybe<STRAPI_EVENTLogoFormatsSmallFilterInput>;
-  readonly thumbnail: InputMaybe<STRAPI_EVENTLogoFormatsThumbnailFilterInput>;
-};
-
-type STRAPI_EVENTLogoFormatsLarge = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly width: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_EVENTLogoFormatsLargeFieldSelector = {
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly hash: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly mime: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
-type STRAPI_EVENTLogoFormatsLargeFilterInput = {
-  readonly ext: InputMaybe<StringQueryOperatorInput>;
-  readonly hash: InputMaybe<StringQueryOperatorInput>;
-  readonly height: InputMaybe<IntQueryOperatorInput>;
-  readonly mime: InputMaybe<StringQueryOperatorInput>;
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly size: InputMaybe<FloatQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
-  readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_EVENTLogoFormatsLargeSortInput = {
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly hash: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly mime: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
-};
-
-type STRAPI_EVENTLogoFormatsMedium = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly width: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_EVENTLogoFormatsMediumFieldSelector = {
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly hash: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly mime: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
-type STRAPI_EVENTLogoFormatsMediumFilterInput = {
-  readonly ext: InputMaybe<StringQueryOperatorInput>;
-  readonly hash: InputMaybe<StringQueryOperatorInput>;
-  readonly height: InputMaybe<IntQueryOperatorInput>;
-  readonly mime: InputMaybe<StringQueryOperatorInput>;
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly size: InputMaybe<FloatQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
-  readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_EVENTLogoFormatsMediumSortInput = {
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly hash: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly mime: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
-};
-
-type STRAPI_EVENTLogoFormatsSmall = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly width: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_EVENTLogoFormatsSmallFieldSelector = {
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly hash: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly mime: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
-type STRAPI_EVENTLogoFormatsSmallFilterInput = {
-  readonly ext: InputMaybe<StringQueryOperatorInput>;
-  readonly hash: InputMaybe<StringQueryOperatorInput>;
-  readonly height: InputMaybe<IntQueryOperatorInput>;
-  readonly mime: InputMaybe<StringQueryOperatorInput>;
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly size: InputMaybe<FloatQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
-  readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_EVENTLogoFormatsSmallSortInput = {
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly hash: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly mime: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
-};
-
-type STRAPI_EVENTLogoFormatsSortInput = {
-  readonly large: InputMaybe<STRAPI_EVENTLogoFormatsLargeSortInput>;
-  readonly medium: InputMaybe<STRAPI_EVENTLogoFormatsMediumSortInput>;
-  readonly small: InputMaybe<STRAPI_EVENTLogoFormatsSmallSortInput>;
-  readonly thumbnail: InputMaybe<STRAPI_EVENTLogoFormatsThumbnailSortInput>;
-};
-
-type STRAPI_EVENTLogoFormatsThumbnail = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly width: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_EVENTLogoFormatsThumbnailFieldSelector = {
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly hash: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly mime: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
-type STRAPI_EVENTLogoFormatsThumbnailFilterInput = {
-  readonly ext: InputMaybe<StringQueryOperatorInput>;
-  readonly hash: InputMaybe<StringQueryOperatorInput>;
-  readonly height: InputMaybe<IntQueryOperatorInput>;
-  readonly mime: InputMaybe<StringQueryOperatorInput>;
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly size: InputMaybe<FloatQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
-  readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_EVENTLogoFormatsThumbnailSortInput = {
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly hash: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly mime: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
-};
-
 type STRAPI_EVENTLogoSortInput = {
   readonly alternativeText: InputMaybe<SortOrderEnum>;
   readonly caption: InputMaybe<SortOrderEnum>;
   readonly createdAt: InputMaybe<SortOrderEnum>;
   readonly ext: InputMaybe<SortOrderEnum>;
-  readonly formats: InputMaybe<STRAPI_EVENTLogoFormatsSortInput>;
   readonly hash: InputMaybe<SortOrderEnum>;
   readonly height: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
@@ -6450,7 +6146,6 @@ type STRAPI_SPEAKERLocalizationsSortInput = {
 
 type STRAPI_SPEAKERPhoto = {
   readonly alternativeText: Maybe<Scalars['String']>;
-  readonly caption: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly ext: Maybe<Scalars['String']>;
   readonly formats: Maybe<STRAPI_SPEAKERPhotoFormats>;
@@ -6483,7 +6178,6 @@ type STRAPI_SPEAKERPhoto_updatedAtArgs = {
 
 type STRAPI_SPEAKERPhotoFieldSelector = {
   readonly alternativeText: InputMaybe<FieldSelectorEnum>;
-  readonly caption: InputMaybe<FieldSelectorEnum>;
   readonly createdAt: InputMaybe<FieldSelectorEnum>;
   readonly ext: InputMaybe<FieldSelectorEnum>;
   readonly formats: InputMaybe<STRAPI_SPEAKERPhotoFormatsFieldSelector>;
@@ -6500,7 +6194,6 @@ type STRAPI_SPEAKERPhotoFieldSelector = {
 
 type STRAPI_SPEAKERPhotoFilterInput = {
   readonly alternativeText: InputMaybe<StringQueryOperatorInput>;
-  readonly caption: InputMaybe<StringQueryOperatorInput>;
   readonly createdAt: InputMaybe<DateQueryOperatorInput>;
   readonly ext: InputMaybe<StringQueryOperatorInput>;
   readonly formats: InputMaybe<STRAPI_SPEAKERPhotoFormatsFilterInput>;
@@ -6516,68 +6209,21 @@ type STRAPI_SPEAKERPhotoFilterInput = {
 };
 
 type STRAPI_SPEAKERPhotoFormats = {
-  readonly large: Maybe<STRAPI_SPEAKERPhotoFormatsLarge>;
   readonly medium: Maybe<STRAPI_SPEAKERPhotoFormatsMedium>;
   readonly small: Maybe<STRAPI_SPEAKERPhotoFormatsSmall>;
   readonly thumbnail: Maybe<STRAPI_SPEAKERPhotoFormatsThumbnail>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsFieldSelector = {
-  readonly large: InputMaybe<STRAPI_SPEAKERPhotoFormatsLargeFieldSelector>;
   readonly medium: InputMaybe<STRAPI_SPEAKERPhotoFormatsMediumFieldSelector>;
   readonly small: InputMaybe<STRAPI_SPEAKERPhotoFormatsSmallFieldSelector>;
   readonly thumbnail: InputMaybe<STRAPI_SPEAKERPhotoFormatsThumbnailFieldSelector>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsFilterInput = {
-  readonly large: InputMaybe<STRAPI_SPEAKERPhotoFormatsLargeFilterInput>;
   readonly medium: InputMaybe<STRAPI_SPEAKERPhotoFormatsMediumFilterInput>;
   readonly small: InputMaybe<STRAPI_SPEAKERPhotoFormatsSmallFilterInput>;
   readonly thumbnail: InputMaybe<STRAPI_SPEAKERPhotoFormatsThumbnailFilterInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLarge = {
-  readonly ext: Maybe<Scalars['String']>;
-  readonly hash: Maybe<Scalars['String']>;
-  readonly height: Maybe<Scalars['Int']>;
-  readonly mime: Maybe<Scalars['String']>;
-  readonly name: Maybe<Scalars['String']>;
-  readonly size: Maybe<Scalars['Float']>;
-  readonly url: Maybe<Scalars['String']>;
-  readonly width: Maybe<Scalars['Int']>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLargeFieldSelector = {
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly hash: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly mime: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLargeFilterInput = {
-  readonly ext: InputMaybe<StringQueryOperatorInput>;
-  readonly hash: InputMaybe<StringQueryOperatorInput>;
-  readonly height: InputMaybe<IntQueryOperatorInput>;
-  readonly mime: InputMaybe<StringQueryOperatorInput>;
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly size: InputMaybe<FloatQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
-  readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type STRAPI_SPEAKERPhotoFormatsLargeSortInput = {
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly hash: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly mime: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
 };
 
 type STRAPI_SPEAKERPhotoFormatsMedium = {
@@ -6677,7 +6323,6 @@ type STRAPI_SPEAKERPhotoFormatsSmallSortInput = {
 };
 
 type STRAPI_SPEAKERPhotoFormatsSortInput = {
-  readonly large: InputMaybe<STRAPI_SPEAKERPhotoFormatsLargeSortInput>;
   readonly medium: InputMaybe<STRAPI_SPEAKERPhotoFormatsMediumSortInput>;
   readonly small: InputMaybe<STRAPI_SPEAKERPhotoFormatsSmallSortInput>;
   readonly thumbnail: InputMaybe<STRAPI_SPEAKERPhotoFormatsThumbnailSortInput>;
@@ -6733,7 +6378,6 @@ type STRAPI_SPEAKERPhotoFormatsThumbnailSortInput = {
 
 type STRAPI_SPEAKERPhotoSortInput = {
   readonly alternativeText: InputMaybe<SortOrderEnum>;
-  readonly caption: InputMaybe<SortOrderEnum>;
   readonly createdAt: InputMaybe<SortOrderEnum>;
   readonly ext: InputMaybe<SortOrderEnum>;
   readonly formats: InputMaybe<STRAPI_SPEAKERPhotoFormatsSortInput>;

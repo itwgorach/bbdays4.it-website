@@ -7,6 +7,7 @@ import { Lecture, AgendaLiveInformationProps, Vote, VoteError, RatingEvent } fro
 import { useLanguageContext } from 'contexts/LanguageContext'
 
 const nameValidation = (name: string) => {
+  // accepr only letters ane special characters for user name, reject numbers
   const regex = /^[a-zA-Z\s\.,-]+$/
 
   if (name === '') return true
@@ -65,13 +66,15 @@ const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Le
 }
 
 const calculateTimeDifference = (eventDate: string) => {
+  const SECONDS_IN_A_DAY = 60 * 60 * 24
+
   const currentDate = new Date()
   const targetDate = new Date(eventDate)
 
   const difference = targetDate.getTime() - currentDate.getTime()
   const totalSeconds = Math.floor(difference / 1000)
-  const days = Math.floor(totalSeconds / (60 * 60 * 24))
-  const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / 3600)
+  const days = Math.floor(totalSeconds / SECONDS_IN_A_DAY)
+  const hours = Math.floor((totalSeconds % SECONDS_IN_A_DAY) / 3600)
   const minutes = Math.floor((totalSeconds % 3600) / 60)
   const seconds = totalSeconds % 60
 
@@ -88,7 +91,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   const [isOpenVote, setIsOpenVote] = useState(false)
   const [isOpenCounter, setIsOpenCounter] = useState(true)
   const [isSendRate, setIsSendRate] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(calculateTimeDifference(dateOfLectures))
+  const [timeLeft, setTimeLeft] = useState(calculateTimeDifference('2024.09.06'))
   const [vote, setVote] = useState<Vote>({
     educationalValue: 0,
     feedback: '',
@@ -128,7 +131,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       setIsOpenCounter(false)
     }
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeDifference(dateOfLectures))
+      setTimeLeft(calculateTimeDifference('2024.09.06'))
     }, 1000)
 
     return () => clearInterval(timer)
@@ -238,15 +241,25 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           <button className="agenda__button-close" onClick={() => setIsOpenCounter(false)}>
             <CloseButtonIcon />
           </button>
-          <p className="agenda__live-counter--number">
-            Zaczynamy za: {timeLeft.days}
-            <span className="agenda__live-counter--time-unit">{timeLeft.days === 1 ? 'dzień' : 'dni'}</span>{' '}
-            {formatNumber(timeLeft.hours)}
-            <span className="agenda__live-counter--time-unit"> godz.</span> {formatNumber(timeLeft.minutes)}
-            <span className="agenda__live-counter--time-unit"> min.</span>
-            {formatNumber(timeLeft.seconds)}
-            <span className="agenda__live-counter--time-unit">sec.</span>
-          </p>
+          {language === 'pl' ? (
+            <p className="agenda__live-counter--number">
+              Zaczynamy za: {timeLeft.days}
+              <span className="agenda__live-counter--time-unit">{timeLeft.days === 1 ? 'dzień' : 'dni'}</span>{' '}
+              {formatNumber(timeLeft.hours)}
+              <span className="agenda__live-counter--time-unit"> godz.</span> {formatNumber(timeLeft.minutes)}
+              <span className="agenda__live-counter--time-unit"> min.</span> {formatNumber(timeLeft.seconds)}
+              <span className="agenda__live-counter--time-unit">sec.</span>
+            </p>
+          ) : (
+            <p className="agenda__live-counter--number">
+              We start in: {timeLeft.days}
+              <span className="agenda__live-counter--time-unit">{timeLeft.days === 1 ? 'day' : 'days'}</span>{' '}
+              {formatNumber(timeLeft.hours)}
+              <span className="agenda__live-counter--time-unit"> hr.</span> {formatNumber(timeLeft.minutes)}
+              <span className="agenda__live-counter--time-unit"> min.</span> {formatNumber(timeLeft.seconds)}
+              <span className="agenda__live-counter--time-unit">sec.</span>
+            </p>
+          )}
         </div>
       </div>
     )

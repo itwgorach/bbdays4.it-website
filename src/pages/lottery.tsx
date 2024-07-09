@@ -21,7 +21,7 @@ const Lottery: React.FC = () => {
   const [isDrawing, setIsDrawing] = useState<boolean>(false)
   const { language } = useLanguageContext()
 
-  const password = 'a'
+  const password = process.env.GATSBY_LOTTERY_PASSWORD
 
   const hanglePassword = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === password) {
@@ -112,7 +112,7 @@ const Lottery: React.FC = () => {
     from: { opacity: 0 },
   })
 
-  const LotteryForm = (hanglePassword) => (
+  const LotteryForm = ({ hanglePassword }) => (
     <form className="lottery-content--form">
       <input className="lottery-content--input" type="password" onChange={hanglePassword} />
     </form>

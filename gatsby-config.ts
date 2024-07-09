@@ -6,6 +6,7 @@ dotenv.config()
 const strapiConfig = {
   accessToken: process.env.STRAPI_TOKEN,
   apiURL: process.env.STRAPI_API_URL,
+  password: process.env.LOTTERY_PASSWORD,
   collectionTypes: [],
   singleTypes: [
     {
