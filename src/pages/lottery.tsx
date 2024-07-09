@@ -1,19 +1,47 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import { useSpring, animated } from 'react-spring'
+import { useLanguageContext } from 'contexts/LanguageContext'
 import confetti from 'canvas-confetti'
 import logo from '../../static/images/bbdays_logo.png'
 
-const Lottery = () => {
-  const [isLogged, setIsLogged] = useState(false)
-  const [winner, setWinner] = useState('')
-  const [isDrawing, setIsDrawing] = useState(false)
+type Participant = {
+  attributes: {
+    nick: string
+    speaker: string
+  }
+}
 
-  const password = 'a'
+type ApiResponse = {
+  data: Participant[]
+}
 
-  const hanglePassword = (event) => {
+const Lottery: React.FC = () => {
+  const [isLogged, setIsLogged] = useState<boolean>(false)
+  const [winner, setWinner] = useState<string>('')
+  const [isDrawing, setIsDrawing] = useState<boolean>(false)
+  const { language } = useLanguageContext()
+
+  const password = process.env.GATSBY_LOTTERY_PASSWORD
+
+  const hanglePassword = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === password) {
       setIsLogged(true)
     }
+  }
+
+  const getUniqueParticipants = (data: Participant[]): Participant[] => {
+    const uniqueVotes = new Map<string, Participant>()
+
+    data.forEach((participant) => {
+      const { nick, speaker } = participant.attributes
+      const key = `${nick}-${speaker}`
+
+      if (!uniqueVotes.has(key)) {
+        uniqueVotes.set(key, participant)
+      }
+    })
+
+    return Array.from(uniqueVotes.values())
   }
 
   const drawWinner = async () => {
@@ -22,12 +50,18 @@ const Lottery = () => {
       const response = await fetch('https://api.bbdays4it.selleo.com/api/speaker-ratings/', {
         method: 'GET',
       })
-      const responseData = await response.json()
-      const getParticipants = responseData.data.filter((participant) => {
+
+      if (!response.ok) throw new Error('Failed to fetch ratings')
+
+      const responseData: ApiResponse = await response.json()
+
+      const uniqueParticipants = getUniqueParticipants(responseData.data)
+
+      const getParticipants = uniqueParticipants.filter((participant) => {
         return participant.attributes.nick
       })
 
-      const getWinner = (prevWinner) => {
+      const getWinner = (prevWinner: string): string => {
         const newWinner = getParticipants[Math.floor(Math.random() * getParticipants.length)].attributes.nick
         const winnerUpperCase = newWinner.toUpperCase()
 
@@ -42,11 +76,9 @@ const Lottery = () => {
         setWinner(newWinner)
         setIsDrawing(false)
         launchConfetti()
-      }, 2000)
-
-      if (!response.ok) throw new Error('Failed to submit rating')
+      }, 5000)
     } catch (error) {
-      console.error('Error submitting rating:', error)
+      console.error('Error fetching ratings:', error)
       setIsDrawing(false)
     }
   }
@@ -112,7 +144,27 @@ const Lottery = () => {
     <div className="lottery">
       <div className="lottery-content">
         <img alt="bbdays logo" className="lottery-logo" src={logo} />
-        {isLogged ? <LotteryDraw /> : <LotteryForm hanglePassword={hanglePassword} />}
+        {isLogged ? (
+          <>
+            {winner && !isDrawing ? (
+              <animated.h2 style={winnerSpring} className="lottery-content--winner">
+                {winner}🏆🥳
+              </animated.h2>
+            ) : null}
+            <div id="lottery">
+              {isDrawing && (
+                <animated.div style={drawingSpring} className="lottery-content--drawing">
+                  {language === 'pl' ? 'Losowanie...' : 'Drawing...'}
+                </animated.div>
+              )}
+            </div>
+            <button className="lottery-content--button" onClick={drawWinner}>
+              {language === 'pl' ? 'Losuj' : 'Draw'}
+            </button>
+          </>
+        ) : (
+          <LotteryForm hanglePassword={hanglePassword} />
+        )}
       </div>
     </div>
   )

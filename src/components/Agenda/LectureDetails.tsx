@@ -167,7 +167,7 @@ const LectureDetails: FC<ModalType> = ({
           <Image
             alt={`${firstNameTrimmed} ${lastNameTrimmed}`}
             style={{ maxHeight: '480px', minWidth: 'unset' }}
-            url={photo && photo.url}
+            url={photo && 'https://api.bbdays4it.selleo.com' + photo.url}
           />
           <div className="lecture-details__speaker-info">
             <div className="lecture-details__speaker-name">{`${firstNameTrimmed} ${lastNameTrimmed}`}</div>

@@ -6,10 +6,10 @@ import MobileHeader from './Headers/MobileHeader'
 import DesktopHeader from './Headers/DesktopHeader'
 
 const plLinksData: LinkType[] = [
-  {
-    name: 'Nagrania',
-    path: 'nagrania',
-  },
+  // {
+  //   name: 'Nagrania',
+  //   path: 'nagrania',
+  // },
   {
     name: 'Prelegenci',
     path: '#prelegenci',
@@ -37,10 +37,10 @@ const plLinksData: LinkType[] = [
 ]
 
 const enLinksData: LinkType[] = [
-  {
-    name: 'Videos',
-    path: 'nagrania',
-  },
+  // {
+  //   name: 'Videos',
+  //   path: 'nagrania',
+  // },
   {
     name: 'Speakers',
     path: '#prelegenci',
@@ -62,16 +62,16 @@ const enLinksData: LinkType[] = [
     path: '#organizatorzy',
   },
   {
-    name: 'Edition 2022',
-    path: 'https://2022.bbdays4.it/',
+    name: 'Edition 2023',
+    path: 'https://2023.bbdays4.it/',
   },
 ]
 
 const plLinksDataMobile: LinkType[] = [
-  {
-    name: 'Nagrania',
-    path: 'nagrania',
-  },
+  // {
+  //   name: 'Nagrania',
+  //   path: 'nagrania',
+  // },
   {
     name: 'Prelegenci',
     path: '#prelegenci',
@@ -99,10 +99,10 @@ const plLinksDataMobile: LinkType[] = [
 ]
 
 const enLinksDataMobile: LinkType[] = [
-  {
-    name: 'Videos',
-    path: 'nagrania',
-  },
+  // {
+  //   name: 'Videos',
+  //   path: 'nagrania',
+  // },
   {
     name: 'Speakers',
     path: '#prelegenci',
@@ -124,8 +124,8 @@ const enLinksDataMobile: LinkType[] = [
     path: '#organizatorzy',
   },
   {
-    name: 'Edition 2022',
-    path: 'https://2022.bbdays4.it/',
+    name: 'Edition 2023',
+    path: 'https://2023.bbdays4.it/',
   },
 ]
 

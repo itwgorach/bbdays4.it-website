@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'components/Modal'
 import { Rating } from 'react-simple-star-rating'
 import { getSpeaker } from 'utils/agendaDataProcessing'
 import { CloseButtonIcon } from 'components/icons'
 import { Lecture, AgendaLiveInformationProps, Vote, VoteError, RatingEvent } from 'types/AgendaType'
+import { useLanguageContext } from 'contexts/LanguageContext'
 
 const nameValidation = (name: string) => {
+  // accepr only letters ane special characters for user name, reject numbers
+  const regex = /^[a-zA-Z\s\.,-]+$/
+
   if (name === '') return true
 
   const [firstName, lastName] = name.split(' ')
+
+  if (firstName === '' || lastName === '') return false
+  if (!regex.test(name)) return false
 
   return lastName ? `${firstName} ${lastName}` : false
 }
@@ -58,6 +65,23 @@ const findPrevLecture = (activeLecture: Lecture | null, lectures: Lecture[]): Le
   return null
 }
 
+const calculateTimeDifference = (eventDate: string) => {
+  const SECONDS_IN_A_DAY = 60 * 60 * 24
+
+  const currentDate = new Date()
+  const targetDate = new Date(eventDate)
+
+  const difference = targetDate.getTime() - currentDate.getTime()
+  const totalSeconds = Math.floor(difference / 1000)
+  const days = Math.floor(totalSeconds / SECONDS_IN_A_DAY)
+  const hours = Math.floor((totalSeconds % SECONDS_IN_A_DAY) / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+
+  return { days, hours, minutes, seconds }
+}
+const formatNumber = (num: number) => (num < 10 ? `0${num}` : num)
+
 const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   dateOfLectures,
   handleModalToggle,
@@ -65,6 +89,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   speakers,
 }) => {
   const [isOpenVote, setIsOpenVote] = useState(false)
+  const [isOpenCounter, setIsOpenCounter] = useState(true)
+  const [isSendRate, setIsSendRate] = useState(false)
+  const [timeLeft, setTimeLeft] = useState(calculateTimeDifference('2024.09.06'))
   const [vote, setVote] = useState<Vote>({
     educationalValue: 0,
     feedback: '',
@@ -75,10 +102,12 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     educationalValue: false,
     name: false,
     speech: false,
+    feedback: false,
   })
+  const { language } = useLanguageContext()
+
   const activeLecture = getActiveLecture(dateOfLectures, lectures)
   const prevLecture = findPrevLecture(activeLecture, lectures)
-
   const votedStorage =
     typeof localStorage !== 'undefined' ? localStorage.getItem(`${prevLecture?.subtitle}`) : undefined
   const nickStorage = typeof localStorage !== 'undefined' ? localStorage.getItem('nick') : undefined
@@ -97,6 +126,16 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       paragraph: '(Czy nauczyłeś się nowych rzeczy, czy prezentacja zgłębiła temat)',
     },
   ]
+  useEffect(() => {
+    if (timeLeft.days > 60 || timeLeft.days <= 0) {
+      setIsOpenCounter(false)
+    }
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeDifference('2024.09.06'))
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [timeLeft.days])
 
   const voteModal = () => {
     if (!isOpenVote) {
@@ -125,15 +164,19 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   }
 
   const submitRating = async () => {
-    setVoteError({ educationalValue: false, name: false, speech: false })
+    setVoteError({ educationalValue: false, name: false, speech: false, feedback: false })
 
     const nameError = nameValidation(nickStorage ? nickStorage : vote.nick)
 
     if (!vote.educationalValue) setVoteError((prevValue) => ({ ...prevValue, educationalValue: true }))
     if (!vote.speech) setVoteError((prevValue) => ({ ...prevValue, speech: true }))
+    if (vote.feedback.length > 1000) setVoteError((prevValue) => ({ ...prevValue, feedback: true }))
     if (!nameError) setVoteError((prevValue) => ({ ...prevValue, name: true }))
 
+    if (!vote.educationalValue || !vote.speech || !nameError || vote.feedback.length > 1000) return
+
     if (vote.educationalValue && vote.speech && nameError) {
+      setIsSendRate(true)
       const ratingData = {
         data: {
           average: ((vote.educationalValue + vote.speech) / 2).toFixed(2),
@@ -160,17 +203,23 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           nick: '',
           speech: 0,
         })
+
         if (typeof localStorage !== 'undefined') {
           localStorage.setItem(prevLecture?.subtitle, JSON.stringify(ratingData))
         }
+
         if (!nickStorage && ratingData.data.nick !== '') {
           if (typeof localStorage !== 'undefined') {
             localStorage.setItem('nick', ratingData.data.nick)
           }
         }
-        setIsOpenVote(!isOpenVote)
       } catch (error) {
         console.error('Error submitting rating:', error)
+      } finally {
+        setTimeout(() => {
+          setIsSendRate(false)
+          setIsOpenVote(!isOpenVote)
+        }, 4000)
       }
     }
   }
@@ -185,6 +234,37 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       handleModalToggle(event, modalProps)
     }
   }
+  if (isOpenCounter)
+    return (
+      <div className="agenda__live">
+        <div className="agenda__live-counter">
+          <button className="agenda__button-close" onClick={() => setIsOpenCounter(false)}>
+            <CloseButtonIcon />
+          </button>
+          {language === 'pl' ? (
+            <p className="agenda__live-counter--number">
+              Zaczynamy za: {timeLeft.days}
+              <span className="agenda__live-counter--time-unit">{timeLeft.days === 1 ? 'dzień' : 'dni'}</span>{' '}
+              {formatNumber(timeLeft.hours)}
+              <span className="agenda__live-counter--time-unit"> godz.</span> {formatNumber(timeLeft.minutes)}
+              <span className="agenda__live-counter--time-unit"> min.</span> {formatNumber(timeLeft.seconds)}
+              <span className="agenda__live-counter--time-unit">sec.</span>
+            </p>
+          ) : (
+            <p className="agenda__live-counter--number">
+              We start in: {timeLeft.days}
+              <span className="agenda__live-counter--time-unit">{timeLeft.days === 1 ? 'day' : 'days'}</span>{' '}
+              {formatNumber(timeLeft.hours)}
+              <span className="agenda__live-counter--time-unit"> hr.</span> {formatNumber(timeLeft.minutes)}
+              <span className="agenda__live-counter--time-unit"> min.</span> {formatNumber(timeLeft.seconds)}
+              <span className="agenda__live-counter--time-unit">sec.</span>
+            </p>
+          )}
+        </div>
+      </div>
+    )
+
+  if (!activeLecture) return null
 
   if (!activeLecture) return null
 
@@ -228,6 +308,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                     value={vote.feedback}
                     onChange={(event) => handleRating({ event, name: 'feedback' })}
                   />
+                  <span className={vote.feedback.length > 1000 ? 'agenda__live-input--error' : undefined}>
+                    {vote.feedback.length + '/1000'}
+                  </span>
                   {!nickStorage ? (
                     <>
                       <label className="agenda__live-input--label" htmlFor="nick">
@@ -254,17 +337,37 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
                     </p>
                   )}
                   <button className="agenda__live-button" onClick={submitRating}>
-                    Wyślij
+                    {language === 'pl' ? 'Wyślij' : 'Send'}
                   </button>
                 </>
               ) : (
-                <div className="agenda__live-voted">
-                  <p>Już oddałeś głos na tego prelegenta 🫶</p>
-                  <p>Możliwość głosowania na kolejnego pojawi się podczas następnej prelekcji.</p>
-                  <p>Dziękujemy!</p>
-                  <button className="agenda__live-button" onClick={() => setIsOpenVote(!isOpenVote)}>
-                    Zamknij
-                  </button>
+                <div>
+                  {' '}
+                  {isSendRate ? (
+                    <p className="agenda__live-thanks">
+                      Dziękujemy za oddanie głosu! Jeśli zostawiłeś swoje dane, zapraszamy na losowanie nagród podczas
+                      zakończenia konferencji 🫡
+                    </p>
+                  ) : (
+                    <div className="agenda__live-voted">
+                      {language === 'pl' ? (
+                        <>
+                          <p>Już oddałeś głos na tego prelegenta 🫶</p>
+                          <p>Możliwość głosowania na kolejnego pojawi się podczas następnej prelekcji.</p>
+                          <p>Dziękujemy!</p>
+                        </>
+                      ) : (
+                        <>
+                          <p>You have already voted for this speaker 🫶</p>
+                          <p>The opportunity to vote for the next one will appear during the next lecture.</p>
+                          <p>Thank you!</p>
+                        </>
+                      )}
+                      <button className="agenda__live-button" onClick={() => setIsOpenVote(!isOpenVote)}>
+                        {language === 'pl' ? 'Zamknij' : 'Close'}
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -273,7 +376,9 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
             className={`agenda__live-${activeLecture.backgroundColor} agenda__live-description`}
             onClick={speakerModal}>
             <div className="agenda__live-lecturer">
-              {activeLecture.subtitle && <p className="agenda__live-header">AKTUALNY WYKŁAD:</p>}
+              {activeLecture.subtitle && (
+                <p className="agenda__live-header">{language === 'pl' ? 'AKTUALNY WYKŁAD:' : 'CURRENT LECTURE:'}</p>
+              )}
               {activeLecture.subtitle && `${activeLecture.subtitle}: `}
               <span className="agenda__live-title"> {activeLecture.title}</span>
               {activeLecture.logo && (
@@ -286,7 +391,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           {prevLecture && (
             <div className="agenda__live-vote">
               <button className="agenda__live-vote--button" onClick={voteModal}>
-                Zagłosuj na poprzedniego prelegenta
+                {language === 'pl' ? 'Zagłosuj na poprzedniego prelegenta' : 'Vote for the previous speaker'}
               </button>
             </div>
           )}

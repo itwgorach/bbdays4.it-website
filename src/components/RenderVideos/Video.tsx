@@ -3,8 +3,6 @@ import React, { FC } from 'react'
 import { VideoType } from 'types'
 
 const Video: FC<VideoType> = ({ thumbnail, videoUrl, subtitle }) => {
-  console.log(thumbnail)
-
   const { language } = useLanguageContext()
   return (
     <div className="videos__video">
@@ -13,11 +11,11 @@ const Video: FC<VideoType> = ({ thumbnail, videoUrl, subtitle }) => {
         className="videos__video-img"
         src={`https://api.bbdays4it.selleo.com${thumbnail?.url}`}
       />
-      <a href={videoUrl} target="_blank" rel="noopener noreferrer">
-        <button className="videos__video-button videos__video-button-card">
+      <button className="videos__video-button videos__video-button-card">
+        <a href={videoUrl} target="_blank" rel="noopener noreferrer">
           {language === 'pl' ? 'Zobacz' : 'See'}
-        </button>
-      </a>
+        </a>
+      </button>
       <h3 className="videos__video-subtitle">{subtitle}</h3>
     </div>
   )

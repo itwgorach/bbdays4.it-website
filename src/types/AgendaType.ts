@@ -23,6 +23,7 @@ export type VoteError = {
   educationalValue: boolean
   speech: boolean
   name: boolean
+  feedback: boolean
 }
 
 export type RatingEvent = {

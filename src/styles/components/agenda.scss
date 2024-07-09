@@ -14,9 +14,62 @@
     align-items: center;
     top: 79px;
     width: 100%;
-    border-top: 1px solid white;
+    &::before {
+      @include dashedBorder(false, top, $color-black);
+
+      content: '';
+      height: 1px;
+      position: absolute;
+      top: 1px;
+      width: 100%;
+    }
 
     z-index: 40;
+
+    &-counter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(4.5px);
+      -webkit-backdrop-filter: blur(4.5px);
+      border-bottom: 1px solid rgba(78, 78, 78, 0.6);
+      button {
+        opacity: 0.5;
+      }
+      &--number {
+        padding: 0 $m-lg;
+        text-align: center;
+        color: $color-white;
+        font-size: $font-size-base;
+        font-family: $font-family-header;
+        font-weight: $font-weight-bold;
+        font-variant-numeric: tabular-nums;
+
+        @include media-breakpoint-up(sm) {
+          font-size: $font-size-xl;
+        }
+        @include media-breakpoint-up(lg) {
+          font-size: $font-size-2xl;
+        }
+      }
+      &--time-unit {
+        font-family: $font-face-body;
+        font-size: $font-size-base;
+      }
+    }
+
+    &-thanks {
+      max-width: 600px;
+      text-align: center;
+      color: $color-dark;
+      font-family: $font-family-body;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
+    }
 
     &-voted {
       text-align: center;
@@ -87,6 +140,9 @@
         max-width: 80%;
         min-width: 60%;
       }
+      &--error {
+        color: red;
+      }
       &--label {
         margin: $m-sm 0;
         text-align: center;
@@ -134,9 +190,12 @@
       }
       &-error,
       &-error--name {
+        padding: 0;
+        margin: 0;
         font-family: $font-family-body;
-        font-size: $font-size-lg;
+        font-size: $font-size-xl;
         font-weight: $font-weight-semi-bold;
+        line-height: $m-sm;
         color: red;
         &--name {
           font-size: $font-size-sm;
@@ -147,6 +206,9 @@
         text-align: center;
         margin: $m-base 0 0;
         padding: 0;
+      }
+      &-title {
+        line-height: $m-lg;
       }
       &-subtitle {
         margin: 0;
@@ -161,7 +223,7 @@
 
     &-controler {
       display: flex;
-      min-height: 90px;
+      min-height: 80px;
       width: 100vw;
     }
     &-description {
