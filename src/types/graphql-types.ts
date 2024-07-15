@@ -3323,6 +3323,7 @@ type STRAPI_HOMEPAGELocalizationsDataAttributesHomepage = {
   readonly backgroundColor: Maybe<Scalars['String']>;
   readonly buttonText: Maybe<Scalars['String']>;
   readonly buttonUrl: Maybe<Scalars['String']>;
+  readonly dateOfLectures: Maybe<Scalars['String']>;
   readonly footer: Maybe<Scalars['String']>;
   readonly id: Maybe<Scalars['Int']>;
   readonly isSectionVisible: Maybe<Scalars['Boolean']>;
@@ -3341,6 +3342,7 @@ type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFieldSelector = {
   readonly backgroundColor: InputMaybe<FieldSelectorEnum>;
   readonly buttonText: InputMaybe<FieldSelectorEnum>;
   readonly buttonUrl: InputMaybe<FieldSelectorEnum>;
+  readonly dateOfLectures: InputMaybe<FieldSelectorEnum>;
   readonly footer: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly isSectionVisible: InputMaybe<FieldSelectorEnum>;
@@ -3359,6 +3361,7 @@ type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageFilterInput = {
   readonly backgroundColor: InputMaybe<StringQueryOperatorInput>;
   readonly buttonText: InputMaybe<StringQueryOperatorInput>;
   readonly buttonUrl: InputMaybe<StringQueryOperatorInput>;
+  readonly dateOfLectures: InputMaybe<StringQueryOperatorInput>;
   readonly footer: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<IntQueryOperatorInput>;
   readonly isSectionVisible: InputMaybe<BooleanQueryOperatorInput>;
@@ -3381,6 +3384,7 @@ type STRAPI_HOMEPAGELocalizationsDataAttributesHomepageSortInput = {
   readonly backgroundColor: InputMaybe<SortOrderEnum>;
   readonly buttonText: InputMaybe<SortOrderEnum>;
   readonly buttonUrl: InputMaybe<SortOrderEnum>;
+  readonly dateOfLectures: InputMaybe<SortOrderEnum>;
   readonly footer: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly isSectionVisible: InputMaybe<SortOrderEnum>;

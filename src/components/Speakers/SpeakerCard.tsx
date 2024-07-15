@@ -30,7 +30,7 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
     bio,
   } = speaker
   const fullName = getSpeakerFullName(speaker)
-  const imageUrl = `https://api.bbdays4it.selleo.com${photo?.url}`
+  const imageUrl = `${photo?.url}`
 
   const getImagePlaceholderClasses = cx('speaker-card__image-placeholder', {
     [`-${backgroundColor}`]: backgroundColor,
