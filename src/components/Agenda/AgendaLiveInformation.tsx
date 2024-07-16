@@ -243,20 +243,20 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
           </button>
           {language === 'pl' ? (
             <p className="agenda__live-counter--number">
-              Zaczynamy za: {timeLeft.days}
-              <span className="agenda__live-counter--time-unit">{timeLeft.days === 1 ? 'dzień' : 'dni'}</span>{' '}
-              {formatNumber(timeLeft.hours)}
-              <span className="agenda__live-counter--time-unit"> godz.</span> {formatNumber(timeLeft.minutes)}
-              <span className="agenda__live-counter--time-unit"> min.</span> {formatNumber(timeLeft.seconds)}
+              Zaczynamy za: {+timeLeft.days}
+              <span className="agenda__live-counter--time-unit">{+timeLeft.days === 1 ? 'dzień' : 'dni'}</span>{' '}
+              {formatNumber(+timeLeft.hours)}
+              <span className="agenda__live-counter--time-unit"> godz.</span> {formatNumber(+timeLeft.minutes)}
+              <span className="agenda__live-counter--time-unit"> min.</span> {formatNumber(+timeLeft.seconds)}
               <span className="agenda__live-counter--time-unit">sec.</span>
             </p>
           ) : (
             <p className="agenda__live-counter--number">
-              We start in: {timeLeft.days}
-              <span className="agenda__live-counter--time-unit">{timeLeft.days === 1 ? 'day' : 'days'}</span>{' '}
-              {formatNumber(timeLeft.hours)}
-              <span className="agenda__live-counter--time-unit"> hr.</span> {formatNumber(timeLeft.minutes)}
-              <span className="agenda__live-counter--time-unit"> min.</span> {formatNumber(timeLeft.seconds)}
+              We start in: {+timeLeft.days}
+              <span className="agenda__live-counter--time-unit">{+timeLeft.days === 1 ? 'day' : 'days'}</span>{' '}
+              {formatNumber(+timeLeft.hours)}
+              <span className="agenda__live-counter--time-unit"> hr.</span> {formatNumber(+timeLeft.minutes)}
+              <span className="agenda__live-counter--time-unit"> min.</span> {formatNumber(+timeLeft.seconds)}
               <span className="agenda__live-counter--time-unit">sec.</span>
             </p>
           )}
@@ -266,7 +266,6 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
 
   if (!activeLecture) return null
 
-  if (!activeLecture) return null
 
   return (
     <div className="agenda__live">

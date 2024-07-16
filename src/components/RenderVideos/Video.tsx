@@ -9,7 +9,7 @@ const Video: FC<VideoType> = ({ thumbnail, videoUrl, subtitle }) => {
       <img
         alt={thumbnail?.alternativeText}
         className="videos__video-img"
-        src={`https://api.bbdays4it.selleo.com${thumbnail?.url}`}
+        src={thumbnail?.url}
       />
       <button className="videos__video-button videos__video-button-card">
         <a href={videoUrl} target="_blank" rel="noopener noreferrer">

@@ -23,11 +23,11 @@ const plLinksData: LinkType[] = [
     path: '#agenda',
   },
   {
-    name: 'Festival in numbers',
+    name: 'Festiwal w liczbach',
     path: '#festiwal_w_liczbach',
   },
   {
-    name: 'Organizers',
+    name: 'Organizatorzy',
     path: '#organizatorzy',
   },
   {
