@@ -31,8 +31,8 @@ const getActiveLecture = (dateOfLectures: string, lectures: Lecture[]): Lecture 
 
     let endDate: number
     if (!lectures[index + 1]) {
-      // Add 2 hours to the last lecture
-      endDate = startDate + 120 * 60 * 1000
+      // Add 30 min to the last lecture
+      endDate = startDate + 30 * 60 * 1000
     } else {
       const nextLecture = lectures[index + 1]
       const [nextHours, nextMinutes] = nextLecture.startHour.split(':').map(Number)
@@ -80,6 +80,7 @@ const calculateTimeDifference = (eventDate: string) => {
 
   return { days, hours, minutes, seconds }
 }
+
 const formatNumber = (num: number) => (num < 10 ? `0${num}` : num)
 
 const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
@@ -91,7 +92,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
   const [isOpenVote, setIsOpenVote] = useState(false)
   const [isOpenCounter, setIsOpenCounter] = useState(true)
   const [isSendRate, setIsSendRate] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(calculateTimeDifference('2024.09.06'))
+  const [timeLeft, setTimeLeft] = useState(calculateTimeDifference('2024-09-06'))
   const [vote, setVote] = useState<Vote>({
     educationalValue: 0,
     feedback: '',
@@ -131,7 +132,7 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
       setIsOpenCounter(false)
     }
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeDifference('2024.09.06'))
+      setTimeLeft(calculateTimeDifference('2024-09-06'))
     }, 1000)
 
     return () => clearInterval(timer)
@@ -265,7 +266,6 @@ const AgendaLiveInformation: React.FC<AgendaLiveInformationProps> = ({
     )
 
   if (!activeLecture) return null
-
 
   return (
     <div className="agenda__live">
