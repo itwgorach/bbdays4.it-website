@@ -86,7 +86,7 @@ const EventDetails: FC<EventDetailsType> = ({ data, pageContext }) => {
         </div>
         <div className="controler-info">
           <div className="controler-info--container">
-            <div>
+            <div className="controler-info--date-background">
               <p>{newDate}</p>
               <p>
                 {event.startHour} - {event.endHour}
