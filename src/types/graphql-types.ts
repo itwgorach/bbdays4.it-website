@@ -9086,6 +9086,7 @@ type STRAPI__MEDIAFormatsLarge = {
   readonly mime: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
   readonly size: Maybe<Scalars['Float']>;
+  readonly sizeInBytes: Maybe<Scalars['Int']>;
   readonly url: Maybe<Scalars['String']>;
   readonly width: Maybe<Scalars['Int']>;
 };
@@ -9097,6 +9098,7 @@ type STRAPI__MEDIAFormatsLargeFieldSelector = {
   readonly mime: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
   readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly sizeInBytes: InputMaybe<FieldSelectorEnum>;
   readonly url: InputMaybe<FieldSelectorEnum>;
   readonly width: InputMaybe<FieldSelectorEnum>;
 };
@@ -9108,6 +9110,7 @@ type STRAPI__MEDIAFormatsLargeFilterInput = {
   readonly mime: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
   readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly sizeInBytes: InputMaybe<IntQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<IntQueryOperatorInput>;
 };
@@ -9119,6 +9122,7 @@ type STRAPI__MEDIAFormatsLargeSortInput = {
   readonly mime: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
   readonly size: InputMaybe<SortOrderEnum>;
+  readonly sizeInBytes: InputMaybe<SortOrderEnum>;
   readonly url: InputMaybe<SortOrderEnum>;
   readonly width: InputMaybe<SortOrderEnum>;
 };
@@ -9130,6 +9134,7 @@ type STRAPI__MEDIAFormatsMedium = {
   readonly mime: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
   readonly size: Maybe<Scalars['Float']>;
+  readonly sizeInBytes: Maybe<Scalars['Int']>;
   readonly url: Maybe<Scalars['String']>;
   readonly width: Maybe<Scalars['Int']>;
 };
@@ -9141,6 +9146,7 @@ type STRAPI__MEDIAFormatsMediumFieldSelector = {
   readonly mime: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
   readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly sizeInBytes: InputMaybe<FieldSelectorEnum>;
   readonly url: InputMaybe<FieldSelectorEnum>;
   readonly width: InputMaybe<FieldSelectorEnum>;
 };
@@ -9152,6 +9158,7 @@ type STRAPI__MEDIAFormatsMediumFilterInput = {
   readonly mime: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
   readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly sizeInBytes: InputMaybe<IntQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<IntQueryOperatorInput>;
 };
@@ -9163,6 +9170,7 @@ type STRAPI__MEDIAFormatsMediumSortInput = {
   readonly mime: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
   readonly size: InputMaybe<SortOrderEnum>;
+  readonly sizeInBytes: InputMaybe<SortOrderEnum>;
   readonly url: InputMaybe<SortOrderEnum>;
   readonly width: InputMaybe<SortOrderEnum>;
 };
@@ -9174,6 +9182,7 @@ type STRAPI__MEDIAFormatsSmall = {
   readonly mime: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
   readonly size: Maybe<Scalars['Float']>;
+  readonly sizeInBytes: Maybe<Scalars['Int']>;
   readonly url: Maybe<Scalars['String']>;
   readonly width: Maybe<Scalars['Int']>;
 };
@@ -9185,6 +9194,7 @@ type STRAPI__MEDIAFormatsSmallFieldSelector = {
   readonly mime: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
   readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly sizeInBytes: InputMaybe<FieldSelectorEnum>;
   readonly url: InputMaybe<FieldSelectorEnum>;
   readonly width: InputMaybe<FieldSelectorEnum>;
 };
@@ -9196,6 +9206,7 @@ type STRAPI__MEDIAFormatsSmallFilterInput = {
   readonly mime: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
   readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly sizeInBytes: InputMaybe<IntQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<IntQueryOperatorInput>;
 };
@@ -9207,6 +9218,7 @@ type STRAPI__MEDIAFormatsSmallSortInput = {
   readonly mime: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
   readonly size: InputMaybe<SortOrderEnum>;
+  readonly sizeInBytes: InputMaybe<SortOrderEnum>;
   readonly url: InputMaybe<SortOrderEnum>;
   readonly width: InputMaybe<SortOrderEnum>;
 };
@@ -9225,6 +9237,7 @@ type STRAPI__MEDIAFormatsThumbnail = {
   readonly mime: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
   readonly size: Maybe<Scalars['Float']>;
+  readonly sizeInBytes: Maybe<Scalars['Int']>;
   readonly url: Maybe<Scalars['String']>;
   readonly width: Maybe<Scalars['Int']>;
 };
@@ -9236,6 +9249,7 @@ type STRAPI__MEDIAFormatsThumbnailFieldSelector = {
   readonly mime: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
   readonly size: InputMaybe<FieldSelectorEnum>;
+  readonly sizeInBytes: InputMaybe<FieldSelectorEnum>;
   readonly url: InputMaybe<FieldSelectorEnum>;
   readonly width: InputMaybe<FieldSelectorEnum>;
 };
@@ -9247,6 +9261,7 @@ type STRAPI__MEDIAFormatsThumbnailFilterInput = {
   readonly mime: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
   readonly size: InputMaybe<FloatQueryOperatorInput>;
+  readonly sizeInBytes: InputMaybe<IntQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<IntQueryOperatorInput>;
 };
@@ -9258,6 +9273,7 @@ type STRAPI__MEDIAFormatsThumbnailSortInput = {
   readonly mime: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
   readonly size: InputMaybe<SortOrderEnum>;
+  readonly sizeInBytes: InputMaybe<SortOrderEnum>;
   readonly url: InputMaybe<SortOrderEnum>;
   readonly width: InputMaybe<SortOrderEnum>;
 };
