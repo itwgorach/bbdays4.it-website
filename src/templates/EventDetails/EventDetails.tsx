@@ -4,8 +4,6 @@ import React, { FC, useMemo } from 'react'
 import EventDetailsType from 'types/EventDetailsType'
 
 const EventDetails: FC<EventDetailsType> = ({ data, pageContext }) => {
-  console.log(data.strapiComponentBaseSchedule)
-
   const { events } = data.strapiComponentBaseSchedule
   const { slug } = pageContext
   const { language } = useLanguageContext()
@@ -40,6 +38,10 @@ const EventDetails: FC<EventDetailsType> = ({ data, pageContext }) => {
       'November',
       'December',
     ],
+  }
+
+  const convertNewLinesToHTML = (text: string): string => {
+    return text.replace(/\n/g, '<br>')
   }
 
   const event = events.find((event) => event.eventSlug === slug)
@@ -80,7 +82,7 @@ const EventDetails: FC<EventDetailsType> = ({ data, pageContext }) => {
             alt={event.title}
             className="controler-description-image controler-description-image--right"
           />
-          <p>{localizedEvent.eventDescription}</p>
+          <p dangerouslySetInnerHTML={{ __html: convertNewLinesToHTML(localizedEvent.eventDescription) }}></p>
         </div>
         <div className="controler-info">
           <div className="controler-info--container">
@@ -93,7 +95,7 @@ const EventDetails: FC<EventDetailsType> = ({ data, pageContext }) => {
             {event.eventAddressText && (
               <p>
                 <a href={event.eventAddressUrl} rel="noopener noreferrer" target="_blank">
-                  {event.eventAddressText}
+                  {localizedEvent.eventAddressText}
                 </a>
               </p>
             )}
@@ -106,7 +108,7 @@ const EventDetails: FC<EventDetailsType> = ({ data, pageContext }) => {
               alt={event.title}
               className="controler-description-image controler-description-image--left"
             />
-            <p>{localizedEvent.eventSecondDescription}</p>
+            <p dangerouslySetInnerHTML={{ __html: convertNewLinesToHTML(localizedEvent.eventSecondDescription) }}></p>
           </div>
         )}
       </div>
@@ -149,6 +151,7 @@ export const query = graphql`
               eventSubtitle
               title
               eventButtonText
+              eventAddressText
             }
           }
         }
