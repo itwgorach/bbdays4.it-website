@@ -29,6 +29,8 @@ import getEnglishHomepage from 'utils/getEnglishHomepage'
 const HomePage: FC<HomePageType> = ({ location, data }) => {
   const { language } = useLanguageContext()
 
+  console.log('siema')
+
   const homepage = language === 'pl' ? getPolishHomepage(data) : getEnglishHomepage(data)
 
   const content = useMemo(
