@@ -21,7 +21,6 @@ exports.createPages = ({ graphql, actions }) => {
 
     const existingSlugs: string[] = []
 
-    // [...new Set(result.data.strapiComponentBaseSchedule.events)].map((event) => {
     result.data.strapiComponentBaseSchedule.events.map((event) => {
       if (event.eventSlug) {
         if (existingSlugs.includes(event.eventSlug)) {
