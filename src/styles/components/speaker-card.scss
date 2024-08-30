@@ -141,13 +141,19 @@
       }
     }
 
+    &-lecture-details {
+      padding: 40px 80px;
+    }
+
     &-title,
     &-description {
-      padding: $m-sm;
+      margin: 0;
       color: $color-dark;
-      @include media-breakpoint-up(lg) {
-        margin-left: $m-lg;
-      }
+      font-size: $font-size-base;
+    }
+
+    &-title {
+      margin-bottom: $m-sm;
     }
 
     .primary {
