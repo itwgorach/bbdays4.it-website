@@ -64,6 +64,7 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
           <h3 className="speaker-card__modal-title">{title}</h3>
           <p className="speaker-card__modal-description">{description}</p>
         </div>
+        <span className="speaker-card__modal-accent" />
       </Modal>
       <div className="speaker-card__content">
         <h3 className="speaker-card__title">

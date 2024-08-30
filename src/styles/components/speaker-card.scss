@@ -13,6 +13,7 @@
   cursor: pointer;
 
   &__modal {
+    position: relative;
     overflow-y: scroll;
 
     // query to modal width
@@ -63,6 +64,17 @@
           max-height: 350px;
         }
       }
+    }
+
+    &-accent {
+      width: 16px;
+      height: 40px;
+
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+
+      background-color: white;
     }
 
     &-icons {
