@@ -42,7 +42,6 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
   return (
     <div className="speaker-card" onClick={showModalFn}>
       <Modal className="speaker-card__modal" handleToggle={showModalFn} isOpen={showModal} title={title}>
-        <span className="speaker-card__modal-accent" />
         <button className="speaker-card__modal-button-close" onClick={showModalFn}>
           <CloseButtonIcon />
         </button>
