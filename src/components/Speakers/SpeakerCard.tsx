@@ -45,20 +45,17 @@ const SpeakerCard: FC<SpeakerCardProps> = ({ speaker }) => {
         <button className="speaker-card__modal-button-close" onClick={showModalFn}>
           <CloseButtonIcon />
         </button>
-        <div className="speaker-card__modal-spacing">
-          <div>
-            <div className="speaker-card__modal-name">{`${firstName} ${lastName}`}</div>
-            <div className="speaker-card__modal-status">{position}</div>
-          </div>
-          <div className="speaker-card__modal-icons">
-            {linkedinUrl && <SpeakerCardSocial href={linkedinUrl} type={'linkedin'} />}
-            {twitterUrl && <SpeakerCardSocial href={twitterUrl} type={'twitter'} />}
-            {linktrUrl && <SpeakerCardSocial href={linktrUrl} type={'linktr'} />}
-          </div>
-        </div>
-        <div className="speaker-card__modal-spacing">
+        <div className="speaker-card__modal-author-details">
+          <div className="speaker-card__modal-accent" />
+          <div className="speaker-card__modal-status">{position}</div>
+          <div className="speaker-card__modal-name">{`${firstName} ${lastName}`}</div>
           <p className="speaker-card__modal-biography">{bio}</p>
           <Image alt={fullName} url={imageUrl} />
+        </div>
+        <div className="speaker-card__modal-icons">
+          {linkedinUrl && <SpeakerCardSocial href={linkedinUrl} type={'linkedin'} />}
+          {twitterUrl && <SpeakerCardSocial href={twitterUrl} type={'twitter'} />}
+          {linktrUrl && <SpeakerCardSocial href={linktrUrl} type={'linktr'} />}
         </div>
         <div className={(backgroundColor || '') + ' speaker-card__modal-lecture-details'}>
           <h3 className="speaker-card__modal-title">{title}</h3>

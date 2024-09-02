@@ -34,36 +34,9 @@
       min-width: 1100px;
       overflow: hidden;
     }
-
-    &-spacing {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-
-      @include media-breakpoint-up(lg) {
-        margin-left: $m-lg;
-      }
-
-      img {
-        position: relative;
-        margin-left: auto;
-        margin-top: auto;
-        max-width: 200px;
-        max-height: 250px;
-      }
-
-      @include media-breakpoint-up(md) {
-        flex-wrap: nowrap;
-      }
-
-      @include media-breakpoint-up(lg) {
-        img {
-          position: relative;
-          margin-left: auto;
-          max-width: 300px;
-          max-height: 350px;
-        }
-      }
+    &-author-details {
+      padding: 80px;
+      color: $color-dark;
     }
 
     &-accent {
@@ -79,28 +52,12 @@
 
     &-icons {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-right: $m-base;
-      padding-top: 10px;
       gap: 8px;
-      margin-left: 20px;
-      width: 50%;
-
-      a {
-        padding: 0 4px 8px;
-      }
-
-      @include media-breakpoint-up(sm) {
-        margin-left: 0;
-        a {
-          padding: 0 4px;
-        }
-      }
     }
 
     &-name {
-      margin: $m-sm calc($m-xs * 2) 5px;
+      margin-top: 12px;
+      margin-bottom: 48px;
       font-size: $font-size-xl;
       font-weight: $font-weight-extra-bold;
       line-height: $line-height-md;
@@ -108,22 +65,34 @@
     }
 
     &-status {
-      margin: 0 calc($m-xs * 2);
-      font-weight: $font-weight-medium;
+      font-weight: $font-weight-extra-bold;
       font-size: $font-size-base-xs;
       letter-spacing: 0.75px;
       font-family: $font-family-body;
     }
 
+    &-accent {
+      width: 16px;
+      height: 80px;
+
+      position: absolute;
+      top: 72px;
+      left: 0;
+      margin-right: 16px;
+      bottom: 16px;
+
+      background: $color-secondary;
+    }
+
     &-biography {
-      margin-left: $m-xs;
       padding-right: 10px;
       font-size: $font-size-base;
       font-family: $font-face-body;
       font-weight: $font-weight-medium;
+      line-height: $line-height-md;
 
       @include media-breakpoint-up(md) {
-        margin: auto 0 auto $m-sm;
+        margin: 0;
         padding-right: 0px;
       }
     }
