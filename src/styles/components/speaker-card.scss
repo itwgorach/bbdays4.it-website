@@ -13,7 +13,8 @@
   cursor: pointer;
 
   &__modal {
-    overflow-y: scroll;
+    position: relative;
+    overflow-y: auto;
 
     // query to modal width
     @include media-breakpoint-up(xs) {
@@ -31,64 +32,31 @@
     @include media-breakpoint-up(xl) {
       width: 52vw;
       min-width: 1100px;
-      overflow: hidden;
+    }
+    &-author-details {
+      padding: 80px;
+      color: $color-dark;
     }
 
-    &-spacing {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+    &-wrapper {
+      display: grid;
+      grid-template-columns: 3fr max-content 2fr;
 
-      @include media-breakpoint-up(lg) {
-        margin-left: $m-lg;
-      }
-
-      img {
-        position: relative;
-        margin-left: auto;
-        margin-top: auto;
-        max-width: 200px;
-        max-height: 250px;
-      }
-
-      @include media-breakpoint-up(md) {
-        flex-wrap: nowrap;
-      }
-
-      @include media-breakpoint-up(lg) {
-        img {
-          position: relative;
-          margin-left: auto;
-          max-width: 300px;
-          max-height: 350px;
-        }
+      & > .image {
+        height: 100%;
       }
     }
 
     &-icons {
+      padding-top: 80px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-right: $m-base;
-      padding-top: 10px;
+      flex-direction: column;
       gap: 8px;
-      margin-left: 20px;
-      width: 50%;
-
-      a {
-        padding: 0 4px 8px;
-      }
-
-      @include media-breakpoint-up(sm) {
-        margin-left: 0;
-        a {
-          padding: 0 4px;
-        }
-      }
     }
 
     &-name {
-      margin: $m-sm calc($m-xs * 2) 5px;
+      margin-top: 12px;
+      margin-bottom: 48px;
       font-size: $font-size-xl;
       font-weight: $font-weight-extra-bold;
       line-height: $line-height-md;
@@ -96,22 +64,32 @@
     }
 
     &-status {
-      margin: 0 calc($m-xs * 2);
-      font-weight: $font-weight-medium;
+      font-weight: $font-weight-extra-bold;
       font-size: $font-size-base-xs;
       letter-spacing: 0.75px;
       font-family: $font-family-body;
     }
 
+    &-header-accent {
+      width: 16px;
+      height: 80px;
+
+      position: absolute;
+      top: 72px;
+      left: 0;
+      margin-right: 16px;
+      bottom: 16px;
+    }
+
     &-biography {
-      margin-left: $m-xs;
       padding-right: 10px;
       font-size: $font-size-base;
       font-family: $font-face-body;
       font-weight: $font-weight-medium;
+      line-height: $line-height-md;
 
       @include media-breakpoint-up(md) {
-        margin: auto 0 auto $m-sm;
+        margin: 0;
         padding-right: 0px;
       }
     }
@@ -141,13 +119,19 @@
       }
     }
 
+    &-lecture-details {
+      padding: 40px 80px;
+    }
+
     &-title,
     &-description {
-      padding: $m-sm;
+      margin: 0;
       color: $color-dark;
-      @include media-breakpoint-up(lg) {
-        margin-left: $m-lg;
-      }
+      font-size: $font-size-base;
+    }
+
+    &-title {
+      margin-bottom: $m-sm;
     }
 
     .primary {
@@ -241,6 +225,10 @@
   }
 
   &__link {
+    & > svg {
+      height: auto;
+    }
+
     &:first-of-type {
       .speaker-card__twitter {
         path {
@@ -327,7 +315,7 @@
     &__linkedin,
     &__twitter,
     &__linktr {
-      width: $icon-size;
+      width: $icon-size-md;
     }
 
     &__linkedin {
