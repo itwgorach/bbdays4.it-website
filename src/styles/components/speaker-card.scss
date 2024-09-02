@@ -14,7 +14,7 @@
 
   &__modal {
     position: relative;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     // query to modal width
     @include media-breakpoint-up(xs) {
@@ -32,11 +32,19 @@
     @include media-breakpoint-up(xl) {
       width: 52vw;
       min-width: 1100px;
-      overflow: hidden;
     }
     &-author-details {
       padding: 80px;
       color: $color-dark;
+    }
+
+    &-wrapper {
+      display: grid;
+      grid-template-columns: 3fr max-content 2fr;
+
+      & > .image {
+        height: 100%;
+      }
     }
 
     &-accent {
@@ -51,7 +59,9 @@
     }
 
     &-icons {
+      padding-top: 80px;
       display: flex;
+      flex-direction: column;
       gap: 8px;
     }
 
@@ -71,7 +81,7 @@
       font-family: $font-family-body;
     }
 
-    &-accent {
+    &-header-accent {
       width: 16px;
       height: 80px;
 
@@ -80,8 +90,6 @@
       left: 0;
       margin-right: 16px;
       bottom: 16px;
-
-      background: $color-secondary;
     }
 
     &-biography {
@@ -228,6 +236,10 @@
   }
 
   &__link {
+    & > svg {
+      height: auto;
+    }
+
     &:first-of-type {
       .speaker-card__twitter {
         path {
@@ -314,7 +326,7 @@
     &__linkedin,
     &__twitter,
     &__linktr {
-      width: $icon-size;
+      width: $icon-size-md;
     }
 
     &__linkedin {
