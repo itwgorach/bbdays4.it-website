@@ -20,7 +20,7 @@ const Seo: FC<SeoType> = ({ keywords, meta, title }) => {
           name: `description`,
         },
         {
-          content: 'https://www.bbdays4.it/images/BBdays4.it_facebook.png?fbrefresh=true',
+          content: 'https://www.bbdays4.it/images/bbdays_logo.png?fbrefresh=true',
           property: `og:image`,
         },
         {
