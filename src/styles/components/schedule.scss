@@ -50,7 +50,7 @@
       box-sizing: border-box;
       display: grid;
       grid-template-columns: 150px repeat(28, 1fr);
-      grid-template-rows: 100px repeat(11, 80px);
+      grid-template-rows: 100px repeat(10, 80px);
       max-width: 95%;
 
       &-hours {
