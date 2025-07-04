@@ -20,8 +20,11 @@ const getEnglishHomepage = (data: HomePageDataType) => {
   }
 
   const mergeData = (polishData, englishData) => {
-    return polishData.map((polishItem) => {
-      const englishItem = englishData.find((engItem) => engItem._xcomponent === polishItem.strapi_component)
+    return polishData.map((polishItem, polishItemIndex) => {
+      const englishItem = englishData.find(
+        (engItem, engItemIndex) =>
+          engItem._xcomponent === polishItem.strapi_component && engItemIndex === polishItemIndex,
+      )
 
       if (englishItem) {
         switch (englishItem._xcomponent) {
