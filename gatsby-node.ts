@@ -19,12 +19,20 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors
     }
 
-    result.data.strapiComponentBaseSchedule.events.map((event) => {
-      if (event.eventSlug) {
+    const existingEventSlugs: string[] = []
+
+    result.data.strapiComponentBaseSchedule.events.map(({ eventSlug }) => {
+      if (eventSlug) {
+        if (existingEventSlugs.includes(eventSlug)) {
+          return
+        }
+
+        existingEventSlugs.push(eventSlug)
+
         createPage({
-          path: `/${event.eventSlug}`,
+          path: `/${eventSlug}`,
           component: path.resolve('./src/templates/EventDetails/EventDetails.tsx'),
-          context: { slug: event.eventSlug },
+          context: { slug: eventSlug },
         })
       }
     })
