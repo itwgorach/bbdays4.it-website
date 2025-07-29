@@ -43,8 +43,8 @@ const HomePage: FC<HomePageType> = ({ location, data }) => {
             return (
               <Partners
                 key={partnersSection.id}
-                partners={partnersSection.partners}
-                sectionTitle={partnersSection.sectionTitle}
+                partners={(partnersSection.partners ?? []).filter((p) => p != null)}
+                sectionTitle={partnersSection.sectionTitle ?? ''}
               />
             )
           }
@@ -227,63 +227,6 @@ export const query = graphql`
             link
           }
         }
-        ... on STRAPI__COMPONENT_BASE_AGENDA {
-          id
-          title
-          subtitle
-          strapi_component
-          isSectionVisible
-          lectures {
-            title
-            subtitle
-            room
-            startHour
-            backgroundColor
-            logo {
-              url
-              alternativeText
-            }
-            localizations {
-              data {
-                attributes {
-                  title
-                  subtitle
-                  startHour
-                  room
-                }
-              }
-            }
-          }
-          speakers {
-            firstName
-            lastName
-            title
-            photo {
-              url
-              alternativeText
-            }
-            description
-            position
-            linkedinUrl
-            twitterUrl
-            linktrUrl
-            backgroundColor
-            localizations {
-              data {
-                attributes {
-                  bio
-                  description
-                  firstName
-                  lastName
-                  position
-                  title
-                }
-              }
-            }
-            bio
-          }
-          dateOfLectures
-        }
         ... on STRAPI__COMPONENT_BASE_FESTIVAL_IN_NUMBERS {
           id
           strapi_component
@@ -317,45 +260,6 @@ export const query = graphql`
           isSectionVisible
           videoId
           strapi_component
-        }
-        ... on STRAPI__COMPONENT_BASE_SPEAKERS_GRID {
-          id
-          sectionTitle
-          sectionSubtitle
-          strapi_component
-          isSectionVisible
-          speakers {
-            index
-            firstName
-            lastName
-            title
-            photo {
-              url
-            }
-            description
-            position
-            linkedinUrl
-            twitterUrl
-            linktrUrl
-            backgroundColor
-            localizations {
-              data {
-                attributes {
-                  twitterUrl
-                  title
-                  position
-                  linktrUrl
-                  linkedinUrl
-                  lastName
-                  firstName
-                  description
-                  bio
-                  backgroundColor
-                }
-              }
-            }
-            bio
-          }
         }
       }
       localizations {
