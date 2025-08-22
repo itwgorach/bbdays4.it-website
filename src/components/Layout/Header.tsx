@@ -62,8 +62,8 @@ const enLinksData: LinkType[] = [
     path: '#organizatorzy',
   },
   {
-    name: 'Edition 2023',
-    path: 'https://2023.bbdays4.it/',
+    name: 'Edition 2024',
+    path: 'https://2024.bbdays4.it/',
   },
 ]
 
@@ -124,8 +124,8 @@ const enLinksDataMobile: LinkType[] = [
     path: '#organizatorzy',
   },
   {
-    name: 'Edition 2023',
-    path: 'https://2023.bbdays4.it/',
+    name: 'Edition 2024',
+    path: 'https://2024.bbdays4.it/',
   },
 ]
 
