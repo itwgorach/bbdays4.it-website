@@ -12,16 +12,17 @@ const areTimeRangesConcurrent = (
   range2Start: string | undefined,
   range2End: string | undefined,
 ) => {
-  const startTime1 = new Date(`2000-01-01T${range1Start}:00`)
-  const endTime1 = new Date(`2000-01-01T${range1End}:00`)
-  const startTime2 = new Date(`2000-01-01T${range2Start}:00`)
-  const endTime2 = new Date(`2000-01-01T${range2End}:00`)
-
-  if ((startTime1 <= startTime2 && startTime2 < endTime1) || (startTime2 <= startTime1 && startTime1 < endTime2)) {
-    return true
+  const timeToMinutes = (time: string) => {
+    const [hours, minutes] = time.split(':').map(Number)
+    return hours * 60 + minutes
   }
 
-  return false
+  const start1 = timeToMinutes(range1Start!)
+  const end1 = timeToMinutes(range1End!)
+  const start2 = timeToMinutes(range2Start!)
+  const end2 = timeToMinutes(range2End!)
+
+  return start1 < end2 && end1 > start2
 }
 
 const ScheduleDesktop: FC<ScheduleType> = ({ scheduleTitle, events }) => {
