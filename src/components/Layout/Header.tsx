@@ -10,22 +10,22 @@ const plLinksData: LinkType[] = [
   //   name: 'Nagrania',
   //   path: 'nagrania',
   // },
-  {
-    name: 'Prelegenci',
-    path: '#prelegenci',
-  },
-  {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
-  {
-    name: 'Agenda UBB',
-    path: '#agenda',
-  },
-  {
-    name: 'Festiwal w liczbach',
-    path: '#festiwal_w_liczbach',
-  },
+  // {
+  //   name: 'Prelegenci',
+  //   path: '#prelegenci',
+  // },
+  // {
+  //   name: 'Harmonogram',
+  //   path: '#harmonogram',
+  // },
+  // {
+  //   name: 'Agenda UBB',
+  //   path: '#agenda',
+  // },
+  // {
+  //   name: 'Festiwal w liczbach',
+  //   path: '#festiwal_w_liczbach',
+  // },
   {
     name: 'Organizatorzy',
     path: '#organizatorzy',
@@ -41,22 +41,22 @@ const enLinksData: LinkType[] = [
   //   name: 'Videos',
   //   path: 'nagrania',
   // },
-  {
-    name: 'Speakers',
-    path: '#prelegenci',
-  },
-  {
-    name: 'Schedule',
-    path: '#harmonogram',
-  },
-  {
-    name: 'Agenda UBB',
-    path: '#agenda',
-  },
-  {
-    name: 'Festival in numbers',
-    path: '#festiwal_w_liczbach',
-  },
+  // {
+  //   name: 'Speakers',
+  //   path: '#prelegenci',
+  // },
+  // {
+  //   name: 'Schedule',
+  //   path: '#harmonogram',
+  // },
+  // {
+  //   name: 'Agenda UBB',
+  //   path: '#agenda',
+  // },
+  // {
+  //   name: 'Festival in numbers',
+  //   path: '#festiwal_w_liczbach',
+  // },
   {
     name: 'Organizers',
     path: '#organizatorzy',
@@ -72,22 +72,22 @@ const plLinksDataMobile: LinkType[] = [
   //   name: 'Nagrania',
   //   path: 'nagrania',
   // },
-  {
-    name: 'Prelegenci',
-    path: '#prelegenci',
-  },
-  {
-    name: 'Harmonogram',
-    path: '#harmonogram',
-  },
-  {
-    name: 'Agenda',
-    path: '#agenda',
-  },
-  {
-    name: 'Festiwal w liczbach',
-    path: '#festiwal_w_liczbach',
-  },
+  // {
+  //   name: 'Prelegenci',
+  //   path: '#prelegenci',
+  // },
+  // {
+  //   name: 'Harmonogram',
+  //   path: '#harmonogram',
+  // },
+  // {
+  //   name: 'Agenda',
+  //   path: '#agenda',
+  // },
+  // {
+  //   name: 'Festiwal w liczbach',
+  //   path: '#festiwal_w_liczbach',
+  // },
   {
     name: 'Organizatorzy',
     path: '#organizatorzy',
@@ -103,22 +103,22 @@ const enLinksDataMobile: LinkType[] = [
   //   name: 'Videos',
   //   path: 'nagrania',
   // },
-  {
-    name: 'Speakers',
-    path: '#prelegenci',
-  },
-  {
-    name: 'Schedule',
-    path: '#harmonogram',
-  },
-  {
-    name: 'Agenda',
-    path: '#agenda',
-  },
-  {
-    name: 'Festival in numbers',
-    path: '#festiwal_w_liczbach',
-  },
+  // {
+  //   name: 'Speakers',
+  //   path: '#prelegenci',
+  // },
+  // {
+  //   name: 'Schedule',
+  //   path: '#harmonogram',
+  // },
+  // {
+  //   name: 'Agenda',
+  //   path: '#agenda',
+  // },
+  // {
+  //   name: 'Festival in numbers',
+  //   path: '#festiwal_w_liczbach',
+  // },
   {
     name: 'Organizers',
     path: '#organizatorzy',
