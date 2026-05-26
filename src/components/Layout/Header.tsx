@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 
+import { c4pUrl } from 'constants/constants'
 import { useLanguageContext } from 'contexts/LanguageContext'
 import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
@@ -29,6 +30,10 @@ const plLinksData: LinkType[] = [
   {
     name: 'Organizatorzy',
     path: '#organizatorzy',
+  },
+  {
+    name: 'C4P',
+    path: c4pUrl,
   },
   {
     name: 'Edycja 2024',
@@ -62,6 +67,10 @@ const enLinksData: LinkType[] = [
     path: '#organizatorzy',
   },
   {
+    name: 'C4P',
+    path: c4pUrl,
+  },
+  {
     name: 'Edition 2024',
     path: 'https://2024.bbdays4.it/',
   },
@@ -93,6 +102,10 @@ const plLinksDataMobile: LinkType[] = [
     path: '#organizatorzy',
   },
   {
+    name: 'C4P',
+    path: c4pUrl,
+  },
+  {
     name: 'Edycja 2024',
     path: 'https://2024.bbdays4.it/',
   },
@@ -122,6 +135,10 @@ const enLinksDataMobile: LinkType[] = [
   {
     name: 'Organizers',
     path: '#organizatorzy',
+  },
+  {
+    name: 'C4P',
+    path: c4pUrl,
   },
   {
     name: 'Edition 2024',
