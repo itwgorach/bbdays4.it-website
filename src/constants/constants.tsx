@@ -218,7 +218,7 @@ export const YoutubeLinks = [
   },
 ]
 
-export const c4pUrl = 'https://selleo.typeform.com/bbdays4it-c4p'
+export const c4pUrl = 'https://tally.so/r/dW8G4D'
 
 export const breakpoints = {
   lg: '992px',

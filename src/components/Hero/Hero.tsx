@@ -5,6 +5,7 @@ import React, { FC, useState } from 'react'
 
 import { BaseHeroType } from 'types'
 import { useMediaQuery } from 'react-responsive'
+import { useLanguageContext } from 'contexts/LanguageContext'
 import LiveBanner from 'components/LiveBanner/LiveBanner'
 import { BackgroundVideo } from './BackgroundVideo'
 import VideoMode from './VideoMode'
@@ -28,6 +29,7 @@ const Hero: FC<BaseHeroType> = ({
   const [showVideoOverlay, setShowVideoOverlay] = useState(false)
   const [showContent, setShowContent] = useState(true)
   const isDesktop = useMediaQuery({ minWidth: 1200 })
+  const { language } = useLanguageContext()
 
   const heroClasses = cx('hero -full-height', {
     '-full-height': hasSubtitle && !hasVideo,
@@ -106,9 +108,9 @@ const Hero: FC<BaseHeroType> = ({
                   ))}
                 </div>
               )}
-              {/* <a className="hero__content-footer-button" href={c4pUrl} rel="noopener noreferrer" target="_blank">
-                Zostań prelegentem
-              </a> */}
+              <a className="hero__content-footer-button" href={c4pUrl} rel="noopener noreferrer" target="_blank">
+                {language === 'pl' ? 'Zostań prelegentem' : 'Become a speaker'}
+              </a>
             </div>
           )}
         </div>
