@@ -1,4 +1,4 @@
-import { c4pUrl, socialLinks } from 'constants/constants'
+import { c4pPath, socialLinks } from 'constants/constants'
 import cx from 'classnames'
 import { PlayButtonIcon } from 'components/icons'
 import React, { FC, useState } from 'react'
@@ -108,7 +108,7 @@ const Hero: FC<BaseHeroType> = ({
                   ))}
                 </div>
               )}
-              <a className="hero__content-footer-button" href={c4pUrl} rel="noopener noreferrer" target="_blank">
+              <a className="hero__content-footer-button" href={`/${c4pPath}`}>
                 {language === 'pl' ? 'Zostań prelegentem' : 'Become a speaker'}
               </a>
             </div>

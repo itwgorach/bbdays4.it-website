@@ -218,6 +218,7 @@ export const YoutubeLinks = [
   },
 ]
 
+export const c4pPath = 'c4p'
 export const c4pUrl = 'https://tally.so/r/dW8G4D'
 
 export const breakpoints = {
