@@ -32,7 +32,7 @@ const plLinksData: LinkType[] = [
     path: '#organizatorzy',
   },
   {
-    name: 'C4P',
+    name: 'C4P BBQ4.IT',
     path: c4pPath,
   },
   {
@@ -67,7 +67,7 @@ const enLinksData: LinkType[] = [
     path: '#organizatorzy',
   },
   {
-    name: 'C4P',
+    name: 'C4P BBQ4.IT',
     path: c4pPath,
   },
   {
@@ -102,7 +102,7 @@ const plLinksDataMobile: LinkType[] = [
     path: '#organizatorzy',
   },
   {
-    name: 'C4P',
+    name: 'C4P BBQ4.IT',
     path: c4pPath,
   },
   {
@@ -137,7 +137,7 @@ const enLinksDataMobile: LinkType[] = [
     path: '#organizatorzy',
   },
   {
-    name: 'C4P',
+    name: 'C4P BBQ4.IT',
     path: c4pPath,
   },
   {
