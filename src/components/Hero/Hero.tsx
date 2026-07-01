@@ -109,7 +109,7 @@ const Hero: FC<BaseHeroType> = ({
                 </div>
               )}
               <a className="hero__content-footer-button" href={`/${c4pPath}`}>
-                {language === 'pl' ? 'Zostań prelegentem' : 'Become a speaker'}
+                {language === 'pl' ? 'Zostań prelegentem na BBQ4.IT' : 'Become a speaker at BBQ4.IT'}
               </a>
             </div>
           )}
