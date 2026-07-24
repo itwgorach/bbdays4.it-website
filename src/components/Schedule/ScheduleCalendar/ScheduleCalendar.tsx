@@ -14,9 +14,7 @@ const ScheduleCalendar = () => {
   const toggleCalendar = () => setIsOpen(!isOpen)
 
   const getDateClasses = (index: number) => {
-    const isEventDate = ScheduleWeek.some((obj) => {
-      return [5, 6, 7, 8, 9].includes(index + 1) ? true : obj.dateMobile === (index + 1).toString()
-    })
+    const isEventDate = ScheduleWeek.some((obj) => obj.dateMobile === (index + 1).toString())
 
     const dateClasses = cx('calendar__grid-date', {
       '-coloured': isEventDate,
@@ -28,7 +26,7 @@ const ScheduleCalendar = () => {
   return (
     <div className="calendar">
       <button className="calendar__button" type="button" onClick={toggleCalendar}>
-        <span className="calendar__button-text">{language === 'pl' ? 'Wrzesień 2025' : 'September 2025'}</span>
+        <span className="calendar__button-text">{language === 'pl' ? 'Wrzesień 2026' : 'September 2026'}</span>
         {isOpen ? <CalendarIcon /> : <CalendarIcon className="calendar__icon-rotated" />}
       </button>
       <div className={calendarToggleClass}>
@@ -40,7 +38,11 @@ const ScheduleCalendar = () => {
           ) : null
         })}
         {Array.from({ length: 30 }, (_, index) => {
-          return <div className={getDateClasses(index)}>{index + 1}</div>
+          return (
+            <div key={index + 1} className={getDateClasses(index)}>
+              {index + 1}
+            </div>
+          )
         })}
       </div>
     </div>
