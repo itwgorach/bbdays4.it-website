@@ -1,4 +1,4 @@
-import { c4pPath, socialLinks } from 'constants/constants'
+import { socialLinks } from 'constants/constants'
 import cx from 'classnames'
 import { PlayButtonIcon } from 'components/icons'
 import React, { FC, useState } from 'react'
@@ -108,8 +108,12 @@ const Hero: FC<BaseHeroType> = ({
                   ))}
                 </div>
               )}
-              <a className="hero__content-footer-button" href={`/${c4pPath}`}>
-                {language === 'pl' ? 'Zostań prelegentem na BBQ4.IT' : 'Become a speaker at BBQ4.IT'}
+              <a
+                className="hero__content-footer-button"
+                href="https://itwgorach.pl/index.php/bbconf/"
+                rel="noopener noreferrer"
+                target="_blank">
+                {language === 'pl' ? 'Poznaj prelegentów na BBCONF4.IT' : 'Discover speakers at BBCONF4.IT'}
               </a>
             </div>
           )}
