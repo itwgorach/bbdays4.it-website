@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { c4pPath } from 'constants/constants'
+// import { c4pPath } from 'constants/constants'
 import { useLanguageContext } from 'contexts/LanguageContext'
 import { LinkType } from 'types'
 import MobileHeader from './Headers/MobileHeader'
@@ -31,10 +31,10 @@ const plLinksData: LinkType[] = [
     name: 'Organizatorzy',
     path: '#organizatorzy',
   },
-  {
-    name: 'C4P BBQ4.IT',
-    path: c4pPath,
-  },
+  // {
+  //   name: 'C4P BBQ4.IT',
+  //   path: c4pPath,
+  // },
   {
     name: 'Edycja 2024',
     path: 'https://2024.bbdays4.it/',
@@ -66,10 +66,10 @@ const enLinksData: LinkType[] = [
     name: 'Organizers',
     path: '#organizatorzy',
   },
-  {
-    name: 'C4P BBQ4.IT',
-    path: c4pPath,
-  },
+  // {
+  //   name: 'C4P BBQ4.IT',
+  //   path: c4pPath,
+  // },
   {
     name: 'Edition 2024',
     path: 'https://2024.bbdays4.it/',
@@ -101,10 +101,10 @@ const plLinksDataMobile: LinkType[] = [
     name: 'Organizatorzy',
     path: '#organizatorzy',
   },
-  {
-    name: 'C4P BBQ4.IT',
-    path: c4pPath,
-  },
+  // {
+  //   name: 'C4P BBQ4.IT',
+  //   path: c4pPath,
+  // },
   {
     name: 'Edycja 2024',
     path: 'https://2024.bbdays4.it/',
@@ -136,10 +136,10 @@ const enLinksDataMobile: LinkType[] = [
     name: 'Organizers',
     path: '#organizatorzy',
   },
-  {
-    name: 'C4P BBQ4.IT',
-    path: c4pPath,
-  },
+  // {
+  //   name: 'C4P BBQ4.IT',
+  //   path: c4pPath,
+  // },
   {
     name: 'Edition 2024',
     path: 'https://2024.bbdays4.it/',
