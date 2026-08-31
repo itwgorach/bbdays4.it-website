@@ -9,6 +9,11 @@ exports.wrapPageElement = ({ element, props }) => {
 
 exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
   setHeadComponents([
+    <meta
+      key="facebook-domain-verification"
+      content="zluck9c7cjvyxfiouq5wlmcpbw7ogv"
+      name="facebook-domain-verification"
+    />,
     <script
       key="fb-pixel"
       dangerouslySetInnerHTML={{
