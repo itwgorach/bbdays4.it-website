@@ -258,6 +258,109 @@
       bottom: 0;
       transform: translate(-50%, 50%);
     }
+
+    .hero__title {
+      color: $color-dark;
+
+      &.-small {
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-semi-bold;
+        line-height: $line-height-lg;
+
+        @include media-breakpoint-up(lg) {
+          font-size: $font-size-3xl;
+          font-weight: $font-weight-bold;
+          line-height: $line-height-2xl;
+        }
+      }
+    }
+
+    .hero__content-footer {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      font-family: $font-family-body;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semi-bold;
+      gap: $m-base;
+      letter-spacing: 1px;
+
+      &-icons {
+        display: flex;
+        gap: $m-sm;
+        justify-content: center;
+      }
+
+      &-icon {
+        height: $icon-size-sm;
+        width: $icon-size-sm;
+
+        path {
+          transition: fill $transition-duration, stroke $transition-duration;
+        }
+
+        &:hover {
+          &.-facebook {
+            path {
+              &:first-of-type {
+                fill: $color-secondary;
+              }
+
+              &:last-of-type {
+                stroke: $color-secondary;
+              }
+            }
+          }
+
+          &.-instagram {
+            path {
+              &:first-of-type {
+                fill: $color-secondary;
+              }
+
+              &:nth-last-of-type(-n + 3) {
+                stroke: $color-secondary;
+              }
+            }
+          }
+
+          &.-linkedin {
+            path {
+              stroke: $color-secondary;
+
+              &:nth-last-of-type(2) {
+                fill: $color-secondary;
+              }
+            }
+          }
+
+          &.-twitter {
+            path {
+              stroke: $color-secondary;
+
+              &:last-of-type {
+                fill: $color-secondary;
+              }
+            }
+          }
+
+          &.-youtube {
+            path {
+              stroke: $color-secondary;
+
+              &:last-of-type {
+                fill: $color-secondary;
+              }
+            }
+          }
+        }
+      }
+
+      &-button {
+        @include special-button;
+        max-width: 220px;
+      }
+    }
   }
 
   &__content-wrapper {
