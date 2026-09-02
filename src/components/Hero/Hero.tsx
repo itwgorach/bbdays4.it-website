@@ -67,6 +67,7 @@ const Hero: FC<BaseHeroType> = ({
     <div
       className={heroClasses}
       style={{ backgroundColor: backgroundColor, backgroundImage: `url(${backgroundImage?.url}` }}>
+      {!hasVideo && <div className="hero__gradient" />}
       <LiveBanner />
       {showVideoOverlay && (
         <VideoMode
