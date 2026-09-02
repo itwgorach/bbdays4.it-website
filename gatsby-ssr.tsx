@@ -9,6 +9,17 @@ exports.wrapPageElement = ({ element, props }) => {
 
 exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
   setHeadComponents([
+    <script
+      key="usercentrics-autoblocker"
+      src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"
+    />,
+    <script
+      async
+      data-settings-id="qFLhosxk2j_lkV"
+      id="usercentrics-cmp"
+      key="usercentrics-cmp"
+      src="https://web.cmp.usercentrics.eu/ui/loader.js"
+    />,
     <meta
       key="facebook-domain-verification"
       content="zluck9c7cjvyxfiouq5wlmcpbw7ogv"
